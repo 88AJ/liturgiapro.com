@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liturgia PRO - La Plataforma de Asistencia Litúrgica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="saas.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app">
+        <!-- Landing / Login Screen -->
+        <div id="landing-screen" class="view active">
+            <div class="landing-content">
+                <div class="logo">Liturgia <span>PRO</span></div>
+                <h1>Automatiza tus Sacramentos</h1>
+                <p>Genera hojas litúrgicas, planifica bodas y bautismos con Inteligencia, todo desde un mismo lugar y adaptado al Rito Romano.</p>
+                
+                <div class="login-box">
+                    <h3>Acceso a Sacerdotes y Catequistas</h3>
+                    <input type="email" placeholder="correo@parroquia.org" id="email-input">
+                    <input type="password" placeholder="Contraseña" id="pass-input">
+                    <button class="btn-primary" id="login-btn">Ingresar al Dashboard</button>
+                    <p class="signup-link">¿No tienes cuenta? <a href="#">Prueba 7 días gratis</a></p>
+                </div>
+            </div>
+            <div class="landing-bg"></div>
+        </div>
+
+        <!-- SaaS Dashboard -->
+        <div id="dashboard-screen" class="view">
+            <!-- Sidebar Navigation -->
+            <nav class="saas-sidebar">
+                <div class="logo-small">Liturgia <span>PRO</span></div>
+                
+                <div class="nav-category">LITURGIA HABITUAL</div>
+                <ul class="nav-links">
+                    <li class="active"><span class="icon">M</span> Misa Diaria / Dominical</li>
+                    <li><span class="icon">L</span> Horas Litúrgicas</li>
+                    <li><span class="icon">S</span> Hora Santa</li>
+                </ul>
+
+                <div class="nav-category" style="margin-top: 15px;">RITUALES Y SACRAMENTOS</div>
+                <ul class="nav-links">
+                    <li><span class="icon">+</span> Exequias <span class="badge">Premium</span></li>
+                    <li><span class="icon">B</span> Bautismos</li>
+                    <li><span class="icon">M</span> Bodas <span class="badge">Premium</span></li>
+                    <li><span class="icon">C</span> 1a Comunión</li>
+                    <li><span class="icon">C</span> Confirmaciones</li>
+                    <li><span class="icon">X</span> XV Años</li>
+                </ul>
+
+                <div class="nav-category" style="margin-top: 15px;">PASTORAL Y COMUNICACIÓN</div>
+                <ul class="nav-links">
+                    <li id="nav-bulletin"><span class="icon">G</span> Boletín PRO</li>
+                </ul>
+
+                <div class="user-profile">
+                    <div class="avatar">P.A</div>
+                    <div class="user-info">
+                        <strong>P. Alan</strong>
+                        <span>Plan Básico</span>
+                    </div>
+                </div>
+                <button class="btn-upgrade" id="upgrade-btn">⭐️ Upgrade a Premium</button>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="saas-main">
+                <header class="saas-header">
+                    <h2>Nueva Hoja Litúrgica</h2>
+                    <div class="header-actions">
+                        <button class="btn-outline">Guardar en Nube</button>
+                        <button class="btn-primary" id="generar-pdf">Exportar a PDF</button>
+                    </div>
+                </header>
+
+                <div class="workspace">
+                    <!-- Configurator Panel -->
+                    <div class="config-panel">
+                        <h3>Asistente de Generación</h3>
+                        <p class="subtitle">Selecciona los parámetros o <a href="#">escríbele a la IA</a></p>
+                        
+                        <div id="liturgia-form">
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label>Sacramento / Oficio</label>
+                                    <select id="sacrament-select">
+                                        <option>Misa Diaria / Dominical</option>
+                                        <option>Exequias (Requiere Premium)</option>
+                                        <option>Bautismos</option>
+                                        <option>Bodas (Requiere Premium)</option>
+                                        <option>Primeras Comuniones</option>
+                                        <option>Confirmaciones</option>
+                                        <option>XV Años</option>
+                                        <option>Hora Santa</option>
+                                        <option>Solo Liturgia de las Horas</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Fecha de Celebración</label>
+                                    <input type="date" value="2026-04-08" id="date-select">
+                                </div>
+                                <div class="input-group" id="office-group">
+                                    <label>Horas Litúrgicas / Integrar Oficio</label>
+                                    <select id="office-select">
+                                        <option value="oficio">Oficio de Lectura</option>
+                                        <option value="laudes">Laudes</option>
+                                        <option value="intermedia">Hora Intermedia</option>
+                                        <option value="visperas">Vísperas</option>
+                                        <option value="completas">Completas</option>
+                                        <option value="ninguno" selected>Ninguno</option>
+                                    </select>
+                                </div>
+                                <div class="input-group" style="grid-column: 1 / -1;">
+                                    <label>Opciones Modulares</label>
+                                    <div style="display: flex; gap: 15px; margin-top: 5px; font-size: 0.85rem;">
+                                        <label><input type="checkbox" id="chk-intro" checked> Introducción</label>
+                                        <label><input type="checkbox" id="chk-lecturas-solo"> Formato 'Solo Lecturas'</label>
+                                        <label><input type="checkbox" id="chk-eucaristia" checked> Eucaristía</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cantos-section" id="cantos-section">
+                                <h4>Repertorio Musical</h4>
+                                <div class="canto-item">
+                                    <input type="text" placeholder="Buscar canto de Entrada..." value="El Señor Resucitó">
+                                </div>
+                                <div class="canto-item">
+                                    <input type="text" placeholder="Ofertorio" value="Te Ofrecemos Padre Nuestro">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="boletin-form" style="display: none;">
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label>Fecha del Boletín</label>
+                                    <input type="date" value="2026-04-08" id="bulletin-date">
+                                </div>
+                                <div class="input-group">
+                                    <label>Subtítulo / Mención del Párroco</label>
+                                    <input type="text" value="REV. ALAN SANCHEZ" id="bulletin-clergy">
+                                </div>
+                                <div class="input-group" style="grid-column: 1 / -1;">
+                                    <label>Logo de la Parroquia</label>
+                                    <input type="file" id="bulletin-logo" accept="image/*" style="font-size: 0.8rem;">
+                                </div>
+                                <div class="input-group" style="grid-column: 1 / -1;">
+                                    <label>Lema Principal</label>
+                                    <input type="text" id="bulletin-motto" value="BUILD A STRONGER PERSONAL RELATIONSHIP WITH JESUS CHRIST.">
+                                </div>
+                            </div>
+                            
+                            <div class="cantos-section" style="margin-top: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <h4>Tus Bloques Parroquiales</h4>
+                                    <button class="btn-outline" id="btn-add-section" style="padding: 5px 10px; font-size: 0.8rem;">+ Añadir Bloque</button>
+                                </div>
+                                <div id="dynamic-sections">
+                                    <div class="canto-item" style="flex-direction: column; align-items: stretch; background: var(--bg-dark); padding: 10px; border-radius: 6px;">
+                                        <input type="text" placeholder="Título del Bloque" value="Noticia Principal" class="sec-title" style="margin-bottom: 8px;">
+                                        <textarea rows="3" class="sec-content" style="width: 100%; background: transparent; border: 1px solid var(--border-color); color: white; border-radius: 4px; padding: 8px;">PREPARE THE WAY, EMBRACE JOY...</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-generate" id="generate-doc-btn">Generar Documento</button>
+                    </div>
+
+                    <!-- PDF Preview Panel -->
+                    <div class="preview-panel">
+                        <div class="pdf-container" id="pdf-view">
+                            <div class="empty-state">
+                                📄<br>El documento generado aparecerá aquí
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Premium Modal Mockup -->
+        <div id="premium-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" id="close-modal">&times;</button>
+                <h2>Desbloquea el Potencial Pastoral</h2>
+                <p>Uso Privado <strong>Gratis</strong> para Misa Diaria y Horas. <br>La opción de Rituales Múltiples y Descargas PDF está disponible a un costo accesible y sin ataduras.</p>
+                <div class="pricing-card">
+                    <h3>Pase por Sacramento</h3>
+                    <div class="price">$1.99 <span>/ ritual</span></div>
+                    <ul>
+                        <li>Generación de la Boda / Bautismo / Exequias</li>
+                        <li>Exportación en alta calidad (PDF con diseño)</li>
+                        <li>Directorio de cantos católicos para coros</li>
+                    </ul>
+                    <button class="btn-checkout">Comprar Ritual con Stripe 🔒</button>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; color: var(--text-secondary);">¿Buscas donar o suscribirte? <a href="#" style="color: var(--brand-color)">Ver planes para Parroquias</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML2PDF CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- App Logic -->
+    <script src="saas.js"></script>
+</body>
+</html>

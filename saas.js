@@ -1,0 +1,294 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Navigation Logic
+    const loginBtn = document.getElementById('login-btn');
+    const landingScreen = document.getElementById('landing-screen');
+    const dashboardScreen = document.getElementById('dashboard-screen');
+
+    loginBtn.addEventListener('click', () => {
+        landingScreen.classList.remove('active');
+        dashboardScreen.classList.add('active');
+    });
+
+    // Premium Logic Fake
+    const upgradeBtn = document.getElementById('upgrade-btn');
+    const premiumModal = document.getElementById('premium-modal');
+    const closeModal = document.getElementById('close-modal');
+    const sacramentSelect = document.getElementById('sacrament-select');
+
+    upgradeBtn.addEventListener('click', () => premiumModal.classList.add('visible'));
+    closeModal.addEventListener('click', () => premiumModal.classList.remove('visible'));
+
+    sacramentSelect.addEventListener('change', (e) => {
+        if (e.target.value.includes('Premium')) {
+            premiumModal.classList.add('visible');
+            e.target.value = 'Misa Diaria / Dominical'; // Reset
+        }
+    });
+
+    // Sidebar Navigation Logic
+    const liturgiaForm = document.getElementById('liturgia-form');
+    const boletinForm = document.getElementById('boletin-form');
+    const navItems = document.querySelectorAll('.nav-links li');
+    let currentMode = 'liturgia';
+
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            navItems.forEach(n => n.classList.remove('active'));
+            item.classList.add('active');
+            
+            if (item.id === 'nav-bulletin') {
+                liturgiaForm.style.display = 'none';
+                boletinForm.style.display = 'block';
+                currentMode = 'boletin';
+            } else {
+                liturgiaForm.style.display = 'block';
+                boletinForm.style.display = 'none';
+                currentMode = 'liturgia';
+            }
+        });
+    });
+
+    // Dynamic section builder 
+    const btnAddSection = document.getElementById('btn-add-section');
+    const dynamicSections = document.getElementById('dynamic-sections');
+    if (btnAddSection) {
+        btnAddSection.addEventListener('click', () => {
+            const item = document.createElement('div');
+            item.className = 'canto-item';
+            item.style = 'flex-direction: column; align-items: stretch; background: var(--bg-dark); padding: 10px; border-radius: 6px; margin-top: 10px;';
+            item.innerHTML = `
+                <input type="text" placeholder="Título del Bloque" value="Nueva Sección" class="sec-title" style="margin-bottom: 8px;">
+                <textarea rows="3" class="sec-content" style="width: 100%; background: transparent; border: 1px solid var(--border-color); color: white; border-radius: 4px; padding: 8px;">Contenido del bloque...</textarea>
+            `;
+            dynamicSections.appendChild(item);
+        });
+    }
+
+    // PDF Generation Logic (Keeping core markdown generator)
+    let liturgiaData = null;
+    fetch('data/liturgia.json')
+        .then(response => response.json())
+        .then(data => { liturgiaData = data; })
+        .catch(err => console.error("Error loading mock DB:", err));
+
+    const generateBtn = document.getElementById('generate-doc-btn');
+    const pdfView = document.getElementById('pdf-view');
+
+    generateBtn.addEventListener('click', () => {
+        pdfView.innerHTML = '<div class="empty-state">Generando con IA...</div>';
+        
+        setTimeout(() => {
+            if (currentMode === 'boletin') {
+                const date = document.getElementById('bulletin-date').value;
+                const clergy = document.getElementById('bulletin-clergy').value;
+                const motto = document.getElementById('bulletin-motto').value;
+                // Add Logo support
+                const logoInput = document.getElementById('bulletin-logo');
+                let logoUrl = '';
+                if (logoInput && logoInput.files && logoInput.files[0]) {
+                     logoUrl = URL.createObjectURL(logoInput.files[0]);
+                }
+                const data = liturgiaData[date] || liturgiaData['2026-04-08']; // fallback
+                pdfView.className = 'bulletin-wrapper';
+                pdfView.innerHTML = generarBoletin(data, date, clergy, motto, logoUrl);
+            } else {
+                const fecha = document.getElementById('date-select').value;
+                const hora = document.getElementById('office-select').value;
+                pdfView.className = 'pdf-container';
+                if (!liturgiaData || !liturgiaData[fecha]) {
+                    pdfView.innerHTML = `<div style="color:red; padding: 20px;">Error: Fecha no encontrada en la base de datos de Muestra.</div>`;
+                    return;
+                }
+                const data = liturgiaData[fecha];
+                let doc = generarDocumento(data, hora);
+                pdfView.innerHTML = markdownToHTML(doc);
+            }
+        }, 800); // Simulate network load
+    });
+
+    // Logic ripped from app.js to show it still works logically
+    function formatLectura(texto) { return texto; }
+
+    function generarDocumento(data, hora) {
+        let out = "";
+        const sacramento = document.getElementById('sacrament-select').value;
+        const isStandaloneOffice = sacramento === "Solo Liturgia de las Horas";
+        
+        // Options checkboxes
+        const chkIntro = document.getElementById('chk-intro').checked;
+        const chkLecto = document.getElementById('chk-lecturas-solo').checked;
+        const chkEuca = document.getElementById('chk-eucaristia').checked;
+
+        if (chkLecto) {
+            // RENDER LECTURAS GIGANTES
+            out += `<div style="font-size: 1.5rem; line-height: 1.8;">`;
+            out += `<h2>LECTURAS DE ${data.tiempo_liturgico.toUpperCase()}</h2>\n`;
+            out += `<h3 style="color: #666; font-size:1.1rem; margin-bottom: 30px;">${data.dia_semana} (${data.color})</h3>\n\n`;
+            out += `**PRIMERA LECTURA (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
+            out += `**SALMO:**\n> **R.** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
+            out += `**EVANGELIO (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
+            out += `</div>`;
+            return out; // Exit directly, this is a distinct mode
+        }
+
+        // Cabecera común regular
+        out += `<div style="text-align:center; border-bottom: 2px solid var(--brand-color); padding-bottom: 20px; margin-bottom: 20px;">\n`;
+        if (isStandaloneOffice) {
+            out += `<h2>Liturgia de las Horas: ${hora.charAt(0).toUpperCase() + hora.slice(1)}</h2>\n`;
+        } else {
+            out += `<h2>Rito de la ${data.tiempo_liturgico}</h2>\n`;
+        }
+        out += `<h3 style="color: #666;">${data.dia_semana} (${data.color})</h3>\n`;
+        out += `</div>\n\n`;
+
+        if (isStandaloneOffice) {
+            // Render standalone office
+            const oficio = data[hora];
+            if (!oficio) return `<strong style="color:red">Oficio no disponible.</strong>`;
+            if (hora === "completas") {
+                out += `**Introducción:**\n**Sacerdote:** ${oficio.introduccion}\n\n`;
+                out += `**Examen de Conciencia:**\n**Sacerdote:** ${oficio.examen_conciencia}\n\n`;
+                out += `**Himno:**\n> ${oficio.himno.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Salmodia:**\n**Antífona 1:** ${oficio.salmo1.antifona}\n\n> ${oficio.salmo1.texto.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Lectura Breve (${oficio.lectura_breve.cita}):**\n${oficio.lectura_breve.texto}\n\n`;
+                out += `**Responsorio Breve:**\n> ${oficio.responsorio_breve.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Cántico Evangélico:**\n**Antífona:** ${oficio.cantico_evangelico.antifona}\n\n> ${oficio.cantico_evangelico.texto.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Oración Final:**\n**Sacerdote:** ${oficio.oracion_final}\n\n`;
+                out += `**Antífona Mariana:**\n> ${oficio.antifona_mariana.replace(/\\n/g, '\n>')}\n\n`;
+            } else {
+                 out += `**Oficio de ${hora} en construcción para uso MVP.**`;
+            }
+        } else {
+            // Flujo Misa modular
+            if (chkIntro) {
+                out += `**RITOS INICIALES**\n\n`;
+                out += `**Antífona de Entrada:**\n**Sacerdote:** ${data.antifona_entrada}\n\n`;
+                out += `**Rito Penitencial:**\n**Sacerdote:** Hermanos: Para celebrar...\n**Asamblea:** ${data.rito_penitencial}\n`;
+                if (data.gloria) out += `\n**Gloria:**\nGloria a Dios en el cielo...\n\n`;
+                out += `\n**Oración Colecta:**\n**Sacerdote:** Oremos. ${data.oracion_colecta}\n**Asamblea:** Amén.\n\n`;
+            }
+
+            // Integración de Oficio en Misa si se requiere
+            if(hora === "laudes" || hora === "visperas") {
+                 const salmodia = data[hora];
+                 if(salmodia) {
+                     out += `\n**SALMODIA DE ${hora.toUpperCase()}**\n\n`;
+                     out += `> ${salmodia.salmo1.antifona}\n>\n> ${salmodia.salmo1.texto.replace(/\\n/g, '\n>')}\n\n`;
+                 }
+            }
+
+            // Palabra (Siempre visible excepto si "Solo Lecturas" dominó arriba y saltó flujo)
+            out += `\n**LITURGIA DE LA PALABRA**\n\n`;
+            out += `**Primera Lectura (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
+            out += `**Salmo Responsorial:**\n**Asamblea:** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
+            out += `**Evangelio (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
+            
+            if (chkEuca) {
+                out += `\n**LITURGIA EUCARÍSTICA**\n\n`;
+                out += `**Oración sobre las Ofrendas:**\n**Sacerdote:** ${data.liturgia_eucaristica.oracion_ofrendas}\n\n`;
+                out += `**Oración después de la Comunión:**\n**Sacerdote:** Oremos. ${data.liturgia_eucaristica.oracion_despues_comunion}\n\n`;
+            }
+        }
+        return out;
+    }
+
+    function markdownToHTML(md) {
+        let text = md
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>')
+            .replace(/<\/blockquote>\n<blockquote>/g, '<br>')
+            .replace(/\n\n/g, '<br><br>')
+            .replace(/\n/g, '<br>');
+            
+        // Apply rubric class to exact actors
+        text = text.replace(/<strong>(Sacerdote:|Sacerdote y Asamblea:|Asamblea:|Lector:|Antífona:|Antífona 1:|Responsorio Breve:|Oración Final:|Himno:|Lectura Breve|Salmodia:|Examen de Conciencia:|Introducción:|Antífona Mariana:)<\/strong>/g, '<strong class="rubric">$1</strong>');
+        return text;
+    }
+
+    function generarBoletin(data, dateStr, clergy, motto, logoUrl) {
+        let out = ``;
+        
+        // Header
+        out += `<p class="bul-top-motto">${motto.toUpperCase()}</p>`;
+        out += `<div class="bul-info-grid">
+                    <div class="bul-info-col">
+                        618 N. BURTON AVE,<br>P.O. BOX 436, LA PRYOR, TX. 78872
+                    </div>
+                    <div class="bul-info-col bul-date">
+                        <h4>${data.tiempo_liturgico}</h4>
+                        <p>${dateStr}</p>
+                    </div>
+                    <div class="bul-info-col" style="display:flex; align-items:center; justify-content:center; gap: 10px;">
+                        ${logoUrl ? `<img src="${logoUrl}" style="height: 40px;">` : `<img src="https://ui-avatars.com/api/?name=St+J&background=c90000&color=fff" style="height: 40px; border-radius: 50%;">`}
+                        <div style="text-align:left;">
+                            <strong style="color: #c90000; font-size: 1.1rem;">ST. JOSEPH & ST. PATRICK</strong><br>
+                            <span style="font-size: 0.6rem;">CATHOLIC CHURCH</span>
+                        </div>
+                    </div>
+                </div>`;
+                
+        // Title
+        out += `<h1 class="bul-title-main">The Guardian</h1>`;
+        out += `<div class="bul-subtitle">CATHOLIC CHURCH WEEKLY BULLETIN</div>`;
+        
+        // Dynamic Grid
+        out += `<div class="bul-grid" style="height: auto; min-height: 250px;">`;
+        
+        const titles = document.querySelectorAll('.sec-title');
+        const contents = document.querySelectorAll('.sec-content');
+        
+        for (let i = 0; i < titles.length; i++) {
+             out += `<div class="bul-grid-box purple" style="flex-direction: column;">
+                        <div style="font-size:0.75rem; color:#facc15; text-transform:uppercase; margin-bottom:10px;">${titles[i].value}</div>
+                        <div style="font-size:0.95rem;">${contents[i].value.replace(/\n/g, '<br>')}</div>
+                    </div>`;
+             // For visual mockup flow, auto inject one image for every block made
+             out += `<div class="bul-grid-box"><img src="https://images.unsplash.com/photo-1548625361-ec84920b77a7?auto=format&fit=crop&w=300&q=80" class="bul-bg-img"></div>`;
+        }
+        
+        out += `</div>`;
+                
+        // Footer Clergy
+        out += `<div class="bul-footer">
+                    <div class="bul-clergy">
+                        <h3>Clergy</h3>
+                        <p>${clergy}</p>
+                        <p>REV. MR. GENE CORRIGAN -- DEACON</p>
+                    </div>
+                    <div class="bul-qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://liturgiapro.com" alt="QR CODE A WEB">
+                    </div>
+                </div>`;
+                
+        // Page 2 (Gospel)
+        out += `<div class="bul-page-2">
+                    <h2>Gospel of the Day: ${data.liturgia_palabra.evangelio.cita}</h2>
+                    <p style="font-size: 0.85rem; column-count: 2; column-gap: 30px; text-align: justify;">${formatLectura(data.liturgia_palabra.evangelio.texto).replace(/\\n/g, '<br><br>')}</p>
+                </div>`;
+                
+        return out;
+    }
+
+    // PDF Export function
+    const btnPdf = document.getElementById('generar-pdf');
+    btnPdf.addEventListener('click', () => {
+        const element = document.getElementById('pdf-view');
+        
+        // Configuration for html2pdf
+        const opt = {
+            margin:       10, // Add explicit margin just in case padding collapses
+            filename:     'Ritual_Liturgia_PRO.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // If it's an empty state, don't print
+        if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Generando con IA...')) {
+            alert("Primero genera un documento usando el Asistente.");
+            return;
+        }
+
+        html2pdf().set(opt).from(element).save();
+    });
+});

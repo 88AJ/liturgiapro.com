@@ -1,0 +1,79 @@
+{
+  "2026-04-08": {
+    "dia_semana": "Miércoles, 8 de abril de 2026",
+    "tiempo_liturgico": "Octava de Pascua",
+    "color": "Blanco",
+    "antifona_entrada": "Vengan, benditos de mi Padre; reciban en herencia el reino preparado para ustedes desde la creación del mundo. Aleluya.",
+    "rito_penitencial": "Yo confieso ante Dios todopoderoso...",
+    "gloria": true,
+    "oracion_colecta": "Señor Dios, que cada año nos alegras con la solemnidad de la resurrección del Señor, concédenos, en tu bondad, que, habiendo celebrado por la fe estas fiestas, merezcamos llegar al gozo eterno. Por nuestro Señor Jesucristo...",
+    "laudes": {
+      "salmo1": {
+        "antifona": "Todo lo que ha hecho el Señor es admirable. Aleluya.",
+        "cita": "Salmo 62",
+        "texto": "Oh Dios, tú eres mi Dios, por ti madrugo,\nmi alma está sedienta de ti;\nmi carne tiene ansia de ti,\ncomo tierra reseca, agostada, sin agua.\n\n¡Cómo te contemplaba en el santuario\nviendo tu fuerza y tu gloria!\nTu gracia vale más que la vida,\nte alabarán mis labios.\n\nToda mi vida te bendeciré\ny alzaré las manos invocándote.\nMe saciaré como de enjundia y de manteca,\ny mis labios te alabarán jubilosos.\n\nEn el lecho me acuerdo de ti\ny velando medito en ti,\nporque fuiste mi auxilio,\ny a la sombra de tus alas canto con exultación.\n\nMi alma está unida a ti,\ny tu diestra me sostiene."
+      },
+      "cantico_at": {
+        "antifona": "A ti, Señor, la alabanza y la gloria por los siglos. Aleluya.",
+        "cita": "Cántico: Daniel 3, 57-88. 56",
+        "texto": "Obras todas del Señor, bendigan al Señor, \nensálcenlo con himnos por los siglos.\nÁngeles del Señor, bendigan al Señor; \ncielos, bendigan al Señor.\n\nAguas del espacio, bendigan al Señor; \nejércitos del Señor, bendigan al Señor.\nSol y luna, bendigan al Señor; \nastros del cielo, bendigan al Señor.\n\nLluvia y rocío, bendigan al Señor; \nvientos todos, bendigan al Señor.\nFuego y calor, bendigan al Señor; \nfríos y heladas, bendigan al Señor.\n\nRocíos y nevadas, bendigan al Señor; \ntémpanos y hielos, bendigan al Señor.\nEscarchas y nieves, bendigan al Señor; \nnoche y día, bendigan al Señor.\n\nLuz y tinieblas, bendigan al Señor; \nrayos y nubes, bendigan al Señor.\nBendiga la tierra al Señor, \nensálcelo con himnos por los siglos.\n\nMontes y cumbres, bendigan al Señor; \ncuanto germina en la tierra, bendiga al Señor.\nManantiales, bendigan al Señor; \nmares y ríos, bendigan al Señor.\n\nCetáceos y peces, bendigan al Señor; \naves del cielo, bendigan al Señor.\nFieras y ganados, bendigan al Señor, \nensálcenlo con himnos por los siglos.\n\nHijos de los hombres, bendigan al Señor; \nbendiga Israel al Señor.\nSacerdotes del Señor, bendigan al Señor; \nsiervos del Señor, bendigan al Señor.\n\nAlmas y espíritus justos, bendigan al Señor; \nsantos y humildes de corazón, bendigan al Señor.\nAnanías, Azarías y Misael, bendigan al Señor, \nensálcenlo con himnos por los siglos.\n\nBendigamos al Padre, al Hijo y al Espíritu Santo, \nensalcémoslo con himnos por los siglos.\nBendito el Señor en la bóveda del cielo, \nalabado y glorioso y ensalzado por los siglos."
+      },
+      "salmo2": {
+        "antifona": "Los santos cantarán de alegría. Aleluya.",
+        "cita": "Salmo 149",
+        "texto": "Canten al Señor un cántico nuevo,\nresuene su alabanza en la asamblea de los fieles;\nque se alegre Israel por su Creador,\nlos hijos de Sión por su Rey.\n\nAlaben su nombre con danzas,\ncántenle con tambores y cítaras;\nporque el Señor ama a su pueblo\ny adorna con la victoria a los humildes.\n\nQue los fieles festejen su gloria\ny canten jubilosos en filas:\ncon vítores a Dios en la boca\ny espadas de dos filos en las manos;\n\npara tomar venganza de los pueblos\ny aplicar el castigo a las naciones,\nsujetando a los reyes con argollas,\na los nobles con esposas de hierro.\n\nEjecutar la sentencia dictada\nes un honor para todos sus fieles."
+      },
+      "preces": "Oremos a nuestro redentor, al vencedor de la muerte, y digámosle suplicantes:\n\n**Escucha a tu pueblo, Sacerdote eterno.**\n\n- Te rogamos por tu Iglesia, a la que tú, redentor nuestro, lavas en esta sagrada cincuentena con tu Espíritu santificador, para que ella te ame confiadamente a ti y al Padre.\n- Padre nuestro de misericordia infinita, te pedimos por los que hemos pecado contra ti para que, perdonados, crezcamos en el conocimiento pleno de la sabiduría.\n- Jesucristo triunfador y Señor de la historia, asiste a tu pueblo con el don abundante de tu Espíritu.\n- (Se pueden añadir intenciones libres)\n\nCon la confianza que nos da ser hijos de Dios, oremos como Cristo nos enseñó:\n**Padre Nuestro...**"
+    },
+    "visperas": {},
+    "completas": {
+      "introduccion": "Dios mío, ven en mi auxilio.\\nSeñor, date prisa en socorrerme.\\nGloria al Padre...",
+      "examen_conciencia": "Hermanos, habiendo llegado al final de esta jornada, reconozcamos nuestros pecados...",
+      "himno": "Jesucristo, Palabra del Padre,\nluz eterna de todo creyente:\nven y escucha la súplica ardiente,\nven, Señor, porque ya se hace tarde.\n\nCuando el mundo dormía en tinieblas,\nen tu amor tú quisiste ayudarlo\ny trajiste, al venir a encarnarlo,\ntu luz pura a las sombras de la tierra.",
+      "salmo1": {
+        "antifona": "Ten piedad de mí, Señor, y escucha mi oración. Aleluya.",
+        "cita": "Salmo 4",
+        "texto": "Escúchame cuando te invoco, Dios, defensor mío;\ntú que en el aprieto me diste anchura,\nten piedad de mí y escucha mi oración.\n\nY ustedes, ¿hasta cuándo serán insolentes?\n¿hasta cuándo amarán la falsedad\ny buscarán el engaño?\n\nSepan que el Señor hizo milagros en mi favor,\ny el Señor me escuchará cuando lo invoque.\n\nTiemblen y no pequen más;\nreflexionen en el silencio de su lecho.\nOfrezcan sacrificios legítimos\ny confíen en el Señor.\n\nEn paz me acuesto y enseguida me duermo,\nporque tú solo, Señor, me haces vivir tranquilo."
+      },
+      "salmo2": {
+        "antifona": "Bendigan al Señor, siervos del Señor. Aleluya.",
+        "cita": "Salmo 133",
+        "texto": "¡Ea, bendigan al Señor,\nsiervos del Señor,\nlos que pasan la noche\nen la casa del Señor!\n\nLevanten las manos hacia el santuario\ny bendigan al Señor.\n\nEl Señor te bendiga desde Sión:\nel que hizo el cielo y la tierra."
+      },
+      "lectura_breve": {
+        "cita": "Efesios 4, 26-27",
+        "texto": "Aun si se enojan, no pequen. No dejen que el sol se ponga mientras están enojados y no le den oportunidad al diablo."
+      },
+      "responsorio_breve": "A tus manos, Señor, encomiendo mi espíritu. Aleluya, aleluya.\nA tus manos, Señor, encomiendo mi espíritu. Aleluya, aleluya.\nTú, el Dios leal, nos librarás. Aleluya, aleluya.\nGloria al Padre, y al Hijo, y al Espíritu Santo.\nA tus manos, Señor, encomiendo mi espíritu. Aleluya, aleluya.",
+      "cantico_evangelico": {
+        "antifona": "Sálvanos, Señor, despiertos, protégenos mientras dormimos, para que velemos con Cristo y descansemos en paz. Aleluya.",
+        "cita": "Cántico de Simeón (Lucas 2, 29-32)",
+        "texto": "Ahora, Señor, según tu promesa,\npuedes dejar a tu siervo irse en paz,\nporque mis ojos han visto a tu Salvador,\n\na quien has presentado ante todos los pueblos:\nluz para alumbrar a las naciones\ny gloria de tu pueblo Israel."
+      },
+      "oracion_final": "Visita, Señor, esta habitación; aleja de ella las insidias del enemigo; que tus santos ángeles habiten en ella y nos guarden en paz, y que tu bendición permanezca siempre con nosotros. Por Cristo nuestro Señor. Amén.",
+      "antifona_mariana": "Reina del cielo, alégrate, aleluya;\nporque el Señor, a quien has llevado en tu vientre, aleluya;\nha resucitado según su palabra, aleluya.\nRuega al Señor por nosotros, aleluya."
+    },
+    "liturgia_palabra": {
+      "primera_lectura": {
+        "cita": "Hechos de los apóstoles 3, 1-10",
+        "texto": "Un día subían Pedro y Juan al templo para la oración de las tres de la tarde. Había allí un hombre, tullido de nacimiento, a quien a diario ponían junto a la puerta llamada la Hermosa, para que pidiera limosna a los que entraban en el templo. Éste, al ver a Pedro y a Juan que iban a entrar, les pidió limosna. Pedro y Juan lo miraron fijamente, y Pedro le dijo: \"Míranos\". Él se les quedó mirando con atención, esperando recibir algo. Entonces Pedro le dijo: \"No tengo plata ni oro, pero te doy lo que tengo: en el nombre de Jesucristo el Nazareno, levántate y anda\". Y tomándolo de la mano derecha, lo levantó. Inmediatamente se fortalecieron sus pies y sus tobillos; de un salto se puso en pie y empezó a andar. Luego entró con ellos en el templo por su propio pie, alabando a Dios.\nToda la gente lo vio caminar y alabar a Dios, y al darse cuenta de que era el mismo que pedía limosna sentado junto a la puerta Hermosa del templo, se quedaron llenos de asombro y estupefacción por lo que había sucedido."
+      },
+      "salmo_responsorial": {
+        "cita": "Salmo 104",
+        "respuesta": "Que se alegren los que buscan al Señor. Aleluya.",
+        "texto": "Den gracias al Señor, invoquen su nombre,\ncuenten a los pueblos sus hazañas.\nCántenle al son de instrumentos,\nhablen de sus maravillas.\n\nGloríense de su nombre santo,\nque se alegren los que buscan al Señor.\nRecurran al Señor y a su poder,\nbusquen continuamente su rostro.\n\n¡Estirpe de Abraham, su siervo;\nhijos de Jacob, su elegido!\nEl Señor es nuestro Dios,\nÉl gobierna toda la tierra.\n\nSe acuerda de su alianza eternamente,\nde la palabra dada, por mil generaciones;\ndel pacto sellado con Abraham,\ndel juramento hecho a Isaac."
+      },
+      "segunda_lectura": null,
+      "aclamacion_evangelio": "Aleluya, aleluya. Éste es el día del triunfo del Señor, día de júbilo y de gozo. Aleluya.",
+      "evangelio": {
+        "cita": "Evangelio según San Lucas 24, 13-35",
+        "texto": "El mismo día de la resurrección, iban dos de los discípulos hacia un pueblo llamado Emaús, situado a unos once kilómetros de Jerusalén, y comentaban todo lo que había sucedido. Mientras conversaban y discutían, Jesús en persona se les acercó y se puso a caminar con ellos. Pero sus ojos estaban velados y no lo reconocieron.\nÉl les preguntó: \"¿Qué es lo que vienen conversando por el camino?\". Ellos se detuvieron entristecidos, y uno de ellos, que se llamaba Cleofás, le respondió: \"¿Eres tú el único forastero en Jerusalén que no sabe lo que ha sucedido ahí estos días?\". Él les preguntó: \"¿Qué cosa?\". Ellos le respondieron: \"Lo de Jesús el Nazareno, que era un profeta poderoso en obras y palabras, ante Dios y ante todo el pueblo. Cómo los sumos sacerdotes y nuestros jefes lo entregaron para que lo condenaran a muerte, y lo crucificaron. Nosotros esperábamos que él sería el libertador de Israel, ¡pero ya hace tres días que pasaron estas cosas! Es cierto que algunas mujeres de nuestro grupo nos han sobresaltado, pues fueron de madrugada al sepulcro y no encontraron su cuerpo; llegaron diciendo que habían visto una aparición de ángeles, y que éstos les habían dicho que estaba vivo. Algunos de nuestros compañeros fueron al sepulcro y hallaron todo como las mujeres habían dicho, pero a él no lo vieron\".\nEntonces Jesús les dijo: \"¡Qué insensatos y tardos de corazón son ustedes para creer todo lo que anunciaron los profetas! ¿No era necesario que el Mesías padeciera todo esto para entrar en su gloria?\". Y comenzando por Moisés y terminando con todos los profetas, les explicó lo que se refería a él en todas las Escrituras.\nAl acercarse al pueblo a donde iban, él hizo como que iba a seguir adelante; pero ellos le insistieron, diciendo: \"Quédate con nosotros, porque ya es tarde y se está haciendo de noche\". Entró, pues, para quedarse con ellos. Y sucedió que, estando sentado a la mesa con ellos, tomó el pan, lo bendijo, lo partió y se lo dio. Entonces se les abrieron los ojos y lo reconocieron, pero él desapareció de su vista. Y se decían uno al otro: \"¿No es verdad que nuestro corazón ardía dentro de nosotros, cuando nos hablaba por el camino y nos explicaba las Escrituras?\".\nEn ese mismo instante se levantaron y regresaron a Jerusalén, donde encontraron reunidos a los Once con sus compañeros, los cuales les dijeron: \"¡Es verdad! El Señor ha resucitado y se le ha aparecido a Simón\". Entonces ellos contaron lo que les había pasado por el camino y cómo lo habían reconocido al partir el pan."
+      }
+    },
+    "liturgia_eucaristica": {
+      "oracion_ofrendas": "Recibe, Señor, con bondad las ofrendas de tu familia santa, para que, con la ayuda de tu protección, no pierda los dones recibidos y alcance los bienes eternos. Por Jesucristo, nuestro Señor.",
+      "antifona_comunion": "Jesús resucitó y dio a sus discípulos el Espíritu Santo. Aleluya.",
+      "oracion_despues_comunion": "Escucha, Señor, nuestras oraciones para que la participación en los misterios de nuestra redención nos ayude en la vida presente y nos alcance las alegrías eternas. Por Jesucristo, nuestro Señor."
+    }
+  }
+}
