@@ -264,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
             }
         }); // Simulate network load ended, we use real network!
+    }); // CLOSE generateBtn.addEventListener
 
     function formatLectura(texto) { return texto; }
 
