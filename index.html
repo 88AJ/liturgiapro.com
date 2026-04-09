@@ -76,26 +76,13 @@
                                         <option value="us_en">🇺🇸 USA (English - USCCB)</option>
                                     </select>
                                 </div>
-                                <div class="input-group">
-                                    <label>Sacramento / Oficio</label>
-                                    <select id="sacrament-select">
-                                        <option>Misa Diaria / Dominical</option>
-                                        <option>Exequias (Requiere Premium)</option>
-                                        <option>Bautismos</option>
-                                        <option>Bodas (Requiere Premium)</option>
-                                        <option>Primeras Comuniones</option>
-                                        <option>Confirmaciones</option>
-                                        <option>XV Años</option>
-                                        <option>Hora Santa</option>
-                                        <option>Solo Liturgia de las Horas</option>
-                                    </select>
-                                </div>
+                                <!-- Sacramento Select removed as per user request -->
                                 <div class="input-group">
                                     <label>Fecha de Celebración</label>
                                     <input type="date" value="2026-04-08" id="date-select">
                                 </div>
-                                <div class="input-group" id="office-group">
-                                    <label>Horas Litúrgicas / Integrar Oficio</label>
+                                <div class="input-group" id="office-group" style="grid-column: 1 / -1;">
+                                    <label>Integrar Oficio Divino</label>
                                     <select id="office-select">
                                         <option value="oficio">Oficio de Lectura</option>
                                         <option value="laudes">Laudes</option>

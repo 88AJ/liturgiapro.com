@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const upgradeBtn = document.getElementById('upgrade-btn');
     const premiumModal = document.getElementById('premium-modal');
     const closeModal = document.getElementById('close-modal');
-    const sacramentSelect = document.getElementById('sacrament-select');
-
     if (upgradeBtn) upgradeBtn.addEventListener('click', () => premiumModal.classList.add('visible'));
     if (closeModal) closeModal.addEventListener('click', () => premiumModal.classList.remove('visible'));
 
@@ -324,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generarDocumento(data, hora) {
         let out = "";
-        const sacramento = document.getElementById('sacrament-select').value;
+        const sacramento = 'Misa Diaria / Dominical';
         const isStandaloneOffice = sacramento === "Solo Liturgia de las Horas";
         const region = document.getElementById('region-select') ? document.getElementById('region-select').value : 'mx';
         const isEn = region === 'us_en';
@@ -346,9 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         // Options checkboxes
-        const chkIntro = document.getElementById('chk-intro').checked;
+        const chkIntro = true;
         const chkLecto = document.getElementById('chk-lecturas-solo').checked;
-        const chkEuca = document.getElementById('chk-eucaristia').checked;
+        const chkEuca = true;
 
         if (chkLecto) {
             // RENDER LECTURAS GIGANTES
