@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                          if(!salmodia.cantico_at) out += `**Asamblea:** Gloria al Padre...\n`;
                          out += `${s2.antifona}\n\n`;
                     }
-                    if (salmodia.salmo2 && salmodia.cantico_nt) { # Visperas
+                    if (salmodia.salmo2 && salmodia.cantico_nt) { // Visperas
                          let s3 = salmodia.cantico_nt;
                          out += `**6. Cántico NT:**\n**Asamblea:** ${s3.antifona}\n\n`;
                          s3.texto.split("\n\n").forEach((estrofa, index) => {
