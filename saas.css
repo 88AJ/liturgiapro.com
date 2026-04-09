@@ -306,9 +306,9 @@ body {
 .pdf-container {
     font-family: 'EB Garamond', serif;
     background: #ffffff;
-    width: 210mm;
-    min-height: 297mm;
-    padding: 25mm 20mm;
+    width: 8.5in;
+    min-height: 11in;
+    padding: 1in;
     margin: 0 auto;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     color: #111; /* asegurar texto negro en vez de gris o inherits */
