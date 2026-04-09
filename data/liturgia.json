@@ -179,5 +179,161 @@
             "oracion_ofrendas": "",
             "oracion_despues_comunion": ""
         }
+    },
+    "2026-04-12": {
+        "color": "Blanco",
+        "tiempo_liturgico": "II DOMINGO DE PASCUA (CICLO A)",
+        "antifona_entrada": "",
+        "rito_penitencial": "",
+        "gloria": true,
+        "oracion_colecta": "",
+        "liturgia_palabra": {
+            "primera_lectura": {
+                "cita": "1a Lectura",
+                "texto": "Los creyentes viv√≠an unidos y todo lo ten√≠an en com√∫n.\n\nLectura del libro de los Hechos de los Ap√≥stoles \n2, 42-47\n\nEn los primeros d√≠as de la Iglesia, todos los hermanos acud√≠an asiduamente a escuchar las ense√±anzas de los ap√≥stoles, viv√≠an en comuni√≥n fraterna y se congregaban para orar en com√∫n y celebrar la fracci√≥n del pan. Toda la gente estaba llena de asombro y de temor, al ver los milagros y prodigios que los ap√≥stoles hac√≠an en Jerusal√©n.\n\nTodos los creyentes viv√≠an unidos y lo ten√≠an todo en com√∫n. Los que eran due√±os de bienes o propiedades los vend√≠an, y el producto era distribuido entre todos, seg√∫n las necesidades de cada uno. Diariamente se reun√≠an en el templo, y en las casas part√≠an el pan y com√≠an juntos, con alegr√≠a y sencillez de coraz√≥n. Alababan a Dios y toda la gente los estimaba.  Y el Se√±or aumentaba cada d√≠a el n√∫mero de los que hab√≠an de salvarse.\nPalabra de Dios."
+            },
+            "salmo_responsorial": {
+                "cita": "Salmo",
+                "respuesta": "Del salmo 117\n\nR. La misericordia del Se√±or es eterna.  Aleluya.\n\nDiga la casa de Israel: ‚ÄúSu misericordia es eterna‚Äù.\nDiga la casa de Aar√≥n: ‚ÄúSu misericordia es eterna‚Äù.\nDigan los que temen al Se√±or: ‚ÄúSu misericordia es eterna‚Äù. R.\n\nQuer√≠an a empujones derribarme, \npero Dios me ayud√≥.\nEl Se√±or es mi fuerza y mi alegr√≠a, \nen el Se√±or est√° mi salvaci√≥n. R.\n\nLa piedra que desecharon los constructores, \nes ahora la piedra angular.\nEsto es obra de la mano del Se√±or, \nes un milagro patente.\nEste es el d√≠a del triunfo del Se√±or, \nd√≠a de j√∫bilo y de gozo. R."
+            },
+            "evangelio": {
+                "cita": "Evangelio",
+                "texto": "Jn 20, 29\n\nR. Aleluya, aleluya.\nTom√°s, t√∫ crees porque me has visto.\nDichosos los que creen sin haberme visto, dice el Se√±or.\nR.  Aleluya."
+            }
+        },
+        "liturgia_eucaristica": {
+            "oracion_ofrendas": "",
+            "oracion_despues_comunion": ""
+        }
+    },
+    "2026-04-19": {
+        "color": "Blanco",
+        "tiempo_liturgico": "III DOMINGO DE PASCUA (CICLO A)",
+        "antifona_entrada": "",
+        "rito_penitencial": "",
+        "gloria": true,
+        "oracion_colecta": "",
+        "liturgia_palabra": {
+            "primera_lectura": {
+                "cita": "1a Lectura",
+                "texto": "No era posible que la muerte lo retuviera bajo su dominio.\n\nLectura del libro de los Hechos de los Ap√≥stoles \n2, 14. 22-33\n\nE1 d√≠a de Pentecost√©s, se present√≥ Pedro, junto con los Once, ante la multitud, y levantando la voz, dijo: ‚ÄúIsraelitas, esc√∫chenme. Jes√∫s de Nazaret fue un hombre acreditado por Dios ante ustedes, mediante los milagros, prodigios y se√±ales que Dios realiz√≥ por medio de √©l y que ustedes bien conocen. Conforme al plan previsto y sancionado por Dios, Jes√∫s fue entregado, y ustedes utilizaron a los paganos para clavarlo en la cruz.\n\nPero Dios lo resucit√≥, rompiendo las ataduras de la muerte, ya que no era posible que la muerte lo retuviera bajo su dominio. En efecto, David dice, refiri√©ndose a √©l: Yo ve√≠a constantemente al Se√±or delante de m√≠, puesto que √©l est√° a mi lado para que yo no tropiece.  Por eso se alegra mi coraz√≥n y mi lengua se alboroza por eso tambi√©n mi cuerpo vivir√° en la esperanza, porque t√∫, Se√±or, no me abandonar√°s a la muerte, ni dejar√°s que tu santo sufra la corrupci√≥n.  Me has ense√±ado el sendero de la vida y me saciar√°s de gozo en tu presencia.\n\nHermanos, que me sea permitido hablarles con toda claridad: el patriarca David muri√≥ y lo enterraron, y su sepulcro se conserva entre nosotros hasta el d√≠a de hoy. Pero, como era profeta, y sab√≠a que Dios le hab√≠a prometido con juramento que un descendiente suyo ocupar√≠a su trono, con visi√≥n prof√©tica habl√≥ de la resurrecci√≥n de Cristo, el cual no fue abandonado a la muerte ni sufri√≥ la corrupci√≥n.\n\nPues bien, a este Jes√∫s Dios lo resucit√≥, y de ello todos nosotros somos testigos. Llevado a los cielos por el poder de Dios, recibi√≥ del Padre el Esp√≠ritu Santo prometido a √©l y lo ha comunicado, como ustedes lo est√°n viendo y oyendo‚Äù.\nPalabra de Dios."
+            },
+            "salmo_responsorial": {
+                "cita": "Salmo",
+                "respuesta": "Del salmo 15\n\nR. Ens√©√±anos, Se√±or, el camino de la vida.  Aleluya.\n\nProt√©geme, Dios m√≠o, pues eres mi refugio.\nYo siempre he dicho que t√∫ eres mi Se√±or.\nEl Se√±or es la parte que me ha tocado en herencia: \nmi vida est√° en sus manos. R.\n\nBendecir√© al Se√±or, que me aconseja, \nhasta de noche me instruye internamente.  \nTengo siempre presente al Se√±or \ny con √©l a mi lado, jam√°s tropezar√©. R.\n\nPor eso se me alegran el coraz√≥n y el alma \ny mi cuerpo vivir√° tranquilo, \nporque t√∫ no me abandonar√°s a la muerte \nni dejar√°s que sufra yo la corrupci√≥n. R.\n\nEns√©√±ame el camino de la vida, \ns√°ciame de gozo en tu presencia \ny de alegr√≠a perpetua junto a ti. R."
+            },
+            "evangelio": {
+                "cita": "Evangelio",
+                "texto": "Cfr Lc 24, 32\n\nR. Aleluya, aleluya.\nSe√±or Jes√∫s, haz que comprendamos la Sagrada Escritura.  \nEnciende nuestro coraz√≥n mientras nos hablas.\nR. Aleluya."
+            }
+        },
+        "liturgia_eucaristica": {
+            "oracion_ofrendas": "",
+            "oracion_despues_comunion": ""
+        }
+    },
+    "2026-04-26": {
+        "color": "Blanco",
+        "tiempo_liturgico": "IV DOMINGO DE PASCUA (CICLO A)",
+        "antifona_entrada": "",
+        "rito_penitencial": "",
+        "gloria": true,
+        "oracion_colecta": "",
+        "liturgia_palabra": {
+            "primera_lectura": {
+                "cita": "1a Lectura",
+                "texto": "Dios lo ha constituido Se√±or y Mes√≠as.\n\nLectura del libro de los Hechos de los Ap√≥stoles \n2, 14. 36-41\n\nE1 d√≠a de Pentecost√©s, se present√≥ Pedro junto con los Once ante la multitud y levantando la voz, dijo: ‚ÄúSepa todo Israel con absoluta certeza, que Dios ha constituido Se√±or y Mes√≠as al mismo Jes√∫s, a quien ustedes han crucificado‚Äù.\n\nEstas palabras les llegaron al coraz√≥n y preguntaron a Pedro y a los dem√°s ap√≥stoles: ‚Äú¬øQu√© tenemos que hacer, hermanos?‚Äù Pedro les contest√≥: ‚ÄúArrepi√©ntanse y baut√≠cense en el nombre de Jesucristo para el perd√≥n de sus pecados y recibir√°n el Esp√≠ritu Santo. Porque las promesas de Dios valen para ustedes y para sus hijos y tambi√©n para todos los paganos que el Se√±or, Dios nuestro, quiera llamar, aunque est√©n lejos‚Äù.\n\nCon √©stas y otras muchas razones, los instaba y exhortaba, dici√©ndoles: ‚ÄúP√≥nganse a salvo de este mundo corrompido‚Äù. Los que aceptaron sus palabras se bautizaron, y aquel d√≠a se les agregaron unas tres mil personas.\nPalabra de Dios."
+            },
+            "salmo_responsorial": {
+                "cita": "Salmo",
+                "respuesta": "Del salmo 22\n\nR. El Se√±or es mi pastor, nada me faltar√°.  Aleluya.\nEl Se√±or es mi pastor, nada me falta;\nen verdes praderas me hace reposar\ny hacia fuentes tranquilas me conduce \npara reparar mis fuerzas. R.\n\nPor ser un Dios fiel a sus promesas, \nme gu√≠a por el sendero recto; \nas√≠, aunque camine por ca√±adas oscuras, \nnada temo, porque t√∫ est√°s conmigo, \ntu vara y tu cayado me dan seguridad. R.\n\nT√∫ mismo me preparas la mesa, \na despecho de mis adversarios; \nme unges la cabeza con perfume \ny llenas mi copa hasta los bordes. R.\n\nTu bondad y tu misericordia me acompa√±ar√°n \ntodos los d√≠as de mi vida; \ny vivir√© en la casa del Se√±or \npor a√±os sin t√©rmino. R."
+            },
+            "evangelio": {
+                "cita": "Evangelio",
+                "texto": "Jn 10, 14\n\nR. Aleluya, aleluya.\nYo soy el buen pastor, dice el Se√±or;\nyo conozco a mis ovejas y ellas me conocen a m√≠.\nR. Aleluya."
+            }
+        },
+        "liturgia_eucaristica": {
+            "oracion_ofrendas": "",
+            "oracion_despues_comunion": ""
+        }
+    },
+    "2026-05-03": {
+        "color": "Blanco",
+        "tiempo_liturgico": "V DOMINGO DE PASCUA (CICLO A)",
+        "antifona_entrada": "",
+        "rito_penitencial": "",
+        "gloria": true,
+        "oracion_colecta": "",
+        "liturgia_palabra": {
+            "primera_lectura": {
+                "cita": "1a Lectura",
+                "texto": "Dios lo ha constituido Se√±or y Mes√≠as.\n\nLectura del libro de los Hechos de los Ap√≥stoles \n2, 14. 36-41\n\nE1 d√≠a de Pentecost√©s, se present√≥ Pedro junto con los Once ante la multitud y levantando la voz, dijo: ‚ÄúSepa todo Israel con absoluta certeza, que Dios ha constituido Se√±or y Mes√≠as al mismo Jes√∫s, a quien ustedes han crucificado‚Äù.\n\nEstas palabras les llegaron al coraz√≥n y preguntaron a Pedro y a los dem√°s ap√≥stoles: ‚Äú¬øQu√© tenemos que hacer, hermanos?‚Äù Pedro les contest√≥: ‚ÄúArrepi√©ntanse y baut√≠cense en el nombre de Jesucristo para el perd√≥n de sus pecados y recibir√°n el Esp√≠ritu Santo. Porque las promesas de Dios valen para ustedes y para sus hijos y tambi√©n para todos los paganos que el Se√±or, Dios nuestro, quiera llamar, aunque est√©n lejos‚Äù.\n\nCon √©stas y otras muchas razones, los instaba y exhortaba, dici√©ndoles: ‚ÄúP√≥nganse a salvo de este mundo corrompido‚Äù. Los que aceptaron sus palabras se bautizaron, y aquel d√≠a se les agregaron unas tres mil personas.\nPalabra de Dios."
+            },
+            "salmo_responsorial": {
+                "cita": "Salmo",
+                "respuesta": "Del salmo 22\n\nR. El Se√±or es mi pastor, nada me faltar√°.  Aleluya.\nEl Se√±or es mi pastor, nada me falta;\nen verdes praderas me hace reposar\ny hacia fuentes tranquilas me conduce \npara reparar mis fuerzas. R.\n\nPor ser un Dios fiel a sus promesas, \nme gu√≠a por el sendero recto; \nas√≠, aunque camine por ca√±adas oscuras, \nnada temo, porque t√∫ est√°s conmigo, \ntu vara y tu cayado me dan seguridad. R.\n\nT√∫ mismo me preparas la mesa, \na despecho de mis adversarios; \nme unges la cabeza con perfume \ny llenas mi copa hasta los bordes. R.\n\nTu bondad y tu misericordia me acompa√±ar√°n \ntodos los d√≠as de mi vida; \ny vivir√© en la casa del Se√±or \npor a√±os sin t√©rmino. R."
+            },
+            "evangelio": {
+                "cita": "Evangelio",
+                "texto": "Jn 10, 14\n\nR. Aleluya, aleluya.\nYo soy el buen pastor, dice el Se√±or;\nyo conozco a mis ovejas y ellas me conocen a m√≠.\nR. Aleluya."
+            }
+        },
+        "liturgia_eucaristica": {
+            "oracion_ofrendas": "",
+            "oracion_despues_comunion": ""
+        }
+    },
+    "2026-05-10": {
+        "color": "Blanco",
+        "tiempo_liturgico": "VI DOMINGO DE PASCUA (CICLO A)",
+        "antifona_entrada": "",
+        "rito_penitencial": "",
+        "gloria": true,
+        "oracion_colecta": "",
+        "liturgia_palabra": {
+            "primera_lectura": {
+                "cita": "1a Lectura",
+                "texto": "Les impusieron las manos y recibieron el Esp√≠ritu Santo.\n\nLectura del libro de los Hechos de los Ap√≥stoles \n8, 5-8. 14-17\n\nEn aquellos d√≠as, Felipe baj√≥ a la ciudad de Samaria y predicaba all√≠ a Cristo. La multitud escuchaba con atenci√≥n lo que dec√≠a Felipe, porque hab√≠an o√≠do hablar de los milagros que hac√≠a y los estaban viendo: de muchos pose√≠dos sal√≠an los esp√≠ritus inmundos, lanzando gritos, y muchos paral√≠ticos y lisiados quedaban curados. Esto despert√≥ gran alegr√≠a en aquella ciudad.\n\nCuando los ap√≥stoles que estaban en Jerusal√©n se enteraron de que Samaria hab√≠a recibido la palabra de Dios, enviaron all√° a Pedro y a Juan. Estos, al llegar, oraron por los que se hab√≠an convertido, para que recibieran el Esp√≠ritu Santo, porque a√∫n no lo hab√≠an recibido y solamente hab√≠an sido bautizados en el nombre del Se√±or Jes√∫s. Entonces Pedro y Juan impusieron las manos sobre ellos, y ellos recibieron el Esp√≠ritu Santo.\nPalabra de Dios."
+            },
+            "salmo_responsorial": {
+                "cita": "Salmo",
+                "respuesta": "Del salmo 65\n\nR. Las obras del Se√±or son admirables.  Aleluya.\n\nQue aclame al Se√±or toda la tierra.  \nCelebremos su gloria y su poder, \ncantemos un himno de alabanza,\ndigamos al Se√±or: ‚ÄúTu obra es admirable‚Äù. R.\n\nQue se postre ante ti la tierra entera \ny celebre con c√°nticos tu nombre.  \nAdmiremos las obras del Se√±or,\nlos prodigios que ha hecho por los hombres. R.\n\nEl transform√≥ el mar Rojo en tierra firme \ny los hizo cruzar el Jord√°n a pie enjuto.  \nLlen√©monos por eso de gozo y gratitud: \nel Se√±or es eterno y poderoso. R.\n\nCuantos temen a Dios, vengan y escuchen, \ny les dir√© lo que ha hecho por m√≠.\nBendito sea Dios, que no rechaz√≥ mi s√∫plica, \nni me retir√≥ su gracia. R.\n\nEn aquellas regiones en que la Ascensi√≥n del Se√±or se celebra el domingo siguiente, se pueden utilizar el d√≠a de hoy la segunda lectura y el evangelio correspondientes al domingo VII de Pascua, p√°g. 115.(leccionario)"
+            },
+            "evangelio": {
+                "cita": "Evangelio",
+                "texto": "Jn 14, 23\n\nR. Aleluya, aleluya.\nEl que me ama, cumplir√° mi palabra, dice el Se√±or; \ny mi Padre lo amar√° y vendremos a √©l.\nR. Aleluya."
+            }
+        },
+        "liturgia_eucaristica": {
+            "oracion_ofrendas": "",
+            "oracion_despues_comunion": ""
+        }
+    },
+    "2026-05-17": {
+        "color": "Blanco",
+        "tiempo_liturgico": "VII DOMINGO DE PASCUA (CICLO A)",
+        "antifona_entrada": "",
+        "rito_penitencial": "",
+        "gloria": true,
+        "oracion_colecta": "",
+        "liturgia_palabra": {
+            "primera_lectura": {
+                "cita": "1a Lectura",
+                "texto": "Perseveraban un√°nimes en la oraci√≥n.\n\nLectura del libro de los Hechos de los Ap√≥stoles \n1, 12-14\n\nDespu√©s de la ascensi√≥n de Jes√∫s a los cielos, los ap√≥stoles regresaron a Jerusal√©n desde el monte de los Olivos, que dista de la ciudad lo que se permite caminar en s√°bado.  Cuando llegaron a la ciudad, subieron al piso alto de la casa donde se alojaban, Pedro y Juan, Santiago y Andr√©s, Felipe y Tom√°s, Bartolom√© y Mateo, Santiago (el hijo de Alfeo), Sim√≥n el cananeo y Judas, el hijo de Santiago. Todos ellos perseveraban un√°nimes en la oraci√≥n, junto con Mar√≠a, la madre de Jes√∫s, con los parientes de Jes√∫s y algunas mujeres. Palabra de Dios."
+            },
+            "salmo_responsorial": {
+                "cita": "Salmo",
+                "respuesta": "Del salmo 26\n\nR. El Se√±or es mi luz y mi salvaci√≥n.  Aleluya.\n\nEl Se√±or es mi luz y mi salvaci√≥n,\n¬øa qui√©n voy a tenerle miedo?\nEl Se√±or es la defensa de mi vida,\n¬øqui√©n podr√° hacerme temblar? R.\n\nLo √∫nico que pido, lo √∫nico que busco,\nes vivir en la casa del Se√±or toda mi vida, \npara disfrutar las bondades del Se√±or \ny estar continuamente en su presencia. R.\n\nOye, Se√±or, mi voz y mis clamores \ny tenme compasi√≥n; \nel coraz√≥n me dice que te busque \ny busc√°ndote estoy. R."
+            },
+            "evangelio": {
+                "cita": "Evangelio",
+                "texto": "Cfr Jn 14, 18\n\nR. Aleluya, aleluya.\nNo los dejar√© desamparados, dice el Se√±or;\nme voy, pero volver√© a ustedes\ny entonces se alegrar√° su coraz√≥n.  \nR. Aleluya."
+            }
+        },
+        "liturgia_eucaristica": {
+            "oracion_ofrendas": "",
+            "oracion_despues_comunion": ""
+        }
     }
 }
