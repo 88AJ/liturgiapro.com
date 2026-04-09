@@ -14,19 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dashboardScreen.classList.add('active');
     });
 
-    // Premium Logic Fake
-    const upgradeBtn = document.getElementById('upgrade-btn');
-    const premiumModal = document.getElementById('premium-modal');
-    const closeModal = document.getElementById('close-modal');
-    if (upgradeBtn) upgradeBtn.addEventListener('click', () => premiumModal.classList.add('visible'));
-    if (closeModal) closeModal.addEventListener('click', () => premiumModal.classList.remove('visible'));
-
-    sacramentSelect.addEventListener('change', (e) => {
-        if (e.target.value.includes('Premium')) {
-            premiumModal.classList.add('visible');
-            e.target.value = 'Misa Diaria / Dominical'; // Reset
-        }
-    });
+    // DOM and Modals obsolete premium components removed
 
     // Sidebar Navigation Logic
     const liturgiaForm = document.getElementById('liturgia-form');
