@@ -289,13 +289,16 @@ body {
     overflow-y: auto;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
 }
 
 .pdf-container {
     background: white;
     color: #000;
-    width: 210mm; /* A4 Width */
-    min-height: 297mm; /* A4 Height */
+    width: 100%;
+    max-width: 210mm; /* A4 Width maximo */
+    min-height: 297mm; /* A4 Height minimo */
+    height: max-content;
     padding: 25mm !important; /* Standard margins */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     border-radius: 0px; /* Sharp corners like paper */
@@ -369,8 +372,10 @@ body {
 .bulletin-wrapper {
     background: white;
     color: #111;
-    width: 210mm;
+    width: 100%;
+    max-width: 210mm;
     min-height: 297mm;
+    height: max-content;
     padding: 15mm;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     font-family: 'Merriweather', serif;

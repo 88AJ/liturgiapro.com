@@ -156,8 +156,79 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800); // Simulate network load
     });
 
-    // Logic ripped from app.js to show it still works logically
     function formatLectura(texto) { return texto; }
+
+    function linkCanto(nombre) {
+        if(nombre.includes('Silencio') || nombre.includes('Salida sin canto')) return nombre;
+        const query = encodeURIComponent(nombre + ' canto catolico');
+        return `<a href="https://www.youtube.com/results?search_query=${query}" target="_blank" style="color:#c90000; text-decoration:underline;">${nombre}</a>`;
+    }
+
+    function obtenerCantosPorTiempo(tiempoStr) {
+        if(!tiempoStr) return {entrada: 'Canto de Entrada', ofertorio: 'Canto de Ofertorio', comunion: 'Canto de Comunión', salida: 'Canto de Salida'};
+        const t = tiempoStr.toLowerCase();
+        if (t.includes('cuaresma')) {
+            return {
+                entrada: linkCanto('Honor y Gloria a Ti (o Prepara tu Camino)'),
+                ofertorio: linkCanto('Te Ofrecemos Padre Nuestro'),
+                comunion: linkCanto('Perdona a tu pueblo Señor'),
+                salida: '(Silencio / Salida sin canto)'
+            };
+        } else if (t.includes('pascua')) {
+             return {
+                entrada: linkCanto('El Señor Resucitó, Aleluya'),
+                ofertorio: linkCanto('Te Presentamos el Vino y el Pan'),
+                comunion: linkCanto('Yo soy el Pan de Vida'),
+                salida: linkCanto('Reina del Cielo Alégrate')
+            };
+        } else if (t.includes('adviento')) {
+             return {
+                entrada: linkCanto('Ven, Ven, Señor no tardes'),
+                ofertorio: linkCanto('Saber que vendrás'),
+                comunion: linkCanto('Un pueblo que camina'),
+                salida: linkCanto('Santa María de la Esperanza')
+            };
+        } else {
+             return {
+                entrada: linkCanto('Vienen con alegría Señor'),
+                ofertorio: linkCanto('Te Ofrecemos Padre Nuestro'),
+                comunion: linkCanto('Pescador de Hombres'),
+                salida: linkCanto('Demos Gracias al Señor')
+            };
+        }
+    }
+        if(!tiempoStr) return {entrada: 'Canto de Entrada', ofertorio: 'Canto de Ofertorio', comunion: 'Canto de Comunión', salida: 'Canto de Salida'};
+        const t = tiempoStr.toLowerCase();
+        if (t.includes('cuaresma')) {
+            return {
+                entrada: 'Honor y Gloria a Ti (o Prepara tu Camino)',
+                ofertorio: 'Te Ofrecemos Padre Nuestro',
+                comunion: 'Perdona a tu pueblo Señor',
+                salida: '(Silencio / Salida sin canto)'
+            };
+        } else if (t.includes('pascua')) {
+             return {
+                entrada: 'El Señor Resucitó, Aleluya',
+                ofertorio: 'Te Presentamos el Vino y el Pan',
+                comunion: 'Yo soy el Pan de Vida',
+                salida: 'Reina del Cielo Alégrate'
+            };
+        } else if (t.includes('adviento')) {
+             return {
+                entrada: 'Ven, Ven, Señor no tardes',
+                ofertorio: 'Saber que vendrás',
+                comunion: 'Un pueblo que camina',
+                salida: 'Santa María de la Esperanza'
+            };
+        } else {
+             return {
+                entrada: 'Vienen con alegría Señor',
+                ofertorio: 'Te Ofrecemos Padre Nuestro',
+                comunion: 'Pescador de Hombres',
+                salida: 'Demos Gracias al Señor'
+            };
+        }
+    }
 
     function generarDocumento(data, hora) {
         let out = "";
@@ -198,20 +269,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hora === "completas") {
                 out += `**Introducción:**\n**Sacerdote:** ${oficio.introduccion}\n\n`;
                 out += `**Examen de Conciencia:**\n**Sacerdote:** ${oficio.examen_conciencia}\n\n`;
-                out += `**Himno:**\n> ${oficio.himno.replace(/\\n/g, '\n>')}\n\n`;
-                out += `**Salmodia:**\n**Antífona 1:** ${oficio.salmo1.antifona}\n\n> ${oficio.salmo1.texto.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Himno:**\n> ${oficio.himno.replace(/\n/g, '\n> ')}\n\n`;
+                out += `**Salmodia:**\n**Antífona 1:** ${oficio.salmo1.antifona}\n\n> ${oficio.salmo1.texto.replace(/\n/g, '\n> ')}\n\n`;
                 out += `**Lectura Breve (${oficio.lectura_breve.cita}):**\n${oficio.lectura_breve.texto}\n\n`;
-                out += `**Responsorio Breve:**\n> ${oficio.responsorio_breve.replace(/\\n/g, '\n>')}\n\n`;
-                out += `**Cántico Evangélico:**\n**Antífona:** ${oficio.cantico_evangelico.antifona}\n\n> ${oficio.cantico_evangelico.texto.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Responsorio Breve:**\n> ${oficio.responsorio_breve.replace(/\n/g, '\n> ')}\n\n`;
+                out += `**Cántico Evangélico:**\n**Antífona:** ${oficio.cantico_evangelico.antifona}\n\n> ${oficio.cantico_evangelico.texto.replace(/\n/g, '\n> ')}\n\n`;
                 out += `**Oración Final:**\n**Sacerdote:** ${oficio.oracion_final}\n\n`;
-                out += `**Antífona Mariana:**\n> ${oficio.antifona_mariana.replace(/\\n/g, '\n>')}\n\n`;
+                out += `**Antífona Mariana:**\n> ${oficio.antifona_mariana.replace(/\n/g, '\n> ')}\n\n`;
             } else {
                  out += `**Oficio de ${hora} en construcción para uso MVP.**`;
             }
         } else {
             // Flujo Misa modular
+            const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico);
+            
             if (chkIntro) {
                 out += `**RITOS INICIALES**\n\n`;
+                out += `🎵 **Canto de Entrada:** *${cantos.entrada}*\n\n`;
                 out += `**Antífona de Entrada:**\n**Sacerdote:** ${data.antifona_entrada}\n\n`;
                 out += `**Rito Penitencial:**\n**Sacerdote:** Hermanos: Para celebrar...\n**Asamblea:** ${data.rito_penitencial}\n`;
                 if (data.gloria) out += `\n**Gloria:**\nGloria a Dios en el cielo...\n\n`;
@@ -223,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  const salmodia = data[hora];
                  if(salmodia) {
                      out += `\n**SALMODIA DE ${hora.toUpperCase()}**\n\n`;
-                     out += `> ${salmodia.salmo1.antifona}\n>\n> ${salmodia.salmo1.texto.replace(/\\n/g, '\n>')}\n\n`;
+                     out += `> ${salmodia.salmo1.antifona}\n> \n> ${salmodia.salmo1.texto.replace(/\n/g, '\n> ')}\n\n`;
                  }
             }
 
@@ -235,8 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (chkEuca) {
                 out += `\n**LITURGIA EUCARÍSTICA**\n\n`;
+                out += `🎵 **Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
                 out += `**Oración sobre las Ofrendas:**\n**Sacerdote:** ${data.liturgia_eucaristica.oracion_ofrendas}\n\n`;
+                out += `🎵 **Canto de Comunión:** *${cantos.comunion}*\n\n`;
                 out += `**Oración después de la Comunión:**\n**Sacerdote:** Oremos. ${data.liturgia_eucaristica.oracion_despues_comunion}\n\n`;
+                out += `🎵 **Canto de Salida:** *${cantos.salida}*\n\n`;
             }
         }
         return out;
@@ -245,8 +322,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function markdownToHTML(md) {
         let text = md
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>')
+            .replace(/^>[ \t]*(.*$)/gim, '<blockquote>$1</blockquote>')
             .replace(/<\/blockquote>\n<blockquote>/g, '<br>')
+            .replace(/<\/blockquote><br><blockquote>/g, '<br>')
             .replace(/\n\n/g, '<br><br>')
             .replace(/\n/g, '<br>');
             
