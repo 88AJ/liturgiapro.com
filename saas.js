@@ -138,13 +138,40 @@ document.addEventListener('DOMContentLoaded', () => {
                         const htmlDoc = parser.parseFromString(proxyData.contents, 'text/html');
                         
                         let tituloFiesta = "FERIA / MEMORIA LIBRE";
+                        let usccbReadings = null;
                         
+                        // EXTRACTOR PROFUNDO (EL JEFE FINAL)
                         if (region.includes('us_')) {
-                            // USCCB extractor
+                            // 1. Título
                             let metaTitle = htmlDoc.querySelector('meta[property="og:title"]');
                             if (metaTitle) tituloFiesta = metaTitle.content.split('|')[0].trim().toUpperCase();
+                            
+                            // 2. Lecturas Completas
+                            let verses = htmlDoc.querySelectorAll('.b-verse');
+                            if (verses && verses.length > 0) {
+                                usccbReadings = { r1: "", r1_c: "", salmo: "", salmo_c: "", gospel: "", gospel_c: "" };
+                                verses.forEach((v, index) => {
+                                    let hEl = v.querySelector('h3') || v.querySelector('h2') || v.querySelector('h4');
+                                    let hText = hEl ? hEl.innerText.trim() : `Part ${index}`;
+                                    
+                                    let textC = "";
+                                    let contentB = v.querySelector('.content-body');
+                                    if(contentB) {
+                                        contentB.querySelectorAll('p').forEach(p => textC += p.innerText.trim() + "\n\n");
+                                    }
+                                    
+                                    let lowerH = hText.toLowerCase();
+                                    if((lowerH.includes('reading') || lowerH.includes('lectura')) && !usccbReadings.r1) { 
+                                        usccbReadings.r1 = textC; usccbReadings.r1_c = hText; 
+                                    } else if (lowerH.includes('psalm') || lowerH.includes('salmo')) { 
+                                        usccbReadings.salmo = textC; usccbReadings.salmo_c = hText; 
+                                    } else if (lowerH.includes('gospel') || lowerH.includes('evangelio')) { 
+                                        usccbReadings.gospel = textC; usccbReadings.gospel_c = hText; 
+                                    }
+                                });
+                            }
                         } else {
-                            // Mex extractor
+                            // Mex extractor de títulos
                             let h1 = htmlDoc.querySelector('#titulo-contenido h1') || htmlDoc.querySelector('#titulo-contenido');
                             if (h1) tituloFiesta = h1.innerText.replace('Laudes', '').toUpperCase().trim();
                         }
@@ -163,15 +190,25 @@ document.addEventListener('DOMContentLoaded', () => {
                                 "gloria": true,
                                 "oracion_colecta": "Señor Dios, concédenos la gracia de estar siempre entregados a ti...",
                                 "liturgia_palabra": {
-                                    "primera_lectura": { "cita": "1 Reading", "texto": `[El robot extrajo este título de la red ${region.toUpperCase()}: ` + tituloFiesta + "]" },
-                                    "salmo_responsorial": { "cita": "Salmo Ferial", "respuesta": "El Señor es mi pastor, nada me falta." },
-                                    "evangelio": { "cita": "Evangelio / Gospel", "texto": "[Evangelio de Placeholder Dinámico]" }
+                                    "primera_lectura": { "cita": "1 Reading", "texto": "Espere..." },
+                                    "salmo_responsorial": { "cita": "Psalm", "respuesta": "..." },
+                                    "evangelio": { "cita": "Gospel", "texto": "..." }
                                 },
                                 "liturgia_eucaristica": { "oracion_ofrendas": "Acepta ofrendas...", "oracion_despues_comunion": "Habiendo recibido..." },
-                                "laudes": { "salmo1": { "antifona": "Señor abre mis labios.", "texto": "Salmo generado dinámicamente" } }
+                                "laudes": { "salmo1": { "antifona": "Señor...", "texto": "Generado dinámicamente" } }
                             };
                         } else {
                             data.tiempo_liturgico = tituloFiesta; // Override JSON if exists
+                        }
+                        
+                        // OVERRIDE PROFUNDO LECTURAS SI HAY EXTRACCIÓN
+                        if (usccbReadings) {
+                             data.liturgia_palabra.primera_lectura.cita = usccbReadings.r1_c || "Reading 1";
+                             data.liturgia_palabra.primera_lectura.texto = usccbReadings.r1 || "[No Localizado]";
+                             data.liturgia_palabra.salmo_responsorial.cita = usccbReadings.salmo_c || "Responsorial Psalm";
+                             data.liturgia_palabra.salmo_responsorial.respuesta = usccbReadings.salmo || "[No Localizado]";
+                             data.liturgia_palabra.evangelio.cita = usccbReadings.gospel_c || "Gospel";
+                             data.liturgia_palabra.evangelio.texto = usccbReadings.gospel || "[No Localizado]";
                         }
 
                         let doc = generarDocumento(data, hora);
