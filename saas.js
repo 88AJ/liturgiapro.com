@@ -309,6 +309,15 @@ document.addEventListener('DOMContentLoaded', () => {
             comunion: "Canto de Comunión", despues_comunion: "Oración después de la Comunión", salida: "Canto de Salida"
         };
         
+        const upperTiempo = (data.tiempo_liturgico || "").toUpperCase();
+        const isCuaresma = upperTiempo.includes("CUARESMA");
+        const isAdviento = upperTiempo.includes("ADVIENTO");
+        
+        let aplicaGloria = data.gloria;
+        if ((isCuaresma || isAdviento) && (data.color !== "Blanco" && data.color !== "Rojo")) {
+            aplicaGloria = false;
+        }
+
         // Options checkboxes
         const chkIntro = true;
         const chkLecto = false;
@@ -411,8 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // CONCLUSION DE RITOS INICIALES
+            // CONCLUSION DE RITOS INICIALES
             out += `-----\n\n### CONCLUSIÓN DE RITOS INICIALES\n\n`;
-            if (data.gloria) {
+            if (aplicaGloria) {
                 out += `**${sNum++}. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.\n\n`;
             }
             
@@ -436,7 +446,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `**${sNum++}. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${formatLectura(lp.segunda_lectura.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
             }
             
+            if (lp.secuencia) {
+                out += `**${sNum++}. Secuencia**\n**Lector / Cantor:**\n\n${formatLectura(lp.secuencia)}\n\n`;
+            }
+            
             let aclv = lp.aclamacion_evangelio || "Aleluya, aleluya.";
+            if (isCuaresma) {
+                if (!lp.aclamacion_evangelio || aclv.toUpperCase().includes("ALELUYA")) {
+                    aclv = aclv.replace(/Aleluya/ig, "Honor y gloria a ti, Señor Jesús");
+                }
+            }
             out += `**${sNum++}. Aclamación antes del Evangelio**\n**Asamblea:** ${aclv}\n\n`;
             
             let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
@@ -444,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             out += `**${sNum++}. Homilía**\n*(Pausa de silencio y reflexión)*\n\n`;
             
-            if (lp.segunda_lectura || data.gloria) {
+            if (lp.segunda_lectura || aplicaGloria) {
                 out += `**${sNum++}. Profesión de Fe (Credo)**\n**Asamblea:** Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.\n\n`;
             }
             
