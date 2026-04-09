@@ -110,15 +110,27 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const fecha = document.getElementById('date-select').value;
                 const hora = document.getElementById('office-select').value;
+                const region = document.getElementById('region-select') ? document.getElementById('region-select').value : 'mx';
+                
                 pdfView.className = 'pdf-container';
                 generateBtn.innerHTML = "Descargando Eucaristía...";
 
-                // Formateamos para evangelizacion (DD-MM-YYYY)
+                // Formateamos para evangelizacion o USCCB
                 const parts = fecha.split('-');
-                let evDate = (parts && parts.length === 3) ? `${parts[2]}-${parts[1]}-${parts[0]}` : "09-04-2026";
-                let laudesUrl = `https://www.evangelizacion.org.mx/lecturas/laudes/${evDate}`;
+                let proxyUrl = "";
+                if (region === 'us_en') {
+                    // MMDDYY format
+                    const usDate = `${parts[1]}${parts[2]}${parts[0].slice(-2)}`;
+                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bible.usccb.org/bible/readings/${usDate}.cfm`)}`;
+                } else if (region === 'us_es') {
+                     // The spanish usccb url format changes, using generic home bypass for now
+                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bible.usccb.org/es/lectura-diaria-biblia`)}`;
+                } else {
+                    let evDate = (parts && parts.length === 3) ? `${parts[2]}-${parts[1]}-${parts[0]}` : "09-04-2026";
+                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://www.evangelizacion.org.mx/lecturas/laudes/${evDate}`)}`;
+                }
 
-                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(laudesUrl)}`)
+                fetch(proxyUrl)
                     .then(r => r.json())
                     .then(proxyData => {
                         generateBtn.innerHTML = "Generar Documento";
@@ -126,25 +138,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         const htmlDoc = parser.parseFromString(proxyData.contents, 'text/html');
                         
                         let tituloFiesta = "FERIA / MEMORIA LIBRE";
-                        let h1 = htmlDoc.querySelector('#titulo-contenido h1') || htmlDoc.querySelector('#titulo-contenido');
-                        if (h1) tituloFiesta = h1.innerText.replace('Laudes', '').toUpperCase().trim();
+                        
+                        if (region.includes('us_')) {
+                            // USCCB extractor
+                            let metaTitle = htmlDoc.querySelector('meta[property="og:title"]');
+                            if (metaTitle) tituloFiesta = metaTitle.content.split('|')[0].trim().toUpperCase();
+                        } else {
+                            // Mex extractor
+                            let h1 = htmlDoc.querySelector('#titulo-contenido h1') || htmlDoc.querySelector('#titulo-contenido');
+                            if (h1) tituloFiesta = h1.innerText.replace('Laudes', '').toUpperCase().trim();
+                        }
 
                         let data = liturgiaData[fecha];
                         if (!data) {
                             const d = new Date(fecha + "T00:00:00");
-                            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
+                            const langDate = region.includes('en') ? 'en-US' : 'es-ES';
                             data = {
-                                "dia_semana": d.toLocaleDateString('es-ES', options).toUpperCase(),
-                                "color": "Verde",
+                                "dia_semana": d.toLocaleDateString(langDate, options).toUpperCase(),
+                                "color": "Verde / Green",
                                 "tiempo_liturgico": tituloFiesta,
                                 "antifona_entrada": "Dios es mi auxilio, el Señor es mi verdadero sostén.",
                                 "rito_penitencial": "Yo confieso ante Dios todopoderoso...",
                                 "gloria": true,
                                 "oracion_colecta": "Señor Dios, concédenos la gracia de estar siempre entregados a ti...",
                                 "liturgia_palabra": {
-                                    "primera_lectura": { "cita": "Lectura Ferial", "texto": "[Las Lecturas se acaban de enlazar a evangelizacion.org... Modo En Vivo Próximamente.]" },
+                                    "primera_lectura": { "cita": "1 Reading", "texto": `[El robot extrajo este título de la red ${region.toUpperCase()}: ` + tituloFiesta + "]" },
                                     "salmo_responsorial": { "cita": "Salmo Ferial", "respuesta": "El Señor es mi pastor, nada me falta." },
-                                    "evangelio": { "cita": "Evangelio del Día", "texto": "[Texto de Ejemplo - Motor AllOrigins proxy extrajo el título sagrado hoy: " + tituloFiesta + "]" }
+                                    "evangelio": { "cita": "Evangelio / Gospel", "texto": "[Evangelio de Placeholder Dinámico]" }
                                 },
                                 "liturgia_eucaristica": { "oracion_ofrendas": "Acepta ofrendas...", "oracion_despues_comunion": "Habiendo recibido..." },
                                 "laudes": { "salmo1": { "antifona": "Señor abre mis labios.", "texto": "Salmo generado dinámicamente" } }
@@ -181,15 +202,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return html;
     }
 
-    function obtenerCantosPorTiempo(tiempoStr) {
-        if(!tiempoStr) return {entrada: 'Canto de Entrada', ofertorio: 'Canto de Ofertorio', comunion: 'Canto de Comunión', salida: 'Canto de Salida'};
-        const t = tiempoStr.toLowerCase();
-        if (t.includes('cuaresma')) {
+    function obtenerCantosPorTiempo(tiempoStr, isEn) {
+        if (isEn) {
             return {
-                entrada: linkCanto('Honor y Gloria a Ti (o Prepara tu Camino)'),
+                entrada: linkCanto('Here I Am Lord'),
+                ofertorio: linkCanto('Saber que vendrás'),
+                comunion: linkCanto('On Eagles Wings'),
+                salida: linkCanto('Demos Gracias al Señor') 
+            };
+        }
+        const t = tiempoStr ? tiempoStr.toLowerCase() : "";
+        if (t.includes('cuaresma')) {
+             return {
+                entrada: linkCanto('Perdona a tu pueblo Señor'),
                 ofertorio: linkCanto('Te Ofrecemos Padre Nuestro'),
-                comunion: linkCanto('Perdona a tu pueblo Señor'),
-                salida: '(Silencio / Salida sin canto)'
+                comunion: linkCanto('Honor y Gloria a Ti (o Prepara tu Camino)'),
+                salida: linkCanto('Silencio')
             };
         } else if (t.includes('pascua')) {
              return {
@@ -219,6 +247,24 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = "";
         const sacramento = document.getElementById('sacrament-select').value;
         const isStandaloneOffice = sacramento === "Solo Liturgia de las Horas";
+        const region = document.getElementById('region-select') ? document.getElementById('region-select').value : 'mx';
+        const isEn = region === 'us_en';
+        
+        const lang = isEn ? {
+            lecturas: "READINGS OF", primera_lectura: "FIRST READING", salmo: "RESPONSORIAL PSALM",
+            evangelio: "GOSPEL", rito_inicial: "INTRODUCTORY RITES", entrada: "Entrance Hymn",
+            ant_entrada: "Entrance Antiphon", rito_pen: "Penitential Act", gloria: "Gloria",
+            colecta: "Collect", sacerdote: "Priest", asamblea: "Assembly", lit_palabra: "LITURGY OF THE WORD",
+            lit_euca: "LITURGY OF THE EUCHARIST", ofertorio: "Offertory Hymn", sobre_ofrendas: "Prayer over the Offerings",
+            comunion: "Communion Hymn", despues_comunion: "Prayer after Communion", salida: "Recessional Hymn"
+        } : {
+            lecturas: "LECTURAS DE", primera_lectura: "Primera Lectura", salmo: "Salmo Responsorial",
+            evangelio: "Evangelio", rito_inicial: "RITOS INICIALES", entrada: "Canto de Entrada",
+            ant_entrada: "Antífona de Entrada", rito_pen: "Rito Penitencial", gloria: "Gloria",
+            colecta: "Oración Colecta", sacerdote: "Sacerdote", asamblea: "Asamblea", lit_palabra: "LITURGIA DE LA PALABRA",
+            lit_euca: "LITURGIA EUCARÍSTICA", ofertorio: "Canto de Ofertorio", sobre_ofrendas: "Oración sobre las Ofrendas",
+            comunion: "Canto de Comunión", despues_comunion: "Oración después de la Comunión", salida: "Canto de Salida"
+        };
         
         // Options checkboxes
         const chkIntro = document.getElementById('chk-intro').checked;
@@ -228,11 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (chkLecto) {
             // RENDER LECTURAS GIGANTES
             out += `<div style="font-size: 1.5rem; line-height: 1.8;">`;
-            out += `<h2>LECTURAS DE ${data.tiempo_liturgico.toUpperCase()}</h2>\n`;
+            out += `<h2>${lang.lecturas} ${data.tiempo_liturgico.toUpperCase()}</h2>\n`;
             out += `<h3 style="color: #666; font-size:1.1rem; margin-bottom: 30px;">${data.dia_semana} (${data.color})</h3>\n\n`;
-            out += `**PRIMERA LECTURA (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
-            out += `**SALMO:**\n> **R.** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
-            out += `**EVANGELIO (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
+            out += `**${lang.primera_lectura} (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
+            out += `**${lang.salmo}:**\n> **R.** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
+            out += `**${lang.evangelio} (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
             out += `</div>`;
             return out; // Exit directly, this is a distinct mode
         }
@@ -240,9 +286,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cabecera común regular
         out += `<div style="text-align:center; border-bottom: 2px solid var(--brand-color); padding-bottom: 20px; margin-bottom: 20px;">\n`;
         if (isStandaloneOffice) {
-            out += `<h2>Liturgia de las Horas: ${hora.charAt(0).toUpperCase() + hora.slice(1)}</h2>\n`;
+            out += `<h2>${isEn ? 'Liturgy of the Hours' : 'Liturgia de las Horas'}: ${hora.charAt(0).toUpperCase() + hora.slice(1)}</h2>\n`;
         } else {
-            out += `<h2>Rito de la ${data.tiempo_liturgico}</h2>\n`;
+            out += `<h2>${isEn ? 'Rite of the' : 'Rito de la'} ${data.tiempo_liturgico}</h2>\n`;
         }
         out += `<h3 style="color: #666;">${data.dia_semana} (${data.color})</h3>\n`;
         out += `</div>\n\n`;
@@ -266,15 +312,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // Flujo Misa modular
-            const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico);
+            const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico, isEn);
             
             if (chkIntro) {
-                out += `**RITOS INICIALES**\n\n`;
-                out += `🎵 **Canto de Entrada:** *${cantos.entrada}*\n\n`;
-                out += `**Antífona de Entrada:**\n**Sacerdote:** ${data.antifona_entrada}\n\n`;
-                out += `**Rito Penitencial:**\n**Sacerdote:** Hermanos: Para celebrar...\n**Asamblea:** ${data.rito_penitencial}\n`;
-                if (data.gloria) out += `\n**Gloria:**\nGloria a Dios en el cielo...\n\n`;
-                out += `\n**Oración Colecta:**\n**Sacerdote:** Oremos. ${data.oracion_colecta}\n**Asamblea:** Amén.\n\n`;
+                out += `**${lang.rito_inicial}**\n\n`;
+                out += `🎵 **${lang.entrada}:** *${cantos.entrada}*\n\n`;
+                out += `**${lang.ant_entrada}:**\n**${lang.sacerdote}:** ${data.antifona_entrada}\n\n`;
+                out += `**${lang.rito_pen}:**\n**${lang.sacerdote}:** ${isEn ? 'Brethren, let us acknowledge...' : 'Hermanos: Para celebrar...'}\n**${lang.asamblea}:** ${data.rito_penitencial}\n`;
+                if (data.gloria) out += `\n**${lang.gloria}:**\n${isEn ? 'Glory to God in the highest...' : 'Gloria a Dios en el cielo...'}\n\n`;
+                out += `\n**${lang.colecta}:**\n**${lang.sacerdote}:** ${isEn ? 'Let us pray.' : 'Oremos.'} ${data.oracion_colecta}\n**${lang.asamblea}:** Amen.\n\n`;
             }
 
             // Integración de Oficio en Misa si se requiere
@@ -286,19 +332,18 @@ document.addEventListener('DOMContentLoaded', () => {
                  }
             }
 
-            // Palabra (Siempre visible excepto si "Solo Lecturas" dominó arriba y saltó flujo)
-            out += `\n**LITURGIA DE LA PALABRA**\n\n`;
-            out += `**Primera Lectura (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
-            out += `**Salmo Responsorial:**\n**Asamblea:** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
-            out += `**Evangelio (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
+            out += `\n**${lang.lit_palabra}**\n\n`;
+            out += `**${lang.primera_lectura} (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
+            out += `**${lang.salmo}:**\n**${lang.asamblea}:** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
+            out += `**${lang.evangelio} (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
             
             if (chkEuca) {
-                out += `\n**LITURGIA EUCARÍSTICA**\n\n`;
-                out += `🎵 **Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
-                out += `**Oración sobre las Ofrendas:**\n**Sacerdote:** ${data.liturgia_eucaristica.oracion_ofrendas}\n\n`;
-                out += `🎵 **Canto de Comunión:** *${cantos.comunion}*\n\n`;
-                out += `**Oración después de la Comunión:**\n**Sacerdote:** Oremos. ${data.liturgia_eucaristica.oracion_despues_comunion}\n\n`;
-                out += `🎵 **Canto de Salida:** *${cantos.salida}*\n\n`;
+                out += `\n**${lang.lit_euca}**\n\n`;
+                out += `🎵 **${lang.ofertorio}:** *${cantos.ofertorio}*\n\n`;
+                out += `**${lang.sobre_ofrendas}:**\n**${lang.sacerdote}:** ${data.liturgia_eucaristica.oracion_ofrendas}\n\n`;
+                out += `🎵 **${lang.comunion}:** *${cantos.comunion}*\n\n`;
+                out += `**${lang.despues_comunion}:**\n**${lang.sacerdote}:** ${isEn ? 'Let us pray.' : 'Oremos.'} ${data.liturgia_eucaristica.oracion_despues_comunion}\n\n`;
+                out += `🎵 **${lang.salida}:** *${cantos.salida}*\n\n`;
             }
         }
         return out;
@@ -314,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/\n/g, '<br>');
             
         // Apply rubric class to exact actors
-        text = text.replace(/<strong>(Sacerdote:|Sacerdote y Asamblea:|Asamblea:|Lector:|Antífona:|Antífona 1:|Responsorio Breve:|Oración Final:|Himno:|Lectura Breve|Salmodia:|Examen de Conciencia:|Introducción:|Antífona Mariana:)<\/strong>/g, '<strong class="rubric">$1</strong>');
+        text = text.replace(/<strong>(Sacerdote:|Priest:|Sacerdote y Asamblea:|Asamblea:|People:|Lector:|Antífona:|Antífona 1:|Responsorio Breve:|Oración Final:|Himno:|Lectura Breve|Salmodia:|Examen de Conciencia:|Introducción:|Antífona Mariana:)<\/strong>/g, '<strong class="rubric">$1</strong>');
         return text;
     }
 
