@@ -126,8 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
                      // The spanish usccb url format changes, using generic home bypass for now
                     proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bible.usccb.org/es/lectura-diaria-biblia`)}`;
                 } else {
-                    let evDateDay = parts ? parseInt(parts[2], 10) : 9; // Extract Day number
+                let evDateDay = parts ? parseInt(parts[2], 10) : 9; // Extract Day number
                     proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://arquidiocesisgdl.org/lectura_dia${evDateDay}.php`)}`;
+                }
+
+                // CEREBRO OFFLINE: Si ya procesamos el documento localmente (Ej. Triduo Pascual), lo ejecutamos al instante sin internet.
+                let localData = liturgiaData[fecha];
+                if (localData && localData.liturgia_palabra && localData.liturgia_palabra.evangelio.texto.length > 50 && !localData.liturgia_palabra.evangelio.texto.includes("Placeholder Dinámico")) {
+                    console.log("Cerebro Offline Activo. Saltando proxy...");
+                    let doc = generarDocumento(localData, hora);
+                    pdfView.innerHTML = markdownToHTML(doc);
+                    generateBtn.innerHTML = "Generar Documento";
+                    return;
                 }
 
                 fetch(proxyUrl)
