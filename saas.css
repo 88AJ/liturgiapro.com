@@ -1,19 +1,19 @@
 :root {
-    --bg-dark: #0f172a;
-    --card-bg: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --brand-color: #f59e0b;
-    --brand-hover: #d97706;
-    --border-color: #334155;
-    --sidebar-bg: #0b1120;
+    --bg-dark: #ECE8E1; /* Fondo pergamino exterior */
+    --card-bg: #111822; /* Sidebar background */
+    --text-primary: #1a1a1a; /* Texto principal oscuro */
+    --text-secondary: #5c5c5c;
+    --brand-color: #C5A059; /* Oro envejecido */
+    --brand-hover: #D4AF37;
+    --border-color: #D6D1C4;
+    --sidebar-bg: #111822; /* Azul vaticano oscuro */
 }
 
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Cinzel', serif;
     background-color: var(--bg-dark);
     color: var(--text-primary);
     overflow: hidden;
@@ -56,6 +56,7 @@ body {
 .logo span, .logo-small span {
     color: var(--brand-color);
 }
+.logo { color: #ffffff; font-family: 'Cinzel', serif; }
 
 .landing-content h1 {
     font-size: 2.2rem;
@@ -121,15 +122,18 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 3rem;
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
 }
 
 .nav-category {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--text-secondary);
-    letter-spacing: 0.05em;
+    color: #8892b0;
+    letter-spacing: 0.1em;
     padding: 0 16px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-family: 'Cinzel', serif;
 }
 
 .nav-links {
@@ -143,23 +147,26 @@ body {
 
 .nav-links li {
     padding: 12px 16px;
-    border-radius: 8px;
-    color: var(--text-secondary);
+    border-radius: 4px;
+    color: #cbd5e1;
     cursor: pointer;
     transition: 0.2s;
     display: flex;
     align-items: center;
     gap: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
 }
-.nav-links li:hover:not(.active) { background: rgba(255,255,255,0.05); }
-.nav-links li.active { background: var(--card-bg); color: var(--text-primary); font-weight: 500;}
+.nav-links li:hover:not(.active) { background: rgba(197, 160, 89, 0.1); color: var(--brand-color); }
+.nav-links li.active { background: rgba(197, 160, 89, 0.2); color: var(--brand-color); font-weight: 600; border-left: 3px solid var(--brand-color); }
 
 /* Capitular Icons */
 .icon {
-    font-family: 'Merriweather', serif;
+    font-family: 'Cinzel', serif;
     font-weight: 700;
     color: var(--brand-color);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     width: 20px;
     text-align: center;
 }
@@ -293,8 +300,8 @@ body {
 }
 
 .pdf-container {
-    background: white;
-    color: #000;
+    background: #FAF7F2; /* Perlado / Parchment */
+    color: #1a1a1a;
     width: 100%;
     max-width: 210mm; /* A4 Width maximo */
     min-height: 297mm; /* A4 Height minimo */
@@ -302,10 +309,12 @@ body {
     padding: 25mm !important; /* Standard margins */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     border-radius: 0px; /* Sharp corners like paper */
-    font-family: 'Merriweather', serif;
+    font-family: 'EB Garamond', serif;
     white-space: pre-wrap;
     line-height: 1.6;
     margin: 0 auto;
+    text-align: justify;
+    font-size: 1.05rem;
 }
 
 .empty-state {
@@ -316,20 +325,20 @@ body {
     justify-content: center;
     color: #9ca3af;
     text-align: center;
-    font-family: 'Outfit';
+    font-family: 'Cinzel', serif;
     opacity: 0.6;
-}
-
-.pdf-container strong { 
-    font-family: 'Outfit'; 
 }
 
 /* Rubric Styles */
 .pdf-container strong.rubric {
-    color: #c90000; /* Liturgical red */
+    color: #B20000; /* Liturgical red */
 }
 .pdf-container h2, .pdf-container h3, .pdf-container strong.title-red {
-    color: #c90000;
+    color: #B20000;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .pdf-container blockquote {
