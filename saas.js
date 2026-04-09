@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
                      // The spanish usccb url format changes, using generic home bypass for now
                     proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bible.usccb.org/es/lectura-diaria-biblia`)}`;
                 } else {
-                    let evDate = (parts && parts.length === 3) ? `${parts[2]}-${parts[1]}-${parts[0]}` : "09-04-2026";
-                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://www.evangelizacion.org.mx/lecturas/laudes/${evDate}`)}`;
+                    let evDateDay = parts ? parseInt(parts[2], 10) : 9; // Extract Day number
+                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://arquidiocesisgdl.org/lectura_dia${evDateDay}.php`)}`;
                 }
 
                 fetch(proxyUrl)
@@ -171,9 +171,32 @@ document.addEventListener('DOMContentLoaded', () => {
                                 });
                             }
                         } else {
-                            // Mex extractor de títulos
-                            let h1 = htmlDoc.querySelector('#titulo-contenido h1') || htmlDoc.querySelector('#titulo-contenido');
-                            if (h1) tituloFiesta = h1.innerText.replace('Laudes', '').toUpperCase().trim();
+                            // Mex extractor Arquidiocesis GDL (Regex Block)
+                            let textDump = "";
+                            htmlDoc.body.childNodes.forEach(n => {
+                                if(n.nodeType === 3) textDump += n.textContent.trim() + "\n";
+                                else if(n.tagName === 'P') textDump += n.innerText.trim() + "\n";
+                                else if(n.tagName === 'BR') textDump += "\n";
+                            });
+                            
+                            // Cleanup space
+                            textDump = textDump.replace(/\n{3,}/g, '\n\n');
+                            
+                            // Extract title
+                            let mTitle = textDump.match(/([a-zA-Záéíóú]+\s+[a-zA-Záéíóú]+\s+Blanco|Verde|Morado|Rojo|OCTAVA.*?)(?:\n|MR p\.)/i);
+                            if (mTitle) tituloFiesta = mTitle[1].replace(/Blanco|Verde|Morado|Rojo/gi, '').trim().toUpperCase();
+                            else tituloFiesta = "FERIA / TIEMPO ORDINARIO";
+
+                            usccbReadings = { r1: "", r1_c: "Primera Lectura", salmo: "", salmo_c: "Salmo Responsorial", gospel: "", gospel_c: "Evangelio" };
+                            
+                            let lect1Match = textDump.match(/PRIMERA LECTURA\s*([\s\S]*?)(?:SALMO RESPONSORIAL)/);
+                            if(lect1Match) usccbReadings.r1 = lect1Match[1].trim();
+
+                            let psalmMatch = textDump.match(/SALMO RESPONSORIAL\s*([\s\S]*?)(?:EVANGELIO|SEGUNDA LECTURA)/);
+                            if(psalmMatch) usccbReadings.salmo = psalmMatch[1].trim();
+
+                            let gospelMatch = textDump.match(/EVANGELIO\s*([\s\S]*?)(?:Credo|Oración de los fieles|LITURGIA EUCARÍSTICA|$)/i);
+                            if(gospelMatch) usccbReadings.gospel = gospelMatch[1].trim();
                         }
 
                         let data = liturgiaData[fecha];
