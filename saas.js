@@ -518,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let preces = lp.preces || precesOficio || (isEn ? "Hear us, O Lord, and grant your Church peace and unity." : "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.");
             
             // Format Preces intelligently into bullets if multiple paragraphs
-            let precesFormatted = preces.split('\n\n').filter(p => p.trim() !== '').map(p => `• ${p.replace(/\n/g, '<br>').trim()}`).join('<br><br>');
+            let precesFormatted = preces.split(/\n+/).filter(p => p.trim() !== '').map(p => `• ${p.trim()}`).join('<br><br>');
             if(precesFormatted.length < 5) precesFormatted = preces.replace(/\n/g, '<br>');
             
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Stand" : "De pie"})</p><p class="missal-heading">${isEn ? "Universal Prayer" : "Oración de los Fieles"}</p><p class="missal-rubric">${isEn ? "Let us pray to God the Father:" : "A Dios Padre, dirijamos nuestra súplica:"}</p><p class="missal-rubric">R. ${isEn ? "We pray you, hear us." : "Te rogamos, óyenos."}</p><div class="missal-paragraph" style="margin-top:10px; margin-bottom:15px; margin-left:15px; text-align:justify;">${precesFormatted}</div><p class="missal-rubric">${isEn ? "Hear our prayers, O Father." : "Escucha Padre nuestras oraciones."}</p><p class="missal-rubric">R. ${isEn ? "Our Father, who art in heaven..." : "Padre nuestro, que estás en el cielo..."}</p></div>\n\n`;
