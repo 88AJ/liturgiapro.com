@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = document.getElementById('close-modal');
     const sacramentSelect = document.getElementById('sacrament-select');
 
-    upgradeBtn.addEventListener('click', () => premiumModal.classList.add('visible'));
-    closeModal.addEventListener('click', () => premiumModal.classList.remove('visible'));
+    if (upgradeBtn) upgradeBtn.addEventListener('click', () => premiumModal.classList.add('visible'));
+    if (closeModal) closeModal.addEventListener('click', () => premiumModal.classList.remove('visible'));
 
     sacramentSelect.addEventListener('change', (e) => {
         if (e.target.value.includes('Premium')) {
