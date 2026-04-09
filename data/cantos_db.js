@@ -1,4 +1,4 @@
-{
+window.cantosDB = {
   "Vienen con alegría Señor": {
     "letra": "*CORO*\nVienen con alegría Señor,\ncantando vienen con alegría Señor.\nLos que caminan por la vida Señor,\nsembrando tu paz y amor.\n\n*ESTROFA*\nVienen trayendo la esperanza,\na un mundo cargado de ansiedad,\na un mundo que busca y que no alcanza,\ncaminos de amor y de amistad."
   },
@@ -47,4 +47,4 @@
   "On Eagles Wings": {
     "letra": "*CHORUS*\nAnd He will raise you up on eagles wings,\nbear you on the breath of dawn,\nmake you to shine like the sun,\nand hold you in the palm of His hand."
   }
-}
+};
