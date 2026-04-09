@@ -88,18 +88,68 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (logoInput && logoInput.files && logoInput.files[0]) {
                      logoUrl = URL.createObjectURL(logoInput.files[0]);
                 }
-                const data = liturgiaData[date] || liturgiaData['2026-04-08']; // fallback
+                let data = liturgiaData[date];
+                if (!data) {
+                    // Fallback to IA generated mock 
+                    const d = new Date(date + "T00:00:00");
+                    data = {
+                        "tiempo_liturgico": "Tiempo Ordinario (Modo API)",
+                        "liturgia_palabra": { "evangelio": { "cita": "Evangelio del Día", "texto": "Servicio de API Premium requerido para extracción de lectura futura válida. [Simulación de Llenado]" } }
+                    };
+                }
                 pdfView.className = 'bulletin-wrapper';
                 pdfView.innerHTML = generarBoletin(data, date, clergy, motto, logoUrl);
             } else {
                 const fecha = document.getElementById('date-select').value;
                 const hora = document.getElementById('office-select').value;
                 pdfView.className = 'pdf-container';
-                if (!liturgiaData || !liturgiaData[fecha]) {
-                    pdfView.innerHTML = `<div style="color:red; padding: 20px;">Error: Fecha no encontrada en la base de datos de Muestra.</div>`;
-                    return;
+                
+                let data = liturgiaData[fecha];
+                if (!data) {
+                    const d = new Date(fecha + "T00:00:00");
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    data = {
+                        "dia_semana": d.toLocaleDateString('es-ES', options).toUpperCase(),
+                        "color": "Verde",
+                        "tiempo_liturgico": "ORDINARIO (MVP SIMULADO)",
+                        "antifona_entrada": "Dios es mi auxilio, el Señor es mi verdadero sostén.",
+                        "rito_penitencial": "Yo confieso ante Dios todopoderoso...",
+                        "gloria": true,
+                        "oracion_colecta": "Señor Dios, concédenos la gracia de estar siempre entregados...",
+                        "liturgia_palabra": {
+                            "primera_lectura": {
+                                "cita": "Lectura Ferial",
+                                "texto": "[El motor conectará la API Sagrada de Universalis aquí para la fecha: " + fecha + ". Modo Prototipo MVP.]"
+                            },
+                            "salmo_responsorial": {
+                                "cita": "Salmo Ferial",
+                                "respuesta": "El Señor es mi pastor, nada me falta."
+                            },
+                            "evangelio": {
+                                "cita": "Juan 3, 16-18",
+                                "texto": "\"Porque tanto amó Dios al mundo que dio a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo al mundo para condenar al mundo, sino para que el mundo se salve por él. El que cree en él, no es condenado; el que no cree, ya está condenado, por no haber creído en el nombre del Hijo único de Dios.\" \n\n[Texto de Ejemplo - La plataforma poblará esto vía API en Producción]"
+                            }
+                        },
+                        "liturgia_eucaristica": {
+                            "oracion_ofrendas": "Acepta, Señor, estas ofrendas...",
+                            "oracion_despues_comunion": "Habiendo recibido los sacramentos..."
+                        }
+                    };
+                    
+                    // Add generic hours just in case
+                    data["laudes"] = {
+                        "salmo1": { "antifona": "Señor abre mis labios.", "texto": "Salmo generado dinámicamente" }
+                    };
+                    data["completas"] = {
+                        "introduccion": "Dios mio ven en mi auxilio", "examen_conciencia": "Pausa en silencio",
+                        "himno": "Antes del fin de la luz...",
+                        "salmo1": { "antifona": "Salmo 90", "texto": "Tú que habitas al amparo del altísimo..." },
+                        "lectura_breve": { "cita": "Jer 14", "texto": "Tú estás en medio de nosotros Señor..." },
+                        "responsorio_breve": "En tus manos Señor encomiendo mi espíritu",
+                        "cantico_evangelico": { "antifona": "Sálvanos Señor despiertos", "texto": "Ahora Señor según tu promesa..." },
+                        "oracion_final": "Visita Señor esta habitación", "antifona_mariana": "Salve Regina"
+                    };
                 }
-                const data = liturgiaData[fecha];
                 let doc = generarDocumento(data, hora);
                 pdfView.innerHTML = markdownToHTML(doc);
             }

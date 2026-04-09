@@ -481,3 +481,79 @@ body {
 }
 .bul-page-2 h2 { text-transform: uppercase; font-size: 1.2rem; color: #c90000; text-align: center; }
 
+/* Premium Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.modal.visible {
+    display: flex;
+}
+.modal-content {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    color: white;
+}
+.close-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.pricing-card {
+    background: var(--card-bg);
+    border: 1px solid var(--brand-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+.pricing-card .price {
+    font-size: 2.5rem;
+    color: var(--brand-color);
+    font-weight: 700;
+    margin: 10px 0;
+}
+.pricing-card .price span {
+    font-size: 1rem; color: var(--text-secondary);
+}
+.pricing-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.pricing-card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+.pricing-card ul li::before {
+    content: '✓ ';
+    color: var(--brand-color);
+    font-weight: bold;
+}
+.btn-checkout {
+    background: var(--brand-color);
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+}
