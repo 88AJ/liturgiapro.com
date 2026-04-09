@@ -1,11 +1,8 @@
 window.cantosDB = {};
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Precargar letras de cantos
-    fetch('data/cantos.json')
-        .then(res => res.json())
-        .then(data => { window.cantosDB = data; })
-        .catch(err => console.log('Error cargando cantos:', err));
+    // Precargar letras de cantos (Offline bypass activo)
+    window.cantosDB = window.cantosDB || {};
 
     // Navigation Logic
     const loginBtn = document.getElementById('login-btn');
@@ -73,11 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // PDF Generation Logic (Keeping core markdown generator)
-    let liturgiaData = {};
-    fetch('data/liturgia.json')
-        .then(response => response.json())
-        .then(data => { liturgiaData = data || {}; })
-        .catch(err => console.error("Error loading mock DB:", err));
+    let liturgiaData = window.liturgiaData || {};
 
     const generateBtn = document.getElementById('generate-doc-btn');
     const pdfView = document.getElementById('pdf-view');
