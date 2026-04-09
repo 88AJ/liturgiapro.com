@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Options checkboxes
         const chkIntro = true;
-        const chkLecto = document.getElementById('chk-lecturas-solo').checked;
+        const chkLecto = false;
         const chkEuca = true;
 
         if (chkLecto) {
