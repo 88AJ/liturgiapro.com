@@ -390,49 +390,109 @@ document.addEventListener('DOMContentLoaded', () => {
                  out += `**Oficio de ${hora} en construcción para uso MVP.**`;
             }
         } else {
-            // Flujo Misa modular
+                        // Flujo Misa modular
             const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico, isEn);
             
-            if (chkIntro) {
-                out += `**${lang.rito_inicial}**\n\n`;
-                out += `🎵 **${lang.entrada}:** *${cantos.entrada}*\n\n`;
-                out += `**${lang.ant_entrada}:**\n**${lang.sacerdote}:** ${data.antifona_entrada}\n\n`;
-                out += `**${lang.rito_pen}:**\n**${lang.sacerdote}:** ${isEn ? 'Brethren, let us acknowledge...' : 'Hermanos: Para celebrar...'}\n**${lang.asamblea}:** ${data.rito_penitencial}\n`;
-                if (data.gloria) out += `\n**${lang.gloria}:**\n${isEn ? 'Glory to God in the highest...' : 'Gloria a Dios en el cielo...'}\n\n`;
-                out += `\n**${lang.colecta}:**\n**${lang.sacerdote}:** ${isEn ? 'Let us pray.' : 'Oremos.'} ${data.oracion_colecta}\n**${lang.asamblea}:** Amen.\n\n`;
-            }
-
-            // Integración de Oficio en Misa si se requiere
-            if(hora === "laudes" || hora === "visperas") {
-                 const salmodia = data[hora];
-                 if(salmodia) {
-                     out += `\n**SALMODIA DE ${hora.toUpperCase()}**\n\n`;
-                     out += `> ${salmodia.salmo1.antifona}\n> \n> ${salmodia.salmo1.texto.replace(/\n/g, '\n> ')}\n\n`;
-                 }
-            }
-
-            out += `\n**${lang.lit_palabra}**\n\n`;
-            let r1Cita = data.liturgia_palabra?.primera_lectura?.cita || "Primera Lectura";
-            let r1Texto = data.liturgia_palabra?.primera_lectura?.texto || "[No hay lecturas cargadas para este día en la Bóveda]";
-            let salmoResp = data.liturgia_palabra?.salmo_responsorial?.respuesta || "[... Salmo ...]";
-            let evCita = data.liturgia_palabra?.evangelio?.cita || "Evangelio";
-            let evTexto = data.liturgia_palabra?.evangelio?.texto || "[No hay evangelio cargado para este día en la Bóveda]";
+            // I. RITOS INICIALES
+            out += `### I. RITOS INICIALES\n\n`;
+            out += `**1. Canto de Entrada:** *${cantos.entrada}*\n\n`;
             
-            out += `**${lang.primera_lectura} (${r1Cita}):**\n${formatLectura(r1Texto)}\n\n`;
-            out += `**${lang.salmo}:**\n**${lang.asamblea}:** ${salmoResp}\n\n`;
-            out += `**${lang.evangelio} (${evCita}):**\n${formatLectura(evTexto)}\n\n`;
-
+            let antEnt = data.antifona_entrada || "Vengan, benditos de mi Padre...";
+            out += `**2. Antífona de Entrada**\n**Sacerdote:** ${antEnt}\n\n`;
             
-            if (chkEuca) {
-                out += `\n**${lang.lit_euca}**\n\n`;
-                out += `🎵 **${lang.ofertorio}:** *${cantos.ofertorio}*\n\n`;
-                let oracionOfrendas = data.liturgia_eucaristica?.oracion_ofrendas || "[Oración sobre las ofrendas del día]";
-                out += `**${lang.sobre_ofrendas}:**\n**${lang.sacerdote}:** ${oracionOfrendas}\n\n`;
-                out += `🎵 **${lang.comunion}:** *${cantos.comunion}*\n\n`;
-                let oracionDespues = data.liturgia_eucaristica?.oracion_despues_comunion || "[Oración después de la comunión]";
-                out += `**${lang.despues_comunion}:**\n**${lang.sacerdote}:** ${isEn ? 'Let us pray.' : 'Oremos.'} ${oracionDespues}\n\n`;
-                out += `🎵 **${lang.salida}:** *${cantos.salida}*\n\n`;
+            let ritoPen = data.rito_penitencial || "Yo confieso ante Dios todopoderoso...";
+            out += `**3. Rito Penitencial**\n**Sacerdote:** Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados.\n**Asamblea:** ${ritoPen}\n**Sacerdote:** Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.\n**Asamblea:** Amén.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n**Sacerdote:** Cristo, ten piedad.\n**Asamblea:** Cristo, ten piedad.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n\n`;
+            
+            // II. SALMODIA INTEGRADA
+            if (hora === "laudes" || hora === "visperas") {
+                out += `-----\n\n### II. SALMODIA INTEGRADA (${hora.toUpperCase()})\n\n`;
+                const salmodia = data[hora];
+                if (salmodia) {
+                    if (salmodia.salmo1) {
+                         out += `**4. Primer Salmo:**\n**Asamblea:** ${salmodia.salmo1.antifona}\n\n`;
+                         let salmoP = salmodia.salmo1.texto.split("\n\n");
+                         salmoP.forEach((estrofa, index) => {
+                             let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
+                             out += `**${l}:**\n${estrofa}\n\n`;
+                         });
+                         out += `**Asamblea:** Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n${salmodia.salmo1.antifona}\n\n`;
+                    }
+                    if (salmodia.cantico_at || salmodia.salmo2) {
+                         let s2 = salmodia.cantico_at || salmodia.salmo2;
+                         let nt = salmodia.cantico_at ? "Cántico AT" : "Segundo Salmo";
+                         out += `**5. ${nt}:**\n**Asamblea:** ${s2.antifona}\n\n`;
+                         let salmoP = s2.texto.split("\n\n");
+                         salmoP.forEach((estrofa, index) => {
+                             let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
+                             out += `**${l}:**\n${estrofa}\n\n`;
+                         });
+                         if(!salmodia.cantico_at) out += `**Asamblea:** Gloria al Padre...\n`;
+                         out += `${s2.antifona}\n\n`;
+                    }
+                    if (salmodia.salmo2 && salmodia.cantico_nt) { # Visperas
+                         let s3 = salmodia.cantico_nt;
+                         out += `**6. Cántico NT:**\n**Asamblea:** ${s3.antifona}\n\n`;
+                         s3.texto.split("\n\n").forEach((estrofa, index) => {
+                             let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
+                             out += `**${l}:**\n${estrofa}\n\n`;
+                         });
+                         out += `**Asamblea:** Gloria al Padre...\n${s3.antifona}\n\n`;
+                    }
+                }
             }
+            
+            // III. CONCLUSION DE RITOS INICIALES
+            out += `-----\n\n### III. CONCLUSIÓN DE RITOS INICIALES\n\n`;
+            if (data.gloria) {
+                out += `**7. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor...\n\n`;
+            }
+            
+            let colecta = data.oracion_colecta || "Dios nuestro, que nos has reunido...";
+            out += `**8. Oración Colecta**\n**Sacerdote:** Oremos. ${colecta}\n**Asamblea:** Amén.\n\n`;
+            
+            // IV. LITURGIA DE LA PALABRA
+            out += `-----\n\n### IV. LITURGIA DE LA PALABRA\n\n`;
+            let lp = data.liturgia_palabra || {};
+            let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[Lectura no disponible]" };
+            out += `**9. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${r1.texto}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+            
+            let sr = lp.salmo_responsorial || { cita: "Salmo", respuesta: "El Señor es mi pastor.", texto: "El Señor es mi pastor, nada me falta." };
+            out += `**10. Salmo Responsorial** (${sr.cita})\n**Asamblea:** ${sr.respuesta}\n\n`;
+            sr.texto.split("\n\n").forEach(estrofa => {
+                out += `**Lector:**\n${estrofa}\n\n**Asamblea:** ${sr.respuesta}\n\n`;
+            });
+            
+            if (lp.segunda_lectura) {
+                out += `**11. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${lp.segunda_lectura.texto}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+            }
+            
+            let aclv = lp.aclamacion_evangelio || "Aleluya, aleluya.";
+            out += `**12. Aclamación antes del Evangelio**\n**Asamblea:** ${aclv}\n\n`;
+            
+            let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
+            out += `**13. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${ev.texto}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
+            
+            let preces = lp.preces || (data.laudes ? data.laudes.preces : "Te pedimos, Señor, escucha nuestra oración.");
+            out += `**14. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo... Amén.\n\n`;
+            
+            // V. LITURGIA EUCARISTICA
+            out += `-----\n\n### V. LITURGIA EUCARÍSTICA\n\n`;
+            out += `**15. Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
+            let le = data.liturgia_eucaristica || {};
+            let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo...";
+            out += `**16. Oración sobre las Ofrendas**\n**Sacerdote:** ${ofrendas}\n**Asamblea:** Amén.\n\n`;
+            
+            let antc = le.antifona_comunion || "Acerca tu mano...";
+            out += `**17. Antífona de la Comunión**\n**Sacerdote:** ${antc}\n\n`;
+            
+            out += `**18. Canto de Comunión:** *${cantos.comunion}*\n\n`;
+            
+            let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso...";
+            out += `**19. Oración después de la Comunión**\n**Sacerdote:** Oremos. ${despues}\n**Asamblea:** Amén.\n\n`;
+            
+            // VI. RITO DE CONCLUSION
+            out += `-----\n\n### VI. RITO DE CONCLUSIÓN\n\n`;
+            out += `**20. Canto de Salida:** *${cantos.salida}*\n\n`;
         }
         return out;
     }
@@ -447,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/\n/g, '<br>');
             
         // Apply rubric class to exact actors
-        text = text.replace(/<strong>(Sacerdote:|Priest:|Sacerdote y Asamblea:|Asamblea:|People:|Lector:|Antífona:|Antífona 1:|Responsorio Breve:|Oración Final:|Himno:|Lectura Breve|Salmodia:|Examen de Conciencia:|Introducción:|Antífona Mariana:)<\/strong>/g, '<strong class="rubric">$1</strong>');
+        text = text.replace(/<strong>(Sacerdote:|Priest:|Sacerdote y Asamblea:|Asamblea:|People:|Lector:|Lector 1:|Lector 2:|Antífona:|Antífona 1:|Responsorio Breve:|Oración Final:|Himno:|Lectura Breve|Salmodia:|Examen de Conciencia:|Introducción:|Antífona Mariana:)<\/strong>/g, '<strong class="rubric">$1</strong>');
         return text;
     }
 
