@@ -358,8 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico, isEn);
             let sNum = 1;
             
-            // I. RITOS INICIALES
-            out += `### I. RITOS INICIALES\n\n`;
+            // RITOS INICIALES
+            out += `### RITOS INICIALES\n\n`;
             out += `**${sNum++}. Canto de Entrada:** *${cantos.entrada}*\n\n`;
             
             let antEnt = data.antifona_entrada || "Vengan, benditos de mi Padre, reciban en herencia el reino preparado para ustedes desde la creación del mundo.";
@@ -368,9 +368,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let ritoPen = data.rito_penitencial || "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.";
             out += `**${sNum++}. Rito Penitencial**\n**Sacerdote:** Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados.\n**Asamblea:** ${ritoPen}\n**Sacerdote:** Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.\n**Asamblea:** Amén.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n**Sacerdote:** Cristo, ten piedad.\n**Asamblea:** Cristo, ten piedad.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n\n`;
             
-            // II. SALMODIA INTEGRADA
+            // SALMODIA INTEGRADA
             if (hora === "laudes" || hora === "visperas") {
-                out += `-----\n\n### II. SALMODIA INTEGRADA (${hora.toUpperCase()})\n\n`;
+                out += `-----\n\n### SALMODIA INTEGRADA (${hora.toUpperCase()})\n\n`;
                 const salmodia = data[hora];
                 if (salmodia) {
                     if (salmodia.salmo1) {
@@ -406,8 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // III. CONCLUSION DE RITOS INICIALES
-            out += `-----\n\n### III. CONCLUSIÓN DE RITOS INICIALES\n\n`;
+            // CONCLUSION DE RITOS INICIALES
+            out += `-----\n\n### CONCLUSIÓN DE RITOS INICIALES\n\n`;
             if (data.gloria) {
                 out += `**${sNum++}. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.\n\n`;
             }
@@ -415,8 +415,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let colecta = data.oracion_colecta || "Dios todopoderoso y eterno, aumenta en nosotros la fe, la esperanza y la caridad, y para que consigamos lo que nos prometes, ayúdanos a amar lo que nos mandas. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos.";
             out += `**${sNum++}. Oración Colecta**\n**Sacerdote:** Oremos. ${colecta}\n**Asamblea:** Amén.\n\n`;
             
-            // IV. LITURGIA DE LA PALABRA
-            out += `-----\n\n### IV. LITURGIA DE LA PALABRA\n\n`;
+            // LITURGIA DE LA PALABRA
+            out += `-----\n\n### LITURGIA DE LA PALABRA\n\n`;
             let lp = data.liturgia_palabra || {};
             let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[Lectura no disponible]" };
             out += `**${sNum++}. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${formatLectura(r1.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
@@ -438,6 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
             out += `**${sNum++}. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${formatLectura(ev.texto)}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
             
+            out += `**${sNum++}. Homilía**\n*(Pausa de silencio y reflexión)*\n\n`;
+            
+            if (lp.segunda_lectura || data.gloria) {
+                out += `**${sNum++}. Profesión de Fe (Credo)**\n**Asamblea:** Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.\n\n`;
+            }
+            
             let precesOficio = "";
             if (hora === "laudes" && data.laudes) precesOficio = data.laudes.preces;
             if (hora === "visperas" && data.visperas) precesOficio = data.visperas.preces;
@@ -445,9 +451,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             out += `**${sNum++}. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.\n\n`;
             
-            // V. LITURGIA EUCARISTICA
-            out += `-----\n\n### V. LITURGIA EUCARÍSTICA\n\n`;
-            out += `**15. Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
+            // LITURGIA EUCARISTICA
+            out += `-----\n\n### LITURGIA EUCARÍSTICA\n\n`;
+            out += `**${sNum++}. Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
             let le = data.liturgia_eucaristica || {};
             let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo, y concédenos que este sacrificio nos alcance la gracia que te pedimos. Por Jesucristo nuestro Señor.";
             out += `**${sNum++}. Oración sobre las Ofrendas**\n**Sacerdote:** ${ofrendas}\n**Asamblea:** Amén.\n\n`;
@@ -460,8 +466,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.";
             out += `**${sNum++}. Oración después de la Comunión**\n**Sacerdote:** Oremos. ${despues}\n**Asamblea:** Amén.\n\n`;
             
-            // VI. RITO DE CONCLUSION
-            out += `-----\n\n### VI. RITO DE CONCLUSIÓN\n\n`;
+            // RITO DE CONCLUSION
+            out += `-----\n\n### RITO DE CONCLUSIÓN\n\n`;
             out += `**${sNum++}. Canto de Salida:** *${cantos.salida}*\n\n`;
         }
         return out;
