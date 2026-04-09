@@ -1,5 +1,3 @@
-window.cantosDB = {};
-
 document.addEventListener('DOMContentLoaded', () => {
     // Precargar letras de cantos (Offline bypass activo)
     window.cantosDB = window.cantosDB || {};
@@ -358,16 +356,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
                         // Flujo Misa modular
             const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico, isEn);
+            let sNum = 1;
             
             // I. RITOS INICIALES
             out += `### I. RITOS INICIALES\n\n`;
-            out += `**1. Canto de Entrada:** *${cantos.entrada}*\n\n`;
+            out += `**${sNum++}. Canto de Entrada:** *${cantos.entrada}*\n\n`;
             
             let antEnt = data.antifona_entrada || "Vengan, benditos de mi Padre, reciban en herencia el reino preparado para ustedes desde la creación del mundo.";
-            out += `**2. Antífona de Entrada**\n**Sacerdote:** ${antEnt}\n\n`;
+            out += `**${sNum++}. Antífona de Entrada**\n**Sacerdote:** ${antEnt}\n\n`;
             
             let ritoPen = data.rito_penitencial || "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.";
-            out += `**3. Rito Penitencial**\n**Sacerdote:** Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados.\n**Asamblea:** ${ritoPen}\n**Sacerdote:** Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.\n**Asamblea:** Amén.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n**Sacerdote:** Cristo, ten piedad.\n**Asamblea:** Cristo, ten piedad.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n\n`;
+            out += `**${sNum++}. Rito Penitencial**\n**Sacerdote:** Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados.\n**Asamblea:** ${ritoPen}\n**Sacerdote:** Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.\n**Asamblea:** Amén.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n**Sacerdote:** Cristo, ten piedad.\n**Asamblea:** Cristo, ten piedad.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n\n`;
             
             // II. SALMODIA INTEGRADA
             if (hora === "laudes" || hora === "visperas") {
@@ -375,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const salmodia = data[hora];
                 if (salmodia) {
                     if (salmodia.salmo1) {
-                         out += `**4. Primer Salmo:**\n**Asamblea:** ${salmodia.salmo1.antifona}\n\n`;
+                         out += `**${sNum++}. Primer Salmo:**\n**Asamblea:** ${salmodia.salmo1.antifona}\n\n`;
                          let salmoP = salmodia.salmo1.texto.split("\n\n");
                          salmoP.forEach((estrofa, index) => {
                              let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
@@ -386,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (salmodia.cantico_at || salmodia.salmo2) {
                          let s2 = salmodia.cantico_at || salmodia.salmo2;
                          let nt = salmodia.cantico_at ? "Cántico AT" : "Segundo Salmo";
-                         out += `**5. ${nt}:**\n**Asamblea:** ${s2.antifona}\n\n`;
+                         out += `**${sNum++}. ${nt}:**\n**Asamblea:** ${s2.antifona}\n\n`;
                          let salmoP = s2.texto.split("\n\n");
                          salmoP.forEach((estrofa, index) => {
                              let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
@@ -397,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     if (salmodia.salmo2 && salmodia.cantico_nt) { // Visperas
                          let s3 = salmodia.cantico_nt;
-                         out += `**6. Cántico NT:**\n**Asamblea:** ${s3.antifona}\n\n`;
+                         out += `**${sNum++}. Cántico NT:**\n**Asamblea:** ${s3.antifona}\n\n`;
                          s3.texto.split("\n\n").forEach((estrofa, index) => {
                              let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
                              out += `**${l}:**\n${estrofa}\n\n`;
@@ -410,56 +409,60 @@ document.addEventListener('DOMContentLoaded', () => {
             // III. CONCLUSION DE RITOS INICIALES
             out += `-----\n\n### III. CONCLUSIÓN DE RITOS INICIALES\n\n`;
             if (data.gloria) {
-                out += `**7. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.\n\n`;
+                out += `**${sNum++}. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.\n\n`;
             }
             
             let colecta = data.oracion_colecta || "Dios todopoderoso y eterno, aumenta en nosotros la fe, la esperanza y la caridad, y para que consigamos lo que nos prometes, ayúdanos a amar lo que nos mandas. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos.";
-            out += `**8. Oración Colecta**\n**Sacerdote:** Oremos. ${colecta}\n**Asamblea:** Amén.\n\n`;
+            out += `**${sNum++}. Oración Colecta**\n**Sacerdote:** Oremos. ${colecta}\n**Asamblea:** Amén.\n\n`;
             
             // IV. LITURGIA DE LA PALABRA
             out += `-----\n\n### IV. LITURGIA DE LA PALABRA\n\n`;
             let lp = data.liturgia_palabra || {};
             let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[Lectura no disponible]" };
-            out += `**9. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${formatLectura(r1.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+            out += `**${sNum++}. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${formatLectura(r1.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
             
             let sr = lp.salmo_responsorial || { cita: "Salmo", respuesta: "El Señor es mi pastor.", texto: "El Señor es mi pastor, nada me falta." };
-            out += `**10. Salmo Responsorial** (${sr.cita})\n**Asamblea:** ${sr.respuesta}\n\n`;
+            out += `**${sNum++}. Salmo Responsorial** (${sr.cita})\n**Asamblea:** ${sr.respuesta}\n\n`;
             let txtSalmo = formatLectura(sr.texto);
             txtSalmo.split("\n\n").forEach(estrofa => {
                 if(estrofa.trim().length > 0) out += `**Lector:**\n${estrofa}\n\n**Asamblea:** ${sr.respuesta}\n\n`;
             });
             
             if (lp.segunda_lectura) {
-                out += `**11. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${formatLectura(lp.segunda_lectura.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+                out += `**${sNum++}. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${formatLectura(lp.segunda_lectura.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
             }
             
             let aclv = lp.aclamacion_evangelio || "Aleluya, aleluya.";
-            out += `**12. Aclamación antes del Evangelio**\n**Asamblea:** ${aclv}\n\n`;
+            out += `**${sNum++}. Aclamación antes del Evangelio**\n**Asamblea:** ${aclv}\n\n`;
             
             let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
-            out += `**13. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${formatLectura(ev.texto)}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
+            out += `**${sNum++}. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${formatLectura(ev.texto)}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
             
-            let preces = lp.preces || (data.laudes ? data.laudes.preces : "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.");
-            out += `**14. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.\n\n`;
+            let precesOficio = "";
+            if (hora === "laudes" && data.laudes) precesOficio = data.laudes.preces;
+            if (hora === "visperas" && data.visperas) precesOficio = data.visperas.preces;
+            let preces = lp.preces || precesOficio || "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.";
+            
+            out += `**${sNum++}. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.\n\n`;
             
             // V. LITURGIA EUCARISTICA
             out += `-----\n\n### V. LITURGIA EUCARÍSTICA\n\n`;
             out += `**15. Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
             let le = data.liturgia_eucaristica || {};
             let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo, y concédenos que este sacrificio nos alcance la gracia que te pedimos. Por Jesucristo nuestro Señor.";
-            out += `**16. Oración sobre las Ofrendas**\n**Sacerdote:** ${ofrendas}\n**Asamblea:** Amén.\n\n`;
+            out += `**${sNum++}. Oración sobre las Ofrendas**\n**Sacerdote:** ${ofrendas}\n**Asamblea:** Amén.\n\n`;
             
             let antc = le.antifona_comunion || "Acerca tu mano, trae tu dedo y explora mis llagas; y no seas incrédulo, sino creyente.";
-            out += `**17. Antífona de la Comunión**\n**Sacerdote:** ${antc}\n\n`;
+            out += `**${sNum++}. Antífona de la Comunión**\n**Sacerdote:** ${antc}\n\n`;
             
-            out += `**18. Canto de Comunión:** *${cantos.comunion}*\n\n`;
+            out += `**${sNum++}. Canto de Comunión:** *${cantos.comunion}*\n\n`;
             
             let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.";
-            out += `**19. Oración después de la Comunión**\n**Sacerdote:** Oremos. ${despues}\n**Asamblea:** Amén.\n\n`;
+            out += `**${sNum++}. Oración después de la Comunión**\n**Sacerdote:** Oremos. ${despues}\n**Asamblea:** Amén.\n\n`;
             
             // VI. RITO DE CONCLUSION
             out += `-----\n\n### VI. RITO DE CONCLUSIÓN\n\n`;
-            out += `**20. Canto de Salida:** *${cantos.salida}*\n\n`;
+            out += `**${sNum++}. Canto de Salida:** *${cantos.salida}*\n\n`;
         }
         return out;
     }
