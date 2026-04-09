@@ -197,38 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
     }
-        if(!tiempoStr) return {entrada: 'Canto de Entrada', ofertorio: 'Canto de Ofertorio', comunion: 'Canto de Comunión', salida: 'Canto de Salida'};
-        const t = tiempoStr.toLowerCase();
-        if (t.includes('cuaresma')) {
-            return {
-                entrada: 'Honor y Gloria a Ti (o Prepara tu Camino)',
-                ofertorio: 'Te Ofrecemos Padre Nuestro',
-                comunion: 'Perdona a tu pueblo Señor',
-                salida: '(Silencio / Salida sin canto)'
-            };
-        } else if (t.includes('pascua')) {
-             return {
-                entrada: 'El Señor Resucitó, Aleluya',
-                ofertorio: 'Te Presentamos el Vino y el Pan',
-                comunion: 'Yo soy el Pan de Vida',
-                salida: 'Reina del Cielo Alégrate'
-            };
-        } else if (t.includes('adviento')) {
-             return {
-                entrada: 'Ven, Ven, Señor no tardes',
-                ofertorio: 'Saber que vendrás',
-                comunion: 'Un pueblo que camina',
-                salida: 'Santa María de la Esperanza'
-            };
-        } else {
-             return {
-                entrada: 'Vienen con alegría Señor',
-                ofertorio: 'Te Ofrecemos Padre Nuestro',
-                comunion: 'Pescador de Hombres',
-                salida: 'Demos Gracias al Señor'
-            };
-        }
-    }
 
     function generarDocumento(data, hora) {
         let out = "";
