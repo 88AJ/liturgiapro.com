@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // PDF Generation Logic (Keeping core markdown generator)
-    let liturgiaData = null;
+    let liturgiaData = {};
     fetch('data/liturgia.json')
         .then(response => response.json())
-        .then(data => { liturgiaData = data; })
+        .then(data => { liturgiaData = data || {}; })
         .catch(err => console.error("Error loading mock DB:", err));
 
     const generateBtn = document.getElementById('generate-doc-btn');
@@ -181,6 +181,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.error('Error fetching Title API', err);
                         generateBtn.innerHTML = "Generar Documento";
                         let data = liturgiaData[fecha] || liturgiaData["2026-04-08"];
+                        if (!data) {
+                            const d = new Date(fecha + "T00:00:00");
+                            data = {
+                                "dia_semana": d.toLocaleDateString('es-ES', {weekday:'long', year:'numeric', month:'long', day:'numeric'}).toUpperCase(),
+                                "color": "Verde", "tiempo_liturgico": "FERIA (MODO OFFLINE)",
+                                "antifona_entrada": "Dios es mi auxilio...", "rito_penitencial": "Yo confieso...", "gloria": false,
+                                "oracion_colecta": "Señor Dios...",
+                                "liturgia_palabra": {
+                                    "primera_lectura": { "cita": "Lectura Ferial", "texto": "[Sin conexión al API - Extrae de Misal]" },
+                                    "salmo_responsorial": { "cita": "Salmo", "respuesta": "El Señor es mi pastor." },
+                                    "evangelio": { "cita": "Evangelio", "texto": "[Sin conexión al API]" }
+                                },
+                                "liturgia_eucaristica": { "oracion_ofrendas": "Acepta...", "oracion_despues_comunion": "Habiendo..." }
+                            };
+                        }
                         let doc = generarDocumento(data, hora);
                         pdfView.innerHTML = markdownToHTML(doc);
                     });
