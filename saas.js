@@ -331,9 +331,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isStandaloneOffice) {
             out += `<h2>${isEn ? 'Liturgy of the Hours' : 'Liturgia de las Horas'}: ${hora.charAt(0).toUpperCase() + hora.slice(1)}</h2>\n`;
         } else {
-            out += `<h2>${isEn ? 'Rite of the' : 'Rito de la'} ${data.tiempo_liturgico}</h2>\n`;
+            out += `<h2>${data.tiempo_liturgico.toUpperCase()}</h2>\n`;
         }
-        out += `<h3 style="color: #666;">${data.dia_semana} (${data.color})</h3>\n`;
+        if (data.dia_semana) {
+            out += `<h3 style="color: #666;">${data.dia_semana} (${data.color})</h3>\n`;
+        } else {
+            out += `<h3 style="color: #666;">Color Litúrgico: ${data.color}</h3>\n`;
+        }
         out += `</div>\n\n`;
 
         if (isStandaloneOffice) {
@@ -475,6 +479,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function markdownToHTML(md) {
         let text = md
+            .replace(/-----\n\n/g, '<hr style="border: 0; border-top: 2px solid #ddd; margin: 2em 0;">\n\n')
+            .replace(/### (.*?)\n/g, '<h3 style="margin-top: 1.5em; margin-bottom: 0.5em; color: #111; font-family: \'Cinzel\', serif; font-size: 1.25em;">$1</h3>\n')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/^>[ \t]*(.*$)/gim, '<blockquote>$1</blockquote>')
             .replace(/<\/blockquote>\n<blockquote>/g, '<br>')
