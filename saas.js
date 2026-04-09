@@ -637,7 +637,8 @@ document.addEventListener('DOMContentLoaded', () => {
             filename:     'Ritual_Liturgia_PRO.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'] }
         };
 
         // If it's an empty state, don't print

@@ -304,6 +304,7 @@ body {
 }
 
 .pdf-container {
+    box-sizing: border-box;
     font-family: 'EB Garamond', serif;
     background: #ffffff;
     width: 8.5in;
@@ -582,12 +583,13 @@ body {
 /* Evitar que se partan los bloques feo */
 .missal-block {
     break-inside: avoid;
+    page-break-inside: avoid;
     margin-bottom: 1.5rem;
 }
 
 .missal-heading {
     text-transform: uppercase;
-    color: #555;
+    color: #B20000;
     font-size: 0.9em;
     font-weight: 600;
     margin: 0 0 4px 0;
@@ -596,7 +598,7 @@ body {
 
 .missal-citation {
     font-style: italic;
-    color: #666;
+    color: #B20000;
     margin: 0 0 12px 0;
     font-size: 0.9em;
 }
