@@ -303,6 +303,10 @@ body {
     align-items: flex-start;
 }
 
+.pdf-container {
+    font-family: 'EB Garamond', serif;
+}
+
 
 
 .empty-state {

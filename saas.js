@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function markdownToHTML(md) {
         let text = md
             .replace(/-----\n\n/g, '<hr style="border: 0; border-top: 2px solid #ddd; margin: 2em 0;">\n\n')
-            .replace(/### (.*?)\n/g, '<h3 style="margin-top: 1.5em; margin-bottom: 0.5em; color: #111; font-family: \'Cinzel\', serif; font-size: 1.25em;">$1</h3>\n')
+            .replace(/### (.*?)\n/g, '<h3 style="margin-top: 1.5em; margin-bottom: 0.5em; color: #B20000; font-family: \'EB Garamond\', serif; font-size: 1.25em;">$1</h3>\n')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/^>[ \t]*(.*$)/gim, '<blockquote>$1</blockquote>')
             .replace(/<\/blockquote>\n<blockquote>/g, '<br>')
