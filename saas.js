@@ -218,18 +218,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function formatLectura(texto) {
         if (!texto || texto.length < 50) return texto;
-        // Si ya viene separado por párrafos (Offline db), lo respetamos
-        if (texto.includes('\n\n')) return texto;
         
-        // Si no trae saltos (scraped), cortamos usando expresiones regulares para oraciones.
-        // Hacemos párrafos cada ~2 oraciones para facilitar proclamación
-        let sentences = texto.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
-        let result = "";
-        for(let i = 0; i < sentences.length; i++) {
-            result += sentences[i] + " ";
-            if (i > 0 && i % 2 === 0) result += "\n\n";
+        let pText = texto;
+        if (!texto.includes('\n\n')) {
+            let sentences = texto.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+            let result = "";
+            for(let i = 0; i < sentences.length; i++) {
+                result += sentences[i] + " ";
+                if (i > 0 && i % 2 === 0) result += "\n\n";
+            }
+            pText = result.trim();
         }
-        return result.trim();
+        
+        let parrafos = pText.split(/\n\n+/);
+        let blocks = [];
+        
+        parrafos.forEach((p, idx) => {
+             let cleanP = p.trim().replace(/\n/g, ' ');
+             if(cleanP === "") return;
+             if (idx === 0) {
+                 let firstChar = cleanP.charAt(0);
+                 let desc = cleanP.slice(1);
+                 blocks.push(`<p class="missal-paragraph first-par"><span class="drop-cap">${firstChar}</span>${desc}</p>`);
+             } else {
+                 blocks.push(`<p class="missal-paragraph">${cleanP}</p>`);
+             }
+        });
+        
+        return blocks.join("");
     }
 
     function linkCanto(nombre) {
@@ -423,31 +439,48 @@ document.addEventListener('DOMContentLoaded', () => {
             // CONCLUSION DE RITOS INICIALES
             out += `-----\n\n### CONCLUSIÓN DE RITOS INICIALES\n\n`;
             if (aplicaGloria) {
-                out += `**${sNum++}. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Gloria</p><p class="missal-paragraph">Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.</p></div>\n\n`;
             }
             
             let colecta = data.oracion_colecta || "Dios todopoderoso y eterno, aumenta en nosotros la fe, la esperanza y la caridad, y para que consigamos lo que nos prometes, ayúdanos a amar lo que nos mandas. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos.";
-            out += `**${sNum++}. Oración Colecta**\n**Sacerdote:** Oremos. ${colecta}\n**Asamblea:** Amén.\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Oración Colecta</p><p class="missal-paragraph">Oremos. ${colecta}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
             
             // LITURGIA DE LA PALABRA
             out += `-----\n\n### LITURGIA DE LA PALABRA\n\n`;
             let lp = data.liturgia_palabra || {};
             let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[Lectura no disponible]" };
-            out += `**${sNum++}. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${formatLectura(r1.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+            out += `<div class="missal-block">`;
+            out += `<p class="missal-heading">Primera Lectura</p>\n`;
+            out += `<p class="missal-citation">De: ${r1.cita}</p>\n`;
+            out += `${formatLectura(r1.texto)}\n`;
+            out += `<p class="missal-rubric" style="margin-top:10px;">Palabra de Dios.</p>\n<p class="missal-rubric">R. Te alabamos, Señor.</p>\n</div>\n\n`;
             
             let sr = lp.salmo_responsorial || { cita: "Salmo", respuesta: "El Señor es mi pastor.", texto: "El Señor es mi pastor, nada me falta." };
-            out += `**${sNum++}. Salmo Responsorial** (${sr.cita})\n**Asamblea:** ${sr.respuesta}\n\n`;
-            let txtSalmo = formatLectura(sr.texto);
-            txtSalmo.split("\n\n").forEach(estrofa => {
-                if(estrofa.trim().length > 0) out += `**Lector:**\n${estrofa}\n\n**Asamblea:** ${sr.respuesta}\n\n`;
+            out += `<div class="missal-block">`;
+            out += `<div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">`;
+            out += `<p class="missal-heading" style="margin:0;">Salmo Responsorial</p>\n`;
+            out += `<p class="missal-citation" style="margin:0;">${sr.cita}</p>\n</div>`;
+            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;">R. ${sr.respuesta}</p>\n`;
+            sr.texto.split("\n\n").forEach(estrofa => {
+                let cl = estrofa.trim().replace(/\n/g, '<br>');
+                if(cl.length > 0) out += `<p class="missal-paragraph" style="margin-bottom:8px;">${cl}</p><p class="missal-rubric" style="margin-bottom:12px;">R. ${sr.respuesta}</p>\n`;
             });
+            out += `</div>\n\n`;
             
             if (lp.segunda_lectura) {
-                out += `**${sNum++}. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${formatLectura(lp.segunda_lectura.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+                out += `<div class="missal-block">`;
+                out += `<p class="missal-heading">Segunda Lectura</p>\n`;
+                out += `<p class="missal-citation">De: ${lp.segunda_lectura.cita}</p>\n`;
+                out += `${formatLectura(lp.segunda_lectura.texto)}\n`;
+                out += `<p class="missal-rubric" style="margin-top:10px;">Palabra de Dios.</p>\n<p class="missal-rubric">R. Te alabamos, Señor.</p>\n</div>\n\n`;
             }
             
             if (lp.secuencia) {
-                out += `**${sNum++}. Secuencia**\n**Lector / Cantor:**\n\n${formatLectura(lp.secuencia)}\n\n`;
+                out += `<div class="missal-block">`;
+                out += `<p class="missal-heading">Secuencia</p>\n`;
+                out += `<p class="missal-citation">Opcional</p>\n`;
+                out += `${formatLectura(lp.secuencia)}\n`;
+                out += `</div>\n\n`;
             }
             
             let aclv = lp.aclamacion_evangelio || "Aleluya, aleluya.";
@@ -456,15 +489,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     aclv = aclv.replace(/Aleluya/ig, "Honor y gloria a ti, Señor Jesús");
                 }
             }
-            out += `**${sNum++}. Aclamación antes del Evangelio**\n**Asamblea:** ${aclv}\n\n`;
+            out += `<div class="missal-block">`;
+            out += `<p class="missal-heading">Aclamación antes del Evangelio</p>\n`;
+            out += `<p class="missal-paragraph" style="font-weight:bold;">${aclv.replace(/\n/g, '<br>')}</p>\n`;
+            out += `</div>\n\n`;
             
             let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
-            out += `**${sNum++}. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${formatLectura(ev.texto)}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
+            out += `<div class="missal-block">`;
+            out += `<p class="missal-heading">Evangelio</p>\n`;
+            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;"><span class="cross-mark">☩</span> Del santo Evangelio según: ${ev.cita.replace(/Evangelio /i, '').replace(/[\s\n]*en la misa.*$/i, '')}</p>\n`;
+            out += `${formatLectura(ev.texto)}\n`;
+            out += `<p class="missal-rubric" style="margin-top:10px;">Palabra del Señor.</p>\n<p class="missal-rubric">R. Gloria a ti, Señor Jesús.</p>\n</div>\n\n`;
             
-            out += `**${sNum++}. Homilía**\n*(Pausa de silencio y reflexión)*\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Homilía</p><p class="missal-rubric">El sacerdote pronuncia la homilía.</p></div>\n\n`;
             
             if (lp.segunda_lectura || aplicaGloria) {
-                out += `**${sNum++}. Profesión de Fe (Credo)**\n**Asamblea:** Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.\n\n`;
+                out += `<div class="missal-block"><p class="missal-heading">Profesión de Fe</p><p class="missal-rubric" style="margin-bottom:0;">Se dice el Credo.</p></div>\n\n`;
             }
             
             let precesOficio = "";
@@ -472,26 +512,27 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hora === "visperas" && data.visperas) precesOficio = data.visperas.preces;
             let preces = lp.preces || precesOficio || "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.";
             
-            out += `**${sNum++}. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Oración de los Fieles</p><p class="missal-rubric">A Dios Padre, dirijamos nuestra súplica:</p><p class="missal-rubric">R. Te rogamos, óyenos.</p><p class="missal-paragraph">${preces.replace(/\n/g, '<br>')}</p><p class="missal-rubric">Escucha Padre nuestras oraciones.</p><p class="missal-rubric">R. Padre nuestro, que estás en el cielo...</p></div>\n\n`;
             
             // LITURGIA EUCARISTICA
             out += `-----\n\n### LITURGIA EUCARÍSTICA\n\n`;
-            out += `**${sNum++}. Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Canto de Ofertorio</p><p class="missal-citation">${cantos.ofertorio}</p></div>\n\n`;
+            
             let le = data.liturgia_eucaristica || {};
             let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo, y concédenos que este sacrificio nos alcance la gracia que te pedimos. Por Jesucristo nuestro Señor.";
-            out += `**${sNum++}. Oración sobre las Ofrendas**\n**Sacerdote:** ${ofrendas}\n**Asamblea:** Amén.\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Oración sobre las Ofrendas</p><p class="missal-paragraph">${ofrendas}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
             
             let antc = le.antifona_comunion || "Acerca tu mano, trae tu dedo y explora mis llagas; y no seas incrédulo, sino creyente.";
-            out += `**${sNum++}. Antífona de la Comunión**\n**Sacerdote:** ${antc}\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Antífona de la Comunión</p><p class="missal-paragraph">${antc}</p></div>\n\n`;
             
-            out += `**${sNum++}. Canto de Comunión:** *${cantos.comunion}*\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Canto de Comunión</p><p class="missal-citation">${cantos.comunion}</p></div>\n\n`;
             
             let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.";
-            out += `**${sNum++}. Oración después de la Comunión**\n**Sacerdote:** Oremos. ${despues}\n**Asamblea:** Amén.\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Oración después de la Comunión</p><p class="missal-paragraph">Oremos. ${despues}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
             
             // RITO DE CONCLUSION
             out += `-----\n\n### RITO DE CONCLUSIÓN\n\n`;
-            out += `**${sNum++}. Canto de Salida:** *${cantos.salida}*\n\n`;
+            out += `<div class="missal-block"><p class="missal-heading">Canto de Salida</p><p class="missal-citation">${cantos.salida}</p></div>\n\n`;
         }
         return out;
     }
