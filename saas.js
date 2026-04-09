@@ -94,30 +94,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 pdfView.className = 'pdf-container';
                 generateBtn.innerHTML = "Descargando Eucaristía...";
 
-                // Formateamos para evangelizacion o USCCB
-                const parts = fecha.split('-');
-                let proxyUrl = "";
-                if (region === 'us_en') {
-                    // MMDDYY format
-                    const usDate = `${parts[1]}${parts[2]}${parts[0].slice(-2)}`;
-                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bible.usccb.org/bible/readings/${usDate}.cfm`)}`;
-                } else if (region === 'us_es') {
-                     // The spanish usccb url format changes, using generic home bypass for now
-                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bible.usccb.org/es/lectura-diaria-biblia`)}`;
-                } else {
-                let evDateDay = parts ? parseInt(parts[2], 10) : 9; // Extract Day number
-                    proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://arquidiocesisgdl.org/lectura_dia${evDateDay}.php`)}`;
-                }
-
-                // CEREBRO OFFLINE: Si ya procesamos el documento localmente (Ej. Triduo Pascual), lo ejecutamos al instante sin internet.
+                // CEREBRO OFFLINE: Si ya procesamos el documento localmente, ejecutamos instantáneamente
                 let localData = liturgiaData[fecha];
                 if (localData && localData.liturgia_palabra && localData.liturgia_palabra.evangelio.texto.length > 50 && !localData.liturgia_palabra.evangelio.texto.includes("Placeholder Dinámico")) {
-                    console.log("Cerebro Offline Activo. Saltando proxy...");
+                    console.log("Cerebro Offline Activo. Rendereando Data Pura.");
                     let doc = generarDocumento(localData, hora);
                     pdfView.innerHTML = markdownToHTML(doc);
                     generateBtn.innerHTML = "Generar Documento";
                     return;
                 }
+
+                // SI NO ESTA OFFLINE, USAMOS PROXY SECUNDARIO (corsproxy.io es mas confiable)
+                const parts = fecha.split('-');
+                let evDateDay = parts ? parseInt(parts[2], 10) : 9;
+                let targetUrl = encodeURIComponent(`https://arquidiocesisgdl.org/lectura_dia${evDateDay}.php`);
+                let proxyUrl = `https://corsproxy.io/?${targetUrl}`;
 
                 fetch(proxyUrl)
                     .then(r => r.json())
@@ -132,35 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         // EXTRACTOR PROFUNDO (EL JEFE FINAL)
                         if (region.includes('us_')) {
                             // 1. Título
-                            let metaTitle = htmlDoc.querySelector('meta[property="og:title"]');
-                            if (metaTitle) tituloFiesta = metaTitle.content.split('|')[0].trim().toUpperCase();
-                            
-                            // 2. Lecturas Completas
-                            let verses = htmlDoc.querySelectorAll('.b-verse');
-                            if (verses && verses.length > 0) {
-                                usccbReadings = { r1: "", r1_c: "", salmo: "", salmo_c: "", gospel: "", gospel_c: "" };
-                                verses.forEach((v, index) => {
-                                    let hEl = v.querySelector('h3') || v.querySelector('h2') || v.querySelector('h4');
-                                    let hText = hEl ? hEl.innerText.trim() : `Part ${index}`;
-                                    
-                                    let textC = "";
-                                    let contentB = v.querySelector('.content-body');
-                                    if(contentB) {
-                                        contentB.querySelectorAll('p').forEach(p => textC += p.innerText.trim() + "\n\n");
-                                    }
-                                    
-                                    let lowerH = hText.toLowerCase();
-                                    if((lowerH.includes('reading') || lowerH.includes('lectura')) && !usccbReadings.r1) { 
-                                        usccbReadings.r1 = textC; usccbReadings.r1_c = hText; 
-                                    } else if (lowerH.includes('psalm') || lowerH.includes('salmo')) { 
-                                        usccbReadings.salmo = textC; usccbReadings.salmo_c = hText; 
-                                    } else if (lowerH.includes('gospel') || lowerH.includes('evangelio')) { 
-                                        usccbReadings.gospel = textC; usccbReadings.gospel_c = hText; 
-                                    }
-                                });
-                            }
-                        } else {
-                            // Mex extractor Arquidiocesis GDL (Regex Block)
+                        let tituloFiesta = "FERIA / MISA DIARIA";
+                        let usccbReadings = null;
+                        
+                        // Mex extractor Arquidiocesis GDL (Regex Block)
                             let textDump = "";
                             htmlDoc.body.childNodes.forEach(n => {
                                 if(n.nodeType === 3) textDump += n.textContent.trim() + "\n";
@@ -252,7 +218,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }); // Simulate network load ended, we use real network!
     }); // CLOSE generateBtn.addEventListener
 
-    function formatLectura(texto) { return texto; }
+    function formatLectura(texto) {
+        if (!texto || texto.length < 50) return texto;
+        // Si ya viene separado por párrafos (Offline db), lo respetamos
+        if (texto.includes('\n\n')) return texto;
+        
+        // Si no trae saltos (scraped), cortamos usando expresiones regulares para oraciones.
+        // Hacemos párrafos cada ~2 oraciones para facilitar proclamación
+        let sentences = texto.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+        let result = "";
+        for(let i = 0; i < sentences.length; i++) {
+            result += sentences[i] + " ";
+            if (i > 0 && i % 2 === 0) result += "\n\n";
+        }
+        return result.trim();
+    }
 
     function linkCanto(nombre) {
         if(nombre.includes('Silencio') || nombre.includes('Salida sin canto')) return nombre;
@@ -383,10 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `### I. RITOS INICIALES\n\n`;
             out += `**1. Canto de Entrada:** *${cantos.entrada}*\n\n`;
             
-            let antEnt = data.antifona_entrada || "Vengan, benditos de mi Padre...";
+            let antEnt = data.antifona_entrada || "Vengan, benditos de mi Padre, reciban en herencia el reino preparado para ustedes desde la creación del mundo.";
             out += `**2. Antífona de Entrada**\n**Sacerdote:** ${antEnt}\n\n`;
             
-            let ritoPen = data.rito_penitencial || "Yo confieso ante Dios todopoderoso...";
+            let ritoPen = data.rito_penitencial || "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.";
             out += `**3. Rito Penitencial**\n**Sacerdote:** Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados.\n**Asamblea:** ${ritoPen}\n**Sacerdote:** Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.\n**Asamblea:** Amén.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n**Sacerdote:** Cristo, ten piedad.\n**Asamblea:** Cristo, ten piedad.\n**Sacerdote:** Señor, ten piedad.\n**Asamblea:** Señor, ten piedad.\n\n`;
             
             // II. SALMODIA INTEGRADA
@@ -430,50 +410,51 @@ document.addEventListener('DOMContentLoaded', () => {
             // III. CONCLUSION DE RITOS INICIALES
             out += `-----\n\n### III. CONCLUSIÓN DE RITOS INICIALES\n\n`;
             if (data.gloria) {
-                out += `**7. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor...\n\n`;
+                out += `**7. Gloria**\n**Asamblea:** Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.\n\n`;
             }
             
-            let colecta = data.oracion_colecta || "Dios nuestro, que nos has reunido...";
+            let colecta = data.oracion_colecta || "Dios todopoderoso y eterno, aumenta en nosotros la fe, la esperanza y la caridad, y para que consigamos lo que nos prometes, ayúdanos a amar lo que nos mandas. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos.";
             out += `**8. Oración Colecta**\n**Sacerdote:** Oremos. ${colecta}\n**Asamblea:** Amén.\n\n`;
             
             // IV. LITURGIA DE LA PALABRA
             out += `-----\n\n### IV. LITURGIA DE LA PALABRA\n\n`;
             let lp = data.liturgia_palabra || {};
             let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[Lectura no disponible]" };
-            out += `**9. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${r1.texto}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+            out += `**9. Primera Lectura** (${r1.cita})\n**Lector:** Lectura.\n\n${formatLectura(r1.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
             
             let sr = lp.salmo_responsorial || { cita: "Salmo", respuesta: "El Señor es mi pastor.", texto: "El Señor es mi pastor, nada me falta." };
             out += `**10. Salmo Responsorial** (${sr.cita})\n**Asamblea:** ${sr.respuesta}\n\n`;
-            sr.texto.split("\n\n").forEach(estrofa => {
-                out += `**Lector:**\n${estrofa}\n\n**Asamblea:** ${sr.respuesta}\n\n`;
+            let txtSalmo = formatLectura(sr.texto);
+            txtSalmo.split("\n\n").forEach(estrofa => {
+                if(estrofa.trim().length > 0) out += `**Lector:**\n${estrofa}\n\n**Asamblea:** ${sr.respuesta}\n\n`;
             });
             
             if (lp.segunda_lectura) {
-                out += `**11. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${lp.segunda_lectura.texto}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
+                out += `**11. Segunda Lectura** (${lp.segunda_lectura.cita})\n**Lector:** Lectura.\n\n${formatLectura(lp.segunda_lectura.texto)}\n\n**Lector:** Palabra de Dios.\n**Asamblea:** Te alabamos, Señor.\n\n`;
             }
             
             let aclv = lp.aclamacion_evangelio || "Aleluya, aleluya.";
             out += `**12. Aclamación antes del Evangelio**\n**Asamblea:** ${aclv}\n\n`;
             
             let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
-            out += `**13. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${ev.texto}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
+            out += `**13. Evangelio** (${ev.cita})\n**Sacerdote:** El Señor esté con ustedes.\n**Asamblea:** Y con tu espíritu.\n**Sacerdote:** Lectura del santo Evangelio.\n**Asamblea:** Gloria a ti, Señor.\n\n${formatLectura(ev.texto)}\n\n**Sacerdote:** Palabra del Señor.\n**Asamblea:** Gloria a ti, Señor Jesús.\n\n`;
             
-            let preces = lp.preces || (data.laudes ? data.laudes.preces : "Te pedimos, Señor, escucha nuestra oración.");
-            out += `**14. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo... Amén.\n\n`;
+            let preces = lp.preces || (data.laudes ? data.laudes.preces : "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.");
+            out += `**14. Oración de los Fieles**\n**Sacerdote:** A Dios Padre, dirijamos nuestra súplica:\n**Asamblea:** Te rogamos, óyenos.\n\n${preces}\n\n**Sacerdote:** Escucha Padre nuestras oraciones.\n**Asamblea:** Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.\n\n`;
             
             // V. LITURGIA EUCARISTICA
             out += `-----\n\n### V. LITURGIA EUCARÍSTICA\n\n`;
             out += `**15. Canto de Ofertorio:** *${cantos.ofertorio}*\n\n`;
             let le = data.liturgia_eucaristica || {};
-            let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo...";
+            let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo, y concédenos que este sacrificio nos alcance la gracia que te pedimos. Por Jesucristo nuestro Señor.";
             out += `**16. Oración sobre las Ofrendas**\n**Sacerdote:** ${ofrendas}\n**Asamblea:** Amén.\n\n`;
             
-            let antc = le.antifona_comunion || "Acerca tu mano...";
+            let antc = le.antifona_comunion || "Acerca tu mano, trae tu dedo y explora mis llagas; y no seas incrédulo, sino creyente.";
             out += `**17. Antífona de la Comunión**\n**Sacerdote:** ${antc}\n\n`;
             
             out += `**18. Canto de Comunión:** *${cantos.comunion}*\n\n`;
             
-            let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso...";
+            let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.";
             out += `**19. Oración después de la Comunión**\n**Sacerdote:** Oremos. ${despues}\n**Asamblea:** Amén.\n\n`;
             
             // VI. RITO DE CONCLUSION
