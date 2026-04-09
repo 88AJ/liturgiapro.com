@@ -411,16 +411,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             out += `\n**${lang.lit_palabra}**\n\n`;
-            out += `**${lang.primera_lectura} (${data.liturgia_palabra.primera_lectura.cita}):**\n${formatLectura(data.liturgia_palabra.primera_lectura.texto)}\n\n`;
-            out += `**${lang.salmo}:**\n**${lang.asamblea}:** ${data.liturgia_palabra.salmo_responsorial.respuesta}\n\n`;
-            out += `**${lang.evangelio} (${data.liturgia_palabra.evangelio.cita}):**\n${formatLectura(data.liturgia_palabra.evangelio.texto)}\n\n`;
+            let r1Cita = data.liturgia_palabra?.primera_lectura?.cita || "Primera Lectura";
+            let r1Texto = data.liturgia_palabra?.primera_lectura?.texto || "[No hay lecturas cargadas para este día en la Bóveda]";
+            let salmoResp = data.liturgia_palabra?.salmo_responsorial?.respuesta || "[... Salmo ...]";
+            let evCita = data.liturgia_palabra?.evangelio?.cita || "Evangelio";
+            let evTexto = data.liturgia_palabra?.evangelio?.texto || "[No hay evangelio cargado para este día en la Bóveda]";
+            
+            out += `**${lang.primera_lectura} (${r1Cita}):**\n${formatLectura(r1Texto)}\n\n`;
+            out += `**${lang.salmo}:**\n**${lang.asamblea}:** ${salmoResp}\n\n`;
+            out += `**${lang.evangelio} (${evCita}):**\n${formatLectura(evTexto)}\n\n`;
+
             
             if (chkEuca) {
                 out += `\n**${lang.lit_euca}**\n\n`;
                 out += `🎵 **${lang.ofertorio}:** *${cantos.ofertorio}*\n\n`;
-                out += `**${lang.sobre_ofrendas}:**\n**${lang.sacerdote}:** ${data.liturgia_eucaristica.oracion_ofrendas}\n\n`;
+                let oracionOfrendas = data.liturgia_eucaristica?.oracion_ofrendas || "[Oración sobre las ofrendas del día]";
+                out += `**${lang.sobre_ofrendas}:**\n**${lang.sacerdote}:** ${oracionOfrendas}\n\n`;
                 out += `🎵 **${lang.comunion}:** *${cantos.comunion}*\n\n`;
-                out += `**${lang.despues_comunion}:**\n**${lang.sacerdote}:** ${isEn ? 'Let us pray.' : 'Oremos.'} ${data.liturgia_eucaristica.oracion_despues_comunion}\n\n`;
+                let oracionDespues = data.liturgia_eucaristica?.oracion_despues_comunion || "[Oración después de la comunión]";
+                out += `**${lang.despues_comunion}:**\n**${lang.sacerdote}:** ${isEn ? 'Let us pray.' : 'Oremos.'} ${oracionDespues}\n\n`;
                 out += `🎵 **${lang.salida}:** *${cantos.salida}*\n\n`;
             }
         }
