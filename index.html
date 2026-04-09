@@ -36,9 +36,9 @@
             <nav class="saas-sidebar">
                 <div class="logo-small">Liturgia <span>PRO</span></div>
                 
-                <div class="nav-category">SACRAMENTOS</div>
+                <div class="nav-category">LECTURAS</div>
                 <ul class="nav-links">
-                    <li class="active"><span class="icon">☩</span> Misa Diaria / Dominical</li>
+                    <li class="active"><span class="icon">☩</span> Misa Diaria</li>
                     <li><span class="icon">☩</span> Bautismo</li>
                     <li><span class="icon">☩</span> Confirmación</li>
                     <li><span class="icon">☩</span> Reconciliación</li>
@@ -49,30 +49,22 @@
 
                 <div class="nav-category" style="margin-top: 15px;">RITUALES</div>
                 <ul class="nav-links">
-                    <li><span class="icon">X</span> XV Años</li>
-                    <li><span class="icon">+</span> Exequias</li>
+                    <li><span class="icon">☩</span> XV Años</li>
+                    <li><span class="icon">☩</span> Exequias</li>
                 </ul>
 
                 <div class="nav-category" style="margin-top: 15px;">PASTORAL</div>
                 <ul class="nav-links">
-                    <li id="nav-bulletin"><span class="icon">G</span> Boletín PRO</li>
+                    <li id="nav-bulletin"><span class="icon">☩</span> Boletín PRO</li>
                 </ul>
             </nav>
 
             <!-- Main Content Area -->
             <main class="saas-main">
-                <header class="saas-header">
-                    <h2>Nueva Hoja Litúrgica</h2>
-                    <div class="header-actions">
-                        <button class="btn-primary" id="generar-pdf">Exportar a PDF</button>
-                    </div>
-                </header>
-
                 <div class="workspace">
                     <!-- Configurator Panel -->
                     <div class="config-panel">
                         <h3>Asistente de Generación</h3>
-                        <p class="subtitle">Selecciona los parámetros o <a href="#">escríbele a la IA</a></p>
                         
                         <div id="liturgia-form">
                             <div class="form-grid">
@@ -113,14 +105,7 @@
                                         <option value="ninguno" selected>Ninguno</option>
                                     </select>
                                 </div>
-                                <div class="input-group" style="grid-column: 1 / -1;">
-                                    <label>Opciones Modulares</label>
-                                    <div style="display: flex; gap: 15px; margin-top: 5px; font-size: 0.85rem;">
-                                        <label><input type="checkbox" id="chk-intro" checked> Introducción</label>
-                                        <label><input type="checkbox" id="chk-lecturas-solo"> Formato 'Solo Lecturas'</label>
-                                        <label><input type="checkbox" id="chk-eucaristia" checked> Eucaristía</label>
-                                    </div>
-                                </div>
+
                             </div>
 
 
