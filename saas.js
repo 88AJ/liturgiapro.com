@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let sNum = 1;
             
             // RITOS INICIALES
-            out += `### RITOS INICIALES\n\n`;
+            out += `### RITOS INICIALES\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">(De pie)</p>\n\n`;
             out += `**${sNum++}. Canto de Entrada:** *${cantos.entrada}*\n\n`;
             
             let antEnt = data.antifona_entrada || "Vengan, benditos de mi Padre, reciban en herencia el reino preparado para ustedes desde la creación del mundo.";
@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<div class="missal-block"><p class="missal-heading">Oración Colecta</p><p class="missal-paragraph">Oremos. ${colecta}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
             
             // LITURGIA DE LA PALABRA
-            out += `-----\n\n### LITURGIA DE LA PALABRA\n\n`;
+            out += `-----\n\n### LITURGIA DE LA PALABRA\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">(Sentados)</p>\n\n`;
             let lp = data.liturgia_palabra || {};
             let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[Lectura no disponible]" };
             out += `<div class="missal-block">`;
@@ -490,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             out += `<div class="missal-block">`;
+            out += `<p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(De pie)</p>\n`;
             out += `<p class="missal-heading">Aclamación antes del Evangelio</p>\n`;
             out += `<p class="missal-paragraph" style="font-weight:bold;">${aclv.replace(/\n/g, '<br>')}</p>\n`;
             out += `</div>\n\n`;
@@ -501,10 +502,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `${formatLectura(ev.texto)}\n`;
             out += `<p class="missal-rubric" style="margin-top:10px;">Palabra del Señor.</p>\n<p class="missal-rubric">R. Gloria a ti, Señor Jesús.</p>\n</div>\n\n`;
             
-            out += `<div class="missal-block"><p class="missal-heading">Homilía</p><p class="missal-rubric">El sacerdote pronuncia la homilía.</p></div>\n\n`;
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(Sentados)</p><p class="missal-heading">Homilía</p><p class="missal-rubric">El sacerdote pronuncia la homilía.</p></div>\n\n`;
             
             if (lp.segunda_lectura || aplicaGloria) {
-                out += `<div class="missal-block"><p class="missal-heading">Profesión de Fe</p><p class="missal-rubric" style="margin-bottom:0;">Se dice el Credo.</p></div>\n\n`;
+                out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(De pie)</p><p class="missal-heading">Profesión de Fe</p><p class="missal-rubric" style="margin-bottom:0;">Se dice el Credo.</p></div>\n\n`;
             }
             
             let precesOficio = "";
@@ -512,15 +513,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hora === "visperas" && data.visperas) precesOficio = data.visperas.preces;
             let preces = lp.preces || precesOficio || "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.";
             
-            out += `<div class="missal-block"><p class="missal-heading">Oración de los Fieles</p><p class="missal-rubric">A Dios Padre, dirijamos nuestra súplica:</p><p class="missal-rubric">R. Te rogamos, óyenos.</p><p class="missal-paragraph">${preces.replace(/\n/g, '<br>')}</p><p class="missal-rubric">Escucha Padre nuestras oraciones.</p><p class="missal-rubric">R. Padre nuestro, que estás en el cielo...</p></div>\n\n`;
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(De pie)</p><p class="missal-heading">Oración de los Fieles</p><p class="missal-rubric">A Dios Padre, dirijamos nuestra súplica:</p><p class="missal-rubric">R. Te rogamos, óyenos.</p><p class="missal-paragraph">${preces.replace(/\n/g, '<br>')}</p><p class="missal-rubric">Escucha Padre nuestras oraciones.</p><p class="missal-rubric">R. Padre nuestro, que estás en el cielo...</p></div>\n\n`;
             
             // LITURGIA EUCARISTICA
-            out += `-----\n\n### LITURGIA EUCARÍSTICA\n\n`;
+            out += `-----\n\n### LITURGIA EUCARÍSTICA\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">(Sentados)</p>\n\n`;
             out += `<div class="missal-block"><p class="missal-heading">Canto de Ofertorio</p><p class="missal-citation">${cantos.ofertorio}</p></div>\n\n`;
             
             let le = data.liturgia_eucaristica || {};
             let ofrendas = le.oracion_ofrendas || "Recibe, Señor, las ofrendas de tu pueblo, y concédenos que este sacrificio nos alcance la gracia que te pedimos. Por Jesucristo nuestro Señor.";
-            out += `<div class="missal-block"><p class="missal-heading">Oración sobre las Ofrendas</p><p class="missal-paragraph">${ofrendas}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(De pie)</p><p class="missal-heading">Oración sobre las Ofrendas</p><p class="missal-paragraph">${ofrendas}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
             
             let antc = le.antifona_comunion || "Acerca tu mano, trae tu dedo y explora mis llagas; y no seas incrédulo, sino creyente.";
             out += `<div class="missal-block"><p class="missal-heading">Antífona de la Comunión</p><p class="missal-paragraph">${antc}</p></div>\n\n`;
@@ -528,10 +529,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<div class="missal-block"><p class="missal-heading">Canto de Comunión</p><p class="missal-citation">${cantos.comunion}</p></div>\n\n`;
             
             let despues = le.oracion_despues_comunion || "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.";
-            out += `<div class="missal-block"><p class="missal-heading">Oración después de la Comunión</p><p class="missal-paragraph">Oremos. ${despues}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(De pie)</p><p class="missal-heading">Oración después de la Comunión</p><p class="missal-paragraph">Oremos. ${despues}</p><p class="missal-rubric">R. Amén.</p></div>\n\n`;
             
             // RITO DE CONCLUSION
-            out += `-----\n\n### RITO DE CONCLUSIÓN\n\n`;
+            out += `-----\n\n### RITO DE CONCLUSIÓN\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">(De pie)</p>\n\n`;
             out += `<div class="missal-block"><p class="missal-heading">Canto de Salida</p><p class="missal-citation">${cantos.salida}</p></div>\n\n`;
         }
         return out;
