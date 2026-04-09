@@ -182,7 +182,7 @@ window.liturgiaData = {
   },
   "2026-04-12": {
     "color": "Blanco",
-    "tiempo_liturgico": "II DOMINGO DE PASCUA (CICLO A)",
+    "tiempo_liturgico": "II Domingo de Pascua (De la Divina Misericordia)",
     "antifona_entrada": "Como niños recién nacidos, deseen la leche pura del espíritu, para que crezcan y se salven. Aleluya.",
     "rito_penitencial": "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a Santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.",
     "gloria": true,
