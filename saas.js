@@ -464,17 +464,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${r1.monicion}</p>\n`;
             }
             out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
-            out += `<p class="missal-heading">${isEn ? "First Reading" : "Primera Lectura"}</p>\n`;
             
             let versiculos_r1 = isEn ? r1.cita_en : (r1.cita_versiculos || r1.cita);
             let formula_r1 = isEn ? r1.cita_en : (r1.cita_formula || r1.cita);
             
-            // Si ya logramos separar, imprimimos los versículos en rojo a la derecha
             if(r1.cita_versiculos && r1.cita_formula) {
+                out += `<p class="missal-heading" style="margin:0;">${isEn ? "First Reading" : "Primera Lectura"}</p>\n`;
                 out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${versiculos_r1}</p>\n</div>\n`;
-                out += `<p class="missal-citation">${formula_r1}</p>\n`;
+                out += `<p class="missal-citation" style="font-weight:bold; margin-top:4px;">${formula_r1}</p>\n`;
             } else {
-                out += `</div>\n<p class="missal-citation">${isEn ? "From:" : ""} ${formula_r1}</p>\n`;
+                out += `<p class="missal-heading" style="margin:0;">${isEn ? "First Reading" : "Primera Lectura"}</p>\n`;
+                out += `</div>\n<p class="missal-citation" style="font-weight:bold; margin-top:4px;">${isEn ? "From:" : ""} ${formula_r1}</p>\n`;
             }
             let r1Texto = isEn ? (r1.texto_en || "[English translation pending ingestion]") : r1.texto;
             out += `${formatLectura(r1Texto)}\n`;
@@ -482,9 +482,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let sr = lp.salmo_responsorial || { cita: isEn ? "Psalm" : "Salmo", respuesta: isEn ? "The Lord is my shepherd." : "El Señor es mi pastor.", texto: isEn ? "The Lord is my shepherd, there is nothing I shall want." : "El Señor es mi pastor, nada me falta." };
             out += `<div class="missal-block">`;
-            out += `<div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">`;
+            out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
             out += `<p class="missal-heading" style="margin:0;">${isEn ? "Responsorial Psalm" : "Salmo Responsorial"}</p>\n`;
-            out += `<p class="missal-citation" style="margin:0;">${isEn ? (sr.cita_en || sr.cita) : sr.cita}</p>\n</div>`;
+            out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${isEn ? (sr.cita_en || sr.cita) : sr.cita}</p>\n</div>\n`;
             let srResp = isEn ? (sr.respuesta_en || "[Pending]") : sr.respuesta;
             out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;">R. ${srResp}</p>\n`;
             let srTxt = isEn ? (sr.texto_en || "[English translation pending ingestion]") : sr.texto;
@@ -498,19 +498,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 let r2 = lp.segunda_lectura;
                 out += `<div class="missal-block">`;
                 if (r2.monicion) {
-                    out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${r2.monicion}</p>`;
+                    out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${r2.monicion}</p>\n`;
                 }
                 out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
-                out += `<p class="missal-heading">${isEn ? "Second Reading" : "Segunda Lectura"}</p>\n`;
                 
                 let versiculos_r2 = isEn ? r2.cita_en : (r2.cita_versiculos || r2.cita);
                 let formula_r2 = isEn ? r2.cita_en : (r2.cita_formula || r2.cita);
                 
                 if(r2.cita_versiculos && r2.cita_formula) {
+                    out += `<p class="missal-heading" style="margin:0;">${isEn ? "Second Reading" : "Segunda Lectura"}</p>\n`;
                     out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${versiculos_r2}</p>\n</div>\n`;
-                    out += `<p class="missal-citation">${formula_r2}</p>\n`;
+                    out += `<p class="missal-citation" style="font-weight:bold; margin-top:4px;">${formula_r2}</p>\n`;
                 } else {
-                    out += `</div>\n<p class="missal-citation">${isEn ? "From:" : ""} ${formula_r2}</p>\n`;
+                    out += `<p class="missal-heading" style="margin:0;">${isEn ? "Second Reading" : "Segunda Lectura"}</p>\n`;
+                    out += `</div>\n<p class="missal-citation" style="font-weight:bold; margin-top:4px;">${formula_r2}</p>\n`;
                 }
                 let r2Texto = isEn ? (lp.segunda_lectura.texto_en || "[English translation pending ingestion]") : lp.segunda_lectura.texto;
                 out += `${formatLectura(r2Texto)}\n`;
@@ -544,16 +545,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${ev.monicion}</p>\n`;
             }
             out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
-            out += `<p class="missal-heading">${isEn ? "Gospel" : "Evangelio"}</p>\n`;
             
             let versiculos_ev = isEn ? ev.cita_en : (ev.cita_versiculos || ev.cita);
             let formula_ev = isEn ? ev.cita_en : (ev.cita_formula || ev.cita);
             
             if(ev.cita_versiculos && ev.cita_formula) {
+                out += `<p class="missal-heading" style="margin:0;">${isEn ? "Gospel" : "Evangelio"}</p>\n`;
                 out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${versiculos_ev}</p>\n</div>\n`;
-                out += `<p class="missal-citation"><span class="cross-mark">☩</span> ${formula_ev}</p>\n`;
+                out += `<p class="missal-citation" style="font-weight:bold; margin-top:4px;"><span class="cross-mark">☩</span> ${formula_ev}</p>\n`;
             } else {
-                out += `</div>\n<p class="missal-citation"><span class="cross-mark">☩</span> ${isEn ? "A reading from the holy Gospel according to:" : ""} ${formula_ev}</p>\n`;
+                out += `<p class="missal-heading" style="margin:0;">${isEn ? "Gospel" : "Evangelio"}</p>\n`;
+                out += `</div>\n<p class="missal-citation" style="font-weight:bold; margin-top:4px;"><span class="cross-mark">☩</span> ${formula_ev}</p>\n`;
             }
             let evTexto = isEn ? (ev.texto_en || "[English translation pending ingestion]") : ev.texto;
             out += `${formatLectura(evTexto)}\n`;
