@@ -148,6 +148,95 @@ def extract_usccb_data(target_date):
             
     return data_en
 
+def extract_horas_data(target_date, tipo="laudes"):
+    date_str = target_date.strftime('%d-%m-%Y')
+    url = f"https://www.evangelizacion.org.mx/lecturas/{tipo}/{date_str}"
+    
+    scraper = cloudscraper.create_scraper()
+    print(f"Scraping CEM {tipo.capitalize()} para {date_str}...")
+    try:
+        response = scraper.get(url, timeout=15)
+        if response.status_code != 200:
+            return None
+    except Exception as e:
+        return None
+        
+    soup = BeautifulSoup(response.text, 'html.parser')
+    lines = [l.strip() for l in soup.get_text('\n').split('\n') if l.strip()]
+    
+    state = None
+    current_text = []
+    oficio = {}
+    
+    for line in lines:
+        if line in ["Salmodia", "Lectura Breve", "Responsorio Breve", "Cántico Evangélico", "Oración", "Preces", "Conclusión"]:
+            if state:
+                oficio[state] = "\n".join(current_text)
+            state = line
+            current_text = []
+        elif state:
+            current_text.append(line)
+            
+    if state:
+        oficio[state] = "\n".join(current_text)
+        
+    if not oficio:
+        return None
+        
+    # Construir objeto estructurado
+    data = {}
+    
+    # 1. Salmodia
+    salmodia_text = oficio.get("Salmodia", "")
+    salmos = re.split(r'Antífona \d+:', salmodia_text)
+    if len(salmos) == 4:
+        for idx in range(1, 4):
+            partes = [p.strip() for p in salmos[idx].split('\n') if p.strip()]
+            antifona = partes[0] if len(partes) > 0 else ""
+            texto = "\n\n".join(partes[1:])
+            
+            node_name = f"salmo{idx}"
+            if tipo == "laudes":
+                if idx == 2: node_name = "cantico_at"
+                if idx == 3: node_name = "salmo2" # Misa con Laudes only uses salmo1, cantico_at, salmo2
+            elif tipo == "visperas":
+                if idx == 3: node_name = "cantico_nt"
+
+            data[node_name] = {
+                "antifona": antifona,
+                "texto": texto
+            }
+            
+    # 2. Lectura Breve
+    lb_text = oficio.get("Lectura Breve", "")
+    lb_parts = [p.strip() for p in lb_text.split('\n') if p.strip()]
+    if lb_parts:
+        data["lectura_breve"] = {
+            "cita": lb_parts[0],
+            "texto": "\n\n".join(lb_parts[1:])
+        }
+        
+    # 3. Responsorio Breve
+    data["responsorio_breve"] = oficio.get("Responsorio Breve", "").strip()
+    
+    # 4. Cántico Evangélico
+    ce_text = oficio.get("Cántico Evangélico", "")
+    ce_parts = ce_text.split('Antífona\n')
+    if len(ce_parts) > 1:
+        ce_sub = ce_parts[1].split('Cántico de')
+        antifona = ce_sub[0].strip()
+        texto = ""
+        if len(ce_sub) > 1:
+            # Drop the subtitle itself
+            texto_lines = "\n".join("Cántico de" + ce_sub[1]).split('\n')
+            texto = "\n\n".join([l for l in texto_lines[1:] if l.strip()])
+        data["cantico_evangelico"] = {
+            "antifona": antifona,
+            "texto": texto
+        }
+    
+    return data
+
 def execute_scraper(start_date_str, end_date_str):
     start = datetime.strptime(start_date_str, "%Y-%m-%d")
     end = datetime.strptime(end_date_str, "%Y-%m-%d")
@@ -196,6 +285,17 @@ def execute_scraper(start_date_str, end_date_str):
                 db[date_key]['liturgia_palabra'][key].update(data_es[key])
             if key in data_en:
                 db[date_key]['liturgia_palabra'][key].update(data_en[key])
+                
+        # Liturgia de las Horas
+        laudes_data = extract_horas_data(current, "laudes")
+        if laudes_data:
+            db[date_key]['laudes'] = laudes_data
+            print("✅ Laudes extraídas y acopladas.")
+        
+        visperas_data = extract_horas_data(current, "visperas")
+        if visperas_data:
+            db[date_key]['visperas'] = visperas_data
+            print("✅ Vísperas extraídas y acopladas.")
                 
         current += timedelta(days=1)
         
