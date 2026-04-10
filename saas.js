@@ -452,27 +452,31 @@ document.addEventListener('DOMContentLoaded', () => {
             let r1 = lp.primera_lectura || { cita: isEn ? "First Reading" : "Primera Lectura", texto: isEn ? "[Reading not available]" : "[Lectura no disponible]" };
             out += `<div class="missal-block">`;
             out += `<p class="missal-heading">${isEn ? "First Reading" : "Primera Lectura"}</p>\n`;
-            out += `<p class="missal-citation">${isEn ? "From:" : "De:"} ${r1.cita}</p>\n`;
-            out += `${formatLectura(r1.texto)}\n`;
+            out += `<p class="missal-citation">${isEn ? "From:" : "De:"} ${isEn ? (r1.cita_en || r1.cita) : r1.cita}</p>\n`;
+            let r1Texto = isEn ? (r1.texto_en || "[English translation pending ingestion]") : r1.texto;
+            out += `${formatLectura(r1Texto)}\n`;
             out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The word of the Lord." : "Palabra de Dios."}</p>\n<p class="missal-rubric">R. ${isEn ? "Thanks be to God." : "Te alabamos, Señor."}</p>\n</div>\n\n`;
             
             let sr = lp.salmo_responsorial || { cita: isEn ? "Psalm" : "Salmo", respuesta: isEn ? "The Lord is my shepherd." : "El Señor es mi pastor.", texto: isEn ? "The Lord is my shepherd, there is nothing I shall want." : "El Señor es mi pastor, nada me falta." };
             out += `<div class="missal-block">`;
             out += `<div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">`;
             out += `<p class="missal-heading" style="margin:0;">${isEn ? "Responsorial Psalm" : "Salmo Responsorial"}</p>\n`;
-            out += `<p class="missal-citation" style="margin:0;">${sr.cita}</p>\n</div>`;
-            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;">R. ${sr.respuesta}</p>\n`;
-            sr.texto.split("\n\n").forEach(estrofa => {
+            out += `<p class="missal-citation" style="margin:0;">${isEn ? (sr.cita_en || sr.cita) : sr.cita}</p>\n</div>`;
+            let srResp = isEn ? (sr.respuesta_en || "[Pending]") : sr.respuesta;
+            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;">R. ${srResp}</p>\n`;
+            let srTxt = isEn ? (sr.texto_en || "[English translation pending ingestion]") : sr.texto;
+            srTxt.split("\n\n").forEach(estrofa => {
                 let cl = estrofa.trim().replace(/\n/g, '<br>');
-                if(cl.length > 0) out += `<p class="missal-paragraph" style="margin-bottom:8px;">${cl}</p><p class="missal-rubric" style="margin-bottom:12px;">R. ${sr.respuesta}</p>\n`;
+                if(cl.length > 0) out += `<p class="missal-paragraph" style="margin-bottom:8px;">${cl}</p><p class="missal-rubric" style="margin-bottom:12px;">R. ${srResp}</p>\n`;
             });
             out += `</div>\n\n`;
             
             if (lp.segunda_lectura) {
                 out += `<div class="missal-block">`;
                 out += `<p class="missal-heading">${isEn ? "Second Reading" : "Segunda Lectura"}</p>\n`;
-                out += `<p class="missal-citation">${isEn ? "From:" : "De:"} ${lp.segunda_lectura.cita}</p>\n`;
-                out += `${formatLectura(lp.segunda_lectura.texto)}\n`;
+                out += `<p class="missal-citation">${isEn ? "From:" : "De:"} ${isEn ? (lp.segunda_lectura.cita_en || lp.segunda_lectura.cita) : lp.segunda_lectura.cita}</p>\n`;
+                let r2Texto = isEn ? (lp.segunda_lectura.texto_en || "[English translation pending ingestion]") : lp.segunda_lectura.texto;
+                out += `${formatLectura(r2Texto)}\n`;
                 out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The word of the Lord." : "Palabra de Dios."}</p>\n<p class="missal-rubric">R. ${isEn ? "Thanks be to God." : "Te alabamos, Señor."}</p>\n</div>\n\n`;
             }
             
@@ -480,7 +484,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<div class="missal-block">`;
                 out += `<p class="missal-heading">${isEn ? "Sequence" : "Secuencia"}</p>\n`;
                 out += `<p class="missal-citation">${isEn ? "Optional" : "Opcional"}</p>\n`;
-                out += `${formatLectura(lp.secuencia)}\n`;
+                let secTexto = isEn ? (lp.secuencia_en || "[English translation pending ingestion]") : lp.secuencia;
+                out += `${formatLectura(secTexto)}\n`;
                 out += `</div>\n\n`;
             }
             
@@ -499,8 +504,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let ev = lp.evangelio || { cita: isEn ? "Gospel" : "Evangelio", texto: isEn ? "[Gospel not available]" : "[Evangelio no disponible]" };
             out += `<div class="missal-block">`;
             out += `<p class="missal-heading">${isEn ? "Gospel" : "Evangelio"}</p>\n`;
-            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;"><span class="cross-mark">☩</span> ${isEn ? "A reading from the holy Gospel according to:" : "Del santo Evangelio según:"} ${ev.cita.replace(/Evangelio /i, '').replace(/[\s\n]*en la misa.*$/i, '')}</p>\n`;
-            out += `${formatLectura(ev.texto)}\n`;
+            let evCita = isEn ? (ev.cita_en || ev.cita) : ev.cita;
+            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;"><span class="cross-mark">☩</span> ${isEn ? "A reading from the holy Gospel according to:" : "Del santo Evangelio según:"} ${evCita.replace(/Evangelio /i, '').replace(/[\s\n]*en la misa.*$/i, '')}</p>\n`;
+            let evTexto = isEn ? (ev.texto_en || "[English translation pending ingestion]") : ev.texto;
+            out += `${formatLectura(evTexto)}\n`;
             out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The Gospel of the Lord." : "Palabra del Señor."}</p>\n<p class="missal-rubric">R. ${isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús."}</p>\n</div>\n\n`;
             
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Sit" : "Sentados"})</p><p class="missal-heading">${isEn ? "Homily" : "Homilía"}</p><p class="missal-rubric">${isEn ? "The priest gives the homily." : "El sacerdote pronuncia la homilía."}</p></div>\n\n`;
@@ -530,6 +537,20 @@ document.addEventListener('DOMContentLoaded', () => {
             let le = data.liturgia_eucaristica || {};
             let ofrendas = le.oracion_ofrendas || (isEn ? "Receive, O Lord, the offerings of your people..." : "Recibe, Señor, las ofrendas de tu pueblo, y concédenos que este sacrificio nos alcance la gracia que te pedimos. Por Jesucristo nuestro Señor.");
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Stand" : "De pie"})</p><p class="missal-heading">${isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas"}</p><p class="missal-paragraph">${ofrendas}</p><p class="missal-rubric">R. ${isEn ? "Amen." : "Amén."}</p></div>\n\n`;
+            
+            // ORDINARY OF THE MASS (EUCHARISTIC PRAYER)
+            out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Preface Dialogue" : "Diálogo del Prefacio"}</p>`;
+            out += `<p class="missal-rubric">V. ${isEn ? "The Lord be with you." : "El Señor esté con ustedes."}<br>R. ${isEn ? "And with your spirit." : "Y con tu espíritu."}<br>V. ${isEn ? "Lift up your hearts." : "Levantemos el corazón."}<br>R. ${isEn ? "We lift them up to the Lord." : "Lo tenemos levantado hacia el Señor."}<br>V. ${isEn ? "Let us give thanks to the Lord our God." : "Demos gracias al Señor, nuestro Dios."}<br>R. ${isEn ? "It is right and just." : "Es justo y necesario."}</p></div>\n\n`;
+            
+            out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Sanctus" : "Santo"}</p><p class="missal-paragraph" style="text-align:center;">${isEn ? "Holy, Holy, Holy Lord God of hosts.<br>Heaven and earth are full of your glory.<br>Hosanna in the highest.<br>Blessed is he who comes in the name of the Lord.<br>Hosanna in the highest." : "Santo, Santo, Santo es el Señor,<br>Dios del Universo.<br>Llenos están el cielo y la tierra de tu gloria.<br>Hosanna en el cielo.<br>Bendito el que viene en nombre del Señor.<br>Hosanna en el cielo."}</p></div>\n\n`;
+            
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Kneel" : "De rodillas"})</p><p class="missal-heading">${isEn ? "Eucharistic Prayer" : "Plegaria Eucarística"}</p><p class="missal-rubric">${isEn ? "The priest prays the Eucharistic Prayer. After the consecration:" : "El sacerdote pronuncia la Plegaria Eucarística. Tras la consagración:"}</p><p class="missal-rubric">V. ${isEn ? "The mystery of faith." : "Éste es el Sacramento de nuestra fe."}</p><p class="missal-rubric">R. ${isEn ? "We proclaim your Death, O Lord, and profess your Resurrection until you come again." : "Anunciamos tu muerte, proclamamos tu resurrección. ¡Ven, Señor Jesús!"}</p></div>\n\n`;
+            
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Stand" : "De pie"})</p><p class="missal-heading">${isEn ? "Communion Rite" : "Rito de la Comunión"}</p><p class="missal-paragraph" style="text-align:justify;">${isEn ? "Our Father, who art in heaven, hallowed be thy name; thy kingdom come, thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil." : "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal."}</p></div>\n\n`;
+            
+            out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Agnus Dei" : "Cordero de Dios"}</p><p class="missal-paragraph" style="text-align:center;">${isEn ? "Lamb of God, you take away the sins of the world, have mercy on us.<br>Lamb of God, you take away the sins of the world, have mercy on us.<br>Lamb of God, you take away the sins of the world, grant us peace." : "Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.<br>Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.<br>Cordero de Dios, que quitas el pecado del mundo, danos la paz."}</p></div>\n\n`;
+            
+            out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Kneel" : "De rodillas"})</p><p class="missal-heading">${isEn ? "Invitation to Communion" : "Invitación a la Comunión"}</p><p class="missal-rubric">V. ${isEn ? "Behold the Lamb of God, behold him who takes away the sins of the world. Blessed are those called to the supper of the Lamb." : "Este es el Cordero de Dios, que quita el pecado del mundo. Dichosos los invitados a la cena del Señor."}</p><p class="missal-rubric">R. ${isEn ? "Lord, I am not worthy that you should enter under my roof, but only say the word and my soul shall be healed." : "Señor, no soy digno de que entres en mi casa, pero una palabra tuya bastará para sanarme."}</p></div>\n\n`;
             
             let antc = le.antifona_comunion || (isEn ? "Bring your hand and feel the place of the nails, and do not be unbelieving but believe." : "Acerca tu mano, trae tu dedo y explora mis llagas; y no seas incrédulo, sino creyente.");
             out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Communion Antiphon" : "Antífona de la Comunión"}</p><p class="missal-paragraph">${antc}</p></div>\n\n`;
