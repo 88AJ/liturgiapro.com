@@ -569,9 +569,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Sit" : "Sentados"})</p><p class="missal-heading">${isEn ? "Homily" : "Homilía"}</p><p class="missal-rubric">${isEn ? "The priest gives the homily." : "El sacerdote pronuncia la homilía."}</p></div>\n\n`;
             
             if (data.reflexion_homiletica && !isEn) {
+                let refText = Array.isArray(data.reflexion_homiletica) ? data.reflexion_homiletica.join("<br><br>") : data.reflexion_homiletica.replace(/\n\n/g, '<br><br>');
                 out += `<div class="missal-block">\n`;
-                out += `<p class="missal-heading" style="font-size: 11pt; color:#444;">Ideas Homiléticas (Gemini AI)</p>\n`;
-                out += `<div class="missal-paragraph" style="font-style:italic; font-size:10pt;">${data.reflexion_homiletica.replace(/\n\n/g, '<br><br>')}</div>\n`;
+                out += `<p class="missal-heading" style="font-size: 11pt; color:#444;">Subsidio Homilético</p>\n`;
+                out += `<div class="missal-paragraph" style="font-style:italic; font-size:10pt;">${refText}</div>\n`;
                 out += `</div>\n\n`;
             }
             
