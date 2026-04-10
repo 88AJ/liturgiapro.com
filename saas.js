@@ -94,19 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // CEREBRO OFFLINE: Si ya procesamos el documento localmente, ejecutamos instantáneamente
                 let localData = liturgiaData[fecha];
-                if (localData && localData.liturgia_palabra && localData.liturgia_palabra.evangelio.texto.length > 50 && !localData.liturgia_palabra.evangelio.texto.includes("Placeholder Dinámico")) {
-                    console.log("Cerebro Offline Activo. Rendereando Data Pura.");
-                    let doc = generarDocumento(localData, hora);
-                    pdfView.innerHTML = markdownToHTML(doc);
-                    generateBtn.innerHTML = "Generar Documento";
+                let hasLocalReadings = localData?.liturgia_palabra?.evangelio?.texto?.length > 50 || localData?.liturgia_palabra?.evangelio?.texto_en?.length > 50;
+                let isPlaceholder = localData?.liturgia_palabra?.evangelio?.texto?.includes("Placeholder Dinámico");
+                
+                if (localData && hasLocalReadings && !isPlaceholder) {
+                    try {
+                        console.log("Cerebro Offline Activo. Rendereando Data Pura.");
+                        let doc = generarDocumento(localData, hora);
+                        pdfView.innerHTML = markdownToHTML(doc);
+                        generateBtn.innerHTML = "Generar Documento";
+                    } catch (e) {
+                        console.error("ERROR DE RENDER", e);
+                        pdfView.innerHTML = `<div style="color:red; padding:20px;"><h3>Error Crítico de Renderizado</h3><pre>${e.message}\n${e.stack}</pre></div>`;
+                        generateBtn.innerHTML = "Error";
+                    }
                     return;
                 }
 
-                // SI NO ESTA OFFLINE, USAMOS PROXY SECUNDARIO (corsproxy.io es mas confiable)
+                // SI NO ESTA OFFLINE, USAMOS PROXY SECUNDARIO (allorigins.win)
                 const parts = fecha.split('-');
                 let evDateDay = parts ? parseInt(parts[2], 10) : 9;
                 let targetUrl = encodeURIComponent(`https://arquidiocesisgdl.org/lectura_dia${evDateDay}.php`);
-                let proxyUrl = `https://corsproxy.io/?${targetUrl}`;
+                let proxyUrl = `https://api.allorigins.win/get?url=${targetUrl}`;
 
                 fetch(proxyUrl)
                     .then(r => r.json())
@@ -119,38 +128,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         let usccbReadings = null;
                         
                         // EXTRACTOR PROFUNDO (EL JEFE FINAL)
-                        if (region.includes('us_')) {
-                            // 1. Título
-                        let tituloFiesta = "FERIA / MISA DIARIA";
-                        let usccbReadings = null;
-                        
                         // Mex extractor Arquidiocesis GDL (Regex Block)
-                            let textDump = "";
-                            htmlDoc.body.childNodes.forEach(n => {
-                                if(n.nodeType === 3) textDump += n.textContent.trim() + "\n";
-                                else if(n.tagName === 'P') textDump += n.innerText.trim() + "\n";
-                                else if(n.tagName === 'BR') textDump += "\n";
-                            });
-                            
-                            // Cleanup space
-                            textDump = textDump.replace(/\n{3,}/g, '\n\n');
-                            
-                            // Extract title
-                            let mTitle = textDump.match(/([a-zA-Záéíóú]+\s+[a-zA-Záéíóú]+\s+Blanco|Verde|Morado|Rojo|OCTAVA.*?)(?:\n|MR p\.)/i);
-                            if (mTitle) tituloFiesta = mTitle[1].replace(/Blanco|Verde|Morado|Rojo/gi, '').trim().toUpperCase();
-                            else tituloFiesta = "FERIA / TIEMPO ORDINARIO";
+                        let textDump = "";
+                        htmlDoc.body.childNodes.forEach(n => {
+                            if(n.nodeType === 3) textDump += n.textContent.trim() + "\n";
+                            else if(n.tagName === 'P') textDump += n.innerText.trim() + "\n";
+                            else if(n.tagName === 'BR') textDump += "\n";
+                        });
+                        
+                        // Cleanup space
+                        textDump = textDump.replace(/\n{3,}/g, '\n\n');
+                        
+                        // Extract title
+                        let mTitle = textDump.match(/([a-zA-Záéíóú]+\s+[a-zA-Záéíóú]+\s+Blanco|Verde|Morado|Rojo|OCTAVA.*?)(?:\n|MR p\.)/i);
+                        if (mTitle) tituloFiesta = mTitle[1].replace(/Blanco|Verde|Morado|Rojo/gi, '').trim().toUpperCase();
+                        else tituloFiesta = "FERIA / TIEMPO ORDINARIO";
 
-                            usccbReadings = { r1: "", r1_c: "Primera Lectura", salmo: "", salmo_c: "Salmo Responsorial", gospel: "", gospel_c: "Evangelio" };
-                            
-                            let lect1Match = textDump.match(/PRIMERA LECTURA\s*([\s\S]*?)(?:SALMO RESPONSORIAL)/);
-                            if(lect1Match) usccbReadings.r1 = lect1Match[1].trim();
+                        usccbReadings = { r1: "", r1_c: "Primera Lectura", salmo: "", salmo_c: "Salmo Responsorial", gospel: "", gospel_c: "Evangelio" };
+                        
+                        let lect1Match = textDump.match(/PRIMERA LECTURA\s*([\s\S]*?)(?:SALMO RESPONSORIAL|SEGUNDA LECTURA)/i);
+                        if(lect1Match) usccbReadings.r1 = lect1Match[1].trim();
 
-                            let psalmMatch = textDump.match(/SALMO RESPONSORIAL\s*([\s\S]*?)(?:EVANGELIO|SEGUNDA LECTURA)/);
-                            if(psalmMatch) usccbReadings.salmo = psalmMatch[1].trim();
+                        let psalmMatch = textDump.match(/SALMO RESPONSORIAL\s*([\s\S]*?)(?:EVANGELIO|SEGUNDA LECTURA)/i);
+                        if(psalmMatch) usccbReadings.salmo = psalmMatch[1].trim();
 
-                            let gospelMatch = textDump.match(/EVANGELIO\s*([\s\S]*?)(?:Credo|Oración de los fieles|LITURGIA EUCARÍSTICA|$)/i);
-                            if(gospelMatch) usccbReadings.gospel = gospelMatch[1].trim();
-                        }
+                        let gospelMatch = textDump.match(/EVANGELIO\s*([\s\S]*?)(?:Credo|Oración de los fieles|LITURGIA EUCARÍSTICA|$)/i);
+                        if(gospelMatch) usccbReadings.gospel = gospelMatch[1].trim();
 
                         let data = liturgiaData[fecha];
                         if (!data) {
@@ -356,7 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isStandaloneOffice) {
             out += `<h2>${isEn ? 'Liturgy of the Hours' : 'Liturgia de las Horas'}: ${hora.charAt(0).toUpperCase() + hora.slice(1)}</h2>\n`;
         } else {
-            out += `<h2>${data.tiempo_liturgico.toUpperCase()}</h2>\n`;
+            let tiempoTexto = data.tiempo_liturgico ? data.tiempo_liturgico.toUpperCase() : (data.titulo ? data.titulo.toUpperCase() : "MISA DEL DÍA");
+            out += `<h2>${tiempoTexto}</h2>\n`;
         }
         if (data.dia_semana) {
             out += `<h3 style="color: #666;">${data.dia_semana} (${data.color})</h3>\n`;
@@ -451,8 +455,22 @@ document.addEventListener('DOMContentLoaded', () => {
             let lp = data.liturgia_palabra || {};
             let r1 = lp.primera_lectura || { cita: isEn ? "First Reading" : "Primera Lectura", texto: isEn ? "[Reading not available]" : "[Lectura no disponible]" };
             out += `<div class="missal-block">`;
+            if (r1.monicion && !isEn) {
+                out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${r1.monicion}</p>\n`;
+            }
+            out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
             out += `<p class="missal-heading">${isEn ? "First Reading" : "Primera Lectura"}</p>\n`;
-            out += `<p class="missal-citation">${isEn ? "From:" : "De:"} ${isEn ? (r1.cita_en || r1.cita) : r1.cita}</p>\n`;
+            
+            let versiculos_r1 = isEn ? r1.cita_en : (r1.cita_versiculos || r1.cita);
+            let formula_r1 = isEn ? r1.cita_en : (r1.cita_formula || r1.cita);
+            
+            // Si ya logramos separar, imprimimos los versículos en rojo a la derecha
+            if(r1.cita_versiculos && r1.cita_formula) {
+                out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${versiculos_r1}</p>\n</div>\n`;
+                out += `<p class="missal-citation">${formula_r1}</p>\n`;
+            } else {
+                out += `</div>\n<p class="missal-citation">${isEn ? "From:" : ""} ${formula_r1}</p>\n`;
+            }
             let r1Texto = isEn ? (r1.texto_en || "[English translation pending ingestion]") : r1.texto;
             out += `${formatLectura(r1Texto)}\n`;
             out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The word of the Lord." : "Palabra de Dios."}</p>\n<p class="missal-rubric">R. ${isEn ? "Thanks be to God." : "Te alabamos, Señor."}</p>\n</div>\n\n`;
@@ -472,9 +490,23 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `</div>\n\n`;
             
             if (lp.segunda_lectura) {
+                let r2 = lp.segunda_lectura;
                 out += `<div class="missal-block">`;
+                if (r2.monicion) {
+                    out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${r2.monicion}</p>`;
+                }
+                out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
                 out += `<p class="missal-heading">${isEn ? "Second Reading" : "Segunda Lectura"}</p>\n`;
-                out += `<p class="missal-citation">${isEn ? "From:" : "De:"} ${isEn ? (lp.segunda_lectura.cita_en || lp.segunda_lectura.cita) : lp.segunda_lectura.cita}</p>\n`;
+                
+                let versiculos_r2 = isEn ? r2.cita_en : (r2.cita_versiculos || r2.cita);
+                let formula_r2 = isEn ? r2.cita_en : (r2.cita_formula || r2.cita);
+                
+                if(r2.cita_versiculos && r2.cita_formula) {
+                    out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${versiculos_r2}</p>\n</div>\n`;
+                    out += `<p class="missal-citation">${formula_r2}</p>\n`;
+                } else {
+                    out += `</div>\n<p class="missal-citation">${isEn ? "From:" : ""} ${formula_r2}</p>\n`;
+                }
                 let r2Texto = isEn ? (lp.segunda_lectura.texto_en || "[English translation pending ingestion]") : lp.segunda_lectura.texto;
                 out += `${formatLectura(r2Texto)}\n`;
                 out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The word of the Lord." : "Palabra de Dios."}</p>\n<p class="missal-rubric">R. ${isEn ? "Thanks be to God." : "Te alabamos, Señor."}</p>\n</div>\n\n`;
@@ -503,9 +535,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let ev = lp.evangelio || { cita: isEn ? "Gospel" : "Evangelio", texto: isEn ? "[Gospel not available]" : "[Evangelio no disponible]" };
             out += `<div class="missal-block">`;
+            if (ev.monicion && !isEn) {
+                out += `<p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${ev.monicion}</p>\n`;
+            }
+            out += `<div style="display: flex; justify-content: space-between; align-items: baseline;">\n`;
             out += `<p class="missal-heading">${isEn ? "Gospel" : "Evangelio"}</p>\n`;
-            let evCita = isEn ? (ev.cita_en || ev.cita) : ev.cita;
-            out += `<p class="missal-paragraph" style="font-weight:bold; margin-bottom:8px;"><span class="cross-mark">☩</span> ${isEn ? "A reading from the holy Gospel according to:" : "Del santo Evangelio según:"} ${evCita.replace(/Evangelio /i, '').replace(/[\s\n]*en la misa.*$/i, '')}</p>\n`;
+            
+            let versiculos_ev = isEn ? ev.cita_en : (ev.cita_versiculos || ev.cita);
+            let formula_ev = isEn ? ev.cita_en : (ev.cita_formula || ev.cita);
+            
+            if(ev.cita_versiculos && ev.cita_formula) {
+                out += `<p class="missal-rubric" style="margin:0; font-weight:bold;">${versiculos_ev}</p>\n</div>\n`;
+                out += `<p class="missal-citation"><span class="cross-mark">☩</span> ${formula_ev}</p>\n`;
+            } else {
+                out += `</div>\n<p class="missal-citation"><span class="cross-mark">☩</span> ${isEn ? "A reading from the holy Gospel according to:" : ""} ${formula_ev}</p>\n`;
+            }
             let evTexto = isEn ? (ev.texto_en || "[English translation pending ingestion]") : ev.texto;
             out += `${formatLectura(evTexto)}\n`;
             out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The Gospel of the Lord." : "Palabra del Señor."}</p>\n<p class="missal-rubric">R. ${isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús."}</p>\n</div>\n\n`;
@@ -571,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
                      hasValidBlocks = true;
                      dynamicOut += `<div class="missal-block" style="margin-bottom: 24px;">
                                         <p class="missal-heading" style="color: #444; border-bottom: 1px solid #ccc; padding-bottom: 4px;">${dTitles[i].value}</p>
-                                        <p class="missal-paragraph">${dContents[i].value.replace(/\\n/g, '<br>').replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>')}</p>
+                                        <p class="missal-paragraph">${dContents[i].value.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>
                                     </div>\n\n`;
                  }
             }
@@ -671,8 +715,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnPdf.addEventListener('click', () => {
         const element = document.getElementById('pdf-view');
         
-        const dateStr = document.getElementById('date-picker') ? document.getElementById('date-picker').value : "Desconocida";
-        const formatStr = document.getElementById('format-select') ? document.getElementById('format-select').value.toUpperCase() : "MISAL";
+        const dateStr = currentMode === 'boletin' ? (document.getElementById('bulletin-date') ? document.getElementById('bulletin-date').value : "Desconocida") : (document.getElementById('date-select') ? document.getElementById('date-select').value : "Desconocida");
+        const formatStr = currentMode.toUpperCase();
         
         // Configuration for html2pdf
         const opt = {

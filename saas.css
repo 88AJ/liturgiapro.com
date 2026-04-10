@@ -599,10 +599,9 @@ body {
 }
 
 .missal-citation {
-    font-style: italic;
-    color: #B20000;
     margin: 0 0 12px 0;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    font-weight: normal;
 }
 
 .missal-paragraph {
@@ -645,4 +644,37 @@ body {
     color: #B20000;
     font-style: italic;
     font-weight: normal !important;
+}
+
+/* ----------------------------------------------------- */
+/* NATIVE PRINT SUPPORT (For CMD+P or File -> Print)     */
+/* Garantiza que los colores litúrgicos no se borren     */
+/* ----------------------------------------------------- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #pdf-view, #pdf-view * {
+        visibility: visible;
+    }
+    #pdf-view {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5in !important;
+    }
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    .missal-heading, .missal-rubric, .rubric, .cross-mark {
+        color: #B20000 !important; /* Rojo Carmesí explícito */
+    }
+    .missal-block {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
 }

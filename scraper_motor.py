@@ -11,11 +11,98 @@ def get_usccb_url(target_date):
     date_str = target_date.strftime('%m%d%y')
     return f"https://bible.usccb.org/bible/readings/{date_str}.cfm"
 
-def get_misalmx_url(target_date):
-    # misal.mx URL format: YYYY-MM-DD
-    date_str = target_date.strftime('%Y-%m-%d')
-    return f"https://misal.mx/{date_str}"
+def get_cem_url(target_date):
+    meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+    dias_semana = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+    weekday_idx = target_date.weekday()
+    weekday_str = dias_semana[weekday_idx]
+    day = target_date.day
+    month_str = meses[target_date.month - 1]
+    year_str = target_date.year
+    return f"https://laverdadcatolica.org/misal-{weekday_str}-{day}-de-{month_str}-del-{year_str}/"
 
+def map_book_to_formula(versiculos, tipo="primera"):
+    v_lower = versiculos.lower() if versiculos else ""
+    if tipo == "evangelio":
+        if "juan" in v_lower: return "Del santo Evangelio según San Juan"
+        if "mateo" in v_lower: return "Del santo Evangelio según San Mateo"
+        if "lucas" in v_lower: return "Del santo Evangelio según San Lucas"
+        if "marcos" in v_lower: return "Del santo Evangelio según San Marcos"
+        return "Del santo Evangelio"
+    
+    if "hechos" in v_lower: return "Del libro de los Hechos de los apóstoles"
+    if "apocalipsis" in v_lower: return "Del libro del Apocalipsis del apóstol san Juan"
+    if "romanos" in v_lower: return "De la carta del apóstol san Pablo a los Romanos"
+    if "corintios" in v_lower: 
+        return "De la primera carta del apóstol san Pablo a los Corintios" if "1 " in v_lower or "1a" in v_lower else "De la segunda carta del apóstol san Pablo a los Corintios"
+    if "pedro" in v_lower:
+        return "De la primera carta del apóstol san Pedro" if "1 " in v_lower or "1a" in v_lower else "De la segunda carta del apóstol san Pedro"
+    if "juan" in v_lower:
+        if "1 " in v_lower or "1a" in v_lower: return "De la primera carta del apóstol san Juan"
+        if "2 " in v_lower or "2a" in v_lower: return "De la segunda carta del apóstol san Juan"
+        if "3 " in v_lower: return "De la tercera carta del apóstol san Juan"
+    
+    # Fallback to general lookup or pure string manipulation
+    book_name = versiculos.split()[0] if versiculos else ""
+    return f"Lectura del libro de {book_name.capitalize()}" if book_name else "Lectura"
+
+def extract_cem_data(target_date):
+    date_str = target_date.strftime('%d-%m-%Y')
+    print(f"[CEM-Evangelizacion] Extrayendo {date_str}...")
+    scraper = cloudscraper.create_scraper()
+    
+    data_es = {}
+    endpoints = {
+        'primera_lectura': f'https://www.evangelizacion.org.mx/lecturas/primera-lectura/{date_str}',
+        'salmo_responsorial': f'https://www.evangelizacion.org.mx/lecturas/salmo/{date_str}',
+        'segunda_lectura': f'https://www.evangelizacion.org.mx/lecturas/segunda-lectura/{date_str}',
+        'evangelio': f'https://www.evangelizacion.org.mx/lecturas/evangelio/{date_str}'
+    }
+    
+    for key, url in endpoints.items():
+        response = scraper.get(url)
+        if response.status_code != 200:
+            continue
+            
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        if key == 'salmo_responsorial':
+            subtitle = soup.find('h5')
+            cita = subtitle.text.strip() if subtitle else "Salmo"
+            
+            content_div = soup.select_one('.contenido.text-container')
+            if not content_div: continue
+            
+            texto = content_div.get_text(separator='\n').strip()
+            
+            lines = [l.strip() for l in texto.split('\n') if l.strip()]
+            respuesta = "R. " + (lines[0].replace('R.', '').strip() if lines else "")
+            txt = '\n'.join(lines[1:]) if len(lines) > 1 else texto
+            
+            data_es[key] = {'cita': cita, 'respuesta': respuesta, 'texto': txt}
+            continue
+            
+        subtitle = soup.find('h5')
+        versiculos = subtitle.text.strip() if subtitle else ""
+        
+        formula = map_book_to_formula(versiculos, tipo="evangelio" if key == "evangelio" else "primera")
+        
+        content_div = soup.select_one('.contenido.text-container')
+        if not content_div: continue
+            
+        texto = content_div.get_text(separator='\n').strip()
+        
+        if not texto:
+            continue
+            
+        data_es[key] = {
+            'cita': formula + " " + versiculos,
+            'cita_formula': formula,
+            'cita_versiculos': versiculos,
+            'texto': texto
+        }
+    
+    return data_es
 def extract_usccb_data(target_date):
     url = get_usccb_url(target_date)
     print(f"[USCCB] Extrayendo {url}...")
@@ -29,8 +116,8 @@ def extract_usccb_data(target_date):
         
     soup = BeautifulSoup(response.text, 'html.parser')
     
-    # Mapeo simple: el primer bloque suele ser Reading 1, luego Responsorial Psalm, luego Gospel
-    blocks = soup.find_all('div', class_='b-lectionary')
+    # Mapeo simple de la nueva estructura HTML de la USCCB
+    blocks = soup.find_all('div', class_='b-verse')
     
     for block in blocks:
         title_el = block.find('h3', class_='name')
@@ -43,7 +130,7 @@ def extract_usccb_data(target_date):
         cita_el = block.find('div', class_='address')
         cita = cita_el.get_text(strip=True) if cita_el else ""
         
-        content_el = block.find('div', class_='b-verse')
+        content_el = block.find('div', class_='content-body')
         texto = content_el.get_text(separator="\n").strip() if content_el else ""
         
         if "READING 1" in title or "READING I" in title:
@@ -60,36 +147,6 @@ def extract_usccb_data(target_date):
             data_en['evangelio'] = {'cita_en': cita, 'texto_en': texto}
             
     return data_en
-
-def extract_cem_data(target_date):
-    url = get_misalmx_url(target_date)
-    print(f"[CEM] Extrayendo {url}...")
-    
-    # cloudscraper elude Mod_Security (Devuelve 200 en lugar de 406)
-    scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True})
-    response = scraper.get(url)
-    
-    data_es = {}
-    if response.status_code != 200:
-        print("[CEM] La fecha aún no ha sido publicada por Misal.mx o URL incorrecta.")
-        return data_es
-        
-    soup = BeautifulSoup(response.text, 'html.parser')
-    content_div = soup.find('div', class_='entry-content')
-    if not content_div: return data_es
-    
-    texto_p = [p.get_text().strip() for p in content_div.find_all('p') if len(p.get_text().strip()) > 3]
-    
-    # Extracción heurística rudimentaria
-    for i, linea in enumerate(texto_p):
-        if "ORACIÓN COLECTA" in linea.upper():
-            if (i+1) < len(texto_p): data_es['oracion_colecta'] = texto_p[i+1]
-        elif "ORACIÓN SOBRE LAS OFRENDAS" in linea.upper():
-            if (i+1) < len(texto_p): data_es['oracion_ofrendas'] = texto_p[i+1]
-        elif "ORACIÓN DESPUÉS DE LA COMUNIÓN" in linea.upper():
-            if (i+1) < len(texto_p): data_es['oracion_comunion'] = texto_p[i+1]
-            
-    return data_es
 
 def execute_scraper(start_date_str, end_date_str):
     start = datetime.strptime(start_date_str, "%Y-%m-%d")
@@ -133,9 +190,11 @@ def execute_scraper(start_date_str, end_date_str):
             db[date_key]['liturgia_palabra'] = {}
             
         for key in ['primera_lectura', 'salmo_responsorial', 'segunda_lectura', 'evangelio']:
+            if key not in db[date_key]['liturgia_palabra']:
+                db[date_key]['liturgia_palabra'][key] = {}
+            if key in data_es:
+                db[date_key]['liturgia_palabra'][key].update(data_es[key])
             if key in data_en:
-                if key not in db[date_key]['liturgia_palabra']:
-                    db[date_key]['liturgia_palabra'][key] = {}
                 db[date_key]['liturgia_palabra'][key].update(data_en[key])
                 
         current += timedelta(days=1)
