@@ -1,42 +1,48 @@
-name: Motor de Ingesta Litúrgica (Cron Worker)
+name: Compilador Litúrgico Automático
 
 on:
   schedule:
-    # Se ejecuta todos los lunes a las 03:00 de la madrugada
-    - cron: '0 3 * * 1'
-  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+    # Se ejecuta todos los domingos a las 00:00 (Medianoche) UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+    # Permite correr el workflow manualmente desde el botón en la web de GitHub
 
 jobs:
-  scrape-and-update:
+  build_liturgia:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout del Repositorio
-        uses: actions/checkout@v3
+    - name: Extraer código del repositorio
+      uses: actions/checkout@v3
 
-      - name: Configurar Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
 
-      - name: Instalar Dependencias del Motor
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Instalar Dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 google-generativeai
 
-      - name: Ejecutar Extractor (Ventana Móvil de 15 Días)
-        run: |
-          python scraper_motor.py --auto 15
+    - name: Calcular rango de fechas (Próximos 14 días)
+      id: dates
+      run: |
+        start_date=$(date +'%Y-%m-%d')
+        end_date=$(date -d "+14 days" +'%Y-%m-%d')
+        echo "start=$start_date" >> $GITHUB_ENV
+        echo "end=$end_date" >> $GITHUB_ENV
 
-      - name: Compilar y Empujar Base de Datos (Commit & Push)
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "LiturgiaPRO [Scraper Bot]"
-          git add data/liturgia_db.js
-          
-          # Si no hay cambios en la DB, git commit retornará un error y pasará
-          git commit -m "Automated Ingestion: Actualizando Misal Diario para próximos 15 días [CEM + USCCB]" || echo "No hay contenido nuevo para actualizar"
-          
-          git push
+    - name: Ejecutar Automatizador Supremo
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        python3 automatizador_supremo.py --start $start_date --end $end_date
+
+    - name: Comitear y Subir nueva DB
+      run: |
+        git config --global user.name "Sacerdote Orquestador GitHub Actions"
+        git config --global user.email "bot@liturgiapro.com"
+        git add data/liturgia_db.js
+        git commit -m "Automatización: Liturgia pre-compilada del ${start_date} al ${end_date}" || echo "No changes to commit"
+        git push
