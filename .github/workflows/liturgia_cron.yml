@@ -1,0 +1,42 @@
+name: Motor de Ingesta Litúrgica (Cron Worker)
+
+on:
+  schedule:
+    # Se ejecuta todos los lunes a las 03:00 de la madrugada
+    - cron: '0 3 * * 1'
+  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout del Repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar Dependencias del Motor
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar Extractor (Ventana Móvil de 15 Días)
+        run: |
+          python scraper_motor.py --auto 15
+
+      - name: Compilar y Empujar Base de Datos (Commit & Push)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "LiturgiaPRO [Scraper Bot]"
+          git add data/liturgia_db.js
+          
+          # Si no hay cambios en la DB, git commit retornará un error y pasará
+          git commit -m "Automated Ingestion: Actualizando Misal Diario para próximos 15 días [CEM + USCCB]" || echo "No hay contenido nuevo para actualizar"
+          
+          git push

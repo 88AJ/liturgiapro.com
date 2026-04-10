@@ -149,8 +149,21 @@ def execute_scraper(start_date_str, end_date_str):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Motor Liturgia PRO - Scraper masivo bilingüe (CEM/USCCB)')
-    parser.add_argument('--start', type=str, help='Fecha de inicio YYYY-MM-DD', required=True)
-    parser.add_argument('--end', type=str, help='Fecha de fin YYYY-MM-DD', required=True)
+    parser.add_argument('--start', type=str, help='Fecha de inicio YYYY-MM-DD', required=False)
+    parser.add_argument('--end', type=str, help='Fecha de fin YYYY-MM-DD', required=False)
+    parser.add_argument('--auto', type=int, help='Modo autómata: Calcular desde HOY hasta N días en el futuro', required=False)
     
     args = parser.parse_args()
-    execute_scraper(args.start, args.end)
+    
+    if args.auto is not None:
+        hoy = datetime.now()
+        horizonte = hoy + timedelta(days=args.auto)
+        start_str = hoy.strftime("%Y-%m-%d")
+        end_str = horizonte.strftime("%Y-%m-%d")
+        print(f">> MODO AUTO: Extrayendo desde {start_str} hasta {end_str}")
+        execute_scraper(start_str, end_str)
+    elif args.start and args.end:
+        execute_scraper(args.start, args.end)
+    else:
+        print("Error: Debes proveer --start y --end, o usar la bandera --auto <dias>.")
+
