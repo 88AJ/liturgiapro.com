@@ -78,7 +78,8 @@ REGLAS DE GENERACIÓN ESTRICTAS PARA PRESERVAR EL MISTERIO:
 3. El campo de `reflexion_homiletica` debe ser una redacción en prosa de 2 o 3 párrafos continuos de Teología Patrística.
 4. PROHIBICIÓN ABSOLUTA: JAMÁS uses asteriscos dobles (`**`), viñetas, guiones, o caracteres de formato (Markdown). Usa exclusivamente prosa pura separada por saltos de línea (`\\n\\n`).
 5. PROHIBICIÓN ABSOLUTA DE IDENTIDAD: JAMÁS escribas palabras como "IA", "inteligencia artificial", "modelo de lenguaje", "soy una asistencia". Tu salida va a imprimirse directamente para uso en el Altar y debe preservar el anonimato tecnológico por mandato.
-6. Responde ÚNICA Y EXCLUSIVAMENTE con el bloque JSON.
+6. ORACIÓN DE LOS FIELES: Genera 4 peticiones breves (Por la Iglesia, por los gobernantes/mundo, por los que sufren, por la asamblea). Escríbelas como un arreglo de texto continuo en "oracion_fieles" usando solo texto puro.
+7. Responde ÚNICA Y EXCLUSIVAMENTE con el bloque JSON.
 
 El formato JSON estricto debe ser:
 {{
@@ -86,7 +87,8 @@ El formato JSON estricto debe ser:
   "monicion_primera_lectura": "...",
   "monicion_segunda_lectura": "...",
   "monicion_evangelio": "...",
-  "reflexion_homiletica": "..."
+  "reflexion_homiletica": ["Párrafo 1...", "Párrafo 2..."],
+  "oracion_fieles": ["Por la Santa Iglesia de Dios...", "Por los gobernantes...", "Por los que sufren...", "Por esta comunidad..."]
 }}
 """
     
@@ -132,6 +134,7 @@ El formato JSON estricto debe ser:
     # Para monicion entrada y reflexion, los pondremos bajo el nodo de ese dia.
     dia_data['monicion_entrada'] = data_ia.get('monicion_entrada')
     dia_data['reflexion_homiletica'] = data_ia.get('reflexion_homiletica')
+    dia_data['oracion_fieles'] = data_ia.get('oracion_fieles')
     
     return True
 
