@@ -1,13 +1,13 @@
 :root {
-    --bg-dark: #121212; /* Fondo profundo para que resalte la hoja */
-    --card-bg: #FCFBF8; /* Marfil puro súper pulido */
-    --text-primary: #1F1F1F; /* Gris muy oscuro, mejor contraste que negro total */
+    --bg-dark: #131419; /* Exact match to Ejemplo_Perfecto body background */
+    --card-bg: #FFFFFF;
+    --text-primary: #000000;
     --text-secondary: #5c5c5c;
-    --brand-color: #B30000; /* Rojo Cardenalicio Auténtico para Rúbricas */
+    --brand-color: #B20000; /* Exact match to Ejemplo_Perfecto missal-heading */
     --brand-hover: #8B0000;
     --border-color: #DCD7CB;
-    --sidebar-bg: #0A0A0A; /* Negro profundo sacerdotal */
-    --gold-accent: #D4AF37;
+    --sidebar-bg: #0A0A0A;
+    --gold-accent: #c5a059; /* Exact match to Ejemplo_Perfecto header */
 }
 
 * { box-sizing: border-box; }
@@ -304,16 +304,17 @@ body {
     align-items: flex-start;
 }
 
-#editor-pad {
+.pdf-container {
     box-sizing: border-box;
     font-family: 'EB Garamond', serif;
     background: #ffffff;
-    width: 8.5in;
+    width: 612pt;
     min-height: 11in;
     padding: 1in;
     margin: 0 auto;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-    color: #111; /* asegurar texto negro en vez de gris o inherits */
+    font-size: 11pt;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+    color: #000;
 }
 
 
@@ -578,7 +579,6 @@ body {
 
 .pdf-container h2, .pdf-container h3, .pdf-container hr {
     column-span: all;
-    text-align: center;
 }
 
 /* Evitar que se partan los bloques feo */
