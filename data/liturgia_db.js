@@ -345,5 +345,23 @@ window.liturgiaData = {
       "oracion_ofrendas": "",
       "oracion_despues_comunion": ""
     }
+  },
+  "2026-04-09": {
+    "fecha": "2026-04-09",
+    "liturgia_palabra": {},
+    "liturgia_eucaristica": {
+      "oracion_ofrendas": "Señor, acepta bondadoso estas ofrendas que te presentamos en agradecimiento por los que han renacido en el bautismo y para apresurar los auxilios celestiales. Por Jesucristo, nuestro Señor."
+    },
+    "oracion_colecta": "Dios nuestro, que uniste a todos los pueblos diversos en la confesión de tu nombre, concede que, quienes renacieron en la fuente bautismal, tengan una misma fe en sus pensamientos y un mismo amor en sus obras. Por nuestro Señor Jesucristo…"
+  },
+  "2026-04-10": {
+    "fecha": "2026-04-10",
+    "liturgia_palabra": {},
+    "liturgia_eucaristica": {}
+  },
+  "2026-04-11": {
+    "fecha": "2026-04-11",
+    "liturgia_palabra": {},
+    "liturgia_eucaristica": {}
   }
 };
