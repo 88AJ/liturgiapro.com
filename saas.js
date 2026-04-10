@@ -393,6 +393,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // RITOS INICIALES
             out += `### ${isEn ? "INTRODUCTORY RITES" : "RITOS INICIALES"}\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">(${isEn ? "Stand" : "De pie"})</p>\n\n`;
+            
+            if (data.monicion_entrada && !isEn) {
+                out += `<div class="missal-block"><p class="missal-monicion" style="font-style:italic; color:#555; margin-bottom:10px;">${data.monicion_entrada}</p></div>\n`;
+            }
+            
             out += `**${sNum++}. ${isEn ? "Entrance Chant:" : "Canto de Entrada:"}** *${cantos.entrada}*\n\n`;
             
             let antEnt = data.antifona_entrada || (isEn ? "Come, you whom my Father has blessed, receive the kingdom prepared for you." : "Vengan, benditos de mi Padre, reciban en herencia el reino preparado para ustedes desde la creación del mundo.");
@@ -555,6 +560,13 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<p class="missal-rubric" style="margin-top:10px;">${isEn ? "The Gospel of the Lord." : "Palabra del Señor."}</p>\n<p class="missal-rubric">R. ${isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús."}</p>\n</div>\n\n`;
             
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Sit" : "Sentados"})</p><p class="missal-heading">${isEn ? "Homily" : "Homilía"}</p><p class="missal-rubric">${isEn ? "The priest gives the homily." : "El sacerdote pronuncia la homilía."}</p></div>\n\n`;
+            
+            if (data.reflexion_homiletica && !isEn) {
+                out += `<div class="missal-block">\n`;
+                out += `<p class="missal-heading" style="font-size: 11pt; color:#444;">Ideas Homiléticas (Gemini AI)</p>\n`;
+                out += `<div class="missal-paragraph" style="font-style:italic; font-size:10pt;">${data.reflexion_homiletica.replace(/\n\n/g, '<br><br>')}</div>\n`;
+                out += `</div>\n\n`;
+            }
             
             if (lp.segunda_lectura || aplicaGloria) {
                 let credoEs = "Creo en Dios, Padre todopoderoso,<br>Creador del cielo y de la tierra.<br>Creo en Jesucristo, su único Hijo, nuestro Señor,<br>que fue concebido por obra y gracia del Espíritu Santo,<br>nació de santa María Virgen,<br>padeció bajo el poder de Poncio Pilato,<br>fue crucificado, muerto y sepultado,<br>descendió a los infiernos,<br>al tercer día resucitó de entre los muertos,<br>subió a los cielos<br>y está sentado a la derecha de Dios, Padre todopoderoso.<br>Desde allí ha de venir a juzgar a vivos y muertos.<br><br>Creo en el Espíritu Santo,<br>la santa Iglesia católica,<br>la comunión de los santos,<br>el perdón de los pecados,<br>la resurrección de la carne<br>y la vida eterna. Amén.";
