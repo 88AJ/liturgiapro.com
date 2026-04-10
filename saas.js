@@ -560,6 +560,25 @@ document.addEventListener('DOMContentLoaded', () => {
             let despues = le.oracion_despues_comunion || (isEn ? "Grant, we pray, almighty God, that our reception of this paschal Sacrament may have a continuing effect in our minds and hearts. Through Christ our Lord." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.");
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">(${isEn ? "Stand" : "De pie"})</p><p class="missal-heading">${isEn ? "Prayer after Communion" : "Oración después de la Comunión"}</p><p class="missal-paragraph">${isEn ? "Let us pray." : "Oremos."} ${despues}</p><p class="missal-rubric">R. ${isEn ? "Amen." : "Amén."}</p></div>\n\n`;
             
+            // BLOQUES DINAMICOS PARROQUIALES (Avisos, Intenciones, Cantos, etc)
+            const dTitles = document.querySelectorAll('.sec-title');
+            const dContents = document.querySelectorAll('.sec-content');
+            let hasValidBlocks = false;
+            let dynamicOut = `-----\n\n### ${isEn ? "PARISH ANNOUNCEMENTS" : "AVISOS PARROQUIALES"}\n\n`;
+            
+            for (let i = 0; i < dTitles.length; i++) {
+                 if (dTitles[i].value.trim() !== "") {
+                     hasValidBlocks = true;
+                     dynamicOut += `<div class="missal-block" style="margin-bottom: 24px;">
+                                        <p class="missal-heading" style="color: #444; border-bottom: 1px solid #ccc; padding-bottom: 4px;">${dTitles[i].value}</p>
+                                        <p class="missal-paragraph">${dContents[i].value.replace(/\\n/g, '<br>').replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>')}</p>
+                                    </div>\n\n`;
+                 }
+            }
+            if (hasValidBlocks) {
+                 out += dynamicOut;
+            }
+            
             // RITO DE CONCLUSION
             out += `-----\n\n### ${isEn ? "CONCLUDING RITES" : "RITO DE CONCLUSIÓN"}\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">(${isEn ? "Stand" : "De pie"})</p>\n\n`;
             out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Recessional Chant" : "Canto de Salida"}</p><p class="missal-citation">${cantos.salida}</p></div>\n\n`;
@@ -652,10 +671,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btnPdf.addEventListener('click', () => {
         const element = document.getElementById('pdf-view');
         
+        const dateStr = document.getElementById('date-picker') ? document.getElementById('date-picker').value : "Desconocida";
+        const formatStr = document.getElementById('format-select') ? document.getElementById('format-select').value.toUpperCase() : "MISAL";
+        
         // Configuration for html2pdf
         const opt = {
             margin:       0, // Zero margin; we rely on the internal padding of .pdf-container (1in)
-            filename:     'Ritual_Liturgia_PRO.pdf',
+            filename:     `Liturgia_PRO_${formatStr}_${dateStr}.pdf`,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
