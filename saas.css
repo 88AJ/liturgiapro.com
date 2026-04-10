@@ -1,12 +1,13 @@
 :root {
-    --bg-dark: #ECE8E1; /* Fondo pergamino exterior */
-    --card-bg: #FAF7F2; /* Marfil para panel interior */
-    --text-primary: #1a1a1a; /* Texto principal oscuro */
+    --bg-dark: #121212; /* Fondo profundo para que resalte la hoja */
+    --card-bg: #FCFBF8; /* Marfil puro súper pulido */
+    --text-primary: #1F1F1F; /* Gris muy oscuro, mejor contraste que negro total */
     --text-secondary: #5c5c5c;
-    --brand-color: #C5A059; /* Oro envejecido */
-    --brand-hover: #D4AF37;
-    --border-color: #D6D1C4;
-    --sidebar-bg: #0a0a0a; /* Negro Litúrgico (Sotana) */
+    --brand-color: #B30000; /* Rojo Cardenalicio Auténtico para Rúbricas */
+    --brand-hover: #8B0000;
+    --border-color: #DCD7CB;
+    --sidebar-bg: #0A0A0A; /* Negro profundo sacerdotal */
+    --gold-accent: #D4AF37;
 }
 
 * { box-sizing: border-box; }
@@ -87,8 +88,8 @@ body {
 .login-box input:focus { outline: none; border-color: var(--brand-color); }
 
 .btn-primary {
-    background: var(--brand-color);
-    color: #fff;
+    background: var(--gold-accent);
+    color: #000;
     border: none;
     padding: 14px;
     border-radius: 8px;
@@ -96,7 +97,7 @@ body {
     cursor: pointer;
     transition: 0.2s;
 }
-.btn-primary:hover { background: var(--brand-hover); }
+.btn-primary:hover { background: #E5C158; }
 
 .signup-link { font-size: 0.9rem; margin-top: 1rem; }
 .signup-link a { color: var(--brand-color); text-decoration: none; }
@@ -295,7 +296,7 @@ body {
 
 .preview-panel {
     flex: 1;
-    background: #f1f5f9; /* Neutro gris para escritorio */
+    background-color: var(--bg-dark);
     padding: 2rem;
     overflow-y: auto;
     display: flex;
@@ -303,7 +304,7 @@ body {
     align-items: flex-start;
 }
 
-.pdf-container {
+#editor-pad {
     box-sizing: border-box;
     font-family: 'EB Garamond', serif;
     background: #ffffff;
@@ -311,7 +312,7 @@ body {
     min-height: 11in;
     padding: 1in;
     margin: 0 auto;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     color: #111; /* asegurar texto negro en vez de gris o inherits */
 }
 
@@ -589,9 +590,9 @@ body {
 
 .missal-heading {
     text-transform: uppercase;
-    color: #B20000;
+    color: #111111; /* Negro profundo sacerdotal */
     font-size: 0.9em;
-    font-weight: 600;
+    font-weight: 700; /* Super Bold */
     margin: 0 0 4px 0;
     letter-spacing: 1px;
     break-after: avoid;
