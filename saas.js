@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pdfView = document.getElementById('pdf-view');
 
     generateBtn.addEventListener('click', () => {
-        pdfView.innerHTML = '<div class="empty-state">Generando con IA...</div>';
+        pdfView.innerHTML = '<div class="empty-state">Compilando Rúbricas...</div>';
         
         setTimeout(() => {
             if (currentMode === 'boletin') {
@@ -355,19 +355,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Cabecera común regular
-        out += `<div style="text-align:center; border-bottom: 2px solid var(--brand-color); padding-bottom: 20px; margin-bottom: 20px;">\n`;
+        let colorStr = data.color || "Blanco";
+        let tiempoStr = data.tiempo_liturgico || (isEn ? "Easter Season" : "Octava de Pascua");
+        let dObj = new Date((document.getElementById('date-select')?.value || '2026-04-10') + "T00:00:00");
+        let dateStr = dObj.toLocaleDateString(isEn ? 'en-US' : 'es-ES', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}).toUpperCase();
+
         if (isStandaloneOffice) {
-            out += `<h2>${isEn ? 'Liturgy of the Hours' : 'Liturgia de las Horas'}: ${hora.charAt(0).toUpperCase() + hora.slice(1)}</h2>\n`;
+            out += `<div style="margin-bottom: 20px; text-align: center; border-bottom: 2px solid #B20000; padding-bottom: 10px;">\n`;
+            out += `    <p style="font-family: 'Cinzel', serif; font-size: 1.2rem; margin: 0; color: #B20000;"><strong>${isEn ? 'Liturgy of the Hours' : 'LITURGIA DE LAS HORAS'}: ${hora.toUpperCase()}</strong></p>\n`;
+            out += `    <p style="margin: 0; font-weight: bold;">${dateStr}</p>\n`;
+            out += `</div>\n\n`;
         } else {
-            let tiempoTexto = data.tiempo_liturgico ? data.tiempo_liturgico.toUpperCase() : (data.titulo ? data.titulo.toUpperCase() : "MISA DEL DÍA");
-            out += `<h2>${tiempoTexto}</h2>\n`;
+            out += `<div style="margin-bottom: 20px; text-align: center; border-bottom: 2px solid #B20000; padding-bottom: 10px;">\n`;
+            out += `    <p style="font-family: 'Cinzel', serif; font-size: 1.2rem; margin: 0; color: #B20000;"><strong>${isEn ? "DAILY MISSAL" : "MISAL DIARIO"}</strong></p>\n`;
+            out += `    <p style="margin: 0; font-weight: bold;">${dateStr}</p>\n`;
+            out += `    <p style="margin: 0; font-style: italic;">${tiempoStr}</p>\n`;
+            out += `    <p style="margin: 0;">Color: ${colorStr}</p>\n`;
+            out += `</div>\n\n`;
         }
-        if (data.dia_semana) {
-            out += `<h3 style="color: #666;">${data.dia_semana} (${data.color})</h3>\n`;
-        } else {
-            out += `<h3 style="color: #666;">Color Litúrgico: ${data.color}</h3>\n`;
-        }
-        out += `</div>\n\n`;
 
         if (isStandaloneOffice) {
             // Render standalone office
@@ -743,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // If it's an empty state, don't print
-        if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Generando con IA...')) {
+        if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...')) {
             alert("Primero genera un documento usando el Asistente.");
             return;
         }
