@@ -581,10 +581,8 @@ body {
     column-span: all;
 }
 
-/* Evitar que se partan los bloques feo */
+/* Evitar que se partan los bloques feo pero si permitir partir parrafos para no dejar hojas vacias */
 .missal-block {
-    break-inside: avoid;
-    page-break-inside: avoid;
     margin-bottom: 1.5rem;
 }
 
