@@ -77,14 +77,43 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bInicial.addDialogo(isEn ? "In the name of the Father, and of the Son, and of the Holy Spirit." : "En el nombre del Padre, y del Hijo, y del Espíritu Santo.", isEn ? "Amen." : "Amén.");
     bInicial.addDialogo(isEn ? "The grace of our Lord Jesus Christ, and the communion of the Holy Spirit be with you all." : "La gracia de nuestro Señor Jesucristo, el amor del Padre, y la comunión del Espíritu Santo estén con todos ustedes.", isEn ? "And with your spirit." : "Y con tu espíritu.");
 
-    bInicial.addTitulo(isEn ? "Penitential Act" : "Rito Penitencial");
-    bInicial.addSacerdote(isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados para celebrar dignamente estos sagrados misterios.");
-    bInicial.addAsamblea(data.rito_penitencial || "Yo confieso ante Dios todopoderoso...");
-    bInicial.addSacerdote(isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.");
-    bInicial.addAsamblea("Amén.");
-    bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
-    bInicial.addDialogo(isEn ? "Christ, have mercy." : "Cristo, ten piedad.", isEn ? "Christ, have mercy." : "Cristo, ten piedad.");
-    bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+    
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        if (officeData && officeData.salmo1) {
+            bInicial.addSuperTitulo(isEn ? ("INTEGRATED PSALMODY (" + OFICIO + ")") : ("SALMODIA INTEGRADA (" + OFICIO.toUpperCase() + ")"));
+            
+            for (let i = 1; i <= 3; i++) {
+                let s = officeData["salmo" + i];
+                if (s) {
+                    bInicial.addTitulo(isEn ? ("Psalm " + i) : ("Salmo " + i));
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                    
+                    let lines = s.texto.split("\n\n");
+                    lines.forEach((line, idx) => {
+                        if (idx % 2 === 0) bInicial.addSacerdote(line, 'Normal');
+                        else bInicial.addAsamblea(line);
+                    });
+                    
+                    bInicial.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+                    bInicial.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                }
+            }
+        } else {
+            bInicial.addRubrica("[Error: No se encontró la salmodia del Oficio para " + OFICIO + "]");
+        }
+    } else {
+        bInicial.addTitulo(isEn ? "Penitential Act" : "Rito Penitencial");
+        bInicial.addSacerdote(isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados para celebrar dignamente estos sagrados misterios.");
+        bInicial.addAsamblea(data.rito_penitencial || "Yo confieso ante Dios todopoderoso...");
+        bInicial.addSacerdote(isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.");
+        bInicial.addAsamblea("Amén.");
+        bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+        bInicial.addDialogo(isEn ? "Christ, have mercy." : "Cristo, ten piedad.", isEn ? "Christ, have mercy." : "Cristo, ten piedad.");
+        bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+    }
+
     SECUENCIA_LITURGICA.push(bInicial);
 
     let bGloriaColecta = new BloqueLiturgico("gloria");
@@ -168,13 +197,27 @@ function generarDocumentoNodos(data, hora, options = {}) {
         SECUENCIA_LITURGICA.push(bCredo);
     }
 
+    
     let bPreces = new BloqueLiturgico("preces");
     bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
-    bPreces.addDialogo(isEn ? "Let us pray to God the Father:" : "A Dios Padre, dirijamos nuestra súplica:", isEn ? "We pray you, hear us." : "Te rogamos, óyenos.");
-    let preces = lp.preces || (isEn ? "Hear us, O Lord, and grant your Church peace and unity." : "Te pedimos, Señor, escucha nuestra oración...");
-    bPreces.addSacerdote(preces);
-    bPreces.addSacerdote(isEn ? "Hear our prayers, O Father, through Christ our Lord. Amen." : "Escucha, Padre bondadoso, las súplicas que tu pueblo creyente te presenta con fe. Por Jesucristo, nuestro Señor. Amén.");
+    
+    let precesText = "[Oración de los Fieles Omitida / No Definida]";
+    if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[hora] && data[hora].preces) {
+        precesText = data[hora].preces;
+        bPreces.addRubrica(isEn ? "Intercessions from the Divine Office." : "Preces propias del Oficio Divino.");
+    } else if (Flag_Oracion_Pueblo) {
+        precesText = data.liturgia_palabra ? data.liturgia_palabra.preces : "P. Fieles extraídas del tiempo...";
+    } else {
+        precesText = isEn ? "Hear us, O Lord, and grant your Church peace and unity." : "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.";
+    }
+    
+    let precesLines = precesText.split('\n');
+    precesLines.forEach(line => {
+        if(line.trim()) bPreces.addMonicion(line.replace(/•/g, '').trim());
+    });
+    
     SECUENCIA_LITURGICA.push(bPreces);
+
 
     // BLOQUE C Y D
     let bEuca = new BloqueLiturgico("liturgia_eucaristica");
@@ -222,6 +265,29 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
     bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + despues);
     bComunion.addAsamblea("Amén.");
+    
+    
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let title = (OFICIO === "Laudes") ? "CÁNTICO EVANGÉLICO (Benedictus)" : "CÁNTICO EVANGÉLICO (Magnificat)";
+        let officeData = data[hora];
+        if (officeData && officeData.cantico_evangelico) {
+            let ce = officeData.cantico_evangelico;
+            bComunion.addTitulo(title);
+            bComunion.addRubrica("Antífona: " + ce.antifona);
+            
+            if (ce.texto) {
+                let lines = ce.texto.split("\n\n");
+                lines.forEach((line, idx) => {
+                    if (idx % 2 === 0) bComunion.addSacerdote(line, 'Normal');
+                    else bComunion.addAsamblea(line);
+                });
+            }
+            
+            bComunion.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+            bComunion.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+            bComunion.addRubrica("Antífona: " + ce.antifona);
+        }
+    }
     SECUENCIA_LITURGICA.push(bComunion);
 
     // BLOQUE E: CONCLUSIÓN
