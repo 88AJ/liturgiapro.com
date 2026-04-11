@@ -44,6 +44,16 @@ class BloqueLiturgico {
         return this;
     }
     
+    addMonicion(texto) {
+        this.nodos.push(new NodoLiturgico(this.id + '_monicion', texto, 'Monicion', 'Monicion', 'Fuerte'));
+        return this;
+    }
+    
+    addGuia(texto) {
+        this.nodos.push(new NodoLiturgico(this.id + '_guia', texto, 'Guia', 'Ninguno', 'Fuerte'));
+        return this;
+    }
+    
     addAsamblea(texto) {
         this.nodos.push(new NodoLiturgico(this.id + '_asam', texto, 'Pronunciado', 'Asamblea', 'Fuerte'));
         return this;
