@@ -615,12 +615,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (salmodia.salmo2 && salmodia.cantico_nt) { // Visperas
                          let s3 = salmodia.cantico_nt;
                          out += `**${sNum++}. ${isEn ? "NT Canticle:" : "Cántico NT:"}**\n**${isEn ? "People" : "Asamblea"}:** ${s3.antifona}\n\n`;
-                         s3.texto.split("\n\n").forEach((estrofa, index) => {
-                             let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
-                             out += `**${l}:**\n${estrofa}\n\n`;
-                         });
+                         if (s3.texto && s3.texto.trim() !== "") {
+                             s3.texto.split("\n\n").forEach((estrofa, index) => {
+                                 let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
+                                 out += `**${l}:**\n${estrofa}\n\n`;
+                             });
+                         } else {
+                             out += `>[!WARNING]\n> ${isEn ? "Canticle text missing in database." : "Texto del cántico no ingresado en la base de datos."}\n\n`;
+                         }
                          out += `**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Glory to the Father..." : "Gloria al Padre..."}\n${s3.antifona}\n\n`;
                     }
+                } else {
+                    out += `> [!WARNING]\n> ${isEn ? "The Liturgy of the Hours texts for this date have not been entered into the database (liturgia_db.js)." : "Los textos de la Liturgia de las Horas para esta fecha aún no han sido ingresados en la base de datos (liturgia_db.js)."}\n\n`;
                 }
             }
             
@@ -870,16 +876,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hora === "laudes" && data.laudes && data.laudes.cantico_evangelico) {
                 let ce = data.laudes.cantico_evangelico;
                 out += `<div class="missal-block"><p class="missal-heading">CÁNTICO EVANGÉLICO (Benedictus)</p><p class="missal-rubric">${ce.antifona}</p><div class="missal-paragraph" style="text-align:justify;">`;
-                ce.texto.split("\n\n").forEach((estrofa, index) => {
-                    out += `**${index % 2 === 0 ? "Lector 1" : "Lector 2"}:** ${estrofa}<br><br>`;
-                });
+                if (ce.texto && ce.texto.trim() !== "") {
+                    ce.texto.split("\n\n").forEach((estrofa, index) => {
+                        out += `**${index % 2 === 0 ? "Lector 1" : "Lector 2"}:** ${estrofa}<br><br>`;
+                    });
+                } else {
+                    out += `>[!WARNING]<br>Texto del cántico no ingresado en la base de datos.<br><br>`;
+                }
                 out += `**Asamblea:** Gloria al Padre, y al Hijo, y al Espíritu Santo...<br><br></div><p class="missal-rubric">${ce.antifona}</p></div>\n\n`;
             } else if (hora === "visperas" && data.visperas && data.visperas.cantico_evangelico) {
                 let ce = data.visperas.cantico_evangelico;
                 out += `<div class="missal-block"><p class="missal-heading">CÁNTICO EVANGÉLICO (Magnificat)</p><p class="missal-rubric">${ce.antifona}</p><div class="missal-paragraph" style="text-align:justify;">`;
-                ce.texto.split("\n\n").forEach((estrofa, index) => {
-                    out += `**${index % 2 === 0 ? "Lector 1" : "Lector 2"}:** ${estrofa}<br><br>`;
-                });
+                if (ce.texto && ce.texto.trim() !== "") {
+                    ce.texto.split("\n\n").forEach((estrofa, index) => {
+                        out += `**${index % 2 === 0 ? "Lector 1" : "Lector 2"}:** ${estrofa}<br><br>`;
+                    });
+                } else {
+                    out += `>[!WARNING]<br>Texto del cántico no ingresado en la base de datos.<br><br>`;
+                }
                 out += `**Asamblea:** Gloria al Padre...<br><br></div><p class="missal-rubric">${ce.antifona}</p></div>\n\n`;
             }
             
