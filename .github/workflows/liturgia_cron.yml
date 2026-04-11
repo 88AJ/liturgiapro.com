@@ -23,7 +23,7 @@ jobs:
     - name: Instalar Dependencias
       run: |
         python -m pip install --upgrade pip
-        pip install requests beautifulsoup4 google-generativeai
+        pip install requests beautifulsoup4 google-generativeai google-genai pypdf cloudscraper
 
     - name: Calcular rango de fechas (Próximos 14 días)
       id: dates
