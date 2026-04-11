@@ -10,7 +10,16 @@ load_dotenv()
 import cloudscraper
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-
+def sanitizar_texto(texto_crudo):
+    if not texto_crudo:
+        return ""
+    import re
+    patron_basura = r"(?i)(hoy el acceso completo|activando tu membresía|prueba gratis|laverdadcatolica\.org|www\.|suscríbete|clic aquí|anuncio|contribuyes a sostener|\¿Ya eres miembro\?|Inicia sesión aquí)"
+    lineas = texto_crudo.split('\n')
+    lineas_limpias = [linea for linea in lineas if not re.search(patron_basura, linea)]
+    texto_limpio = '\n'.join(lineas_limpias)
+    texto_limpio = re.sub(r'\n{3,}', '\n\n', texto_limpio)
+    return texto_limpio.strip()
 def get_usccb_url(target_date):
     # USCCB URL format: MMDDYY.cfm
     date_str = target_date.strftime('%m%d%y')
@@ -27,7 +36,7 @@ def get_cem_url(target_date):
     return f"https://laverdadcatolica.org/misal-{weekday_str}-{day}-de-{month_str}-del-{year_str}/"
 
 
-def sanitizar_texto_regex(texto):
+def sanitizar_texto(texto):
     if not texto: return ""
     import re
     # Remove ads and specific URLs
@@ -95,7 +104,7 @@ def extract_cem_data(target_date):
             respuesta = "R. " + (lines[0].replace('R.', '').strip() if lines else "")
             txt = '\n'.join(lines[1:]) if len(lines) > 1 else texto
             
-            data_es[key] = {'cita': sanitizar_texto_regex(cita), 'respuesta': sanitizar_texto_regex(respuesta), 'texto': sanitizar_texto_regex(txt)}
+            data_es[key] = {'cita': sanitizar_texto(cita), 'respuesta': sanitizar_texto(respuesta), 'texto': sanitizar_texto(txt)}
             continue
             
         subtitle = soup.find('h5')
@@ -106,7 +115,8 @@ def extract_cem_data(target_date):
         content_div = soup.select_one('.contenido.text-container')
         if not content_div: continue
             
-        texto = content_div.get_text(separator='\n').strip()
+        texto_crudo = content_div.get_text(separator='\n').strip()
+        texto = sanitizar_texto(texto_crudo)
         
         if not texto:
             continue
@@ -115,7 +125,7 @@ def extract_cem_data(target_date):
             'cita': formula + " " + versiculos,
             'cita_formula': formula,
             'cita_versiculos': versiculos,
-            'texto': sanitizar_texto_regex(texto)
+            'texto': sanitizar_texto(texto)
         }
     
     return data_es
