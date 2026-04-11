@@ -588,45 +588,55 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // SALMODIA INTEGRADA
             if (hora === "laudes" || hora === "visperas") {
-                out += `-----\n\n### ${isEn ? "INTEGRATED PSALMODY" : "SALMODIA INTEGRADA"} (${hora.toUpperCase()})\n\n`;
+                out += `-----\n\n<div class="missal-block" style="text-align: center; margin: 30px 0;">\n<p class="missal-heading" style="font-size: 1.1em;">${isEn ? "INTEGRATED PSALMODY" : "SALMODIA INTEGRADA"} (${hora.toUpperCase()})</p>\n</div>\n\n`;
                 const salmodia = data[hora];
                 if (salmodia) {
                     if (salmodia.salmo1) {
-                         out += `**${sNum++}. ${isEn ? "First Psalm:" : "Primer Salmo:"}**\n**${isEn ? "People" : "Asamblea"}:** ${salmodia.salmo1.antifona}\n\n`;
+                         out += `<div class="missal-block">\n<p class="missal-heading">${isEn ? "First Psalm" : "Primer Salmo"}</p>\n<p class="missal-rubric">Antífona: ${salmodia.salmo1.antifona}</p>\n`;
                          let salmoP = salmodia.salmo1.texto.split("\n\n");
+                         let textP = "";
                          salmoP.forEach((estrofa, index) => {
                              let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
-                             out += `**${l}:**\n${estrofa}\n\n`;
+                             textP += `<strong class="rubric">${l}:</strong><br>${estrofa}<br><br>`;
                          });
-                         out += `**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Glory to the Father, and to the Son..." : "Gloria al Padre, y al Hijo, y al Espíritu Santo..."}\n${salmodia.salmo1.antifona}\n\n`;
+                         out += `<p class="missal-paragraph" style="margin-left: 20px;">${textP}</p>\n`;
+                         out += `<p class="missal-paragraph" style="margin-left: 20px;"><strong class="rubric">${isEn ? "People:" : "Asamblea:"}</strong><br>${isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit..." : "Gloria al Padre, y al Hijo, y al Espíritu Santo..."}</p>\n`;
+                         out += `<p class="missal-rubric" style="margin-top: 10px;">Antífona: ${salmodia.salmo1.antifona}</p>\n</div>\n\n`;
                     }
                     if (salmodia.cantico_at || salmodia.salmo2) {
                          let s2 = salmodia.cantico_at || salmodia.salmo2;
                          let nt = salmodia.cantico_at ? (isEn ? "OT Canticle" : "Cántico AT") : (isEn ? "Second Psalm" : "Segundo Salmo");
-                         out += `**${sNum++}. ${nt}:**\n**${isEn ? "People" : "Asamblea"}:** ${s2.antifona}\n\n`;
+                         out += `<div class="missal-block">\n<p class="missal-heading">${nt}</p>\n<p class="missal-rubric">Antífona: ${s2.antifona}</p>\n`;
                          let salmoP = s2.texto.split("\n\n");
+                         let textP = "";
                          salmoP.forEach((estrofa, index) => {
                              let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
-                             out += `**${l}:**\n${estrofa}\n\n`;
+                             textP += `<strong class="rubric">${l}:</strong><br>${estrofa}<br><br>`;
                          });
-                         if(!salmodia.cantico_at) out += `**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Glory to the Father..." : "Gloria al Padre..."}\n`;
-                         out += `${s2.antifona}\n\n`;
+                         out += `<p class="missal-paragraph" style="margin-left: 20px;">${textP}</p>\n`;
+                         if(!salmodia.cantico_at) {
+                             out += `<p class="missal-paragraph" style="margin-left: 20px;"><strong class="rubric">${isEn ? "People:" : "Asamblea:"}</strong><br>${isEn ? "Glory to the Father..." : "Gloria al Padre..."}</p>\n`;
+                         }
+                         out += `<p class="missal-rubric" style="margin-top: 10px;">Antífona: ${s2.antifona}</p>\n</div>\n\n`;
                     }
                     if (salmodia.salmo2 && salmodia.cantico_nt) { // Visperas
                          let s3 = salmodia.cantico_nt;
-                         out += `**${sNum++}. ${isEn ? "NT Canticle:" : "Cántico NT:"}**\n**${isEn ? "People" : "Asamblea"}:** ${s3.antifona}\n\n`;
+                         out += `<div class="missal-block">\n<p class="missal-heading">${isEn ? "NT Canticle" : "Cántico NT"}</p>\n<p class="missal-rubric">Antífona: ${s3.antifona}</p>\n`;
                          if (s3.texto && s3.texto.trim() !== "") {
+                             let textP = "";
                              s3.texto.split("\n\n").forEach((estrofa, index) => {
                                  let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
-                                 out += `**${l}:**\n${estrofa}\n\n`;
+                                 textP += `<strong class="rubric">${l}:</strong><br>${estrofa}<br><br>`;
                              });
+                             out += `<p class="missal-paragraph" style="margin-left: 20px;">${textP}</p>\n`;
                          } else {
-                             out += `>[!WARNING]\n> ${isEn ? "Canticle text missing in database." : "Texto del cántico no ingresado en la base de datos."}\n\n`;
+                             out += `<p class="missal-rubric" style="margin-top:10px;">>[!WARNING]<br>${isEn ? "Canticle text missing in database." : "Texto del cántico no ingresado en la base de datos."}</p>\n`;
                          }
-                         out += `**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Glory to the Father..." : "Gloria al Padre..."}\n${s3.antifona}\n\n`;
+                         out += `<p class="missal-paragraph" style="margin-left: 20px;"><strong class="rubric">${isEn ? "People:" : "Asamblea:"}</strong><br>${isEn ? "Glory to the Father..." : "Gloria al Padre..."}</p>\n`;
+                         out += `<p class="missal-rubric" style="margin-top: 10px;">Antífona: ${s3.antifona}</p>\n</div>\n\n`;
                     }
                 } else {
-                    out += `> [!WARNING]\n> ${isEn ? "The Liturgy of the Hours texts for this date have not been entered into the database (liturgia_db.js)." : "Los textos de la Liturgia de las Horas para esta fecha aún no han sido ingresados en la base de datos (liturgia_db.js)."}\n\n`;
+                    out += `<div class="missal-block"><p class="missal-rubric">>[!WARNING]<br>${isEn ? "The Liturgy of the Hours texts for this date have not been entered into the database (liturgia_db.js)." : "Los textos de la Liturgia de las Horas para esta fecha aún no han sido ingresados en la base de datos (liturgia_db.js)."}</p></div>\n\n`;
                 }
             }
             
@@ -875,26 +885,28 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (hora === "laudes" && data.laudes && data.laudes.cantico_evangelico) {
                 let ce = data.laudes.cantico_evangelico;
-                out += `<div class="missal-block"><p class="missal-heading">CÁNTICO EVANGÉLICO (Benedictus)</p><p class="missal-rubric">${ce.antifona}</p><div class="missal-paragraph" style="text-align:justify;">`;
+                out += `<div class="missal-block"><p class="missal-heading">CÁNTICO EVANGÉLICO (Benedictus)</p><p class="missal-rubric">Antífona: ${ce.antifona}</p><div class="missal-paragraph" style="text-align:justify;">`;
                 if (ce.texto && ce.texto.trim() !== "") {
                     ce.texto.split("\n\n").forEach((estrofa, index) => {
-                        out += `**${index % 2 === 0 ? "Lector 1" : "Lector 2"}:** ${estrofa}<br><br>`;
+                        let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
+                        out += `<strong class="rubric">${l}:</strong><br>${estrofa}<br><br>`;
                     });
                 } else {
                     out += `>[!WARNING]<br>Texto del cántico no ingresado en la base de datos.<br><br>`;
                 }
-                out += `**Asamblea:** Gloria al Padre, y al Hijo, y al Espíritu Santo...<br><br></div><p class="missal-rubric">${ce.antifona}</p></div>\n\n`;
+                out += `<strong class="rubric">Asamblea:</strong><br>Gloria al Padre, y al Hijo, y al Espíritu Santo...<br><br></div><p class="missal-rubric">Antífona: ${ce.antifona}</p></div>\n\n`;
             } else if (hora === "visperas" && data.visperas && data.visperas.cantico_evangelico) {
                 let ce = data.visperas.cantico_evangelico;
-                out += `<div class="missal-block"><p class="missal-heading">CÁNTICO EVANGÉLICO (Magnificat)</p><p class="missal-rubric">${ce.antifona}</p><div class="missal-paragraph" style="text-align:justify;">`;
+                out += `<div class="missal-block"><p class="missal-heading">CÁNTICO EVANGÉLICO (Magnificat)</p><p class="missal-rubric">Antífona: ${ce.antifona}</p><div class="missal-paragraph" style="text-align:justify;">`;
                 if (ce.texto && ce.texto.trim() !== "") {
                     ce.texto.split("\n\n").forEach((estrofa, index) => {
-                        out += `**${index % 2 === 0 ? "Lector 1" : "Lector 2"}:** ${estrofa}<br><br>`;
+                        let l = index % 2 === 0 ? "Lector 1" : "Lector 2";
+                        out += `<strong class="rubric">${l}:</strong><br>${estrofa}<br><br>`;
                     });
                 } else {
                     out += `>[!WARNING]<br>Texto del cántico no ingresado en la base de datos.<br><br>`;
                 }
-                out += `**Asamblea:** Gloria al Padre...<br><br></div><p class="missal-rubric">${ce.antifona}</p></div>\n\n`;
+                out += `<strong class="rubric">Asamblea:</strong><br>Gloria al Padre...<br><br></div><p class="missal-rubric">Antífona: ${ce.antifona}</p></div>\n\n`;
             }
             
             let despues = le.oracion_despues_comunion || (isEn ? "Grant, we pray, almighty God, that our reception of this paschal Sacrament may have a continuing effect in our minds and hearts. Through Christ our Lord." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento limpie nuestras culpas y nos conduzca por el camino recto. Por Jesucristo nuestro Señor.");
