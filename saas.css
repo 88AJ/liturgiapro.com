@@ -6,7 +6,7 @@
     --card-bg: rgba(24, 24, 27, 0.6); /* Translucent zinc-900 */
     --text-primary: #e4e4e7; /* zinc-200 */
     --text-secondary: #a1a1aa; /* zinc-400 */
-    --brand-color: #B20000; /* Liturgical Crimson */
+    --brand-color: #D32F2F; /* Liturgical Crimson */
     --brand-hover: #dc2626; /* Bright red */
     --border-color: rgba(255, 255, 255, 0.08); /* Frosted glass border */
     --sidebar-bg: rgba(9, 9, 11, 0.7); /* Translucent sidebar */
@@ -397,10 +397,10 @@ body {
 
 /* Rubric Styles */
 .pdf-container strong.rubric {
-    color: #B20000; /* Liturgical red */
+    color: #D32F2F; /* Liturgical red */
 }
 .pdf-container h2, .pdf-container h3, .pdf-container strong.title-red {
-    color: #B20000;
+    color: #D32F2F;
     font-family: 'Cinzel', serif;
     text-align: center;
     margin-top: 1.5rem;
@@ -652,7 +652,7 @@ body {
 
 .missal-super-heading {
     text-transform: uppercase;
-    color: #B20000;
+    color: #D32F2F;
     font-size: 1.5em; /* 18pt basado en raiz 12pt */
     font-weight: 700;
     text-align: center;
@@ -664,7 +664,7 @@ body {
 
 .missal-heading {
     text-transform: uppercase;
-    color: #B20000; /* Carmesi */
+    color: #D32F2F; /* Carmesi */
     font-size: calc(var(--base-size) * 1.35); /* 14.4pt */
     font-weight: 700; /* Super Bold */
     margin: 0 0 0.5cm 0;
@@ -701,7 +701,7 @@ body {
 }
 
 .missal-rubric {
-    color: #B20000;
+    color: #D32F2F;
     font-style: italic;
     font-size: 0.9em;
     margin: 4px 0;
@@ -710,13 +710,13 @@ body {
 }
 
 .cross-mark {
-    color: #B20000;
+    color: #D32F2F;
     font-weight: normal;
     margin-right: 4px;
 }
 
 .rubric {
-    color: #B20000;
+    color: #D32F2F;
     font-style: italic;
     font-weight: normal !important;
 }
@@ -746,7 +746,7 @@ body {
         color-adjust: exact !important;
     }
     .missal-heading, .missal-rubric, .rubric, .cross-mark {
-        color: #B20000 !important; /* Rojo Carmesí explícito */
+        color: #D32F2F !important; /* Rojo Carmesí explícito */
     }
     .missal-block {
         page-break-inside: avoid;
@@ -993,7 +993,7 @@ body {
 
 .prompter-slide-rubric {
     font-size: 2rem;
-    color: #B20000;
+    color: #D32F2F;
     font-style: italic;
     margin-bottom: 20px;
 }
