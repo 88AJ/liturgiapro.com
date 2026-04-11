@@ -2,6 +2,11 @@ import json
 import os
 import re
 import argparse
+import os
+from google import genai
+from google.genai import types
+from dotenv import load_dotenv
+load_dotenv()
 import cloudscraper
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
@@ -236,6 +241,73 @@ def extract_horas_data(target_date, tipo="laudes"):
         }
     
     return data
+
+
+def gemini_etl_node(client, raw_inputs):
+    """
+    Actúa como Extractor ETL Estricto. Recibe una lista de raw_inputs (texto crudo, URLs pre-procesadas, o Archivos subidos a la API) 
+    y devuelve el JSON estructurado de la Liturgia y Cantos.
+    """
+    etl_schema = {
+      "type": "object",
+      "properties": {
+        "metadatos": {
+          "type": "object",
+          "properties": {
+            "titulo_celebracion": { "type": "string", "description": "Ej. Segundo Domingo de Pascua" },
+            "color_liturgico": { "type": "string", "description": "Blanco, Morado, Verde, Rojo" },
+            "grado": { "type": "string", "description": "Domingo, Solemnidad, Fiesta, Feria" }
+          },
+          "required": ["titulo_celebracion", "color_liturgico", "grado"]
+        },
+        "oraciones_presidenciales": {
+          "type": "object",
+          "properties": {
+            "colecta": { "type": "string" },
+            "sobre_ofrendas": { "type": "string" },
+            "postcomunion": { "type": "string" }
+          },
+          "required": ["colecta", "sobre_ofrendas", "postcomunion"]
+        },
+        "repertorio_sugerido": {
+          "type": "object",
+          "properties": {
+            "canto_entrada": {
+              "type": "object",
+              "properties": {
+                "titulo": { "type": "string" },
+                "estrofas": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "Cada elemento del array es una estrofa o el coro completo."
+                }
+              },
+              "required": ["titulo", "estrofas"]
+            }
+          }
+        }
+      },
+      "required": ["metadatos", "oraciones_presidenciales", "repertorio_sugerido"]
+    }
+
+    print("🧠 Disparando ETL Estricto en Gemini (Application/JSON)...")
+    
+    config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        response_schema=etl_schema,
+        system_instruction="Eres un procesador ETL (Extract, Transform, Load) implacablemente estricto. Tu único propósito es ingerir el documento proporcionado (PDF, Web, o Texto) y extraer las oraciones litúrgicas y cantos requeridos. PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes NINGÚN texto, saludo, aclaración o markdown fuera del JSON estructurado. 2. DEBES extraer las estrofas completas e integras de los cantos (no las resumas). Tu salida debe ser analizable por json.loads() inmediatamente."
+    )
+    
+    try:
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=raw_inputs,
+            config=config
+        )
+        return json.loads(response.text)
+    except Exception as e:
+        print(f"❌ Error en Gemini ETL: {e}")
+        return None
 
 def execute_scraper(start_date_str, end_date_str):
     start = datetime.strptime(start_date_str, "%Y-%m-%d")
