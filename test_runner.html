@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test Runner</title>
+    <!-- Add same scripts as index.html -->
+    <script src="data/calendario_2026_db.js"></script>
+    <script src="data/liturgia_db.js"></script>
+    <script src="data/cantos_db.js"></script>
+    <script src="motor_nodos.js"></script>
+    <script src="saas.js"></script>
+</head>
+<body>
+    <div id="pdf-content"></div>
+    <select id="date-select"><option value="2026-05-01">2026-05-01</option></select>
+    <select id="office-select"><option value="laudes">laudes</option></select>
+    <select id="sacrament-select"><option value=""></option></select>
+    <button id="generate-btn">Generar</button>
+    <input type="checkbox" id="lang-select" />
+
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                try {
+                    let d = document.getElementById('date-select').value;
+                    let h = "laudes";
+                    
+                    let data = {
+                        "dia_semana": "Viernes",
+                        "color": "Verde",
+                        "tiempo_liturgico": "FERIA",
+                        "antifona_entrada": "Dios es mi auxilio",
+                        "rito_penitencial": "Yo confieso",
+                        "liturgia_palabra": {
+                            "primera_lectura": { "cita":"1 Lectura", "texto":"Contenido dinámico..." },
+                            "salmo_responsorial": { "cita":"Salmo", "respuesta":"Aleluya" },
+                            "evangelio": { "cita":"Evangelio", "texto":"El Señor esté..." }
+                        },
+                        "liturgia_eucaristica": {
+                            "oracion_ofrendas": "",
+                            "oracion_despues_comunion": ""
+                        }
+                    };
+                    
+                    // Forcing crash test
+                    let doc = generarDocumentoNodos(data, h);
+                    document.getElementById('pdf-content').innerHTML = doc;
+                    console.log("SUCCESS");
+                } catch(e) {
+                    document.body.innerHTML += `<div id="error-box" style="color:red"><pre>${e.stack}</pre></div>`;
+                    console.error(e);
+                }
+            }, 500);
+        };
+    </script>
+</body>
+</html>

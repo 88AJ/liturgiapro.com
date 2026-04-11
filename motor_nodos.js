@@ -1,6 +1,11 @@
 // ANTIGRAVITY - CEREBRO LITÚRGICO UNIFICADO (NODOS)
 
-function generarDocumentoNodos(data, hora, isEn) {
+function generarDocumentoNodos(data, hora, options = {}) {
+    if (!data) return '';
+    let isEn = options.isEn === true;
+    let showMoniciones = options.showMoniciones !== false;
+    let showHomilia = options.showHomilia !== false;
+
     let SECUENCIA_LITURGICA = [];
     
     // VARIABLES
@@ -49,6 +54,16 @@ function generarDocumentoNodos(data, hora, isEn) {
 
     // BLOQUE A: RITOS INICIALES
     let bInicial = new BloqueLiturgico("ritos_iniciales");
+
+    if (showMoniciones) {
+        bInicial.addTitulo(isEn ? "Entrance Monition" : "Monición de Entrada");
+        if (data.monicion_entrada) {
+            bInicial.addMonicion(data.monicion_entrada);
+        } else {
+            bInicial.addMonicion(isEn ? "A brief introduction to the day's liturgy." : "Breve introducción a la liturgia del día.");
+        }
+    }
+
     bInicial.addSuperTitulo(isEn ? "INTRODUCTORY RITES" : "RITOS INICIALES");
     
     bInicial.addTitulo(isEn ? "Entrance Chant" : "Canto de Entrada");
@@ -89,6 +104,15 @@ function generarDocumentoNodos(data, hora, isEn) {
     let bPalabra = new BloqueLiturgico("liturgia_palabra");
     bPalabra.addSuperTitulo(isEn ? "LITURGY OF THE WORD" : "LITURGIA DE LA PALABRA");
     
+    if (showMoniciones) {
+        bPalabra.addTitulo(isEn ? "Monition" : "Monición a las Lecturas");
+        if (data.monicion_lecturas) {
+            bPalabra.addMonicion(data.monicion_lecturas);
+        } else {
+            bPalabra.addMonicion(isEn ? "Introduction to the Liturgy of the Word." : "Introducción a la Liturgia de la Palabra.");
+        }
+    }
+
     let lp = data.liturgia_palabra || {};
     let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[No disponible]" };
     bPalabra.addTitulo(isEn ? "First Reading" : "Primera Lectura");
@@ -130,7 +154,11 @@ function generarDocumentoNodos(data, hora, isEn) {
     bPalabra.addDialogo(isEn ? "The Gospel of the Lord." : "Palabra del Señor.", isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús.");
     
     bPalabra.addTitulo(isEn ? "Homily" : "Homilía");
-    bPalabra.addRubrica(isEn ? "The priest gives the homily." : "El sacerdote pronuncia la homilía.");
+    if (showHomilia) {
+        bPalabra.addGuia(data.guia_reflexion || (isEn ? "[Homily Reflection Guide]" : "[Guía de Reflexión Sacerdotal]"));
+    } else {
+        bPalabra.addRubrica(isEn ? "The priest or deacon delivers the homily." : "El sacerdote o diácono pronuncia la homilía.");
+    }
     SECUENCIA_LITURGICA.push(bPalabra);
 
     if (Flag_Credo) {
