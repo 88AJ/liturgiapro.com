@@ -9,7 +9,13 @@ function generarDocumentoNodos(data, hora, isEn) {
 
     const DIA_TRIDUO = calDay ? (calDay.dia_triduo || null) : null;
     const TIEMPO_LIT = data.tiempo_liturgico || "Ordinario";
-    const GRADO = document.getElementById('grado-liturgico') ? document.getElementById('grado-liturgico').value : (data.grado || (data.dia_semana && data.dia_semana.toLowerCase().includes("domingo") ? "Domingo" : "Feria"));
+    let rawGrado = "";
+    if (document.getElementById('grado-liturgico')) {
+        rawGrado = document.getElementById('grado-liturgico').value;
+    }
+    if (!rawGrado) rawGrado = data.grado || data.dia_semana || "Feria";
+    
+    const GRADO = String(rawGrado).toLowerCase();
     const OFICIO = hora ? (hora === "laudes" ? "Laudes" : (hora === "visperas" ? "Visperas" : "Completas")) : null;
 
     const upperTiempo = TIEMPO_LIT.toUpperCase();
@@ -21,20 +27,20 @@ function generarDocumentoNodos(data, hora, isEn) {
     // COMPUERTA DE ABORTO
     if (DIA_TRIDUO) {
         if (DIA_TRIDUO === "Jueves_Santo" && OFICIO === "Visperas") {
-            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addTitulo("Misa de la Cena del Señor.").addRubrica("Unión con Vísperas = Bloqueado."));
+            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addSuperTitulo("Misa de la Cena del Señor.").addRubrica("Unión con Vísperas = Bloqueado."));
         }
         if (DIA_TRIDUO === "Viernes_Santo") {
-            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addTitulo("Viernes Santo.").addRubrica("Prohibido celebrar Misa. Solo liturgia de la Pasión."));
+            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addSuperTitulo("Viernes Santo.").addRubrica("Prohibido celebrar Misa. Solo liturgia de la Pasión."));
         }
         if (DIA_TRIDUO === "Sabado_Santo") {
-            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addTitulo("Sábado Santo.").addRubrica("Prohibido celebrar Misa diurna. Esperar a Vigilia Pascual."));
+            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addSuperTitulo("Sábado Santo.").addRubrica("Prohibido celebrar Misa diurna. Esperar a Vigilia Pascual."));
         }
     }
 
     // BANDERAS LOGICAS
-    let Flag_Gloria = (GRADO.includes("Solemnidad") || GRADO.includes("Fiesta") || (GRADO.includes("Domingo") && !isAdviento && !isCuaresma));
+    let Flag_Gloria = (GRADO.includes("solemnidad") || GRADO.includes("fiesta") || (GRADO.includes("domingo") && !isAdviento && !isCuaresma));
     if (data.gloria !== undefined) Flag_Gloria = data.gloria; 
-    let Flag_Credo = (GRADO.includes("Domingo") || GRADO.includes("Solemnidad"));
+    let Flag_Credo = (GRADO.includes("domingo") || GRADO.includes("solemnidad"));
     let Flag_Aleluya = !isCuaresma;
     let Flag_DobleAleluya_Despedida = (ES_PASCUA_PENTECOSTES || ES_OCTAVA_PASCUA);
     let Flag_Oracion_Pueblo = isCuaresma;

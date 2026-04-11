@@ -58,7 +58,7 @@ class BloqueLiturgico {
 
 function SANITIZAR_TEXTO(texto_crudo) {
     if (!texto_crudo) return '';
-    let texto_limpio = texto_crudo.replace(/\[.*?\]/g, ""); // Elimina metadatos
+    let texto_limpio = String(texto_crudo).replace(/\[.*?\]/g, ""); // Elimina metadatos
     texto_limpio = texto_limpio.replace(/ {2,}/g, " "); // espacios multiples
     texto_limpio = texto_limpio.replace(/\n{2,}/g, "\n"); // saltos de linea dobles
     return texto_limpio.trim();
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     try {
                         console.log("Cerebro Offline Activo. Rendereando Data Pura.");
                         let doc = generarDocumentoNodos(localData, hora);
-                        pdfView.innerHTML = markdownToHTML(doc);
+                        pdfView.innerHTML = doc;
                         generateBtn.innerHTML = "Generar Documento";
                     } catch (e) {
                         console.error("ERROR DE RENDER", e);
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         let doc = generarDocumentoNodos(data, hora);
-                        pdfView.innerHTML = markdownToHTML(doc);
+                        pdfView.innerHTML = doc;
                     })
                     .catch(err => {
                         console.error('Error fetching Title API', err);
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             };
                         }
                         let doc = generarDocumentoNodos(data, hora);
-                        pdfView.innerHTML = markdownToHTML(doc);
+                        pdfView.innerHTML = doc;
                     });
             }
         }); // Simulate network load ended, we use real network!
