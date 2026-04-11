@@ -1,4 +1,6 @@
 :root {
+    --base-size: 15px;
+
     --bg-dark: #09090b; /* Deep zinc-950 */
     --bg-gradient: radial-gradient(circle at top left, #18181b 0%, #09090b 100%);
     --card-bg: rgba(24, 24, 27, 0.6); /* Translucent zinc-900 */
@@ -663,7 +665,7 @@ body {
 .missal-heading {
     text-transform: uppercase;
     color: #B20000; /* Carmesi */
-    font-size: 1.2em; /* 14.4pt */
+    font-size: calc(var(--base-size) * 1.35); /* 14.4pt */
     font-weight: 700; /* Super Bold */
     margin: 0 0 0.5cm 0;
     letter-spacing: 1px;
@@ -673,7 +675,7 @@ body {
 
 .missal-citation {
     margin: 0 0 12px 0;
-    font-size: 0.95em;
+    font-size: calc(var(--base-size) * 1.0);
     font-weight: normal;
 }
 

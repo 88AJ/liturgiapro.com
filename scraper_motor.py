@@ -26,6 +26,17 @@ def get_cem_url(target_date):
     year_str = target_date.year
     return f"https://laverdadcatolica.org/misal-{weekday_str}-{day}-de-{month_str}-del-{year_str}/"
 
+
+def sanitizar_texto_regex(texto):
+    if not texto: return ""
+    import re
+    # Remove ads and specific URLs
+    t = re.sub(r'(?i)visita\s+laverdadcatolica\.org', '', texto)
+    t = re.sub(r'(?i)derechos reservados.*', '', t)
+    t = re.sub(r'(?i)suscríbete.*', '', t)
+    t = re.sub(r'https?://[\w\.-]+', '', t)
+    return t.strip()
+
 def map_book_to_formula(versiculos, tipo="primera"):
     v_lower = versiculos.lower() if versiculos else ""
     if tipo == "evangelio":
@@ -84,7 +95,7 @@ def extract_cem_data(target_date):
             respuesta = "R. " + (lines[0].replace('R.', '').strip() if lines else "")
             txt = '\n'.join(lines[1:]) if len(lines) > 1 else texto
             
-            data_es[key] = {'cita': cita, 'respuesta': respuesta, 'texto': txt}
+            data_es[key] = {'cita': sanitizar_texto_regex(cita), 'respuesta': sanitizar_texto_regex(respuesta), 'texto': sanitizar_texto_regex(txt)}
             continue
             
         subtitle = soup.find('h5')
@@ -104,7 +115,7 @@ def extract_cem_data(target_date):
             'cita': formula + " " + versiculos,
             'cita_formula': formula,
             'cita_versiculos': versiculos,
-            'texto': texto
+            'texto': sanitizar_texto_regex(texto)
         }
     
     return data_es
@@ -340,6 +351,43 @@ def execute_scraper(start_date_str, end_date_str):
             
         data_es = extract_cem_data(current)
         data_en = extract_usccb_data(current)
+
+        # ETL Integration
+        raw_text_for_etl = f"Fecha: {date_key}\n\n"
+        for k, v in data_es.items():
+            if isinstance(v, dict):
+                raw_text_for_etl += f"[{k.upper()}]\n{v.get('texto', '')}\n\n"
+            else:
+                raw_text_for_etl += f"[{k.upper()}]\n{v}\n\n"
+                
+        # Send to Gemini ETL (if client is available)
+        try:
+            import os
+            from google import genai
+            if os.environ.get("GEMINI_API_KEY"):
+                client = genai.Client()
+                etl_data = gemini_etl_node(client, [raw_text_for_etl])
+                if etl_data:
+                    print("✅ ETL Extractor procesó la fecha satisfactoriamente.")
+                    
+                    if 'metadatos' in etl_data:
+                        db[date_key]['titulo_celebracion'] = etl_data['metadatos'].get('titulo_celebracion', '')
+                        db[date_key]['color'] = etl_data['metadatos'].get('color_liturgico', 'Blanco')
+                        db[date_key]['grado'] = etl_data['metadatos'].get('grado', db[date_key].get('grado', 'Feria'))
+                        
+                    if 'oraciones_presidenciales' in etl_data:
+                        op = etl_data['oraciones_presidenciales']
+                        db[date_key]['oracion_colecta'] = op.get('colecta', '')
+                        if 'liturgia_eucaristica' not in db[date_key]: db[date_key]['liturgia_eucaristica'] = {}
+                        db[date_key]['liturgia_eucaristica']['oracion_ofrendas'] = op.get('sobre_ofrendas', '')
+                        db[date_key]['liturgia_eucaristica']['oracion_despues_comunion'] = op.get('postcomunion', '')
+                        
+                    if 'repertorio_sugerido' in etl_data:
+                        db[date_key]['repertorio_sugerido'] = etl_data['repertorio_sugerido']
+        except Exception as e:
+            print("⚠️ No se pudo ejecutar el nodo ETL:", e)
+
+
         
         # FUSION
         if 'oracion_colecta' in data_es: db[date_key]['oracion_colecta'] = data_es['oracion_colecta']

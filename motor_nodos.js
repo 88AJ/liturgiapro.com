@@ -104,14 +104,24 @@ function generarDocumentoNodos(data, hora, options = {}) {
             bInicial.addRubrica("[Error: No se encontró la salmodia del Oficio para " + OFICIO + "]");
         }
     } else {
-        bInicial.addTitulo(isEn ? "Penitential Act" : "Rito Penitencial");
-        bInicial.addSacerdote(isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados para celebrar dignamente estos sagrados misterios.");
-        bInicial.addAsamblea(data.rito_penitencial || "Yo confieso ante Dios todopoderoso...");
-        bInicial.addSacerdote(isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.");
-        bInicial.addAsamblea("Amén.");
-        bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
-        bInicial.addDialogo(isEn ? "Christ, have mercy." : "Cristo, ten piedad.", isEn ? "Christ, have mercy." : "Cristo, ten piedad.");
-        bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+        if (ES_PASCUA_PENTECOSTES && GRADO.toLowerCase().includes("domingo")) {
+            bInicial.addTitulo(isEn ? "Rite of Blessing and Sprinkling Holy Water" : "Rito de Aspersión (Agua Bendita)");
+            bInicial.addMonicion(isEn ? "The penitential act is omitted. The priest blesses the water and sprinkles the faithful." : "Se omite el Acto Penitencial rutinario. El Sacerdote bendice el agua y la rocía sobre el pueblo como memorial del bautismo.");
+            bInicial.addSacerdote(isEn ? "Dear brethren (brothers and sisters), let us humbly beseech the Lord our God to bless this water he has created..." : "Hermanos: invoquemos a Dios, nuestro Señor, para que se digne bendecir este agua creada por Él, que va a ser rociada sobre nosotros como recuerdo de nuestro bautismo...");
+            bInicial.addAsamblea("Amén.");
+            bInicial.addRubrica(isEn ? "The priest sprinkles the congregation while an appropriate chant is sung." : "El sacerdote recorre la nave aspergando a la asamblea mientras se canta un canto bautismal (Ej. 'Vi el agua salir').");
+            bInicial.addSacerdote(isEn ? "May almighty God cleanse us of our sins, and through the celebration of this Eucharist make us worthy to share at the table of his Kingdom." : "Que Dios todopoderoso nos purifique de nuestros pecados y, por la celebración de esta Eucaristía, nos haga dignos de participar de la mesa de su reino.");
+            bInicial.addAsamblea("Amén.");
+        } else {
+            bInicial.addTitulo(isEn ? "Penitential Act" : "Rito Penitencial");
+            bInicial.addSacerdote(isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados para celebrar dignamente estos sagrados misterios.");
+            bInicial.addAsamblea(data.rito_penitencial || "Yo confieso ante Dios todopoderoso...");
+            bInicial.addSacerdote(isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.");
+            bInicial.addAsamblea("Amén.");
+            bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+            bInicial.addDialogo(isEn ? "Christ, have mercy." : "Cristo, ten piedad.", isEn ? "Christ, have mercy." : "Cristo, ten piedad.");
+            bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+        }
     }
 
     SECUENCIA_LITURGICA.push(bInicial);
