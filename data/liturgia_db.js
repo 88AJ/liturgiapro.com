@@ -262,23 +262,7 @@ window.liturgiaData = {
         "antifona": "Trae tu mano y métela en mi costado; y no seas incrédulo, sino fiel. Aleluya.",
         "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nrealizando la misericordia\n\nque tuvo con nuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abrahán.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tinieblas\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz."
       },
-      "preces": [
-        {
-          "respuesta": "Ilumínanos, Señor, con la luz de Cristo."
-        },
-        {
-          "peticion": "Padre santo, que hiciste pasar a tu Hijo amado de las tinieblas de la muerte a la luz de tu gloria,— haz que podamos llegar también nosotros a tu luz admirable."
-        },
-        {
-          "peticion": "Tú que nos has salvado por la fe,— haz que vivamos hoy según la fe que profesarnos en nuestro bautismo."
-        },
-        {
-          "peticion": "Tú que quieres que busquemos las cosas de arriba, donde está Cristo sentado a tu derecha,— líbranos de la seducción del pecado."
-        },
-        {
-          "peticion": "Haz que nuestra vida, oculta en ti con Cristo, brille en el mundo,— para que aparezcan los cielos nuevos y la tierra nueva."
-        }
-      ],
+      "preces": "**Ilumínanos, Señor, con la luz de Cristo.**\n\n- Padre santo, que hiciste pasar a tu Hijo amado de las tinieblas de la muerte a la luz de tu gloria,— haz que podamos llegar también nosotros a tu luz admirable.\n\n- Tú que nos has salvado por la fe,— haz que vivamos hoy según la fe que profesarnos en nuestro bautismo.\n\n- Tú que quieres que busquemos las cosas de arriba, donde está Cristo sentado a tu derecha,— líbranos de la seducción del pecado.\n\n- Haz que nuestra vida, oculta en ti con Cristo, brille en el mundo,— para que aparezcan los cielos nuevos y la tierra nueva.",
       "oracion": "Dios de misericordia infinita, que reanimas la fe de tu pueblo con el retorno anual de las fiestas pascuales, acrecienta en nosotros los dones de tu gracia, para que comprendamos mejor la inestimable riqueza del bautismo que nos ha purificado, del Espíritu que nos ha hecho renacer y de la sangre que nos ha redimido. Por nuestro Señor Jesucristo."
     },
     "visperas": {
@@ -305,26 +289,7 @@ window.liturgiaData = {
         "antifona": "Por haber visto has creído, Tomás. Dichosos los que crean sin haber visto. Aleluya.",
         "texto": "Proclama mi alma la grandeza del Señor,\n\nse alegra mi espíritu en Dios, mi salvador;\n\nporque ha mirado la humillación de su esclava.\n\nDesde ahora me felicitarán todas las generaciones,\n\nporque el Poderoso ha hecho obras grandes por mí:\n\nsu nombre es santo,\n\ny su misericordia llega a sus fieles\n\nde generación en generación.\n\nÉl hace proezas con su brazo:\n\ndispersa a los soberbios de corazón,\n\nderriba del trono a los poderosos\n\ny enaltece a los humildes,\n\na los hambrientos los colma de bienes\n\ny a los ricos los despide vacíos.\n\nAuxilia a Israel, su siervo,\n\nacordándose de la misericordia\n\n-como lo había prometido a nuestros padres-\n\nen favor de Abrahán y su descendencia por siempre."
       },
-      "preces": [
-        {
-          "respuesta": "Tú que vives eternamente, escúchanos, Señor."
-        },
-        {
-          "peticion": "Tú que eres la piedra rechazada por los arquitectos, pero convertida en piedra angular,— conviértenos a nosotros en piedras vivas de tu Iglesia."
-        },
-        {
-          "peticion": "Tú que eres el testigo fiel y el primogénito de entre los muertos,— haz que tu Iglesia sea también siempre testimonio ante el mundo."
-        },
-        {
-          "peticion": "Tú que eres el único esposo de la Iglesia, nacida de tu costado,— haz que todos nosotros seamos signos de tus bodas con la Iglesia."
-        },
-        {
-          "peticion": "Tú que eres el primero y el último, el que estabas muerto y ahora vives por los siglos de los siglos,— concede a todos los bautizados perseverar fieles hasta la muerte, a fin de recibir la corona de la victoria."
-        },
-        {
-          "peticion": "Tú que eres la lámpara que ilumina la ciudad santa de Dios,— alumbra con tu claridad a nuestros hermanos difuntos."
-        }
-      ],
+      "preces": "**Tú que vives eternamente, escúchanos, Señor.**\n\n- Tú que eres la piedra rechazada por los arquitectos, pero convertida en piedra angular,— conviértenos a nosotros en piedras vivas de tu Iglesia.\n\n- Tú que eres el testigo fiel y el primogénito de entre los muertos,— haz que tu Iglesia sea también siempre testimonio ante el mundo.\n\n- Tú que eres el único esposo de la Iglesia, nacida de tu costado,— haz que todos nosotros seamos signos de tus bodas con la Iglesia.\n\n- Tú que eres el primero y el último, el que estabas muerto y ahora vives por los siglos de los siglos,— concede a todos los bautizados perseverar fieles hasta la muerte, a fin de recibir la corona de la victoria.\n\n- Tú que eres la lámpara que ilumina la ciudad santa de Dios,— alumbra con tu claridad a nuestros hermanos difuntos.",
       "oracion": "Dios de misericordia infinita, que reanimas la fe de tu pueblo con el retorno anual de las fiestas pascuales, acrecienta en nosotros los dones de tu gracia, para que comprendamos mejor la inestimable riqueza del bautismo que nos ha purificado, del Espíritu que nos ha hecho renacer y de la sangre que nos ha redimido. Por nuestro Señor Jesucristo."
     },
     "oracion_fieles": [
@@ -667,23 +632,7 @@ window.liturgiaData = {
         "antifona": "Después de su resurrección, que tuvo lugar a la mañana del primer día de la semana, Jesús se apareció primero a María Magdalena, de la que había arrojado siete demonios. Aleluya.",
         "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nrealizando la misericordia\n\nque tuvo con nuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abrahán.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tinieblas\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz."
       },
-      "preces": [
-        {
-          "respuesta": "Señor, danos paz y alegría."
-        },
-        {
-          "peticion": "Hijo de Dios, que resucitado de entre los muertos eres el Príncipe de la vida,— bendice y santifica a tus fieles y a todos los hombres."
-        },
-        {
-          "peticion": "Tú que concedes paz y alegría a todos los que creen en ti,— danos vivir como hijos de la luz y alegrarnos de tu victoria."
-        },
-        {
-          "peticion": "Aumenta la fe de tu Iglesia, peregrina en la tierra,— para que dé al mundo testimonio de tu resurrección."
-        },
-        {
-          "peticion": "Tú que, habiendo padecido mucho, has entrado ya en la gloria del Padre,— convierte en gozo la tristeza de los afligidos."
-        }
-      ],
+      "preces": "**Señor, danos paz y alegría.**\n\n- Hijo de Dios, que resucitado de entre los muertos eres el Príncipe de la vida,— bendice y santifica a tus fieles y a todos los hombres.\n\n- Tú que concedes paz y alegría a todos los que creen en ti,— danos vivir como hijos de la luz y alegrarnos de tu victoria.\n\n- Aumenta la fe de tu Iglesia, peregrina en la tierra,— para que dé al mundo testimonio de tu resurrección.\n\n- Tú que, habiendo padecido mucho, has entrado ya en la gloria del Padre,— convierte en gozo la tristeza de los afligidos.",
       "oracion": "Oh Dios, que con la abundancia de tu gracia no cesas de aumentar el número de tus hijos, mira con amor a los que has elegido como miembros de tu Iglesia para que, quienes han renacido por el bautismo, obtengan también la resurrección gloriosa. Por nuestro Señor Jesucristo."
     },
     "visperas": {
@@ -710,26 +659,7 @@ window.liturgiaData = {
         "antifona": "Ocho días después, estando cerradas las puertas, se presentó Jesús y, en presencia de todos, exclamó: «La paz sea con vosotros.» Aleluya.",
         "texto": "Proclama mi alma la grandeza del Señor,\n\nse alegra mi espíritu en Dios, mi salvador;\n\nporque ha mirado la humillación de su esclava.\n\nDesde ahora me felicitarán todas las generaciones,\n\nporque el Poderoso ha hecho obras grandes por mí:\n\nsu nombre es santo,\n\ny su misericordia llega a sus fieles\n\nde generación en generación.\n\nÉl hace proezas con su brazo:\n\ndispersa a los soberbios de corazón,\n\nderriba del trono a los poderosos\n\ny enaltece a los humildes,\n\na los hambrientos los colma de bienes\n\ny a los ricos los despide vacíos.\n\nAuxilia a Israel, su siervo,\n\nacordándose de la misericordia\n\n-como lo había prometido a nuestros padres-\n\nen favor de Abrahán y su descendencia por siempre."
       },
-      "preces": [
-        {
-          "respuesta": "Tú que vives eternamente, escúchanos, Señor."
-        },
-        {
-          "peticion": "Tú que eres la piedra rechazada por los arquitectos, pero convertida en piedra angular,— conviértenos a nosotros en piedras vivas de tu Iglesia."
-        },
-        {
-          "peticion": "Tú que eres el testigo fiel y el primogénito de entre los muertos,— haz que tu Iglesia sea también siempre testimonio ante el mundo."
-        },
-        {
-          "peticion": "Tú que eres el único esposo de la Iglesia, nacida de tu costado,— haz que todos nosotros seamos signos de tus bodas con la Iglesia."
-        },
-        {
-          "peticion": "Tú que eres el primero y el último, el que estabas muerto y ahora vives por los siglos de los siglos,— concede a todos los bautizados perseverar fieles hasta la muerte, a fin de recibir la corona de la victoria."
-        },
-        {
-          "peticion": "Tú que eres la lámpara que ilumina la ciudad santa de Dios,— alumbra con tu claridad a nuestros hermanos difuntos."
-        }
-      ],
+      "preces": "**Tú que vives eternamente, escúchanos, Señor.**\n\n- Tú que eres la piedra rechazada por los arquitectos, pero convertida en piedra angular,— conviértenos a nosotros en piedras vivas de tu Iglesia.\n\n- Tú que eres el testigo fiel y el primogénito de entre los muertos,— haz que tu Iglesia sea también siempre testimonio ante el mundo.\n\n- Tú que eres el único esposo de la Iglesia, nacida de tu costado,— haz que todos nosotros seamos signos de tus bodas con la Iglesia.\n\n- Tú que eres el primero y el último, el que estabas muerto y ahora vives por los siglos de los siglos,— concede a todos los bautizados perseverar fieles hasta la muerte, a fin de recibir la corona de la victoria.\n\n- Tú que eres la lámpara que ilumina la ciudad santa de Dios,— alumbra con tu claridad a nuestros hermanos difuntos.",
       "oracion": "Dios de misericordia infinita, que reanimas la fe de tu pueblo con el retorno anual de las fiestas pascuales, acrecienta en nosotros los dones de tu gracia, para que comprendamos mejor la inestimable riqueza del bautismo que nos ha purificado, del Espíritu que nos ha hecho renacer y de la sangre que nos ha redimido. Por nuestro Señor Jesucristo."
     }
   }
