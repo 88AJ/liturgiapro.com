@@ -240,49 +240,92 @@ window.liturgiaData = {
     ],
     "laudes": {
       "salmo1": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Cristo ha resucitado y con su claridad ilumina al pueblo rescatado con su sangre. Aleluya.",
+        "texto": "Salmo 62, 2-9\n\nEL ALMA SEDIENTA DE DIOS\n\nOh Dios!, tú eres mi Dios, por ti madrugo,\n\nmi alma está sedienta de ti;\n\nmi carne tiene ansia de ti,\n\ncomo tierra reseca, agostada, sin agua.\n\n¡Cómo te contemplaba en el santuario\n\nviendo tu fuerza y tu gloria!\n\nTu gracia vale más que la vida,\n\nte alabarán mis labios.\n\nToda mi vida te bendeciré\n\ny alzaré las manos invocándote,\n\nMe saciaré de manjares exquisitos,\n\ny mis labios te alabarán jubilosos.\n\nEn el lecho me acuerdo de ti\n\ny velando medito en ti,\n\nporque fuiste mi auxilio,\n\ny a la sombra de tus alas canto con júbilo;\n\nmi alma está unida a ti,\n\ny tu diestra me sostiene.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nCristo ha resucitado y con su claridad ilumina al pueblo rescatado con su sangre. Aleluya."
       },
       "cantico_at": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Ha resucitado del sepulcro nuestro Redentor; cantemos un himno al Señor, nuestro Dios. Aleluya.",
+        "texto": "Dn 3, 57-88, 56\n\nTODA LA CREACIÓN ALABE AL SEÑOR\n\nCreaturas todas del Señor, bendecid al Señor,\n\nensalzadlo con himnos por los siglos.\n\nÁngeles del Señor, bendecid al Señor;\n\ncielos, bendecid al Señor.\n\nAguas del espacio, bendecid al Señor;\n\nejércitos del Señor, bendecid al Señor.\n\nSol y luna, bendecid al Señor;\n\nastros del cielo, bendecid al Señor.\n\nLluvia y rocío, bendecid al Señor;\n\nvientos todos, bendecid al Señor.\n\nFuego y calor, bendecid al Señor;\n\nfríos y heladas, bendecid al Señor.\n\nRocíos  y nevadas, bendecid al Señor;\n\ntémpanos y hielos, bendecid al Señor.\n\nEscarchas y nieves, bendecid al Señor;\n\nnoche y día, bendecid al Señor.\n\nLuz y tinieblas, bendecid al Señor;\n\nrayos y nubes, bendecid al Señor.\n\nBendiga la tierra al Señor,\n\nensálcelo con himnos por los siglos.\n\nMontes y cumbres, bendecid al Señor;\n\ncuanto germina en la tierra, bendiga al Señor.\n\nManantiales, bendecid al Señor;\n\nmares y ríos, bendecid al Señor.\n\nCetáceos y peces, bendecid al Señor;\n\naves del cielo, bendecid al Señor.\n\nFieras y ganados, bendecid al Señor;\n\nensalzadlo con himnos por los siglos.\n\nHijos de los hombres, bendecid al Señor;\n\nbendiga Israel al Señor.\n\nSacerdotes del Señor, bendecid al Señor;\n\nsiervos del Señor, bendecid al Señor.\n\nAlmas y espíritus justos, bendecid al Señor;\n\nsantos y humildes de corazón, bendecid al Señor.\n\nAnanías, Azarías y Misael, bendecid al Señor,\n\nensalzadlo con himnos por los siglos.\n\nBendigamos al Padre,  al Hijo y  al Espíritu Santo,\n\nensalcémoslo con himnos por los siglos.\n\nBendito el Señor en la bóveda del cielo,\n\nalabado y glorioso y ensalzado por los siglos.\n\nNo se dice\n\nGloria al Padre.\n\nSe puede repetir la antífona:\n\nHa resucitado del sepulcro nuestro Redentor; cantemos un himno al Señor, nuestro Dios. Aleluya."
       },
       "salmo2": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Aleluya. Ha resucitado el Señor, tal como os lo había anunciado. Aleluya.",
+        "texto": "Salmo 149\n\nALEGRÍA DE LOS SANTOS\n\nCantad al Señor un cántico nuevo,\n\nresuene su alabanza en la asamblea de los fieles;\n\nque se alegre Israel por su Creador,\n\nlos hijos de Sión por su Rey.\n\nAlabad su nombre con danzas,\n\ncantadle con tambores y cítaras;\n\nporque el Señor ama a su pueblo\n\ny adorna con la victoria a los humildes.\n\nQue los fieles festejen su gloria\n\ny canten jubilosos en filas:\n\ncon vítores a Dios en la boca\n\ny espadas de dos filos en las manos:\n\npara tomar venganza de los pueblos\n\ny aplicar el castigo a las naciones,\n\nsujetando a los reyes con argollas,\n\na los nobles con esposas de hierro.\n\nEjecutar la sentencia dictada\n\nes un honor para todos sus fieles.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nAleluya. Ha resucitado el Señor, tal como os lo había anunciado. Aleluya."
       },
       "lectura_breve": {
-        "cita": "Juan 20, 19-31",
-        "texto": "Al anochecer del día de la resurrección estando cerradas las puertas de la casa donde se hallaban los discípulos por miedo a los judíos se presentó Jesús en medio de ellos y les dijo: «La paz esté con ustedes». Dicho esto les mostró las manos y el costado. Cuando los discípulos vieron al Señor se llenaron de alegría.\n\nDe nuevo les dijo Jesús: «La paz esté con ustedes. Como el Padre me ha enviado así también los envío yo». Después de decir esto sopló sobre ellos y les dijo: «Reciban al Espíritu Santo. A los que les perdonen los pecados les quedarán perdonados; y a los que no se los perdonen les quedarán sin perdonar».\n\nTomás uno de los Doce a quien llamaban el Gemelo no estaba con ellos cuando vino Jesús y los otros discípulos le decían: «Hemos visto al Señor». Pero él les contestó: «Si no veo en sus manos la señal de los clavos y si no meto mi dedo en los agujeros de los clavos y no meto mi mano en su costado no creeré».\n\nOcho días después estaban reunidos los discípulos a puerta cerrada y Tomás estaba con ellos. Jesús se presentó de nuevo en medio de ellos y les dijo: «La paz esté con ustedes». Luego le dijo a Tomás: «Aquí están mis manos; acerca tu dedo. Trae acá tu mano métela en mi costado y no sigas dudando sino cree». Tomás le respondió: «¡Señor mío y Dios mío!» Jesús añadió: «Tú crees porque me has visto; dichosos los que creen sin haber visto».\n\nOtras muchas señales milagrosas hizo Jesús en presencia de sus discípulos pero no están escritas en este libro. Se escribieron éstas para que ustedes crean que Jesús es el Mesías el Hijo de Dios y para que creyendo tengan vida en su nombre."
+        "cita": "Hch 10, 40-43",
+        "texto": "Dios resucitó a Jesús al tercer día e hizo que se apareciese no a todo el pueblo, sino a nosotros, que somos los testigos elegidos de antemano por Dios. Nosotros hemos comido y bebido con él, después que Dios lo resucitó de entre los muertos. Y él nos mandó predicar al pueblo y atestiguar que ha sido constituido por Dios juez de vivos y muertos. De él hablan todos los profetas y aseguran que cuantos tengan fe en él recibirán por su nombre el perdón de sus pecados."
       },
-      "responsorio_breve": "",
+      "responsorio_breve": {
+        "antifona": "Este es el día en que actuó el Señor: sea él nuestra alegría y nuestro gozo. Aleluya."
+      },
       "cantico_evangelico": {
-        "antifona": "",
-        "texto": "á\n\nn\n\nt\n\ni\n\nc\n\no\n\nd\n\ne\n\nZ\n\na\n\nc\n\na\n\nr\n\ní\n\na\n\ns\n\nB\n\ne\n\nn\n\nd\n\ni\n\nt\n\no\n\ns\n\ne\n\na\n\ne\n\nl\n\nS\n\ne\n\nñ\n\no\n\nr\n\n,\n\nD\n\ni\n\no\n\ns\n\nd\n\ne\n\nI\n\ns\n\nr\n\na\n\ne\n\nl\n\n,\n\np\n\no\n\nr\n\nq\n\nu\n\ne\n\nh\n\na\n\nv\n\ni\n\ns\n\ni\n\nt\n\na\n\nd\n\no\n\ny\n\nr\n\ne\n\nd\n\ni\n\nm\n\ni\n\nd\n\no\n\na\n\ns\n\nu\n\np\n\nu\n\ne\n\nb\n\nl\n\no\n\n,\n\ns\n\nu\n\ns\n\nc\n\ni\n\nt\n\ná\n\nn\n\nd\n\no\n\nn\n\no\n\ns\n\nu\n\nn\n\na\n\nf\n\nu\n\ne\n\nr\n\nz\n\na\n\nd\n\ne\n\ns\n\na\n\nl\n\nv\n\na\n\nc\n\ni\n\nó\n\nn\n\ne\n\nn\n\nl\n\na\n\nc\n\na\n\ns\n\na\n\nd\n\ne\n\nD\n\na\n\nv\n\ni\n\nd\n\n,\n\ns\n\nu\n\ns\n\ni\n\ne\n\nr\n\nv\n\no\n\n,\n\ns\n\ne\n\ng\n\nú\n\nn\n\nl\n\no\n\nh\n\na\n\nb\n\ní\n\na\n\np\n\nr\n\ne\n\nd\n\ni\n\nc\n\nh\n\no\n\nd\n\ne\n\ns\n\nd\n\ne\n\na\n\nn\n\nt\n\ni\n\ng\n\nu\n\no\n\np\n\no\n\nr\n\nb\n\no\n\nc\n\na\n\nd\n\ne\n\ns\n\nu\n\ns\n\ns\n\na\n\nn\n\nt\n\no\n\ns\n\np\n\nr\n\no\n\nf\n\ne\n\nt\n\na\n\ns\n\n.\n\nE\n\ns\n\nl\n\na\n\ns\n\na\n\nl\n\nv\n\na\n\nc\n\ni\n\nó\n\nn\n\nq\n\nu\n\ne\n\nn\n\no\n\ns\n\nl\n\ni\n\nb\n\nr\n\na\n\nd\n\ne\n\nn\n\nu\n\ne\n\ns\n\nt\n\nr\n\no\n\ns\n\ne\n\nn\n\ne\n\nm\n\ni\n\ng\n\no\n\ns\n\ny\n\nd\n\ne\n\nl\n\na\n\nm\n\na\n\nn\n\no\n\nd\n\ne\n\nt\n\no\n\nd\n\no\n\ns\n\nl\n\no\n\ns\n\nq\n\nu\n\ne\n\nn\n\no\n\ns\n\no\n\nd\n\ni\n\na\n\nn\n\n;\n\nh\n\na\n\nr\n\ne\n\na\n\nl\n\ni\n\nz\n\na\n\nd\n\no\n\na\n\ns\n\ní\n\nl\n\na\n\nm\n\ni\n\ns\n\ne\n\nr\n\ni\n\nc\n\no\n\nr\n\nd\n\ni\n\na\n\nq\n\nu\n\ne\n\nt\n\nu\n\nv\n\no\n\nc\n\no\n\nn\n\nn\n\nu\n\ne\n\ns\n\nt\n\nr\n\no\n\ns\n\np\n\na\n\nd\n\nr\n\ne\n\ns\n\n,\n\nr\n\ne\n\nc\n\no\n\nr\n\nd\n\na\n\nn\n\nd\n\no\n\ns\n\nu\n\ns\n\na\n\nn\n\nt\n\na\n\na\n\nl\n\ni\n\na\n\nn\n\nz\n\na\n\ny\n\ne\n\nl\n\nj\n\nu\n\nr\n\na\n\nm\n\ne\n\nn\n\nt\n\no\n\nq\n\nu\n\ne\n\nj\n\nu\n\nr\n\nó\n\na\n\nn\n\nu\n\ne\n\ns\n\nt\n\nr\n\no\n\np\n\na\n\nd\n\nr\n\ne\n\nA\n\nb\n\nr\n\na\n\nh\n\na\n\nm\n\n.\n\nP\n\na\n\nr\n\na\n\nc\n\no\n\nn\n\nc\n\ne\n\nd\n\ne\n\nr\n\nn\n\no\n\ns\n\nq\n\nu\n\ne\n\n,\n\nl\n\ni\n\nb\n\nr\n\ne\n\ns\n\nd\n\ne\n\nt\n\ne\n\nm\n\no\n\nr\n\n,\n\na\n\nr\n\nr\n\na\n\nn\n\nc\n\na\n\nd\n\no\n\ns\n\nd\n\ne\n\nl\n\na\n\nm\n\na\n\nn\n\no\n\nd\n\ne\n\nl\n\no\n\ns\n\ne\n\nn\n\ne\n\nm\n\ni\n\ng\n\no\n\ns\n\n,\n\nl\n\ne\n\ns\n\ni\n\nr\n\nv\n\na\n\nm\n\no\n\ns\n\nc\n\no\n\nn\n\ns\n\na\n\nn\n\nt\n\ni\n\nd\n\na\n\nd\n\ny\n\nj\n\nu\n\ns\n\nt\n\ni\n\nc\n\ni\n\na\n\n,\n\ne\n\nn\n\ns\n\nu\n\np\n\nr\n\ne\n\ns\n\ne\n\nn\n\nc\n\ni\n\na\n\n,\n\nt\n\no\n\nd\n\no\n\ns\n\nn\n\nu\n\ne\n\ns\n\nt\n\nr\n\no\n\ns\n\nd\n\ní\n\na\n\ns\n\n.\n\nY\n\na\n\nt\n\ni\n\n,\n\nn\n\ni\n\nñ\n\no\n\n,\n\nt\n\ne\n\nl\n\nl\n\na\n\nm\n\na\n\nr\n\ná\n\nn\n\np\n\nr\n\no\n\nf\n\ne\n\nt\n\na\n\nd\n\ne\n\nl\n\nA\n\nl\n\nt\n\ní\n\ns\n\ni\n\nm\n\no\n\n,\n\np\n\no\n\nr\n\nq\n\nu\n\ne\n\ni\n\nr\n\ná\n\ns\n\nd\n\ne\n\nl\n\na\n\nn\n\nt\n\ne\n\nd\n\ne\n\nl\n\nS\n\ne\n\nñ\n\no\n\nr\n\na\n\np\n\nr\n\ne\n\np\n\na\n\nr\n\na\n\nr\n\ns\n\nu\n\ns\n\nc\n\na\n\nm\n\ni\n\nn\n\no\n\ns\n\n,\n\na\n\nn\n\nu\n\nn\n\nc\n\ni\n\na\n\nn\n\nd\n\no\n\na\n\ns\n\nu\n\np\n\nu\n\ne\n\nb\n\nl\n\no\n\nl\n\na\n\ns\n\na\n\nl\n\nv\n\na\n\nc\n\ni\n\nó\n\nn\n\n,\n\ne\n\nl\n\np\n\ne\n\nr\n\nd\n\nó\n\nn\n\nd\n\ne\n\ns\n\nu\n\ns\n\np\n\ne\n\nc\n\na\n\nd\n\no\n\ns\n\n.\n\nP\n\no\n\nr\n\nl\n\na\n\ne\n\nn\n\nt\n\nr\n\na\n\nñ\n\na\n\nb\n\nl\n\ne\n\nm\n\ni\n\ns\n\ne\n\nr\n\ni\n\nc\n\no\n\nr\n\nd\n\ni\n\na\n\nd\n\ne\n\nn\n\nu\n\ne\n\ns\n\nt\n\nr\n\no\n\nD\n\ni\n\no\n\ns\n\n,\n\nn\n\no\n\ns\n\nv\n\ni\n\ns\n\ni\n\nt\n\na\n\nr\n\ná\n\ne\n\nl\n\ns\n\no\n\nl\n\nq\n\nu\n\ne\n\nn\n\na\n\nc\n\ne\n\nd\n\ne\n\nl\n\no\n\na\n\nl\n\nt\n\no\n\n,\n\np\n\na\n\nr\n\na\n\ni\n\nl\n\nu\n\nm\n\ni\n\nn\n\na\n\nr\n\na\n\nl\n\no\n\ns\n\nq\n\nu\n\ne\n\nv\n\ni\n\nv\n\ne\n\nn\n\ne\n\nn\n\nt\n\ni\n\nn\n\ni\n\ne\n\nb\n\nl\n\na\n\ny\n\ne\n\nn\n\ns\n\no\n\nm\n\nb\n\nr\n\na\n\nd\n\ne\n\nm\n\nu\n\ne\n\nr\n\nt\n\ne\n\n,\n\np\n\na\n\nr\n\na\n\ng\n\nu\n\ni\n\na\n\nr\n\nn\n\nu\n\ne\n\ns\n\nt\n\nr\n\no\n\ns\n\np\n\na\n\ns\n\no\n\ns\n\np\n\no\n\nr\n\ne\n\nl\n\nc\n\na\n\nm\n\ni\n\nn\n\no\n\nd\n\ne\n\nl\n\na\n\np\n\na\n\nz\n\n.\n\nS\n\ne\n\nd\n\ni\n\nc\n\ne\n\n:\n\nG\n\nl\n\no\n\nr\n\ni\n\na\n\na\n\nl\n\nP\n\na\n\nd\n\nr\n\ne\n\na\n\nl\n\nH\n\ni\n\nj\n\no\n\ny\n\na\n\nl\n\nE\n\ns\n\np\n\ní\n\nr\n\ni\n\nt\n\nu\n\nS\n\na\n\nn\n\nt\n\no\n\n,\n\nc\n\no\n\nm\n\no\n\ne\n\nr\n\na\n\ne\n\nn\n\ne\n\nl\n\np\n\nr\n\ni\n\nn\n\nc\n\ni\n\np\n\ni\n\no\n\n,\n\na\n\nh\n\no\n\nr\n\na\n\ny\n\ns\n\ni\n\ne\n\nm\n\np\n\nr\n\ne\n\n,\n\np\n\no\n\nr\n\nl\n\no\n\ns\n\ns\n\ni\n\ng\n\nl\n\no\n\ns\n\nd\n\ne\n\nl\n\no\n\ns\n\ns\n\ni\n\ng\n\nl\n\no\n\ns\n\n.\n\nA\n\nm\n\né\n\nn\n\n.\n\nS\n\ne\n\np\n\nu\n\ne\n\nd\n\ne\n\nr\n\ne\n\np\n\ne\n\nt\n\ni\n\nr\n\nl\n\na\n\na\n\nn\n\nt\n\ní\n\nf\n\no\n\nn\n\na\n\n:"
-      }
+        "antifona": "Trae tu mano y métela en mi costado; y no seas incrédulo, sino fiel. Aleluya.",
+        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nrealizando la misericordia\n\nque tuvo con nuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abrahán.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tinieblas\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz."
+      },
+      "preces": [
+        {
+          "respuesta": "Ilumínanos, Señor, con la luz de Cristo."
+        },
+        {
+          "peticion": "Padre santo, que hiciste pasar a tu Hijo amado de las tinieblas de la muerte a la luz de tu gloria,— haz que podamos llegar también nosotros a tu luz admirable."
+        },
+        {
+          "peticion": "Tú que nos has salvado por la fe,— haz que vivamos hoy según la fe que profesarnos en nuestro bautismo."
+        },
+        {
+          "peticion": "Tú que quieres que busquemos las cosas de arriba, donde está Cristo sentado a tu derecha,— líbranos de la seducción del pecado."
+        },
+        {
+          "peticion": "Haz que nuestra vida, oculta en ti con Cristo, brille en el mundo,— para que aparezcan los cielos nuevos y la tierra nueva."
+        }
+      ],
+      "oracion": "Dios de misericordia infinita, que reanimas la fe de tu pueblo con el retorno anual de las fiestas pascuales, acrecienta en nosotros los dones de tu gracia, para que comprendamos mejor la inestimable riqueza del bautismo que nos ha purificado, del Espíritu que nos ha hecho renacer y de la sangre que nos ha redimido. Por nuestro Señor Jesucristo."
     },
     "visperas": {
       "salmo1": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "María Magdalena y la otra María fueron a ver el sepulcro. Aleluya.",
+        "texto": "Salmo 109, 1-5. 7\n\nOráculo del Señor a mi Señor:\n\n«Siéntate a mi derecha,\n\ny haré de tus enemigos\n\nestrado de tus pies.»\n\nDesde Sión extenderá el Señor\n\nel poder de tu cetro:\n\nsomete en la batalla a tus enemigos.\n\n«Eres príncipe desde el día de tu nacimiento,\n\nentre esplendores sagrados;\n\nyo mismo te engendré, como rocío,\n\nantes de la aurora.»\n\nEl Señor lo ha jurado y no se arrepiente:\n\n«Tú eres sacerdote eterno\n\nsegún el rito de Melquisedec.»\n\nEl Señor a tu derecha, el día de su ira,\n\nquebrantará a los reyes.\n\nEn su camino beberá del torrente,\n\npor eso levantará la cabeza.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nMaría Magdalena y la otra María fueron a ver el sepulcro. Aleluya."
       },
       "salmo2": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Venid y ved el lugar donde habían puesto al Señor. Aleluya.",
+        "texto": "Salmo 113 A\n\nISRAEL LIBRADO DE EGIPTO\n\nLAS MARAVILLAS DEL ÉXODO\n\nCuando Israel salió de Egipto,\n\nlos hijos de Jacob de un pueblo balbuciente,\n\nJudá fue su santuario,\n\nIsrael fue su dominio.\n\nEl mar, al verlos, huyó,\n\nel Jordán se echó atrás;\n\nlos montes saltaron como carneros;\n\nlas colinas, como corderos.\n\n¿Qué te pasa, mar, que huyes,\n\ny a ti, Jordán, que te echas atrás?\n\n¿Y a vosotros, montes, que saltáis como carneros;\n\ncolinas, que saltáis como corderos?\n\nEn presencia del Señor se estremece la tierra,\n\nen presencia del Dios de Jacob;\n\nque transforma las peñas en estanques,\n\nel pedernal en manantiales de agua.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nVenid y ved el lugar donde habían puesto al Señor. Aleluya."
       },
       "cantico_nt": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Dijo Jesús: «No temáis. Id a decir a mis hermanos que vayan a Galilea, que allí me verán.» Aleluya.",
+        "texto": "Cántico\n\nCf. Ap 19, 1-2. 5-8\n\nLAS BODAS DEL CORDERO\n\nAleluya.\n\nLa salvación y la gloria y el poder son de nuestro Dios.\n\n(R. Aleluya.)\n\nPorque sus juicios son verdaderos y justos.\n\nR. Aleluya, (aleluya).\n\nAleluya.\n\nAlabad al Señor, sus siervos todos.\n\n(R. Aleluya.)\n\nLos que le teméis, pequeños y grandes.\n\nR. Aleluya, (aleluya).\n\nAleluya.\n\nPorque reina el Señor, nuestro Dios, dueño de todo.\n\n(R. Aleluya.)\n\nAlegrémonos y gocemos y démosle gracias.\n\nR. Aleluya, (aleluya).\n\nAleluya.\n\nLlegó la boda del Cordero.\n\n(R. Aleluya.)\n\nSu esposa se ha embellecido.\n\nR. Aleluya, (aleluya).\n\nAntífona 3. Dijo Jesús: «No temáis. Id a decir a mis hermanos que vayan a Galilea, que allá me verán.» Aleluya.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nDijo Jesús: «No temáis. Id a decir a mis hermanos que vayan a Galilea, que allí me verán.» Aleluya."
       },
       "lectura_breve": {
-        "cita": "Juan 20, 19-31",
-        "texto": "Al anochecer del día de la resurrección estando cerradas las puertas de la casa donde se hallaban los discípulos por miedo a los judíos se presentó Jesús en medio de ellos y les dijo: «La paz esté con ustedes». Dicho esto les mostró las manos y el costado. Cuando los discípulos vieron al Señor se llenaron de alegría.\n\nDe nuevo les dijo Jesús: «La paz esté con ustedes. Como el Padre me ha enviado así también los envío yo». Después de decir esto sopló sobre ellos y les dijo: «Reciban al Espíritu Santo. A los que les perdonen los pecados les quedarán perdonados; y a los que no se los perdonen les quedarán sin perdonar».\n\nTomás uno de los Doce a quien llamaban el Gemelo no estaba con ellos cuando vino Jesús y los otros discípulos le decían: «Hemos visto al Señor». Pero él les contestó: «Si no veo en sus manos la señal de los clavos y si no meto mi dedo en los agujeros de los clavos y no meto mi mano en su costado no creeré».\n\nOcho días después estaban reunidos los discípulos a puerta cerrada y Tomás estaba con ellos. Jesús se presentó de nuevo en medio de ellos y les dijo: «La paz esté con ustedes». Luego le dijo a Tomás: «Aquí están mis manos; acerca tu dedo. Trae acá tu mano métela en mi costado y no sigas dudando sino cree». Tomás le respondió: «¡Señor mío y Dios mío!» Jesús añadió: «Tú crees porque me has visto; dichosos los que creen sin haber visto».\n\nOtras muchas señales milagrosas hizo Jesús en presencia de sus discípulos pero no están escritas en este libro. Se escribieron éstas para que ustedes crean que Jesús es el Mesías el Hijo de Dios y para que creyendo tengan vida en su nombre."
+        "cita": "1 Pe 2, 9-10",
+        "texto": "Vosotros sois linaje escogido, sacerdocio regio, nación santa, pueblo adquirido por Dios para proclamar las hazañas del que os llamó a salir de la tiniebla y a entrar en su luz maravillosa. Vosotros, que en otro tiempo no erais pueblo, sois ahora pueblo de Dios; vosotros, que estabais excluidos de la misericordia, sois ahora objeto de la misericordia de Dios."
       },
-      "responsorio_breve": "",
+      "responsorio_breve": {
+        "antifona": "Este es el día en que actuó el Señor: sea él nuestra alegría y nuestro gozo. Aleluya."
+      },
       "cantico_evangelico": {
-        "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
-        "texto": ""
-      }
+        "antifona": "Por haber visto has creído, Tomás. Dichosos los que crean sin haber visto. Aleluya.",
+        "texto": "Proclama mi alma la grandeza del Señor,\n\nse alegra mi espíritu en Dios, mi salvador;\n\nporque ha mirado la humillación de su esclava.\n\nDesde ahora me felicitarán todas las generaciones,\n\nporque el Poderoso ha hecho obras grandes por mí:\n\nsu nombre es santo,\n\ny su misericordia llega a sus fieles\n\nde generación en generación.\n\nÉl hace proezas con su brazo:\n\ndispersa a los soberbios de corazón,\n\nderriba del trono a los poderosos\n\ny enaltece a los humildes,\n\na los hambrientos los colma de bienes\n\ny a los ricos los despide vacíos.\n\nAuxilia a Israel, su siervo,\n\nacordándose de la misericordia\n\n-como lo había prometido a nuestros padres-\n\nen favor de Abrahán y su descendencia por siempre."
+      },
+      "preces": [
+        {
+          "respuesta": "Tú que vives eternamente, escúchanos, Señor."
+        },
+        {
+          "peticion": "Tú que eres la piedra rechazada por los arquitectos, pero convertida en piedra angular,— conviértenos a nosotros en piedras vivas de tu Iglesia."
+        },
+        {
+          "peticion": "Tú que eres el testigo fiel y el primogénito de entre los muertos,— haz que tu Iglesia sea también siempre testimonio ante el mundo."
+        },
+        {
+          "peticion": "Tú que eres el único esposo de la Iglesia, nacida de tu costado,— haz que todos nosotros seamos signos de tus bodas con la Iglesia."
+        },
+        {
+          "peticion": "Tú que eres el primero y el último, el que estabas muerto y ahora vives por los siglos de los siglos,— concede a todos los bautizados perseverar fieles hasta la muerte, a fin de recibir la corona de la victoria."
+        },
+        {
+          "peticion": "Tú que eres la lámpara que ilumina la ciudad santa de Dios,— alumbra con tu claridad a nuestros hermanos difuntos."
+        }
+      ],
+      "oracion": "Dios de misericordia infinita, que reanimas la fe de tu pueblo con el retorno anual de las fiestas pascuales, acrecienta en nosotros los dones de tu gracia, para que comprendamos mejor la inestimable riqueza del bautismo que nos ha purificado, del Espíritu que nos ha hecho renacer y de la sangre que nos ha redimido. Por nuestro Señor Jesucristo."
     },
     "oracion_fieles": [
       "Por la Santa Iglesia de Dios, para que el Espíritu Santo la impulse a ser cada día más signo vivo de la comunión y el perdón, oremos al Señor.",
@@ -552,7 +595,7 @@ window.liturgiaData = {
       "responsorio_breve": "Éste es el día en que actuó el Señor; sea él nuestra alegría y nuestro gozo. Aleluya.",
       "cantico_evangelico": {
         "antifona": "El discípulo predilecto de Jesús dijo: «¡Es el Señor!» Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl discípulo predilecto de Jesús dijo: «¡Es el Señor!» Aleluya.\nInvoquemos a   Cristo, camino, verdad y vida, y digámosle:\nR.\nHijo de   Dios vivo, bendice a tu pueblo.\nTe rogamos, Señor,   por los ministros de tu Iglesia que, al distribuir entre   sus hermanos el pan de vida,\nR.\nencuentren también ellos   en el pan que distribuyen su alimento y fortaleza.\nTe pedimos por todo el pueblo cristiano: que viva, Señor, como pide la vocación a que ha sido convocado\nR.\ny se esfuerce por mantener la unidad del Espíritu con   el vínculo de la paz.\nTe pedimos por los   que rigen los destinos de las naciones: que cumplan su misión con espíritu de justicia y con amor,\nR.\npara que   haya paz y concordia entre los pueblos.\nSe pueden añadir algunas intenciones libres\nSeñor, que podamos celebrar tu santa resurrección con tus ángeles y tus santos,\nR.\ny que nuestros hermanos difuntos, a quienes encomendamos a tu bondad, se alegren   también en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "texto": "Proclama mi alma la grandeza del Señor,\n\nse alegra mi espíritu en Dios, mi salvador;\n\nporque ha mirado la humillación de su esclava.\n\nDesde ahora me felicitarán todas las generaciones,\n\nporque el Poderoso ha hecho obras grandes por mí:\n\nsu nombre es santo,\n\ny su misericordia llega a sus fieles\n\nde generación en generación.\n\nÉl hace proezas con su brazo:\n\ndispersa a los soberbios de corazón,\n\nderriba del trono a los poderosos\n\ny enaltece a los humildes,\n\na los hambrientos los colma de bienes\n\ny a los ricos los despide vacíos.\n\nAuxilia a Israel, su siervo,\n\nacordándose de la misericordia\n\n-como lo había prometido a nuestros padres-\n\nen favor de Abrahán y su descendencia por siempre."
       }
     }
   },
@@ -599,6 +642,95 @@ window.liturgiaData = {
       "**1. La Verdad Testimonial Frente a la Autoridad Humana:** Pedro y Juan, hombres sencillos y sin instrucción formal, se enfrentan a la élite religiosa con una autoridad que no proviene de su conocimiento terrenal, sino de su experiencia personal con el Cristo Resucitado. Su aplomo y la evidencia del milagro son prueba de que la verdad del Evangelio trasciende cualquier poder humano y exige una obediencia primordial a Dios. La fuerza de su testimonio reside en lo que 'han visto y oído', un llamado a nosotros para vivir una fe que se traduce en testimonio viviente.",
       "**2. La Resurrección, un Misterio que Rompe la Incredulidad:** El relato de las apariciones de Jesús es revelador sobre la naturaleza de la fe. Los discípulos, envueltos en su tristeza y apego a lo conocido, luchan por creer en la novedad radical de la Resurrección. La incredulidad, la dureza de corazón, son obstáculos que el amor paciente de Jesús va superando. Esto nos recuerda que la fe es un don que se cultiva y que exige un corazón abierto y dispuesto a asimilar lo que, humanamente, parece imposible. La fe no niega la realidad, sino que la reinterpreta a la luz de la victoria de Cristo sobre la muerte.",
       "**3. La Misión Universal Nacida de la Experiencia del Resucitado:** El mandato 'Vayan por todo el mundo y prediquen el Evangelio a toda creatura' es la consecuencia directa de la Resurrección y la superación de la incredulidad. La experiencia transformadora de Jesús Vivo impulsa a la Iglesia a ser misionera. No se trata solo de anunciar una doctrina, sino de compartir la vida nueva que emana del Resucitado. Esta misión es para toda la humanidad, un llamado a que cada persona pueda experimentar la misericordia y la salvación que Dios nos ofrece en Cristo."
-    ]
+    ],
+    "laudes": {
+      "salmo1": {
+        "antifona": "Cristo ha resucitado y con su claridad ilumina al pueblo rescatado con su sangre. Aleluya.",
+        "texto": "Salmo 62, 2-9\n\nEL ALMA SEDIENTA DE DIOS\n\nOh Dios!, tú eres mi Dios, por ti madrugo,\n\nmi alma está sedienta de ti;\n\nmi carne tiene ansia de ti,\n\ncomo tierra reseca, agostada, sin agua.\n\n¡Cómo te contemplaba en el santuario\n\nviendo tu fuerza y tu gloria!\n\nTu gracia vale más que la vida,\n\nte alabarán mis labios.\n\nToda mi vida te bendeciré\n\ny alzaré las manos invocándote,\n\nMe saciaré de manjares exquisitos,\n\ny mis labios te alabarán jubilosos.\n\nEn el lecho me acuerdo de ti\n\ny velando medito en ti,\n\nporque fuiste mi auxilio,\n\ny a la sombra de tus alas canto con júbilo;\n\nmi alma está unida a ti,\n\ny tu diestra me sostiene.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nCristo ha resucitado y con su claridad ilumina al pueblo rescatado con su sangre. Aleluya."
+      },
+      "cantico_at": {
+        "antifona": "Ha resucitado del sepulcro nuestro Redentor; cantemos un himno al Señor, nuestro Dios. Aleluya.",
+        "texto": "Dn 3, 57-88, 56\n\nTODA LA CREACIÓN ALABE AL SEÑOR\n\nCreaturas todas del Señor, bendecid al Señor,\n\nensalzadlo con himnos por los siglos.\n\nÁngeles del Señor, bendecid al Señor;\n\ncielos, bendecid al Señor.\n\nAguas del espacio, bendecid al Señor;\n\nejércitos del Señor, bendecid al Señor.\n\nSol y luna, bendecid al Señor;\n\nastros del cielo, bendecid al Señor.\n\nLluvia y rocío, bendecid al Señor;\n\nvientos todos, bendecid al Señor.\n\nFuego y calor, bendecid al Señor;\n\nfríos y heladas, bendecid al Señor.\n\nRocíos  y nevadas, bendecid al Señor;\n\ntémpanos y hielos, bendecid al Señor.\n\nEscarchas y nieves, bendecid al Señor;\n\nnoche y día, bendecid al Señor.\n\nLuz y tinieblas, bendecid al Señor;\n\nrayos y nubes, bendecid al Señor.\n\nBendiga la tierra al Señor,\n\nensálcelo con himnos por los siglos.\n\nMontes y cumbres, bendecid al Señor;\n\ncuanto germina en la tierra, bendiga al Señor.\n\nManantiales, bendecid al Señor;\n\nmares y ríos, bendecid al Señor.\n\nCetáceos y peces, bendecid al Señor;\n\naves del cielo, bendecid al Señor.\n\nFieras y ganados, bendecid al Señor;\n\nensalzadlo con himnos por los siglos.\n\nHijos de los hombres, bendecid al Señor;\n\nbendiga Israel al Señor.\n\nSacerdotes del Señor, bendecid al Señor;\n\nsiervos del Señor, bendecid al Señor.\n\nAlmas y espíritus justos, bendecid al Señor;\n\nsantos y humildes de corazón, bendecid al Señor.\n\nAnanías, Azarías y Misael, bendecid al Señor,\n\nensalzadlo con himnos por los siglos.\n\nBendigamos al Padre,  al Hijo y  al Espíritu Santo,\n\nensalcémoslo con himnos por los siglos.\n\nBendito el Señor en la bóveda del cielo,\n\nalabado y glorioso y ensalzado por los siglos.\n\nNo se dice\n\nGloria al Padre.\n\nSe puede repetir la antífona:\n\nHa resucitado del sepulcro nuestro Redentor; cantemos un himno al Señor, nuestro Dios. Aleluya."
+      },
+      "salmo2": {
+        "antifona": "Aleluya. Ha resucitado el Señor, tal como os lo había anunciado. Aleluya.",
+        "texto": "Salmo 149\n\nALEGRÍA DE LOS SANTOS\n\nCantad al Señor un cántico nuevo,\n\nresuene su alabanza en la asamblea de los fieles;\n\nque se alegre Israel por su Creador,\n\nlos hijos de Sión por su Rey.\n\nAlabad su nombre con danzas,\n\ncantadle con tambores y cítaras;\n\nporque el Señor ama a su pueblo\n\ny adorna con la victoria a los humildes.\n\nQue los fieles festejen su gloria\n\ny canten jubilosos en filas:\n\ncon vítores a Dios en la boca\n\ny espadas de dos filos en las manos:\n\npara tomar venganza de los pueblos\n\ny aplicar el castigo a las naciones,\n\nsujetando a los reyes con argollas,\n\na los nobles con esposas de hierro.\n\nEjecutar la sentencia dictada\n\nes un honor para todos sus fieles.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nAleluya. Ha resucitado el Señor, tal como os lo había anunciado. Aleluya."
+      },
+      "lectura_breve": {
+        "cita": "Rm 14, 7-9",
+        "texto": "Ninguno de nosotros vive para sí y ninguno muere para sí. Que si vivimos, vivimos para el Señor; y si morimos, para el Señor morimos. En fin, que tanto en vida como en muerte somos del Señor. Para esto murió Cristo y retornó a la vida, para ser Señor de vivos y muertos."
+      },
+      "responsorio_breve": {
+        "antifona": "Este es el día en que actuó el Señor: sea él nuestra alegría y nuestro gozo. Aleluya."
+      },
+      "cantico_evangelico": {
+        "antifona": "Después de su resurrección, que tuvo lugar a la mañana del primer día de la semana, Jesús se apareció primero a María Magdalena, de la que había arrojado siete demonios. Aleluya.",
+        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nrealizando la misericordia\n\nque tuvo con nuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abrahán.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tinieblas\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz."
+      },
+      "preces": [
+        {
+          "respuesta": "Señor, danos paz y alegría."
+        },
+        {
+          "peticion": "Hijo de Dios, que resucitado de entre los muertos eres el Príncipe de la vida,— bendice y santifica a tus fieles y a todos los hombres."
+        },
+        {
+          "peticion": "Tú que concedes paz y alegría a todos los que creen en ti,— danos vivir como hijos de la luz y alegrarnos de tu victoria."
+        },
+        {
+          "peticion": "Aumenta la fe de tu Iglesia, peregrina en la tierra,— para que dé al mundo testimonio de tu resurrección."
+        },
+        {
+          "peticion": "Tú que, habiendo padecido mucho, has entrado ya en la gloria del Padre,— convierte en gozo la tristeza de los afligidos."
+        }
+      ],
+      "oracion": "Oh Dios, que con la abundancia de tu gracia no cesas de aumentar el número de tus hijos, mira con amor a los que has elegido como miembros de tu Iglesia para que, quienes han renacido por el bautismo, obtengan también la resurrección gloriosa. Por nuestro Señor Jesucristo."
+    },
+    "visperas": {
+      "salmo1": {
+        "antifona": "María Magdalena y la otra María fueron a ver el sepulcro. Aleluya.",
+        "texto": "Salmo 109, 1-5. 7\n\nOráculo del Señor a mi Señor:\n\n«Siéntate a mi derecha,\n\ny haré de tus enemigos\n\nestrado de tus pies.»\n\nDesde Sión extenderá el Señor\n\nel poder de tu cetro:\n\nsomete en la batalla a tus enemigos.\n\n«Eres príncipe desde el día de tu nacimiento,\n\nentre esplendores sagrados;\n\nyo mismo te engendré, como rocío,\n\nantes de la aurora.»\n\nEl Señor lo ha jurado y no se arrepiente:\n\n«Tú eres sacerdote eterno\n\nsegún el rito de Melquisedec.»\n\nEl Señor a tu derecha, el día de su ira,\n\nquebrantará a los reyes.\n\nEn su camino beberá del torrente,\n\npor eso levantará la cabeza.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nMaría Magdalena y la otra María fueron a ver el sepulcro. Aleluya."
+      },
+      "salmo2": {
+        "antifona": "Venid y ved el lugar donde habían puesto al Señor. Aleluya.",
+        "texto": "Salmo 113 A\n\nISRAEL LIBRADO DE EGIPTO\n\nLAS MARAVILLAS DEL ÉXODO\n\nCuando Israel salió de Egipto,\n\nlos hijos de Jacob de un pueblo balbuciente,\n\nJudá fue su santuario,\n\nIsrael fue su dominio.\n\nEl mar, al verlos, huyó,\n\nel Jordán se echó atrás;\n\nlos montes saltaron como carneros;\n\nlas colinas, como corderos.\n\n¿Qué te pasa, mar, que huyes,\n\ny a ti, Jordán, que te echas atrás?\n\n¿Y a vosotros, montes, que saltáis como carneros;\n\ncolinas, que saltáis como corderos?\n\nEn presencia del Señor se estremece la tierra,\n\nen presencia del Dios de Jacob;\n\nque transforma las peñas en estanques,\n\nel pedernal en manantiales de agua.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nVenid y ved el lugar donde habían puesto al Señor. Aleluya."
+      },
+      "cantico_nt": {
+        "antifona": "Dijo Jesús: «No temáis. Id a decir a mis hermanos que vayan a Galilea, que allí me verán.» Aleluya.",
+        "texto": "Cántico\n\nCf. Ap 19, 1-2. 5-8\n\nLAS BODAS DEL CORDERO\n\nAleluya.\n\nLa salvación y la gloria y el poder son de nuestro Dios.\n\n(R. Aleluya.)\n\nPorque sus juicios son verdaderos y justos.\n\nR. Aleluya, (aleluya).\n\nAleluya.\n\nAlabad al Señor, sus siervos todos.\n\n(R. Aleluya.)\n\nLos que le teméis, pequeños y grandes.\n\nR. Aleluya, (aleluya).\n\nAleluya.\n\nPorque reina el Señor, nuestro Dios, dueño de todo.\n\n(R. Aleluya.)\n\nAlegrémonos y gocemos y démosle gracias.\n\nR. Aleluya, (aleluya).\n\nAleluya.\n\nLlegó la boda del Cordero.\n\n(R. Aleluya.)\n\nSu esposa se ha embellecido.\n\nR. Aleluya, (aleluya).\n\nAntífona 3. Dijo Jesús: «No temáis. Id a decir a mis hermanos que vayan a Galilea, que allá me verán.» Aleluya.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nDijo Jesús: «No temáis. Id a decir a mis hermanos que vayan a Galilea, que allí me verán.» Aleluya."
+      },
+      "lectura_breve": {
+        "cita": "1 Pe 2, 9-10",
+        "texto": "Vosotros sois linaje escogido, sacerdocio regio, nación santa, pueblo adquirido por Dios para proclamar las hazañas del que os llamó a salir de la tiniebla y a entrar en su luz maravillosa. Vosotros, que en otro tiempo no erais pueblo, sois ahora pueblo de Dios; vosotros, que estabais excluidos de la misericordia, sois ahora objeto de la misericordia de Dios."
+      },
+      "responsorio_breve": {
+        "antifona": "Este es el día en que actuó el Señor: sea él nuestra alegría y nuestro gozo. Aleluya."
+      },
+      "cantico_evangelico": {
+        "antifona": "Ocho días después, estando cerradas las puertas, se presentó Jesús y, en presencia de todos, exclamó: «La paz sea con vosotros.» Aleluya.",
+        "texto": "Proclama mi alma la grandeza del Señor,\n\nse alegra mi espíritu en Dios, mi salvador;\n\nporque ha mirado la humillación de su esclava.\n\nDesde ahora me felicitarán todas las generaciones,\n\nporque el Poderoso ha hecho obras grandes por mí:\n\nsu nombre es santo,\n\ny su misericordia llega a sus fieles\n\nde generación en generación.\n\nÉl hace proezas con su brazo:\n\ndispersa a los soberbios de corazón,\n\nderriba del trono a los poderosos\n\ny enaltece a los humildes,\n\na los hambrientos los colma de bienes\n\ny a los ricos los despide vacíos.\n\nAuxilia a Israel, su siervo,\n\nacordándose de la misericordia\n\n-como lo había prometido a nuestros padres-\n\nen favor de Abrahán y su descendencia por siempre."
+      },
+      "preces": [
+        {
+          "respuesta": "Tú que vives eternamente, escúchanos, Señor."
+        },
+        {
+          "peticion": "Tú que eres la piedra rechazada por los arquitectos, pero convertida en piedra angular,— conviértenos a nosotros en piedras vivas de tu Iglesia."
+        },
+        {
+          "peticion": "Tú que eres el testigo fiel y el primogénito de entre los muertos,— haz que tu Iglesia sea también siempre testimonio ante el mundo."
+        },
+        {
+          "peticion": "Tú que eres el único esposo de la Iglesia, nacida de tu costado,— haz que todos nosotros seamos signos de tus bodas con la Iglesia."
+        },
+        {
+          "peticion": "Tú que eres el primero y el último, el que estabas muerto y ahora vives por los siglos de los siglos,— concede a todos los bautizados perseverar fieles hasta la muerte, a fin de recibir la corona de la victoria."
+        },
+        {
+          "peticion": "Tú que eres la lámpara que ilumina la ciudad santa de Dios,— alumbra con tu claridad a nuestros hermanos difuntos."
+        }
+      ],
+      "oracion": "Dios de misericordia infinita, que reanimas la fe de tu pueblo con el retorno anual de las fiestas pascuales, acrecienta en nosotros los dones de tu gracia, para que comprendamos mejor la inestimable riqueza del bautismo que nos ha purificado, del Espíritu que nos ha hecho renacer y de la sangre que nos ha redimido. Por nuestro Señor Jesucristo."
+    }
   }
 };
