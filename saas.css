@@ -677,3 +677,252 @@ body {
         break-inside: avoid;
     }
 }
+
+/* ----------------------------------------------------- */
+/* PADRE PRO CHATBOT WIDGET                              */
+/* ----------------------------------------------------- */
+
+.padre-pro-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.padre-pro-toggle {
+    background: var(--gold-accent);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.padre-pro-toggle:hover {
+    transform: translateY(-2px);
+    background: #b08a47;
+}
+
+.padre-pro-toggle .icon {
+    font-size: 20px;
+}
+
+.padre-pro-window {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 350px;
+    max-height: 500px;
+    background: #1e1e1e;
+    border: 1px solid var(--gold-accent);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.padre-pro-header {
+    background: #0f0f0f;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--gold-accent);
+}
+
+.padre-pro-header .header-info strong {
+    color: var(--gold-accent);
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+}
+
+.padre-pro-header .status-indicator {
+    color: #aaa;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 2px;
+}
+
+.padre-pro-header .status-indicator::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--brand-color);
+}
+
+.padre-pro-chat {
+    flex: 1;
+    height: 350px;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #181818;
+}
+
+.chat-message {
+    max-width: 85%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    position: relative;
+    color: #fff;
+}
+
+.chat-message.bot {
+    background: rgba(197, 160, 89, 0.1);
+    align-self: flex-start;
+    border-left: 3px solid var(--gold-accent);
+    border-bottom-left-radius: 0;
+}
+
+.chat-message.user {
+    background: rgba(178, 0, 0, 0.2);
+    align-self: flex-end;
+    border-right: 3px solid var(--brand-color);
+    border-bottom-right-radius: 0;
+}
+
+.chat-message p {
+    margin: 0 0 8px 0;
+}
+
+.chat-message p:last-child {
+    margin-bottom: 0;
+}
+
+.chat-message strong {
+    color: var(--gold-accent);
+}
+
+.padre-pro-input {
+    display: flex;
+    padding: 15px;
+    background: #0f0f0f;
+    border-top: 1px solid #333;
+}
+
+.padre-pro-input input {
+    flex: 1;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.padre-pro-input input:focus {
+    border-color: var(--gold-accent);
+}
+
+.padre-pro-input button {
+    background: var(--gold-accent);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.padre-pro-input button:hover {
+    background: #b08a47;
+}
+
+.typing-indicator {
+    font-style: italic;
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* ----------------------------------------------------- */
+/* PROMPTER CINEMATICO                                  */
+/* ----------------------------------------------------- */
+
+#prompter-screen {
+    background: #000000 !important; /* Puro negro para proyector */
+}
+
+#prompter-controls-bar:hover {
+    opacity: 1 !important;
+}
+
+.prompter-slide {
+    width: 100%;
+    margin-bottom: 120px; /* Separación grande entre lecturas */
+    animation: fadeInSlide 0.5s ease-in-out;
+}
+
+.prompter-slide.active {
+    display: block;
+}
+
+.prompter-slide-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold-accent);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.prompter-slide-content {
+    font-size: 3rem;
+    line-height: 1.5;
+    color: #Fdfdfd;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.prompter-slide-rubric {
+    font-size: 2rem;
+    color: #B20000;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
