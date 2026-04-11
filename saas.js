@@ -2,6 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Precargar letras de cantos (Offline bypass activo)
     window.cantosDB = window.cantosDB || {};
 
+    window.loadCancionero = function(filename) {
+        const frame = document.getElementById("cancionero-frame");
+        const empty = document.getElementById("cancionero-empty");
+        const navs = document.querySelectorAll("#cancionero-workspace .nav-links li");
+        
+        // Visual indicator
+        navs.forEach(n => n.style.color = "var(--text-primary)");
+        // Removed global event reference to prevent ReferenceError
+        
+        empty.style.display = "none";
+        frame.style.display = "block";
+        frame.src = "Cancionero/" + filename;
+    };
+
     // Navigation Logic
     const loginBtn = document.getElementById('login-btn');
     const landingScreen = document.getElementById('landing-screen');
@@ -22,10 +36,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            navItems.forEach(n => n.classList.remove('active'));
+            let view = item.getAttribute('data-view') || 'misa';
+            
+            // Allow cancionero links inside the Cancionero workspace to ignore this global logic 
+            // if they are not in the main sidebar
+            if(!item.closest('.saas-sidebar')) return;
+            
+            navItems.forEach(n => { if(n.closest('.saas-sidebar')) n.classList.remove('active') });
             item.classList.add('active');
             
-            if (item.id === 'nav-bulletin') {
+            let builderWorkspace = document.getElementById("builder-workspace");
+            let cancioneroWorkspace = document.getElementById("cancionero-workspace");
+            
+            let ritualSelect = document.getElementById("ritual-select");
+            let bautismoFields = document.getElementById("bautismo-fields");
+            let matrimonioFields = document.getElementById("matrimonio-fields");
+            let exequiasFields = document.getElementById("exequias-fields");
+            let ritualGroup = document.getElementById("ritual-group");
+            
+            if (view === 'cancionero') {
+                if(builderWorkspace) builderWorkspace.style.display = 'none';
+                if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'flex';
+                currentMode = 'cancionero';
+                return; // Stop here for cancionero
+            } else {
+                if(builderWorkspace) builderWorkspace.style.display = 'flex';
+                if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'none';
+            }
+            
+            if (view === 'boletin') {
                 liturgiaForm.style.display = 'none';
                 boletinForm.style.display = 'block';
                 currentMode = 'boletin';
@@ -33,6 +72,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 liturgiaForm.style.display = 'block';
                 boletinForm.style.display = 'none';
                 currentMode = 'liturgia';
+                
+                if (view === 'bautismo') {
+                    if(ritualSelect) ritualSelect.value = "bautismo";
+                    if(bautismoFields) bautismoFields.style.display = 'block';
+                    if(matrimonioFields) matrimonioFields.style.display = 'none';
+                    if(exequiasFields) exequiasFields.style.display = 'none';
+                    if(ritualGroup) ritualGroup.style.display = 'block';
+                } else if (view === 'matrimonio') {
+                    if(ritualSelect) ritualSelect.value = "matrimonio";
+                    if(bautismoFields) bautismoFields.style.display = 'none';
+                    if(matrimonioFields) matrimonioFields.style.display = 'block';
+                    if(exequiasFields) exequiasFields.style.display = 'none';
+                    if(ritualGroup) ritualGroup.style.display = 'block';
+                } else if (view === 'exequias') {
+                    if(ritualSelect) ritualSelect.value = "exequias";
+                    if(bautismoFields) bautismoFields.style.display = 'none';
+                    if(matrimonioFields) matrimonioFields.style.display = 'none';
+                    if(exequiasFields) exequiasFields.style.display = 'block';
+                    if(ritualGroup) ritualGroup.style.display = 'block';
+                } else if (view === 'misa') {
+                    if(ritualSelect) ritualSelect.value = "ninguno";
+                    if(bautismoFields) bautismoFields.style.display = 'none';
+                    if(matrimonioFields) matrimonioFields.style.display = 'none';
+                    if(exequiasFields) exequiasFields.style.display = 'none';
+                    if(ritualGroup) ritualGroup.style.display = 'none';
+                } else {
+                    // For unimplemented rituals, reset to ordinary mass for now
+                    if(ritualSelect) ritualSelect.value = "ninguno";
+                    if(bautismoFields) bautismoFields.style.display = 'none';
+                    if(matrimonioFields) matrimonioFields.style.display = 'none';
+                    if(exequiasFields) exequiasFields.style.display = 'none';
+                    if(ritualGroup) ritualGroup.style.display = 'none';
+                }
             }
         });
     });
@@ -59,7 +131,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-doc-btn');
     const pdfView = document.getElementById('pdf-view');
 
+    // Liturgical Calendar UI Linker
+    const dateSelect = document.getElementById('date-select');
+    const liturgicalInfo = document.getElementById('liturgical-info');
+    if (dateSelect && liturgicalInfo) {
+        dateSelect.addEventListener('change', () => {
+             if (window.calendarioDB) {
+                 const calDay = window.calendarioDB[dateSelect.value];
+                 if (calDay) {
+                     liturgicalInfo.style.display = 'block';
+                     liturgicalInfo.innerHTML = `<strong>Día Litúrgico:</strong> ${calDay.titulo}<br><strong>Grado:</strong> ${calDay.grado} | <strong>Color:</strong> <span style="text-transform:capitalize;">${calDay.color}</span><br><em style="color:#aaa; font-size:0.8rem;">(Regla Canónica: ${calDay.regla_cem})</em>`;
+                 } else {
+                     liturgicalInfo.style.display = 'block';
+                     liturgicalInfo.innerHTML = `<em style="color:#d86060;">Fecha sin datos en Cerebro Offline. Funciones limitadas.</em>`;
+                 }
+             }
+        });
+        // trigger on init
+        setTimeout(() => { dateSelect.dispatchEvent(new Event('change')); }, 500);
+    }
+
     generateBtn.addEventListener('click', () => {
+        // QUICK DIAGNOSTIC ALERT
+        console.log("Generar Documento pulsado. Fecha activa:", document.getElementById('date-select').value);
+        if (currentMode === 'cancionero') return; // Do nothing if on Cancionero
+
         pdfView.innerHTML = '<div class="empty-state">Compilando Rúbricas...</div>';
         
         setTimeout(() => {
@@ -422,8 +518,37 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Flujo Misa modular
             const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico, isEn);
             let sNum = 1;
-            
             // RITOS INICIALES
+            // Variables Sacramentales
+            let ritualSelect = document.getElementById("ritual-select") ? document.getElementById("ritual-select").value : "ninguno";
+            let nombreBebe = document.getElementById("bautismo-bebe") ? document.getElementById("bautismo-bebe").value : "Juan Pablo";
+            let nombrePadrinos = document.getElementById("bautismo-padrinos") ? document.getElementById("bautismo-padrinos").value : "Carlos y Ana";
+            let nombreEsposo = document.getElementById("matrimonio-esposo") ? document.getElementById("matrimonio-esposo").value : "Alejandro";
+            let nombreEsposa = document.getElementById("matrimonio-esposa") ? document.getElementById("matrimonio-esposa").value : "María";
+            let nombreDifunto = document.getElementById("exequias-difunto") ? document.getElementById("exequias-difunto").value : "N.";
+            let generoDifunto = document.getElementById("exequias-genero") ? document.getElementById("exequias-genero").value : "m";
+            let exequiasTipo = document.getElementById("exequias-tipo") ? document.getElementById("exequias-tipo").value : "adulto";
+
+            // EVALUACIÓN CANÓNICA (Cerebro Magisterial)
+            const fechaElegida = document.getElementById('date-select') ? document.getElementById('date-select').value : null;
+            if (fechaElegida && window.calendarioDB && window.calendarioDB[fechaElegida]) {
+                const diaLogica = window.calendarioDB[fechaElegida];
+                if (ritualSelect !== "ninguno") {
+                    const prohibicionesEctrictas = ["I.1", "I.2", "I.3", "I.4"]; // Triduo, Solemnidades precepto, Domingos Ad/Cu/Pa
+                    if (prohibicionesEctrictas.includes(diaLogica.regla_cem)) {
+                        out += `<div style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-left: 5px solid #cc0000; margin-bottom: 20px;">
+                                  <strong>⚠️ RESTRICCIÓN CANÓNICA (Regla CEM ${diaLogica.regla_cem})</strong><br>
+                                  Las rúbricas de la Iglesia prohíben celebrar Misas Rituales (Bautismo, Matrimonio, Exequias) en Solemnidades y Domingos Privilegiados. Se imprimirá la Misa Ordinaria del día. Las rúbricas del Sacramento deben omitirse o realizarse fuera de Misa.
+                                </div>\n\n`;
+                        ritualSelect = "ninguno"; // Reversión de seguridad
+                    } else if (diaLogica.regla_cem === "II.6" || diaLogica.regla_cem === "II.5") {
+                         out += `<div style="background-color: #fff3cd; color: #856404; padding: 15px; border-left: 5px solid #856404; margin-bottom: 20px;">
+                                  <strong>⚠️ PRECAUCIÓN CANÓNICA (Regla CEM ${diaLogica.regla_cem})</strong><br>
+                                  Aunque se permite el Sacramento hoy, la Misa debe utilizar los textos y color litúrgico propios del Domingo/Fiesta en lugar de los textos Rituales.
+                                </div>\n\n`;
+                    }
+                }
+            }
             out += `### ${isEn ? "INTRODUCTORY RITES" : "RITOS INICIALES"}\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">${region==="mx" ? "" : (isEn ? "(Stand)" : "(De pie)")}</p>\n\n`;
             
             const showMoniciones = document.getElementById("toggle-moniciones") ? document.getElementById("toggle-moniciones").checked : true;
@@ -436,8 +561,30 @@ document.addEventListener('DOMContentLoaded', () => {
             let antEnt = data.antifona_entrada || (isEn ? "Come, you whom my Father has blessed, receive the kingdom prepared for you." : "Vengan, benditos de mi Padre, reciban en herencia el reino preparado para ustedes desde la creación del mundo.");
             out += `**${sNum++}. ${isEn ? "Entrance Antiphon" : "Antífona de Entrada"}**\n**${isEn ? "Priest" : "Sacerdote"}:** ${antEnt}\n\n`;
             
-            let ritoPen = data.rito_penitencial || (isEn ? "I confess to almighty God..." : "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.");
-            out += `**${sNum++}. ${isEn ? "Penitential Act" : "Rito Penitencial"}**\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados."}\n**${isEn ? "People" : "Asamblea"}:** ${ritoPen}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros..."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Amen." : "Amén."}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Christ, have mercy." : "Cristo, ten piedad."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Christ, have mercy." : "Cristo, ten piedad."}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n\n`;
+            if (ritualSelect === "bautismo" && window.ritualBautismoData && !isEn) {
+                let rb = window.ritualBautismoData.acogida;
+                let acogidaText = `**RITO DE ACOGIDA SACRAMENTAL (Sustituye al Rito Penitencial)**\n\n` +
+                                  `${rb.dialogo_inicial.replace(/{bebe}/g, nombreBebe)}\n\n` +
+                                  `${rb.exhortacion_padres}\n\n` +
+                                  `${rb.exhortacion_padrinos.replace(/{padrinos}/g, nombrePadrinos)}\n\n` +
+                                  `${rb.signacion.replace(/{bebe}/g, nombreBebe)}\n\n`;
+                out += `<div class="missal-block">\n<div class="missal-paragraph">\n${acogidaText}\n</div>\n</div>\n\n`;
+            } else if (ritualSelect === "matrimonio" && window.ritualMatrimonioData && !isEn) {
+                let rm = window.ritualMatrimonioData.acogida;
+                let acogidaText = `**RITO DE ACOGIDA DE LOS NOVIOS (Sustituye al Rito Penitencial)**\n\n` +
+                                  `${rm.dialogo.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n\n`;
+                out += `<div class="missal-block">\n<div class="missal-paragraph">\n${acogidaText}\n</div>\n</div>\n\n`;
+            } else if (ritualSelect === "exequias" && window.ritualExequiasData && !isEn) {
+                let re = window.ritualExequiasData[exequiasTipo].recepcion;
+                let acogidaText = `**RITO DE RECEPCIÓN DEL CUERPO (Sustituye al Rito Penitencial y Canto de Entrada si aplica)**\n\n` +
+                                  `${re.saludo}\n\n` +
+                                  `${re.aspersion.replace(/{difunto}/g, nombreDifunto)}\n\n` +
+                                  `${re.cubrir_pano.replace(/{difunto}/g, nombreDifunto)}\n\n`;
+                out += `<div class="missal-block">\n<div class="missal-paragraph">\n${acogidaText}\n</div>\n</div>\n\n`;
+            } else {
+                let ritoPen = data.rito_penitencial || (isEn ? "I confess to almighty God..." : "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.");
+                out += `**${sNum++}. ${isEn ? "Penitential Act" : "Rito Penitencial"}**\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados."}\n**${isEn ? "People" : "Asamblea"}:** ${ritoPen}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros..."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Amen." : "Amén."}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Christ, have mercy." : "Cristo, ten piedad."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Christ, have mercy." : "Cristo, ten piedad."}\n**${isEn ? "Priest" : "Sacerdote"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n**${isEn ? "People" : "Asamblea"}:** ${isEn ? "Lord, have mercy." : "Señor, ten piedad."}\n\n`;
+            }
             
             // SALMODIA INTEGRADA
             if (hora === "laudes" || hora === "visperas") {
@@ -605,12 +752,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `</div>\n\n`;
             }
             
-            const showCredo = document.getElementById("toggle-credo") ? document.getElementById("toggle-credo").checked : false;
-            if (showCredo || lp.segunda_lectura) {
-                let credoEs = "Creo en Dios, Padre todopoderoso,<br>Creador del cielo y de la tierra.<br>Creo en Jesucristo, su único Hijo, nuestro Señor,<br>que fue concebido por obra y gracia del Espíritu Santo,<br>nació de santa María Virgen,<br>padeció bajo el poder de Poncio Pilato,<br>fue crucificado, muerto y sepultado,<br>descendió a los infiernos,<br>al tercer día resucitó de entre los muertos,<br>subió a los cielos<br>y está sentado a la derecha de Dios, Padre todopoderoso.<br>Desde allí ha de venir a juzgar a vivos y muertos.<br><br>Creo en el Espíritu Santo,<br>la santa Iglesia católica,<br>la comunión de los santos,<br>el perdón de los pecados,<br>la resurrección de la carne<br>y la vida eterna. Amén.";
-                let credoEn = "I believe in God, the Father almighty,<br>Creator of heaven and earth,<br>and in Jesus Christ, his only Son, our Lord,<br>who was conceived by the Holy Spirit,<br>born of the Virgin Mary,<br>suffered under Pontius Pilate,<br>was crucified, died and was buried;<br>he descended into hell;<br>on the third day he rose again from the dead;<br>he ascended into heaven,<br>and is seated at the right hand of God the Father almighty;<br>from there he will come to judge the living and the dead.<br><br>I believe in the Holy Spirit,<br>the holy catholic Church,<br>the communion of saints,<br>the forgiveness of sins,<br>the resurrection of the body,<br>and life everlasting. Amen.";
+            if (ritualSelect === "bautismo" && window.ritualBautismoData && !isEn) {
+                let rb = window.ritualBautismoData;
+                let ls = rb.liturgia_sacramento;
+                let re = rb.ritos_explicativos;
                 
-                out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">${region==="mx" ? "" : (isEn ? "(Stand)" : "(De pie)")}</p><p class="missal-heading">${isEn ? "Profession of Faith" : "Profesión de Fe"}</p><p class="missal-paragraph" style="text-align:center;">${isEn ? credoEn : credoEs}</p></div>\n\n`;
+                out += `<div class="missal-block">\n`;
+                out += `<p class="missal-heading" style="text-align:center; font-size: 14pt; color:#B20000; font-family:'EB Garamond', serif;">LITURGIA DEL SACRAMENTO BAUTISMAL</p>\n`;
+                out += `<div class="missal-paragraph">\n`;
+                out += `**I. Letanías**\n${ls.letanias}\n\n`;
+                out += `**II. Oración de Exorcismo y Unción**\n${ls.exorcismo_y_uncion.replace(/{bebe}/g, nombreBebe)}\n\n`;
+                out += `**III. Bendición del Agua**\n${ls.bendicion_agua}\n\n`;
+                out += `**IV. Renuncias**\n${ls.renuncias}\n\n`;
+                out += `**V. Profesión de Fe**\n${ls.profesion_fe}\n\n`;
+                out += `**VI. Bautismo**\n${ls.bautismo.replace(/{bebe}/g, nombreBebe)}\n\n`;
+                out += `</div></div>\n\n`;
+                
+                out += `<div class="missal-block">\n`;
+                out += `<p class="missal-heading">Ritos Explicativos</p>\n`;
+                out += `<div class="missal-paragraph">\n`;
+                out += `**Unción con el Santo Crisma:**\n${re.uncion_crisma}\n\n`;
+                out += `**Vestidura Blanca:**\n${re.vestidura_blanca.replace(/{bebe}/g, nombreBebe)}\n\n`;
+                out += `**Entrega del Cirio:**\n${re.cirio.replace(/{bebe}/g, nombreBebe)}\n\n`;
+                out += `</div></div>\n\n`;
+            } else if (ritualSelect === "matrimonio" && window.ritualMatrimonioData && !isEn) {
+                let rm = window.ritualMatrimonioData.liturgia_sacramento;
+                out += `<div class="missal-block">\n`;
+                out += `<p class="missal-heading" style="text-align:center; font-size: 14pt; color:#B20000; font-family:'EB Garamond', serif;">LITURGIA DEL SACRAMENTO MATRIMONIAL</p>\n`;
+                out += `<div class="missal-paragraph">\n`;
+                out += `**Monición:**\n${rm.monicion.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n\n`;
+                out += `**Escrutinio:**\n${rm.escrutinio.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n\n`;
+                out += `**Consentimiento / Votos:**\n${rm.consentimiento.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n\n`;
+                out += `**Confirmación del Consentimiento:**\n${rm.confirmacion_consentimiento}\n\n`;
+                out += `**Bendición y Entrega de Anillos:**\n${rm.bendicion_anillos.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n\n`;
+                out += `**Entrega de Arras:**\n${rm.entrega_arras.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n\n`;
+                if (rm.velacion) {
+                    out += `**Rito de Velación (y Lazo):**\n${rm.velacion}\n\n`;
+                }
+                out += `</div></div>\n\n`;
+            } else if (ritualSelect === "exequias" && window.ritualExequiasData && !isEn) {
+                // Credo omitido
+            } else {
+                const showCredo = document.getElementById("toggle-credo") ? document.getElementById("toggle-credo").checked : false;
+                if (showCredo || lp.segunda_lectura) {
+                    let credoEs = "Creo en Dios, Padre todopoderoso,<br>Creador del cielo y de la tierra.<br>Creo en Jesucristo, su único Hijo, nuestro Señor,<br>que fue concebido por obra y gracia del Espíritu Santo,<br>nació de santa María Virgen,<br>padeció bajo el poder de Poncio Pilato,<br>fue crucificado, muerto y sepultado,<br>descendió a los infiernos,<br>al tercer día resucitó de entre los muertos,<br>subió a los cielos<br>y está sentado a la derecha de Dios, Padre todopoderoso.<br>Desde allí ha de venir a juzgar a vivos y muertos.<br><br>Creo en el Espíritu Santo,<br>la santa Iglesia católica,<br>la comunión de los santos,<br>el perdón de los pecados,<br>la resurrección de la carne<br>y la vida eterna. Amén.";
+                    let credoEn = "I believe in God, the Father almighty,<br>Creator of heaven and earth,<br>and in Jesus Christ, his only Son, our Lord,<br>who was conceived by the Holy Spirit,<br>born of the Virgin Mary,<br>suffered under Pontius Pilate,<br>was crucified, died and was buried;<br>he descended into hell;<br>on the third day he rose again from the dead;<br>he ascended into heaven,<br>and is seated at the right hand of God the Father almighty;<br>from there he will come to judge the living and the dead.<br><br>I believe in the Holy Spirit,<br>the holy catholic Church,<br>the communion of saints,<br>the forgiveness of sins,<br>the resurrection of the body,<br>and life everlasting. Amen.";
+                    
+                    out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">${region==="mx" ? "" : (isEn ? "(Stand)" : "(De pie)")}</p><p class="missal-heading">${isEn ? "Profession of Faith" : "Profesión de Fe"}</p><p class="missal-paragraph" style="text-align:center;">${isEn ? credoEn : credoEs}</p></div>\n\n`;
+                }
             }
             
                         const showFieles = document.getElementById("toggle-fieles") ? document.getElementById("toggle-fieles").checked : true;
@@ -622,8 +811,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `**Sacerdote:** Oremos, hermanos, a Dios nuestro Padre, pidiendo por nuestras necesidades y las del mundo entero. Respondemos: **Te rogamos, óyenos.**
 
 `;
-                let peticiones = Array.isArray(data.oracion_fieles) ? data.oracion_fieles : data.oracion_fieles.split("
-");
+                let peticiones = Array.isArray(data.oracion_fieles) ? data.oracion_fieles : data.oracion_fieles.split("\\n");
                 peticiones.forEach(p => {
                     let text = p.replace(/^-/g, '').trim();
                     if(text.length > 5) out += `**Lector:** ${text}
@@ -664,6 +852,11 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">${region==="mx" ? "" : (isEn ? "(Kneel)" : "(De rodillas)")}</p><p class="missal-heading">${isEn ? "Eucharistic Prayer" : "Plegaria Eucarística"}</p><p class="missal-rubric">${isEn ? "The priest prays the Eucharistic Prayer. After the consecration:" : "El sacerdote pronuncia la Plegaria Eucarística. Tras la consagración:"}</p><p class="missal-rubric">V. ${isEn ? "The mystery of faith." : "Éste es el Sacramento de nuestra fe."}</p><p class="missal-rubric">R. ${isEn ? "We proclaim your Death, O Lord, and profess your Resurrection until you come again." : "Anunciamos tu muerte, proclamamos tu resurrección. ¡Ven, Señor Jesús!"}</p></div>\n\n`;
             
             out += `<div class="missal-block"><p class="missal-rubric" style="font-weight:bold; margin-bottom:4px;">${region==="mx" ? "" : (isEn ? "(Stand)" : "(De pie)")}</p><p class="missal-heading">${isEn ? "Communion Rite" : "Rito de la Comunión"}</p><p class="missal-paragraph" style="text-align:justify;">${isEn ? "Our Father, who art in heaven, hallowed be thy name; thy kingdom come, thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil." : "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal."}</p></div>\n\n`;
+            
+            if (ritualSelect === "matrimonio" && window.ritualMatrimonioData && !isEn) {
+                let bn = window.ritualMatrimonioData.liturgia_eucaristica.bendicion_nupcial;
+                out += `<div class="missal-block">\n<p class="missal-heading">BENDICIÓN NUPCIAL</p>\n<div class="missal-paragraph">\n${bn.replace(/{esposo}/g, nombreEsposo).replace(/{esposa}/g, nombreEsposa)}\n</div>\n</div>\n\n`;
+            }
             
             out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Agnus Dei" : "Cordero de Dios"}</p><p class="missal-paragraph" style="text-align:center;">${isEn ? "Lamb of God, you take away the sins of the world, have mercy on us.<br>Lamb of God, you take away the sins of the world, have mercy on us.<br>Lamb of God, you take away the sins of the world, grant us peace." : "Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.<br>Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.<br>Cordero de Dios, que quitas el pecado del mundo, danos la paz."}</p></div>\n\n`;
             
@@ -714,8 +907,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // RITO DE CONCLUSION
-            out += `-----\n\n### ${isEn ? "CONCLUDING RITES" : "RITO DE CONCLUSIÓN"}\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">${region==="mx" ? "" : (isEn ? "(Stand)" : "(De pie)")}</p>\n\n`;
-            out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Recessional Chant" : "Canto de Salida"}</p><p class="missal-citation">${cantos.salida}</p></div>\n\n`;
+            if (ritualSelect === "exequias" && window.ritualExequiasData && !isEn) {
+                let rx = window.ritualExequiasData[exequiasTipo].ultimo_adios;
+                let difName = nombreDifunto + (generoDifunto === 'f' ? ' (Tu sierva)' : ' (Tu siervo)');
+                out += `-----\n\n### RITO DE ÚLTIMO ADIÓS (Sustituye Rito de Conclusión)\n\n`;
+                out += `<div class="missal-block">\n<p class="missal-heading">Monición y Aspersión</p>\n<div class="missal-paragraph">\n${rx.monicion.replace(/{difunto}/g, nombreDifunto)}\n<br><br><em>${rx.aspersion_e_incienso}</em>\n</div>\n</div>\n\n`;
+                out += `<div class="missal-block">\n<p class="missal-heading">Oración de Despedida</p>\n<div class="missal-paragraph">\n${rx.oracion_despedida.replace(/{difunto}/g, difName)}\n</div>\n</div>\n\n`;
+                out += `<div class="missal-block">\n<p class="missal-heading">Procesión al Cementerio</p>\n<div class="missal-paragraph" style="font-weight:bold;">\n${rx.concesion_paz.replace(/\n/g, '<br>')}\n</div>\n</div>\n\n`;
+            } else {
+                out += `-----\n\n### ${isEn ? "CONCLUDING RITES" : "RITO DE CONCLUSIÓN"}\n<p class="missal-rubric" style="text-align:center; font-weight:bold; margin-bottom:12px;">${region==="mx" ? "" : (isEn ? "(Stand)" : "(De pie)")}</p>\n\n`;
+
+                if (ritualSelect === "bautismo" && window.ritualBautismoData && !isEn) {
+                    out += `<div class="missal-block"><p class="missal-heading">Bendición Especial y Despedida (Bautismo)</p><div class="missal-paragraph">\n${window.ritualBautismoData.conclusion.bendicion_especial}\n</div><p class="missal-rubric">V. Pueden ir en paz.<br>R. Demos gracias a Dios.</p></div>\n\n`;
+                } else if (ritualSelect === "matrimonio" && window.ritualMatrimonioData && !isEn) {
+                    out += `<div class="missal-block"><p class="missal-heading">Bendición Final de los Esposos</p><div class="missal-paragraph">\n${window.ritualMatrimonioData.conclusion.bendicion_final}\n</div><p class="missal-rubric">V. Pueden ir en paz.<br>R. Demos gracias a Dios.</p></div>\n\n`;
+                } else {
+                    out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Final Blessing" : "Bendición Final"}</p><p class="missal-rubric">V. ${isEn ? "The Lord be with you." : "El Señor esté con ustedes."}<br>R. ${isEn ? "And with your spirit." : "Y con tu espíritu."}<br>V. ${isEn ? "May almighty God bless you, the Father, and the Son, and the Holy Spirit." : "La bendición de Dios todopoderoso, Padre, Hijo y Espíritu Santo, descienda sobre ustedes."}<br>R. ${isEn ? "Amen." : "Amén."}</p></div>\n\n`;
+                }
+
+                out += `<div class="missal-block"><p class="missal-heading">${isEn ? "Recessional Chant" : "Canto de Salida"}</p><p class="missal-citation">${cantos.salida}</p></div>\n\n`;
+            }
         }
         return out;
     }
@@ -818,7 +1029,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pagebreak:    { mode: ['css', 'legacy'] }
         };
 
-        // If it's an empty state, don't print
+    // If it's an empty state, don't print
         if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...')) {
             alert("Primero genera un documento usando el Asistente.");
             return;
@@ -826,4 +1037,178 @@ document.addEventListener('DOMContentLoaded', () => {
 
         html2pdf().set(opt).from(element).save();
     });
+
+    // -----------------------------------------------------
+    // PROMPTER CINEMÁTICO LOGIC (SCROLL CONTINUO)
+    // -----------------------------------------------------
+    const btnPrompter = document.getElementById('open-prompter-btn');
+    const prompterScreen = document.getElementById('prompter-screen');
+    const closePrompter = document.getElementById('close-prompter-btn');
+    const prompterContainer = document.getElementById('prompter-slide-container');
+    const btnAutoScroll = document.getElementById('prompter-auto-scroll');
+    const btnStopScroll = document.getElementById('prompter-stop-scroll');
+    const spanScrollSpeed = document.getElementById('scroll-speed');
+    
+    let prompterSlides = [];
+    let autoScrollInterval = null;
+    let autoScrollSpeed = 1; // 1x, 2x, 3x
+
+    function renderAllPrompterSlides() {
+        prompterContainer.innerHTML = '';
+        if (prompterSlides.length === 0) return;
+        
+        prompterSlides.forEach((slide, idx) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'prompter-slide active';
+            
+            if (slide.rubric) {
+                const slideRubric = document.createElement('p');
+                slideRubric.className = 'prompter-slide-rubric';
+                slideRubric.innerHTML = slide.rubric;
+                slideDiv.appendChild(slideRubric);
+            }
+
+            const slideTitle = document.createElement('h1');
+            slideTitle.className = 'prompter-slide-title';
+            slideTitle.innerHTML = slide.title;
+            slideDiv.appendChild(slideTitle);
+            
+            const slideContent = document.createElement('div');
+            slideContent.className = 'prompter-slide-content';
+            slideContent.innerHTML = slide.content.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+            slideDiv.appendChild(slideContent);
+            
+            prompterContainer.appendChild(slideDiv);
+        });
+    }
+
+    function buildPrompterSlides() {
+        prompterSlides = [];
+        const dateStr = document.getElementById('date-select') ? document.getElementById('date-select').value : null;
+        if (!dateStr || !window.calendarioDB || !window.liturgiaDB) return;
+        
+        let cDay = window.calendarioDB[dateStr];
+        let data = window.liturgiaDB[dateStr];
+        
+        if (!cDay || !data || !data.liturgia_palabra) return;
+        
+        let lp = data.liturgia_palabra;
+        
+        // 1. Bienvenida
+        prompterSlides.push({ title: "<span style='font-size:1.5em'>☩</span><br>Liturgia PRO", content: `Bienvenidos a la Celebración Eucarística<br><br><span style="color:var(--gold-accent); font-size:0.6em">${cDay.festividad || cDay.tiempo}</span>` });
+        
+        // 2. Primera Lectura
+        if (lp.primera_lectura) {
+            prompterSlides.push({ title: "Primera Lectura", rubric: lp.primera_lectura.cita, content: lp.primera_lectura.texto });
+        }
+        
+        // 3. Salmo Responsorial
+        if (lp.salmo_responsorial) {
+            prompterSlides.push({ title: "Salmo Responsorial", rubric: lp.salmo_responsorial.antifona, content: lp.salmo_responsorial.texto });
+        }
+        
+        // 4. Segunda Lectura
+        if (lp.segunda_lectura) {
+            prompterSlides.push({ title: "Segunda Lectura", rubric: lp.segunda_lectura.cita, content: lp.segunda_lectura.texto });
+        }
+        
+        // 5. Aleluya
+        if (lp.aleluya) {
+            let aleluyaText = lp.aleluya.texto || "";
+            if (!aleluyaText.toUpperCase().includes('ALELUYA')) {
+                prompterSlides.push({ title: "Aclamación antes del Evangelio", content: `R. Aleluya, aleluya.<br><br>${aleluyaText}<br><br>R. Aleluya, aleluya.` });
+            } else {
+                prompterSlides.push({ title: "Aclamación antes del Evangelio", content: aleluyaText });
+            }
+        }
+        
+        // 6. Evangelio
+        if (lp.evangelio) {
+            prompterSlides.push({ title: "Santo Evangelio", rubric: lp.evangelio.cita, content: lp.evangelio.texto });
+        }
+        
+        // 7. Ofertorio / Comunión
+        prompterSlides.push({ title: "Liturgia Eucarística", content: "Nos preparamos para el Banquete del Señor."});
+        
+        const cantos = window.cantosDB && window.cantosDB[dateStr] ? window.cantosDB[dateStr] : null;
+        if (cantos && cantos.comunion) {
+            prompterSlides.push({ title: "Comunión", rubric: "Canto Sugerido", content: cantos.comunion });
+        }
+    }
+
+    function toggleAutoScroll() {
+        if (autoScrollInterval) {
+            // Speed up
+            autoScrollSpeed++;
+            if (autoScrollSpeed > 3) {
+                stopAutoScroll();
+            } else {
+                spanScrollSpeed.textContent = autoScrollSpeed;
+                clearInterval(autoScrollInterval);
+                startAutoScroll();
+            }
+        } else {
+            // Start
+            autoScrollSpeed = 1;
+            spanScrollSpeed.textContent = autoScrollSpeed;
+            startAutoScroll();
+        }
+    }
+    
+    function startAutoScroll() {
+        if(autoScrollInterval) clearInterval(autoScrollInterval);
+        btnStopScroll.style.display = 'block';
+        autoScrollInterval = setInterval(() => {
+            prompterScreen.scrollBy(0, autoScrollSpeed);
+        }, 30);
+    }
+    
+    function stopAutoScroll() {
+        if(autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+        autoScrollSpeed = 1;
+        spanScrollSpeed.textContent = autoScrollSpeed;
+        btnStopScroll.style.display = 'none';
+    }
+
+    if (btnPrompter) {
+        btnPrompter.addEventListener('click', () => {
+            buildPrompterSlides();
+            if (prompterSlides.length === 0) {
+                alert("No hay lecturas cargadas para esta fecha. Usa el Asistente Diaria primero.");
+                return;
+            }
+            renderAllPrompterSlides();
+            prompterScreen.style.display = 'flex';
+            prompterScreen.scrollTop = 0;
+            stopAutoScroll();
+        });
+    }
+
+    if (closePrompter) {
+        closePrompter.addEventListener('click', () => {
+            prompterScreen.style.display = 'none';
+            stopAutoScroll();
+        });
+    }
+
+    if (btnAutoScroll) {
+        btnAutoScroll.addEventListener('click', toggleAutoScroll);
+    }
+    if (btnStopScroll) {
+        btnStopScroll.addEventListener('click', stopAutoScroll);
+    }
+
+    // Keyboard support - Esc to close
+    document.addEventListener('keydown', (e) => {
+        if (prompterScreen.style.display === 'flex') {
+            if (e.key === 'Escape') {
+                prompterScreen.style.display = 'none';
+                stopAutoScroll();
+            }
+        }
+    });
+
 });
