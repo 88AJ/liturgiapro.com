@@ -5,8 +5,9 @@ from datetime import datetime, timedelta
 import re
 import os
 
-from scraper_motor import extract_usccb_data, extract_horas_data, extract_cem_data
+from scraper_motor import extract_usccb_data, extract_cem_data
 from gemini_liturgo import init_gemini, prompt_gemini_for_day
+from liturgia_pdf_parser import get_tomo_for_date, parse_with_gemini
 
 def load_db():
     db_path = "data/liturgia_db.js"
@@ -62,14 +63,24 @@ def compile_day(date_obj, client, db):
         if key in data_en:
             db[date_key]['liturgia_palabra'][key].update(data_en[key])
             
-    # 3. Scrape Liturgia Horas
-    print("🌅 Extrayendo Laudes...")
-    laudes = extract_horas_data(date_obj, "laudes")
-    if laudes: db[date_key]['laudes'] = laudes
-    
-    print("🌆 Extrayendo Vísperas...")
-    visperas = extract_horas_data(date_obj, "visperas")
-    if visperas: db[date_key]['visperas'] = visperas
+    # 3. Scrape Liturgia Horas via PDF
+    import json
+    import os
+    tomo = get_tomo_for_date(date_obj)
+    uris_path = "data/tomos_uris.json"
+    if os.path.exists(uris_path):
+        with open(uris_path, "r") as f:
+            uris = json.load(f)
+        print(f"📖 Extrayendo Liturgia Horas nativa desde PDF ({tomo})...")
+        horas_data = parse_with_gemini(client, date_obj, tomo, uris)
+        
+        if horas_data:
+            if 'laudes' in horas_data: db[date_key]['laudes'] = horas_data['laudes']
+            if 'visperas' in horas_data: db[date_key]['visperas'] = horas_data['visperas']
+        else:
+            print("⚠️ Advertencia: No se pudo reconstruir la Liturgia de las Horas desde el PDF.")
+    else:
+        print("⚠️ Error: Faltan las URIs de los PDFs. Ejecute upload_tomos_engine.py primero.")
     
     # 4. Gemini: Reflexión y Moniciones
     print("🧠 Magisterio IA: Generando Subsidio...")
