@@ -254,7 +254,7 @@ def extract_horas_data(target_date, tipo="laudes"):
         texto = ""
         if len(ce_sub) > 1:
             # Drop the subtitle itself
-            texto_lines = "\n".join("Cántico de" + ce_sub[1]).split('\n')
+            texto_lines = ("Cántico de" + ce_sub[1]).split('\n')
             texto = "\n\n".join([l for l in texto_lines[1:] if l.strip()])
         data["cantico_evangelico"] = {
             "antifona": antifona,

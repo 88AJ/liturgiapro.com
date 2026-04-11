@@ -280,7 +280,14 @@ function generarDocumentoNodos(data, hora, options = {}) {
             bComunion.addRubrica("Antífona: " + ce.antifona);
             
             if (ce.texto) {
-                let lines = ce.texto.split("\n\n");
+                let lines = [];
+                if (Array.isArray(ce.texto)) {
+                    lines = ce.texto;
+                } else if (typeof ce.texto === 'string') {
+                    // Split strictly by paragraphs (empty lines) or single lines, removing empty ones
+                    lines = ce.texto.split(/\n+/).filter(l => l.trim().length > 1);
+                }
+                
                 lines.forEach((line, idx) => {
                     if (idx % 2 === 0) bComunion.addSacerdote(line, 'Normal');
                     else bComunion.addAsamblea(line);

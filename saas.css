@@ -653,7 +653,7 @@ body {
 .missal-super-heading {
     text-transform: uppercase;
     color: #D32F2F;
-    font-size: 1.5em; /* 18pt basado en raiz 12pt */
+    font-size: calc(var(--base-size) * 1.5); /* 18pt basado en raiz 12pt */
     font-weight: 700;
     text-align: center;
     margin: 0 0 1.5cm 0; /* Blueprint param */
