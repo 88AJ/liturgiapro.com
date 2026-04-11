@@ -130,6 +130,52 @@ function RENDERIZAR_BLOQUE(bloque) {
     return html;
 }
 
+function linkCanto(nombre) {
+    if(nombre.includes('Silencio') || nombre.includes('Salida sin canto')) return nombre;
+    const query = encodeURIComponent(nombre + ' canto catolico');
+    let html = `<a href="https://www.youtube.com/results?search_query=${query}" target="_blank" style="color:#c90000; text-decoration:underline; font-weight:bold;">${nombre}</a>`;
+    
+    if (window.cantosDB && window.cantosDB[nombre]) {
+        const letraFormat = window.cantosDB[nombre].letra.replace(/\n/g, '<br/>');
+        html += `<div style="margin-top: 10px; margin-bottom: 5px; line-height: 1.4; font-size: 0.95em; font-style: italic; color: #444; border-left: 3px solid #ddd; padding-left: 12px;">${letraFormat}</div>`;
+    }
+    
+    return html;
+}
+
+function obtenerCantosPorTiempo(tiempoStr, isEn) {
+    if (isEn) {
+        return {
+            entrada: linkCanto('Here I Am Lord'),
+            ofertorio: linkCanto('Saber que vendrás'),
+            comunion: linkCanto('On Eagles Wings'),
+            salida: linkCanto('Demos Gracias al Señor') 
+        };
+    }
+    const t = tiempoStr ? tiempoStr.toLowerCase() : "";
+    if (t.includes('cuaresma')) {
+        return {
+            entrada: linkCanto('Hacia ti morada santa'),
+            ofertorio: linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: linkCanto('Pequeñas aclaraciones'),
+            salida: linkCanto('Silencio')
+        };
+    } else if (t.includes('pascua')) {
+        return {
+            entrada: linkCanto('El Señor Resucitó Aleluya'),
+            ofertorio: linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: linkCanto('Pescador de Hombres'),
+            salida: linkCanto('Reina del Cielo Aleluya')
+        };
+    }
+    return {
+        entrada: linkCanto('Juntos como hermanos'),
+        ofertorio: linkCanto('Saber que vendrás'),
+        comunion: linkCanto('Pescador de Hombres'),
+        salida: linkCanto('Demos Gracias al Señor')
+    };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Precargar letras de cantos (Offline bypass activo)
     window.cantosDB = window.cantosDB || {};
