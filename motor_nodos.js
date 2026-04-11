@@ -104,7 +104,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
             bInicial.addRubrica("[Error: No se encontró la salmodia del Oficio para " + OFICIO + "]");
         }
     } else {
-        if (ES_PASCUA_PENTECOSTES && GRADO.toLowerCase().includes("domingo")) {
+        if (ES_PASCUA_PENTECOSTES && (GRADO.toLowerCase().includes("domingo") || ES_OCTAVA_PASCUA)) {
             bInicial.addTitulo(isEn ? "Rite of Blessing and Sprinkling Holy Water" : "Rito de Aspersión (Agua Bendita)");
             bInicial.addMonicion(isEn ? "The penitential act is omitted. The priest blesses the water and sprinkles the faithful." : "Se omite el Acto Penitencial rutinario. El Sacerdote bendice el agua y la rocía sobre el pueblo como memorial del bautismo.");
             bInicial.addSacerdote(isEn ? "Dear brethren (brothers and sisters), let us humbly beseech the Lord our God to bless this water he has created..." : "Hermanos: invoquemos a Dios, nuestro Señor, para que se digne bendecir este agua creada por Él, que va a ser rociada sobre nosotros como recuerdo de nuestro bautismo...");
@@ -271,12 +271,6 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
     bComunion.addRubrica(cantos.comunion);
 
-    let despues = (data.liturgia_eucaristica && data.liturgia_eucaristica.oracion_despues_comunion) ? data.liturgia_eucaristica.oracion_despues_comunion : (isEn ? "Grant, we pray, almighty God..." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento...");
-    bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
-    bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + despues);
-    bComunion.addAsamblea("Amén.");
-    
-    
     if (OFICIO === "Laudes" || OFICIO === "Visperas") {
         let title = (OFICIO === "Laudes") ? "CÁNTICO EVANGÉLICO (Benedictus)" : "CÁNTICO EVANGÉLICO (Magnificat)";
         let officeData = data[hora];
@@ -298,6 +292,14 @@ function generarDocumentoNodos(data, hora, options = {}) {
             bComunion.addRubrica("Antífona: " + ce.antifona);
         }
     }
+
+    let despues = (data.liturgia_eucaristica && data.liturgia_eucaristica.oracion_despues_comunion) ? data.liturgia_eucaristica.oracion_despues_comunion : (isEn ? "Grant, we pray, almighty God..." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento...");
+    bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
+    bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + despues);
+    bComunion.addAsamblea("Amén.");
+    
+    
+    
     SECUENCIA_LITURGICA.push(bComunion);
 
     // BLOQUE E: CONCLUSIÓN
