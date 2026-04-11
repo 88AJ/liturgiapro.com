@@ -36,7 +36,7 @@ def generate():
     
     full_calendar = {}
     
-    months = ["April"]
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     try:
         for m_idx, month in enumerate(months):
@@ -50,7 +50,7 @@ def generate():
             For each day, extract:
             - fecha: YYYY-MM-DD
             - titulo: English title of the day
-            - color: the liturgical color (e.g. "white", "green", "violet", "red")
+            - color: the liturgical color (e.g. "white", "green", "violet", "red", "rose")
             - grado: "Solemnity", "Feast", "Memorial", "Optional Memorial", "Sunday", or "Weekday"
             - citaciones_lecturas: The exact string of the biblical reading citation given.
             
@@ -71,13 +71,13 @@ def generate():
                 full_calendar[d['fecha']] = d
                 
             print(f"Extracted {len(data.get('dias', []))} days for {month}.")
-            time.sleep(5) # Delay to avoid quota limits
+            time.sleep(2) # Delay to avoid quota limits
             
         # Asignar Reglas CEM
         print("Asignando reglas CEM...")
         for fecha, d in full_calendar.items():
             g = d['grado'].lower()
-            if "sunday" in g and "advent" in d['titulo'].lower() or "lent" in d['titulo'].lower() or "easter" in d['titulo'].lower():
+            if "sunday" in g and ("advent" in d['titulo'].lower() or "lent" in d['titulo'].lower() or "easter" in d['titulo'].lower()):
                 d['regla_cem'] = "I.2" # Domingos privilegiados
             elif "solemnity" in g:
                 d['regla_cem'] = "I.3"
@@ -85,15 +85,17 @@ def generate():
                 d['regla_cem'] = "II.6"
             elif "feast" in g:
                 d['regla_cem'] = "II.5"
-            elif "memorial" in g and not "optional" in g:
+            elif "memorial" in g and "optional" not in g:
                 d['regla_cem'] = "III.10"
             elif "optional memorial" in g:
                 d['regla_cem'] = "III.12"
             else:
                 d['regla_cem'] = "III.13" # Ferial
             
-        with open("data/calendario_2026.json", "w", encoding="utf-8") as f:
+        with open("data/calendario_2026_db.js", "w", encoding="utf-8") as f:
+            f.write("window.calendarioDB = ")
             json.dump(full_calendar, f, indent=4, ensure_ascii=False)
+            f.write(";")
             
         print(f"Success! Generated data for {len(full_calendar)} days.")
         

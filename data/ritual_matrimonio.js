@@ -1,0 +1,20 @@
+window.ritualMatrimonioData = {
+    acogida: {
+        dialogo: "A la puerta de la iglesia, o en el presbiterio, el sacerdote acoge a los novios, expresando su participación en el gozo de la familia:\n\nSacerdote: Queridos {esposo} y {esposa}: Con alegría los recibimos hoy en la casa del Señor, en el día de su matrimonio. Compartimos su felicidad, junto con sus familiares y amigos. Que el Señor los escuche en este día de alegría y les conceda su gracia."
+    },
+    liturgia_sacramento: {
+        monicion: "Hermanos, hemos escuchado la Palabra de Dios. Ahora, pidamos al Espíritu Santo que descienda sobre {esposo} y {esposa}, para que, al contraer matrimonio, su amor se fortalezca.",
+        escrutinio: "Sacerdote: Queridos {esposo} y {esposa}, ¿han venido aquí a contraer matrimonio por su libre y entera voluntad, sin que nada ni nadie los presione?\nEsposos: Sí, vengo libremente.\n\nSacerdote: ¿Están dispuestos a amarse y honrarse mutuamente en su matrimonio durante toda la vida?\nEsposos: Sí, estoy dispuesto.\n\nSacerdote: ¿Están dispuestos a recibir de Dios responsable y amorosamente los hijos, y a educarlos según la ley de Cristo y de su Iglesia?\nEsposos: Sí, estoy dispuesto.",
+        consentimiento: "Sacerdote: Así, pues, ya que quieren contraer el santo matrimonio, unan sus manos y manifiesten su consentimiento ante Dios y su Iglesia.\n\n{esposo}: Yo, {esposo}, te recibo a ti, {esposa}, como esposa y me entrego a ti, y prometo serte fiel en la prosperidad y en la adversidad, en la salud y en la enfermedad, y así amarte y respetarte todos los días de mi vida.\n\n{esposa}: Yo, {esposa}, te recibo a ti, {esposo}, como esposo y me entrego a ti, y prometo serte fiel en la prosperidad y en la adversidad, en la salud y en la enfermedad, y así amarte y respetarte todos los días de mi vida.",
+        confirmacion_consentimiento: "Sacerdote: Que el Señor confirme este consentimiento que han manifestado ante la Iglesia y cumpla en ustedes su bendición. Lo que Dios ha unido, que no lo separe el hombre.\nTodos: Amén.",
+        bendicion_anillos: "Sacerdote: El Señor bendiga + estos anillos que ustedes se entregan como signo de amor y de fidelidad. Por Jesucristo nuestro Señor.\n\n{esposo}: {esposa}, recibe este anillo como signo de mi amor y de mi fidelidad. En el nombre del Padre, y del Hijo, y del Espíritu Santo.\n\n{esposa}: {esposo}, recibe este anillo como signo de mi amor y de mi fidelidad. En el nombre del Padre, y del Hijo, y del Espíritu Santo.",
+        entrega_arras: "Sacerdote: Bendice + Señor, estas arras, que {esposo} y {esposa} se entregan, y derrama sobre ellos la abundancia de tus bienes.\n\n{esposo}: {esposa}, recibe estas arras como prenda de la bendición de Dios y signo de los bienes que vamos a compartir.\n{esposa}: {esposo}, recibe estas arras como prenda de la bendición de Dios y signo de los bienes que vamos a compartir.",
+        velacion: "Sacerdote: Recibe, Señor, nuestra súplica para que a esta nueva familia la asistas continuamente con tu gracia, y al unir este velo y este lazo, signo de su unión con Cristo, nunca nada ni nadie los separe y vivan en tu amor todos los días de su vida. Por Jesucristo nuestro Señor.\nTodos: Amén."
+    },
+    liturgia_eucaristica: {
+        bendicion_nupcial: "Sacerdote: (Con las manos extendidas sobre los esposos) Padre santo, que has hecho al hombre a tu imagen: varón y mujer los creaste, para que, unidos en cuerpo y corazón, cumplieran su misión en el mundo. Mira con bondad a estos hijos tuyos {esposo} y {esposa}, que, unidos en matrimonio, piden tu bendición. Que el Espíritu Santo inflame sus corazones, para que, enriquecidos con su amor, sean testigos de Cristo ante el mundo. Por Jesucristo nuestro Señor.\nTodos: Amén."
+    },
+    conclusion: {
+        bendicion_final: "Sacerdote: Dios eterno Padre, los conserve unidos en su amor; para que la paz de Cristo habite en ustedes y permanezca en su hogar.\nTodos: Amén.\nSacerdote: Y la bendición de Dios todopoderoso, Padre, Hijo + y Espíritu Santo, descienda sobre ustedes.\nTodos: Amén."
+    }
+};

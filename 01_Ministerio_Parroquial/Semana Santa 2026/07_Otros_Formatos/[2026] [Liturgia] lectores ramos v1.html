@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lectores y Monitores | Domingo de Ramos 2026</title>
+    <meta name="description" content="Misal, lecturas y registro oficial para Lectores y Monitores - Domingo de Ramos 2026">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Imagen de portada para mantener la uniformidad con Monaguillos, Coro, etc. */
+        .hero-bg { 
+            background-color: #7f1d1d;
+            background-image: linear-gradient(rgba(127, 29, 29, 0.9), rgba(127, 29, 29, 0.95)), url('https://raw.githubusercontent.com/88AJ/pascua-2026/main/giotto-ramos.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+
+        .voz-c { color: #4B5563; font-style: italic; } /* Cronista - Gris */
+        .voz-j { color: #B91C1C; font-weight: bold; } /* Jesús - Rojo */
+        .voz-s { color: #111827; font-weight: bold; } /* Sinagoga - Negro */
+        
+        /* Ajuste para el iframe en móviles */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 150%; /* Relación de aspecto para forms largos */
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 768px) {
+            .iframe-container {
+                padding-top: 0;
+                height: 950px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-red-50 to-gray-100 text-gray-800 flex flex-col min-h-screen">
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+        <a href="ramos.html" class="flex items-center gap-2 text-red-700 font-semibold hover:underline">
+            <i class="fa-solid fa-arrow-left"></i> Volver a Ramos
+        </a>
+        <span class="font-bold text-gray-700 tracking-wide">
+            Camino hacia la Pascua 2026
+        </span>
+    </div>
+</header>
+
+<section class="hero-bg text-center py-20 shadow-sm border-b-8 border-red-700">
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+        <span class="bg-red-100 text-red-900 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 inline-block shadow-sm">Color Litúrgico: Rojo</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white flex justify-center items-center gap-4 mt-2 drop-shadow-md tracking-tight uppercase">
+            <i class="fa-solid fa-book-bible text-red-300"></i>
+            Lectores y Monitores
+        </h1>
+        <p class="mt-6 text-red-100 text-lg leading-relaxed font-medium uppercase tracking-widest">
+            Domingo de Ramos de la Pasión del Señor<br>Guion completo con moniciones y lecturas para ensayo.
+        </p>
+        <div class="mt-10">
+            <a href="#registro" class="inline-block bg-white text-red-800 px-8 py-4 rounded-xl shadow-lg hover:bg-gray-100 transition text-lg font-bold uppercase tracking-widest">
+                Registrarme para Servir
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 max-w-5xl mx-auto px-4 space-y-12 flex-grow">
+
+    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-4 border-red-600">
+        <h2 class="text-2xl font-bold text-red-700 mb-6 uppercase tracking-tight flex items-center gap-2"><i class="fa-solid fa-clock"></i> Horarios y Cupos</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <h3 class="font-bold text-lg text-gray-900 mb-4 border-b pb-2 uppercase">Parroquia San Pedro Apóstol</h3>
+                <p class="text-sm text-red-700 font-bold mb-3 bg-red-100 inline-block px-3 py-1 rounded">Requisito: 1 Monitor y 4 Lectores por Misa</p>
+                <ul class="space-y-2 text-gray-700 text-base mt-2">
+                    <li><strong>Sábado (Víspera):</strong> 7:00 PM</li>
+                    <li><strong>Domingo:</strong> 8:00 AM</li>
+                    <li><strong>Domingo:</strong> 10:00 AM</li>
+                    <li><strong>Domingo:</strong> 12:00 PM</li>
+                    <li><strong>Domingo:</strong> 7:00 PM</li>
+                </ul>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <h3 class="font-bold text-lg text-gray-900 mb-4 border-b pb-2 uppercase">Capilla San Judas Tadeo</h3>
+                <p class="text-sm text-red-700 font-bold mb-3 bg-red-100 inline-block px-3 py-1 rounded">Requisito: Equipo completo de lectura</p>
+                <ul class="space-y-2 text-gray-700 text-base mt-2">
+                    <li><strong>Domingo:</strong> 11:00 AM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-4 border-gray-800">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-tight">Directrices de Proclamación</h2>
+        
+        <div class="mb-6 bg-yellow-50 border border-yellow-200 p-6 rounded-xl text-sm text-yellow-900 shadow-sm">
+            <p class="font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2 border-b border-yellow-200 pb-2">
+                <i class="fa-solid fa-scroll"></i> Directriz Litúrgica Oficial (CEM)
+            </p>
+            <p class="mb-2 text-base">La lectura de la Pasión se ha de hacer obligatoriamente en todas las Misas. No se lleva ni el incienso ni los ciriales.</p>
+            <p class="mb-2 text-base font-bold">Al momento de proclamar la Pasión (MUY IMPORTANTE):</p>
+            <ul class="list-disc pl-6 space-y-2 text-base">
+                <li>Quien proclama <strong>NO DICE</strong>: "El Señor esté con ustedes".</li>
+                <li><strong>NO SE SIGNA</strong> el Evangelio en el Leccionario.</li>
+                <li><strong>TAMPOCO SE SIGNA</strong> quien lo proclama, ni el celebrante, ni la asamblea.</li>
+                <li>El Cronista [C] dice directamente: <em>"Pasión de nuestro Señor Jesucristo según San Mateo".</em></li>
+                <li><strong>La asamblea NO responde nada</strong> al inicio de la lectura.</li>
+                <li>Terminada la lectura, se dice como habitualmente: <em>"Palabra del Señor"</em> y el pueblo responde: <em>"Gloria a ti, Señor Jesús"</em>.</li>
+            </ul>
+        </div>
+
+        <ul class="list-disc pl-6 text-gray-700 space-y-3 text-base">
+            <li><strong>Preparación:</strong> Llegar 30 minutos antes. Coordinar micrófonos y lugares con el equipo de sacristía.</li>
+            <li><strong>Monición:</strong> El Monitor debe estar posicionado antes de que inicie el canto de entrada para la bendición de ramos en el exterior o puerta del templo.</li>
+            <li><strong>Pasión:</strong> Se lee a tres voces. El sacerdote hace la voz de Cristo [+], se requiere un Cronista [C] y una voz para la Sinagoga/Pueblo [S]. Dos lectores acompañarán al que preside.</li>
+            <li><strong>Reverencia:</strong> Al leer <em>" expiró"</em> en la Pasión, el Cronista hace una pausa y todos se arrodillan en silencio.</li>
+        </ul>
+    </div>
+
+    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-4 border-red-800">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-8 uppercase tracking-tight border-b-2 pb-4">Guion y Textos para Proclamación</h2>
+
+        <div class="mb-12 bg-red-50 p-6 rounded-xl border-l-4 border-red-600 shadow-sm">
+            <h3 class="text-xl font-bold text-red-800 mb-2">Monición de Entrada</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-4">El Monitor lee esta introducción al inicio de la celebración, antes de la bendición de los ramos.</p>
+            <div class="prose max-w-none text-gray-800 leading-relaxed text-lg">
+                <p>Hermanos, en este año nos alegramos de haber sido convocados por Dios como Asamblea (Ecclesia) para iniciar la Semana Santa, la razón de esto es recordar y manifestar que Cristo no sólo es nuestro salvador, sino también nuestro Dios y Señor. Nosotros también le aclamamos como lo hiciera Jerusalén hace poco más de 2,000 años.</p>
+                <p>Sin embargo, nosotros queremos serle fiel y no darle la espalda como lo hiciera aquella muchedumbre que primero gritaba "Hosanna al Hijo de David" y pocos días después gritaran "¡Crucificalo!"</p>
+                <p>Hoy queremos con estas palmas, que devotamente conservaremos, garantizar que le seguiremos hoy, mañana y hasta el último día de nuestras vidas.</p>
+                <p>Hoy queremos manifestar que nuestro Dios está en medio de nosotros, que tiene un pueblo de puertas abiertas y en salida que se enorgullece de pertenecerle y que luchará incansablemente hasta que este mundo se le rinda y le reconozca también como Salvador, como Dios y como Señor.</p>
+                <p class="font-bold mt-4">Dispongámonos a participar fervorosamente.</p>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-red-700 mb-2">Primera Lectura</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-4">Del libro del profeta Isaías (50, 4-7) — <span class="bg-gray-100 px-2 py-1 rounded text-red-800 border border-gray-200">Leccionario I, pág. 370</span></p>
+            <div class="prose max-w-none text-gray-800 leading-relaxed text-lg">
+                <p>En aquel entonces, dijo Isaías: "El Señor me ha dado una lengua experta, para que pueda confortar al abatido con palabras de aliento. Mañana tras mañana, el Señor despierta mi oído, para que escuche yo, como discípulo. El Señor Dios me ha hecho oír sus palabras y yo no he opuesto resistencia ni me he echado para atrás. Ofrecí la espalda a los que me golpeaban, la mejilla a los que me tiraban de la barba. No aparté mi rostro de los insultos y salivazos. Pero el Señor me ayuda, por eso no quedaré confundido, por eso endureció mi rostro como roca y sé que no quedaré avergonzado".</p>
+                <p class="mt-4 font-bold">Palabra de Dios.</p>
+            </div>
+        </div>
+
+        <div class="mb-12 bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h3 class="text-xl font-bold text-red-700 mb-2">Salmo Responsorial</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-4">Del salmo 21</p>
+            <div class="prose max-w-none text-gray-800 leading-relaxed text-lg">
+                <p class="font-bold mb-4">R. Dios mío, Dios mío, ¿por qué me has abandonado?</p>
+                <p>Todos los que me ven, de mí se burlan; me hacen gestos y dicen: "Confiaba en el Señor, pues que él lo salve; si de veras lo ama, que lo libre". <strong>R.</strong></p>
+                <p>Los malvados me cercan por doquiera como rabiosos perros. Mis manos y mis pies han taladrado y se pueden contar todos mis huesos. <strong>R.</strong></p>
+                <p>Reparten entre sí mis vestiduras y se juegan mi túnica a los dados. Señor, auxilio mío, ven y ayúdame, no te quedes de mí tan alejado. <strong>R.</strong></p>
+                <p>Contaré tu fama a mis hermanos, en medio de la asamblea te alabaré. Fieles del Señor, alábenlo; glorifícalo, linaje de Jacob; témelo, estirpe de Israel. <strong>R.</strong></p>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-red-700 mb-2">Segunda Lectura</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-4">De la carta del apóstol san Pablo a los filipenses (2, 6-11) — <span class="bg-gray-100 px-2 py-1 rounded text-red-800 border border-gray-200">Leccionario I, pág. 371</span></p>
+            <div class="prose max-w-none text-gray-800 leading-relaxed text-lg">
+                <p>Cristo, siendo Dios, no consideró que debía aferrarse a las prerrogativas de su condición divina, sino que, por el contrario, se anonadó a sí mismo, tomando la condición de siervo, y se hizo semejante a los hombres. Así, hecho uno de ellos, se humilló a sí mismo y por obediencia aceptó incluso la muerte, y una muerte de cruz. Por eso Dios lo exaltó sobre todas las cosas y le otorgó el nombre que está sobre todo nombre, para que, al nombre de Jesús, todos doblen la rodilla en el cielo, en la tierra y en los abismos, y todos reconozcan públicamente que Jesucristo es el Señor, para gloria de Dios Padre.</p>
+                <p class="mt-4 font-bold">Palabra de Dios.</p>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-red-700 mb-2">Pasión de Nuestro Señor Jesucristo</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-6">Según san Mateo (26, 14-27, 66) — <span class="bg-gray-100 px-2 py-1 rounded text-red-800 border border-gray-200">Leccionario I, pág. 372</span></p>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6 text-sm shadow-sm rounded-r-xl">
+                <strong>Guía de Voces:</strong><br>
+                <span class="voz-c">C: Cronista (Narrador)</span> | 
+                <span class="voz-s">S: Sinagoga / Pueblo / Otros</span> | 
+                <span class="voz-j">+: Jesús (Generalmente el Sacerdote)</span>
+            </div>
+
+            <div class="h-96 overflow-y-auto border border-gray-300 p-6 md:p-8 rounded-xl bg-gray-50 space-y-4 text-lg leading-relaxed shadow-inner">
+                
+                <p><span class="voz-c">C: En aquel tiempo, uno de los Doce, llamado Judas Iscariote, fue a ver a los sumos sacerdotes y les dijo:</span></p>
+                <p><span class="voz-s">S: "¿Cuánto dan si les entrego a Jesús?"</span></p>
+                <p><span class="voz-c">C: Ellos quedaron en darle treinta monedas de plata. Y desde ese momento andaba buscando una oportunidad para entregárselo. El primer día de la fiesta de los panes Ázimos, los discípulos se acercaron a Jesús y le preguntaron:</span></p>
+                <p><span class="voz-s">S: "¿Dónde quieres que te preparemos la cena de Pascua?"</span></p>
+                <p><span class="voz-c">C: Él respondió:</span></p>
+                <p><span class="voz-j">+: "Vayan a la ciudad, a casa de fulano y díganle: El maestro dice: Mi hora está ya cerca. Voy a celebrar la Pascua con mis discípulos en tu casa".</span></p>
+                <p><span class="voz-c">C: Ellos hicieron lo que Jesús les había ordenado y prepararon la cena de Pascua. Al atardecer, se sentó a la mesa de los Doce, y mientras cenaban, les dijo:</span></p>
+                <p><span class="voz-j">+: "Yo les aseguro que uno de ustedes va a entregarme".</span></p>
+                <p><span class="voz-c">C: Ellos se pusieron tristes y comenzaron a preguntarle uno por uno.</span></p>
+                <p><span class="voz-s">S: "¿Acaso soy yo, Señor?"</span></p>
+                <p><span class="voz-c">C: Él respondió:</span></p>
+                <p><span class="voz-j">+: "El que moja su pan en el mismo plato que yo ése va a entregarme. Porque el Hijo del hombre va a morir, como está escrito de él; pero ¡ay de aquel por quien el Hijo del hombre va a ser entregado! Más le valiera a ese hombre no haber nacido".</span></p>
+                <p><span class="voz-c">C: Entonces preguntó Judas, el que lo iba a entregar:</span></p>
+                <p><span class="voz-s">S: "¿Acaso soy yo, Maestro?"</span></p>
+                <p><span class="voz-c">C: Jesús le respondió:</span></p>
+                <p><span class="voz-j">+: "Tú lo has dicho".</span></p>
+                <p><span class="voz-c">C: Durante la cena, Jesús tomó pan y, pronunciando la bendición, lo partió y lo dio a sus discípulos, diciendo:</span></p>
+                <p><span class="voz-j">+: "Tomen y coman. Éste es mi Cuerpo".</span></p>
+                <p><span class="voz-c">C: Luego tomó en sus manos una copa de vino y, pronunciando la acción de gracias la pasó a sus discípulos, diciendo:</span></p>
+                <p><span class="voz-j">+: "Beban todos de ella, porque ésta es mi sangre, sangre de la nueva alianza, que será derramada por todos, para el perdón de los pecados. Les digo que ya no beberé más del fruto de la vid, hasta el día en que beba con ustedes el vino en el Reino de mi Padre".</span></p>
+                <p><span class="voz-c">C: Después de haber cantado el himno, salieron hacia el monte de los Olivos. Entonces Jesús les dijo:</span></p>
+                <p><span class="voz-j">+: "Todos ustedes se van a escandalizar de mí esta noche, porque está escrito: Heriré al pastor y se dispersarán las ovejas del rebaño. Pero después de que yo resucite, iré delante de ustedes a Galilea".</span></p>
+                <p><span class="voz-c">C: Pedro replicó:</span></p>
+                <p><span class="voz-s">S: "Aunque todos se escandalicen de ti, yo nunca me escandalizaré".</span></p>
+                <p><span class="voz-c">C: Jesús les dijo:</span></p>
+                <p><span class="voz-j">+: "Yo te aseguro que esta misma noche antes de que el gallo cante, me habrás negado tres veces".</span></p>
+                <p><span class="voz-c">C: Pedro le replicó:</span></p>
+                <p><span class="voz-s">S: "Aunque tenga que morir contigo, no te negaré".</span></p>
+                <p><span class="voz-c">C: Y lo mismo dijeron todos los discípulos. Entonces Jesús fue con ellos a un lugar llamado Getsemaní y dijo a los discípulos:</span></p>
+                <p><span class="voz-j">+: "Quédense aquí mientras yo voy a orar más allá”.</span></p>
+                <p><span class="voz-c">C: Se llevó consigo a Pedro y a los dos hijos de Zebedeo y comenzó a sentir tristeza y angustia. Entonces les dijo:</span></p>
+                <p><span class="voz-j">+: "Mi alma está llena de tristeza mortal. Quédense aquí y velen conmigo".</span></p>
+                <p><span class="voz-c">C: Avanzó unos pasos más, se postró en tierra y comenzó a orar, diciendo:</span></p>
+                <p><span class="voz-j">+: "Padre mío, si es posible que pase de mí este cáliz; pero que no se haga como yo quiero, sino como quieras tú".</span></p>
+                <p><span class="voz-c">C: Volvió entonces a donde estaban los discípulos y los encontró dormidos. Dijo a Pedro:</span></p>
+                <p><span class="voz-j">+: "¿No han podido velar conmigo ni una hora? Velen y oren, para no caer en la tentación, porque el espíritu está pronto pero la carne es débil".</span></p>
+                <p><span class="voz-c">C: Y alejándose de nuevo, se puso a orar, diciendo:</span></p>
+                <p><span class="voz-j">+: "Padre mío, si este cáliz no puede pasar sin que yo lo beba, hágase tu voluntad".</span></p>
+                <p><span class="voz-c">C: Después volvió y encontró a sus discípulos otra vez dormidos, porque tenían los ojos cargados de sueño. Los dejó se fue a orar de nuevo, por tercera vez, repitiendo las mismas palabras. Después de esto, volvió a donde estaban los discípulos y les dijo:</span></p>
+                <p><span class="voz-j">+: "Duerman ya y descansen. He aquí que llega la hora y el Hijo del hombre va a ser entregado en manos de los pecadores. ¡Levántense! ¡Vamos! Ya está aquí el que me va a entregar".</span></p>
+                <p><span class="voz-c">C: Todavía estaba hablando Jesús, cuando llegó Judas, uno de los Doce, seguido de una chusma numerosa con espadas y palos, enviada por los sumos sacerdotes y los ancianos del pueblo. El que lo iba a entregar había dado esta señal:</span></p>
+                <p><span class="voz-s">S: "Aquel a quien yo le dé un beso, ese es. Aprehéndanlo".</span></p>
+                <p><span class="voz-c">C: Al instante se acercó a Jesús y le dijo:</span></p>
+                <p><span class="voz-s">S: "Buenas noches, Maestro".</span></p>
+                <p><span class="voz-c">C: Y lo besó, Jesús le dijo:</span></p>
+                <p><span class="voz-j">+: "Amigo, ¿es esto a lo que has venido?".</span></p>
+                <p><span class="voz-c">C: Entonces se acercaron a Jesús, le echaron mano y lo apresaron. Uno de los que estaba con Jesús, sacó la espada, hirió a un criado del sumo sacerdote y le cortó una oreja. Le dijo Jesús:</span></p>
+                <p><span class="voz-j">+: "Vuelve la espada a su lugar, pues quien usa la espada, a espada morirá. ¿No crees que si yo se lo pidiera a mi Padre, él pondría ahora mismo a mi disposición más de doce legiones de ángeles? Pero ¿cómo se cumplirían entonces las Escrituras, que dicen que así debe suceder?".</span></p>
+                <p><span class="voz-c">C: Enseguida dijo Jesús a la chusma:</span></p>
+                <p><span class="voz-j">+: "¿Han salido ustedes a apresarme como a un bandido, con espadas y palos? Todos los días yo enseñaba, sentado en el templo, y no me aprehendieron. Pero todo esto ha sucedido para que se cumplieran la predicciones de los profetas".</span></p>
+                <p><span class="voz-c">C: Entonces todos los discípulos lo abandonaron y huyeron. Los que aprehendieron a Jesús lo llevaron a la casa del sumo sacerdote Caifás, donde los escribas y los ancianos estaban reunidos. Pedro lo fue siguiendo desde lejos hasta el palacio del sumo sacerdote. Entró y se sentó con los criados para ver en qué paraba aquello. Los sumos sacerdotes y todo el sanedrín andaban buscando un falso testimonio contra Jesús, con ánimo de darle muerte; pero no lo encontraron. Aunque se presentaron muchos testigos falsos. Al fin llegaron dos que dijeron:</span></p>
+                <p><span class="voz-s">S: "Éste dijo: Puedo derribar el templo de Dios y reconstruirlo en tres días".</span></p>
+                <p><span class="voz-c">C: Entonces el sumo sacerdote se levantó y le dijo.</span></p>
+                <p><span class="voz-s">S: "¿No respondes nada a lo que éstos atestiguan en contra tuya?".</span></p>
+                <p><span class="voz-c">C: Como Jesús callaba, el sumo sacerdote le dijo:</span></p>
+                <p><span class="voz-s">S: "Te conjuro por el Dios vivo a que nos digas si tú eres el Mesías, el Hijo de Dios".</span></p>
+                <p><span class="voz-c">C: Jesús le respondió:</span></p>
+                <p><span class="voz-j">+: "Tú lo has dicho. Además, yo les declaro que pronto verán al Hijo del hombre, sentado a la derecha de Dios, venir sobre las nubes del cielo".</span></p>
+                <p><span class="voz-c">C: Entonces el sumo sacerdote rasgó sus vestiduras y exclamó:</span></p>
+                <p><span class="voz-s">S: "!Ha blasfemado!, ¿Qué necesidad tenemos ya de testigos? Ustedes mismos han oído la blasfemia. ¿Qué les parece?".</span></p>
+                <p><span class="voz-c">C: Ellos respondieron:</span></p>
+                <p><span class="voz-s">S: "Es reo de muerte".</span></p>
+                <p><span class="voz-c">C: Luego comenzaron a escupirle en la cara y a darle bofetadas. Otros lo golpeaban, diciendo:</span></p>
+                <p><span class="voz-s">S: "Adivina quién es el que te ha pegado".</span></p>
+                <p><span class="voz-c">C: Entretanto, Pedro estaba afuera, sentado en el patio, una criada se le acercó y le dijo:</span></p>
+                <p><span class="voz-s">S: "Tú también estabas con Jesús, el galileo".</span></p>
+                <p><span class="voz-c">C: Pero él lo negó ante todos, diciendo:</span></p>
+                <p><span class="voz-s">S: "No sé de qué me estás hablando".</span></p>
+                <p><span class="voz-c">C: Ya se iba hacia el zaguán, cuando lo vio otra criada y dijo a los que estaban ahí:</span></p>
+                <p><span class="voz-s">S: "También ése andaba con Jesús, el nazareno”.</span></p>
+                <p><span class="voz-c">C: Él de nuevo lo negó con juramento:</span></p>
+                <p><span class="voz-s">S: "No conozco a ese hombre".</span></p>
+                <p><span class="voz-c">C: Poco después se acercaron a Pedro los que estaban ahí y le dijeron:</span></p>
+                <p><span class="voz-s">S: "No cabe duda de que tú también eres uno de ellos, pues hasta tu modo de hablar te delata".</span></p>
+                <p><span class="voz-c">C: Entonces él comenzó a echar maldiciones y a jurar que no conocía a aquel hombre. Y en aquel momento cantó el gallo. Entonces se acordó Pedro de que Jesús había dicho: Antes de que cante el gallo, me habrías negado tres veces. Y saliendo de ahí se soltó a llorar amargamente. Llegada la mañana, todos los sumos sacerdotes y los ancianos del pueblo celebraron consejo contra Jesús para darle muerte. Después de atarlo, lo llevaron ante el procurador, Poncio Pilato, y se lo entregaron. Entonces Judas, el que lo había entregado viendo que Jesús había sido condenado a muerte, devolvió arrepentido las treinta monedas de plata a los sumos sacerdotes y a los ancianos diciendo.</span></p>
+                <p><span class="voz-s">S: "Pequé, entregando la sangre de un inocente".</span></p>
+                <p><span class="voz-c">C: Ellos dijeron:</span></p>
+                <p><span class="voz-s">S: "¿Y a nosotros que nos importa? Allá tú".</span></p>
+                <p><span class="voz-c">C: Entonces Judas arrojó las monedas de plata en el templo, se fue y se ahorcó. Los sumos sacerdotes tomaron las monedas de plata y dijeron:</span></p>
+                <p><span class="voz-s">S: "No es lícito juntarlas con el dinero de las limosnas, porque son precio de sangre".</span></p>
+                <p><span class="voz-c">C: Después de deliberar compraron con ellas el Campo del alfarero para sepultar ahí a los extranjeros. Por eso ese campo se llama hasta el día de hoy "Campo de sangre". Así se cumplió lo que dijo el profeta Jeremías: Tomaron las treinta monedas de plata en que fue tasado aquel a quien pusieron precio algunos hijos de Israel, y las dieron por el Campo del alfarero, según lo que me ordenó el Señor. Jesús compareció ante el procurador, Poncio Pilato, quien le preguntó:</span></p>
+                <p><span class="voz-s">S: "¿Eres tú el rey de los judíos?"</span></p>
+                <p><span class="voz-c">C: Jesús respondió:</span></p>
+                <p><span class="voz-j">+: "Tú lo has dicho".</span></p>
+                <p><span class="voz-c">C: Pero nada respondió a las acusaciones que le hacían los sumos sacerdotes y los ancianos. Entonces le dijo Pilato:</span></p>
+                <p><span class="voz-s">S: "¿No oyes todo lo que dicen contra ti?".</span></p>
+                <p><span class="voz-c">C: Pero él nada respondió, hasta el punto que el procurador se quedó muy extrañado. Con ocasión de la fiesta de la Pascua, el procurador solía conceder a la multitud la libertad del preso que quisieran. Tenían entonces un preso famoso, llamado Barrabás. Dijo, pues, Pilato a los ahí reunidos:</span></p>
+                <p><span class="voz-s">S: "¿A quién quieren que les deje en libertad: a Barrabás o a Jesús, que se dice el Mesías?".</span></p>
+                <p><span class="voz-c">C: Pilato sabía que se lo habían entregado por envidia. Estando él sentando en el tribunal su mujer le mandó decirle:</span></p>
+                <p><span class="voz-s">S: "No te metas con ese hombre justo, porque hoy he sufrido mucho en sueños por su causa".</span></p>
+                <p><span class="voz-c">C: Mientras tanto, los sumos sacerdotes y los ancianos convencieron a la muchedumbre de que pidieran la libertad de Barrabás y la muerte de Jesús. Así, cuando el procurador les preguntó:</span></p>
+                <p><span class="voz-s">S: "¿A cuál de los dos quieren que les suelte?".</span></p>
+                <p><span class="voz-c">C: Ellos respondieron:</span></p>
+                <p><span class="voz-s">S: "A Barrabás".</span></p>
+                <p><span class="voz-c">C: Pilato les dijo:</span></p>
+                <p><span class="voz-s">S: "¿Y qué voy a hacer con Jesús, que se dice el Mesías?".</span></p>
+                <p><span class="voz-c">C: Respondieron todos:</span></p>
+                <p><span class="voz-s">S: "Crucifícalo".</span></p>
+                <p><span class="voz-c">C: Pilato preguntó:</span></p>
+                <p><span class="voz-s">S: Pero, ¿qué mal ha hecho?</span></p>
+                <p><span class="voz-c">C: Mas ellos seguían gritando cada con más fuerza:</span></p>
+                <p><span class="voz-s">S: "Crucifícalo".</span></p>
+                <p><span class="voz-c">C: Entonces Pilato, viendo que nada conseguía y que crecía el tumulto, pidió agua y se lavó las manos ante el pueblo, diciendo:</span></p>
+                <p><span class="voz-s">S: "Yo no me hago responsable de la muerte de este hombre justo. Allá ustedes".</span></p>
+                <p><span class="voz-c">C: Todo el pueblo respondió:</span></p>
+                <p><span class="voz-s">S: "¡Que su sangre caiga sobre nosotros y sobre nuestro hijos!".</span></p>
+                <p><span class="voz-c">C: Entonces Pilato puso en libertad a Barrabás. En cambio a Jesús lo hizo azotar y lo entregó para que lo crucificaran. Los soldados del procurador llevaron a Jesús al pretorio y reunieron alrededor de él a todo el batallón. Lo desnudaron, le echaron encima un manto de púrpura, trenzaron una corona de espinas y se la pusieron en la cabeza le pusieron una caña en su mano derecha y, arrodillándose ante él, se burlaban diciendo:</span></p>
+                <p><span class="voz-s">S: "¡Viva el rey de los judíos!".</span></p>
+                <p><span class="voz-c">C: Y le escupían. Luego, quitándole la caña, lo golpeaban con ella en la cabeza. Después de que se burlaron de él, le quitaron el manto, le pusieron sus ropas y lo llevaron a crucificar. Al salir, encontraron a un hombre de Cirene, llamado Simón, y lo obligaron a llevar la cruz. Al llegar a un lugar llamado Gólgota, es decir, "Lugar de la Calavera", le dieron a beber a Jesús vino mezclado con hiel; él lo probo, pero no lo quiso beber. Los que lo crucificaron se repartieron sus vestidos, echando suertes, y se quedaron sentados ahí para custodiarlo. Sobre su cabeza pusieron por escrito la causa de su condena: "Este es Jesús, el rey de los judíos". Juntamente con él, crucificaron a dos ladrones uno a su derecha y el otro a su izquierda. Los que pasaban por ahí lo insultaban moviendo la cabeza y gritándole:</span></p>
+                <p><span class="voz-s">S: "Tú, que destruyes el templo y en tres días lo reedificas, sálvate a ti mismo; si eres el Hijo de Dios, baja de la cruz".</span></p>
+                <p><span class="voz-c">C: También se burlaban de él los sumos sacerdotes, los escribas y los ancianos, diciendo:</span></p>
+                <p><span class="voz-s">S: A salvado a otros y no puede salvarse a sí mismo. Si es el rey de Israel, que baje de la cruz y creeremos en él. Ha puesto su confianza en Dios, que Dios lo salve ahora, si es que en verdad lo ama. Pues él ha dicho: "Soy el Hijo de Dios".</span></p>
+                <p><span class="voz-c">C: Hasta los ladrones que estaban crucificados a su lado lo injuriaban. Desde el mediodía hasta las tres de la tarde, se oscureció toda aquella tierra. Y alrededor de las tres, Jesús exclamó con fuerte voz:</span></p>
+                <p><span class="voz-j">+: "Elí, Elí ¿lemá sabactaní?".</span></p>
+                <p><span class="voz-c">C: Que quiere decir, Dios mío, "Dios mío, ¿Por qué me has abandonado?". Algunos de los presentes, al oírlo, decían:</span></p>
+                <p><span class="voz-s">S: "Está llamado a Elías".</span></p>
+                <p><span class="voz-c">C: Enseguida uno de ellos fue corriendo a tomar una esponja, la empapó en vinagre y sujetándola a una caña, le ofreció de beber. Pero los otros le dijeron:</span></p>
+                <p><span class="voz-s">S: Déjalo vamos a ver si viene Elías a salvarlo.</span></p>
+                <p><span class="voz-c">C: Entonces Jesús dando de nuevo un fuerte grito, expiró.</span></p>
+                
+                <div class="bg-red-100 text-red-900 font-bold p-3 text-center my-4 rounded">
+                    (Aquí todos se arrodillan y guardan silencio por unos instantes)
+                </div>
+
+                <p><span class="voz-c">C: Entonces el velo del templo se rasgó en dos partes, de arriba abajo, la tierra tembló y las rocas se partieron. Se abrieron los sepulcros y resucitaron muchos justos que habían muerto, y después de la resurrección de Jesús, entraron en la ciudad santa y se aparecieron a mucha gente. Por su parte, el oficial y los que estaban con él custodiando a Jesús, al ver el terremoto y las cosas que ocurrían, se llenaron de gran temor y dijeron:</span></p>
+                <p><span class="voz-s">S: "Verdaderamente éste era Hijo de Dios".</span></p>
+                <p><span class="voz-c">C: Estaban también allí, mirando desde lejos, muchas de las mujeres que habían seguido a Jesús desde Galilea para servirlo. Entre ellas estaba María Magdalena, María, la madre de Santiago y de José y la madre de los hijos de Zebedeo. Al atardecer, vino un hombre rico de Arimatea, llamado José, que se había hecho también discípulo de Jesús. Se presentó a Pilato y le pidió el cuerpo de Jesús, y Pilato dio orden de que se lo entregaran. José tomó el cuerpo, lo envolvió en una sábana limpia y lo depositó en un sepulcro nuevo, que había hecho excavar en la roca para sí mismo. Hizo rodar una gran piedra hasta la entrada del sepulcro y se retiró. Estaban ahí María Magdalena y la otra María sentadas frente al sepulcro. Al otro día, el siguiente de la preparación de la Pascua, los sumos sacerdotes y los fariseos, se reunieron ante Pilato y le dijeron:</span></p>
+                <p><span class="voz-s">S: "Señor, nos hemos acordado de que ese impostor, estando aún en vida, dijo: A los tres días resucitaré. Manda, pues, asegurar el sepulcro hasta el tercer día; no sea que vengan sus discípulos, lo roben y digan luego al pueblo: Resucitó de entre los muertos, porque esta última impostura sería peor que la primera".</span></p>
+                <p><span class="voz-c">C: Pilato les dijo:</span></p>
+                <p><span class="voz-s">S: "Tomen un pelotón de soldados, vayan y aseguren el sepulcro como ustedes quieran".</span></p>
+                <p><span class="voz-c">C: Ellos fueron y aseguraron el sepulcro, poniendo un sello sobre la puerta y dejaron ahí la guardia.</span></p>
+                <p class="mt-4 font-bold">Palabra del Señor.</p>
+            </div>
+        </div>
+
+        <div class="mb-12 bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm">
+            <h3 class="text-xl font-bold text-red-700 mb-2">Oración Universal de los Fieles</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-4">Uno de los lectores se dirige al ambón después de la Homilía y la Profesión de Fe.</p>
+            <div class="prose max-w-none text-gray-800 leading-relaxed text-lg space-y-4">
+                <p><strong>Sacerdote:</strong> Oremos con fe a nuestro Padre del cielo, para que escuche benignamente nuestra oración y nos conceda sus dones. Después de cada petición diremos:</p>
+                <p class="font-bold text-red-800 text-center my-4 bg-red-100 py-2 rounded shadow-sm">R. Por la pasión de tu Hijo, danos vida en abundancia.</p>
+                
+                <p><strong>Lector:</strong> Por la Iglesia, extendida por todo el mundo, para que aprendamos a vivir con espíritu de amor y de entrega, como Jesús. Oremos. <strong>R.</strong></p>
+                <p><strong>Lector:</strong> Por los que no conocen a Jesucristo, para que puedan llegar a sentir el gozo y la vida que él nos da. Oremos. <strong>R.</strong></p>
+                <p><strong>Lector:</strong> Por todos los que sufren, para que, identificados con la cruz de Jesucristo, puedan también gozar de la alegría de la resurrección. Oremos. <strong>R.</strong></p>
+                <p><strong>Lector:</strong> Por todos nosotros, reunidos en este Domingo de Ramos, para que la Semana Santa que iniciamos nos haga crecer en la fe, la esperanza y el amor. Oremos. <strong>R.</strong></p>
+
+                <p class="mt-4"><strong>Sacerdote:</strong> Escucha, Señor, las oraciones de tu pueblo y concédenos gozar de los frutos de la cruz gloriosa de Jesucristo. Él, que vive y reina por los siglos de los siglos.<br><strong>R. Amén.</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="registro" class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-4 border-red-600 mt-12">
+        <div class="w-20 h-20 bg-red-100 text-red-800 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm">
+            <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 mb-6 uppercase tracking-tight text-center">Registro Oficial</h2>
+        <div class="w-16 h-1 bg-red-600 mx-auto mb-6 rounded"></div>
+        <p class="text-center text-gray-600 mb-8 text-lg">Completa el formulario y selecciona la sede y horario donde servirás.</p>
+        
+        <div class="iframe-container rounded-2xl overflow-hidden shadow-2xl border border-gray-200 p-2 md:p-4 bg-gray-50">
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSehPngndeRSs-4r7sBOcd15CWEedZ6hVQqjRcj98nDkPaJzPg/viewform?usp=header"
+                frameborder="0">
+                Cargando el formulario de registro...
+            </iframe>
+        </div>
+    </div>
+
+</section>
+
+<footer class="bg-gray-950 text-gray-400 py-12 mt-auto text-center text-xs uppercase tracking-widest border-t border-gray-800">
+    Parroquia de San Pedro Apóstol | Camino hacia la Pascua 2026<br>
+    Allende, Nuevo León, México
+</footer>
+
+</body>
+</html>

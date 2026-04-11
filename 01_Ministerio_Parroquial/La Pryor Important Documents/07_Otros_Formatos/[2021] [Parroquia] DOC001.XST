@@ -1,0 +1,78 @@
+[service xrx_svc_general]
+ {
+      enum_DCS DCSDefinitionUsed = DCS_GENERIC;
+      enum_encoding JobTemplateCharacterEncoding = UTF-8;
+      string JobTemplateLanguageVersion = "4.2.00";
+      string JobTemplateName = "DEFAULT.XST";
+      enum_confmethod ConfirmationMethod = PRINT;
+      string OutputURL = "service:printer:lpr://192.168.1.200";
+      ref_invocation xrx_svc_scan_segments = xrx_svc_scan:scan_1;
+      integer NumberScannedSegments = 1;
+      string ServiceDefinitionUsedVersion = "less_2.072.014.09100.tgz:PowerPC:linux:0.072.014.09100:04/02/2014";
+ }
+end
+
+[service xrx_svc_scan]
+ scan_1{
+    * boolean AutoContrast = FALSE;
+    * enum_autoexposure AutoExposure = OFF;
+    * integer CompressionQuality = 128;
+    * integer Darkness = 0;
+    * enum_imagemode DocumentImageMode = MIXED;
+    * enum_originalsubtype OriginalSubType = PRINTED_ORIGINAL;
+    * struct_borders InputEdgeErase = 3/3/3/3/MM;
+    * enum_mediasize InputMediaSize = AUTO;
+    * enum_inputorientation InputOrientation = PORTRAIT;
+    * integer Sharpness = 0;
+    * enum_sided SidesToScan = ONE_SIDED;
+    * enum_blankpageremoval BlankPageRemoval = INCLUDE_ALL_PAGES;
+      integer Saturation = 0;
+      enum_colormode ColorMode = AUTO;
+      integer Contrast = 0;
+ }
+end
+
+[service xrx_svc_file]
+ file_1{
+      string RepositoryAlias = "front desk";
+      string UserNetworkFilingLoginName = "scans";
+      enum_filingprotocol FilingProtocol = SMB;
+      string RepositoryName = "192.168.1.65:445";
+      string DocumentPath = "";
+      string RepositoryVolume = "scans";
+      string NDSTree = "";
+      string NDSNameContext = "";
+      boolean ServerValidationReq = FALSE;
+      enum_loginsource LoginSource = SYSTEM;
+      boolean DocumentDirectoryXSM = TRUE;
+      enum_filingpolicy DocumentFilingPolicy = NEW_AUTO_GENERATE;
+      ref_invocation OutputDocument = xrx_document:doc_1;
+ }(XRX_STATUS_COMPLETED)
+end
+
+[doc_object xrx_document]
+ doc_1{
+    * enum_docformat DocumentFormat = PDF;
+    * integer ImagesPerDocument = 0;
+    * boolean RotateTIFFUsingTag = FALSE;
+    * enum_compression CompressionsSupported = G4, FLATE, ARITHMETIC_ENCODED_JBIG2, 
+                         HUFFMAN_ENCODED_JBIG2, FLATE_COMPRESSED_JPEG, 
+                         MIXED, NEW_JPEG_TIFF_TTN2, OLD_JPEG_TIFF_V6;
+    * enum_mixedtype MixedTypesSupported = MULTI_MASK_MRC;
+    * enum_mixedcompressions MixedCompressionsSupported = G4, ARITHMETIC_ENCODED_JBIG2, 
+                         HUFFMAN_ENCODED_JBIG2, JPEG, FLATE_COMPRESSED_JPEG;
+    * enum_optimizedforfastwebview OptimizedForFastWebView = NONE;
+    * enum_halftonemethod HalftoneMethod = ERRORDIFFUSE;
+    * enum_halftonescreen HalftoneScreen = AUTO;
+    * enum_resolution Resolution = RES_200X200;
+    * enum_searchabletext SearchableText = IMAGE_ONLY;
+    * enum_textcompression TextCompression = NONE;
+      integer BitsPerPixel = 24;
+      string DocumentObjectName = "DOC001";
+      enum_mixedtype MixedType = MULTI_MASK_MRC;
+      enum_compression MixedCompressions = ARITHMETIC_ENCODED_JBIG2, FLATE_COMPRESSED_JPEG;
+      enum_compression Compression = MIXED;
+      integer NumberImagesScanned = 1;
+ }
+end
+
