@@ -298,6 +298,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     
+
+    // Dynamic section builder
+    const btnAddSection = document.getElementById('btn-add-section');
+    const dynamicSections = document.getElementById('dynamic-sections');
+    if (btnAddSection) {
+        btnAddSection.addEventListener('click', () => {
+            const item = document.createElement('div');
+            item.className = 'canto-item';
+            item.style = 'position: relative; flex-direction: column; align-items: stretch; background: var(--bg-dark); padding: 10px; border-radius: 6px; margin-top: 10px; border: 1px solid var(--border-color);';
+            item.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <input type="text" placeholder="Ej: Intenciones de la Misa" value="Intenciones de la Misa" class="sec-title" style="flex:1; margin-right: 10px; font-weight: bold; background: transparent; border: none; border-bottom: 1px solid var(--gold-accent); color: white; padding: 4px;">
+                    <button class="btn-delete-section" style="background: transparent; color: #ef4444; border: none; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;" title="Eliminar este bloque">🗑️</button>
+                </div>
+                <textarea rows="3" class="sec-content" placeholder="1. Por nuestro Papa Francisco...\n2. Por nuestra comunidad..." style="width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: #ccc; border-radius: 4px; padding: 8px; font-family: sans-serif; resize: vertical;"></textarea>
+            `;
+            item.querySelector('.btn-delete-section').addEventListener('click', () => {
+                item.remove();
+            });
+            dynamicSections.appendChild(item);
+        });
+    }
+
     // PDF Generation Logic (Keeping core markdown generator)
     let liturgiaData = window.liturgiaData || {};
 
@@ -370,10 +393,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     try {
                         console.log("Cerebro Offline Activo. Rendereando Data Pura.");
                         
+                        let customBlocks = [];
+                        document.querySelectorAll('#dynamic-sections .canto-item').forEach(el => {
+                            const t = el.querySelector('.sec-title').value.trim();
+                            const c = el.querySelector('.sec-content').value.trim();
+                            if (t || c) {
+                                customBlocks.push({title: t, content: c});
+                            }
+                        });
+                        
                         let options = {
                             isEn: (document.getElementById('region-select') ? document.getElementById('region-select').value.startsWith('us_en') : false),
                             showMoniciones: document.getElementById('toggle-moniciones') ? document.getElementById('toggle-moniciones').checked : true,
-                            showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true
+                            showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
+                            customBlocks: customBlocks
                         };
                         let doc = generarDocumentoNodos(localData, hora, options);
                         pdfView.innerHTML = doc;
@@ -466,10 +499,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         
+                        let customBlocks = [];
+                        document.querySelectorAll('#dynamic-sections .canto-item').forEach(el => {
+                            const t = el.querySelector('.sec-title').value.trim();
+                            const c = el.querySelector('.sec-content').value.trim();
+                            if (t || c) {
+                                customBlocks.push({title: t, content: c});
+                            }
+                        });
+                        
                         let options = {
                             isEn: (document.getElementById('region-select') ? document.getElementById('region-select').value.startsWith('us_en') : false),
                             showMoniciones: document.getElementById('toggle-moniciones') ? document.getElementById('toggle-moniciones').checked : true,
-                            showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true
+                            showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
+                            customBlocks: customBlocks
                         };
                         let doc = generarDocumentoNodos(data, hora, options);
                         pdfView.innerHTML = doc;
@@ -494,10 +537,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             };
                         }
                         
+                        let customBlocks = [];
+                        document.querySelectorAll('#dynamic-sections .canto-item').forEach(el => {
+                            const t = el.querySelector('.sec-title').value.trim();
+                            const c = el.querySelector('.sec-content').value.trim();
+                            if (t || c) {
+                                customBlocks.push({title: t, content: c});
+                            }
+                        });
+                        
                         let options = {
                             isEn: (document.getElementById('region-select') ? document.getElementById('region-select').value.startsWith('us_en') : false),
                             showMoniciones: document.getElementById('toggle-moniciones') ? document.getElementById('toggle-moniciones').checked : true,
-                            showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true
+                            showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
+                            customBlocks: customBlocks
                         };
                         let doc = generarDocumentoNodos(data, hora, options);
                         pdfView.innerHTML = doc;
