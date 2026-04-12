@@ -261,6 +261,10 @@ def extract_horas_data(target_date, tipo="laudes"):
             "texto": texto
         }
     
+    # 5. Preces
+    if "Preces" in oficio:
+        data["preces"] = oficio["Preces"]
+
     return data
 
 

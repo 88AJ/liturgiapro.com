@@ -80,13 +80,17 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     
     if (OFICIO === "Laudes" || OFICIO === "Visperas") {
         let officeData = data[hora];
-        if (officeData && officeData.salmo1) {
+        // OGLH 94: La salmodia incluye salmos y el cantico del testamento respectivo
+        let salmosNombres = OFICIO === "Laudes" ? ["salmo1", "cantico_at", "salmo2"] : ["salmo1", "salmo2", "cantico_nt"];
+        let titulosArray = OFICIO === "Laudes" ? ["Salmo 1", "Cántico del Antiguo Testamento", "Salmo 2"] : ["Salmo 1", "Salmo 2", "Cántico del Nuevo Testamento"];
+
+        if (officeData && officeData[salmosNombres[0]]) {
             bInicial.addSuperTitulo(isEn ? ("INTEGRATED PSALMODY (" + OFICIO + ")") : ("SALMODIA INTEGRADA (" + OFICIO.toUpperCase() + ")"));
             
-            for (let i = 1; i <= 3; i++) {
-                let s = officeData["salmo" + i];
+            salmosNombres.forEach((nombre, index) => {
+                let s = officeData[nombre];
                 if (s) {
-                    bInicial.addTitulo(isEn ? ("Psalm " + i) : ("Salmo " + i));
+                    bInicial.addTitulo(isEn ? ("Psalmody: " + nombre) : titulosArray[index]);
                     bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
                     
                     let lines = s.texto.split("\n\n");
@@ -99,7 +103,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
                     bInicial.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
                     bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
                 }
-            }
+            });
         } else {
             bInicial.addRubrica("[Error: No se encontró la salmodia del Oficio para " + OFICIO + "]");
         }
@@ -474,9 +478,21 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
     
     let bPreces = new BloqueLiturgico("preces");
-    bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
-    let ptxt = lp.preces || "Lector: Te rogamos, óyenos.";
-    ptxt.split('\n').filter(x=>x.trim()).forEach(l => bPreces.addMonicion(l.replace(/•/g, '').trim()));
+    
+    if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[hora] && data[hora].preces) {
+        bPreces.addTitulo(isEn ? "Prayers / Intercessions (" + OFICIO + ")" : "Preces (" + OFICIO + ")");
+        bPreces.addRubrica(isEn ? "The Universal Prayer is substituted by the Intercessions of the Liturgy of the Hours." : "Se sustituye la Oración de los Fieles por las preces del Oficio divino.");
+        let ptxt = data[hora].preces;
+        ptxt.split('\n').filter(x=>x.trim()).forEach(l => {
+            if(l.startsWith("-") || l.startsWith("—")) bPreces.addMonicion(l);
+            else if(l.includes("Te rogamos") || l.includes("Escúchanos")) bPreces.addAsamblea("R. " + l);
+            else bPreces.addSacerdote(l, 'Normal');
+        });
+    } else {
+        bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
+        let ptxt = lp.preces || "Lector: Te rogamos, óyenos.";
+        ptxt.split('\n').filter(x=>x.trim()).forEach(l => bPreces.addMonicion(l.replace(/•/g, '').trim()));
+    }
     SECUENCIA_LITURGICA.push(bPreces);
 
     // ==========================================
@@ -554,6 +570,26 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bComunion.addSacerdote(data.liturgia_eucaristica ? data.liturgia_eucaristica.antifona_comunion : "");
     bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
     bComunion.addRubrica(cantos.comunion);
+
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        if (officeData && officeData.cantico_evangelico) {
+            let canticoName = OFICIO === "Laudes" ? "Cántico de Zacarías (Benedictus)" : "Cántico de María (Magnificat)";
+            bComunion.addSuperTitulo(isEn ? "GOSPEL CANTICLE" : "CÁNTICO EVANGÉLICO (" + OFICIO.toUpperCase() + ")");
+            bComunion.addTitulo(isEn ? "Gospel Canticle" : canticoName);
+            bComunion.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
+            
+            let lines = officeData.cantico_evangelico.texto.split("\n\n");
+            lines.forEach((line, idx) => {
+                if (idx % 2 === 0) bComunion.addSacerdote(line, 'Normal');
+                else bComunion.addAsamblea(line);
+            });
+            
+            bComunion.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+            bComunion.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+            bComunion.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
+        }
+    }
 
     bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
     bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + (data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : ""));
