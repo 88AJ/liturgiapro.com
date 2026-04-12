@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "descripcion": "Lógica canónica del Ordinario de la Misa y ritos iniciales.",
+  "bloques_estructurales": {
+    "ritos_iniciales": {
+      "saludo_inicial": {
+        "ruta_local": "ritualesespa/misal/ordinario/01_saludo.txt",
+        "estado": "obligatorio"
+      },
+      "acto_penitencial": {
+        "ruta_local": "ritualesespa/misal/ordinario/02_acto_penitencial.txt",
+        "estado": "condicional",
+        "condiciones_supresion": [
+          "rito_aspersion_activo",
+          "liturgia_horas_laudes_unida",
+          "liturgia_horas_visperas_unida",
+          "bautismo_en_misa",
+          "consagracion_iglesia"
+        ]
+      },
+      "kyrie": {
+        "ruta_local": "ritualesespa/misal/ordinario/03_kyrie.txt",
+        "estado": "condicional",
+        "condiciones_supresion": [
+          "acto_penitencial_formula_3",
+          "rito_aspersion_activo",
+          "bautismo_en_misa"
+        ]
+      },
+      "gloria": {
+        "ruta_local": "ritualesespa/misal/ordinario/04_gloria.txt",
+        "estado": "condicional",
+        "condiciones_activacion": [
+          "domingo_tiempo_ordinario",
+          "domingo_pascua",
+          "domingo_navidad",
+          "solemnidad",
+          "fiesta",
+          "octava_pascua",
+          "octava_navidad"
+        ],
+        "condiciones_supresion": [
+          "domingo_adviento",
+          "domingo_cuaresma",
+          "feria",
+          "memoria_obligatoria",
+          "memoria_libre",
+          "misa_exequial",
+          "misa_viva_voz"
+        ],
+        "excepciones_forzadas": [
+          "jueves_santo_cena_del_senor",
+          "misa_crismal",
+          "vigilia_pascual"
+        ]
+      }
+    },
+    "liturgia_palabra": {
+      "credo": {
+        "ruta_local": "ritualesespa/misal/ordinario/05_credo.txt",
+        "estado": "condicional",
+        "condiciones_activacion": [
+          "domingo",
+          "solemnidad",
+          "octava_pascua",
+          "octava_navidad"
+        ],
+        "condiciones_supresion": [
+          "renovacion_promesas_bautismales_activa"
+        ]
+      }
+    }
+    },
+    "liturgia_eucaristica": {
+      "preparacion_dones": {
+        "ruta_local": "ritualesespa/misal/ordinario/06_preparacion_dones.txt",
+        "estado": "obligatorio"
+      },
+      "plegaria_eucaristica_II": {
+        "ruta_local": "ritualesespa/misal/ordinario/07_plegaria_II.txt",
+        "estado": "condicional",
+        "condiciones_activacion": ["plegaria_II_seleccionada"]
+      }
+    },
+    "rito_comunion": {
+      "padre_nuestro": {
+        "ruta_local": "ritualesespa/misal/ordinario/08_padre_nuestro.txt",
+        "estado": "obligatorio"
+      },
+      "rito_paz": {
+        "ruta_local": "ritualesespa/misal/ordinario/09_rito_paz.txt",
+        "estado": "obligatorio"
+      },
+      "fraccion_pan_y_comunion": {
+        "ruta_local": "ritualesespa/misal/ordinario/10_fraccion_comunion.txt",
+        "estado": "obligatorio"
+      }
+    },
+    "ritos_conclusion": {
+      "bendicion_despedida": {
+        "ruta_local": "ritualesespa/misal/ordinario/11_bendicion.txt",
+        "estado": "condicional",
+        "condiciones_supresion": [
+          "liturgia_horas_unida_conclusion"
+        ],
+        "modo_default": "obligatorio"
+      }
+    }
+  }
+}

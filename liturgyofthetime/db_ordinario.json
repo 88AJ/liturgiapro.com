@@ -1,0 +1,145 @@
+{
+  "ordinario": {
+    "ritos_iniciales": {
+      "saludo": {
+        "rubrica_previa": "Terminado el canto de entrada, el sacerdote, de pie en la sede, se santigua, junto con toda la asamblea, diciendo:",
+        "formula_principal": {
+          "celebrante": "En el nombre del Padre, y del Hijo, y del Espíritu Santo.",
+          "asamblea": "Amén."
+        },
+        "opciones_saludo": [
+          {
+            "id": "A",
+            "celebrante": "La gracia de nuestro Señor Jesucristo, el amor del Padre y la comunión del Espíritu Santo estén con todos ustedes.",
+            "asamblea": "Y con tu espíritu."
+          },
+          {
+            "id": "B",
+            "celebrante": "La gracia y la paz de parte de Dios, nuestro Padre, y de Jesucristo, el Señor, estén con todos ustedes.",
+            "asamblea": "Y con tu espíritu."
+          },
+          {
+            "id": "C",
+            "celebrante": "El Señor esté con ustedes.",
+            "asamblea": "Y con tu espíritu."
+          }
+        ]
+      },
+      "acto_penitencial": {
+        "rubrica_previa": "A continuación, el sacerdote invita a los fieles a la penitencia:",
+        "monicion_invitatoria": "Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados.",
+        "rubrica_silencio": "Se hace una breve pausa en silencio.",
+        "opciones_formula": [
+          {
+            "id": "confiteor",
+            "tipo": "comun",
+            "texto_conjunto": "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión.\n(Golpeándose el pecho, dicen:)\nPor mi culpa, por mi culpa, por mi gran culpa.\nPor eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.",
+            "absolucion_celebrante": "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.",
+            "respuesta_absolucion": "Amén."
+          },
+          {
+            "id": "dialogo",
+            "tipo": "dialogal",
+            "versiculos": [
+              { "v": "Señor, ten misericordia de nosotros.", "r": "Porque hemos pecado contra ti." },
+              { "v": "Muéstranos, Señor, tu misericordia.", "r": "Y danos tu salvación." }
+            ],
+             "absolucion_celebrante": "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.",
+             "respuesta_absolucion": "Amén."
+          }
+        ]
+      },
+      "kyrie": {
+         "rubrica_previa": "Se dicen las siguientes invocaciones, a no ser que ya se hayan dicho en el acto penitencial (fórmula 3):",
+         "invocaciones": [
+           { "invocacion": "Señor, ten piedad.", "respuesta": "Señor, ten piedad." },
+           { "invocacion": "Cristo, ten piedad.", "respuesta": "Cristo, ten piedad." },
+           { "invocacion": "Señor, ten piedad.", "respuesta": "Señor, ten piedad." }
+         ]
+      },
+      "gloria": {
+        "rubrica_previa": "Cuando está prescrito, se canta o se dice este himno:",
+        "texto": "Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén."
+      }
+    },
+    "liturgia_eucaristica": {
+      "preparacion_dones": {
+        "rubrica_previa": "El sacerdote, de pie en el altar, toma la patena con el pan y la sostiene un poco elevada; y dice en secreto (o en voz alta si no hay canto):",
+        "bendicion_pan": {
+          "celebrante": "Bendito seas, Señor, Dios del universo, por este pan, fruto de la tierra y del trabajo del hombre, que recibimos de tu generosidad y ahora te presentamos; él será para nosotros pan de vida.",
+          "asamblea": "Bendito seas por siempre, Señor."
+        },
+        "bendicion_vino": {
+          "rubrica_previa": "El diácono, o el sacerdote, echa vino y un poco de agua en el cáliz. Luego toma el cáliz y dice:",
+          "celebrante": "Bendito seas, Señor, Dios del universo, por este vino, fruto de la vid y del trabajo del hombre, que recibimos de tu generosidad y ahora te presentamos; él será para nosotros bebida de salvación.",
+          "asamblea": "Bendito seas por siempre, Señor."
+        },
+        "orate_fratres": {
+          "rubrica_previa": "Terminado el lavabo, de pie en el centro del altar y de cara al pueblo, extendiendo y juntando las manos, dice:",
+          "celebrante": "Oren, hermanos, para que este sacrificio, mío y de ustedes, sea agradable a Dios, Padre todopoderoso.",
+          "asamblea": "El Señor reciba de tus manos este sacrificio, para alabanza y gloria de su nombre, para nuestro bien y el de toda su santa Iglesia."
+        }
+      },
+      "plegaria_eucaristica_II": {
+        "dialogo_prefacio": {
+          "v1": "El Señor esté con ustedes.", "r1": "Y con tu espíritu.",
+          "v2": "Levantemos el corazón.", "r2": "Lo tenemos levantado hacia el Señor.",
+          "v3": "Demos gracias al Señor, nuestro Dios.", "r3": "Es justo y necesario."
+        },
+        "santo": {
+          "texto": "Santo, Santo, Santo es el Señor, Dios del Universo. Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo. Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+        },
+        "consagracion": {
+          "pan": "El cual, cuando iba a ser entregado a su Pasión, voluntariamente aceptada, tomó pan, dándote gracias, lo partió y lo dio a sus discípulos, diciendo: TOMEN Y COMAN TODOS DE ÉL, PORQUE ESTO ES MI CUERPO QUE SERÁ ENTREGADO POR USTEDES.",
+          "vino": "Del mismo modo, acabada la cena, tomó el cáliz, y, dándote gracias de nuevo, lo pasó a sus discípulos, diciendo: TOMEN Y BEBAN TODOS DE ÉL, PORQUE ÉSTE ES EL CÁLIZ DE MI SANGRE, SANGRE DE LA ALIANZA NUEVA Y ETERNA, QUE SERÁ DERRAMADA POR USTEDES Y POR MUCHOS PARA EL PERDÓN DE LOS PECADOS. HAGAN ESTO EN CONMEMORACIÓN MÍA."
+        },
+        "aclamacion_misterio": {
+          "celebrante": "Éste es el Misterio de la fe.",
+          "asamblea": "Anunciamos tu muerte, proclamamos tu resurrección. ¡Ven, Señor Jesús!"
+        },
+        "doxologia": {
+          "celebrante": "Por Cristo, con él y en él, a ti, Dios Padre omnipotente, en la unidad del Espíritu Santo, todo honor y toda gloria por los siglos de los siglos.",
+          "asamblea": "Amén."
+        }
+      }
+    },
+    "rito_comunion": {
+      "padre_nuestro": {
+        "monicion": "Fieles a la recomendación del Salvador y siguiendo su divina enseñanza, nos atrevemos a decir:",
+        "oracion": "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal.",
+        "embolismo_y_doxologia": {
+          "celebrante": "Líbranos de todos los males, Señor... mientras esperamos la gloriosa venida de nuestro Salvador Jesucristo.",
+          "asamblea": "Tuyo es el reino, tuyo el poder y la gloria, por siempre, Señor."
+        }
+      },
+      "rito_paz": {
+        "oracion_paz": {
+          "celebrante": "Señor Jesucristo, que dijiste a tus apóstoles: «La paz les dejo, mi paz les doy», no tengas en cuenta nuestros pecados, sino la fe de tu Iglesia y, conforme a tu palabra, concédele la paz y la unidad. Tú que vives y reinas por los siglos de los siglos.",
+          "asamblea": "Amén."
+        },
+        "dialogo_paz": {
+          "celebrante": "La paz del Señor esté siempre con ustedes.",
+          "asamblea": "Y con tu espíritu."
+        }
+      },
+      "fraccion_pan_y_comunion": {
+        "cordero_dios": "Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros. (x2) Cordero de Dios, que quitas el pecado del mundo, danos la paz.",
+        "invitacion": {
+          "celebrante": "Éste es el Cordero de Dios, que quita el pecado del mundo. Dichosos los invitados a la cena del Señor.",
+          "asamblea": "Señor, no soy digno de que entres en mi casa, pero una palabra tuya bastará para sanarme."
+        }
+      }
+    },
+    "ritos_conclusion": {
+      "bendicion_despedida": {
+        "dialogo_bendicion": {
+          "celebrante_v": "El Señor esté con ustedes.", "asamblea_r": "Y con tu espíritu.",
+          "celebrante_b": "La bendición de Dios todopoderoso, Padre, Hijo, (+) y Espíritu Santo, descienda sobre ustedes.", "asamblea_b": "Amén."
+        },
+        "despedida": {
+          "diacono": "Pueden ir en paz.", "asamblea": "Demos gracias a Dios."
+        }
+      }
+    }
+  }
+}
