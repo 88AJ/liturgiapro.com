@@ -357,6 +357,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     let isEn = options.isEn === true;
     let showMoniciones = options.showMoniciones !== false;
     let showHomilia = options.showHomilia !== false;
+    const OFICIO = hora ? (hora === "laudes" ? "Laudes" : (hora === "visperas" ? "Visperas" : "Completas")) : null;
     
     let SECUENCIA_LITURGICA = [];
     const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn);
@@ -392,25 +393,51 @@ function generarDocumentoNodos(data, hora, options = {}) {
         bInicial.addDialogo(nd.opciones_saludo[2].celebrante, nd.opciones_saludo[2].asamblea); // Opción C
     }
 
-    if (checkAccion("acto_penitencial")) {
-        bInicial.addTitulo(isEn ? "Penitential Act" : "Acto Penitencial");
-        let nd = ord.ritos_iniciales.acto_penitencial;
-        bInicial.addRubrica(nd.rubrica_previa);
-        bInicial.addMonicion(nd.monicion_invitatoria);
-        bInicial.addRubrica(nd.rubrica_silencio);
-        
-        let opt = nd.opciones_formula.find(x => x.id === "confiteor");
-        if(opt) {
-            bInicial.addAsamblea(opt.texto_conjunto);
-            bInicial.addSacerdote(opt.absolucion_celebrante);
-            bInicial.addAsamblea(opt.respuesta_absolucion);
-        }
-    }
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        let salmosNombres = OFICIO === "Laudes" ? ["salmo1", "cantico_at", "salmo2"] : ["salmo1", "salmo2", "cantico_nt"];
+        let titulosArray = OFICIO === "Laudes" ? ["Salmo 1", "Cántico del Antiguo Testamento", "Salmo 2"] : ["Salmo 1", "Salmo 2", "Cántico del Nuevo Testamento"];
 
-    if (checkAccion("kyrie")) {
-        let nd = ord.ritos_iniciales.kyrie;
-        bInicial.addRubrica(nd.rubrica_previa);
-        nd.invocaciones.forEach(i => bInicial.addDialogo(i.invocacion, i.respuesta));
+        if (officeData && officeData[salmosNombres[0]]) {
+            bInicial.addSuperTitulo(isEn ? ("INTEGRATED PSALMODY (" + OFICIO + ")") : ("SALMODIA INTEGRADA (" + OFICIO.toUpperCase() + ")"));
+            
+            salmosNombres.forEach((nombre, index) => {
+                let s = officeData[nombre];
+                if (s) {
+                    bInicial.addTitulo(isEn ? ("Psalmody: " + nombre) : titulosArray[index]);
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                    let lines = s.texto.split("\n\n");
+                    lines.forEach((line, idx) => {
+                        if (idx % 2 === 0) bInicial.addSacerdote(line, 'Normal');
+                        else bInicial.addAsamblea(line);
+                    });
+                    bInicial.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+                    bInicial.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                }
+            });
+        }
+    } else {
+        if (checkAccion("acto_penitencial")) {
+            bInicial.addTitulo(isEn ? "Penitential Act" : "Acto Penitencial");
+            let nd = ord.ritos_iniciales.acto_penitencial;
+            bInicial.addRubrica(nd.rubrica_previa);
+            bInicial.addMonicion(nd.monicion_invitatoria);
+            bInicial.addRubrica(nd.rubrica_silencio);
+            
+            let opt = nd.opciones_formula.find(x => x.id === "confiteor");
+            if(opt) {
+                bInicial.addAsamblea(opt.texto_conjunto);
+                bInicial.addSacerdote(opt.absolucion_celebrante);
+                bInicial.addAsamblea(opt.respuesta_absolucion);
+            }
+        }
+
+        if (checkAccion("kyrie")) {
+            let nd = ord.ritos_iniciales.kyrie;
+            bInicial.addRubrica(nd.rubrica_previa);
+            nd.invocaciones.forEach(i => bInicial.addDialogo(i.invocacion, i.respuesta));
+        }
     }
 
     if (checkAccion("gloria")) {
