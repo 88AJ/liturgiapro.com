@@ -339,7 +339,7 @@ def gemini_etl_node(client, raw_inputs):
     config = types.GenerateContentConfig(
         response_mime_type="application/json",
         response_schema=etl_schema,
-        system_instruction="Eres un procesador ETL (Extract, Transform, Load) implacablemente estricto para un Missal Operativo. Tu único propósito es ingerir los textos litúrgicos crudos y reestructurarlos en árboles sintácticos (AST). PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes texto fuera del JSON. 2. DEBES segmentar ontológicamente los textos en bloques ordenados. Separa meticulosamente las 'rubricas' (ej. 'El sacerdote dice', 'El diácono proclama'), los 'dialogos' (ej. 'V. Palabra de Dios. R. Te alabamos Señor'), y la 'proclamacion' de las lecturas y oraciones."
+        system_instruction="Eres un procesador ETL implacablemente estricto para un Missal Operativo. Tu único propósito es ingerir los textos litúrgicos crudos y reestructurarlos en árboles sintácticos (AST). PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes texto fuera del JSON. 2. DEBES segmentar ontológicamente los textos en bloques ordenados. Separa 'rubricas', 'dialogos' y 'proclamacion'. 3. APLICA LA ORDENACIÓN DE LAS LECTURAS (OLM): - El título o cita de la lectura ('rubrica') DEBE usar el formato 'Lectura del libro de...', 'Lectura de la carta...', o 'Lectura del santo Evangelio...'. Prohibido usar 'Comienzo de...' o 'Continuación de...'. Usa 'carta a los Hebreos' (sin decir San Pablo) y 'Lamentaciones' (sin decir Jeremías). - La 'proclamacion' principal de la Palabra (Hagiografía/Bíblica) DEBE arrancar siempre con un Íncipit oficial si el contexto lo admite o le fue amputado ('En aquel tiempo...', 'En aquellos días...', 'Hermanos...', 'Así dice el Señor...'). - ELIMINA las aclamaciones finales ('Palabra de Dios / Te alabamos Señor', 'Palabra del Señor / Gloria a ti...') del texto procesado, ya que el motor base las renderizará automáticamente."
     )
     
     try:
@@ -348,9 +348,91 @@ def gemini_etl_node(client, raw_inputs):
             contents=raw_inputs,
             config=config
         )
-        return json.loads(response.text)
+        resp_text = response.text.strip()
+        import re
+        match = re.search(r'\{.*\}', resp_text, re.DOTALL)
+        if match:
+            resp_text = match.group(0)
+        try:
+            return json.loads(resp_text)
+        except Exception as loads_e:
+            with open("crash_etl.txt", "w") as f:
+                f.write(resp_text)
+            raise loads_e
     except Exception as e:
         print(f"❌ Error en Gemini ETL: {e}")
+        print(f"--- CONTENIDO CRUDO ---")
+        try:
+            print(resp_text)
+        except:
+            print(response.text)
+        print(f"-----------------------")
+        return None
+
+def gemini_orquestador_node(client, metadatos, fecha, modificadores_activos=[]):
+    """
+    Cruza el contexto del día con las Reglas Canónicas para determinar la estructura final.
+    """
+    ruta_reglas = "liturgyofthetime/reglas_ordinario.json"
+    try:
+        with open(ruta_reglas, 'r', encoding='utf-8') as f:
+            reglas_liturgicas = json.load(f)
+    except FileNotFoundError:
+        print(f"❌ Error: No se encontró el archivo {ruta_reglas}")
+        return None
+
+    contexto_celebracion = {
+        "fecha": fecha,
+        "dia_liturgico": metadatos.get('titulo_celebracion', ''),
+        "tipo_misa": metadatos.get('grado', 'Feria'),
+        "modificadores_activos": modificadores_activos
+    }
+
+    prompt_orquestador = f"""
+Eres el 'Orquestador Litúrgico' de Liturgia Pro.
+Tu único objetivo es leer el CONTEXTO DE LA CELEBRACIÓN y cruzarlo con las REGLAS LITÚRGICAS (Ley Canónica) para determinar qué bloques del Ordinario de la Misa deben imprimirse y cuáles deben omitirse.
+
+CONTEXTO DE LA CELEBRACIÓN:
+{json.dumps(contexto_celebracion, indent=2)}
+
+REGLAS LITÚRGICAS (Lógica de supresión/activación):
+{json.dumps(reglas_liturgicas, indent=2)}
+
+INSTRUCCIONES:
+1. Evalúa CADA bloque estructural de las reglas (ritos_iniciales, liturgia_palabra, liturgia_eucaristica, rito_comunion, ritos_conclusion).
+2. Si el contexto cumple una 'condicion_supresion' dentro de un bloque, ese bloque DEBE indicar accion "omitir". 
+3. Si el contexto cumple una 'condicion_activacion' o si el bloque es 'obligatorio' ('estado': 'obligatorio'), DEBE indicar accion "incluir".
+4. Si un bloque es condicional pero no cumple ninguna condición explícita ni de supresión ni de activación, omítelo.
+5. Devuelve ESTRICTAMENTE un objeto JSON con un array llamado 'esqueleto_ensamblaje'. Cada elemento del array debe contener el 'id_bloque' (ej. saludo_inicial, gloria, etc), la 'accion' ("incluir" o "omitir"), y el 'motivo' lógico explícito.
+
+Estructura esperada:
+{{
+  "esqueleto_ensamblaje": [
+    {{ "id_bloque": "saludo_inicial", "accion": "incluir", "motivo": "Bloque obligatorio" }},
+    ...
+  ]
+}}
+"""
+    config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        temperature=0.0
+    )
+    
+    print("🧠 Consultando al Orquestador Lógico para definir estructura del Ordinario...")
+    try:
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt_orquestador,
+            config=config
+        )
+        resp_text = response.text.strip()
+        import re
+        match = re.search(r'\{.*\}', resp_text, re.DOTALL)
+        if match:
+            resp_text = match.group(0)
+        return json.loads(resp_text)
+    except Exception as e:
+        print(f"❌ Error en Gemini Orquestador: {e}")
         return None
 
 def execute_scraper(start_date_str, end_date_str):
@@ -407,6 +489,12 @@ def execute_scraper(start_date_str, end_date_str):
                         db[date_key]['titulo_celebracion'] = etl_data['metadatos'].get('titulo_celebracion', '')
                         db[date_key]['color'] = etl_data['metadatos'].get('color_liturgico', 'Blanco')
                         db[date_key]['grado'] = etl_data['metadatos'].get('grado', db[date_key].get('grado', 'Feria'))
+                        
+                        # INYECCIÓN DEL ORQUESTADOR (FASE 4)
+                        esqueleto_ordinario = gemini_orquestador_node(client, etl_data['metadatos'], date_key, [])
+                        if esqueleto_ordinario and "esqueleto_ensamblaje" in esqueleto_ordinario:
+                            db[date_key]['esqueleto_ordinario'] = esqueleto_ordinario['esqueleto_ensamblaje']
+                            print("✅ Orquestador devolvió esqueleto canónico exitosamente.")
                         
                     if 'oraciones_presidenciales' in etl_data:
                         op = etl_data['oraciones_presidenciales']

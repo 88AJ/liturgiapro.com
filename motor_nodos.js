@@ -1,6 +1,6 @@
 // ANTIGRAVITY - CEREBRO LITÚRGICO UNIFICADO (NODOS)
 
-function generarDocumentoNodos(data, hora, options = {}) {
+function generarDocumentoNodosLegacy(data, hora, options = {}) {
     if (!data) return '';
     let isEn = options.isEn === true;
     let showMoniciones = options.showMoniciones !== false;
@@ -339,3 +339,254 @@ function generarDocumentoNodos(data, hora, options = {}) {
     SECUENCIA_LITURGICA.forEach(bloque => htmlOut += RENDERIZAR_BLOQUE(bloque));
     return htmlOut;
 }
+
+// -----------------------------------------------------
+// NUEVO MOTOR AST (FASE 5)
+// -----------------------------------------------------
+function generarDocumentoNodos(data, hora, options = {}) {
+    if (!data) return '';
+    // Híbrido: Si no hay esqueleto canónico del nuevo motor, usamos el sistema viejo procedural 
+    if (!data.esqueleto_ordinario || !window.DbOrdinario) {
+        return generarDocumentoNodosLegacy(data, hora, options);
+    }
+    
+    let isEn = options.isEn === true;
+    let showMoniciones = options.showMoniciones !== false;
+    let showHomilia = options.showHomilia !== false;
+    
+    let SECUENCIA_LITURGICA = [];
+    const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn);
+    const ord = window.DbOrdinario.ordinario;
+
+    const checkAccion = (bloque_id) => {
+        let f = data.esqueleto_ordinario.find(x => x.id_bloque === bloque_id);
+        return f && f.accion === "incluir";
+    };
+
+    // ==========================================
+    // BLOQUE A: RITOS INICIALES
+    // ==========================================
+    let bInicial = new BloqueLiturgico("ritos_iniciales");
+    bInicial.addSuperTitulo(isEn ? "INTRODUCTORY RITES" : "RITOS INICIALES");
+
+    if (showMoniciones) {
+        bInicial.addTitulo(isEn ? "Entrance Monition" : "Monición de Entrada");
+        bInicial.addMonicion(data.monicion_entrada || "Breve introducción a la liturgia del día.");
+    }
+    
+    bInicial.addTitulo(isEn ? "Entrance Chant" : "Canto de Entrada");
+    bInicial.addRubrica(cantos.entrada);
+
+    bInicial.addTitulo(isEn ? "Entrance Antiphon" : "Antífona de Entrada");
+    bInicial.addSacerdote(data.antifona_entrada || "Antífona según calendario...");
+
+    if (checkAccion("saludo_inicial")) {
+        bInicial.addTitulo(isEn ? "Greeting" : "Saludo Inicial");
+        let nd = ord.ritos_iniciales.saludo;
+        bInicial.addRubrica(nd.rubrica_previa);
+        bInicial.addDialogo(nd.formula_principal.celebrante, nd.formula_principal.asamblea);
+        bInicial.addDialogo(nd.opciones_saludo[2].celebrante, nd.opciones_saludo[2].asamblea); // Opción C
+    }
+
+    if (checkAccion("acto_penitencial")) {
+        bInicial.addTitulo(isEn ? "Penitential Act" : "Acto Penitencial");
+        let nd = ord.ritos_iniciales.acto_penitencial;
+        bInicial.addRubrica(nd.rubrica_previa);
+        bInicial.addMonicion(nd.monicion_invitatoria);
+        bInicial.addRubrica(nd.rubrica_silencio);
+        
+        let opt = nd.opciones_formula.find(x => x.id === "confiteor");
+        if(opt) {
+            bInicial.addAsamblea(opt.texto_conjunto);
+            bInicial.addSacerdote(opt.absolucion_celebrante);
+            bInicial.addAsamblea(opt.respuesta_absolucion);
+        }
+    }
+
+    if (checkAccion("kyrie")) {
+        let nd = ord.ritos_iniciales.kyrie;
+        bInicial.addRubrica(nd.rubrica_previa);
+        nd.invocaciones.forEach(i => bInicial.addDialogo(i.invocacion, i.respuesta));
+    }
+
+    if (checkAccion("gloria")) {
+        let nd = ord.ritos_iniciales.gloria;
+        bInicial.addTitulo("Gloria");
+        bInicial.addRubrica(nd.rubrica_previa);
+        bInicial.addAsamblea(nd.texto);
+    }
+
+    bInicial.addTitulo(isEn ? "Collect" : "Oración Colecta");
+    bInicial.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || ""));
+    bInicial.addAsamblea("Amén.");
+    SECUENCIA_LITURGICA.push(bInicial);
+
+
+    // ==========================================
+    // BLOQUE B: LITURGIA DE LA PALABRA
+    // ==========================================
+    let bPalabra = new BloqueLiturgico("liturgia_palabra");
+    bPalabra.addSuperTitulo(isEn ? "LITURGY OF THE WORD" : "LITURGIA DE LA PALABRA");
+    
+    let lp = data.liturgia_palabra || {};
+
+    if (lp.primera_lectura) {
+        bPalabra.addTitulo(isEn ? "First Reading" : "Primera Lectura");
+        bPalabra.addRubrica(lp.primera_lectura.cita || "");
+        bPalabra.addLectura(lp.primera_lectura.texto || "");
+        bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+    }
+
+    if (lp.salmo_responsorial) {
+        bPalabra.addTitulo(isEn ? "Responsorial Psalm" : "Salmo Responsorial");
+        bPalabra.addRubrica(lp.salmo_responsorial.cita || "");
+        bPalabra.addAsamblea("R. " + (lp.salmo_responsorial.respuesta || ""));
+        bPalabra.addSacerdote(lp.salmo_responsorial.texto || "");
+    }
+
+    if (lp.segunda_lectura) {
+        bPalabra.addTitulo(isEn ? "Second Reading" : "Segunda Lectura");
+        bPalabra.addRubrica(lp.segunda_lectura.cita || "");
+        bPalabra.addLectura(lp.segunda_lectura.texto || "");
+        bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+    }
+
+    bPalabra.addTitulo(isEn ? "Gospel Acclamation" : "Aclamación antes del Evangelio");
+    bPalabra.addAsamblea(lp.aclamacion_evangelio || "Aleluya, aleluya.");
+
+    if (lp.evangelio) {
+        bPalabra.addTitulo(isEn ? "Gospel" : "Evangelio");
+        bPalabra.addRubrica("<span class='cross-mark'>✠</span> " + (lp.evangelio.cita || ""));
+        bPalabra.addLectura(lp.evangelio.texto || "");
+        bPalabra.addDialogo(isEn ? "The Gospel of the Lord." : "Palabra del Señor.", isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús.");
+    }
+
+    bPalabra.addTitulo(isEn ? "Homily" : "Homilía");
+    if (showHomilia && data.guia_reflexion) bPalabra.addGuia(data.guia_reflexion);
+    else bPalabra.addRubrica(isEn ? "The priest or deacon delivers the homily." : "El sacerdote o diácono pronuncia la homilía.");
+    SECUENCIA_LITURGICA.push(bPalabra);
+
+    if (checkAccion("credo")) {
+        let bCredo = new BloqueLiturgico("credo");
+        bCredo.addTitulo(isEn ? "Profession of Faith" : "Profesión de Fe");
+        bCredo.addAsamblea("Creo en un solo Dios, Padre todopoderoso, Creador del cielo y de la tierra, de todo lo visible y lo invisible...\n\nCreo en un solo Señor, Jesucristo, Hijo único de Dios, nacido del Padre antes de todos los siglos...\n\nCreo en el Espíritu Santo, Señor y dador de vida..."); 
+        SECUENCIA_LITURGICA.push(bCredo);
+    }
+    
+    let bPreces = new BloqueLiturgico("preces");
+    bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
+    let ptxt = lp.preces || "Lector: Te rogamos, óyenos.";
+    ptxt.split('\n').filter(x=>x.trim()).forEach(l => bPreces.addMonicion(l.replace(/•/g, '').trim()));
+    SECUENCIA_LITURGICA.push(bPreces);
+
+    // ==========================================
+    // BLOQUE C: LITURGIA EUCARÍSTICA
+    // ==========================================
+    let bEuca = new BloqueLiturgico("liturgia_eucaristica");
+    bEuca.addSuperTitulo(isEn ? "LITURGY OF THE EUCHARIST" : "LITURGIA EUCARÍSTICA");
+    bEuca.addTitulo(isEn ? "Offertory Chant" : "Canto de Ofertorio");
+    bEuca.addRubrica(cantos.ofertorio);
+
+    if (checkAccion("preparacion_dones")) {
+        let nd = ord.liturgia_eucaristica.preparacion_dones;
+        bEuca.addTitulo(isEn ? "Preparation of the Gifts" : "Preparación de los Dones");
+        bEuca.addRubrica(nd.rubrica_previa);
+        bEuca.addDialogo(nd.bendicion_pan.celebrante, nd.bendicion_pan.asamblea);
+        bEuca.addRubrica(nd.bendicion_vino.rubrica_previa);
+        bEuca.addDialogo(nd.bendicion_vino.celebrante, nd.bendicion_vino.asamblea);
+        bEuca.addRubrica(nd.orate_fratres.rubrica_previa);
+        bEuca.addDialogo(nd.orate_fratres.celebrante, nd.orate_fratres.asamblea);
+    }
+
+    bEuca.addTitulo(isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas");
+    bEuca.addSacerdote(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : "");
+    bEuca.addAsamblea("Amén.");
+    
+    if (checkAccion("plegaria_eucaristica_II")) {
+        let nd = ord.liturgia_eucaristica.plegaria_eucaristica_II;
+        bEuca.addTitulo(isEn ? "Preface Dialogue" : "Diálogo del Prefacio");
+        bEuca.addDialogo(nd.dialogo_prefacio.v1, nd.dialogo_prefacio.r1);
+        bEuca.addDialogo(nd.dialogo_prefacio.v2, nd.dialogo_prefacio.r2);
+        bEuca.addDialogo(nd.dialogo_prefacio.v3, nd.dialogo_prefacio.r3);
+        
+        bEuca.addTitulo(isEn ? "Sanctus" : "Santo");
+        bEuca.addAsamblea(nd.santo.texto);
+
+        bEuca.addTitulo(isEn ? "Eucharistic Prayer" : "Plegaria Eucarística");
+        bEuca.addRubrica("El sacerdote pronuncia la Plegaria Eucarística elegida.");
+        bEuca.addSacerdote(nd.consagracion.pan);
+        bEuca.addSacerdote(nd.consagracion.vino);
+        bEuca.addDialogo(nd.aclamacion_misterio.celebrante, nd.aclamacion_misterio.asamblea);
+        bEuca.addDialogo(nd.doxologia.celebrante, nd.doxologia.asamblea);
+    }
+    SECUENCIA_LITURGICA.push(bEuca);
+
+    // ==========================================
+    // BLOQUE D: COMUNIÓN
+    // ==========================================
+    let bComunion = new BloqueLiturgico("rito_comunion");
+    bComunion.addSuperTitulo(isEn ? "COMMUNION RITE" : "RITO DE LA COMUNIÓN");
+
+    if (checkAccion("padre_nuestro")) {
+        let nd = ord.rito_comunion.padre_nuestro;
+        bComunion.addTitulo("Padre Nuestro");
+        bComunion.addMonicion(nd.monicion);
+        bComunion.addAsamblea(nd.oracion);
+        bComunion.addDialogo(nd.embolismo_y_doxologia.celebrante, nd.embolismo_y_doxologia.asamblea);
+    }
+
+    if (checkAccion("rito_paz")) {
+        let nd = ord.rito_comunion.rito_paz;
+        bComunion.addTitulo("Rito de la Paz");
+        bComunion.addDialogo(nd.oracion_paz.celebrante, nd.oracion_paz.asamblea);
+        bComunion.addDialogo(nd.dialogo_paz.celebrante, nd.dialogo_paz.asamblea);
+    }
+
+    if (checkAccion("fraccion_pan_y_comunion")) {
+        let nd = ord.rito_comunion.fraccion_pan_y_comunion;
+        bComunion.addTitulo("Fracción del Pan");
+        bComunion.addAsamblea(nd.cordero_dios);
+        bComunion.addTitulo("Invitación a la Comunión");
+        bComunion.addDialogo(nd.invitacion.celebrante, nd.invitacion.asamblea);
+    }
+
+    bComunion.addTitulo(isEn ? "Communion Antiphon" : "Antífona de Comunión");
+    bComunion.addSacerdote(data.liturgia_eucaristica ? data.liturgia_eucaristica.antifona_comunion : "");
+    bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
+    bComunion.addRubrica(cantos.comunion);
+
+    bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
+    bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + (data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : ""));
+    bComunion.addAsamblea("Amén.");
+    SECUENCIA_LITURGICA.push(bComunion);
+
+    // ==========================================
+    // BLOQUE E: CONCLUSIÓN
+    // ==========================================
+    let bConclusion = new BloqueLiturgico("conclusion");
+    bConclusion.addSuperTitulo(isEn ? "CONCLUDING RITES" : "RITOS DE CONCLUSIÓN");
+
+    if (checkAccion("bendicion_despedida")) {
+        let nd = ord.ritos_conclusion.bendicion_despedida;
+        bConclusion.addTitulo(isEn ? "Final Blessing" : "Bendición Final");
+        bConclusion.addDialogo(nd.dialogo_bendicion.celebrante_v, nd.dialogo_bendicion.asamblea_r);
+        bConclusion.addDialogo(nd.dialogo_bendicion.celebrante_b, nd.dialogo_bendicion.asamblea_b);
+        bConclusion.addDialogo(nd.despedida.diacono, nd.despedida.asamblea);
+    } else {
+        // Fallback for testing
+        bConclusion.addDialogo("El Señor esté con ustedes", "Y con tu espíritu");
+        bConclusion.addDialogo("Pueden ir en paz.", "Demos gracias a Dios.");
+    }
+
+    bConclusion.addTitulo(isEn ? "Recessional Chant" : "Canto de Salida");
+    bConclusion.addRubrica(cantos.salida);
+    SECUENCIA_LITURGICA.push(bConclusion);
+
+    // ==========================================
+    // EJECUCIÓN DEL RENDERIZADO AST
+    // ==========================================
+    let htmlOut = '';
+    SECUENCIA_LITURGICA.forEach(bloque => htmlOut += RENDERIZAR_BLOQUE(bloque));
+    return htmlOut;
+}
+
