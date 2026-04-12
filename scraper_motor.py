@@ -269,6 +269,19 @@ def gemini_etl_node(client, raw_inputs):
     Actúa como Extractor ETL Estricto. Recibe una lista de raw_inputs (texto crudo, URLs pre-procesadas, o Archivos subidos a la API) 
     y devuelve el JSON estructurado de la Liturgia y Cantos.
     """
+    nodo_schema = {
+        "type": "object",
+        "properties": {
+            "tipo": {
+                "type": "string",
+                "enum": ["rubrica", "monicion", "dialogo", "proclamacion"],
+                "description": "Clasificador ontológico del bloque. 'rubrica' para instrucciones procesales. 'monicion' para textos introductorios. 'dialogo' para V/R. 'proclamacion' para el texto principal."
+            },
+            "texto": { "type": "string" }
+        },
+        "required": ["tipo", "texto"]
+    }
+
     etl_schema = {
       "type": "object",
       "properties": {
@@ -284,11 +297,21 @@ def gemini_etl_node(client, raw_inputs):
         "oraciones_presidenciales": {
           "type": "object",
           "properties": {
-            "colecta": { "type": "string" },
-            "sobre_ofrendas": { "type": "string" },
-            "postcomunion": { "type": "string" }
+            "colecta": { "type": "array", "items": nodo_schema },
+            "sobre_ofrendas": { "type": "array", "items": nodo_schema },
+            "postcomunion": { "type": "array", "items": nodo_schema }
           },
           "required": ["colecta", "sobre_ofrendas", "postcomunion"]
+        },
+        "liturgia_palabra_estructurada": {
+          "type": "object",
+          "properties": {
+            "primera_lectura": { "type": "array", "items": nodo_schema },
+            "salmo_responsorial": { "type": "array", "items": nodo_schema },
+            "segunda_lectura": { "type": "array", "items": nodo_schema },
+            "evangelio": { "type": "array", "items": nodo_schema }
+          },
+          "description": "Extrae y estructura las lecturas, separando las rúbricas iniciales y aclamaciones finales ('Palabra de Dios', 'Te alabamos Señor') usando el array de nodos."
         },
         "repertorio_sugerido": {
           "type": "object",
@@ -300,7 +323,7 @@ def gemini_etl_node(client, raw_inputs):
                 "estrofas": {
                   "type": "array",
                   "items": { "type": "string" },
-                  "description": "Cada elemento del array es una estrofa o el coro completo."
+                  "description": "Cada elemento del array es una estrofa completa."
                 }
               },
               "required": ["titulo", "estrofas"]
@@ -311,12 +334,12 @@ def gemini_etl_node(client, raw_inputs):
       "required": ["metadatos", "oraciones_presidenciales", "repertorio_sugerido"]
     }
 
-    print("🧠 Disparando ETL Estricto en Gemini (Application/JSON)...")
+    print("🧠 Disparando ETL Estricto en Gemini (Application/JSON) con Modelo Ontológico...")
     
     config = types.GenerateContentConfig(
         response_mime_type="application/json",
         response_schema=etl_schema,
-        system_instruction="Eres un procesador ETL (Extract, Transform, Load) implacablemente estricto. Tu único propósito es ingerir el documento proporcionado (PDF, Web, o Texto) y extraer las oraciones litúrgicas y cantos requeridos. PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes NINGÚN texto, saludo, aclaración o markdown fuera del JSON estructurado. 2. DEBES extraer las estrofas completas e integras de los cantos (no las resumas). Tu salida debe ser analizable por json.loads() inmediatamente."
+        system_instruction="Eres un procesador ETL (Extract, Transform, Load) implacablemente estricto para un Missal Operativo. Tu único propósito es ingerir los textos litúrgicos crudos y reestructurarlos en árboles sintácticos (AST). PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes texto fuera del JSON. 2. DEBES segmentar ontológicamente los textos en bloques ordenados. Separa meticulosamente las 'rubricas' (ej. 'El sacerdote dice', 'El diácono proclama'), los 'dialogos' (ej. 'V. Palabra de Dios. R. Te alabamos Señor'), y la 'proclamacion' de las lecturas y oraciones."
     )
     
     try:
@@ -387,10 +410,17 @@ def execute_scraper(start_date_str, end_date_str):
                         
                     if 'oraciones_presidenciales' in etl_data:
                         op = etl_data['oraciones_presidenciales']
-                        db[date_key]['oracion_colecta'] = op.get('colecta', '')
+                        db[date_key]['oracion_colecta'] = op.get('colecta', [])
                         if 'liturgia_eucaristica' not in db[date_key]: db[date_key]['liturgia_eucaristica'] = {}
-                        db[date_key]['liturgia_eucaristica']['oracion_ofrendas'] = op.get('sobre_ofrendas', '')
-                        db[date_key]['liturgia_eucaristica']['oracion_despues_comunion'] = op.get('postcomunion', '')
+                        db[date_key]['liturgia_eucaristica']['oracion_ofrendas'] = op.get('sobre_ofrendas', [])
+                        db[date_key]['liturgia_eucaristica']['oracion_despues_comunion'] = op.get('postcomunion', [])
+                        
+                    if 'liturgia_palabra_estructurada' in etl_data:
+                        lp = etl_data['liturgia_palabra_estructurada']
+                        # Si existe, reemplazamos el texto crudo con los bloques AST
+                        for key in ['primera_lectura', 'salmo_responsorial', 'segunda_lectura', 'evangelio']:
+                            if lp.get(key) is not None and key in data_es:
+                                data_es[key]['nodos'] = lp[key]
                         
                     if 'repertorio_sugerido' in etl_data:
                         db[date_key]['repertorio_sugerido'] = etl_data['repertorio_sugerido']
@@ -400,10 +430,14 @@ def execute_scraper(start_date_str, end_date_str):
 
         
         # FUSION
-        if 'oracion_colecta' in data_es: db[date_key]['oracion_colecta'] = data_es['oracion_colecta']
+        if 'oracion_colecta' in data_es: 
+            # Preferir la version AST devuelta por gemini
+            if 'oracion_colecta' not in db[date_key]:
+                db[date_key]['oracion_colecta'] = data_es['oracion_colecta']
         if 'oracion_ofrendas' in data_es: 
             if 'liturgia_eucaristica' not in db[date_key]: db[date_key]['liturgia_eucaristica'] = {}
-            db[date_key]['liturgia_eucaristica']['oracion_ofrendas'] = data_es['oracion_ofrendas']
+            if 'oracion_ofrendas' not in db[date_key]['liturgia_eucaristica']:
+                db[date_key]['liturgia_eucaristica']['oracion_ofrendas'] = data_es['oracion_ofrendas']
             
         if 'liturgia_palabra' not in db[date_key]:
             db[date_key]['liturgia_palabra'] = {}
