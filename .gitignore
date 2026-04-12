@@ -1,6 +1,4 @@
-Cancionero/
-*.pdf
-*.zip
-*.wav
-*.pptx
-*.mp4
+.pdfenv/
+pdf_extract.txt
+pdf_extract_format.txt
+crash_etl.txt

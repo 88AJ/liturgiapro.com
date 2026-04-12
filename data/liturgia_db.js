@@ -188,7 +188,7 @@ window.liturgiaData = {
     "antifona_entrada": "Como niños recién nacidos, deseen la leche pura del espíritu, para que crezcan y se salven. Aleluya.",
     "rito_penitencial": "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a Santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor.",
     "gloria": true,
-    "oracion_colecta": "Dios de eterna misericordia, que reanimas la fe de este pueblo a ti consagrado con la celebración anual de las fiestas pascuales, aumenta en nosotros los dones de tu gracia, para que todos comprendamos mejor la excelencia del bautism\no que nos ha purificado, la grandeza del Espíritu que nos ha\n regenerado y el precio de la Sangre \nque nos ha redimido. Por \nnuestro Señor Jesucristo…\n✨ \nHoy el acceso completo al Misal es abierto para todos.\n Si este recurso te ayuda en tu fe, te invitamos a \nvivir esta misma experiencia otros días\n, y siempre libre de anuncios, \nactivando tu membresía \nen el botón inferior de la web. \nPrueba gratis.\nAdemás, al unirte, \ncontribuyes a sostener\n a La Verdad Católica.\n¿Ya eres miembro?\n \nInicia sesión aquí\n.\nwww.laverdadcatolica.org",
+    "oracion_colecta": [],
     "liturgia_palabra": {
       "primera_lectura": {
         "cita": "Del libro de los Hechos de los apóstoles Hechos 2 42-47",
@@ -197,7 +197,21 @@ window.liturgiaData = {
         "texto_en": "They devoted themselves\nto the teaching of the apostles and to the communal life,\nto the breaking of bread and to the prayers.\nAwe came upon everyone,\nand many wonders and signs were done through the apostles.\nAll who believed were together and had all things in common;\nthey would sell their property and possessions\nand divide them among all according to each one’s need.\nEvery day they devoted themselves\nto meeting together in the temple area\nand to breaking bread in their homes.\nThey ate their meals with exultation and sincerity of heart,\npraising God and enjoying favor with all the people.\nAnd every day the Lord added to their number those who were being saved.",
         "cita_formula": "Del libro de los Hechos de los apóstoles",
         "cita_versiculos": "Hechos 2 42-47",
-        "monicion": "Escuchemos la descripción de la vida de los primeros cristianos, un modelo de comunión y entrega, impulsados por la fuerza del Espíritu Santo."
+        "monicion": "Escuchemos la descripción de la vida de los primeros cristianos, un modelo de comunión y entrega, impulsados por la fuerza del Espíritu Santo.",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Lectura del libro de los Hechos de los Apóstoles"
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "En los primeros días de la Iglesia todos los hermanos acudían asiduamente a escuchar las enseñanzas de los apóstoles vivían en comunión fraterna y se consagraban para orar en común y celebrar la fracción del pan. Toda la gente estaba llena de asombro y de temor al ver los milagros y prodigios que los apóstoles hacían en Jerusalén. Todos los creyentes vivían unidos y lo tenían todo en común. Los que eran dueños de bienes o propiedades los vendían y el producto era distribuido entre todos según las necesidades de cada uno. Diariamente se reunían en el templo y en las casas partían el pan y comían juntos con alegría y sencillez de corazón. Alabando a Dios y toda la gente los estimaba. Y el Señor aumentaba cada día el número de los que habían de salvarse."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "V. Palabra de Dios. R. Te alabamos Señor."
+          }
+        ]
       },
       "salmo_responsorial": {
         "cita": "Salmo 117",
@@ -205,7 +219,61 @@ window.liturgiaData = {
         "texto": "La misericordia del Señor es eterna. Aleluya.\nDiga la casa de Israel: \"Su misericordia es eterna\".\nDiga la casa de Aarón: \"Su misericordia es eterna\".\nDigan los que temen al Señor: \"Su misericordia es eterna\".\nR.\nQuerían a empujones derribarme\npero Dios me ayudó.\nEl Señor es mi fuerza y mi alegría\nen el Señor está mi salvación.\nR.\nLa piedra que desecharon los constructores\nes ahora la piedra  angular.\nEsto es obra de la mano del Señor\nes un milagro patente.\nÉste es el día del triunfo del Señor\ndía de júbilo y de gozo.\nR.",
         "cita_en": "Psalm 118:2-4, 13-15, 22-24",
         "respuesta_en": "(1)",
-        "texto_en": "Give thanks to the LORD for he is good, his love is everlasting.\nor:\nR. \nAlleluia.\nLet the house of Israel say,\n“His mercy endures forever.”\nLet the house of Aaron say,\n“His mercy endures forever.”\nLet those who fear the LORD say,\n“His mercy endures forever.”\nR. \nGive thanks to the LORD for he is good, his love is everlasting.\nor:\nR. \nAlleluia.\nI was hard pressed and was falling,\nbut the LORD helped me.\nMy strength and my courage is the LORD,\nand he has been my savior.\nThe joyful shout of victory\nin the tents of the just:\nR. \nGive thanks to the LORD for he is good, his love is everlasting.\nor:\nR.\n Alleluia.\nThe stone which the builders rejected\nhas become the cornerstone.\nBy the LORD has this been done;\nit is wonderful in our eyes.\nThis is the day the LORD has made;\nlet us be glad and rejoice in it.\nR. \nGive thanks to the LORD for he is good, his love is everlasting.\nor:\nR. \nAlleluia."
+        "texto_en": "Give thanks to the LORD for he is good, his love is everlasting.\nor:\nR. \nAlleluia.\nLet the house of Israel say,\n“His mercy endures forever.”\nLet the house of Aaron say,\n“His mercy endures forever.”\nLet those who fear the LORD say,\n“His mercy endures forever.”\nR. \nGive thanks to the LORD for he is good, his love is everlasting.\nor:\nR. \nAlleluia.\nI was hard pressed and was falling,\nbut the LORD helped me.\nMy strength and my courage is the LORD,\nand he has been my savior.\nThe joyful shout of victory\nin the tents of the just:\nR. \nGive thanks to the LORD for he is good, his love is everlasting.\nor:\nR.\n Alleluia.\nThe stone which the builders rejected\nhas become the cornerstone.\nBy the LORD has this been done;\nit is wonderful in our eyes.\nThis is the day the LORD has made;\nlet us be glad and rejoice in it.\nR. \nGive thanks to the LORD for he is good, his love is everlasting.\nor:\nR. \nAlleluia.",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Salmo Responsorial"
+          },
+          {
+            "tipo": "monicion",
+            "texto": "La misericordia del Señor es eterna. Aleluya."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "R. La misericordia del Señor es eterna. Aleluya."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Diga la casa de Israel: \"Su misericordia es eterna\"."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "R. La misericordia del Señor es eterna. Aleluya."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Diga la casa de Aarón: \"Su misericordia es eterna\"."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "R. La misericordia del Señor es eterna. Aleluya."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Digan los que temen al Señor: \"Su misericordia es eterna\"."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "R. La misericordia del Señor es eterna. Aleluya."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Querían a empujones derribarme pero Dios me ayudó. El Señor es mi fuerza y mi alegría en el Señor está mi salvación."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "R. La misericordia del Señor es eterna. Aleluya."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "La piedra que desecharon los constructores es ahora la piedra angular. Esto es obra de la mano del Señor es un milagro patente. Éste es el día del triunfo del Señor día de júbilo y de gozo."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "R. La misericordia del Señor es eterna. Aleluya."
+          }
+        ]
       },
       "evangelio": {
         "cita": "Del santo Evangelio según San Juan Juan 20, 19-31",
@@ -214,7 +282,21 @@ window.liturgiaData = {
         "texto_en": "On the evening of that first day of the week,\nwhen the doors were locked, where the disciples were,\nfor fear of the Jews,\nJesus came and stood in their midst\nand said to them, “Peace be with you.”\nWhen he had said this, he showed them his hands and his side.\nThe disciples rejoiced when they saw the Lord.\nJesus said to them again, “Peace be with you.\nAs the Father has sent me, so I send you.”\nAnd when he had said this, he breathed on them and said to them,\n“Receive the Holy Spirit.\nWhose sins you forgive are forgiven them,\nand whose sins you retain are retained.”\nThomas, called Didymus, one of the Twelve,\nwas not with them when Jesus came.\nSo the other disciples said to him, “We have seen the Lord.”\nBut he said to them,\n“Unless I see the mark of the nails in his hands\nand put my finger into the nailmarks\nand put my hand into his side, I will not believe.”\nNow a week later his disciples were again inside\nand Thomas was with them.\nJesus came, although the doors were locked,\nand stood in their midst and said, “Peace be with you.”\nThen he said to Thomas, “Put your finger here and see my hands,\nand bring your hand and put it into my side,\nand do not be unbelieving, but believe.”\nThomas answered and said to him, “My Lord and my God!”\nJesus said to him, “Have you come to believe because you have seen me?\nBlessed are those who have not seen and have believed.”\nNow, Jesus did many other signs in the presence of his disciples\nthat are not written in this book.\nBut these are written that you may come to believe\nthat Jesus is the Christ, the Son of God,\nand that through this belief you may have life in his name.",
         "cita_formula": "Del santo Evangelio según San Juan",
         "cita_versiculos": "Juan 20, 19-31",
-        "monicion": "Contemplemos el encuentro del Señor resucitado con sus discípulos, la manifestación de su paz y la investidura con el Espíritu Santo, que nos capacita para el perdón y la misión."
+        "monicion": "Contemplemos el encuentro del Señor resucitado con sus discípulos, la manifestación de su paz y la investidura con el Espíritu Santo, que nos capacita para el perdón y la misión.",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Lectura del santo evangelio según san Juan"
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Al anochecer del día de la resurrección estando cerradas las puertas de la casa donde se hallaban los discípulos por miedo a los judíos se presentó Jesús en medio de ellos y les dijo: «La paz esté con ustedes». Dicho esto les mostró las manos y el costado. Cuando los discípulos vieron al Señor se llenaron de alegría. De nuevo les dijo Jesús: «La paz esté con ustedes. Como el Padre me ha enviado así también los envío yo». Después de decir esto sopló sobre ellos y les dijo: «Reciban al Espíritu Santo. A los que les perdonen los pecados les quedarán perdonados; y a los que no se los perdonen les quedarán sin perdonar». Tomás uno de los Doce a quien llamaban el Gemelo no estaba con ellos cuando vino Jesús y los otros discípulos le decían: «Hemos visto al Señor». Pero él les contestó: «Si no veo en sus manos la señal de los clavos y si no meto mi dedo en los agujeros de los clavos y no meto mi mano en su costado no creeré». Ocho días después estaban reunidos los discípulos a puerta cerrada y Tomás estaba con ellos. Jesús se presentó de nuevo en medio de ellos y les dijo: «La paz esté con ustedes». Luego le dijo a Tomás: «Aquí están mis manos; acerca tu dedo. Trae acá tu mano métela en mi costado y no sigas dudando sino cree». Tomás le respondió: «¡Señor mío y Dios mío!» Jesús añadió: «Tú crees porque me has visto; dichosos los que creen sin haber visto». Otras muchas señales milagrosas hizo Jesús en presencia de sus discípulos pero no están escritas en este libro. Se escribieron éstas para que ustedes crean que Jesús es el Mesías el Hijo de Dios y para que creyendo tengan vida en su nombre."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "V. Palabra del Señor. R. Gloria a Ti, Señor Jesús."
+          }
+        ]
       },
       "segunda_lectura": {
         "cita": "De la primera carta del apóstol san Pedro 1 Pedro 1 3-9",
@@ -223,15 +305,29 @@ window.liturgiaData = {
         "texto_en": "Blessed be the God and Father of our Lord Jesus Christ,\nwho in his great mercy gave us a new birth to a living hope\nthrough the resurrection of Jesus Christ from the dead,\nto an inheritance that is imperishable, undefiled, and unfading,\nkept in heaven for you\nwho by the power of God are safeguarded through faith,\nto a salvation that is ready to be revealed in the final time.\nIn this you rejoice, although now for a little while\nyou may have to suffer through various trials,\nso that the genuineness of your faith,\nmore precious than gold that is perishable even though tested by fire,\nmay prove to be for praise, glory, and honor\nat the revelation of Jesus Christ.\nAlthough you have not seen him you love him;\neven though you do not see him now yet believe in him,\nyou rejoice with an indescribable and glorious joy,\nas you attain the goal of your faith, the salvation of your souls.",
         "cita_formula": "De la primera carta del apóstol san Pedro",
         "cita_versiculos": "1 Pedro 1 3-9",
-        "monicion": "Oigamos la exhortación apostólica a perseverar en la fe, sabiendo que nuestra esperanza se fundamenta en la resurrección de Jesucristo, quien nos ha renacido a una vida nueva."
+        "monicion": "Oigamos la exhortación apostólica a perseverar en la fe, sabiendo que nuestra esperanza se fundamenta en la resurrección de Jesucristo, quien nos ha renacido a una vida nueva.",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Lectura de la primera carta del apóstol san Pedro"
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Bendito sea Dios Padre de nuestro Señor Jesucristo por su gran misericordia porque al resucitar a Jesucristo de entre los muertos nos concedió renacer a la esperanza de una vida nueva que no puede corromperse ni mancharse y que él nos tiene reservada como herencia en el cielo. Porque ustedes tienen fe en Dios él los protege con su poder para que alcancen la salvación que les tiene preparada y que él revelará al finar de los tiempos. Por esta razón alégrense aun cuando ahora tengan que sufrir un poco por adversidades de todas clases a fin de que su fe sometida a la prueba sea hallada digna de alabanza gloria y honor el día de la manifestación de Cristo. Porque la fe de ustedes es más preciosa que el oro y el oro se acrisola por el fuego. A Cristo Jesús no lo han visto y sin embargo lo aman; al creer en él ahora sin verlo se llenan de una alegría radiante e indescriptible seguros de alcanzar la salvación de sus almas que es la meta de la fe."
+          },
+          {
+            "tipo": "dialogo",
+            "texto": "V. Palabra de Dios. R. Te alabamos Señor."
+          }
+        ]
       },
       "aclamacion_evangelio": "Aleluya, aleluya. Porque me has visto, Tomás, has creído, dice el Señor. Dichosos los que creen sin haber visto. Aleluya.",
       "preces": "Te pedimos, Señor, por tu santa Iglesia; para que, purificada en las fuentes bautismales, anuncie la grandeza de tu amor a todas las gentes. Oremos.\n\nTú que has vencido a la muerte, concede a nuestro Obispo y a todos los pastores ser fieles testigos de la resurrección de tu Hijo. Oremos.\n\nPor los bautizados en esta Pascua; para que, renacidos del agua y del Espíritu Santo, vivan siempre como hijos de la luz y herederos del cielo. Oremos.\n\nPor los pueblos que sufren la guerra, el hambre o la opresión; para que la paz de Cristo resucitado traiga consuelo, justicia y reconciliación a sus vidas. Oremos.\n\nPor nuestra comunidad, para que fortalecidos por la Eucaristía, seamos dóciles a tu voluntad y manifestemos en nuestras obras la misericordia que hoy celebramos. Oremos."
     },
     "liturgia_eucaristica": {
-      "oracion_ofrendas": "Recibe, Señor, las ofrendas de tu pueblo (y de los recién bautizados), para que, renovados por la confesión de tu nombre y por el bautismo, consigamos la felicidad eterna. Por Jesucristo, nuestro Señor.\n\n\nPLEGARIA EUCARÍSTICA\n\n\nC. \nEl Señor esté con ustedes.\n\n\nT. \nY con tu espíritu.\n\n\nC. \nLevantemos el corazón.\n\n\nT. \nLo tenemos levantado hacia el Señor.\n\n\nC. \nDemos gracias al Señor, nuestro Dios.\n\n\nT. \nEs justo y necesario.",
+      "oracion_ofrendas": [],
       "antifona_comunion": "Acerca tu mano, palpa el lugar de los clavos, y no seas incrédulo, sino creyente. Aleluya.",
-      "oracion_despues_comunion": "Concédenos, Dios todopoderoso, que el sacramento pascual que hemos recibido permanezca en nuestras almas y se manifieste en nuestra vida. Por Jesucristo, nuestro Señor."
+      "oracion_despues_comunion": []
     },
     "monicion_entrada": "Hermanos y hermanas en Cristo, reunidos en la presencia del Señor resucitado, abramos nuestros corazones a la Palabra que hoy la Iglesia nos ofrece. Que el gozo de la Pascua ilumine nuestro entendimiento y fortalezca nuestra fe.",
     "reflexion_homiletica": [
@@ -289,7 +385,72 @@ window.liturgiaData = {
       "Por los gobernantes y por todas las naciones, para que busquen la paz, la justicia y el bien común, construyendo un mundo digno del Reino de Dios, oremos al Señor.",
       "Por todos los que sufren en el cuerpo o en el espíritu, por los que están afligidos y desanimados, para que encuentren en el amor de Cristo y en la ayuda fraterna el consuelo y la fortaleza, oremos al Señor.",
       "Por nosotros, reunidos en esta asamblea, para que, fortalecidos por la fe en el Señor resucitado y enriquecidos por el don del Espíritu Santo, seamos testigos valientes de su amor y su perdón en medio del mundo, oremos al Señor."
-    ]
+    ],
+    "titulo_celebracion": "Segundo Domingo de Pascua",
+    "grado": "Domingo",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Bloque obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "omitir",
+        "motivo": "Bloque condicional sin condiciones de activación cumplidas y sin condiciones de supresión activas."
+      },
+      {
+        "id_bloque": "kyrie",
+        "accion": "omitir",
+        "motivo": "Bloque condicional sin condiciones de activación cumplidas y sin condiciones de supresión activas."
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Condición de activación 'domingo_pascua' cumplida (Segundo Domingo de Pascua)."
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Condición de activación 'domingo' cumplida (tipo_misa: Domingo)."
+      },
+      {
+        "id_bloque": "preparacion_dones",
+        "accion": "incluir",
+        "motivo": "Bloque obligatorio"
+      },
+      {
+        "id_bloque": "plegaria_eucaristica_II",
+        "accion": "omitir",
+        "motivo": "Condicional, la condición de activación 'plegaria_II_seleccionada' no está activa."
+      },
+      {
+        "id_bloque": "padre_nuestro",
+        "accion": "incluir",
+        "motivo": "Bloque obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Bloque obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan_y_comunion",
+        "accion": "incluir",
+        "motivo": "Bloque obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_despedida",
+        "accion": "incluir",
+        "motivo": "Bloque condicional, ninguna condición de supresión cumplida y modo_default 'obligatorio'."
+      }
+    ],
+    "repertorio_sugerido": {
+      "canto_entrada": {
+        "titulo": "Canto de Entrada Sugerido",
+        "estrofas": []
+      }
+    }
   },
   "2026-04-19": {
     "color": "Blanco",

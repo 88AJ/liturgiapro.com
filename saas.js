@@ -44,6 +44,11 @@ class BloqueLiturgico {
         return this;
     }
     
+    addLectura(texto) {
+        this.nodos.push(new NodoLiturgico(this.id + '_lect', texto, 'Proclamacion', 'Lector', 'Fuerte'));
+        return this;
+    }
+    
     addMonicion(texto) {
         this.nodos.push(new NodoLiturgico(this.id + '_monicion', texto, 'Monicion', 'Monicion', 'Fuerte'));
         return this;
@@ -72,6 +77,26 @@ function SANITIZAR_TEXTO(texto_crudo) {
     texto_limpio = texto_limpio.replace(/ {2,}/g, " "); // espacios multiples
     texto_limpio = texto_limpio.replace(/\n{2,}/g, "\n"); // saltos de linea dobles
     return texto_limpio.trim();
+}
+
+function applyLiturgicalColor(colorText) {
+    const root = document.documentElement;
+    if (!colorText) {
+        root.style.setProperty('--brand-color', '#166534'); // Verde Ordinario por defecto
+        return;
+    }
+    const txt = colorText.toLowerCase();
+    if (txt.includes('morad') || txt.includes('púrpura') || txt.includes('purple')) {
+        root.style.setProperty('--brand-color', '#6B21A8');
+    } else if (txt.includes('rojo') || txt.includes('red')) {
+        root.style.setProperty('--brand-color', '#B91C1C');
+    } else if (txt.includes('blanc') || txt.includes('white') || txt.includes('dorad')) {
+        root.style.setProperty('--brand-color', '#B45309'); // Dorado cálido para el impreso sobre fondo blanco
+    } else if (txt.includes('rosa')) {
+        root.style.setProperty('--brand-color', '#BE185D');
+    } else {
+        root.style.setProperty('--brand-color', '#166534'); // Verde
+    }
 }
 
 function RENDERIZAR_NODO(nodo) {
@@ -104,8 +129,23 @@ function RENDERIZAR_NODO(nodo) {
         return `<p class="missal-heading" style="color:${color};">${nodo.texto}</p>\n`;
     } else if (nodo.tipo_texto === 'Instruccion' || nodo.tipo_texto === 'Simbolo') {
         return `<p class="missal-rubric" style="color:${color}; font-weight:${peso}; font-style:${estilo}; margin-bottom:4px;">${nodo.texto}</p>\n`;
+    } else if (nodo.tipo_texto === 'Proclamacion') {
+        // Enviar al formateador especial de lecturas para tener Capitulares (Drop Caps)
+        return window.formatLectura ? window.formatLectura(nodo.texto) : `<p class="missal-paragraph" style="text-align:justify;">${nodo.texto}</p>\n`;
     } else {
-        return `<p class="missal-paragraph" style="color:${color}; font-weight:${peso}; font-style:${estilo}; margin-bottom:8px; text-align:justify;">${nodo.texto.replace(/\n/g, '<br>')}</p>\n`;
+        let prefix = "";
+        let t = nodo.texto.trim();
+        // Evitar duplicar si el texto crudo ya lo trae (ej. "R. " o "V. ")
+        if (nodo.tipo_texto === 'Pronunciado') {
+            if (nodo.actor === 'Sacerdote' && !t.startsWith("V.") && !t.startsWith("V/") && !t.startsWith("S.") && !t.startsWith("V ") && !t.startsWith("C.")) {
+                prefix = `<span style="color:var(--brand-color); font-weight:bold; margin-right:6px;">V.</span>`;
+            } else if (nodo.actor === 'Asamblea' && !t.startsWith("R.") && !t.startsWith("R/") && !t.startsWith("T.") && !t.startsWith("R ")) {
+                prefix = `<strong style="margin-right:6px;">R.</strong>`;
+            }
+        }
+        
+        let formattedText = prefix + nodo.texto.replace(/\n/g, '<br>');
+        return `<p class="missal-paragraph" style="color:${color}; font-weight:${peso}; font-style:${estilo}; margin-bottom:8px; text-align:justify;">${formattedText}</p>\n`;
     }
 }
 
@@ -402,6 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                         
+                        applyLiturgicalColor(localData.color);
+                        
                         let options = {
                             isEn: (document.getElementById('region-select') ? document.getElementById('region-select').value.startsWith('us_en') : false),
                             showMoniciones: document.getElementById('toggle-moniciones') ? document.getElementById('toggle-moniciones').checked : true,
@@ -508,6 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                         
+                        applyLiturgicalColor(data.color);
+                        
                         let options = {
                             isEn: (document.getElementById('region-select') ? document.getElementById('region-select').value.startsWith('us_en') : false),
                             showMoniciones: document.getElementById('toggle-moniciones') ? document.getElementById('toggle-moniciones').checked : true,
@@ -546,6 +590,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                         
+                        applyLiturgicalColor(data.color);
+                        
                         let options = {
                             isEn: (document.getElementById('region-select') ? document.getElementById('region-select').value.startsWith('us_en') : false),
                             showMoniciones: document.getElementById('toggle-moniciones') ? document.getElementById('toggle-moniciones').checked : true,
@@ -559,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }); // Simulate network load ended, we use real network!
     }); // CLOSE generateBtn.addEventListener
 
-    function formatLectura(texto) {
+    window.formatLectura = function(texto) {
         if (!texto || texto.length < 50) return texto;
         
         let pText = texto;
@@ -589,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         return blocks.join("");
-    }
+    };
 
     function linkCanto(nombre) {
         if(nombre.includes('Silencio') || nombre.includes('Salida sin canto')) return nombre;
