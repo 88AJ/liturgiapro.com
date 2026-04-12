@@ -1438,6 +1438,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -----------------------------------------------------
-    // PROMPTER CINEMÁTICO LOGIC (SCROLL CONTINUO)
+    // PADRE PRO CONTROLLER (Fase 9)
     // -----------------------------------------------------
-    });
+    const btnPadreProToggle = document.getElementById("padre-pro-toggle");
+    const padreProWindow = document.getElementById("padre-pro-window");
+    const btnPadreProClose = document.getElementById("padre-pro-close");
+    const btnPadreProSend = document.getElementById("padre-pro-send");
+    const inpPadreProText = document.getElementById("padre-pro-text");
+    const chatPadrePro = document.getElementById("padre-pro-chat");
+
+    if (btnPadreProToggle && padreProWindow) {
+        btnPadreProToggle.addEventListener("click", () => {
+            padreProWindow.style.display = padreProWindow.style.display === "none" ? "flex" : "none";
+        });
+        btnPadreProClose.addEventListener("click", () => {
+            padreProWindow.style.display = "none";
+        });
+
+        const enviarMensajePadre = async () => {
+            const texto = inpPadreProText.value.trim();
+            if (!texto) return;
+
+            // Burbuja Usuario
+            const userMsg = document.createElement("div");
+            userMsg.className = "chat-message user";
+            userMsg.innerHTML = `<p>${texto}</p>`;
+            chatPadrePro.appendChild(userMsg);
+            
+            inpPadreProText.value = "";
+            chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
+
+            // Burbuja Loading
+            const botMsg = document.createElement("div");
+            botMsg.className = "chat-message bot";
+            botMsg.innerHTML = `<p><span class="status-indicator">Consultando el Magisterio...</span></p>`;
+            chatPadrePro.appendChild(botMsg);
+            chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
+
+            try {
+                const response = await fetch("http://localhost:8080/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: texto, session_id: "liturgiapro_user" })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if(window.marked) {
+                        botMsg.innerHTML = window.marked.parse(data.response);
+                    } else {
+                        botMsg.innerHTML = `<p>${data.response}</p>`;
+                    }
+                } else {
+                    botMsg.innerHTML = `<p style="color:red">Error: El servidor del Padre PRO no está respondiendo (Asegúrate de tener python3 padre_pro_server.py corriendo).</p>`;
+                }
+            } catch (err) {
+                botMsg.innerHTML = `<p style="color:red">Error de conexión: Verifica que tu servidor local Padre PRO esté vivo en el puerto 8080.</p>`;
+            }
+            chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
+        };
+
+        btnPadreProSend.addEventListener("click", enviarMensajePadre);
+        inpPadreProText.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") enviarMensajePadre();
+        });
+    }
+});
