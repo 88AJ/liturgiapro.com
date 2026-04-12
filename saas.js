@@ -1476,7 +1476,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
 
             try {
-                const response = await fetch("http://localhost:8080/chat", {
+                const response = await fetch("http://localhost:8085/chat", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ message: texto, session_id: "liturgiapro_user" })
@@ -1493,7 +1493,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     botMsg.innerHTML = `<p style="color:red">Error: El servidor del Padre PRO no está respondiendo (Asegúrate de tener python3 padre_pro_server.py corriendo).</p>`;
                 }
             } catch (err) {
-                botMsg.innerHTML = `<p style="color:red">Error de conexión: Verifica que tu servidor local Padre PRO esté vivo en el puerto 8080.</p>`;
+                botMsg.innerHTML = `<p style="color:red">Error de conexión: Verifica que tu servidor local Padre PRO esté vivo en el puerto 8085.</p>`;
             }
             chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
         };
