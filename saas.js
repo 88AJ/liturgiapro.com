@@ -275,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let builderWorkspace = document.getElementById("builder-workspace");
             let cancioneroWorkspace = document.getElementById("cancionero-workspace");
+            let youtubeWorkspace = document.getElementById("youtube-workspace");
             
             let ritualSelect = document.getElementById("ritual-select");
             let bautismoFields = document.getElementById("bautismo-fields");
@@ -284,12 +285,20 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (view === 'cancionero') {
                 if(builderWorkspace) builderWorkspace.style.display = 'none';
+                if(youtubeWorkspace) youtubeWorkspace.style.display = 'none';
                 if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'flex';
                 currentMode = 'cancionero';
                 return; // Stop here for cancionero
+            } else if (view === 'youtube') {
+                if(builderWorkspace) builderWorkspace.style.display = 'none';
+                if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'none';
+                if(youtubeWorkspace) youtubeWorkspace.style.display = 'flex';
+                currentMode = 'youtube';
+                return;
             } else {
                 if(builderWorkspace) builderWorkspace.style.display = 'flex';
                 if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'none';
+                if(youtubeWorkspace) youtubeWorkspace.style.display = 'none';
             }
             
             if (view === 'boletin') {
@@ -1406,6 +1415,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         html2pdf().set(opt).from(element).save();
     });
+
+    // YouTube Controller
+    window.loadYoutubePath = function(query) {
+        document.getElementById('youtube-empty').style.display = 'none';
+        const frame = document.getElementById('youtube-frame');
+        frame.style.display = 'block';
+        
+        // Use YouTube embed player with search query approach
+        // To embed playlist search, we can use an embedded playlist format if possible or a simple search video
+        // Using common youtube search embed structure: https://www.youtube.com/embed?listType=search&list=QUERY
+        let safeQuery = encodeURIComponent(query + " católico parroquia");
+        frame.src = `https://www.youtube.com/embed?listType=search&list=${safeQuery}`;
+    };
+
+    const ytSearchBtn = document.getElementById('youtube-search-btn');
+    if(ytSearchBtn) {
+        ytSearchBtn.addEventListener('click', () => {
+            let val = document.getElementById('youtube-search-input').value;
+            if(val) window.loadYoutubePath(val);
+        });
+    }
 
     // -----------------------------------------------------
     // PROMPTER CINEMÁTICO LOGIC (SCROLL CONTINUO)
