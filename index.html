@@ -256,6 +256,36 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- YouTube Workspace -->
+                <div class="workspace" id="youtube-workspace" style="display:none; padding: 20px; gap: 20px;">
+                    <div class="config-panel" style="flex: 1; max-width: 350px;">
+                        <h3>Buscador Litúrgico</h3>
+                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom: 20px;">Encuentra cantos en la biblioteca global de YouTube.</p>
+                        
+                        <div class="input-group">
+                            <label>Buscar Canto (Ej. Canto de Entrada Pascua)</label>
+                            <input type="text" id="youtube-search-input" placeholder="Escribe y presiona Buscar...">
+                        </div>
+                        <button class="btn-primary" id="youtube-search-btn" style="width: 100%; margin-top: 10px;">Buscar en YouTube</button>
+                        
+                        <div style="margin-top: 40px;">
+                            <h4 style="color: var(--gold-accent); margin-bottom: 10px;">Sugerencias Rápidas</h4>
+                            <ul class="nav-links" id="youtube-suggest-nav">
+                                <li onclick="loadYoutubePath('Misa cantada gregoriano')"><span class="icon" style="color: var(--gold-accent);">▶</span> Misa Gregoriana</li>
+                                <li onclick="loadYoutubePath('Salmo responsorial cantado domingo')"><span class="icon" style="color: var(--gold-accent);">▶</span> Salmo Dominical</li>
+                                <li onclick="loadYoutubePath('Cantos de comunion eucaristia')"><span class="icon" style="color: var(--gold-accent);">▶</span> Cantos de Comunión</li>
+                                <li onclick="loadYoutubePath('Cantos marianos')"><span class="icon" style="color: var(--gold-accent);">▶</span> Cantos Marianos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="preview-panel" style="flex: 2; display:flex; flex-direction: column; background: #000; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center;">
+                        <iframe id="youtube-frame" src="" width="100%" height="100%" style="border:none; flex: 1; display: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div id="youtube-empty" class="empty-state" style="color: #666;">
+                            ▶️<br>Reproductor Multimedia<br><span style="font-size: 0.8rem;">Busca un canto para comenzar</span>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
 
