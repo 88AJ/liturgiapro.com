@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let semaforoError = null;
                 const readingEvangelioLength = localData?.liturgia_palabra?.evangelio?.texto?.length || 0;
                 
-                if ((hora === 'misa_laudes' || hora === 'diario') && (!localData || !localData.laudes)) {
+                if (hora === 'misa_laudes' && (!localData || !localData.laudes)) {
                     semaforoError = "Bloque de Laudes Mínimo requerido no encontrado. El Sacramentario no puede ser generado incompleto.";
                 } else if (readingEvangelioLength > 0 && readingEvangelioLength < 100 && !isPlaceholder) {
                     semaforoError = "Fragmento de Evangelio demasiado corto (Detección < 100 caracteres). Lectura Corrupta.";
