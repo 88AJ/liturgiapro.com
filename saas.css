@@ -381,23 +381,29 @@ body {
     text-align: justify;
     /* NLM Master Printer Rules */
     column-count: 2;
-    column-gap: 30px;
+    column-gap: 8mm;
+    column-fill: balance;
     column-rule: 1px solid rgba(153, 0, 0, 0.1); 
     hyphens: auto;
 }
 
-/* Geometría Canónica de Impresión */
+/* Configuración de Página para Impresión Doble Cara */
 @page {
-    margin-top: 2cm;
-    margin-bottom: 2cm;
+    size: 155mm 235mm;
+    margin-top: 20mm;
+    margin-bottom: 20mm;
+    bleed: 3mm;
+    marks: crop;
 }
+
 @page :left {
-    margin-left: 1.5cm;
-    margin-right: 2.5cm;
+    margin-left: 22mm; /* Lomo */
+    margin-right: 15mm;
 }
+
 @page :right {
-    margin-left: 2.5cm;
-    margin-right: 1.5cm;
+    margin-left: 15mm;
+    margin-right: 22mm; /* Lomo */
 }
 
 
@@ -745,54 +751,47 @@ body {
     font-weight: normal;
 }
 
-.missal-paragraph {
+/* Texto Ordinario (Lecturas/Salmos) */
+.missal-paragraph, .proclamacion {
     margin: 0;
+    margin-bottom: 0.5rem;
     text-align: justify;
-    line-height: 1.35;
+    line-height: 1.2;
+    font-size: 10.5pt;
+    position: relative;
 }
 
 .missal-paragraph:not(.first-par) {
     text-indent: 1.2em;
 }
 
-.smart-punctuation {
+.punctuation-hang, .smart-punctuation, .puntuacion-inicial {
     float: left;
-    font-size: 1.5em; /* Just slightly larger */
-    margin-top: 0.1em;
-    margin-right: 0.1em;
+    font-size: 2em; 
+    line-height: 0.8;
+    padding-top: 5px;
+    margin-right: 2px;
     color: var(--brand-color);
+    font-family: 'EB Garamond', serif;
 }
 
 .drop-cap {
     float: left;
-    font-size: 3.8em;
-    line-height: 0.8;
-    padding-top: 4px;
+    font-size: 3.2em; /* Calculado aprox ~3 lineas completas a line-height 1.2 */
+    line-height: 0.85;
+    padding-top: 5px;
     padding-right: 6px;
     padding-left: 2px;
     font-family: 'Cinzel', 'EB Garamond', serif;
     color: var(--brand-color);
 }
 
-/* Tratamiento de la Capitular con Puntuación */
-.proclamacion {
-    position: relative;
-    line-height: 1.5;
-    text-align: justify;
-}
-
-.puntuacion-inicial {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.2em;
-    vertical-align: top;
-    margin-right: -2px;
-}
-
-/* Oración Presidencial: Sin capitular, mayor interlineado */
+/* Voz del Celebrante */
+.oracion-presidencial, 
 .proclamacion.presidencial {
-    line-height: 1.8;
-    font-size: 1.15em; /* Ligeramente mayor para denotar solemnidad */
-    font-style: normal;
+    line-height: 1.8 !important;
+    font-size: 11.5pt !important;
+    font-style: italic; /* Opcional: para mayor distinción */
     padding-left: 0;
 }
 #ritos_iniciales {
@@ -859,12 +858,11 @@ body {
         print-color-adjust: exact !important;
         color-adjust: exact !important;
     }
-    .missal-heading, .missal-rubric, .rubric, .cross-mark {
-        color: var(--brand-color) !important; /* Mantenemos el color dinámico en el impreso */
+    .missal-heading, .missal-rubric, .rubric, .cross-mark, .rubrica-sacerdote, .titulo-rito {
+        color: #B20000 !important; /* Rojo Carmesí Canónico NLM para rúbricas SIEMPRE en impresión */
     }
     .missal-block {
-        page-break-inside: avoid;
-        break-inside: avoid;
+        /* Se remueve page-break-inside absoluto para permitir saltos normales en textos muy largos. */
     }
 }
 

@@ -677,16 +677,19 @@ function procesarProclamacion(block) {
     return `<div class="proclamacion presidencial">${texto}</div>`;
   }
 
-  // REGEX: [Signos opcionales] + [Primera Letra]
-  // Grupo 1: Puntuación (opcional) | Grupo 2: La Letra Capital
-  const match = texto.match(/^([«“¡¿]*)([a-zA-ZÁÉÍÓÚÑ])(.*)/s);
+  // Regex para detectar signos iniciales opcionales y la primera letra
+  const regex = /^([«¿¡"“]*)([a-zA-ZÁÉÍÓÚÑ])/;
+  const match = texto.match(regex);
 
   if (match) {
-    const [, puntuacion, capital, resto] = match;
+    const signos = match[1];
+    const letra = match[2];
+    const resto = texto.replace(regex, '');
+    
     return `
       <div class="proclamacion">
-        <span class="puntuacion-inicial">${puntuacion}</span>
-        <span class="drop-cap">${capital}</span>
+        <span class="punctuation-hang">${signos}</span>
+        <span class="drop-cap">${letra}</span>
         <span class="cuerpo-texto">${resto}</span>
       </div>`;
   }
@@ -696,9 +699,9 @@ function procesarProclamacion(block) {
 
 function RENDERIZAR_NODO_AST(block) {
   if (block.tipo === "titulo_dia") return `<h2 class="missal-super-heading">${block.contenido}</h2>`;
-  if (block.tipo === "titulo_misa") return `<h2 class="missal-heading">${block.contenido}</h2>`;
+  if (block.tipo === "titulo_misa") return `<p class="missal-heading">${block.contenido}</p>`;
   if (block.tipo === "seccion") return `<h3 class="titulo-rito">${block.contenido}</h3>`;
-  if (block.tipo === "rubrica") return `<strong class="missal-rubric">${block.contenido}</strong>`;
+  if (block.tipo === "rubrica") return `<p class="missal-rubric">${block.contenido}</p>`;
   if (block.tipo === "monicion") return `<div class="monicion"><strong>MONICIÓN: </strong>${block.contenido}</div>`;
   if (block.tipo === "canto") return `<div class="rubrica-sacerdote" style="margin-bottom: 10px;">${block.titulo}: ${block.letra}</div>`;
   
