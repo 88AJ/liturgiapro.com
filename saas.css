@@ -414,7 +414,6 @@ body {
     opacity: 0.6;
 }
 
-<<<<<<< HEAD
 /* --- SUBSIDIO LITÚRGICO STYLES --- */
 .pdf-container strong.rubric, .pdf-container .rubrica-sacerdote, .missal-rubric {
     color: var(--brand-color); /* Liturgical red */
@@ -473,76 +472,6 @@ body {
 .pdf-container .asamblea-rojo {
     color: var(--brand-color);
     font-weight: bold;
-=======
-/* --- SAINT DOMINIC PRINT STYLES --- */
-.pdf-container.dominic-style {
-    font-family: "Times New Roman", Times, serif; /* Pure serif, austere */
-    font-size: 14pt;
-    line-height: 1.3;
-    color: #000;
-    text-align: left; /* Left align for most content */
-}
-
-/* Red Symbols Only */
-.red-symbol {
-    color: #d00000;
-    font-weight: bold;
-}
-
-.pdf-container.dominic-style .dominic-title {
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.5em;
-    margin-bottom: 5px;
-    color: #000;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.pdf-container.dominic-style .dominic-subtitle {
-    text-align: center;
-    font-style: italic;
-    font-size: 1.2em;
-    margin-bottom: 25px;
-    color: #000;
-}
-
-.pdf-container.dominic-style .dominic-section {
-    text-align: left;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    color: #000;
-}
-
-.pdf-container.dominic-style .dominic-rubric {
-    font-style: italic;
-    color: #cc0000; /* El color rojo característico de las rúbricas */
-    margin: 5px 0;
-}
-
-.pdf-container.dominic-style .dominic-monicion {
-    color: #000;
-    margin: 10px 30px;
-    text-align: justify;
-}
-
-.pdf-container.dominic-style .actor-label {
-    font-weight: bold;
-    color: #000;
-}
-
-.pdf-container.dominic-style .dominic-body {
-    margin-bottom: 15px;
-    text-align: justify; /* Or left aligned as in the PDF */
-}
-
-.pdf-container.dominic-style .dominic-indent {
-    margin-left: 30px; /* For responses or psalmody */
->>>>>>> 286a656ae969d591892e19583562f7824b903b65
-}
 
 .pdf-container blockquote {
     font-style: italic; color: #444; border-left: 3px solid #c90000; padding-left: 15px; margin-left: 20px;
