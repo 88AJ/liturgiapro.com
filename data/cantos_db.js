@@ -48,3 +48,46 @@ window.cantosDB = {
     "letra": "*ESTROFA 1*\nYou who dwell in the shelter of the Lord,\nWho abide in His shadow for life.\nSay to the Lord: 'My refuge, my rock in whom I trust!'\n\n*CHORUS*\nAnd He will raise you up on eagles wings,\nbear you on the breath of dawn,\nmake you to shine like the sun,\nand hold you in the palm of His hand.\n\n*ESTROFA 2*\nThe snare of the fowler will never capture you,\nAnd famine will bring you no fear:\nUnder His wings your refuge, His faithfulness your shield.\n\n*ESTROFA 3*\nFor to His angels He's given a command,\nTo guard you in all of your ways;\nUpon their hands they will bear you up,\nLest you dash your foot against a stone."
   }
 };
+
+// Lógica de Selección de Cantos por Tiempo Litúrgico
+window.linkCanto = function(nombre) {
+    let html = `<strong>${nombre}</strong>`;
+    if (window.cantosDB && window.cantosDB[nombre]) {
+        const letraFormat = window.cantosDB[nombre].letra.replace(/\n/g, '<br/>');
+        html += `<div style="margin-top: 10px; margin-bottom: 5px; line-height: 1.4; font-size: 0.95em; font-style: italic; color: #444; border-left: 3px solid #ddd; padding-left: 12px;">${letraFormat}</div>`;
+    }
+    return html;
+};
+
+window.obtenerCantosPorTiempo = function(tiempoStr, isEn) {
+    if (isEn) {
+        return {
+            entrada: window.linkCanto('Here I Am Lord'),
+            ofertorio: window.linkCanto('Saber que vendrás'),
+            comunion: window.linkCanto('On Eagles Wings'),
+            salida: window.linkCanto('Demos Gracias al Señor') 
+        };
+    }
+    const t = tiempoStr ? tiempoStr.toLowerCase() : "";
+    if (t.includes('cuaresma')) {
+        return {
+            entrada: window.linkCanto('Hacia ti morada santa'),
+            ofertorio: window.linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: window.linkCanto('Pequeñas aclaraciones'),
+            salida: window.linkCanto('Silencio')
+        };
+    } else if (t.includes('pascua')) {
+        return {
+            entrada: window.linkCanto('El Señor Resucitó, Aleluya'),
+            ofertorio: window.linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: window.linkCanto('Pescador de Hombres'),
+            salida: window.linkCanto('Reina del Cielo Alégrate')
+        };
+    }
+    return {
+        entrada: window.linkCanto('Juntos como hermanos'),
+        ofertorio: window.linkCanto('Saber que vendrás'),
+        comunion: window.linkCanto('Pescador de Hombres'),
+        salida: window.linkCanto('Demos Gracias al Señor')
+    };
+};
