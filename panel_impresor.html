@@ -278,6 +278,15 @@
             if (lp.evangelio && lp.evangelio.texto && lp.evangelio.texto.length < 100) truncamientos++;
             if (lp.segunda_lectura && lp.segunda_lectura.texto && lp.segunda_lectura.texto.length < 100) truncamientos++;
             
+            // Verificación NLM Purity
+            const diaStr = JSON.stringify(dia).toLowerCase();
+            const badStrings = ["orem oncedusunciar", "(texto completo", "(aquí el sistema"];
+            const hasImpurities = badStrings.some(bad => diaStr.includes(bad));
+            
+            if (hasImpurities || !dia.laudes) {
+                return 'red'; // Bloqueo duro por impureza litúrgica o falta de Oficio
+            }
+            
             if (truncamientos > 0) return 'yellow';
             return 'green';
         }
@@ -330,7 +339,7 @@
             if (dataDia.bloques) {
                 window.RenderizarSaaS(dataDia.bloques);
             } else if (typeof generarDocumentoNodosLegacy === 'function') {
-                const htmlStr = generarDocumentoNodosLegacy(dataDia, null, { showMoniciones: true, showHomilia: true });
+                const htmlStr = generarDocumentoNodosLegacy(dataDia, "laudes", { showMoniciones: true, showHomilia: true });
                 document.getElementById('main-liturgia-container').innerHTML = htmlStr;
             } else {
                 document.getElementById('main-liturgia-container').innerHTML = `
@@ -342,6 +351,14 @@
 
         // 4. Print Action
         function generarPDF() {
+            const activeCard = document.querySelector('.day-card.active');
+            if (activeCard) {
+                const redIndicator = activeCard.querySelector('.status-red');
+                if (redIndicator) {
+                    alert("ACCESO DENEGADO: El semáforo de integridad marca rechazo (Truncamiento, placeholders o falta Liturgia de las Horas). Corrige el dato en el compilador.");
+                    return;
+                }
+            }
             alert("Sistema enlazado a la prensa virtual CMD+P. Aplicando geometría de Lomo de saas.css...");
             window.print();
         }

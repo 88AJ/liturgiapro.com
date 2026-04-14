@@ -119,7 +119,7 @@ function RENDERIZAR_NODO(nodo) {
         return `<div class="monicion"><strong>MONICIÓN: </strong>${nodo.texto}</div>\n`;
     } else if (nodo.tipo_texto === 'Capitular') {
         // Para la oración Colecta y similares
-        return `<div class="oracion-capitular" style="text-align:justify; margin-bottom: 15px; margin-top: 10px;">${nodo.texto}</div>\n`;
+        return `<div class="oracion-presidencial" style="text-align:justify; margin-bottom: 15px; margin-top: 10px; line-height: 1.8;">${nodo.texto}</div>\n`;
     } else if (nodo.tipo_texto === 'Proclamacion') {
         return window.formatLectura ? window.formatLectura(nodo.texto) : `<div class="oracion-capitular" style="text-align:justify; line-height: 1.5; margin-bottom: 20px;">${nodo.texto}</div>\n`;
     } else {
@@ -635,9 +635,20 @@ document.addEventListener('DOMContentLoaded', () => {
              let cleanP = p.trim().replace(/\n/g, ' ');
              if(cleanP === "") return;
              if (idx === 0) {
-                 let firstChar = cleanP.charAt(0);
-                 let desc = cleanP.slice(1);
-                 blocks.push(`<p class="missal-paragraph first-par"><span class="drop-cap">${firstChar}</span>${desc}</p>`);
+                 // NLM Drop Caps Regex
+                 let punctuation = "";
+                 let firstChar = "";
+                 let desc = cleanP;
+                 const match = cleanP.match(/^([«"¡¿\-_]*)([A-ZÁÉÍÓÚÑa-záéíóúñ])/);
+                 if (match) {
+                     punctuation = match[1];
+                     firstChar = match[2].toUpperCase(); // Enforce uppercase drop cap
+                     desc = cleanP.slice(match[0].length);
+                 } else {
+                     firstChar = cleanP.charAt(0);
+                     desc = cleanP.slice(1);
+                 }
+                 blocks.push(`<p class="missal-paragraph first-par"><span class="smart-punctuation">${punctuation}</span><span class="drop-cap">${firstChar}</span>${desc}</p>`);
              } else {
                  blocks.push(`<p class="missal-paragraph">${cleanP}</p>`);
              }
