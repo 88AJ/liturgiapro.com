@@ -256,6 +256,8 @@
     </main>
 
     <!-- Scripts de Ingeniería Litúrgica -->
+    <script src="data/db_ordinario.js"></script>
+    <script src="data/cantos_db.js"></script>
     <script src="motor_nodos.js"></script>
     <script src="data/liturgia_db.js"></script>
     
@@ -265,15 +267,16 @@
         });
 
         // 1. Lógica del Semáforo de Sanity Check
-        function verificarIntegridad(bloques) {
-            if (!bloques || !Array.isArray(bloques)) return 'red';
+        function verificarIntegridad(dia) {
+            if (!dia || !dia.liturgia_palabra) return 'red';
             
+            let lp = dia.liturgia_palabra;
             let truncamientos = 0;
-            bloques.forEach(b => {
-                if (b.tipo === 'proclamacion' && b.subtipo !== 'oracion_presidencial') {
-                    if (b.texto.length < 100) truncamientos++;
-                }
-            });
+            
+            // Textos largos requeridos mínimos
+            if (lp.primera_lectura && lp.primera_lectura.texto && lp.primera_lectura.texto.length < 100) truncamientos++;
+            if (lp.evangelio && lp.evangelio.texto && lp.evangelio.texto.length < 100) truncamientos++;
+            if (lp.segunda_lectura && lp.segunda_lectura.texto && lp.segunda_lectura.texto.length < 100) truncamientos++;
             
             if (truncamientos > 0) return 'yellow';
             return 'green';
@@ -295,7 +298,7 @@
 
             fechas.forEach((fecha, index) => {
                 const dia = db[fecha];
-                const statusColor = verificarIntegridad(dia.bloques);
+                const statusColor = verificarIntegridad(dia);
                 
                 const rankName = dia.titulo_celebracion || dia.metadatos?.titulo_primario || "Feria";
                 
@@ -326,10 +329,13 @@
             // Renderizar
             if (dataDia.bloques) {
                 window.RenderizarSaaS(dataDia.bloques);
+            } else if (typeof generarDocumentoNodosLegacy === 'function') {
+                const htmlStr = generarDocumentoNodosLegacy(dataDia, null, { showMoniciones: true, showHomilia: true });
+                document.getElementById('main-liturgia-container').innerHTML = htmlStr;
             } else {
                 document.getElementById('main-liturgia-container').innerHTML = `
                 <div class="empty-state">
-                    Documento en formato procedural antiguo. Require recraneo con la fase AST.
+                    Fallo del motor de Renderizado.
                 </div>`;
             }
         }
