@@ -171,8 +171,8 @@ function RENDERIZAR_BLOQUE(bloque) {
              html += `</div>\n`;
              i++;
         } else {
-             // Por defecto proteger el nodo interno si es largo (estrofas de cantos/salmos)
-             html += `<div style="page-break-inside: avoid;">\n` + RENDERIZAR_NODO(n[i]) + `</div>\n`;
+             // Por defecto permitimos flujo natural para que bloques largos (ej. cantos con muchas estrofas, lecturas) no dejen gaps inmensos
+             html += RENDERIZAR_NODO(n[i]) + `\n`;
         }
     }
     
@@ -438,6 +438,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 let hasLocalReadings = localData?.liturgia_palabra?.evangelio?.texto?.length > 50 || localData?.liturgia_palabra?.evangelio?.texto_en?.length > 50;
                 let isPlaceholder = localData?.liturgia_palabra?.evangelio?.texto?.includes("Placeholder Dinámico");
                 
+                // --- Semáforo de Integridad (Candado Técnico) ---
+                let semaforoError = null;
+                const readingEvangelioLength = localData?.liturgia_palabra?.evangelio?.texto?.length || 0;
+                
+                if (hora === 'misa_laudes' && (!localData || !localData.laudes)) {
+                    semaforoError = "Bloque de Laudes Mínimo requerido no encontrado. El Sacramentario no puede ser generado incompleto.";
+                } else if (readingEvangelioLength > 0 && readingEvangelioLength < 100 && !isPlaceholder) {
+                    semaforoError = "Fragmento de Evangelio demasiado corto (Detección < 100 caracteres). Lectura Corrupta.";
+                }
+
+                if (semaforoError) {
+                    pdfView.innerHTML = `<div style="color:#B20000; padding:40px; text-align:center; border:2px solid #B20000; margin: 40px auto; max-width: 600px; background: #fffcfc;">
+                        <h2 style="font-family:'Cinzel', serif;">FALLO DE INTEGRIDAD ESTRUCTURAL</h2>
+                        <p style="font-size:16px;"><b>SEMÁFORO DE OFICIO: BLOQUEADO</b></p>
+                        <p>${semaforoError}</p>
+                        <p><i style="color:#666;">Generación abortada para prevenir desperdicio de material (Arquitectura Litúrgica). Revise la fuente de datos.</i></p>
+                    </div>`;
+                    generateBtn.innerHTML = "Error de Integridad";
+                    return;
+                }
+                // --- Fin Semáforo ---
+
                 if (localData && hasLocalReadings && !isPlaceholder) {
                     try {
                         console.log("Cerebro Offline Activo. Rendereando Data Pura.");
