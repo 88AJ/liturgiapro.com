@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>LiturgiaPro | Maestro Impresor</title>
+    <!-- Fonts Litúrgicas y de UI moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="saas.css">
+    <style>
+        /* Panel del Maestro Impresor en Alta Fidelidad Dark Mode */
+        body {
+            background: #09090b;
+            color: #e4e4e7;
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 380px;
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .logo-panel {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-panel span {
+            color: #990000;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #71717a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Selector de Lotes */
+        .batch-selector {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 100%;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .batch-selector:focus {
+            border-color: #990000;
+        }
+
+        /* Semáforo de Integridad */
+        .integrity-list {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 5px;
+        }
+
+        .integrity-list::-webkit-scrollbar { width: 4px; }
+        .integrity-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .day-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(153, 0, 0, 0.3);
+        }
+        
+        .day-card.active {
+            border-left: 3px solid #990000;
+            background: linear-gradient(90deg, rgba(153, 0, 0, 0.15) 0%, transparent 100%);
+        }
+
+        .day-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .day-date {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .day-rank {
+            font-size: 0.75rem;
+            color: #a1a1aa;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .status-green { color: #10b981; background: #10b981; }
+        .status-yellow { color: #f59e0b; background: #f59e0b; }
+        .status-red { color: #ef4444; background: #ef4444; }
+
+        /* Controles de Impresión */
+        .print-controls {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 14px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-preview {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-preview:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #990000, #5a0000);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(153, 0, 0, 0.3);
+        }
+
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(153, 0, 0, 0.5);
+        }
+
+        /* Visor de Mancha Tipográfica */
+        .viewport {
+            flex: 1;
+            background: #18181b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        /* Grid BG decoration */
+        .viewport::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* El Canvas de Impresión Central */
+        .pdf-canvas {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            min-height: 100%;
+            padding: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            /* Aquí importaremos el CSS exacto del saas.css via clases */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Panel de Control Lateral -->
+    <aside class="sidebar">
+        <div class="logo-panel">
+            LITURGIA<span>PRO</span>
+        </div>
+
+        <div class="section-title">Encuadernación de Lotes</div>
+        
+        <select class="batch-selector" id="batchSelect">
+            <option value="quincena1_abril">Abril 2026 - Primera Quincena (1 al 15)</option>
+            <option value="quincena2_abril">Abril 2026 - Segunda Quincena (16 al 30)</option>
+            <option value="mes_abril">Abril 2026 - Mes Completo</option>
+            <option value="triduo_pascual">Triduo Pascual Especial (2 al 5)</option>
+        </select>
+
+        <div class="section-title">Monitor de Integridad ETL</div>
+        
+        <div class="integrity-list" id="integrityList">
+            <!-- Populado Dinámicamente -->
+        </div>
+
+        <div class="print-controls">
+            <div class="section-title" style="margin-bottom: 0;">Motor de Prensa</div>
+            <button class="btn btn-preview" onclick="renderPreview()">Recargar Mancha Visual</button>
+            <button class="btn btn-print" onclick="generarPDF()">GENERAR SACRAMENTARIO</button>
+        </div>
+    </aside>
+
+    <!-- Previsualizador de Mancha Tipográfica -->
+    <main class="viewport">
+        <div class="pdf-container pdf-canvas" id="main-liturgia-container">
+            <!-- La magia de RenderizarSaaS ocurre aquí -->
+            <div class="empty-state">
+                Seleccione un rango litúrgico para construir la mancha de impresión.
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts de Ingeniería Litúrgica -->
+    <script src="motor_nodos.js"></script>
+    <script src="data/liturgia_db.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarLoteIntegridad();
+        });
+
+        // 1. Lógica del Semáforo de Sanity Check
+        function verificarIntegridad(bloques) {
+            if (!bloques || !Array.isArray(bloques)) return 'red';
+            
+            let truncamientos = 0;
+            bloques.forEach(b => {
+                if (b.tipo === 'proclamacion' && b.subtipo !== 'oracion_presidencial') {
+                    if (b.texto.length < 100) truncamientos++;
+                }
+            });
+            
+            if (truncamientos > 0) return 'yellow';
+            return 'green';
+        }
+
+        // 2. Población de la Interfaz
+        function cargarLoteIntegridad() {
+            const list = document.getElementById("integrityList");
+            list.innerHTML = '';
+            
+            // Si la DB aún no carga (por Scraper corriendo), simulamos las cajas
+            if (typeof window.liturgiaData === 'undefined') {
+                list.innerHTML = '<div style="color: #71717a; font-size: 0.9rem;">Base de datos vacía o cargando...</div>';
+                return;
+            }
+
+            const db = window.liturgiaData;
+            const fechas = Object.keys(db).sort().slice(0, 15); // limit to 15 for UI demo
+
+            fechas.forEach((fecha, index) => {
+                const dia = db[fecha];
+                const statusColor = verificarIntegridad(dia.bloques);
+                
+                const rankName = dia.titulo_celebracion || dia.metadatos?.titulo_primario || "Feria";
+                
+                const card = document.createElement("div");
+                card.className = `day-card ${index === 0 ? 'active' : ''}`;
+                card.onclick = () => verDetalleFecha(card, dia);
+
+                card.innerHTML = `
+                    <div class="day-info">
+                        <span class="day-date">${fecha}</span>
+                        <span class="day-rank">${rankName.substring(0, 30)}...</span>
+                    </div>
+                    <div class="status-indicator status-${statusColor}"></div>
+                `;
+                list.appendChild(card);
+
+                // Autorenderizar el primero
+                if (index === 0) verDetalleFecha(card, dia);
+            });
+        }
+
+        // 3. Activar Previsualización del motor AST
+        function verDetalleFecha(cardElement, dataDia) {
+            // UI state
+            document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+            cardElement.classList.add('active');
+
+            // Renderizar
+            if (dataDia.bloques) {
+                window.RenderizarSaaS(dataDia.bloques);
+            } else {
+                document.getElementById('main-liturgia-container').innerHTML = `
+                <div class="empty-state">
+                    Documento en formato procedural antiguo. Require recraneo con la fase AST.
+                </div>`;
+            }
+        }
+
+        // 4. Print Action
+        function generarPDF() {
+            alert("Sistema enlazado a la prensa virtual CMD+P. Aplicando geometría de Lomo de saas.css...");
+            window.print();
+        }
+    </script>
+</body>
+</html>

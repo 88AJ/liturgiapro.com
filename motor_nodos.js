@@ -139,7 +139,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     }
     
     bGloriaColecta.addTitulo(isEn ? "Collect" : "Oración Colecta");
-    bGloriaColecta.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || "Dios todopoderoso y eterno..."));
+    bGloriaColecta.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || "Dios todopoderoso y eterno..."));
     bGloriaColecta.addAsamblea("Amén.");
     SECUENCIA_LITURGICA.push(bGloriaColecta);
 
@@ -213,6 +213,35 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
 
     
     let bPreces = new BloqueLiturgico("preces");
+    
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let title = (OFICIO === "Laudes") ? "CÁNTICO EVANGÉLICO (Benedictus)" : "CÁNTICO EVANGÉLICO (Magnificat)";
+        let officeData = data[hora];
+        if (officeData && officeData.cantico_evangelico) {
+            let ce = officeData.cantico_evangelico;
+            bPreces.addTitulo(title);
+            bPreces.addRubrica("Antífona: " + ce.antifona);
+            
+            if (ce.texto) {
+                let lines = [];
+                if (Array.isArray(ce.texto)) {
+                    lines = ce.texto;
+                } else if (typeof ce.texto === 'string') {
+                    lines = ce.texto.split(/\n+/).filter(l => l.trim().length > 1);
+                }
+                
+                lines.forEach((line, idx) => {
+                    if (idx % 2 === 0) bPreces.addSacerdote(line, 'Normal');
+                    else bPreces.addAsamblea(line);
+                });
+            }
+            
+            bPreces.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+            bPreces.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+            bPreces.addRubrica("Antífona: " + ce.antifona);
+        }
+    }
+
     bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
     
     let precesText = "[Oración de los Fieles Omitida / No Definida]";
@@ -275,38 +304,11 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
     bComunion.addRubrica(cantos.comunion);
 
-    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
-        let title = (OFICIO === "Laudes") ? "CÁNTICO EVANGÉLICO (Benedictus)" : "CÁNTICO EVANGÉLICO (Magnificat)";
-        let officeData = data[hora];
-        if (officeData && officeData.cantico_evangelico) {
-            let ce = officeData.cantico_evangelico;
-            bComunion.addTitulo(title);
-            bComunion.addRubrica("Antífona: " + ce.antifona);
-            
-            if (ce.texto) {
-                let lines = [];
-                if (Array.isArray(ce.texto)) {
-                    lines = ce.texto;
-                } else if (typeof ce.texto === 'string') {
-                    // Split strictly by paragraphs (empty lines) or single lines, removing empty ones
-                    lines = ce.texto.split(/\n+/).filter(l => l.trim().length > 1);
-                }
-                
-                lines.forEach((line, idx) => {
-                    if (idx % 2 === 0) bComunion.addSacerdote(line, 'Normal');
-                    else bComunion.addAsamblea(line);
-                });
-            }
-            
-            bComunion.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
-            bComunion.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
-            bComunion.addRubrica("Antífona: " + ce.antifona);
-        }
-    }
+
 
     let despues = (data.liturgia_eucaristica && data.liturgia_eucaristica.oracion_despues_comunion) ? data.liturgia_eucaristica.oracion_despues_comunion : (isEn ? "Grant, we pray, almighty God..." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento...");
     bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
-    bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + despues);
+    bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + despues);
     bComunion.addAsamblea("Amén.");
     
     
@@ -448,7 +450,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
 
     bInicial.addTitulo(isEn ? "Collect" : "Oración Colecta");
-    bInicial.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || ""));
+    bInicial.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || ""));
     bInicial.addAsamblea("Amén.");
     SECUENCIA_LITURGICA.push(bInicial);
 
@@ -506,6 +508,25 @@ function generarDocumentoNodos(data, hora, options = {}) {
     
     let bPreces = new BloqueLiturgico("preces");
     
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        if (officeData && officeData.cantico_evangelico) {
+            let canticoName = OFICIO === "Laudes" ? "Cántico de Zacarías (Benedictus)" : "Cántico de María (Magnificat)";
+            bPreces.addSuperTitulo(isEn ? "GOSPEL CANTICLE" : "CÁNTICO EVANGÉLICO (" + OFICIO.toUpperCase() + ")");
+            bPreces.addTitulo(isEn ? "Gospel Canticle" : canticoName);
+            bPreces.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
+            
+            let lines = officeData.cantico_evangelico.texto.split("\n\n");
+            lines.forEach((line, idx) => {
+                if (idx % 2 === 0) bPreces.addSacerdote(line, 'Normal');
+                else bPreces.addAsamblea(line);
+            });
+            
+            bPreces.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+            bPreces.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+            bPreces.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
+        }
+    }
     if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[hora] && data[hora].preces) {
         bPreces.addTitulo(isEn ? "Prayers / Intercessions (" + OFICIO + ")" : "Preces (" + OFICIO + ")");
         bPreces.addRubrica(isEn ? "The Universal Prayer is substituted by the Intercessions of the Liturgy of the Hours." : "Se sustituye la Oración de los Fieles por las preces del Oficio divino.");
@@ -542,7 +563,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
 
     bEuca.addTitulo(isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas");
-    bEuca.addSacerdote(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : "");
+    bEuca.addCapitular(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : "");
     bEuca.addAsamblea("Amén.");
     
     if (checkAccion("plegaria_eucaristica_II")) {
@@ -598,28 +619,10 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
     bComunion.addRubrica(cantos.comunion);
 
-    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
-        let officeData = data[hora];
-        if (officeData && officeData.cantico_evangelico) {
-            let canticoName = OFICIO === "Laudes" ? "Cántico de Zacarías (Benedictus)" : "Cántico de María (Magnificat)";
-            bComunion.addSuperTitulo(isEn ? "GOSPEL CANTICLE" : "CÁNTICO EVANGÉLICO (" + OFICIO.toUpperCase() + ")");
-            bComunion.addTitulo(isEn ? "Gospel Canticle" : canticoName);
-            bComunion.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
-            
-            let lines = officeData.cantico_evangelico.texto.split("\n\n");
-            lines.forEach((line, idx) => {
-                if (idx % 2 === 0) bComunion.addSacerdote(line, 'Normal');
-                else bComunion.addAsamblea(line);
-            });
-            
-            bComunion.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
-            bComunion.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
-            bComunion.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
-        }
-    }
+
 
     bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
-    bComunion.addSacerdote((isEn ? "Let us pray. " : "Oremos. ") + (data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : ""));
+    bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : ""));
     bComunion.addAsamblea("Amén.");
     SECUENCIA_LITURGICA.push(bComunion);
 
@@ -653,3 +656,85 @@ function generarDocumentoNodos(data, hora, options = {}) {
     return htmlOut;
 }
 
+// ==========================================
+// MÓDULO DE PRUEBA AST (ANTIGRAVITY PURO)
+// ==========================================
+function procesarProclamacion(block) {
+  const { texto, subtipo } = block;
+  if (!texto) return '';
+
+  // REGLA ANTIGRAVITY: Si es oración presidencial, omitir capitular.
+  if (subtipo === "oracion_presidencial") {
+    return `<div class="proclamacion presidencial">${texto}</div>`;
+  }
+
+  // REGEX: [Signos opcionales] + [Primera Letra]
+  // Grupo 1: Puntuación (opcional) | Grupo 2: La Letra Capital
+  const match = texto.match(/^([«“¡¿]*)([a-zA-ZÁÉÍÓÚÑ])(.*)/s);
+
+  if (match) {
+    const [, puntuacion, capital, resto] = match;
+    return `
+      <div class="proclamacion">
+        <span class="puntuacion-inicial">${puntuacion}</span>
+        <span class="drop-cap">${capital}</span>
+        <span class="cuerpo-texto">${resto}</span>
+      </div>`;
+  }
+
+  return `<div class="proclamacion">${texto}</div>`;
+}
+
+function RENDERIZAR_NODO_AST(block) {
+  if (block.tipo === "titulo_dia") return `<h2 class="missal-super-heading">${block.contenido}</h2>`;
+  if (block.tipo === "titulo_misa") return `<h2 class="missal-heading">${block.contenido}</h2>`;
+  if (block.tipo === "seccion") return `<h3 class="titulo-rito">${block.contenido}</h3>`;
+  if (block.tipo === "rubrica") return `<strong class="missal-rubric">${block.contenido}</strong>`;
+  if (block.tipo === "monicion") return `<div class="monicion"><strong>MONICIÓN: </strong>${block.contenido}</div>`;
+  if (block.tipo === "canto") return `<div class="rubrica-sacerdote" style="margin-bottom: 10px;">${block.titulo}: ${block.letra}</div>`;
+  
+  if (block.tipo === "dialogo") {
+    const hasBoth = block.v && block.r;
+    const layoutClass = hasBoth ? "dialogo-grid" : "dialogo-lineal";
+    return `
+      <div class="bloque-dialogo ${layoutClass}">
+        <div class="v-part"><span class="sigla-roja">V/.</span> ${block.v}</div>
+        ${hasBoth ? `<div class="r-part"><span class="sigla-roja">R/.</span> ${block.r}</div>` : ''}
+      </div>`;
+  }
+
+  if (block.tipo === "proclamacion") return procesarProclamacion(block);
+
+  return `<div>${block.contenido}</div>`;
+}
+
+// Simulador de entrada y volcado de resultados
+window.RenderizarTestAST = function(astJsonArray) {
+    let htmlOut = '';
+    astJsonArray.forEach(bloque => {
+        htmlOut += RENDERIZAR_NODO_AST(bloque) + '\\n';
+    });
+    return htmlOut;
+};
+
+/**
+ * MOTOR DE RENDERIZADO ANTIGRAVITY v2.0
+ * Sustituye el antiguo bucle procedimental por un intérprete de AST determinista.
+ */
+window.RenderizarSaaS = function(jsonAST) {
+    const contenedor = document.getElementById('pdf-view') || document.querySelector('.pdf-container');
+    if (!contenedor || !Array.isArray(jsonAST)) return;
+
+    contenedor.innerHTML = ''; // Limpieza de nodos legacy
+    const fragmento = document.createDocumentFragment();
+
+    jsonAST.forEach((bloque) => {
+        const div = document.createElement('div');
+        div.className = `missal-block`; // Clase de contención básica NLM
+        div.innerHTML = RENDERIZAR_NODO_AST(bloque);
+        fragmento.appendChild(div);
+    });
+
+    contenedor.appendChild(fragmento);
+    console.log("SaaS Refactorizado: Misal renderizado bajo estándar NLM y Motor AST.");
+};

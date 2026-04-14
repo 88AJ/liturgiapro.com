@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Laboratorio AST - 14 de Abril 2026</title>
+    <!-- Pre-cargas de Fuentes de Alta Fidelidad NLM -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- CSS Nativo de LiturgiaPro -->
+    <link rel="stylesheet" href="saas.css">
+    <style>
+        /* Ambientación de prueba para simular la hoja blanca (PDF) sobre entorno oscuro */
+        body { 
+            background: #1e1e1e; 
+            color: #111; 
+            padding: 40px; 
+        }
+        .test-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 50px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
+            font-family: 'EB Garamond', serif; 
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <!-- Contenedor Objetivo -->
+        <div id="antigravity-preview" class="pdf-container"></div>
+    </div>
+
+    <!-- Importación del Simulador Sandbox (Motor de Nodos) -->
+    <script src="motor_nodos.js"></script>
+    <script>
+        // MOCK AST DEL MARTES 14 DE ABRIL (Con casos límite insertados)
+        const astMock14Abril = [
+            {
+                "tipo": "titulo_dia",
+                "contenido": "MARTES, 14 DE ABRIL DE 2026"
+            },
+            {
+                "tipo": "titulo_misa",
+                "contenido": "MARTES DE LA II SEMANA DE PASCUA"
+            },
+            {
+                "tipo": "rubrica",
+                "contenido": "Feria | Color: Blanco | Formulario: Propio del Tiempo"
+            },
+            {
+                "tipo": "seccion",
+                "contenido": "I. RITOS INICIALES"
+            },
+            {
+                "tipo": "dialogo",
+                "v": "La gracia de nuestro Señor Jesucristo...",
+                "r": "Y con tu espíritu."
+            },
+            {
+                "tipo": "seccion",
+                "contenido": "II. LITURGIA DE LA PALABRA"
+            },
+            {
+                "tipo": "rubrica",
+                "contenido": "PRIMERA LECTURA (Hech 4, 32-37)"
+            },
+            {
+                "tipo": "proclamacion",
+                // TEST REGEX: Comilla francesa forzada
+                "texto": "«La multitud de los que habían creído tenían un solo corazón y una sola alma; nadie llamaba suyo propio nada de lo que tenía, sino que todo lo tenían en común. Los apóstoles daban testimonio de la resurrección del Señor Jesús con mucho valor y se los miraba a todos con mucho agrado...»"
+            },
+            {
+                "tipo": "rubrica",
+                "contenido": "SALMO RESPONSORIAL (Salmo 92)"
+            },
+            {
+                "tipo": "dialogo",
+                "v": "Reina el Señor, revestido de majestad.",
+                "r": "Aleluya."
+            },
+            {
+                "tipo": "rubrica",
+                "contenido": "EVANGELIO (Juan 3, 7b-15)"
+            },
+            {
+                "tipo": "proclamacion",
+                "texto": "¿En aquel tiempo?, Jesús dijo a Nicodemo: «No te extrañes de que te haya dicho: “Tienen que nacer de lo alto”. El viento sopla donde quiere y oyes su ruido, pero no sabes de dónde viene ni a dónde va...»"
+            },
+            {
+                "tipo": "seccion",
+                "contenido": "--- LITURGIA EUCARÍSTICA ---"
+            },
+            {
+                "tipo": "rubrica",
+                "contenido": "ORACIÓN COLECTA"
+            },
+            {
+                "tipo": "rubrica",
+                "contenido": "Oremos."
+            },
+            {
+                // TEST SUBTIPO: Debe ignorar capitular e incrementar interlineado
+                "tipo": "proclamacion",
+                "subtipo": "oracion_presidencial",
+                "texto": "Concédenos, Dios todopoderoso, que quienes hemos celebrado las fiestas pascuales, las guardemos siempre, por tu gracia, en nuestras costumbres y en nuestra vida."
+            },
+            {
+                "tipo": "dialogo",
+                "v": "Por nuestro Señor Jesucristo, tu Hijo...",
+                "r": "Amén."
+            }
+        ];
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const previewContainer = document.getElementById('antigravity-preview');
+            // Forzamos el CSS property para rubricar
+            document.documentElement.style.setProperty('--brand-color', '#990000');
+            
+            // Inyección del VDOM temporal
+            previewContainer.innerHTML = window.RenderizarTestAST(astMock14Abril);
+            console.log("AST Renderizado Exitosamente en #antigravity-preview");
+        });
+    </script>
+</body>
+</html>
