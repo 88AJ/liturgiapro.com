@@ -44,6 +44,11 @@ class BloqueLiturgico {
         return this;
     }
     
+    addCapitular(texto) {
+        this.nodos.push(new NodoLiturgico(this.id + '_capitular', texto, 'Capitular', 'Sacerdote', 'Fuerte'));
+        return this;
+    }
+    
     addLectura(texto) {
         this.nodos.push(new NodoLiturgico(this.id + '_lect', texto, 'Proclamacion', 'Lector', 'Fuerte'));
         return this;
@@ -104,48 +109,95 @@ function RENDERIZAR_NODO(nodo) {
     
     nodo.texto = SANITIZAR_TEXTO(nodo.texto);
     
-    let color = 'inherit';
-    let peso = '400';
-    let estilo = 'normal';
-    
-    // Regla de Color
-    if (nodo.tipo_texto === 'Instruccion' || nodo.tipo_texto === 'Simbolo' || nodo.tipo_texto === 'Titulo') {
-        color = 'var(--brand-color)';
-    }
-    
-    // Regla de Peso (Negrita para asamblea)
-    if (nodo.tipo_texto === 'Pronunciado' && nodo.actor === 'Asamblea') {
-        peso = '700';
-    }
-    
-    // Regla de Estilo (Voz Secreta)
-    if (nodo.estado_voz === 'Secreta') {
-        estilo = 'italic';
-    }
-    
+<<<<<<< HEAD
     if (nodo.tipo_texto === 'SuperTitulo') {
-        return `<p class="missal-super-heading" style="color:${color};">${nodo.texto}</p>\n`;
+        return `<h2 class="titulo-rito">${nodo.texto}</h2>\n`;
     } else if (nodo.tipo_texto === 'Titulo') {
-        return `<p class="missal-heading" style="color:${color};">${nodo.texto}</p>\n`;
+        return `<h3 class="titulo-rito" style="font-size:1.2rem; margin-top:20px;">${nodo.texto}</h3>\n`;
     } else if (nodo.tipo_texto === 'Instruccion' || nodo.tipo_texto === 'Simbolo') {
-        return `<p class="missal-rubric" style="color:${color}; font-weight:${peso}; font-style:${estilo}; margin-bottom:4px;">${nodo.texto}</p>\n`;
+        return `<strong class="rubrica-sacerdote">${nodo.texto}</strong>\n`;
+    } else if (nodo.tipo_texto === 'Monicion') {
+        return `<div class="monicion"><strong>MONICIÓN: </strong>${nodo.texto}</div>\n`;
+    } else if (nodo.tipo_texto === 'Capitular') {
+        // Para la oración Colecta y similares
+        return `<div class="oracion-capitular" style="text-align:justify; margin-bottom: 15px; margin-top: 10px;">${nodo.texto}</div>\n`;
     } else if (nodo.tipo_texto === 'Proclamacion') {
-        // Enviar al formateador especial de lecturas para tener Capitulares (Drop Caps)
-        return window.formatLectura ? window.formatLectura(nodo.texto) : `<p class="missal-paragraph" style="text-align:justify;">${nodo.texto}</p>\n`;
+        return window.formatLectura ? window.formatLectura(nodo.texto) : `<div class="oracion-capitular" style="text-align:justify; line-height: 1.5; margin-bottom: 20px;">${nodo.texto}</div>\n`;
+=======
+    // Función auxiliar para colorear sólo los símbolos litúrgicos permitidos
+    const enrojecerSimbolos = (txt) => {
+        return txt
+            .replace(/^(V\.|V\/|S\.|V |℣\.)\s*/i, '<span class="red-symbol">℣. </span>')
+            .replace(/^(R\.|R\/|T\.|R |℟\.)\s*/i, '<span class="red-symbol">℟. </span>')
+            .replace(/✠/g, '<span class="red-symbol">✠</span>')
+            .replace(/☩/g, '<span class="red-symbol">✠</span>');
+    };
+
+    if (nodo.tipo_texto === 'SuperTitulo') {
+        return `<div class="dominic-title">${nodo.texto}</div>\n`;
+    } else if (nodo.tipo_texto === 'Titulo') {
+        return `<div class="dominic-section">${nodo.texto}</div>\n`;
+    } else if (nodo.tipo_texto === 'Instruccion' || nodo.tipo_texto === 'Simbolo') {
+        return `<div class="dominic-rubric">${enrojecerSimbolos(nodo.texto)}</div>\n`;
+    } else if (nodo.tipo_texto === 'Monicion') {
+        return `<div class="dominic-monicion"><em>${nodo.texto}</em></div>\n`;
+    } else if (nodo.tipo_texto === 'Capitular' || nodo.tipo_texto === 'Proclamacion') {
+        // Nada de letras capitulares. Bloque de texto estándar.
+        return `<div class="dominic-body">${enrojecerSimbolos(nodo.texto)}</div>\n`;
+>>>>>>> 286a656ae969d591892e19583562f7824b903b65
     } else {
-        let prefix = "";
         let t = nodo.texto.trim();
-        // Evitar duplicar si el texto crudo ya lo trae (ej. "R. " o "V. ")
+        let prefix = "";
+        
         if (nodo.tipo_texto === 'Pronunciado') {
-            if (nodo.actor === 'Sacerdote' && !t.startsWith("V.") && !t.startsWith("V/") && !t.startsWith("S.") && !t.startsWith("V ") && !t.startsWith("C.")) {
-                prefix = `<span style="color:var(--brand-color); font-weight:bold; margin-right:6px;">V.</span>`;
-            } else if (nodo.actor === 'Asamblea' && !t.startsWith("R.") && !t.startsWith("R/") && !t.startsWith("T.") && !t.startsWith("R ")) {
-                prefix = `<strong style="margin-right:6px;">R.</strong>`;
+            if (nodo.actor === 'Sacerdote') {
+                if (nodo.estado_voz === 'Secreta') {
+<<<<<<< HEAD
+                    return `<div style="font-style: italic; color: #444; margin-bottom: 10px; margin-top: 5px;">${t}</div>\n`;
+                }
+                // Si la oración no tiene prefijo, no lo forzamos. Se asume que el Sacerdote lo lee con voz normal.
+                return `<div style="margin-bottom: 15px; text-align: justify; line-height: 1.4;">${t}</div>\n`;
+            } else if (nodo.actor === 'Asamblea') {
+                if (!t.startsWith("R.") && !t.startsWith("R/") && !t.startsWith("T.") && !t.startsWith("R ")) {
+                    prefix = `<span class="asamblea-rojo">R. </span>`;
+                } else {
+                    // Extraer la R. inicial y colorearla roja
+                    t = t.replace(/^(R\.|R\/|T\.|R )\s*/i, "");
+                    prefix = `<span class="asamblea-rojo">R. </span>`;
+                }
+                return `<div class="asamblea">${prefix}<span style="color: black; font-weight: bold;">${t}</span></div>\n`;
             }
         }
         
-        let formattedText = prefix + nodo.texto.replace(/\n/g, '<br>');
-        return `<p class="missal-paragraph" style="color:${color}; font-weight:${peso}; font-style:${estilo}; margin-bottom:8px; text-align:justify;">${formattedText}</p>\n`;
+        return `<div style="margin-bottom: 10px;">${t}</div>\n`;
+=======
+                    return `<div class="dominic-rubric">${t}</div>\n`;
+                }
+                
+                // Si explícitamente tiene V., lo reemplazamos por símbolo rojo.
+                if (t.match(/^(V\.|V\/|S\.|V |℣\.)/i)) {
+                    t = enrojecerSimbolos(t);
+                } else {
+                    // Si no tiene prefijo pero es diálogo, inyectar el símbolo V explícitamente
+                    if(nodo.id && nodo.id.includes('_sac')) {
+                         // Only prefix if it's part of a short dialogue or responsory. We'll rely on text match.
+                    }
+                }
+                
+                return `<div class="dominic-body">${t}</div>\n`;
+            } else if (nodo.actor === 'Asamblea') {
+                if (!t.match(/^(R\.|R\/|T\.|R |℟\.)/i)) {
+                    prefix = `<span class="red-symbol">℟. </span>`;
+                } else {
+                    t = t.replace(/^(R\.|R\/|T\.|R |℟\.)\s*/i, "");
+                    prefix = `<span class="red-symbol">℟. </span>`;
+                }
+                return `<div class="dominic-body dominic-indent"><strong>${prefix}${t}</strong></div>\n`;
+            }
+        }
+        
+        return `<div class="dominic-body">${enrojecerSimbolos(t)}</div>\n`;
+>>>>>>> 286a656ae969d591892e19583562f7824b903b65
     }
 }
 
@@ -276,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let builderWorkspace = document.getElementById("builder-workspace");
             let cancioneroWorkspace = document.getElementById("cancionero-workspace");
             let youtubeWorkspace = document.getElementById("youtube-workspace");
+            let ordoWorkspace = document.getElementById("ordo-workspace");
             
             let ritualSelect = document.getElementById("ritual-select");
             let bautismoFields = document.getElementById("bautismo-fields");
@@ -283,22 +336,21 @@ document.addEventListener('DOMContentLoaded', () => {
             let exequiasFields = document.getElementById("exequias-fields");
             let ritualGroup = document.getElementById("ritual-group");
             
+            // Ocultar todos los workspaces básicos
+            if(builderWorkspace) builderWorkspace.style.display = 'none';
+            if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'none';
+            if(youtubeWorkspace) youtubeWorkspace.style.display = 'none';
+
             if (view === 'cancionero') {
-                if(builderWorkspace) builderWorkspace.style.display = 'none';
-                if(youtubeWorkspace) youtubeWorkspace.style.display = 'none';
                 if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'flex';
                 currentMode = 'cancionero';
                 return; // Stop here for cancionero
             } else if (view === 'youtube') {
-                if(builderWorkspace) builderWorkspace.style.display = 'none';
-                if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'none';
                 if(youtubeWorkspace) youtubeWorkspace.style.display = 'flex';
                 currentMode = 'youtube';
                 return;
             } else {
                 if(builderWorkspace) builderWorkspace.style.display = 'flex';
-                if(cancioneroWorkspace) cancioneroWorkspace.style.display = 'none';
-                if(youtubeWorkspace) youtubeWorkspace.style.display = 'none';
             }
             
             if (view === 'boletin') {
