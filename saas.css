@@ -389,7 +389,7 @@ body {
 
 /* Configuración de Página para Impresión Doble Cara */
 @page {
-    size: 155mm 235mm;
+    size: 8.5in 11in;
     margin-top: 20mm;
     margin-bottom: 20mm;
     bleed: 3mm;
@@ -438,6 +438,8 @@ body {
     margin-bottom: 1rem;
     text-transform: uppercase;
     column-span: all; /* Detiene las columnas para anclar la sección */
+    break-after: avoid; /* Previene títulos huerfanos al final de página */
+    page-break-after: avoid;
 }
 
 .pdf-container .titulo-rito {
@@ -759,6 +761,8 @@ body {
     line-height: 1.2;
     font-size: 10.5pt;
     position: relative;
+    orphans: 3;
+    widows: 3;
 }
 
 .missal-paragraph:not(.first-par) {
@@ -804,9 +808,13 @@ body {
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     margin-bottom: 8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 .bloque-dialogo.dialogo-lineal {
     margin-bottom: 8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 .bloque-dialogo .sigla-roja {
     color: var(--brand-color);

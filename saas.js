@@ -481,7 +481,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
                             customBlocks: customBlocks
                         };
-                        let doc = generarDocumentoNodos(localData, hora, options);
+                        let doc = "";
+                        if (hora === 'diario') {
+                            const horasDelDia = ['oficio', 'laudes', 'misa_laudes', 'intermedia', 'visperas', 'completas'];
+                            horasDelDia.forEach(h => {
+                                try {
+                                    let subset = generarDocumentoNodos(localData, h, options);
+                                    if (subset && subset.trim() !== '') {
+                                        doc += (doc !== "" ? `<div style="page-break-before: always;"></div>` : "") + subset;
+                                    }
+                                } catch(e) { console.warn("Error generando " + h, e); }
+                            });
+                        } else {
+                            doc = generarDocumentoNodos(localData, hora, options);
+                        }
+                        
                         pdfView.innerHTML = doc;
                         generateBtn.innerHTML = "Generar Documento";
                     } catch (e) {
