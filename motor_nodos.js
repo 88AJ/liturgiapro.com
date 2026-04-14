@@ -21,7 +21,15 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     if (!rawGrado) rawGrado = data.grado || data.dia_semana || "Feria";
     
     const GRADO = String(rawGrado).toLowerCase();
-    const OFICIO = hora ? (hora === "laudes" ? "Laudes" : (hora === "visperas" ? "Visperas" : "Completas")) : null;
+    let OFICIO = null;
+    if (hora) {
+        if (hora.includes("laudes")) OFICIO = "Laudes";
+        else if (hora.includes("visperas")) OFICIO = "Visperas";
+        else if (hora.includes("oficio")) OFICIO = "Oficio";
+        else if (hora.includes("intermedia")) OFICIO = "Intermedia";
+        else if (hora.includes("completas")) OFICIO = "Completas";
+    }
+    const IS_MISA = (hora === "misa" || hora === "misa_laudes" || !hora);
 
     const upperTiempo = TIEMPO_LIT.toUpperCase();
     const isCuaresma = upperTiempo.includes("CUARESMA");
@@ -340,6 +348,24 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     bConclusion.addRubrica(cantos.salida);
     SECUENCIA_LITURGICA.push(bConclusion);
 
+    } // END ELSE FOR MISA/LAUDES
+    
+    // Lectio Divina (Auto-generador si estamos en jornada diaria y es la ultima llamada)
+    if (hora === "lectio") {
+        let bLectio = new BloqueLiturgico("lectio");
+        bLectio.addSuperTitulo("LECTIO DIVINA");
+        bLectio.addTitulo("I. LECTIO");
+        bLectio.addRubrica("Lectura pausada del Evangelio dominical o del día.");
+        bLectio.addSacerdote((data.liturgia_palabra && data.liturgia_palabra.evangelio) ? data.liturgia_palabra.evangelio.texto : "[Texto del Evangelio]");
+        bLectio.addTitulo("II. MEDITATIO");
+        bLectio.addRubrica("¿Qué me dice a mí el texto?");
+        bLectio.addTitulo("III. ORATIO");
+        bLectio.addRubrica("¿Qué le digo yo al Señor que me acaba de hablar?");
+        bLectio.addTitulo("IV. CONTEMPLATIO");
+        bLectio.addRubrica("¿A qué me invita en mi vida concreta como resolución?");
+        SECUENCIA_LITURGICA.push(bLectio);
+    }
+
     // EJECUCION MOTOR DE RENDERING
     let htmlOut = '';
     SECUENCIA_LITURGICA.forEach(bloque => htmlOut += RENDERIZAR_BLOQUE(bloque));
@@ -359,7 +385,15 @@ function generarDocumentoNodos(data, hora, options = {}) {
     let isEn = options.isEn === true;
     let showMoniciones = options.showMoniciones !== false;
     let showHomilia = options.showHomilia !== false;
-    const OFICIO = hora ? (hora === "laudes" ? "Laudes" : (hora === "visperas" ? "Visperas" : "Completas")) : null;
+    let OFICIO = null;
+    if (hora) {
+        if (hora.includes("laudes")) OFICIO = "Laudes";
+        else if (hora.includes("visperas")) OFICIO = "Visperas";
+        else if (hora.includes("oficio")) OFICIO = "Oficio";
+        else if (hora.includes("intermedia")) OFICIO = "Intermedia";
+        else if (hora.includes("completas")) OFICIO = "Completas";
+    }
+    const IS_MISA = (hora === "misa" || hora === "misa_laudes" || !hora);
     
     let SECUENCIA_LITURGICA = [];
     const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
