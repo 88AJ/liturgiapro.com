@@ -137,5 +137,5 @@ Cuando saludes o concluyas, muestra paz crística.
 
 if __name__ == "__main__":
     initialize_gemini()
-    print("🕊️ Padre PRO Server escuchando en http://localhost:8085")
-    app.run(host="0.0.0.0", port=8085, debug=False)
+    print("🕊️ Padre PRO Server escuchando en http://localhost:8086")
+    app.run(host="0.0.0.0", port=8086, debug=False)
