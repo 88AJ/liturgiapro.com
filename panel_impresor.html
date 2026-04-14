@@ -324,7 +324,7 @@
         function verDetalleFecha(cardElement, dataDia) {
             // UI state
             document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
-            cardElement.classList.add('active');
+            if (cardElement && cardElement.classList) cardElement.classList.add('active');
 
             // Renderizar
             if (dataDia.bloques) {
