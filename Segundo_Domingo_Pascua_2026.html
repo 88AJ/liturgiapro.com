@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Liturgia de las Horas y Misal - 12 Abril 2026</title>
+    <link rel="stylesheet" href="saas.css">
+    <script src="data/liturgia_db.js"></script>
+    <script src="saas.js"></script>
+    <script src="motor_nodos.js"></script>
+    <style>
+        body { background: #EEE; }
+        .print-canvas {
+            background: white;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center; padding:20px;">
+        <button onclick="window.print()" style="font-size:18px; padding:10px 30px; background:#D32F2F; color:white; border:none; border-radius:8px; cursor:pointer;">🖨️ Exportar a PDF (Imprimir)</button>
+    </div>
+    
+    <div class="print-canvas pdf-container" id="pdf-view">
+        <!-- Rendered Liturgy Goes Here -->
+    </div>
+
+    <script>
+        window.onload = () => {
+            let data = window.liturgiaData['2026-04-12'];
+            if(!data) {
+                document.getElementById('pdf-view').innerHTML = '<h1 style="color:red;">Error: No hay datos para el 12 de abril de 2026 en liturgia_db.js</h1>';
+                return;
+            }
+            
+            // As user requested Octava de Pascua y Domingo, and checking Oficio Divino
+            // Let's generate one normal, and one with Laudes if they want. 
+            // We'll generate Laudes mode to show off all features:
+            
+            // Wait, we need to mock the DOM elements that the JS might expect
+            window.document.body.insertAdjacentHTML('beforeend', '<input type="hidden" id="grado-liturgico" value="Domingo">');
+            
+            let htmlOut = generarDocumentoNodos(data, "laudes", {
+                isEn: false,
+                showMoniciones: true,
+                showHomilia: true,
+                customBlocks: []
+            });
+            
+            document.getElementById('pdf-view').innerHTML = htmlOut;
+        };
+    </script>
+</body>
+</html>
