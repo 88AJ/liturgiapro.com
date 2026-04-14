@@ -313,6 +313,7 @@ def gemini_etl_node(client, raw_inputs):
             "primera_lectura": { "type": "array", "items": nodo_schema },
             "salmo_responsorial": { "type": "array", "items": nodo_schema },
             "segunda_lectura": { "type": "array", "items": nodo_schema },
+            "secuencia": { "type": "array", "items": nodo_schema },
             "evangelio": { "type": "array", "items": nodo_schema }
           },
           "description": "Extrae y estructura las lecturas, separando las rúbricas iniciales y aclamaciones finales ('Palabra de Dios', 'Te alabamos Señor') usando el array de nodos."
@@ -345,7 +346,7 @@ def gemini_etl_node(client, raw_inputs):
         response_schema=etl_schema,
         max_output_tokens=8192,
         temperature=0.0,
-        system_instruction="Eres un procesador ETL implacablemente estricto para un Missal Operativo. Tu único propósito es ingerir los textos litúrgicos crudos y reestructurarlos en árboles sintácticos (AST). PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes texto fuera del JSON. 2. DEBES segmentar ontológicamente los textos en bloques ordenados. Separa 'rubricas', 'dialogos' y 'proclamacion'. 3. APLICA LA ORDENACIÓN DE LAS LECTURAS (OLM): - El título o cita de la lectura ('rubrica') DEBE usar el formato 'Lectura del libro de...', 'Lectura de la carta...', o 'Lectura del santo Evangelio...'. Prohibido usar 'Comienzo de...' o 'Continuación de...'. Usa 'carta a los Hebreos' (sin decir San Pablo) y 'Lamentaciones' (sin decir Jeremías). - La 'proclamacion' principal de la Palabra (Hagiografía/Bíblica) DEBE arrancar siempre con un Íncipit oficial si el contexto lo admite o le fue amputado ('En aquel tiempo...', 'En aquellos días...', 'Hermanos...', 'Así dice el Señor...'). - ELIMINA las aclamaciones finales ('Palabra de Dios / Te alabamos Señor', 'Palabra del Señor / Gloria a ti...') del texto procesado, ya que el motor base las renderizará automáticamente. 4. MANDATO DE INTEGRIDAD ABSOLUTA: ESTÁ ESTRICTAMENTE PROHIBIDO RESUMIR, PARAFRASEAR O ACORTAR LA 'PROCLAMACION'. DEBES DEVOLVER EL TEXTO HAGIOGRÁFICO/BÍBLICO ÍNTEGRO, PALABRA POR PALABRA. OMITIR UNA SOLA ORACIÓN SE CONSIDERARÁ UNA FALLA CRÍTICA EN LA EXTRACCIÓN."
+        system_instruction="Eres un procesador ETL implacablemente estricto para un Missal Operativo. Tu único propósito es ingerir los textos litúrgicos crudos y reestructurarlos en árboles sintácticos (AST). PROHIBICIONES Y MANDATOS ABSOLUTOS: 1. JAMÁS generes texto fuera del JSON. 2. DEBES segmentar ontológicamente los textos en bloques ordenados. Separa 'rubricas', 'dialogos' y 'proclamacion'. 3. APLICA LA ORDENACIÓN DE LAS LECTURAS (OLM): - El título o cita de la lectura ('rubrica') DEBE usar el formato 'Lectura del libro de...', 'Lectura de la carta...', o 'Lectura del santo Evangelio...'. Prohibido usar 'Comienzo de...' o 'Continuación de...'. - Si el corpus incluye una 'Secuencia' (como en Pentecostés), extráela bajo la llave 'secuencia', mapeando sus estrofas como proclamación lírica. - ELIMINA las aclamaciones finales ('Palabra de Dios', 'Gloria a ti...') del texto procesado, ya que el motor base las renderizará automáticamente. 4. MANDATO DE INTEGRIDAD ABSOLUTA: ESTÁ ESTRICTAMENTE PROHIBIDO RESUMIR O ACORTAR LA 'PROCLAMACION'. DEBES DEVOLVER EL TEXTO HAGIOGRÁFICO/BÍBLICO E HÍMNICO ÍNTEGRO. OMITIR ORACIONES ES UNA FALLA CRÍTICA."
     )
     
     try:
@@ -512,8 +513,10 @@ def execute_scraper(start_date_str, end_date_str):
                     if 'liturgia_palabra_estructurada' in etl_data:
                         lp = etl_data['liturgia_palabra_estructurada']
                         # Si existe, reemplazamos el texto crudo con los bloques AST
-                        for key in ['primera_lectura', 'salmo_responsorial', 'segunda_lectura', 'evangelio']:
-                            if lp.get(key) is not None and key in data_es:
+                        for key in ['primera_lectura', 'salmo_responsorial', 'segunda_lectura', 'secuencia', 'evangelio']:
+                            if lp.get(key) is not None:
+                                if key not in data_es:
+                                    data_es[key] = {}
                                 data_es[key]['nodos'] = lp[key]
                         
                     if 'repertorio_sugerido' in etl_data:
@@ -536,7 +539,7 @@ def execute_scraper(start_date_str, end_date_str):
         if 'liturgia_palabra' not in db[date_key]:
             db[date_key]['liturgia_palabra'] = {}
             
-        for key in ['primera_lectura', 'salmo_responsorial', 'segunda_lectura', 'evangelio']:
+        for key in ['primera_lectura', 'salmo_responsorial', 'segunda_lectura', 'secuencia', 'evangelio']:
             if key not in db[date_key]['liturgia_palabra']:
                 db[date_key]['liturgia_palabra'][key] = {}
             if key in data_es:

@@ -59,11 +59,11 @@ def extract_ordo_for_date(date_str):
     Por favor, busca la instrucción para el día exacto: {date_str} (Día {date_obj.day} del mes {meses_es[date_obj.month - 1]}).
     
     ESTRUCTURA Y PRECEDENCIA CANÓNICA (REGLAS DE ORO):
-    1. Si es la Octava de Pascua (ej. Lunes de la Octava de Pascua), DEBES asignar Rango Litúrgico 1 (Solemnidad) y suprimir las memorias de cualquier santo registrado en esa fecha, colocándolos ÚNICAMENTE en `memoria_suprimida`.
-    2. El título principal de celebración va en `titulo_primario` (ej. LUNES DE LA OCTAVA DE PASCUA).
-    3. Determina el color litúrgico y escríbelo en `color` (Blanco, Rojo, Morado, Verde).
-    4. El grado litúrgico va en `grado` (FERIA, MEMORIA, FIESTA, SOLEMNIDAD, DOMINGO).
-    5. Modificadores obligatorios: Analiza el contexto. Si cae dentro de la Octava de Pascua, en el array `modificadores` DEBES incluir exactamente estos strings: "gloria_obligatorio", "secuencia_obligatoria", "aleluya_pascual".
+    1. RESOLUCIÓN DE CONFLICTOS: Si una Solemnidad compite con una memoria, la memoria de cualquier santo se suprime de `titulo_primario` y se coloca ÚNICAMENTE en `memoria_suprimida`. (Ej: Rango 1 = Solemnidad, 4 = Feria).
+    2. ASCENSIÓN Y PENTECOSTÉS: Transcribe fielmente lo que dicte el PDF para esta sede (la Ascensión fluctúa). Pentecostés EXIGE los modificadores "gloria_obligatorio", "credo_obligatorio" y "secuencia_obligatoria".
+    3. MARÍA, MADRE DE LA IGLESIA: Memoria obligatoria siempre celebrada el Lunes pos-Pentecostés (Rango 3, Blanco). Si la detectas, impón su formulario propio.
+    4. TRANSICIÓN A TIEMPO ORDINARIO: Inmediatamente después del domingo de Pentecostés, DEBES eliminar el modificador "aleluya_pascual". El color litúrgico regresa al Verde para las Ferias.
+    5. MODIFICADORES OBLIGATORIOS: Añade al array `modificadores` triggers como "gloria_obligatorio", "secuencia_obligatoria", "credo_obligatorio" o "aleluya_pascual" estrictamente según proceda en el Derecho para esa fecha concreta.
     
     Debes devolver un JSON exacto sobre qué procede para este día, incluyendo:
     - fecha: YYYY-MM-DD
