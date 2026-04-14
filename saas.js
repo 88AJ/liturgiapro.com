@@ -109,7 +109,6 @@ function RENDERIZAR_NODO(nodo) {
     
     nodo.texto = SANITIZAR_TEXTO(nodo.texto);
     
-<<<<<<< HEAD
     if (nodo.tipo_texto === 'SuperTitulo') {
         return `<h2 class="titulo-rito">${nodo.texto}</h2>\n`;
     } else if (nodo.tipo_texto === 'Titulo') {
@@ -123,28 +122,6 @@ function RENDERIZAR_NODO(nodo) {
         return `<div class="oracion-capitular" style="text-align:justify; margin-bottom: 15px; margin-top: 10px;">${nodo.texto}</div>\n`;
     } else if (nodo.tipo_texto === 'Proclamacion') {
         return window.formatLectura ? window.formatLectura(nodo.texto) : `<div class="oracion-capitular" style="text-align:justify; line-height: 1.5; margin-bottom: 20px;">${nodo.texto}</div>\n`;
-=======
-    // Función auxiliar para colorear sólo los símbolos litúrgicos permitidos
-    const enrojecerSimbolos = (txt) => {
-        return txt
-            .replace(/^(V\.|V\/|S\.|V |℣\.)\s*/i, '<span class="red-symbol">℣. </span>')
-            .replace(/^(R\.|R\/|T\.|R |℟\.)\s*/i, '<span class="red-symbol">℟. </span>')
-            .replace(/✠/g, '<span class="red-symbol">✠</span>')
-            .replace(/☩/g, '<span class="red-symbol">✠</span>');
-    };
-
-    if (nodo.tipo_texto === 'SuperTitulo') {
-        return `<div class="dominic-title">${nodo.texto}</div>\n`;
-    } else if (nodo.tipo_texto === 'Titulo') {
-        return `<div class="dominic-section">${nodo.texto}</div>\n`;
-    } else if (nodo.tipo_texto === 'Instruccion' || nodo.tipo_texto === 'Simbolo') {
-        return `<div class="dominic-rubric">${enrojecerSimbolos(nodo.texto)}</div>\n`;
-    } else if (nodo.tipo_texto === 'Monicion') {
-        return `<div class="dominic-monicion"><em>${nodo.texto}</em></div>\n`;
-    } else if (nodo.tipo_texto === 'Capitular' || nodo.tipo_texto === 'Proclamacion') {
-        // Nada de letras capitulares. Bloque de texto estándar.
-        return `<div class="dominic-body">${enrojecerSimbolos(nodo.texto)}</div>\n`;
->>>>>>> 286a656ae969d591892e19583562f7824b903b65
     } else {
         let t = nodo.texto.trim();
         let prefix = "";
@@ -152,7 +129,6 @@ function RENDERIZAR_NODO(nodo) {
         if (nodo.tipo_texto === 'Pronunciado') {
             if (nodo.actor === 'Sacerdote') {
                 if (nodo.estado_voz === 'Secreta') {
-<<<<<<< HEAD
                     return `<div style="font-style: italic; color: #444; margin-bottom: 10px; margin-top: 5px;">${t}</div>\n`;
                 }
                 // Si la oración no tiene prefijo, no lo forzamos. Se asume que el Sacerdote lo lee con voz normal.
@@ -170,34 +146,6 @@ function RENDERIZAR_NODO(nodo) {
         }
         
         return `<div style="margin-bottom: 10px;">${t}</div>\n`;
-=======
-                    return `<div class="dominic-rubric">${t}</div>\n`;
-                }
-                
-                // Si explícitamente tiene V., lo reemplazamos por símbolo rojo.
-                if (t.match(/^(V\.|V\/|S\.|V |℣\.)/i)) {
-                    t = enrojecerSimbolos(t);
-                } else {
-                    // Si no tiene prefijo pero es diálogo, inyectar el símbolo V explícitamente
-                    if(nodo.id && nodo.id.includes('_sac')) {
-                         // Only prefix if it's part of a short dialogue or responsory. We'll rely on text match.
-                    }
-                }
-                
-                return `<div class="dominic-body">${t}</div>\n`;
-            } else if (nodo.actor === 'Asamblea') {
-                if (!t.match(/^(R\.|R\/|T\.|R |℟\.)/i)) {
-                    prefix = `<span class="red-symbol">℟. </span>`;
-                } else {
-                    t = t.replace(/^(R\.|R\/|T\.|R |℟\.)\s*/i, "");
-                    prefix = `<span class="red-symbol">℟. </span>`;
-                }
-                return `<div class="dominic-body dominic-indent"><strong>${prefix}${t}</strong></div>\n`;
-            }
-        }
-        
-        return `<div class="dominic-body">${enrojecerSimbolos(t)}</div>\n`;
->>>>>>> 286a656ae969d591892e19583562f7824b903b65
     }
 }
 
