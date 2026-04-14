@@ -50,7 +50,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     let Flag_DobleAleluya_Despedida = (ES_PASCUA_PENTECOSTES || ES_OCTAVA_PASCUA);
     let Flag_Oracion_Pueblo = isCuaresma;
 
-    const cantos = obtenerCantosPorTiempo(TIEMPO_LIT, isEn);
+    const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(TIEMPO_LIT, isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
 
     // BLOQUE A: RITOS INICIALES
     let bInicial = new BloqueLiturgico("ritos_iniciales");
@@ -362,7 +362,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     const OFICIO = hora ? (hora === "laudes" ? "Laudes" : (hora === "visperas" ? "Visperas" : "Completas")) : null;
     
     let SECUENCIA_LITURGICA = [];
-    const cantos = obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn);
+    const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
     const ord = window.DbOrdinario.ordinario;
 
     const checkAccion = (bloque_id) => {
@@ -482,6 +482,15 @@ function generarDocumentoNodos(data, hora, options = {}) {
         bPalabra.addRubrica(lp.segunda_lectura.cita || "");
         bPalabra.addLectura(lp.segunda_lectura.texto || "");
         bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+    }
+
+    if (lp.secuencia) {
+        bPalabra.addTitulo(isEn ? "Sequence" : "Secuencia");
+        if (lp.secuencia.nodos) {
+            // Placeholder for native AST appending
+        } else if (lp.secuencia.texto) {
+            bPalabra.addLectura(lp.secuencia.texto);
+        }
     }
 
     bPalabra.addTitulo(isEn ? "Gospel Acclamation" : "Aclamación antes del Evangelio");
