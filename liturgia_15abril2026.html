@@ -2,172 +2,256 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Liturgia PRO — Martes de la Octava de Pascua · 15 Abril 2026</title>
+    <title>Liturgia PRO — Miércoles de la II semana de Pascua</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="saas.css">
-    <script src="data/liturgia_db.js"></script>
-    <script src="data/cantos_db.js"></script>
-    <script src="saas.js"></script>
-    <script src="motor_nodos.js"></script>
     <style>
-        body { background: #eee; margin: 0; }
+        body { background: #eee; margin: 0; font-family: 'EB Garamond', serif; }
         .toolbar {
-            background: #1a1a2e;
-            color: white;
-            padding: 16px 32px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-family: 'Outfit', sans-serif;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            background: #1a1a2e; color: white; padding: 16px 32px; display: flex; align-items: center;
+            font-family: 'Outfit', sans-serif; position: sticky; top: 0; z-index: 100;
         }
-        .toolbar h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            margin: 0;
-            flex: 1;
-            color: #e8c97a;
-        }
+        .toolbar h1 { font-family: 'Cinzel', serif; font-size: 1.1rem; margin: 0; flex: 1; color: #e8c97a; }
         .btn-pdf {
-            background: #8b0000;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            cursor: pointer;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: background 0.2s;
+            background: #8b0000; color: white; border: none; padding: 10px 24px; border-radius: 6px;
+            font-family: 'Outfit', sans-serif; font-size: 1rem; cursor: pointer; font-weight: 600;
         }
-        .btn-pdf:hover { background: #a80000; }
         .print-canvas {
-            background: white;
-            max-width: 820px;
-            margin: 40px auto;
-            padding: 60px 70px;
+            background: white; max-width: 820px; margin: 40px auto; padding: 60px 70px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            min-height: 1000px;
         }
+        h1.main-title { color: #8b0000; font-family: 'Cinzel', serif; text-align: center; margin-bottom: 0; font-size: 24px; }
+        p.subtitle { text-align: center; color: #666; font-style: italic; font-size: 16px; margin-top: 5px; }
+        h2.section-title { color: #8b0000; font-family: 'Cinzel', serif; margin-top: 30px; font-size: 20px; text-transform: uppercase; border-bottom: 1px solid #8b0000; padding-bottom: 5px; }
+        h3.part-title { color: #c0392b; font-family: 'EB Garamond', serif; font-size: 18px; margin-top: 20px; }
+        p.quote { font-style: italic; color: #555; text-align: center; }
+        p.text { text-align: justify; line-height: 1.8; font-size: 18px; }
+        .rubric { color: #d35400; font-style: italic; font-size: 15px; margin: 5px 0; }
+        
+        .verse-block { margin-bottom: 15px; }
+        
         @media print {
             .toolbar { display: none !important; }
             body { background: white; }
-            .print-canvas {
-                margin: 0;
-                padding: 15mm 20mm;
-                box-shadow: none;
-                max-width: 100%;
-            }
+            .print-canvas { margin: 0; padding: 15mm; box-shadow: none; max-width: 100%; }
         }
     </style>
 </head>
 <body>
-
 <div class="toolbar">
-    <h1>✝ LiturgiaPRO · Martes de la Octava de Pascua — 15 de Abril de 2026</h1>
+    <h1>✝ LiturgiaPRO · Miércoles de la II semana de Pascua</h1>
     <button class="btn-pdf" onclick="window.print()">🖨️ Exportar PDF</button>
 </div>
-
-<div class="print-canvas pdf-container" id="pdf-view">
-    <p style="color:#999; font-family:'Outfit',sans-serif; text-align:center; padding:60px 0;">
-        ⏳ Cargando Liturgia…
-    </p>
+<div class="print-canvas">
+    <h1 class="main-title">✝ MIÉRCOLES DE LA II SEMANA DE PASCUA</h1>
+    <p class="subtitle">Miércoles 15 de Abril de 2026 · Semana II de Pascua</p>
+    
+    <h2 class="section-title">Laudes</h2>
+<h3 class="part-title">Salmo 1</h3>
+<p class="rubric">Antífona:</p><p class="text"><strong>Te vio el mar, ¡oh Dios!, te vio el mar mientras guiabas a tu pueblo por las aguas caudalosas. Aleluya.</strong></p>
+<div class="verse-block">
+<p class="text">Salmo 76</p>
+<p class="text">RECUERDO DEL PASADO GLORIOSO DE ISRAEL</p>
+<p class="text">Alzo mi voz a Dios gritando,</p>
+<p class="text">alzo mi voz a Dios para que me oiga.</p>
+<p class="text">En mi angustia te busco, Señor mío;</p>
+<p class="text">de noche extiendo las manos sin descanso,</p>
+<p class="text">y mi alma rehúsa el consuelo.</p>
+<p class="text">Cuando me acuerdo de Dios, gimo,</p>
+<p class="text">y meditando me siento desfallecer.</p>
+<p class="text">Sujetas los párpados de mis ojos,</p>
+<p class="text">y la agitación no me deja hablar.</p>
+<p class="text">Repaso los días antiguos,</p>
+<p class="text">recuerdo los años remotos;</p>
+<p class="text">de noche lo pienso en mis adentros,</p>
+<p class="text">y meditándolo me pregunto:</p>
+<p class="text">¿Es que el Señor nos rechaza para siempre</p>
+<p class="text">y ya no volverá a favorecernos?</p>
+<p class="text">¿Se ha agotado ya su misericordia,</p>
+<p class="text">se ha terminado para siempre su promesa?</p>
+<p class="text">¿Es que Dios se ha olvidado de su bondad,</p>
+<p class="text">o la cólera cierra sus entrañas?</p>
+<p class="text">Y me digo: ¡Qué pena la mía!</p>
+<p class="text">¡Se ha cambiado la diestra del Altísimo!</p>
+<p class="text">Recuerdo las proezas del Señor;</p>
+<p class="text">sí, recuerdo tus antiguos portentos,</p>
+<p class="text">medito todas tus obras</p>
+<p class="text">y considero tus hazañas.</p>
+<p class="text">Dios mío, tus caminos son santos:</p>
+<p class="text">¿qué dios es grande como nuestro Dios?</p>
+<p class="text">Tú, ¡oh Dios!, haciendo maravillas,</p>
+<p class="text">mostraste tu poder a los pueblos;</p>
+<p class="text">con tu brazo rescataste a tu pueblo,</p>
+<p class="text">a los hijos de Jacob y de José.</p>
+<p class="text">Te vio el mar, ¡oh Dios!,</p>
+<p class="text">te vio el mar y tembló,</p>
+<p class="text">las olas se estremecieron.</p>
+<p class="text">Las nubes descargaban sus aguas,</p>
+<p class="text">retumbaban los nubarrones,</p>
+<p class="text">tus saetas zigzagueaban.</p>
+<p class="text">Rodaba el fragor de tu trueno,</p>
+<p class="text">los relámpagos deslumbraban el orbe,</p>
+<p class="text">la tierra retembló estremecida.</p>
+<p class="text">Tú te abriste camino por las aguas,</p>
+<p class="text">un vado por las aguas caudalosas,</p>
+<p class="text">y no quedaba rastro de tus huellas:</p>
+<p class="text">mientras guiabas a tu pueblo, como a un rebaño,</p>
+<p class="text">por la mano de Moisés y de Aarón.</p>
+<p class="text">Se dice:</p>
+<p class="text">Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</p>
+<p class="text">Se puede repetir la antífona:</p>
+<p class="text">Te vio el mar, ¡oh Dios!, te vio el mar mientras guiabas a tu pueblo por las aguas caudalosas. Aleluya.</p>
 </div>
+<p class="rubric">Antífona:</p><p class="text"><strong>Te vio el mar, ¡oh Dios!, te vio el mar mientras guiabas a tu pueblo por las aguas caudalosas. Aleluya.</strong></p>
+<h3 class="part-title">Cántico del Antiguo Testamento</h3>
+<p class="rubric">Antífona:</p><p class="text"><strong>El Señor da la muerte y la vida. Aleluya.</strong></p>
+<div class="verse-block">
+<p class="text">Cántico</p>
+<p class="text">1 Sam 2, 1-10</p>
+<p class="text">ALEGRÍA DE LOS HUMILDES EN DIOS</p>
+<p class="text">Mi corazón se regocija por el Señor,</p>
+<p class="text">mi poder se exalta por Dios;</p>
+<p class="text">mi boca se ríe de mis enemigos,</p>
+<p class="text">porque gozo con tu salvación.</p>
+<p class="text">No hay santo como el Señor,</p>
+<p class="text">no hay roca como nuestro Dios.</p>
+<p class="text">No multipliquéis discursos altivos,</p>
+<p class="text">no echéis por la boca arrogancias,</p>
+<p class="text">porque el Señor es un Dios que sabe;</p>
+<p class="text">él es quien pesa las acciones.</p>
+<p class="text">Se rompen los arcos de los valientes,</p>
+<p class="text">mientras los cobardes se ciñen de valor;</p>
+<p class="text">los hartos se contratan por el pan,</p>
+<p class="text">mientras los hambrientos no tienen ya que trabajar;</p>
+<p class="text">la mujer estéril da a luz siete hijos,</p>
+<p class="text">mientras la madre de muchos se marchita.</p>
+<p class="text">El Señor da la muerte y la vida,</p>
+<p class="text">hunde en el abismo y levanta;</p>
+<p class="text">da la pobreza y la riqueza,</p>
+<p class="text">humilla y enaltece.</p>
+<p class="text">Él levanta del polvo al desvalido,</p>
+<p class="text">alza de la basura al pobre,</p>
+<p class="text">para hacer que se siente entre príncipes</p>
+<p class="text">y que herede un trono de gloria;</p>
+<p class="text">pues del Señor son los pilares de la tierra,</p>
+<p class="text">y sobre ellos afianzó el orbe.</p>
+<p class="text">Él guarda los pasos de sus amigos,</p>
+<p class="text">mientras los malvados perecen en las tinieblas,</p>
+<p class="text">porque el hombre no triunfa por su fuerza.</p>
+<p class="text">El Señor desbarata a sus contrarios,</p>
+<p class="text">el Altísimo truena desde el cielo,</p>
+<p class="text">el Señor juzga hasta el confín de la tierra.</p>
+<p class="text">Él da fuerza a su Rey,</p>
+<p class="text">exalta el poder de su Ungido.</p>
+<p class="text">Se dice:</p>
+<p class="text">Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</p>
+<p class="text">Se puede repetir la antífona:</p>
+<p class="text">El Señor da la muerte y la vida. Aleluya.</p>
+</div>
+<p class="rubric">Antífona:</p><p class="text"><strong>El Señor da la muerte y la vida. Aleluya.</strong></p>
+<h3 class="part-title">Salmo 2</h3>
+<p class="rubric">Antífona:</p><p class="text"><strong>Amanece la luz para el justo y la alegría para los rectos de corazón. Aleluya.</strong></p>
+<div class="verse-block">
+<p class="text">Salmo 96</p>
+<p class="text">EL SEÑOR ES UN REY MAYOR QUE TODOS LOS DIOSES</p>
+<p class="text">El Señor reina, la tierra goza,</p>
+<p class="text">se alegran las islas innumerables.</p>
+<p class="text">Tiniebla y nube lo rodean,</p>
+<p class="text">justicia y derecho sostienen su trono.</p>
+<p class="text">Delante de él avanza fuego</p>
+<p class="text">abrasando en torno a los enemigos;</p>
+<p class="text">sus relámpagos deslumbran el orbe,</p>
+<p class="text">y, viéndolos, la tierra se estremece.</p>
+<p class="text">Los montes se derriten como cera</p>
+<p class="text">ante el dueño de toda la tierra;</p>
+<p class="text">los cielos pregonan su justicia,</p>
+<p class="text">y todos los pueblos contemplan su gloria.</p>
+<p class="text">Los que adoran estatuas se sonrojan,</p>
+<p class="text">los que ponen su orgullo en los ídolos;</p>
+<p class="text">ante él se postran todos los dioses.</p>
+<p class="text">Lo oye Sión, y se alegra,</p>
+<p class="text">se regocijan las ciudades de Judá</p>
+<p class="text">por tus sentencias, Señor;</p>
+<p class="text">porque tú eres, Señor,</p>
+<p class="text">altísimo sobre toda la tierra,</p>
+<p class="text">encumbrado sobre todos los dioses.</p>
+<p class="text">El Señor ama al que aborrece el mal,</p>
+<p class="text">protege la vida de sus fieles</p>
+<p class="text">y los libra de los malvados.</p>
+<p class="text">Amanece la luz para el justo,</p>
+<p class="text">y la alegría para los rectos de corazón.</p>
+<p class="text">Alegraos, justos, con el Señor,</p>
+<p class="text">celebrad su santo nombre.</p>
+<p class="text">Se dice:</p>
+<p class="text">Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</p>
+<p class="text">Se puede repetir la antífona:</p>
+<p class="text">Amanece la luz para el justo y la alegría para los rectos de corazón. Aleluya.</p>
+</div>
+<p class="rubric">Antífona:</p><p class="text"><strong>Amanece la luz para el justo y la alegría para los rectos de corazón. Aleluya.</strong></p>
+<h3 class="part-title">Lectura Breve</h3>
+<p class="quote">Juan 3, 16-21</p>
+<p class="text">"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios.
 
-<script>
-window.onload = () => {
-    const fecha = '2026-04-15';
-    const data = window.liturgiaData && window.liturgiaData[fecha];
-    const el = document.getElementById('pdf-view');
+La causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios".</p>
+<h3 class="part-title">Responsorio Breve</h3>
+<p class="text">V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.<br>R. El Señor ha resucitado del sepulcro. Aleluya, aleluya.<br>V. El que por nosotros colgó del madero.<br>R. Aleluya, aleluya.<br>V. Gloria al Padre, y al Hijo, y al Espíritu Santo.<br>R. El Señor ha resucitado del sepulcro. Aleluya, aleluya.</p>
+<h3 class="part-title">Cántico Evangélico (Benedictus)</h3>
+<p class="rubric">Antífona:</p><p class="text"><strong>Tanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya.</strong></p>
+<div class="verse-block">
+<p class="text">Bendito sea el Señor, Dios de Israel,</p>
+<p class="text">porque ha visitado y redimido a su pueblo,</p>
+<p class="text">suscitándonos una fuerza de salvación</p>
+<p class="text">en la casa de David, su siervo,</p>
+<p class="text">según lo había predicho desde antiguo</p>
+<p class="text">por boca de sus santos profetas.</p>
+<p class="text">Es la salvación que nos libra de nuestros enemigos</p>
+<p class="text">y de la mano de todos los que nos odian;</p>
+<p class="text">ha realizado así la misericordia que tuvo con</p>
+<p class="text">nuestros padres,</p>
+<p class="text">recordando su santa alianza</p>
+<p class="text">y el juramento que juró a nuestro padre Abraham.</p>
+<p class="text">Para concedernos que, libres de temor,</p>
+<p class="text">arrancados de la mano de los enemigos,</p>
+<p class="text">le sirvamos con santidad y justicia,</p>
+<p class="text">en su presencia, todos nuestros días.</p>
+<p class="text">Y a ti, niño, te llamarán profeta del Altísimo,</p>
+<p class="text">porque irás delante del Señor</p>
+<p class="text">a preparar sus caminos,</p>
+<p class="text">anunciando a su pueblo la salvación,</p>
+<p class="text">el perdón de sus pecados.</p>
+<p class="text">Por la entrañable misericordia de nuestro Dios,</p>
+<p class="text">nos visitará el sol que nace de lo alto,</p>
+<p class="text">para iluminar a los que viven en tiniebla</p>
+<p class="text">y en sombra de muerte,</p>
+<p class="text">para guiar nuestros pasos</p>
+<p class="text">por el camino de la paz.</p>
+<p class="text">Se dice:</p>
+<p class="text">Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</p>
+<p class="text">Se puede repetir la antífona:</p>
+<p class="text">Tanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya.</p>
+</div>
+<p class="rubric">Antífona:</p><p class="text"><strong>Tanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya.</strong></p>
+<h3 class="part-title">Preces</h3>
+<p class="text">Dirijámonos a Dios,   que quiso manifestar a Jesús resucitado a los apóstoles, y   digámosle suplicantes:<br>R.<br>Ilumínanos, Señor, con la claridad de tu Cristo.<br>Señor, fuente de toda luz, te aclamamos con acción   de gracias en esta mañana, porque nos has llamado   a participar de tu luz admirable<br>R.<br>y nos has querido   dar la salvación.<br>Haz, Señor, que la fuerza del   Espíritu Santo nos purifique y nos fortalezca,<br>R.<br>para que   con nuestro trabajo hagamos más humana la vida de los   hombres.<br>Haz que nos entreguemos de tal modo al servicio de nuestros hermanos,<br>R.<br>que logremos hacer de la   familia humana una ofrenda agradable a tus ojos.<br>Llénanos, desde el principio de este nuevo día, de tu misericordia,<br>R.<br>para que en toda nuestra jornada nos gocemos en   tu alabanza.<br>Se pueden añadir algunas intenciones libres<br>Concluyamos  nuestra oración, diciendo juntos las palabras de Jesús, nuestro  maestro:<br>Padre nuestro...</p>
 
-    if (!data) {
-        el.innerHTML = `
-            <div style="text-align:center; padding:60px; font-family:'Outfit',sans-serif; color:#c0392b;">
-                <h2>⚠️ No hay datos para ${fecha}</h2>
-                <p>Verifica que el scraper haya corrido correctamente.</p>
-            </div>`;
-        return;
-    }
+    <h2 class="section-title">Liturgia de la Palabra</h2>
+<h3 class="part-title">Primera Lectura</h3>
+<p class="quote">Del libro de los Hechos de los apóstoles (Hechos 5, 17-26)</p>
+<p class="text">En aquellos días, el sumo sacerdote y los de su partido, que eran los saduceos, llenos de ira contra los apóstoles, los mandaron aprehender y los metieron en la cárcel. Pero durante la noche, un ángel del Señor les abrió las puertas, los sacó de ahí y les dijo: "Vayan al templo y pónganse a enseñar al pueblo todo lo referente a esta nueva vida". Para obedecer la orden, se fueron de madrugada al templo y ahí se pusieron a enseñar.<br><br>Cuando llegó el sumo sacerdote con los de su partido convocaron al sanedrín, es decir, a todo el senado de los hijos de Israel, y mandaron traer de la cárcel a los presos. Al llegar los guardias a la cárcel, no los hallaron y regresaron a informar: "Encontramos la cárcel bien cerrada y a los centinelas en sus puestos, pero al abrir no encontramos a nadie adentro".<br><br>Al oír estas palabras, el jefe de la guardia del templo y los sumos sacerdotes se quedaron sin saber qué pensar; pero en ese momento llegó uno y les dijo: "Los hombres que habían metido en la cárcel están en el templo, enseñando al pueblo".<br><br>Entonces el jefe de la guardia, con sus hombres, trajo a los apóstoles, pero sin violencia, porque temían ser apedreados por el pueblo.</p>
+<h3 class="part-title">Salmo Responsorial</h3>
+<p class="quote">Salmo 33</p>
+<p class="text"><strong>R.</strong></p>
+<p class="text">Haz la prueba y verás qué bueno es el Señor.<br><br>Bendeciré al Señor a todas horas, no cesará mi boca de alabarlo. Yo me siento orgulloso del Señor, que se alegre su pueblo al escucharlo.<br><br>Proclamemos la grandeza del Señor y alabamos todos juntos su poder. Cuando acudí al Señor, me hizo caso y me libró de todos mis temores.<br><br>Confía en el Señor y saltarás de gusto: jamás te sentirás decepcionado, porque el Señor escucha el clamor de los pobres y los libra de todas sus angustias.<br><br>Junto a aquellos que temen al Señor el ángel del Señor acampa y los protege. Haz la prueba y verás qué bueno es el Señor. dichoso el hombre que se refugia en él.</p>
+<h3 class="part-title">Evangelio</h3>
+<p class="quote">Del santo Evangelio según San Juan (Juan 3, 16-21)</p>
+<p class="text">"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios.<br><br>La causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios".</p>
+<h2 class="section-title">Oraciones</h2>
+<p class="rubric">Oración colecta</p>
+<p class="text">Asiste, Señor, a tu familia con tu bondad, para que, por tu gracia, nos veamos libres de los peligros del mundo y alcancemos los dones de la vida eterna. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos.</p>
+<p class="rubric">Oración sobre las ofrendas</p>
+<p class="text">Señor, que por el santo intercambio de este sacrificio nos haces partícipes de tu única y suprema divinidad, concédenos que, así como conocemos tu verdad, de igual modo la sigamos con una conducta digna. Por Jesucristo, nuestro Señor.</p>
+<p class="rubric">Oración después de la comunión</p>
+<p class="text">Señor, ayúdanos con bondad a tu pueblo, y ya que nos has alimentado con los misterios celestiales, haz que pasemos de nuestra antigua vida de pecado a la novedad de la vida eterna. Por Jesucristo, nuestro Señor.</p>
 
-    // Cantos configurados
-    const cantos = window.cantosData || {};
-
-    try {
-        // Modo: Misa con Laudes integradas
-        const htmlOut = generarDocumentoNodos(data, 'laudes', {
-            isEn: false,
-            showMoniciones: true,
-            showHomilia: false,
-            customBlocks: []
-        });
-        el.innerHTML = htmlOut;
-    } catch(e) {
-        // Fallback: modo solo Misa
-        try {
-            const htmlOut = generarDocumentoNodos(data, 'misa', {
-                isEn: false,
-                showMoniciones: true,
-                showHomilia: false,
-                customBlocks: []
-            });
-            el.innerHTML = htmlOut;
-        } catch(e2) {
-            el.innerHTML = `
-                <div style="font-family:'EB Garamond',serif; padding:20px;">
-                    <h1 style="color:#8b0000; font-family:'Cinzel',serif; text-align:center;">
-                        ✝ MARTES DE LA OCTAVA DE PASCUA
-                    </h1>
-                    <p style="text-align:center; color:#666; font-style:italic;">15 de Abril de 2026 · Color: Blanco</p>
-                    <hr style="border-color:#8b0000; margin:20px 0;">
-                    <h2 style="color:#8b0000;">Liturgia de la Palabra</h2>
-                    ${renderFallback(data)}
-                    <hr style="border-color:#8b0000; margin:20px 0;">
-                    <p style="color:red; font-size:0.85rem;">⚠️ Error motor: ${e2.message}</p>
-                </div>`;
-        }
-    }
-};
-
-function renderFallback(data) {
-    let html = '';
-    const lp = data.liturgia_palabra || {};
-
-    if (lp.primera_lectura) {
-        const pl = lp.primera_lectura;
-        html += `<h3 style="color:#8b0000;">Primera Lectura</h3>
-                 <p style="font-style:italic;">${pl.cita || pl.cita_formula || ''}</p>
-                 <p style="text-align:justify; line-height:1.8;">${(pl.texto||'').replace(/\n/g,'<br>')}</p>`;
-    }
-    if (lp.salmo_responsorial) {
-        const s = lp.salmo_responsorial;
-        html += `<h3 style="color:#8b0000;">Salmo Responsorial</h3>
-                 <p style="font-style:italic;">${s.cita||''}</p>
-                 <p><strong>${s.respuesta||''}</strong></p>
-                 <p style="text-align:justify; line-height:1.8;">${(s.texto||'').replace(/\n/g,'<br>')}</p>`;
-    }
-    if (lp.evangelio) {
-        const ev = lp.evangelio;
-        html += `<h3 style="color:#8b0000;">Evangelio</h3>
-                 <p style="font-style:italic;">${ev.cita || ev.cita_formula || ''}</p>
-                 <p style="text-align:justify; line-height:1.8;">${(ev.texto||ev.texto_en||'').replace(/\n/g,'<br>')}</p>`;
-    }
-    if (data.laudes) {
-        html += `<hr style="border-color:#8b0000; margin:30px 0;">
-                 <h2 style="color:#8b0000;">✝ Laudes</h2>`;
-        const lb = data.laudes.lectura_breve;
-        if (lb) {
-            html += `<h3>Lectura Breve</h3>
-                     <p style="font-style:italic;">${lb.cita||''}</p>
-                     <p style="text-align:justify; line-height:1.8;">${(lb.texto||'').replace(/\n/g,'<br>')}</p>`;
-        }
-    }
-    return html;
-}
-</script>
-
+</div>
 </body>
 </html>
