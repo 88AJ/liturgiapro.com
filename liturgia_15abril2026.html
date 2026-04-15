@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Liturgia PRO — Martes de la Octava de Pascua · 15 Abril 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="saas.css">
+    <script src="data/liturgia_db.js"></script>
+    <script src="data/cantos_db.js"></script>
+    <script src="saas.js"></script>
+    <script src="motor_nodos.js"></script>
+    <style>
+        body { background: #eee; margin: 0; }
+        .toolbar {
+            background: #1a1a2e;
+            color: white;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: 'Outfit', sans-serif;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+        .toolbar h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin: 0;
+            flex: 1;
+            color: #e8c97a;
+        }
+        .btn-pdf {
+            background: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+        .btn-pdf:hover { background: #a80000; }
+        .print-canvas {
+            background: white;
+            max-width: 820px;
+            margin: 40px auto;
+            padding: 60px 70px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            min-height: 1000px;
+        }
+        @media print {
+            .toolbar { display: none !important; }
+            body { background: white; }
+            .print-canvas {
+                margin: 0;
+                padding: 15mm 20mm;
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="toolbar">
+    <h1>✝ LiturgiaPRO · Martes de la Octava de Pascua — 15 de Abril de 2026</h1>
+    <button class="btn-pdf" onclick="window.print()">🖨️ Exportar PDF</button>
+</div>
+
+<div class="print-canvas pdf-container" id="pdf-view">
+    <p style="color:#999; font-family:'Outfit',sans-serif; text-align:center; padding:60px 0;">
+        ⏳ Cargando Liturgia…
+    </p>
+</div>
+
+<script>
+window.onload = () => {
+    const fecha = '2026-04-15';
+    const data = window.liturgiaData && window.liturgiaData[fecha];
+    const el = document.getElementById('pdf-view');
+
+    if (!data) {
+        el.innerHTML = `
+            <div style="text-align:center; padding:60px; font-family:'Outfit',sans-serif; color:#c0392b;">
+                <h2>⚠️ No hay datos para ${fecha}</h2>
+                <p>Verifica que el scraper haya corrido correctamente.</p>
+            </div>`;
+        return;
+    }
+
+    // Cantos configurados
+    const cantos = window.cantosData || {};
+
+    try {
+        // Modo: Misa con Laudes integradas
+        const htmlOut = generarDocumentoNodos(data, 'laudes', {
+            isEn: false,
+            showMoniciones: true,
+            showHomilia: false,
+            customBlocks: []
+        });
+        el.innerHTML = htmlOut;
+    } catch(e) {
+        // Fallback: modo solo Misa
+        try {
+            const htmlOut = generarDocumentoNodos(data, 'misa', {
+                isEn: false,
+                showMoniciones: true,
+                showHomilia: false,
+                customBlocks: []
+            });
+            el.innerHTML = htmlOut;
+        } catch(e2) {
+            el.innerHTML = `
+                <div style="font-family:'EB Garamond',serif; padding:20px;">
+                    <h1 style="color:#8b0000; font-family:'Cinzel',serif; text-align:center;">
+                        ✝ MARTES DE LA OCTAVA DE PASCUA
+                    </h1>
+                    <p style="text-align:center; color:#666; font-style:italic;">15 de Abril de 2026 · Color: Blanco</p>
+                    <hr style="border-color:#8b0000; margin:20px 0;">
+                    <h2 style="color:#8b0000;">Liturgia de la Palabra</h2>
+                    ${renderFallback(data)}
+                    <hr style="border-color:#8b0000; margin:20px 0;">
+                    <p style="color:red; font-size:0.85rem;">⚠️ Error motor: ${e2.message}</p>
+                </div>`;
+        }
+    }
+};
+
+function renderFallback(data) {
+    let html = '';
+    const lp = data.liturgia_palabra || {};
+
+    if (lp.primera_lectura) {
+        const pl = lp.primera_lectura;
+        html += `<h3 style="color:#8b0000;">Primera Lectura</h3>
+                 <p style="font-style:italic;">${pl.cita || pl.cita_formula || ''}</p>
+                 <p style="text-align:justify; line-height:1.8;">${(pl.texto||'').replace(/\n/g,'<br>')}</p>`;
+    }
+    if (lp.salmo_responsorial) {
+        const s = lp.salmo_responsorial;
+        html += `<h3 style="color:#8b0000;">Salmo Responsorial</h3>
+                 <p style="font-style:italic;">${s.cita||''}</p>
+                 <p><strong>${s.respuesta||''}</strong></p>
+                 <p style="text-align:justify; line-height:1.8;">${(s.texto||'').replace(/\n/g,'<br>')}</p>`;
+    }
+    if (lp.evangelio) {
+        const ev = lp.evangelio;
+        html += `<h3 style="color:#8b0000;">Evangelio</h3>
+                 <p style="font-style:italic;">${ev.cita || ev.cita_formula || ''}</p>
+                 <p style="text-align:justify; line-height:1.8;">${(ev.texto||ev.texto_en||'').replace(/\n/g,'<br>')}</p>`;
+    }
+    if (data.laudes) {
+        html += `<hr style="border-color:#8b0000; margin:30px 0;">
+                 <h2 style="color:#8b0000;">✝ Laudes</h2>`;
+        const lb = data.laudes.lectura_breve;
+        if (lb) {
+            html += `<h3>Lectura Breve</h3>
+                     <p style="font-style:italic;">${lb.cita||''}</p>
+                     <p style="text-align:justify; line-height:1.8;">${(lb.texto||'').replace(/\n/g,'<br>')}</p>`;
+        }
+    }
+    return html;
+}
+</script>
+
+</body>
+</html>
