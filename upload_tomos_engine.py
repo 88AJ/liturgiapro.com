@@ -13,6 +13,8 @@ def init_gemini():
     
     return genai.Client(api_key=api_key)
 
+MODEL = "gemini-2.5-flash"
+
 def upload_tomes():
     client = init_gemini()
     tomes = {

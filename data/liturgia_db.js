@@ -184,36 +184,66 @@ window.liturgiaData = {
   },
   "2026-04-12": {
     "oficio": {
-        "himno": "Rey vencedor, apiádate\nde la miseria humana\ny da a tus fieles parte\nen tu victoria santa.\n\nAmén.",
-        "salmo1": { "antifona": "Aleluya, aleluya, aleluya.", "texto": "Salmo 1\nDichoso el hombre..." },
-        "primera_lectura": "Lectura de la primera carta del apóstol San Pedro (1, 1-21)\nPedro, apóstol de Jesucristo...",
-        "segunda_lectura": "De los sermones de San Agustín, obispo\nLa resurrección de Cristo es nuestra esperanza..."
+      "himno": "Rey vencedor, apiádate\nde la miseria humana\ny da a tus fieles parte\nen tu victoria santa.\n\nAmén.",
+      "salmo1": {
+        "antifona": "Aleluya, aleluya, aleluya.",
+        "texto": "Salmo 1\nDichoso el hombre..."
+      },
+      "primera_lectura": "Lectura de la primera carta del apóstol San Pedro (1, 1-21)\nPedro, apóstol de Jesucristo...",
+      "segunda_lectura": "De los sermones de San Agustín, obispo\nLa resurrección de Cristo es nuestra esperanza..."
     },
     "laudes": {
-        "salmo1": {"antifona": "Aleluya, aleluya, aleluya.", "texto": "Oh Dios, tú eres mi Dios, por ti madrugo..."},
-        "cantico_at": {"antifona": "Aleluya, aleluya, aleluya.", "texto": "Cántico de los tres jóvenes..."},
-        "salmo2": {"antifona": "Aleluya, aleluya, aleluya.", "texto": "Cantad al Señor un cántico nuevo..."},
-        "lectura_breve": {"cita": "Hch 10, 40-43", "texto": "Dios lo resucitó al tercer día y le concedió la gracia de manifestarse..."},
-        "responsorio_breve": {"antifona": "Éste es el día en que actuó el Señor: sea nuestra alegría y nuestro gozo. Aleluya."},
-        "cantico_evangelico": {"antifona": "Tomás, porque me has visto has creído -dice el Señor-. Dichosos los que creen sin haber visto. Aleluya.", "texto": "Bendito sea el Señor, Dios de Israel..."},
-        "preces": "A Cristo, el Señor...\n- Rey victorioso, escúchanos.",
-        "oracion_colecta": "Dios de eterna misericordia, que reanimas la fe..."
+      "salmo1": {
+        "antifona": "Se dice:",
+        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+      },
+      "cantico_at": {
+        "antifona": "Se dice:",
+        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+      },
+      "salmo2": {
+        "antifona": "Se dice:",
+        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+      },
+      "lectura_breve": {
+        "cita": "Juan 20, 19-31",
+        "texto": "Al anochecer del día de la resurrección estando cerradas las puertas de la casa donde se hallaban los discípulos por miedo a los judíos se presentó Jesús en medio de ellos y les dijo: «La paz esté con ustedes». Dicho esto les mostró las manos y el costado. Cuando los discípulos vieron al Señor se llenaron de alegría.\n\nDe nuevo les dijo Jesús: «La paz esté con ustedes. Como el Padre me ha enviado así también los envío yo». Después de decir esto sopló sobre ellos y les dijo: «Reciban al Espíritu Santo. A los que les perdonen los pecados les quedarán perdonados; y a los que no se los perdonen les quedarán sin perdonar».\n\nTomás uno de los Doce a quien llamaban el Gemelo no estaba con ellos cuando vino Jesús y los otros discípulos le decían: «Hemos visto al Señor». Pero él les contestó: «Si no veo en sus manos la señal de los clavos y si no meto mi dedo en los agujeros de los clavos y no meto mi mano en su costado no creeré».\n\nOcho días después estaban reunidos los discípulos a puerta cerrada y Tomás estaba con ellos. Jesús se presentó de nuevo en medio de ellos y les dijo: «La paz esté con ustedes». Luego le dijo a Tomás: «Aquí están mis manos; acerca tu dedo. Trae acá tu mano métela en mi costado y no sigas dudando sino cree». Tomás le respondió: «¡Señor mío y Dios mío!» Jesús añadió: «Tú crees porque me has visto; dichosos los que creen sin haber visto».\n\nOtras muchas señales milagrosas hizo Jesús en presencia de sus discípulos pero no están escritas en este libro. Se escribieron éstas para que ustedes crean que Jesús es el Mesías el Hijo de Dios y para que creyendo tengan vida en su nombre."
+      },
+      "responsorio_breve": "",
+      "cantico_evangelico": {
+        "antifona": "",
+        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+      }
     },
     "intermedia": {
-        "himno": "Padre, a ti la gloria... Aleluya.",
-        "salmo1": {"antifona": "Aleluya.", "texto": "Salmo 118..."},
-        "lectura_breve": {"cita": "Lectura Breve", "texto": "Si han resucitado con Cristo..."},
-        "oracion_colecta": "Dios todopoderoso y eterno..."
+      "himno": "Padre, a ti la gloria... Aleluya.",
+      "salmo1": {
+        "antifona": "Aleluya.",
+        "texto": "Salmo 118..."
+      },
+      "lectura_breve": {
+        "cita": "Lectura Breve",
+        "texto": "Si han resucitado con Cristo..."
+      },
+      "oracion_colecta": "Dios todopoderoso y eterno..."
     },
     "completas": {
-        "himno": "Cristo, luz de luz... Aleluya.",
-        "salmo1": {"antifona": "Aleluya.", "texto": "Salmo 90..."},
-        "lectura_breve": {"cita": "Ap 22, 4-5", "texto": "Verán el rostro del Señor..."},
-        "responsorio_breve": "En tus manos, Señor, encomiendo mi espíritu. Aleluya.",
-        "cantico_evangelico": {"antifona": "Sálvanos, Señor, despiertos... Aleluya.", "texto": "Ahora, Señor, según tu promesa..."},
-        "oracion": "Te rogamos, Señor, que nos concedas..."
+      "himno": "Cristo, luz de luz... Aleluya.",
+      "salmo1": {
+        "antifona": "Aleluya.",
+        "texto": "Salmo 90..."
+      },
+      "lectura_breve": {
+        "cita": "Ap 22, 4-5",
+        "texto": "Verán el rostro del Señor..."
+      },
+      "responsorio_breve": "En tus manos, Señor, encomiendo mi espíritu. Aleluya.",
+      "cantico_evangelico": {
+        "antifona": "Sálvanos, Señor, despiertos... Aleluya.",
+        "texto": "Ahora, Señor, según tu promesa..."
+      },
+      "oracion": "Te rogamos, Señor, que nos concedas..."
     },
-
     "color": "Blanco",
     "tiempo_liturgico": "II Domingo de Pascua (De la Divina Misericordia)",
     "antifona_entrada": "Como niños recién nacidos, deseen la leche pura del espíritu, para que crezcan y se salven. Aleluya.",
@@ -365,29 +395,6 @@ window.liturgiaData = {
       "La resurrección de Jesucristo no es un mero evento histórico, sino el fundamento de nuestra esperanza y la fuente de una nueva existencia. Como enseña San Juan Crisóstomo, la sepultura vacía es el gran milagro que desarticula el poder de la muerte y abre las puertas de la vida eterna. En este día Pascual, somos llamados a participar de esta vida nueva, renacidos por el bautismo, y a vivir en la constante presencia de Aquel que venció al pecado y a la muerte.",
       "La fe que profesamos, aunque no veamos al Señor corporalmente, es un don precioso, más valioso que el oro que se purifica en el fuego, como nos recuerda San Pedro. Esta fe nos une a Cristo y nos llena de una alegría inefable, una anticipación del gozo celestial. Los primeros cristianos, descritos en los Hechos de los Apóstoles, vivían esta fe en comunión fraterna, compartiendo todo y alabando a Dios, siendo así testigos vivientes de la misericordia divina que se derrama sobre nosotros, una misericordia que es eterna."
     ],
-    "laudes": {
-      "salmo1": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
-      },
-      "cantico_at": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
-      },
-      "salmo2": {
-        "antifona": "Se dice:",
-        "texto": "Gloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
-      },
-      "lectura_breve": {
-        "cita": "Juan 20, 19-31",
-        "texto": "Al anochecer del día de la resurrección estando cerradas las puertas de la casa donde se hallaban los discípulos por miedo a los judíos se presentó Jesús en medio de ellos y les dijo: «La paz esté con ustedes». Dicho esto les mostró las manos y el costado. Cuando los discípulos vieron al Señor se llenaron de alegría.\n\nDe nuevo les dijo Jesús: «La paz esté con ustedes. Como el Padre me ha enviado así también los envío yo». Después de decir esto sopló sobre ellos y les dijo: «Reciban al Espíritu Santo. A los que les perdonen los pecados les quedarán perdonados; y a los que no se los perdonen les quedarán sin perdonar».\n\nTomás uno de los Doce a quien llamaban el Gemelo no estaba con ellos cuando vino Jesús y los otros discípulos le decían: «Hemos visto al Señor». Pero él les contestó: «Si no veo en sus manos la señal de los clavos y si no meto mi dedo en los agujeros de los clavos y no meto mi mano en su costado no creeré».\n\nOcho días después estaban reunidos los discípulos a puerta cerrada y Tomás estaba con ellos. Jesús se presentó de nuevo en medio de ellos y les dijo: «La paz esté con ustedes». Luego le dijo a Tomás: «Aquí están mis manos; acerca tu dedo. Trae acá tu mano métela en mi costado y no sigas dudando sino cree». Tomás le respondió: «¡Señor mío y Dios mío!» Jesús añadió: «Tú crees porque me has visto; dichosos los que creen sin haber visto».\n\nOtras muchas señales milagrosas hizo Jesús en presencia de sus discípulos pero no están escritas en este libro. Se escribieron éstas para que ustedes crean que Jesús es el Mesías el Hijo de Dios y para que creyendo tengan vida en su nombre."
-      },
-      "responsorio_breve": "",
-      "cantico_evangelico": {
-        "antifona": "",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
-      }
-    },
     "visperas": {
       "salmo1": {
         "antifona": "Se dice:",
@@ -2471,6 +2478,242 @@ window.liturgiaData = {
       "cantico_evangelico": {
         "antifona": "Proclama mi alma la grandeza del Señor, porque Dios ha mirado mi humillación.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nProclama mi alma la grandeza del Señor, porque Dios ha mirado mi humillación.\nCristo quiere que todos los hombres alcancen la   salvación. Digámosle pues confiadamente:\n-Atrae Señor a todos hacia ti.\nTe bendecimos Señor porque nos has redimido   con tu preciosa sangre de la esclavitud del pecado;\n-haz que participemos   en la gloriosa libertad de los hijos de Dios.\nAyuda con tu gracia a nuestro obispo\nN.\ny a todos los obispos de la   Iglesia\n-para que con gozo y fervor sirvan a tu pueblo.\nQue todos los que consagran su vida a la investigación de la verdad   logren encontrarla\n-y que habiéndola encontrado se esfuercen por   difundirla entre sus hermanos.\nAtiende Señor a los huérfanos a las viudas y a los que viven   abandonados;\n-ayúdalos en sus necesidades para que experimenten tu   solicitud hacia ellos.\nSe pueden añadir algunas intenciones libres\nAcoge a nuestros hermanos difuntos en la ciudad santa de la   Jerusalén celestial\n-allí donde tú con el Padre y el Espíritu Santo   serás todo en todos.\nAdoctrinados por el mismo Señor nos atrevemos a decir:\nPadre nuestro...",
         "texto": ""
+      }
+    }
+  },
+  "2026-04-15": {
+    "fecha": "2026-04-15",
+    "liturgia_palabra": {
+      "primera_lectura": {
+        "cita": "Del libro de los Hechos de los apóstoles Hechos 5, 17-26",
+        "cita_formula": "Del libro de los Hechos de los apóstoles",
+        "cita_versiculos": "Hechos 5, 17-26",
+        "texto": "En aquellos días, el sumo sacerdote y los de su partido, que eran los saduceos, llenos de ira contra los apóstoles, los mandaron aprehender y los metieron en la cárcel. Pero durante la noche, un ángel del Señor les abrió las puertas, los sacó de ahí y les dijo: \"Vayan al templo y pónganse a enseñar al pueblo todo lo referente a esta nueva vida\". Para obedecer la orden, se fueron de madrugada al templo y ahí se pusieron a enseñar.\nCuando llegó el sumo sacerdote con los de su partido convocaron al sanedrín, es decir, a todo el senado de los hijos de Israel, y mandaron traer de la cárcel a los presos. Al llegar los guardias a la cárcel, no los hallaron y regresaron a informar: \"Encontramos la cárcel bien cerrada y a los centinelas en sus puestos, pero al abrir no encontramos a nadie adentro\".\nAl oír estas palabras, el jefe de la guardia del templo y los sumos sacerdotes se quedaron sin saber qué pensar; pero en ese momento llegó uno y les dijo: \"Los hombres que habían metido en la cárcel están en el templo, enseñando al pueblo\".\nEntonces el jefe de la guardia, con sus hombres, trajo a los apóstoles, pero sin violencia, porque temían ser apedreados por el pueblo.",
+        "cita_en": "Acts 5:17-26",
+        "texto_en": "The high priest rose up and all his companions,\n\nthat is, the party of the Sadducees,\n\nand, filled with jealousy,\n\nlaid hands upon the Apostles and put them in the public jail.\n\nBut during the night, the angel of the Lord opened the doors of the prison,\n\nled them out, and said,\n\n\"Go and take your place in the temple area,\n\nand tell the people everything about this life.\"\n\nWhen they heard this,\n\nthey went to the temple early in the morning and taught.\n\nWhen the high priest and his companions arrived,\n\nthey convened the Sanhedrin,\n\nthe full senate of the children of Israel,\n\nand sent to the jail to have them brought in.\n\nBut the court officers who went did not find them in the prison,\n\nso they came back and reported,\n\n\"We found the jail securely locked\n\nand the guards stationed outside the doors,\n\nbut when we opened them, we found no one inside.\"\n\nWhen the captain of the temple guard and the chief priests heard this report,\n\nthey were at a loss about them,\n\nas to what this would come to.\n\nThen someone came in and reported to them,\n\n\"The men whom you put in prison are in the temple area\n\nand are teaching the people.\"\n\nThen the captain and the court officers went and brought them,\n\nbut without force,\n\nbecause they were afraid of being stoned by the people.",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Lectura del libro de los Hechos de los Apóstoles"
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "En aquellos días, el sumo sacerdote y los de su partido, que eran los saduceos, llenos de ira contra los apóstoles, los mandaron aprehender y los metieron en la cárcel. Pero durante la noche, un ángel del Señor les abrió las puertas, los sacó de ahí y les dijo: \"Vayan al templo y pónganse a enseñar al pueblo todo lo referente a esta nueva vida\". Para obedecer la orden, se fueron de madrugada al templo y ahí se pusieron a enseñar. Cuando llegó el sumo sacerdote con los de su partido convocaron al sanedrín, es decir, a todo el senado de los hijos de Israel, y mandaron traer de la cárcel a los presos. Al llegar los guardias a la cárcel, no los hallaron y regresaron a informar: \"Encontramos la cárcel bien cerrada y a los centinelas en sus puestos, pero al abrir no encontramos a nadie adentro\". Al oír estas palabras, el jefe de la guardia del templo y los sumos sacerdotes se quedaron sin saber qué pensar; pero en ese momento llegó uno y les dijo: \"Los hombres que habían metido en la cárcel están en el templo, enseñando al pueblo\". Entonces el jefe de la guardia, con sus hombres, trajo a los apóstoles, pero sin violencia, porque temían ser apedreados por el pueblo."
+          }
+        ]
+      },
+      "salmo_responsorial": {
+        "cita": "Salmo 33",
+        "respuesta": "R.",
+        "texto": "Haz la prueba y verás qué bueno es el Señor.\nBendeciré al Señor a todas horas, no cesará mi boca de alabarlo. Yo me siento orgulloso del Señor, que se alegre su pueblo al escucharlo.\nProclamemos la grandeza del Señor y alabamos todos juntos su poder. Cuando acudí al Señor, me hizo caso y me libró de todos mis temores.\nConfía en el Señor y saltarás de gusto: jamás te sentirás decepcionado, porque el Señor escucha el clamor de los pobres y los libra de todas sus angustias.\nJunto a aquellos que temen al Señor el ángel del Señor acampa y los protege. Haz la prueba y verás qué bueno es el Señor. dichoso el hombre que se refugia en él.",
+        "cita_en": "Psalm 34:2-3, 4-5, 6-7, 8-9",
+        "respuesta_en": "(7a)",
+        "texto_en": "The Lord hears the cry of the poor.\n\nor:\n\nR. \nAlleluia.\n\nI will bless the LORD at all times;\n\nhis praise shall be ever in my mouth.\n\nLet my soul glory in the LORD;\n\nthe lowly will hear me and be glad.\n\nR.\nThe Lord hears the cry of the poor.\n\nor:\n\nR.\n Alleluia.\n\nGlorify the LORD with me,\n\nlet us together extol his name.\n\nI sought the LORD, and he answered me\n\nand delivered me from all my fears.\n\nR. \nThe Lord hears the cry of the poor.\n\nor:\n\nR. \nAlleluia.\n\nLook to him that you may be radiant with joy,\n\nand your faces may not blush with shame.\n\nWhen the poor one called out, the LORD heard,\n\nand from all his distress he saved him.\n\nR. \nThe Lord hears the cry of the poor.\n\nor:\n\nR.\n Alleluia.\n\nThe angel of the LORD encamps\n\naround those who fear him, and delivers them.\n\nTaste and see how good the LORD is;\n\nblessed the man who takes refuge in him.\n\nR. \nThe Lord hears the cry of the poor.\n\nor:\n\nR. \nAlleluia.",
+        "nodos": [
+          {
+            "tipo": "dialogo",
+            "texto": "Haz la prueba y verás qué bueno es el Señor."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Bendeciré al Señor a todas horas, no cesará mi boca de alabarlo. Yo me siento orgulloso del Señor, que se alegre su pueblo al escucharlo."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Proclamemos la grandeza del Señor y alabamos todos juntos su poder. Cuando acudí al Señor, me hizo caso y me libró de todos mis temores."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Confía en el Señor y saltarás de gusto: jamás te sentirás decepcionado, porque el Señor escucha el clamor de los pobres y los libra de todas sus angustias."
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "Junto a aquellos que temen al Señor el ángel del Señor acampa y los protege. Haz la prueba y verás qué bueno es el Señor. dichoso el hombre que se refugia en él."
+          }
+        ]
+      },
+      "segunda_lectura": {
+        "cita": "Lectura del libro de Juan Juan 3, 16-21",
+        "cita_formula": "Lectura del libro de Juan",
+        "cita_versiculos": "Juan 3, 16-21",
+        "texto": "\"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios.\nLa causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios\".",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Lectura de la carta de san Juan"
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "\"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios. La causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios\"."
+          }
+        ]
+      },
+      "secuencia": {},
+      "evangelio": {
+        "cita": "Del santo Evangelio según San Juan Juan 3, 16-21",
+        "cita_formula": "Del santo Evangelio según San Juan",
+        "cita_versiculos": "Juan 3, 16-21",
+        "texto": "\"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios.\nLa causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios\".",
+        "cita_en": "John 3:16-21",
+        "texto_en": "God so loved the world that he gave his only-begotten Son,\n\nso that everyone who believes in him might not perish\n\nbut might have eternal life.\n\nFor God did not send his Son into the world to condemn the world,\n\nbut that the world might be saved through him.\n\nWhoever believes in him will not be condemned,\n\nbut whoever does not believe has already been condemned,\n\nbecause he has not believed in the name of the only-begotten Son of God.\n\nAnd this is the verdict,\n\nthat the light came into the world,\n\nbut people preferred darkness to light,\n\nbecause their works were evil.\n\nFor everyone who does wicked things hates the light\n\nand does not come toward the light,\n\nso that his works might not be exposed.\n\nBut whoever lives the truth comes to the light,\n\nso that his works may be clearly seen as done in God.",
+        "nodos": [
+          {
+            "tipo": "rubrica",
+            "texto": "Lectura del santo Evangelio según san Juan"
+          },
+          {
+            "tipo": "proclamacion",
+            "texto": "\"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios. La causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios\"."
+          }
+        ]
+      }
+    },
+    "liturgia_eucaristica": {
+      "oracion_ofrendas": [
+        {
+          "tipo": "rubrica",
+          "texto": "Oración sobre las ofrendas"
+        },
+        {
+          "tipo": "proclamacion",
+          "texto": "Señor, que por el santo intercambio de este sacrificio nos haces partícipes de tu única y suprema divinidad, concédenos que, así como conocemos tu verdad, de igual modo la sigamos con una conducta digna. Por Jesucristo, nuestro Señor."
+        }
+      ],
+      "oracion_despues_comunion": [
+        {
+          "tipo": "rubrica",
+          "texto": "Oración después de la comunión"
+        },
+        {
+          "tipo": "proclamacion",
+          "texto": "Señor, ayúdanos con bondad a tu pueblo, y ya que nos has alimentado con los misterios celestiales, haz que pasemos de nuestra antigua vida de pecado a la novedad de la vida eterna. Por Jesucristo, nuestro Señor."
+        }
+      ]
+    },
+    "laudes": {
+      "salmo1": {
+        "antifona": "Te vio el mar, ¡oh Dios!, te vio el mar mientras guiabas a tu pueblo por las aguas caudalosas. Aleluya.",
+        "texto": "Salmo 76\n\nRECUERDO DEL PASADO GLORIOSO DE ISRAEL\n\nAlzo mi voz a Dios gritando,\n\nalzo mi voz a Dios para que me oiga.\n\nEn mi angustia te busco, Señor mío;\n\nde noche extiendo las manos sin descanso,\n\ny mi alma rehúsa el consuelo.\n\nCuando me acuerdo de Dios, gimo,\n\ny meditando me siento desfallecer.\n\nSujetas los párpados de mis ojos,\n\ny la agitación no me deja hablar.\n\nRepaso los días antiguos,\n\nrecuerdo los años remotos;\n\nde noche lo pienso en mis adentros,\n\ny meditándolo me pregunto:\n\n¿Es que el Señor nos rechaza para siempre\n\ny ya no volverá a favorecernos?\n\n¿Se ha agotado ya su misericordia,\n\nse ha terminado para siempre su promesa?\n\n¿Es que Dios se ha olvidado de su bondad,\n\no la cólera cierra sus entrañas?\n\nY me digo: ¡Qué pena la mía!\n\n¡Se ha cambiado la diestra del Altísimo!\n\nRecuerdo las proezas del Señor;\n\nsí, recuerdo tus antiguos portentos,\n\nmedito todas tus obras\n\ny considero tus hazañas.\n\nDios mío, tus caminos son santos:\n\n¿qué dios es grande como nuestro Dios?\n\nTú, ¡oh Dios!, haciendo maravillas,\n\nmostraste tu poder a los pueblos;\n\ncon tu brazo rescataste a tu pueblo,\n\na los hijos de Jacob y de José.\n\nTe vio el mar, ¡oh Dios!,\n\nte vio el mar y tembló,\n\nlas olas se estremecieron.\n\nLas nubes descargaban sus aguas,\n\nretumbaban los nubarrones,\n\ntus saetas zigzagueaban.\n\nRodaba el fragor de tu trueno,\n\nlos relámpagos deslumbraban el orbe,\n\nla tierra retembló estremecida.\n\nTú te abriste camino por las aguas,\n\nun vado por las aguas caudalosas,\n\ny no quedaba rastro de tus huellas:\n\nmientras guiabas a tu pueblo, como a un rebaño,\n\npor la mano de Moisés y de Aarón.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nTe vio el mar, ¡oh Dios!, te vio el mar mientras guiabas a tu pueblo por las aguas caudalosas. Aleluya."
+      },
+      "cantico_at": {
+        "antifona": "El Señor da la muerte y la vida. Aleluya.",
+        "texto": "Cántico\n\n1 Sam 2, 1-10\n\nALEGRÍA DE LOS HUMILDES EN DIOS\n\nMi corazón se regocija por el Señor,\n\nmi poder se exalta por Dios;\n\nmi boca se ríe de mis enemigos,\n\nporque gozo con tu salvación.\n\nNo hay santo como el Señor,\n\nno hay roca como nuestro Dios.\n\nNo multipliquéis discursos altivos,\n\nno echéis por la boca arrogancias,\n\nporque el Señor es un Dios que sabe;\n\nél es quien pesa las acciones.\n\nSe rompen los arcos de los valientes,\n\nmientras los cobardes se ciñen de valor;\n\nlos hartos se contratan por el pan,\n\nmientras los hambrientos no tienen ya que trabajar;\n\nla mujer estéril da a luz siete hijos,\n\nmientras la madre de muchos se marchita.\n\nEl Señor da la muerte y la vida,\n\nhunde en el abismo y levanta;\n\nda la pobreza y la riqueza,\n\nhumilla y enaltece.\n\nÉl levanta del polvo al desvalido,\n\nalza de la basura al pobre,\n\npara hacer que se siente entre príncipes\n\ny que herede un trono de gloria;\n\npues del Señor son los pilares de la tierra,\n\ny sobre ellos afianzó el orbe.\n\nÉl guarda los pasos de sus amigos,\n\nmientras los malvados perecen en las tinieblas,\n\nporque el hombre no triunfa por su fuerza.\n\nEl Señor desbarata a sus contrarios,\n\nel Altísimo truena desde el cielo,\n\nel Señor juzga hasta el confín de la tierra.\n\nÉl da fuerza a su Rey,\n\nexalta el poder de su Ungido.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nEl Señor da la muerte y la vida. Aleluya."
+      },
+      "salmo2": {
+        "antifona": "Amanece la luz para el justo y la alegría para los rectos de corazón. Aleluya.",
+        "texto": "Salmo 96\n\nEL SEÑOR ES UN REY MAYOR QUE TODOS LOS DIOSES\n\nEl Señor reina, la tierra goza,\n\nse alegran las islas innumerables.\n\nTiniebla y nube lo rodean,\n\njusticia y derecho sostienen su trono.\n\nDelante de él avanza fuego\n\nabrasando en torno a los enemigos;\n\nsus relámpagos deslumbran el orbe,\n\ny, viéndolos, la tierra se estremece.\n\nLos montes se derriten como cera\n\nante el dueño de toda la tierra;\n\nlos cielos pregonan su justicia,\n\ny todos los pueblos contemplan su gloria.\n\nLos que adoran estatuas se sonrojan,\n\nlos que ponen su orgullo en los ídolos;\n\nante él se postran todos los dioses.\n\nLo oye Sión, y se alegra,\n\nse regocijan las ciudades de Judá\n\npor tus sentencias, Señor;\n\nporque tú eres, Señor,\n\naltísimo sobre toda la tierra,\n\nencumbrado sobre todos los dioses.\n\nEl Señor ama al que aborrece el mal,\n\nprotege la vida de sus fieles\n\ny los libra de los malvados.\n\nAmanece la luz para el justo,\n\ny la alegría para los rectos de corazón.\n\nAlegraos, justos, con el Señor,\n\ncelebrad su santo nombre.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nAmanece la luz para el justo y la alegría para los rectos de corazón. Aleluya."
+      },
+      "lectura_breve": {
+        "cita": "Juan 3, 16-21",
+        "texto": "\"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios.\n\nLa causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios\"."
+      },
+      "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
+      "cantico_evangelico": {
+        "antifona": "Tanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya.",
+        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nTanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya."
+      },
+      "preces": "Dirijámonos a Dios,   que quiso manifestar a Jesús resucitado a los apóstoles, y   digámosle suplicantes:\nR.\nIlumínanos, Señor, con la claridad de tu Cristo.\nSeñor, fuente de toda luz, te aclamamos con acción   de gracias en esta mañana, porque nos has llamado   a participar de tu luz admirable\nR.\ny nos has querido   dar la salvación.\nHaz, Señor, que la fuerza del   Espíritu Santo nos purifique y nos fortalezca,\nR.\npara que   con nuestro trabajo hagamos más humana la vida de los   hombres.\nHaz que nos entreguemos de tal modo al servicio de nuestros hermanos,\nR.\nque logremos hacer de la   familia humana una ofrenda agradable a tus ojos.\nLlénanos, desde el principio de este nuevo día, de tu misericordia,\nR.\npara que en toda nuestra jornada nos gocemos en   tu alabanza.\nSe pueden añadir algunas intenciones libres\nConcluyamos  nuestra oración, diciendo juntos las palabras de Jesús, nuestro  maestro:\nPadre nuestro..."
+    },
+    "visperas": {
+      "salmo1": {
+        "antifona": "No se turbe vuestro corazón; tan sólo creed en mí. Aleluya.",
+        "texto": "Salmo 61\n\nDIOS, ÚNICA ESPERANZA DEL JUSTO\n\nSolo en Dios descansa mi alma,\n\nporque de él viene mi salvación;\n\nsolo él es mi roca y mi salvación,\n\nmi alcázar: no vacilaré.\n\n¿Hasta cuándo arremeteréis contra un hombre\n\ntodos juntos, para derribarlo\n\ncomo a una pared que cede\n\no a una tapia ruinosa?\n\nSolo piensan en derribarme de mi altura,\n\ny se complacen en la mentira:\n\ncon la boca bendicen,\n\ncon el corazón maldicen.\n\nDescansa solo en Dios, alma mía,\n\nporque él es mi esperanza;\n\nsolo él es mi roca y mi salvación,\n\nmi alcázar: no vacilaré.\n\nDe Dios viene mi salvación y mi gloria,\n\nél es mi roca firme,\n\nDios es mi refugio.\n\nPueblo suyo, confiad en él,\n\ndesahogad ante él vuestro corazón,\n\nque Dios es nuestro refugio.\n\nLos hombres no son más que un soplo,\n\nlos nobles son apariencia:\n\ntodos juntos en la balanza subirían\n\nmás leves que un soplo.\n\nNo confiéis en la opresión,\n\nno pongáis ilusiones en el robo;\n\ny aunque crezcan vuestras riquezas,\n\nno les deis el corazón.\n\nDios ha dicho una cosa,\n\ny dos cosas que he escuchado:\n\n«Que Dios tiene el poder\n\ny el Señor tiene la gracia;\n\nque tú pagas a cada uno\n\nsegún sus obras.»\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nNo se turbe vuestro corazón; tan sólo creed en mí. Aleluya."
+      },
+      "salmo2": {
+        "antifona": "¡Oh Dios!, que te alaben los pueblos, que se alegren por tu salvación. Aleluya.",
+        "texto": "Salmo 66\n\nQUE TODOS LOS PUEBLOS ALABEN AL SEÑOR\n\nEl Señor tenga piedad y nos bendiga,\n\nilumine su rostro sobre nosotros;\n\nconozca la tierra tus caminos,\n\ntodos los pueblos tus salvación.\n\n¡Oh Dios!, que te alaben los pueblos,\n\nque todos los pueblos te alaben.\n\nQue canten de alegría las naciones,\n\nporque riges el mundo con justicia,\n\nriges los pueblos con rectitud\n\ny gobiernas las naciones de la tierra.\n\n¡Oh Dios!, que te alaben los pueblos,\n\nque todos los pueblos te alaben.\n\nLa tierra ha dado su fruto,\n\nnos bendice el Señor, nuestro Dios.\n\nQue Dios nos bendiga; que le teman\n\nhasta los confines del orbe.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\n¡Oh Dios!, que te alaben los pueblos, que se alegren por tu salvación. Aleluya."
+      },
+      "cantico_nt": {
+        "antifona": "Su resplandor eclipsa el cielo, la tierra se llena de su alabanza. Aleluya.",
+        "texto": "Cf. Col 1, 12-20\n\nHIMNO A CRISTO, PRIMOGÉNITO DE TODA CREATURA\n\nY PRIMER RESUCITADO DE ENTRE LOS MUERTOS\n\nDamos gracias a Dios Padre,\n\nque nos ha hecho capaces de compartir\n\nla herencia del pueblo santo en la luz.\n\nÉl nos ha sacado del dominio de las tinieblas,\n\ny nos ha trasladado al reino de su Hijo querido,\n\npor cuya sangre hemos recibido la redención,\n\nel perdón de los pecados.\n\nÉl es imagen de Dios invisible,\n\nprimogénito de toda creatura;\n\npues por medio de él fueron creadas todas las cosas:\n\ncelestes y terrestres, visibles e invisibles,\n\nTronos, Dominaciones, Principados, Potestades;\n\ntodo fue creado por él y para él.\n\nÉl es anterior a todo, y todo se mantiene en él.\n\nÉl es también la cabeza del cuerpo de la Iglesia.\n\nÉl es el principio, el primogénito de entre los muertos,\n\ny así es el primero en todo.\n\nPorque en él quiso Dios que residiera toda plenitud.\n\nY por él quiso reconciliar consigo todas las cosas:\n\nhaciendo la paz por la sangre de su cruz\n\ncon todos los seres, así del cielo como de la tierra.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nSu resplandor eclipsa el cielo, la tierra se llena de su alabanza. Aleluya."
+      },
+      "lectura_breve": {
+        "cita": "Juan 3, 16-21",
+        "texto": "\"Tanto amó Dios al mundo, que le entregó a su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo para condenar al mundo, sino para que el mundo se salvara por él. El que crea en él no será condenado; pero el que no cree ya está condenado por no haber creído en el Hijo único de Dios.\n\nLa causa de la condenación es ésta: habiendo venido la luz al mundo, los hombres prefirieron las tinieblas a la luz, porque sus obras eran malas. Todo aquel que hace el mal, aborrece la luz y no se acerca a ella, para que sus obras no se descubran. En cambio, el que obra el bien conforme a la verdad, se acerca a la luz, para que se vea que sus obras están hechas según Dios\"."
+      },
+      "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
+      "cantico_evangelico": {
+        "antifona": "El que obra la verdad viene a la luz y manifiesta que sus obras han sido hechas según Dios. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl que obra la verdad viene a la luz y manifiesta que sus obras han sido hechas según Dios. Aleluya.\nImploremos a Dios Padre, que por la resurrección de su Hijo de entre los muertos nos ha abierto el camino de la vida eterna, y digámosle:\nR.\nPor la victoria de Cristo, salva, Señor, a tus redimidos.\nDios de nuestros padres, que has glorificado a tu Hijo Jesús, resucitándolo de entre los muertos,\nR.\nconvierte nuestros corazones, para que vivamos la nueva vida de tu Hijo resucitado.\nTú que nos has devuelto al Pastor y guardián de nuestras vidas, cuando éramos ovejas descarriados,\nR.\nconsérvanos en fidelidad a tu Evangelio, bajo la guía de los obisposde tu Iglesia.\nTú que elegiste a los primeros discípulos de tu Hijo de entre el pueblo de Israel,\nR.\nrevela a los hijos de este pueblo el cumplimiento de las promesas que hiciste a sus padres.\nAcuérdate, Señor, de los huérfanos, de las viudas, de los esposos que viven separados y de todos nuestros hermanos abandonados,\nR.\ny no permitas que vivan en la soledad, los que fueron reconciliados por la muerte de tu Hijo.\nSe pueden añadir algunas intenciones libres\nTú que llamaste a ti a Esteban, el cual confesó que Jesús estaba a tu derecha,\nR.\nrecibe a nuestros hermanos difuntos que esperaron tu venida en la fe y en el amor.\nDigamos ahora todos juntos la oración que nos enseñó el mismo Jesús:\nPadre nuestro...",
+        "texto": ""
+      }
+    },
+    "titulo_celebracion": "Miércoles de la II semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Bloque marcado como obligatorio en las reglas estructurales."
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Bloque condicional sin modificadores activos que activen su supresión (aspersión, laudes o vísperas unidas)."
+      },
+      {
+        "id_bloque": "kyrie",
+        "accion": "incluir",
+        "motivo": "Bloque condicional sin condiciones de supresión activas en el contexto actual."
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "El tipo de misa es 'Feria', lo cual es una condición explícita de supresión para este bloque."
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No se cumplen las condiciones de activación (domingo, solemnidad u octava) para una feria de tiempo pascual."
+      },
+      {
+        "id_bloque": "preparacion_dones",
+        "accion": "incluir",
+        "motivo": "Bloque marcado como obligatorio en las reglas estructurales."
+      },
+      {
+        "id_bloque": "plegaria_eucaristica_II",
+        "accion": "omitir",
+        "motivo": "No se ha detectado el modificador 'plegaria_II_seleccionada' en el contexto de la celebración."
+      },
+      {
+        "id_bloque": "padre_nuestro",
+        "accion": "incluir",
+        "motivo": "Bloque marcado como obligatorio en las reglas estructurales."
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Bloque marcado como obligatorio en las reglas estructurales."
+      },
+      {
+        "id_bloque": "fraccion_pan_y_comunion",
+        "accion": "incluir",
+        "motivo": "Bloque marcado como obligatorio en las reglas estructurales."
+      },
+      {
+        "id_bloque": "bendicion_despedida",
+        "accion": "incluir",
+        "motivo": "Bloque obligatorio por modo default al no existir unión con la Liturgia de las Horas."
+      }
+    ],
+    "oracion_colecta": [
+      {
+        "tipo": "rubrica",
+        "texto": "Oración colecta"
+      },
+      {
+        "tipo": "proclamacion",
+        "texto": "Asiste, Señor, a tu familia con tu bondad, para que, por tu gracia, nos veamos libres de los peligros del mundo y alcancemos los dones de la vida eterna. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos."
+      }
+    ],
+    "repertorio_sugerido": {
+      "canto_entrada": {
+        "titulo": "Cristo Resucitó",
+        "estrofas": [
+          "Cristo resucitó, Cristo resucitó, la muerte no pudo con él.",
+          "Aleluya, aleluya, aleluya, el Señor es nuestra paz."
+        ]
       }
     }
   }
