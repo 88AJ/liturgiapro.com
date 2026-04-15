@@ -567,9 +567,19 @@ def execute_scraper(start_date_str, end_date_str):
 
     print(">> Generando archivos HTML Standalone (Pre-Renderizados)...")
     try:
+        def safe_read(path):
+            if not __import__('os').path.exists(path): return ""
+            return open(path, "r", encoding="utf-8").read().replace("</script>", "<\/script>")
+            
         css_content = open("saas.css", "r", encoding="utf-8").read()
-        motor_content = open("motor_nodos.js", "r", encoding="utf-8").read()
-        cantos_content = open("data/cantos_db.js", "r", encoding="utf-8").read()
+        motor_content = safe_read("motor_nodos.js")
+        cantos_content = safe_read("data/cantos_db.js")
+        saas_content = safe_read("saas.js")
+        ordinario_content = safe_read("data/db_ordinario.js")
+        bautismo_content = safe_read("data/ritual_bautismo.js")
+        matrimonio_content = safe_read("data/ritual_matrimonio.js")
+        exequias_content = safe_read("data/ritual_exequias.js")
+
         
         for d in db.keys():
             # Inject only the specific day into the HTML script to keep it fast
@@ -612,11 +622,19 @@ def execute_scraper(start_date_str, end_date_str):
             .pdf-container {{ box-shadow: none; margin: 0; padding: 0; max-width: none; }}
         }}
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
 {cantos_content}
+{ordinario_content}
+{bautismo_content}
+{matrimonio_content}
+{exequias_content}
     </script>
     <script>
     window.liturgiaDB = {day_json};
+    </script>
+    <script>
+{saas_content}
     </script>
     <script>
 {motor_content}
