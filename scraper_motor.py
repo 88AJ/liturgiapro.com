@@ -679,9 +679,9 @@ def execute_scraper(start_date_str, end_date_str):
         index_html += """    </div>
 </body>
 </html>"""
-        with open("index.html", "w", encoding="utf-8") as f:
+        with open("directorio.html", "w", encoding="utf-8") as f:
             f.write(index_html)
-        print("✅ index.html de directorio generado con éxito.")
+        print("✅ directorio.html generado con éxito.")
 
     except Exception as e:
         print(f"⚠️ Error al generar HTML Standalone: {e}")
