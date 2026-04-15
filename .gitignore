@@ -1,4 +1,9 @@
-.pdfenv/
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+
 pdf_extract.txt
 pdf_extract_format.txt
 crash_etl.txt
