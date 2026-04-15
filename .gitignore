@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 # Secrets — NEVER commit
 .env
 .env.*
 !.env.example
 
 
+=======
+.pdfenv/
+>>>>>>> 1579939e17c8faff876285e798790804ddfb12d8
 pdf_extract.txt
 pdf_extract_format.txt
 crash_etl.txt
