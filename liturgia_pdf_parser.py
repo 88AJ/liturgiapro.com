@@ -5,7 +5,7 @@ from datetime import datetime
 from google import genai
 
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(override=True)
 
 def init_gemini():
     return genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))

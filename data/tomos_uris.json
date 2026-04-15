@@ -1,19 +1,7 @@
 {
-  "Tomo I": [
-    "https://generativelanguage.googleapis.com/v1beta/files/05p5bukum5jt",
-    "https://generativelanguage.googleapis.com/v1beta/files/61460vrcqx28"
-  ],
-  "Tomo II": [
-    "https://generativelanguage.googleapis.com/v1beta/files/pue9kkqdvtft",
-    "https://generativelanguage.googleapis.com/v1beta/files/7wnj85hum6ij"
-  ],
-  "Tomo III": [
-    "https://generativelanguage.googleapis.com/v1beta/files/b7sqfyz8ax8m",
-    "https://generativelanguage.googleapis.com/v1beta/files/hpy37qceawhg",
-    "https://generativelanguage.googleapis.com/v1beta/files/0j6z1nmlwfz8"
-  ],
-  "Tomo IV": [
-    "https://generativelanguage.googleapis.com/v1beta/files/hda8vcw1vuiq",
-    "https://generativelanguage.googleapis.com/v1beta/files/6run05ov63ig"
-  ]
+  "Tomo I": [],
+  "Tomo II": [],
+  "Tomo III": [],
+  "Tomo IV": [],
+  "OGLH": []
 }
