@@ -559,7 +559,13 @@ function generarDocumentoNodos(data, hora, options = {}) {
             bPreces.addTitulo(isEn ? "Gospel Canticle" : canticoName);
             bPreces.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
             
-            let lines = officeData.cantico_evangelico.texto.split("\n\n");
+            let lines = [];
+            if (Array.isArray(officeData.cantico_evangelico.texto)) {
+                lines = officeData.cantico_evangelico.texto;
+            } else if (typeof officeData.cantico_evangelico.texto === 'string') {
+                lines = officeData.cantico_evangelico.texto.split(/\n+/).filter(l => l.trim().length > 1);
+            }
+            
             lines.forEach((line, idx) => {
                 if (idx % 2 === 0) bPreces.addSacerdote(line, 'Normal');
                 else bPreces.addAsamblea(line);

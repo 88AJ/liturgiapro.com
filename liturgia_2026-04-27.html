@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Liturgia PRO Standalone - 2026-04-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --base-size: 15px;
+
+    --bg-dark: #09090b; /* Deep zinc-950 */
+    --bg-gradient: radial-gradient(circle at top left, #18181b 0%, #09090b 100%);
+    --card-bg: rgba(24, 24, 27, 0.6); /* Translucent zinc-900 */
+    --text-primary: #e4e4e7; /* zinc-200 */
+    --text-secondary: #a1a1aa; /* zinc-400 */
+    --brand-color: #D32F2F; /* Liturgical Crimson */
+    --brand-hover: #dc2626; /* Bright red */
+    --border-color: rgba(255, 255, 255, 0.08); /* Frosted glass border */
+    --sidebar-bg: rgba(9, 9, 11, 0.7); /* Translucent sidebar */
+    --gold-accent: #d4af37; /* Clean Gold */
+    --gold-hover: #fcd34d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+/* Scrollbars sleek */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.view {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+.view.active {
+    display: flex;
+}
+
+/* Landing Page */
+#landing-screen {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-content {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    max-width: 500px;
+    z-index: 10;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.logo span, .logo-small span {
+    color: var(--brand-color);
+}
+.logo { color: #ffffff; font-family: 'Cinzel', serif; }
+
+.landing-content h1 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem 0;
+}
+
+.landing-content p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-box h3 { margin: 0; font-size: 1.1rem; }
+.login-box input {
+    padding: 14px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: white;
+    border-radius: 8px;
+    font-family: 'Outfit';
+}
+.login-box input:focus { outline: none; border-color: var(--brand-color); }
+
+.btn-primary {
+    background: var(--gold-accent);
+    color: #000;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-primary:hover { background: #E5C158; }
+
+.signup-link { font-size: 0.9rem; margin-top: 1rem; }
+.signup-link a { color: var(--brand-color); text-decoration: none; }
+
+.landing-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    z-index: 1;
+}
+
+/* Dashboard */
+.saas-sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    z-index: 10;
+}
+
+.logo-small {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.nav-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #71717a;
+    letter-spacing: 0.15em;
+    padding: 0 16px;
+    margin-bottom: 0.8rem;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.nav-links li {
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+.nav-links li:hover:not(.active) { 
+    background: rgba(255, 255, 255, 0.05); 
+    color: #fff;
+    transform: translateX(4px);
+}
+.nav-links li.active { 
+    background: linear-gradient(90deg, rgba(178, 0, 0, 0.15) 0%, rgba(178, 0, 0, 0) 100%);
+    color: #fff; 
+    font-weight: 500; 
+    border-left: 3px solid var(--brand-color); 
+    box-shadow: inset 2px 0 0px var(--brand-color);
+}
+
+/* Capitular Icons */
+.icon {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    color: var(--brand-color);
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.badge {
+    background: var(--brand-color);
+    color: #000;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+    font-weight: 700;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+.avatar {
+    width: 40px; height: 40px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+}
+.user-info strong { display: block; font-size: 0.95rem; }
+.user-info span { color: var(--text-secondary); font-size: 0.8rem; }
+
+.btn-upgrade {
+    background: transparent;
+    border: 1px solid var(--brand-color);
+    color: var(--brand-color);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.btn-upgrade:hover { background: rgba(245, 158, 11, 0.1); }
+
+/* Main Hub */
+.saas-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: transparent; /* lets body gradient show through */
+}
+
+.saas-header {
+    height: 80px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    background: rgba(9, 9, 11, 0.4);
+    backdrop-filter: blur(10px);
+    z-index: 5;
+}
+.saas-header h2 { margin: 0; font-weight: 500; font-size: 1.3rem; font-family: 'Outfit', sans-serif;}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Outfit', sans-serif;
+}
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.config-panel {
+    width: 380px;
+    border-right: 1px solid var(--border-color);
+    padding: 2rem;
+    overflow-y: auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+.config-panel h3 { margin: 0 0 0.5rem 0; font-weight: 600; font-size: 1.25rem; font-family: 'Outfit', sans-serif; color: #fff; }
+.subtitle { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 2rem; }
+.subtitle a { color: var(--gold-accent); text-decoration: none; font-weight: 500; }
+
+.form-grid { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.input-group select, .input-group input {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+.input-group select:focus, .input-group input:focus {
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.cantos-section h4 { margin: 0; font-weight: 500;}
+.canto-item { margin-bottom: 1rem; border: 1px solid var(--border-color); }
+.canto-item input {
+    width: 100%; padding: 10px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: #fff; border-radius: 6px; font-family: 'Outfit', sans-serif; margin-bottom: 8px;
+}
+.canto-item input:focus { border-color: var(--gold-accent); }
+
+.btn-generate {
+    width: 100%; 
+    background: linear-gradient(135deg, var(--brand-color), #8B0000); 
+    color: #fff; 
+    font-weight: 600;
+    padding: 14px; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 8px; 
+    cursor: pointer; 
+    margin-top: 1rem; 
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 15px rgba(178, 0, 0, 0.3);
+}
+.btn-generate:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(178, 0, 0, 0.5);
+    background: linear-gradient(135deg, #cc0000, #a00000);
+}
+
+.preview-panel {
+    flex: 1;
+    background: transparent;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.pdf-container {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #111;
+    background: #fff;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    /* NLM Master Printer Rules */
+    column-count: 2;
+    column-gap: 8mm;
+    column-fill: balance;
+    column-rule: 1px solid rgba(153, 0, 0, 0.1); 
+    hyphens: auto;
+}
+
+/* Configuración de Página para Impresión Doble Cara */
+@page {
+    size: 8.5in 11in;
+    margin-top: 20mm;
+    margin-bottom: 20mm;
+    bleed: 3mm;
+    marks: crop;
+}
+
+@page :left {
+    margin-left: 22mm; /* Lomo */
+    margin-right: 15mm;
+}
+
+@page :right {
+    margin-left: 15mm;
+    margin-right: 22mm; /* Lomo */
+}
+
+
+
+.empty-state {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    opacity: 0.6;
+}
+
+/* --- SUBSIDIO LITÚRGICO STYLES --- */
+.pdf-container strong.rubric, .pdf-container .rubrica-sacerdote, .missal-rubric {
+    color: var(--brand-color); /* Liturgical red */
+    font-style: italic;
+    font-weight: normal;
+    display: block;
+    margin: 4px 0;
+    font-size: 0.85em; /* 2pt menor que el texto principal */
+}
+
+.pdf-container h2, .pdf-container h3, .pdf-container .titulo-rito, .missal-super-heading, .missal-heading {
+    color: var(--brand-color);
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    column-span: all; /* Detiene las columnas para anclar la sección */
+    break-after: avoid; /* Previene títulos huerfanos al final de página */
+    page-break-after: avoid;
+}
+
+.pdf-container .titulo-rito {
+    border-bottom: 1px solid var(--brand-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.pdf-container .monicion {
+    text-align: justify;
+    font-size: 0.95em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pdf-container .monicion strong {
+    font-family: 'Outfit', sans-serif;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.pdf-container .oracion-capitular::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+    float: left;
+    line-height: 0.8;
+    margin-right: 5px;
+    color: var(--brand-color);
+}
+
+.pdf-container .asamblea {
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.pdf-container .asamblea-rojo {
+    color: var(--brand-color);
+    font-weight: bold;
+
+.pdf-container blockquote {
+    font-style: italic; color: #444; border-left: 3px solid #c90000; padding-left: 15px; margin-left: 20px;
+}
+
+/* Modals */
+.modal {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    z-index: 100; align-items: center; justify-content: center;
+}
+.modal.visible { display: flex; }
+
+.modal-content {
+    background: var(--card-bg); padding: 3rem; border-radius: 16px; width: 100%; max-width: 500px;
+    border: 1px solid var(--border-color); text-align: center; position: relative;
+}
+
+.close-btn {
+    position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: white;
+    font-size: 1.5rem; cursor: pointer;
+}
+
+.pricing-card {
+    background: var(--bg-dark); border: 2px solid var(--brand-color); border-radius: 12px;
+    padding: 2rem; margin-top: 2rem;
+}
+.pricing-card h3 { margin: 0; color: var(--brand-color); }
+.price { font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
+.price span { font-size: 1rem; color: var(--text-secondary); font-weight: 400; }
+
+.pricing-card ul { text-align: left; margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.95rem;}
+.btn-checkout {
+    width: 100%; background: #6366f1; color: white; padding: 14px; border: none; border-radius: 8px;
+    font-weight: 600; cursor: pointer;
+}
+
+/* --- BOLETIN PRO STYLES --- */
+.bulletin-wrapper {
+    background: white;
+    color: #111;
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    height: max-content;
+    padding: 15mm;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-family: 'Merriweather', serif;
+    position: relative;
+    margin: 0 auto;
+}
+
+.bul-top-motto {
+    font-family: 'Outfit', sans-serif;
+    color: #0b7a95; /* Teal color */
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+.bul-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 2px solid #333;
+    font-family: 'Outfit', sans-serif;
+}
+
+.bul-info-col {
+    padding: 15px;
+    font-size: 0.75rem;
+    border-right: 1px solid #999;
+}
+.bul-info-col:last-child { border-right: none; text-align: center; }
+
+.bul-date h4 {
+    color: #6122d6; /* Purple */
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.bul-date p { color: #d97706; font-weight: 600; margin: 0;}
+
+.bul-title-main {
+    font-size: 5.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin: 10px 0;
+    letter-spacing: -3px;
+    line-height: 1;
+}
+
+.bul-subtitle {
+    font-family: 'Outfit', sans-serif;
+    color: #0b7a95;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.bul-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    height: 350px;
+}
+
+.bul-grid-box {
+    background: #333;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+.bul-grid-box.purple { background: #875c8a; color: white; font-family: 'Merriweather'; font-size: 1.1rem; line-height: 1.2; font-weight: 700;}
+.bul-bg-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
+}
+
+.bul-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.bul-clergy h3 {
+    font-family: 'Style Script', 'Merriweather', cursive; /* Elegant Script fallback */
+    font-size: 2.5rem;
+    font-style: italic;
+    margin: 0 0 10px 0;
+}
+.bul-clergy p {
+    font-family: 'Merriweather'; font-size: 0.8rem; margin: 2px 0; font-weight: 700;
+}
+.bul-qr {
+    width: 100px; height: 100px; background: #eee;
+}
+
+/* Gospel Page 2 */
+.bul-page-2 {
+    margin-top: 15mm;
+    border-top: 2px dashed #ccc;
+    padding-top: 15mm;
+}
+.bul-page-2 h2 { text-transform: uppercase; font-size: 1.2rem; color: #c90000; text-align: center; }
+
+/* Premium Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.modal.visible {
+    display: flex;
+}
+.modal-content {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    color: white;
+}
+.close-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.pricing-card {
+    background: var(--card-bg);
+    border: 1px solid var(--brand-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+.pricing-card .price {
+    font-size: 2.5rem;
+    color: var(--brand-color);
+    font-weight: 700;
+    margin: 10px 0;
+}
+.pricing-card .price span {
+    font-size: 1rem; color: var(--text-secondary);
+}
+.pricing-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.pricing-card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+.pricing-card ul li::before {
+    content: '✓ ';
+    color: var(--brand-color);
+    font-weight: bold;
+}
+.btn-checkout {
+    background: var(--brand-color);
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* --- EDITORIAL MISSAL STYLES --- */
+
+
+.pdf-container h2, .pdf-container h3, .pdf-container hr {
+    column-span: all;
+}
+
+/* Evitar que se partan los bloques feo pero si permitir partir parrafos para no dejar hojas vacias */
+.missal-block {
+    margin-bottom: 1.5rem;
+}
+
+.missal-super-heading {
+    text-transform: uppercase;
+    color: var(--brand-color);
+    font-size: calc(var(--base-size) * 1.5); /* 18pt basado en raiz 12pt */
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 1.5cm 0; /* Blueprint param */
+    letter-spacing: 1.5px;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+.missal-heading {
+    text-transform: uppercase;
+    color: var(--brand-color); /* Carmesi */
+    font-size: calc(var(--base-size) * 1.35); /* 14.4pt */
+    font-weight: 700; /* Super Bold */
+    margin: 0 0 0.5cm 0;
+    letter-spacing: 1px;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+.missal-citation {
+    margin: 0 0 12px 0;
+    font-size: calc(var(--base-size) * 1.0);
+    font-weight: normal;
+}
+
+/* Texto Ordinario (Lecturas/Salmos) */
+.missal-paragraph, .proclamacion {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    text-align: justify;
+    line-height: 1.2;
+    font-size: 10.5pt;
+    position: relative;
+    orphans: 3;
+    widows: 3;
+}
+
+.missal-paragraph:not(.first-par) {
+    text-indent: 1.2em;
+}
+
+.punctuation-hang, .smart-punctuation, .puntuacion-inicial {
+    float: left;
+    font-size: 2em; 
+    line-height: 0.8;
+    padding-top: 5px;
+    margin-right: 2px;
+    color: var(--brand-color);
+    font-family: 'EB Garamond', serif;
+}
+
+.drop-cap {
+    float: left;
+    font-size: 3.2em; /* Calculado aprox ~3 lineas completas a line-height 1.2 */
+    line-height: 0.85;
+    padding-top: 5px;
+    padding-right: 6px;
+    padding-left: 2px;
+    font-family: 'Cinzel', 'EB Garamond', serif;
+    color: var(--brand-color);
+}
+
+/* Voz del Celebrante */
+.oracion-presidencial, 
+.proclamacion.presidencial {
+    line-height: 1.8 !important;
+    font-size: 11.5pt !important;
+    font-style: italic; /* Opcional: para mayor distinción */
+    padding-left: 0;
+}
+#ritos_iniciales {
+    page-break-before: avoid;
+    break-before: avoid;
+}
+/* Columnas para diálogos (Grid) */
+.bloque-dialogo.dialogo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    margin-bottom: 8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+.bloque-dialogo.dialogo-lineal {
+    margin-bottom: 8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+.bloque-dialogo .sigla-roja {
+    color: var(--brand-color);
+    font-weight: bold;
+}
+
+.missal-rubric {
+    color: var(--brand-color);
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 4px 0;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+.cross-mark {
+    color: var(--brand-color);
+    font-weight: normal;
+    margin-right: 4px;
+}
+
+.rubric {
+    color: var(--brand-color);
+    font-style: italic;
+    font-weight: normal !important;
+}
+
+/* ----------------------------------------------------- */
+/* NATIVE PRINT SUPPORT (For CMD+P or File -> Print)     */
+/* Garantiza que los colores litúrgicos no se borren     */
+/* ----------------------------------------------------- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #pdf-view, #pdf-view * {
+        visibility: visible;
+    }
+    #pdf-view {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5in !important;
+    }
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    .missal-heading, .missal-rubric, .rubric, .cross-mark, .rubrica-sacerdote, .titulo-rito {
+        color: #B20000 !important; /* Rojo Carmesí Canónico NLM para rúbricas SIEMPRE en impresión */
+    }
+    .missal-block {
+        /* Se remueve page-break-inside absoluto para permitir saltos normales en textos muy largos. */
+    }
+}
+
+/* ----------------------------------------------------- */
+/* PADRE PRO CHATBOT WIDGET                              */
+/* ----------------------------------------------------- */
+
+.padre-pro-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.padre-pro-toggle {
+    background: var(--gold-accent);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.padre-pro-toggle:hover {
+    transform: translateY(-2px);
+    background: #b08a47;
+}
+
+.padre-pro-toggle .icon {
+    font-size: 20px;
+}
+
+.padre-pro-window {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 350px;
+    max-height: 500px;
+    background: #1e1e1e;
+    border: 1px solid var(--gold-accent);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.padre-pro-header {
+    background: #0f0f0f;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--gold-accent);
+}
+
+.padre-pro-header .header-info strong {
+    color: var(--gold-accent);
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+}
+
+.padre-pro-header .status-indicator {
+    color: #aaa;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 2px;
+}
+
+.padre-pro-header .status-indicator::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--brand-color);
+}
+
+.padre-pro-chat {
+    flex: 1;
+    height: 350px;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #181818;
+}
+
+.chat-message {
+    max-width: 85%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    position: relative;
+    color: #fff;
+}
+
+.chat-message.bot {
+    background: rgba(197, 160, 89, 0.1);
+    align-self: flex-start;
+    border-left: 3px solid var(--gold-accent);
+    border-bottom-left-radius: 0;
+}
+
+.chat-message.user {
+    background: rgba(178, 0, 0, 0.2);
+    align-self: flex-end;
+    border-right: 3px solid var(--brand-color);
+    border-bottom-right-radius: 0;
+}
+
+.chat-message p {
+    margin: 0 0 8px 0;
+}
+
+.chat-message p:last-child {
+    margin-bottom: 0;
+}
+
+.chat-message strong {
+    color: var(--gold-accent);
+}
+
+.padre-pro-input {
+    display: flex;
+    padding: 15px;
+    background: #0f0f0f;
+    border-top: 1px solid #333;
+}
+
+.padre-pro-input input {
+    flex: 1;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.padre-pro-input input:focus {
+    border-color: var(--gold-accent);
+}
+
+.padre-pro-input button {
+    background: var(--gold-accent);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.padre-pro-input button:hover {
+    background: #b08a47;
+}
+
+.typing-indicator {
+    font-style: italic;
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* ----------------------------------------------------- */
+/* PROMPTER CINEMATICO                                  */
+/* ----------------------------------------------------- */
+
+#prompter-screen {
+    background: #000000 !important; /* Puro negro para proyector */
+}
+
+#prompter-controls-bar:hover {
+    opacity: 1 !important;
+}
+
+.prompter-slide {
+    width: 100%;
+    margin-bottom: 120px; /* Separación grande entre lecturas */
+    animation: fadeInSlide 0.5s ease-in-out;
+}
+
+.prompter-slide.active {
+    display: block;
+}
+
+.prompter-slide-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold-accent);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.prompter-slide-content {
+    font-size: 3rem;
+    line-height: 1.5;
+    color: #Fdfdfd;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.prompter-slide-rubric {
+    font-size: 2rem;
+    color: #D32F2F;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* PDF Print Styles / Formal Missal Styles */
+.pdf-container a {
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
+}
+
+@media print {
+    .pdf-container a {
+        color: black !important;
+        text-decoration: none !important;
+    }
+}
+
+/* ORDO MAGISTERIAL VIEW */
+.ordo-container {
+    background-color: #fdfbf7;
+    color: #2b2b2b;
+    font-family: 'EB Garamond', serif;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.ordo-container::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px solid #d4af37;
+    pointer-events: none;
+}
+
+.ordo-header {
+    text-align: center;
+    border-bottom: 2px solid #D32F2F;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.ordo-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #D32F2F;
+    margin-bottom: -10px;
+}
+
+.ordo-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2b2b2b;
+    margin: 10px 0;
+}
+
+.ordo-grado {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #666;
+}
+
+.ordo-color-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+.ordo-color-badge.blanco { background-color: #f8f9fa; border-color: #dee2e6; }
+.ordo-color-badge.rojo { background-color: #fee2e2; border-color: #ef4444; color: #991b1b; }
+.ordo-color-badge.morado { background-color: #f3e8ff; border-color: #a855f7; color: #6b21a8; }
+.ordo-color-badge.verde { background-color: #dcfce7; border-color: #22c55e; color: #166534; }
+
+.ordo-section {
+    margin-bottom: 25px;
+}
+
+.ordo-section h3 {
+    font-family: 'Cinzel', serif;
+    color: #D32F2F;
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(211, 47, 47, 0.2);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ordo-item {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 2px solid #e0e0e0;
+}
+
+.ordo-item strong {
+    color: #000;
+    font-weight: 600;
+}
+
+.ordo-rubric {
+    font-style: italic;
+    color: #D32F2F;
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+.ordo-text {
+    line-height: 1.6;
+    color: #333;
+}
+
+.ordo-pages {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+        body { background: #eee; margin: 0; }
+        .toolbar {
+            background: #1a1a2e;
+            color: white;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: 'Outfit', sans-serif;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .toolbar button {
+            background: #2a2a4e; color: white; border: 1px solid #4a4a6a; padding: 8px 16px; cursor: pointer; border-radius: 4px; font-family: 'Outfit';
+        }
+        .toolbar button:hover { background: #3a3a6e; }
+        .pdf-container {
+            background: white;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        @media print {
+            body { background: white; }
+            .toolbar { display: none !important; }
+            .pdf-container { box-shadow: none; margin: 0; padding: 0; max-width: none; }
+        }
+    </style>
+    <script>
+window.cantosDB = {
+  "Vienen con alegría Señor": {
+    "letra": "*CORO*\nVienen con alegría Señor,\ncantando vienen con alegría Señor.\nLos que caminan por la vida Señor,\nsembrando tu paz y amor.\n\n*ESTROFA 1*\nVienen trayendo la esperanza,\na un mundo cargado de ansiedad,\na un mundo que busca y que no alcanza,\ncaminos de amor y de amistad.\n\n*ESTROFA 2*\nVienen trayendo entre sus manos,\nesfuerzos de hermanos por la paz,\ndeseos de un mundo más humano,\nque nacen del bien y la verdad.\n\n*ESTROFA 3*\nCuando el odio y la violencia,\naniden en nuestro corazón,\nel mundo sabrá que por herencia,\nle aguardan tristezas y dolor."
+  },
+  "Te Ofrecemos Padre Nuestro": {
+    "letra": "*CORO*\nTe ofrecemos Padre nuestro,\ncon el vino y con el pan,\nnuestras penas y alegrías,\nel trabajo y nuestro afán.\n\n*ESTROFA 1*\nComo el trigo de los campos\nbajo el signo de la cruz,\nse transformen nuestras vidas\nen el Cuerpo de Jesús.\n\n*ESTROFA 2*\nA los pobres de la tierra\na los que sufriendo están,\ncambia su dolor en vino,\ncomo la uva en el lagar.\n\n*ESTROFA 3*\nEstos dones son el signo\ndel esfuerzo de unidad,\nque los hombres realizamos\nen el campo y la ciudad."
+  },
+  "Pescador de Hombres": {
+    "letra": "*ESTROFA 1*\nTú, has venido a la orilla,\nno has buscado ni a sabios ni a ricos;\ntan sólo quieres que yo te siga.\n\n*CORO*\nSeñor, me has mirado a los ojos,\nsonriendo has dicho mi nombre,\nen la arena he dejado mi barca,\njunto a ti, buscaré otro mar.\n\n*ESTROFA 2*\nTú, sabes bien lo que tengo;\nen mi barca no hay oro ni espadas,\ntan sólo redes y mi trabajo.\n\n*ESTROFA 3*\nTú necesitas mis manos,\nmi cansancio que a otros descanse,\namor que quiera seguir amando."
+  },
+  "Demos Gracias al Señor": {
+    "letra": "*CORO*\nDemos gracias al Señor, demos gracias,\ndemos gracias al Señor.\n\n*ESTROFA 1*\nPor las mañanas las aves cantan\nlas alabanzas a Cristo el Salvador;\ny tú amigo, ¿por qué no cantas\nlas alabanzas a Cristo el Salvador?\n\n*ESTROFA 2*\nY por las tardes las flores cantan\nlas alabanzas a Dios el Creador;\ny tú amigo, ¿por qué no cantas\nlas alabanzas a Dios nuestro Señor?\n\n*ESTROFA 3*\nY por las noches los cielos cantan\nlas alabanzas a Dios el Salvador;\ny tú amigo, ¿por qué no cantas\nlas alabanzas a Dios tu formador?"
+  },
+  "Honor y Gloria a Ti (o Prepara tu Camino)": {
+    "letra": "Honor y Gloria a Ti, Señor Jesús.\nPreparad el camino del Señor, enderezad sus sendas."
+  },
+  "Perdona a tu pueblo Señor": {
+    "letra": "*CORO*\nPerdona a tu pueblo, Señor,\nperdona a tu pueblo, perdónale Señor.\n\n*ESTROFA 1*\nNo estés eternamente enojado,\nno estés eternamente enojado,\nperdónale Señor.\n\n*ESTROFA 2*\nPor las heridas de pies y manos,\npor los azotes y los clavos,\nperdónale Señor.\n\n*ESTROFA 3*\nPor los tres clavos que te clavaron,\ny las espinas que te punzaron,\nperdónale Señor."
+  },
+  "El Señor Resucitó, Aleluya": {
+    "letra": "*CORO*\nEl Señor resucitó, ¡Aleluya!\nCristo nuestra vida, ¡Aleluya!\n\n*ESTROFA 1*\nEl sepulcro está vacío, no lloren más.\nEl Señor venció a la muerte, resucitó.\n\n*ESTROFA 2*\nEn el día de la Pascua nos da la paz.\nEs el triunfo de la gracia y la bondad.\n\n*ESTROFA 3*\nPor su Sangre derramada somos su grey.\nAclamemos a Jesucristo, Rey Inmortal."
+  },
+  "Te Presentamos el Vino y el Pan": {
+    "letra": "*CORO*\nTe presentamos el vino y el pan,\nbendito seas por siempre, Señor.\n\n*ESTROFA 1*\nBendito seas, Señor,\npor este pan que nos diste,\nfruto de la tierra y del trabajo de los hombres.\n\n*ESTROFA 2*\nBendito seas, Señor,\nel vino Tú nos lo diste,\nfruto de la vid y del trabajo de los hombres.\n\n*ESTROFA 3*\nTe presentamos Señor,\nnuestra fatiga y descanso,\nlos esfuerzos de cada día al pie del Altar."
+  },
+  "Yo soy el Pan de Vida": {
+    "letra": "*ESTROFA 1*\nYo soy el pan de vida,\nel que viene a mí no tendrá hambre.\nEl que cree en mí no tendrá sed.\nNadie viene a mí si mi Padre no lo llama.\n\n*CORO*\nYo lo resucitaré, Yo lo resucitaré,\nYo lo resucitaré en el día final.\n\n*ESTROFA 2*\nEl pan que yo les daré,\nes mi cuerpo vida del mundo.\nEl que coma de mi carne,\ntendrá vida eterna, tendrá vida eterna.\n\n*ESTROFA 3*\nMientras no coman el cuerpo del Hijo del hombre.\nY beban de su sangre.\nNo tendrán vida, no tendrán la vida en ustedes."
+  },
+  "Reina del Cielo Alégrate": {
+    "letra": "Reina del cielo, alégrate, aleluya.\nPorque el Señor, a quien has merecido llevar, aleluya.\nHa resucitado, según su palabra, aleluya.\nRuega al Señor por nosotros, aleluya."
+  },
+  "Ven, Ven, Señor no tardes": {
+    "letra": "*CORO*\nVen, ven, Señor no tardes.\nVen, ven, que te esperamos.\nVen, ven, Señor, no tardes.\nVen, pronto Señor.\n\n*ESTROFA 1*\nEl mundo muere de frío, el alma perdió el calor;\nlos hombres no son hermanos, el mundo no tiene amor.\n\n*ESTROFA 2*\nEnvuelto en sombría noche, el mundo sin paz ni luz.\nBuscando va una esperanza, que solo nos diste tú.\n\n*ESTROFA 3*\nAl mundo le falta vida, al mundo le falta luz.\nAl mundo le falta el cielo, al mundo le faltas Tú."
+  },
+  "Saber que vendrás": {
+    "letra": "*ESTROFA 1*\nEn este mundo que Cristo nos da\nhacemos la ofrenda del pan.\nEl pan de nuestro trabajo sin fin\ny el vino de nuestro cantar.\n\n*CORO*\nSaber que vendrás, saber que estarás\npartiendo a los pobres tu pan.\n\n*ESTROFA 2*\nTraigo ante Ti nuestra justa inquietud,\namar la justicia y la paz.\nTraigo ante Ti nuestros frutos, Señor,\nlos dones que Tú nos darás.\n\n*ESTROFA 3*\nCon la esperanza de un mundo mejor\nen el que la vida reinará.\nNos sentaremos en torno a Tú mesa\ny Tú el gran banquete servirás."
+  },
+  "Un pueblo que camina": {
+    "letra": "*CORO*\nUn pueblo que camina por el mundo\ngritando: ¡Ven Señor!\nUn pueblo que busca en esta vida\nla gran liberación.\n\n*ESTROFA 1*\nLos pobres siempre esperan el amanecer\nde un día más justo y sin opresión.\nLos pobres hemos puesto la esperanza en Ti,\nLibertador.\n\n*ESTROFA 2*\nSalvaste nuestra vida de la esclavitud\nesclavos de la ley sirviendo al temor.\nNosotros hemos puesto la esperanza en Ti,\nDios del amor.\n\n*ESTROFA 3*\nEl mundo por la guerra sangra sin razón,\nfamilias destrozadas claman al Señor.\nNosotros hemos puesto la esperanza en Ti,\nDios de la Paz."
+  },
+  "Santa María de la Esperanza": {
+    "letra": "*CORO*\nSanta María de la esperanza,\nmantén el ritmo de nuestra espera,\nmantén el ritmo de nuestra espera.\n\n*ESTROFA 1*\nNos diste al esperado de los tiempos\nmil veces prometido en los profetas.\nY nosotros de nuevo deseamos\nque vuelva a repetirnos sus promesas.\n\n*ESTROFA 2*\nBrillaste como aurora del gran día,\nplantabas el derecho y la justicia.\nY ahora tenemos esperanza\nde que cambien la muerte por la vida.\n\n*ESTROFA 3*\nViviste en la pobreza humildemente\nseguiste paso a paso en el silencio.\nEnséñanos la ruta de los pobres\npara hallar en sus ojos al Eterno."
+  },
+  "Here I Am Lord": {
+    "letra": "*ESTROFA 1*\nI, the Lord of sea and sky,\nI have heard my people cry.\nAll who dwell in dark and sin, my hand will save.\n\n*CHORUS*\nHere I am, Lord. Is it I, Lord?\nI have heard you calling in the night.\nI will go, Lord, if you lead me.\nI will hold your people in my heart.\n\n*ESTROFA 2*\nI, the Lord of snow and rain,\nI have borne my people's pain.\nI have wept for love of them. They turn away.\n\n*ESTROFA 3*\nI, the Lord of wind and flame,\nI will tend the poor and lame.\nI will set a feast for them. My hand will save."
+  },
+  "On Eagles Wings": {
+    "letra": "*ESTROFA 1*\nYou who dwell in the shelter of the Lord,\nWho abide in His shadow for life.\nSay to the Lord: 'My refuge, my rock in whom I trust!'\n\n*CHORUS*\nAnd He will raise you up on eagles wings,\nbear you on the breath of dawn,\nmake you to shine like the sun,\nand hold you in the palm of His hand.\n\n*ESTROFA 2*\nThe snare of the fowler will never capture you,\nAnd famine will bring you no fear:\nUnder His wings your refuge, His faithfulness your shield.\n\n*ESTROFA 3*\nFor to His angels He's given a command,\nTo guard you in all of your ways;\nUpon their hands they will bear you up,\nLest you dash your foot against a stone."
+  }
+};
+
+// Lógica de Selección de Cantos por Tiempo Litúrgico
+window.linkCanto = function(nombre) {
+    let html = `<strong>${nombre}</strong>`;
+    if (window.cantosDB && window.cantosDB[nombre]) {
+        const letraFormat = window.cantosDB[nombre].letra.replace(/\n/g, '<br/>');
+        html += `<div style="margin-top: 10px; margin-bottom: 5px; line-height: 1.4; font-size: 0.95em; font-style: italic; color: #444; border-left: 3px solid #ddd; padding-left: 12px;">${letraFormat}</div>`;
+    }
+    return html;
+};
+
+window.obtenerCantosPorTiempo = function(tiempoStr, isEn) {
+    if (isEn) {
+        return {
+            entrada: window.linkCanto('Here I Am Lord'),
+            ofertorio: window.linkCanto('Saber que vendrás'),
+            comunion: window.linkCanto('On Eagles Wings'),
+            salida: window.linkCanto('Demos Gracias al Señor') 
+        };
+    }
+    const t = tiempoStr ? tiempoStr.toLowerCase() : "";
+    if (t.includes('cuaresma')) {
+        return {
+            entrada: window.linkCanto('Hacia ti morada santa'),
+            ofertorio: window.linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: window.linkCanto('Pequeñas aclaraciones'),
+            salida: window.linkCanto('Silencio')
+        };
+    } else if (t.includes('pascua')) {
+        return {
+            entrada: window.linkCanto('El Señor Resucitó, Aleluya'),
+            ofertorio: window.linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: window.linkCanto('Pescador de Hombres'),
+            salida: window.linkCanto('Reina del Cielo Alégrate')
+        };
+    }
+    return {
+        entrada: window.linkCanto('Juntos como hermanos'),
+        ofertorio: window.linkCanto('Saber que vendrás'),
+        comunion: window.linkCanto('Pescador de Hombres'),
+        salida: window.linkCanto('Demos Gracias al Señor')
+    };
+};
+
+    </script>
+    <script>
+    window.liturgiaDB = {"2026-04-27": {"fecha": "2026-04-27", "liturgia_palabra": {"primera_lectura": {"cita": "Del libro de los Hechos de los apóstoles Hechos 11, 1-18", "cita_formula": "Del libro de los Hechos de los apóstoles", "cita_versiculos": "Hechos 11, 1-18", "texto": "En aquellos días, los apóstoles y los hermanos que vivían en Judea se enteraron de que también los paganos habían recibido la palabra de Dios. Cuando Pedro regresó a Jerusalén, los circuncidados le hicieron reproches, diciendo: \"Has entrado en la casa de unos incircuncisos y has comido con ellos\".\nEntonces Pedro les contó desde el principio lo que le había pasado: \"Estaba yo en la ciudad de Jafa, en oración, cuando tuve una visión y vi algo semejante a un gran mantel, que sostenido por las cuatro puntas, bajaba del cielo hasta donde yo me encontraba. Miré con atención aquella cosa y descubrí que había en ella toda clase de cuadrúpedos, fieras, reptiles y aves. Oí luego una voz que me decía: 'Levántate, Pedro. Mata el animal que quieras y come'. Pero yo le respondí: 'Ni pensarlo, Señor. Jamás he comido nada profano o impuro'. La voz del cielo me habló de nuevo: 'No tengas tú por impuro lo que Dios ha hecho puro'. Esto se repitió tres veces y luego todo fue recogido hacia el cielo.\nEn aquel instante, se presentaron en la casa donde yo estaba tres hombres, que venían de Cesarea, con un recado para mí. El Espíritu me dijo entonces que me fuera con ellos sin dudar. También fueron conmigo estos seis hermanos y todos entramos en casa de aquel hombre. Él nos contó cómo había visto de pie, ante él, a un ángel que le dijo: 'Manda a buscar en Jafa a Simón, llamado Pedro. Lo que él te diga, te traerá la salvación a ti y a toda tu familia'. En cuanto empecé a hablar, el Espíritu Santo descendió sobre ellos, como había descendido al principio sobre nosotros. Entonces me acordé de lo que había dicho el Señor: 'Juan bautizó con agua; pero ustedes serán bautizados con el Espíritu Santo'. Por lo tanto, si Dios les ha dado a ellos el mismo don que a nosotros, por haber creído en el Señor Jesús, ¿quién soy yo para oponerme a Dios?\"\n Con esto se apaciguaron y alabaron a Dios, diciendo: \"Por lo visto, también a los paganos les ha concedido Dios la conversión que lleva a la vida\".", "cita_en": "Acts 11:1-18", "texto_en": "The Apostles and the brothers who were in Judea\nheard that the Gentiles too had accepted the word of God.\nSo when Peter went up to Jerusalem\nthe circumcised believers confronted him, saying,\n‘You entered the house of uncircumcised people and ate with them.”\nPeter began and explained it to them step by step, saying,\n“I was at prayer in the city of Joppa\nwhen in a trance I had a vision,\nsomething resembling a large sheet coming down,\nlowered from the sky by its four corners, and it came to me.\nLooking intently into it,\nI observed and saw the four-legged animals of the earth,\nthe wild beasts, the reptiles, and the birds of the sky.\nI also heard a voice say to me, ‘Get up, Peter. Slaughter and eat.’\nBut I said, ‘Certainly not, sir,\nbecause nothing profane or unclean has ever entered my mouth.’\nBut a second time a voice from heaven answered,\n‘What God has made clean, you are not to call profane.’\nThis happened three times,\nand then everything was drawn up again into the sky.\nJust then three men appeared at the house where we were,\nwho had been sent to me from Caesarea.\nThe Spirit told me to accompany them without discriminating.\nThese six brothers also went with me,\nand we entered the man’s house.\nHe related to us how he had seen the angel standing in his house, saying,\n‘Send someone to Joppa and summon Simon, who is called Peter,\nwho will speak words to you\nby which you and all your household will be saved.’\nAs I began to speak, the Holy Spirit fell upon them\nas it had upon us at the beginning,\nand I remembered the word of the Lord, how he had said,\n‘John baptized with water\nbut you will be baptized with the Holy Spirit.’\nIf then God gave them the same gift he gave to us\nwhen we came to believe in the Lord Jesus Christ,\nwho was I to be able to hinder God?”\nWhen they heard this,\nthey stopped objecting and glorified God, saying,\n“God has then granted life-giving repentance to the Gentiles too.”"}, "salmo_responsorial": {"cita": "Salmo 41 y 42", "respuesta": "R.", "texto": "Estoy sediento del Dios que da la vida. Aleluya.\nComo el venado busca\nel agua de los ríos,\nasí, cansada, mi alma\nte busca a ti, Dios mío.\nR.\nDel Dios que da la vida\nestá mi ser sediento.\n¿Cuándo será posible\nver de nuevo su templo?\nR.\nEnvíame, Señor, tu luz y tu verdad;\nque ellas se conviertan en mi guía\ny hasta tu monte  santo me conduzcan,\nallí donde tú habitas.\nR.\nAl altar del Señor me acercaré,\nal Dios que es mi alegría,\ny a mi Dios, el Señor, le daré gracias\nal compás de la cítara.\nR.", "cita_en": "Psalm 42:2-3; 43:3, 4", "respuesta_en": "(see 3a)", "texto_en": "Athirst is my soul for the living God.\nor:\nR. \nAlleluia.\nAs the hind longs for the running waters,\nso my soul longs for you, O God.\nAthirst is my soul for God, the living God.\nWhen shall I go and behold the face of God?\nR. \nAthirst is my soul for the living God.\nor:\nR. \nAlleluia.\nSend forth your light and your fidelity;\nthey shall lead me on\nAnd bring me to your holy mountain,\nto your dwelling-place.\nR. \nAthirst is my soul for the living God.\nor:\nR. \nAlleluia.\nThen will I go in to the altar of God,\nthe God of my gladness and joy;\nThen will I give you thanks upon the harp,\nO God, my God!\nR. \nAthirst is my soul for the living God.\nor:\nR. \nAlleluia."}, "segunda_lectura": {"cita": "Lectura del libro de Juan Juan 10, 11-18", "cita_formula": "Lectura del libro de Juan", "cita_versiculos": "Juan 10, 11-18", "texto": "En aquel tiempo, Jesús dijo a los fariseos: \"Yo soy el buen pastor. El buen pastor da la vida por sus ovejas. En cambio, el asalariado, el que no es el pastor ni el dueño de las ovejas, cuando ve venir al lobo, abandona las ovejas y huye; el lobo se arroja sobre ellas y las dispersa, porque a un asalariado no le importan las ovejas.\n Yo soy el buen pastor, porque conozco a mis ovejas y ellas me conocen a mí, así como el Padre me conoce a mí y yo conozco al Padre. Yo doy la vida por mis ovejas. Tengo además otras ovejas que no son de este redil y es necesario que las traiga también a ellas; escucharán mi voz y habrá un solo rebaño y un solo pastor. \nEl Padre me ama porque doy mi vida para volverla a tomar. Nadie me la quita; yo la doy porque quiero. Tengo poder para darla y lo tengo también para volverla a tomar. Este es el mandato que he recibido de mi Padre\"."}, "evangelio": {"cita": "Del santo Evangelio según San Juan Juan 10, 11-18", "cita_formula": "Del santo Evangelio según San Juan", "cita_versiculos": "Juan 10, 11-18", "texto": "En aquel tiempo, Jesús dijo a los fariseos: \"Yo soy el buen pastor. El buen pastor da la vida por sus ovejas. En cambio, el asalariado, el que no es el pastor ni el dueño de las ovejas, cuando ve venir al lobo, abandona las ovejas y huye; el lobo se arroja sobre ellas y las dispersa, porque a un asalariado no le importan las ovejas.\n Yo soy el buen pastor, porque conozco a mis ovejas y ellas me conocen a mí, así como el Padre me conoce a mí y yo conozco al Padre. Yo doy la vida por mis ovejas. Tengo además otras ovejas que no son de este redil y es necesario que las traiga también a ellas; escucharán mi voz y habrá un solo rebaño y un solo pastor. \nEl Padre me ama porque doy mi vida para volverla a tomar. Nadie me la quita; yo la doy porque quiero. Tengo poder para darla y lo tengo también para volverla a tomar. Este es el mandato que he recibido de mi Padre\".", "cita_en": "John 10:11-18", "texto_en": "Jesus said:\n“I am the good shepherd.\nA good shepherd lays down his life for the sheep.\nA hired man, who is not a shepherd\nand whose sheep are not his own,\nsees a wolf coming and leaves the sheep and runs away,\nand the wolf catches and scatters them.\nThis is because he works for pay and has no concern for the sheep.\nI am the good shepherd,\nand I know mine and mine know me,\njust as the Father knows me and I know the Father;\nand I will lay down my life for the sheep.\nI have other sheep that do not belong to this fold.\nThese also I must lead, and they will hear my voice,\nand there will be one flock, one shepherd.\nThis is why the Father loves me,\nbecause I lay down my life in order to take it up again.\nNo one takes it from me, but I lay it down on my own.\nI have power to lay it down, and power to take it up again.\nThis command I have received from my Father.”"}, "secuencia": {}}, "liturgia_eucaristica": {}, "laudes": {"salmo1": {"antifona": "Baje a nosotros la bondad del Señor. Aleluya.", "texto": "Salmo 89\n\nBAJE A NOSOTROS LA BONDAD DEL SEÑOR\n\nSeñor, tú has sido nuestro refugio\n\nde generación en generación.\n\nAntes que naciesen los montes\n\no fuera engendrado el orbe de la tierra,\n\ndesde siempre y por siempre tú eres Dios.\n\nTú reduces el hombre a polvo,\n\ndiciendo: «Retornad, hijos de Adán.»\n\nMil años en tu presencia\n\nson un ayer, que pasó;\n\nuna vigilia nocturna.\n\nLos siembras año por año,\n\ncomo hierba que se renueva:\n\nque florece y se renueva por la mañana,\n\ny por la tarde la siegan y se seca.\n\n¡Cómo nos ha consumido tu cólera\n\ny nos ha trastornado tu indignación!\n\nPusiste nuestras culpas ante ti,\n\nnuestros secretos ante la luz de tu mirada:\n\ny todos nuestros días pasaron bajo tu cólera,\n\ny nuestros años se acabaron como un suspiro.\n\nAunque uno viva setenta años,\n\ny el más robusto hasta ochenta,\n\nla mayor parte son fatiga inútil,\n\nporque pasan aprisa y vuelan.\n\n¿Quién conoce la vehemencia de tu ira,\n\nquién ha sentido el peso de tu cólera?\n\nEnséñanos a calcular nuestros años,\n\npara que adquiramos un corazón sensato.\n\nVuélvete, Señor, ¿hasta cuándo?\n\nTen compasión de tus siervos;\n\npor la mañana sácianos de tu misericordia,\n\ny toda nuestra vida será alegría y júbilo.\n\nDanos alegría, por los días en que nos afligiste,\n\npor los años en que sufrimos desdichas.\n\nQue tus siervos vean tu acción,\n\ny sus hijos tu gloria.\n\nBaje a nosotros la bondad del Señor\n\ny haga prósperas las obras de nuestras manos.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nBaje a nosotros la bondad del Señor. Aleluya."}, "cantico_at": {"antifona": "Convertiré ante ellos la tiniebla en luz. Aleluya.", "texto": "Cántico\n\nIs 42, 10-16\n\nCÁNTICO NUEVO AL DIOS VENCEDOR Y SALVADOR\n\nCantad al Señor un cántico nuevo,\n\nllegue su alabanza hasta el confín de la tierra.\n\nmuja el mar y lo que contiene,\n\nlas islas y sus habitantes;\n\nalégrese el desierto con sus tiendas,\n\nlos cercados que habita Cadar;\n\nexulten los habitantes de Petra,\n\nclamen desde la cumbre de las montañas;\n\nden gloria al Señor,\n\nanuncien su alabanza en las islas.\n\nEl Señor sale como un héroe,\n\nexcita su ardor como un guerrero,\n\nlanza el alarido,\n\nmostrándose valiente frente al enemigo.\n\n«Desde antiguo guardé silencio,\n\nme callaba y aguantaba;\n\nmas ahora grito como la mujer cuando da a luz,\n\njadeo y resuello.\n\nAgostaré montes y collados,\n\nsecaré toda su hierba,\n\nconvertiré los ríos en yermo,\n\ndesecaré los estanques;\n\nconduciré a los ciegos\n\npor el camino que no conocen,\n\nlos guiaré por senderos que ignoran.\n\nAnte ellos convertiré la tiniebla en luz,\n\nlo escabroso en llano.»\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nConvertiré ante ellos la tiniebla en luz. Aleluya."}, "salmo2": {"antifona": "El Señor todo lo que quiere lo hace. Aleluya.", "texto": "Salmo 134, 1-12\n\nHIMNO A DIOS POR SUS MARAVILLAS\n\nAlabad el nombre del Señor,\n\nalabadlo, siervos del Señor,\n\nque estáis en la casa del Señor,\n\nen los atrios de la casa de nuestro Dios.\n\nAlabad al Señor porque es bueno,\n\ntañed para su nombre, que es amable.\n\nPorque él se escogió a Jacob,\n\na Israel en posesión suya.\n\nYo sé que el Señor es grande,\n\nnuestro dueño más que todos los dioses.\n\nEl Señor todo lo que quiere lo hace:\n\nen el cielo y en la tierra,\n\nen los mares y en los océanos.\n\nHace subir las nubes desde el horizonte,\n\ncon los relámpagos desata la lluvia,\n\nsuelta a los vientos de sus silos.\n\nÉl hirió a los primogénitos de Egipto,\n\ndesde los hombres hasta los animales.\n\nEnvió signos y prodigios\n\n—en medio de ti, Egipto—\n\ncontra el Faraón y sus ministros.\n\nHirió de muerte a pueblos numerosos,\n\nmató a reyes poderosos:\n\na Sijón, rey de los amorreos;\n\na Hog, rey de Basán,\n\ny a todos los reyes de Canaán.\n\nY dio su tierra en heredad,\n\nen heredad a Israel, su pueblo.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nEl Señor todo lo que quiere lo hace. Aleluya."}, "lectura_breve": {"cita": "Juan 10, 11-18", "texto": "En aquel tiempo, Jesús dijo a los fariseos: \"Yo soy el buen pastor. El buen pastor da la vida por sus ovejas. En cambio, el asalariado, el que no es el pastor ni el dueño de las ovejas, cuando ve venir al lobo, abandona las ovejas y huye; el lobo se arroja sobre ellas y las dispersa, porque a un asalariado no le importan las ovejas.\n\nYo soy el buen pastor, porque conozco a mis ovejas y ellas me conocen a mí, así como el Padre me conoce a mí y yo conozco al Padre. Yo doy la vida por mis ovejas. Tengo además otras ovejas que no son de este redil y es necesario que las traiga también a ellas; escucharán mi voz y habrá un solo rebaño y un solo pastor.\n\nEl Padre me ama porque doy mi vida para volverla a tomar. Nadie me la quita; yo la doy porque quiero. Tengo poder para darla y lo tengo también para volverla a tomar. Este es el mandato que he recibido de mi Padre\"."}, "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.", "cantico_evangelico": {"antifona": "Yo soy el buen Pastor, que apaciento a mis ovejas y doy mi vida por ellas. Aleluya.", "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nYo soy el buen Pastor, que apaciento a mis ovejas y doy mi vida por ellas. Aleluya."}, "preces": "Oremos a Dios Padre todopoderoso, glorificado por la muerte y resurrección de Cristo, y digámosle confiados:\nR.\nIlumina, Señor, nuestras mentes.\nPadre, fuente de toda luz, que has querido iluminar el mundo con la gloria de Cristo resucitado,\nR.\nilumina, desde el principio de este día, nuestras almas con la luz de la fe.\nTú que por medio de tu Hijo, resucitado de entre los muertos, has abierto a los hombres las puertas de la salvación,\nR.\nhaz  que,  a  través  de  los  trabajos  de  este  día,  se  acreciente nuestra esperanza.\nTú  que  por  medio  de  tu  Hijo  resucitado  has  derramado  sobre  el    mundo el Espíritu Santo,\nR.\nenciende nuestros corazones con el fuego de este mismo Espíritu.\nTú que para librarnos entregaste a tu Hijo  la muerte,\nR.\nhaz que él sea hoy para nosotros salvación y redención.\nSe pueden añadir algunas intenciones libres\nTerminemos  nuestra oración con la plegaria que Cristo nos enseñó: Padre  nuestro."}, "visperas": {"salmo1": {"antifona": "El que está en Cristo es una nueva creación. Aleluya.", "texto": "Salmo 135 I\n\nHIMNO A DIOS POR LAS MARAVILLAS\n\nDE LA CREACIÓN Y DEL ÉXODO\n\nDad gracias al Señor porque es bueno:\n\nporque es eterna su misericordia.\n\nDad gracias al Dios de los dioses:\n\nporque es eterna su misericordia.\n\nDad gracias al Señor de los señores:\n\nporque es eterna su misericordia.\n\nSolo él hizo grandes maravillas:\n\nporque es eterna su misericordia.\n\nÉl hizo sabiamente los cielos:\n\nporque es eterna su misericordia.\n\nÉl afianzó sobre las aguas la tierra:\n\nporque es eterna su misericordia.\n\nÉl hizo lumbreras gigantes:\n\nporque es eterna su misericordia.\n\nEl sol que gobierna el día:\n\nporque es eterna su misericordia.\n\nLa luna que gobierna la noche:\n\nporque es eterna su misericordia.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nEl que está en Cristo es una nueva creación. Aleluya."}, "salmo2": {"antifona": "Amemos a Dios porque él nos ha amado antes. Aleluya.", "texto": "Salmo 135 II\n\nÉl hirió a Egipto en sus primogénitos:\n\nporque es eterna su misericordia.\n\nY sacó a Israel de aquel país:\n\nporque es eterna su misericordia.\n\nCon mano poderosa, con brazo extendido:\n\nporque es eterna su misericordia.\n\nÉl dividió en dos partes el mar Rojo:\n\nporque es eterna su misericordia.\n\nY condujo por en medio a Israel:\n\nporque es eterna su misericordia.\n\nArrojó en el mar Rojo al Faraón:\n\nporque es eterna su misericordia.\n\nGuió por el desierto a su pueblo:\n\nporque es eterna su misericordia.\n\nÉl hirió a reyes famosos:\n\nporque es eterna su misericordia.\n\nDio muerte a reyes poderosos:\n\nporque es eterna su misericordia.\n\nA Sijón, rey de los amorreos:\n\nporque es eterna su misericordia.\n\nY a Hog, rey de Basán:\n\nporque es eterna su misericordia.\n\nLes dio su tierra en heredad:\n\nporque es eterna su misericordia.\n\nEn heredad a Israel, su siervo:\n\nporque es eterna su misericordia.\n\nEn nuestra humillación se acordó de nosotros:\n\nporque es eterna su misericordia.\n\nY nos libró de nuestros opresores:\n\nporque es eterna su misericordia.\n\nÉl da alimento a todo viviente:\n\nporque es eterna su misericordia.\n\nDad gracias al Dios del cielo:\n\nporque es eterna su misericordia.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nAmemos a Dios porque él nos ha amado antes. Aleluya."}, "cantico_nt": {"antifona": "De su plenitud todos hemos recibido gracia tras gracia. Aleluya.", "texto": "Cántico\n\nEf 1, 3-10\n\nEL PLAN DIVINO DE LA SALVACIÓN\n\nBendito sea Dios,\n\nPadre de nuestro Señor Jesucristo,\n\nque nos ha bendecido en la persona de Cristo\n\ncon toda clase de bienes espirituales y celestiales.\n\nÉl nos eligió en la persona de Cristo,\n\nantes de crear el mundo,\n\npara que fuésemos consagrados\n\ne irreprochables ante él por el amor.\n\nÉl nos ha destinado en la persona de Cristo,\n\npor pura iniciativa suya,\n\na ser sus hijos,\n\npara que la gloria de su gracia,\n\nque tan generosamente nos ha concedido\n\nen su querido Hijo,\n\nredunde en alabanza suya.\n\nPor este Hijo, por su sangre,\n\nhemos recibido la redención,\n\nel perdón de los pecados.\n\nEl tesoro de su gracia, sabiduría y prudencia\n\nha sido un derroche para con nosotros,\n\ndándonos a conocer el misterio de su voluntad.\n\nÉste es el plan\n\nque había proyectado realizar por Cristo\n\ncuando llegase el momento culminante:\n\nhacer que todas las cosas\n\ntuviesen a Cristo por cabeza,\n\nlas del cielo y las de la tierra.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nDe su plenitud todos hemos recibido gracia tras gracia. Aleluya."}, "lectura_breve": {"cita": "Juan 10, 11-18", "texto": "En aquel tiempo, Jesús dijo a los fariseos: \"Yo soy el buen pastor. El buen pastor da la vida por sus ovejas. En cambio, el asalariado, el que no es el pastor ni el dueño de las ovejas, cuando ve venir al lobo, abandona las ovejas y huye; el lobo se arroja sobre ellas y las dispersa, porque a un asalariado no le importan las ovejas.\n\nYo soy el buen pastor, porque conozco a mis ovejas y ellas me conocen a mí, así como el Padre me conoce a mí y yo conozco al Padre. Yo doy la vida por mis ovejas. Tengo además otras ovejas que no son de este redil y es necesario que las traiga también a ellas; escucharán mi voz y habrá un solo rebaño y un solo pastor.\n\nEl Padre me ama porque doy mi vida para volverla a tomar. Nadie me la quita; yo la doy porque quiero. Tengo poder para darla y lo tengo también para volverla a tomar. Este es el mandato que he recibido de mi Padre\"."}, "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.", "cantico_evangelico": {"antifona": "Tengo otras ovejas que no son de este redil; es necesario que las recoja, y oirán mi voz, para que se forme un solo rebaño y un solo pastor. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nTengo otras ovejas que no son de este redil; es necesario que las recoja, y oirán mi voz, para que se forme un solo rebaño y un solo pastor. Aleluya.\nLlenos de gozo, oremos a Cristo, el Señor, que con su resurrección ha iluminado al mundo entero, y digámosle:\nR.\nCristo, vida nuestra, escúchanos.\nSeñor Jesús, que te hiciste compañero de camino de los discípulos que dudaban de ti,\nR.\nacompaña también a tu Iglesia peregrina entre las dificultades e incertidumbres de esta vida.\nNo permitas que tus fieles sean tardos y necios para creer,\nR.\ny aumenta su fe, para que te proclamen vencedor de  la muerte.\nMira, Señor, con bondad a cuantos no te reconocieron en su camino,\nR.\ny manifiéstate en ellos, para que te confiesen como salvador suyo.\nTú que por la cruz reconciliaste a todos los hombres, uniéndolos en tu cuerpo,\nR.\nconcede la paz y la unidad a las naciones.\nSe pueden añadir algunas intenciones libres\nTú que eres el juez de vivos y muertos,\nR.\notorga a los difuntos que creyeron en ti la remisión de todas sus culpas.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...", "texto": ""}}}};
+    </script>
+    <script>
+// ANTIGRAVITY - CEREBRO LITÚRGICO UNIFICADO (NODOS)
+
+function generarDocumentoNodosLegacy(data, hora, options = {}) {
+    if (!data) return '';
+    let isEn = options.isEn === true;
+    let showMoniciones = options.showMoniciones !== false;
+    let showHomilia = options.showHomilia !== false;
+
+    let SECUENCIA_LITURGICA = [];
+    
+    // VARIABLES
+    const fechaElegida = document.getElementById('date-select') ? document.getElementById('date-select').value : null;
+    const calDay = (fechaElegida && window.calendarioDB) ? window.calendarioDB[fechaElegida] : null;
+
+    const DIA_TRIDUO = calDay ? (calDay.dia_triduo || null) : null;
+    const TIEMPO_LIT = data.tiempo_liturgico || "Ordinario";
+    let rawGrado = "";
+    if (document.getElementById('grado-liturgico')) {
+        rawGrado = document.getElementById('grado-liturgico').value;
+    }
+    if (!rawGrado) rawGrado = data.grado || data.dia_semana || "Feria";
+    
+    const GRADO = String(rawGrado).toLowerCase();
+    let OFICIO = null;
+    if (hora) {
+        if (hora.includes("laudes")) OFICIO = "Laudes";
+        else if (hora.includes("visperas")) OFICIO = "Visperas";
+        else if (hora.includes("oficio")) OFICIO = "Oficio";
+        else if (hora.includes("intermedia")) OFICIO = "Intermedia";
+        else if (hora.includes("completas")) OFICIO = "Completas";
+    }
+    const IS_MISA = (hora === "misa" || hora === "misa_laudes" || !hora);
+
+    const upperTiempo = TIEMPO_LIT.toUpperCase();
+    const isCuaresma = upperTiempo.includes("CUARESMA");
+    const isAdviento = upperTiempo.includes("ADVIENTO");
+    const ES_PASCUA_PENTECOSTES = upperTiempo.includes("PASCUA") || upperTiempo.includes("PENTECOSTÉS");
+    const ES_OCTAVA_PASCUA = upperTiempo.includes("PASCUA") && calDay && calDay.titulo && calDay.titulo.toLowerCase().includes("octava");
+
+    // COMPUERTA DE ABORTO
+    if (DIA_TRIDUO) {
+        if (DIA_TRIDUO === "Jueves_Santo" && OFICIO === "Visperas") {
+            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addSuperTitulo("Misa de la Cena del Señor.").addRubrica("Unión con Vísperas = Bloqueado."));
+        }
+        if (DIA_TRIDUO === "Viernes_Santo") {
+            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addSuperTitulo("Viernes Santo.").addRubrica("Prohibido celebrar Misa. Solo liturgia de la Pasión."));
+        }
+        if (DIA_TRIDUO === "Sabado_Santo") {
+            return RENDERIZAR_BLOQUE(new BloqueLiturgico('abort').addSuperTitulo("Sábado Santo.").addRubrica("Prohibido celebrar Misa diurna. Esperar a Vigilia Pascual."));
+        }
+    }
+
+    // BANDERAS LOGICAS
+    let Flag_Gloria = (GRADO.includes("solemnidad") || GRADO.includes("fiesta") || (GRADO.includes("domingo") && !isAdviento && !isCuaresma));
+    if (data.gloria !== undefined) Flag_Gloria = data.gloria; 
+    let Flag_Credo = (GRADO.includes("domingo") || GRADO.includes("solemnidad"));
+    let Flag_Aleluya = !isCuaresma;
+    let Flag_DobleAleluya_Despedida = (ES_PASCUA_PENTECOSTES || ES_OCTAVA_PASCUA);
+    let Flag_Oracion_Pueblo = isCuaresma;
+
+    const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(TIEMPO_LIT, isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
+
+    // BLOQUE A: RITOS INICIALES
+    let bInicial = new BloqueLiturgico("ritos_iniciales");
+
+    if (showMoniciones) {
+        bInicial.addTitulo(isEn ? "Entrance Monition" : "Monición de Entrada");
+        if (data.monicion_entrada) {
+            bInicial.addMonicion(data.monicion_entrada);
+        } else {
+            bInicial.addMonicion(isEn ? "A brief introduction to the day's liturgy." : "Breve introducción a la liturgia del día.");
+        }
+    }
+
+    bInicial.addSuperTitulo(isEn ? "INTRODUCTORY RITES" : "RITOS INICIALES");
+    
+    bInicial.addTitulo(isEn ? "Entrance Chant" : "Canto de Entrada");
+    bInicial.addRubrica(cantos.entrada);
+
+    let antEnt = data.antifona_entrada || (isEn ? "Entrance Antiphon details..." : "Antífona según calendario...");
+    bInicial.addTitulo(isEn ? "Entrance Antiphon" : "Antífona de Entrada");
+    bInicial.addSacerdote(antEnt);
+
+    bInicial.addTitulo(isEn ? "Greeting" : "Saludo Inicial");
+    bInicial.addDialogo(isEn ? "In the name of the Father, and of the Son, and of the Holy Spirit." : "En el nombre del Padre, y del Hijo, y del Espíritu Santo.", isEn ? "Amen." : "Amén.");
+    bInicial.addDialogo(isEn ? "The grace of our Lord Jesus Christ, and the communion of the Holy Spirit be with you all." : "La gracia de nuestro Señor Jesucristo, el amor del Padre, y la comunión del Espíritu Santo estén con todos ustedes.", isEn ? "And with your spirit." : "Y con tu espíritu.");
+
+    
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        // OGLH 94: La salmodia incluye salmos y el cantico del testamento respectivo
+        let salmosNombres = OFICIO === "Laudes" ? ["salmo1", "cantico_at", "salmo2"] : ["salmo1", "salmo2", "cantico_nt"];
+        let titulosArray = OFICIO === "Laudes" ? ["Salmo 1", "Cántico del Antiguo Testamento", "Salmo 2"] : ["Salmo 1", "Salmo 2", "Cántico del Nuevo Testamento"];
+
+        if (officeData && officeData[salmosNombres[0]]) {
+            bInicial.addSuperTitulo(isEn ? ("INTEGRATED PSALMODY (" + OFICIO + ")") : ("SALMODIA INTEGRADA (" + OFICIO.toUpperCase() + ")"));
+            
+            salmosNombres.forEach((nombre, index) => {
+                let s = officeData[nombre];
+                if (s) {
+                    bInicial.addTitulo(isEn ? ("Psalmody: " + nombre) : titulosArray[index]);
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                    
+                    let lines = s.texto.split("\n\n");
+                    lines.forEach((line, idx) => {
+                        if (idx % 2 === 0) bInicial.addSacerdote(line, 'Normal');
+                        else bInicial.addAsamblea(line);
+                    });
+                    
+                    bInicial.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+                    bInicial.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                }
+            });
+        } else {
+            bInicial.addRubrica("[Error: No se encontró la salmodia del Oficio para " + OFICIO + "]");
+        }
+    } else {
+        if (ES_PASCUA_PENTECOSTES && (GRADO.toLowerCase().includes("domingo") || ES_OCTAVA_PASCUA)) {
+            bInicial.addTitulo(isEn ? "Rite of Blessing and Sprinkling Holy Water" : "Rito de Aspersión (Agua Bendita)");
+            bInicial.addMonicion(isEn ? "The penitential act is omitted. The priest blesses the water and sprinkles the faithful." : "Se omite el Acto Penitencial rutinario. El Sacerdote bendice el agua y la rocía sobre el pueblo como memorial del bautismo.");
+            bInicial.addSacerdote(isEn ? "Dear brethren (brothers and sisters), let us humbly beseech the Lord our God to bless this water he has created..." : "Hermanos: invoquemos a Dios, nuestro Señor, para que se digne bendecir este agua creada por Él, que va a ser rociada sobre nosotros como recuerdo de nuestro bautismo...");
+            bInicial.addAsamblea("Amén.");
+            bInicial.addRubrica(isEn ? "The priest sprinkles the congregation while an appropriate chant is sung." : "El sacerdote recorre la nave aspergando a la asamblea mientras se canta un canto bautismal (Ej. 'Vi el agua salir').");
+            bInicial.addSacerdote(isEn ? "May almighty God cleanse us of our sins, and through the celebration of this Eucharist make us worthy to share at the table of his Kingdom." : "Que Dios todopoderoso nos purifique de nuestros pecados y, por la celebración de esta Eucaristía, nos haga dignos de participar de la mesa de su reino.");
+            bInicial.addAsamblea("Amén.");
+        } else {
+            bInicial.addTitulo(isEn ? "Penitential Act" : "Rito Penitencial");
+            bInicial.addSacerdote(isEn ? "Brethren (brothers and sisters), let us acknowledge our sins..." : "Hermanos: reconozcamos nuestros pecados para celebrar dignamente estos sagrados misterios.");
+            bInicial.addAsamblea(data.rito_penitencial || "Yo confieso ante Dios todopoderoso...");
+            bInicial.addSacerdote(isEn ? "May almighty God have mercy on us..." : "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna.");
+            bInicial.addAsamblea("Amén.");
+            bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+            bInicial.addDialogo(isEn ? "Christ, have mercy." : "Cristo, ten piedad.", isEn ? "Christ, have mercy." : "Cristo, ten piedad.");
+            bInicial.addDialogo(isEn ? "Lord, have mercy." : "Señor, ten piedad.", isEn ? "Lord, have mercy." : "Señor, ten piedad.");
+        }
+    }
+
+    SECUENCIA_LITURGICA.push(bInicial);
+
+    let bGloriaColecta = new BloqueLiturgico("gloria");
+    bGloriaColecta.addTitulo("Gloria");
+    if (Flag_Gloria) {
+        bGloriaColecta.addAsamblea(isEn ? "Glory to God in the highest..." : "Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo. Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.");
+    } else {
+        bGloriaColecta.addRubrica(isEn ? "[The Gloria is omitted today]" : "[Hoy se omite el Gloria]");
+    }
+    
+    bGloriaColecta.addTitulo(isEn ? "Collect" : "Oración Colecta");
+    bGloriaColecta.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || "Dios todopoderoso y eterno..."));
+    bGloriaColecta.addAsamblea("Amén.");
+    SECUENCIA_LITURGICA.push(bGloriaColecta);
+
+    // BLOQUE B: LITURGIA DE LA PALABRA
+    let bPalabra = new BloqueLiturgico("liturgia_palabra");
+    bPalabra.addSuperTitulo(isEn ? "LITURGY OF THE WORD" : "LITURGIA DE LA PALABRA");
+    
+    if (showMoniciones) {
+        bPalabra.addTitulo(isEn ? "Monition" : "Monición a las Lecturas");
+        if (data.monicion_lecturas) {
+            bPalabra.addMonicion(data.monicion_lecturas);
+        } else {
+            bPalabra.addMonicion(isEn ? "Introduction to the Liturgy of the Word." : "Introducción a la Liturgia de la Palabra.");
+        }
+    }
+
+    let lp = data.liturgia_palabra || {};
+    let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[No disponible]" };
+    bPalabra.addTitulo(isEn ? "First Reading" : "Primera Lectura");
+    bPalabra.addRubrica(r1.cita);
+    bPalabra.addSacerdote(r1.texto);
+    bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+
+    let sr = lp.salmo_responsorial || { cita: "Salmo", respuesta: "R.", texto: "..." };
+    bPalabra.addTitulo(isEn ? "Responsorial Psalm" : "Salmo Responsorial");
+    bPalabra.addRubrica(sr.cita);
+    bPalabra.addAsamblea("R. " + sr.respuesta);
+    bPalabra.addSacerdote(sr.texto);
+
+    if (lp.segunda_lectura) {
+        let r2 = lp.segunda_lectura;
+        bPalabra.addTitulo(isEn ? "Second Reading" : "Segunda Lectura");
+        bPalabra.addRubrica(r2.cita);
+        bPalabra.addSacerdote(r2.texto);
+        bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+    }
+
+    if (lp.secuencia) {
+        bPalabra.addTitulo("Secuencia");
+        bPalabra.addSacerdote(lp.secuencia);
+    }
+
+    bPalabra.addTitulo(isEn ? "Gospel Acclamation" : "Aclamación antes del Evangelio");
+    if (Flag_Aleluya) {
+        bPalabra.addAsamblea(lp.aclamacion_evangelio || "Aleluya, aleluya.");
+    } else {
+        let aclv = lp.aclamacion_evangelio || "Honor y gloria a ti, Señor Jesús.";
+        bPalabra.addAsamblea(aclv.replace(/Aleluya/ig, "Honor y gloria a ti, Señor Jesús"));
+    }
+
+    let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
+    bPalabra.addTitulo(isEn ? "Gospel" : "Evangelio");
+    bPalabra.addRubrica("<span class=\"cross-mark\">☩</span> " + ev.cita);
+    bPalabra.addSacerdote(ev.texto);
+    bPalabra.addDialogo(isEn ? "The Gospel of the Lord." : "Palabra del Señor.", isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús.");
+    
+    bPalabra.addTitulo(isEn ? "Homily" : "Homilía");
+    if (showHomilia) {
+        bPalabra.addGuia(data.guia_reflexion || (isEn ? "[Homily Reflection Guide]" : "[Guía de Reflexión Sacerdotal]"));
+    } else {
+        bPalabra.addRubrica(isEn ? "The priest or deacon delivers the homily." : "El sacerdote o diácono pronuncia la homilía.");
+    }
+    SECUENCIA_LITURGICA.push(bPalabra);
+
+    if (Flag_Credo) {
+        let bCredo = new BloqueLiturgico("credo");
+        bCredo.addTitulo(isEn ? "Profession of Faith" : "Profesión de Fe");
+        bCredo.addAsamblea(isEn ? "I believe in God, the Father almighty..." : "Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.");
+        SECUENCIA_LITURGICA.push(bCredo);
+    }
+
+    
+    let bPreces = new BloqueLiturgico("preces");
+    
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let title = (OFICIO === "Laudes") ? "CÁNTICO EVANGÉLICO (Benedictus)" : "CÁNTICO EVANGÉLICO (Magnificat)";
+        let officeData = data[hora];
+        if (officeData && officeData.cantico_evangelico) {
+            let ce = officeData.cantico_evangelico;
+            bPreces.addTitulo(title);
+            bPreces.addRubrica("Antífona: " + ce.antifona);
+            
+            if (ce.texto) {
+                let lines = [];
+                if (Array.isArray(ce.texto)) {
+                    lines = ce.texto;
+                } else if (typeof ce.texto === 'string') {
+                    lines = ce.texto.split(/\n+/).filter(l => l.trim().length > 1);
+                }
+                
+                lines.forEach((line, idx) => {
+                    if (idx % 2 === 0) bPreces.addSacerdote(line, 'Normal');
+                    else bPreces.addAsamblea(line);
+                });
+            }
+            
+            bPreces.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+            bPreces.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+            bPreces.addRubrica("Antífona: " + ce.antifona);
+        }
+    }
+
+    bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
+    
+    let precesText = "[Oración de los Fieles Omitida / No Definida]";
+    if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[hora] && data[hora].preces) {
+        precesText = data[hora].preces;
+        bPreces.addRubrica(isEn ? "Intercessions from the Divine Office." : "Preces propias del Oficio Divino.");
+    } else if (Flag_Oracion_Pueblo) {
+        precesText = data.liturgia_palabra ? data.liturgia_palabra.preces : "P. Fieles extraídas del tiempo...";
+    } else {
+        precesText = isEn ? "Hear us, O Lord, and grant your Church peace and unity." : "Te pedimos, Señor, escucha nuestra oración, y concede a tu Iglesia la paz y la unidad que te suplica.";
+    }
+    
+    let precesLines = precesText.split('\n');
+    precesLines.forEach(line => {
+        if(line.trim()) bPreces.addMonicion(line.replace(/•/g, '').trim());
+    });
+    
+    SECUENCIA_LITURGICA.push(bPreces);
+
+
+    // BLOQUE C Y D
+    let bEuca = new BloqueLiturgico("liturgia_eucaristica");
+    bEuca.addSuperTitulo(isEn ? "LITURGY OF THE Eucharist" : "LITURGIA EUCARÍSTICA");
+    bEuca.addTitulo(isEn ? "Offertory Chant" : "Canto de Ofertorio");
+    bEuca.addRubrica(cantos.ofertorio);
+
+    let ofrendas = data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : (isEn ? "Receive, O Lord, the offerings..." : "Recibe, Señor, las ofrendas de tu pueblo...");
+    bEuca.addTitulo(isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas");
+    bEuca.addSacerdote(ofrendas);
+    bEuca.addAsamblea("Amén.");
+    
+    bEuca.addTitulo(isEn ? "Preface Dialogue" : "Diálogo del Prefacio");
+    bEuca.addDialogo(isEn ? "The Lord be with you." : "El Señor esté con ustedes.", isEn ? "And with your spirit." : "Y con tu espíritu.");
+    bEuca.addDialogo(isEn ? "Lift up your hearts." : "Levantemos el corazón.", isEn ? "We lift them up to the Lord." : "Lo tenemos levantado hacia el Señor.");
+    bEuca.addDialogo(isEn ? "Let us give thanks to the Lord our God." : "Demos gracias al Señor, nuestro Dios.", isEn ? "It is right and just." : "Es justo y necesario.");
+
+    bEuca.addTitulo(isEn ? "Sanctus" : "Santo");
+    bEuca.addAsamblea(isEn ? "Holy, Holy, Holy Lord God of hosts..." : "Santo, Santo, Santo es el Señor, Dios del Universo. Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo. Bendito el que viene en nombre del Señor. Hosanna en el cielo.");
+
+    bEuca.addTitulo(isEn ? "Eucharistic Prayer" : "Plegaria Eucarística");
+    bEuca.addRubrica(isEn ? "The priest prays the Eucharistic Prayer. After the consecration:" : "El sacerdote pronuncia la Plegaria Eucarística. Tras la consagración:");
+    bEuca.addDialogo(isEn ? "The mystery of faith." : "Éste es el Sacramento de nuestra fe.", isEn ? "We proclaim your Death, O Lord, and profess your Resurrection until you come again." : "Anunciamos tu muerte, proclamamos tu resurrección. ¡Ven, Señor Jesús!");
+    SECUENCIA_LITURGICA.push(bEuca);
+
+    // COMUNION
+    let bComunion = new BloqueLiturgico("rito_comunion");
+    bComunion.addSuperTitulo(isEn ? "Communion Rite" : "RITO DE LA COMUNIÓN");
+    bComunion.addAsamblea(isEn ? "Our Father, who art in heaven..." : "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal.");
+    
+    bComunion.addTitulo(isEn ? "Agnus Dei" : "Cordero de Dios");
+    bComunion.addAsamblea(isEn ? "Lamb of God, you take away the sins of the world..." : "Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros. Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros. Cordero de Dios, que quitas el pecado del mundo, danos la paz.");
+
+    bComunion.addTitulo(isEn ? "Invitation to Communion" : "Invitación a la Comunión");
+    bComunion.addDialogo(isEn ? "Behold the Lamb of God..." : "Este es el Cordero de Dios, que quita el pecado del mundo. Dichosos los invitados a la cena del Señor.", isEn ? "Lord, I am not worthy..." : "Señor, no soy digno de que entres en mi casa, pero una palabra tuya bastará para sanarme.");
+
+    let antc = (data.liturgia_eucaristica && data.liturgia_eucaristica.antifona_comunion) ? data.liturgia_eucaristica.antifona_comunion : "Acerca tu mano, trae tu dedo y explora mis llagas...";
+    bComunion.addTitulo(isEn ? "Communion Antiphon" : "Antífona de la Comunión");
+    bComunion.addSacerdote(antc);
+    
+    bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
+    bComunion.addRubrica(cantos.comunion);
+
+
+
+    let despues = (data.liturgia_eucaristica && data.liturgia_eucaristica.oracion_despues_comunion) ? data.liturgia_eucaristica.oracion_despues_comunion : (isEn ? "Grant, we pray, almighty God..." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento...");
+    bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
+    bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + despues);
+    bComunion.addAsamblea("Amén.");
+    
+    
+    
+    SECUENCIA_LITURGICA.push(bComunion);
+
+    // BLOQUE E: CONCLUSIÓN
+    let bConclusion = new BloqueLiturgico("conclusion");
+    bConclusion.addSuperTitulo(isEn ? "CONCLUDING RITES" : "RITO DE CONCLUSIÓN");
+
+    if (Flag_Oracion_Pueblo && data.oracion_sobre_el_pueblo) {
+        bConclusion.addTitulo("Oración sobre el Pueblo");
+        bConclusion.addRubrica("Sacerdote: Iniclinen la cabeza para recibir la bendición.");
+        bConclusion.addSacerdote(data.oracion_sobre_el_pueblo);
+        bConclusion.addAsamblea("Amén.");
+    }
+
+    bConclusion.addTitulo(isEn ? "Final Blessing" : "Bendición Final");
+    bConclusion.addDialogo(isEn ? "The Lord be with you." : "El Señor esté con ustedes.", isEn ? "And with your spirit." : "Y con tu espíritu.");
+    bConclusion.addDialogo(isEn ? "May almighty God bless you, the Father, and the Son, and the Holy Spirit." : "La bendición de Dios todopoderoso, Padre, Hijo y Espíritu Santo, descienda sobre ustedes.", "Amén.");
+
+    if (Flag_DobleAleluya_Despedida) {
+        bConclusion.addDialogo(isEn ? "Go in peace, Alleluia, alleluia." : "Pueden ir en paz, Aleluya, aleluya.", isEn ? "Thanks be to God, Alleluia, alleluia." : "Demos gracias a Dios, Aleluya, aleluya.");
+    } else {
+        bConclusion.addDialogo(isEn ? "Go in peace." : "Pueden ir en paz.", isEn ? "Thanks be to God." : "Demos gracias a Dios.");
+    }
+
+    bConclusion.addTitulo(isEn ? "Recessional Chant" : "Canto de Salida");
+    bConclusion.addRubrica(cantos.salida);
+    SECUENCIA_LITURGICA.push(bConclusion);
+
+    } // END ELSE FOR MISA/LAUDES
+    
+    // Lectio Divina (Auto-generador si estamos en jornada diaria y es la ultima llamada)
+    if (hora === "lectio") {
+        let bLectio = new BloqueLiturgico("lectio");
+        bLectio.addSuperTitulo("LECTIO DIVINA");
+        bLectio.addTitulo("I. LECTIO");
+        bLectio.addRubrica("Lectura pausada del Evangelio dominical o del día.");
+        bLectio.addSacerdote((data.liturgia_palabra && data.liturgia_palabra.evangelio) ? data.liturgia_palabra.evangelio.texto : "[Texto del Evangelio]");
+        bLectio.addTitulo("II. MEDITATIO");
+        bLectio.addRubrica("¿Qué me dice a mí el texto?");
+        bLectio.addTitulo("III. ORATIO");
+        bLectio.addRubrica("¿Qué le digo yo al Señor que me acaba de hablar?");
+        bLectio.addTitulo("IV. CONTEMPLATIO");
+        bLectio.addRubrica("¿A qué me invita en mi vida concreta como resolución?");
+        SECUENCIA_LITURGICA.push(bLectio);
+    }
+
+    // EJECUCION MOTOR DE RENDERING
+    let htmlOut = '';
+    SECUENCIA_LITURGICA.forEach(bloque => htmlOut += RENDERIZAR_BLOQUE(bloque));
+    return htmlOut;
+}
+
+// -----------------------------------------------------
+// NUEVO MOTOR AST (FASE 5)
+// -----------------------------------------------------
+function generarDocumentoNodos(data, hora, options = {}) {
+    if (!data) return '';
+    // Híbrido: Si no hay esqueleto canónico del nuevo motor, usamos el sistema viejo procedural 
+    if (!data.esqueleto_ordinario || !window.DbOrdinario) {
+        return generarDocumentoNodosLegacy(data, hora, options);
+    }
+    
+    let isEn = options.isEn === true;
+    let showMoniciones = options.showMoniciones !== false;
+    let showHomilia = options.showHomilia !== false;
+    let OFICIO = null;
+    if (hora) {
+        if (hora.includes("laudes")) OFICIO = "Laudes";
+        else if (hora.includes("visperas")) OFICIO = "Visperas";
+        else if (hora.includes("oficio")) OFICIO = "Oficio";
+        else if (hora.includes("intermedia")) OFICIO = "Intermedia";
+        else if (hora.includes("completas")) OFICIO = "Completas";
+    }
+    const IS_MISA = (hora === "misa" || hora === "misa_laudes" || !hora);
+    
+    let SECUENCIA_LITURGICA = [];
+    const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
+    const ord = window.DbOrdinario.ordinario;
+
+    const checkAccion = (bloque_id) => {
+        let f = data.esqueleto_ordinario.find(x => x.id_bloque === bloque_id);
+        return f && f.accion === "incluir";
+    };
+
+    // ==========================================
+    // BLOQUE A: RITOS INICIALES
+    // ==========================================
+    let bInicial = new BloqueLiturgico("ritos_iniciales");
+    bInicial.addSuperTitulo(isEn ? "INTRODUCTORY RITES" : "RITOS INICIALES");
+
+    if (showMoniciones) {
+        bInicial.addTitulo(isEn ? "Entrance Monition" : "Monición de Entrada");
+        bInicial.addMonicion(data.monicion_entrada || "Breve introducción a la liturgia del día.");
+    }
+    
+    bInicial.addTitulo(isEn ? "Entrance Chant" : "Canto de Entrada");
+    bInicial.addRubrica(cantos.entrada);
+
+    bInicial.addTitulo(isEn ? "Entrance Antiphon" : "Antífona de Entrada");
+    bInicial.addSacerdote(data.antifona_entrada || "Antífona según calendario...");
+
+    if (checkAccion("saludo_inicial")) {
+        bInicial.addTitulo(isEn ? "Greeting" : "Saludo Inicial");
+        let nd = ord.ritos_iniciales.saludo;
+        bInicial.addRubrica(nd.rubrica_previa);
+        bInicial.addDialogo(nd.formula_principal.celebrante, nd.formula_principal.asamblea);
+        bInicial.addDialogo(nd.opciones_saludo[2].celebrante, nd.opciones_saludo[2].asamblea); // Opción C
+    }
+
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        let salmosNombres = OFICIO === "Laudes" ? ["salmo1", "cantico_at", "salmo2"] : ["salmo1", "salmo2", "cantico_nt"];
+        let titulosArray = OFICIO === "Laudes" ? ["Salmo 1", "Cántico del Antiguo Testamento", "Salmo 2"] : ["Salmo 1", "Salmo 2", "Cántico del Nuevo Testamento"];
+
+        if (officeData && officeData[salmosNombres[0]]) {
+            bInicial.addSuperTitulo(isEn ? ("INTEGRATED PSALMODY (" + OFICIO + ")") : ("SALMODIA INTEGRADA (" + OFICIO.toUpperCase() + ")"));
+            
+            salmosNombres.forEach((nombre, index) => {
+                let s = officeData[nombre];
+                if (s) {
+                    bInicial.addTitulo(isEn ? ("Psalmody: " + nombre) : titulosArray[index]);
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                    let lines = s.texto.split("\n\n");
+                    lines.forEach((line, idx) => {
+                        if (idx % 2 === 0) bInicial.addSacerdote(line, 'Normal');
+                        else bInicial.addAsamblea(line);
+                    });
+                    bInicial.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+                    bInicial.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+                    bInicial.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + s.antifona);
+                }
+            });
+        }
+    } else {
+        if (checkAccion("acto_penitencial")) {
+            bInicial.addTitulo(isEn ? "Penitential Act" : "Acto Penitencial");
+            let nd = ord.ritos_iniciales.acto_penitencial;
+            bInicial.addRubrica(nd.rubrica_previa);
+            bInicial.addMonicion(nd.monicion_invitatoria);
+            bInicial.addRubrica(nd.rubrica_silencio);
+            
+            let opt = nd.opciones_formula.find(x => x.id === "confiteor");
+            if(opt) {
+                bInicial.addAsamblea(opt.texto_conjunto);
+                bInicial.addSacerdote(opt.absolucion_celebrante);
+                bInicial.addAsamblea(opt.respuesta_absolucion);
+            }
+        }
+
+        if (checkAccion("kyrie")) {
+            let nd = ord.ritos_iniciales.kyrie;
+            bInicial.addRubrica(nd.rubrica_previa);
+            nd.invocaciones.forEach(i => bInicial.addDialogo(i.invocacion, i.respuesta));
+        }
+    }
+
+    if (checkAccion("gloria")) {
+        let nd = ord.ritos_iniciales.gloria;
+        bInicial.addTitulo("Gloria");
+        bInicial.addRubrica(nd.rubrica_previa);
+        bInicial.addAsamblea(nd.texto);
+    }
+
+    bInicial.addTitulo(isEn ? "Collect" : "Oración Colecta");
+    bInicial.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || ""));
+    bInicial.addAsamblea("Amén.");
+    SECUENCIA_LITURGICA.push(bInicial);
+
+
+    // ==========================================
+    // BLOQUE B: LITURGIA DE LA PALABRA
+    // ==========================================
+    let bPalabra = new BloqueLiturgico("liturgia_palabra");
+    bPalabra.addSuperTitulo(isEn ? "LITURGY OF THE WORD" : "LITURGIA DE LA PALABRA");
+    
+    let lp = data.liturgia_palabra || {};
+
+    if (lp.primera_lectura) {
+        bPalabra.addTitulo(isEn ? "First Reading" : "Primera Lectura");
+        bPalabra.addRubrica(lp.primera_lectura.cita || "");
+        bPalabra.addLectura(lp.primera_lectura.texto || "");
+        bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+    }
+
+    if (lp.salmo_responsorial) {
+        bPalabra.addTitulo(isEn ? "Responsorial Psalm" : "Salmo Responsorial");
+        bPalabra.addRubrica(lp.salmo_responsorial.cita || "");
+        bPalabra.addAsamblea("R. " + (lp.salmo_responsorial.respuesta || ""));
+        bPalabra.addSacerdote(lp.salmo_responsorial.texto || "");
+    }
+
+    if (lp.segunda_lectura) {
+        bPalabra.addTitulo(isEn ? "Second Reading" : "Segunda Lectura");
+        bPalabra.addRubrica(lp.segunda_lectura.cita || "");
+        bPalabra.addLectura(lp.segunda_lectura.texto || "");
+        bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
+    }
+
+    if (lp.secuencia) {
+        bPalabra.addTitulo(isEn ? "Sequence" : "Secuencia");
+        if (lp.secuencia.nodos) {
+            // Placeholder for native AST appending
+        } else if (lp.secuencia.texto) {
+            bPalabra.addLectura(lp.secuencia.texto);
+        }
+    }
+
+    bPalabra.addTitulo(isEn ? "Gospel Acclamation" : "Aclamación antes del Evangelio");
+    bPalabra.addAsamblea(lp.aclamacion_evangelio || "Aleluya, aleluya.");
+
+    if (lp.evangelio) {
+        bPalabra.addTitulo(isEn ? "Gospel" : "Evangelio");
+        bPalabra.addRubrica("<span class='cross-mark'>✠</span> " + (lp.evangelio.cita || ""));
+        bPalabra.addLectura(lp.evangelio.texto || "");
+        bPalabra.addDialogo(isEn ? "The Gospel of the Lord." : "Palabra del Señor.", isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús.");
+    }
+
+    bPalabra.addTitulo(isEn ? "Homily" : "Homilía");
+    if (showHomilia && data.guia_reflexion) bPalabra.addGuia(data.guia_reflexion);
+    else bPalabra.addRubrica(isEn ? "The priest or deacon delivers the homily." : "El sacerdote o diácono pronuncia la homilía.");
+    SECUENCIA_LITURGICA.push(bPalabra);
+
+    if (checkAccion("credo")) {
+        let bCredo = new BloqueLiturgico("credo");
+        bCredo.addTitulo(isEn ? "Profession of Faith" : "Profesión de Fe");
+        bCredo.addAsamblea("Creo en un solo Dios, Padre todopoderoso, Creador del cielo y de la tierra, de todo lo visible y lo invisible...\n\nCreo en un solo Señor, Jesucristo, Hijo único de Dios, nacido del Padre antes de todos los siglos...\n\nCreo en el Espíritu Santo, Señor y dador de vida..."); 
+        SECUENCIA_LITURGICA.push(bCredo);
+    }
+    
+    let bPreces = new BloqueLiturgico("preces");
+    
+    if (OFICIO === "Laudes" || OFICIO === "Visperas") {
+        let officeData = data[hora];
+        if (officeData && officeData.cantico_evangelico) {
+            let canticoName = OFICIO === "Laudes" ? "Cántico de Zacarías (Benedictus)" : "Cántico de María (Magnificat)";
+            bPreces.addSuperTitulo(isEn ? "GOSPEL CANTICLE" : "CÁNTICO EVANGÉLICO (" + OFICIO.toUpperCase() + ")");
+            bPreces.addTitulo(isEn ? "Gospel Canticle" : canticoName);
+            bPreces.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
+            
+            let lines = [];
+            if (Array.isArray(officeData.cantico_evangelico.texto)) {
+                lines = officeData.cantico_evangelico.texto;
+            } else if (typeof officeData.cantico_evangelico.texto === 'string') {
+                lines = officeData.cantico_evangelico.texto.split(/\n+/).filter(l => l.trim().length > 1);
+            }
+            
+            lines.forEach((line, idx) => {
+                if (idx % 2 === 0) bPreces.addSacerdote(line, 'Normal');
+                else bPreces.addAsamblea(line);
+            });
+            
+            bPreces.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+            bPreces.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+            bPreces.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
+        }
+    }
+    if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[hora] && data[hora].preces) {
+        bPreces.addTitulo(isEn ? "Prayers / Intercessions (" + OFICIO + ")" : "Preces (" + OFICIO + ")");
+        bPreces.addRubrica(isEn ? "The Universal Prayer is substituted by the Intercessions of the Liturgy of the Hours." : "Se sustituye la Oración de los Fieles por las preces del Oficio divino.");
+        let ptxt = data[hora].preces;
+        ptxt.split('\n').filter(x=>x.trim()).forEach(l => {
+            if(l.startsWith("-") || l.startsWith("—")) bPreces.addMonicion(l);
+            else if(l.includes("Te rogamos") || l.includes("Escúchanos")) bPreces.addAsamblea("R. " + l);
+            else bPreces.addSacerdote(l, 'Normal');
+        });
+    } else {
+        bPreces.addTitulo(isEn ? "Universal Prayer" : "Oración de los Fieles");
+        let ptxt = lp.preces || "Lector: Te rogamos, óyenos.";
+        ptxt.split('\n').filter(x=>x.trim()).forEach(l => bPreces.addMonicion(l.replace(/•/g, '').trim()));
+    }
+    SECUENCIA_LITURGICA.push(bPreces);
+
+    // ==========================================
+    // BLOQUE C: LITURGIA EUCARÍSTICA
+    // ==========================================
+    let bEuca = new BloqueLiturgico("liturgia_eucaristica");
+    bEuca.addSuperTitulo(isEn ? "LITURGY OF THE EUCHARIST" : "LITURGIA EUCARÍSTICA");
+    bEuca.addTitulo(isEn ? "Offertory Chant" : "Canto de Ofertorio");
+    bEuca.addRubrica(cantos.ofertorio);
+
+    if (checkAccion("preparacion_dones")) {
+        let nd = ord.liturgia_eucaristica.preparacion_dones;
+        bEuca.addTitulo(isEn ? "Preparation of the Gifts" : "Preparación de los Dones");
+        bEuca.addRubrica(nd.rubrica_previa);
+        bEuca.addDialogo(nd.bendicion_pan.celebrante, nd.bendicion_pan.asamblea);
+        bEuca.addRubrica(nd.bendicion_vino.rubrica_previa);
+        bEuca.addDialogo(nd.bendicion_vino.celebrante, nd.bendicion_vino.asamblea);
+        bEuca.addRubrica(nd.orate_fratres.rubrica_previa);
+        bEuca.addDialogo(nd.orate_fratres.celebrante, nd.orate_fratres.asamblea);
+    }
+
+    bEuca.addTitulo(isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas");
+    bEuca.addCapitular(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : "");
+    bEuca.addAsamblea("Amén.");
+    
+    if (checkAccion("plegaria_eucaristica_II")) {
+        let nd = ord.liturgia_eucaristica.plegaria_eucaristica_II;
+        bEuca.addTitulo(isEn ? "Preface Dialogue" : "Diálogo del Prefacio");
+        bEuca.addDialogo(nd.dialogo_prefacio.v1, nd.dialogo_prefacio.r1);
+        bEuca.addDialogo(nd.dialogo_prefacio.v2, nd.dialogo_prefacio.r2);
+        bEuca.addDialogo(nd.dialogo_prefacio.v3, nd.dialogo_prefacio.r3);
+        
+        bEuca.addTitulo(isEn ? "Sanctus" : "Santo");
+        bEuca.addAsamblea(nd.santo.texto);
+
+        bEuca.addTitulo(isEn ? "Eucharistic Prayer" : "Plegaria Eucarística");
+        bEuca.addRubrica("El sacerdote pronuncia la Plegaria Eucarística elegida.");
+        bEuca.addSacerdote(nd.consagracion.pan);
+        bEuca.addSacerdote(nd.consagracion.vino);
+        bEuca.addDialogo(nd.aclamacion_misterio.celebrante, nd.aclamacion_misterio.asamblea);
+        bEuca.addDialogo(nd.doxologia.celebrante, nd.doxologia.asamblea);
+    }
+    SECUENCIA_LITURGICA.push(bEuca);
+
+    // ==========================================
+    // BLOQUE D: COMUNIÓN
+    // ==========================================
+    let bComunion = new BloqueLiturgico("rito_comunion");
+    bComunion.addSuperTitulo(isEn ? "COMMUNION RITE" : "RITO DE LA COMUNIÓN");
+
+    if (checkAccion("padre_nuestro")) {
+        let nd = ord.rito_comunion.padre_nuestro;
+        bComunion.addTitulo("Padre Nuestro");
+        bComunion.addMonicion(nd.monicion);
+        bComunion.addAsamblea(nd.oracion);
+        bComunion.addDialogo(nd.embolismo_y_doxologia.celebrante, nd.embolismo_y_doxologia.asamblea);
+    }
+
+    if (checkAccion("rito_paz")) {
+        let nd = ord.rito_comunion.rito_paz;
+        bComunion.addTitulo("Rito de la Paz");
+        bComunion.addDialogo(nd.oracion_paz.celebrante, nd.oracion_paz.asamblea);
+        bComunion.addDialogo(nd.dialogo_paz.celebrante, nd.dialogo_paz.asamblea);
+    }
+
+    if (checkAccion("fraccion_pan_y_comunion")) {
+        let nd = ord.rito_comunion.fraccion_pan_y_comunion;
+        bComunion.addTitulo("Fracción del Pan");
+        bComunion.addAsamblea(nd.cordero_dios);
+        bComunion.addTitulo("Invitación a la Comunión");
+        bComunion.addDialogo(nd.invitacion.celebrante, nd.invitacion.asamblea);
+    }
+
+    bComunion.addTitulo(isEn ? "Communion Antiphon" : "Antífona de Comunión");
+    bComunion.addSacerdote(data.liturgia_eucaristica ? data.liturgia_eucaristica.antifona_comunion : "");
+    bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
+    bComunion.addRubrica(cantos.comunion);
+
+
+
+    bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
+    bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : ""));
+    bComunion.addAsamblea("Amén.");
+    SECUENCIA_LITURGICA.push(bComunion);
+
+    // ==========================================
+    // BLOQUE E: CONCLUSIÓN
+    // ==========================================
+    let bConclusion = new BloqueLiturgico("conclusion");
+    bConclusion.addSuperTitulo(isEn ? "CONCLUDING RITES" : "RITOS DE CONCLUSIÓN");
+
+    if (checkAccion("bendicion_despedida")) {
+        let nd = ord.ritos_conclusion.bendicion_despedida;
+        bConclusion.addTitulo(isEn ? "Final Blessing" : "Bendición Final");
+        bConclusion.addDialogo(nd.dialogo_bendicion.celebrante_v, nd.dialogo_bendicion.asamblea_r);
+        bConclusion.addDialogo(nd.dialogo_bendicion.celebrante_b, nd.dialogo_bendicion.asamblea_b);
+        bConclusion.addDialogo(nd.despedida.diacono, nd.despedida.asamblea);
+    } else {
+        // Fallback for testing
+        bConclusion.addDialogo("El Señor esté con ustedes", "Y con tu espíritu");
+        bConclusion.addDialogo("Pueden ir en paz.", "Demos gracias a Dios.");
+    }
+
+    bConclusion.addTitulo(isEn ? "Recessional Chant" : "Canto de Salida");
+    bConclusion.addRubrica(cantos.salida);
+    SECUENCIA_LITURGICA.push(bConclusion);
+
+    // ==========================================
+    // EJECUCIÓN DEL RENDERIZADO AST
+    // ==========================================
+    let htmlOut = '';
+    SECUENCIA_LITURGICA.forEach(bloque => htmlOut += RENDERIZAR_BLOQUE(bloque));
+    return htmlOut;
+}
+
+// ==========================================
+// MÓDULO DE PRUEBA AST (ANTIGRAVITY PURO)
+// ==========================================
+function procesarProclamacion(block) {
+  const { texto, subtipo } = block;
+  if (!texto) return '';
+
+  // REGLA ANTIGRAVITY: Si es oración presidencial, omitir capitular.
+  if (subtipo === "oracion_presidencial") {
+    return `<div class="proclamacion presidencial">${texto}</div>`;
+  }
+
+  // Regex para detectar signos iniciales opcionales y la primera letra
+  const regex = /^([«¿¡"“]*)([a-zA-ZÁÉÍÓÚÑ])/;
+  const match = texto.match(regex);
+
+  if (match) {
+    const signos = match[1];
+    const letra = match[2];
+    const resto = texto.replace(regex, '');
+    
+    return `
+      <div class="proclamacion">
+        <span class="punctuation-hang">${signos}</span>
+        <span class="drop-cap">${letra}</span>
+        <span class="cuerpo-texto">${resto}</span>
+      </div>`;
+  }
+
+  return `<div class="proclamacion">${texto}</div>`;
+}
+
+function RENDERIZAR_NODO_AST(block) {
+  if (block.tipo === "titulo_dia") return `<h2 class="missal-super-heading">${block.contenido}</h2>`;
+  if (block.tipo === "titulo_misa") return `<p class="missal-heading">${block.contenido}</p>`;
+  if (block.tipo === "seccion") return `<h3 class="titulo-rito">${block.contenido}</h3>`;
+  if (block.tipo === "rubrica") return `<p class="missal-rubric">${block.contenido}</p>`;
+  if (block.tipo === "monicion") return `<div class="monicion"><strong>MONICIÓN: </strong>${block.contenido}</div>`;
+  if (block.tipo === "canto") return `<div class="rubrica-sacerdote" style="margin-bottom: 10px;">${block.titulo}: ${block.letra}</div>`;
+  
+  if (block.tipo === "dialogo") {
+    const hasBoth = block.v && block.r;
+    const layoutClass = hasBoth ? "dialogo-grid" : "dialogo-lineal";
+    return `
+      <div class="bloque-dialogo ${layoutClass}">
+        <div class="v-part"><span class="sigla-roja">V/.</span> ${block.v}</div>
+        ${hasBoth ? `<div class="r-part"><span class="sigla-roja">R/.</span> ${block.r}</div>` : ''}
+      </div>`;
+  }
+
+  if (block.tipo === "proclamacion") return procesarProclamacion(block);
+
+  return `<div>${block.contenido}</div>`;
+}
+
+// Simulador de entrada y volcado de resultados
+window.RenderizarTestAST = function(astJsonArray) {
+    let htmlOut = '';
+    astJsonArray.forEach(bloque => {
+        htmlOut += RENDERIZAR_NODO_AST(bloque) + '\\n';
+    });
+    return htmlOut;
+};
+
+/**
+ * MOTOR DE RENDERIZADO ANTIGRAVITY v2.0
+ * Sustituye el antiguo bucle procedimental por un intérprete de AST determinista.
+ */
+window.RenderizarSaaS = function(jsonAST) {
+    const contenedor = document.getElementById('pdf-view') || document.querySelector('.pdf-container');
+    if (!contenedor || !Array.isArray(jsonAST)) return;
+
+    contenedor.innerHTML = ''; // Limpieza de nodos legacy
+    const fragmento = document.createDocumentFragment();
+
+    jsonAST.forEach((bloque) => {
+        const div = document.createElement('div');
+        div.className = `missal-block`; // Clase de contención básica NLM
+        div.innerHTML = RENDERIZAR_NODO_AST(bloque);
+        fragmento.appendChild(div);
+    });
+
+    contenedor.appendChild(fragmento);
+    console.log("SaaS Refactorizado: Misal renderizado bajo estándar NLM y Motor AST.");
+};
+
+    </script>
+</head>
+<body>
+    <div class="toolbar">
+        <h1 style="margin:0; font-size:1.1rem; font-family:'Cinzel';">Liturgia PRO - 2026-04-27</h1>
+        <button onclick="renderizar('laudes')" id="btn-laudes">🌅 Laudes</button>
+        <button onclick="renderizar('misa')" id="btn-misa">✝️ Misa</button>
+        <button onclick="renderizar('visperas')" id="btn-visperas">🌆 Vísperas</button>
+        <div style="flex-grow:1;"></div>
+        <button onclick="window.print()" style="background: #8b0000; border: none; font-weight: bold;">🖨 Imprimir PDF</button>
+    </div>
+    <div id="pdf-view" class="pdf-container"></div>
+    <script>
+        function renderizar(hora) {
+            const data = window.liturgiaDB["2026-04-27"];
+            if(data) {
+                const htmlOut = generarDocumentoNodos(data, hora, { isEn: false });
+                document.getElementById('pdf-view').innerHTML = htmlOut;
+            } else {
+                document.getElementById('pdf-view').innerText = "Data for 2026-04-27 not found!";
+            }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            renderizar('misa');
+        });
+    </script>
+</body>
+</html>
