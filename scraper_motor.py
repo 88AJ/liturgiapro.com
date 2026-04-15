@@ -351,7 +351,7 @@ def gemini_etl_node(client, raw_inputs):
     
     try:
         response = client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-flash-latest',
             contents=raw_inputs,
             config=config
         )
@@ -428,7 +428,7 @@ Estructura esperada:
     print("🧠 Consultando al Orquestador Lógico para definir estructura del Ordinario...")
     try:
         response = client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-flash-latest',
             contents=prompt_orquestador,
             config=config
         )
@@ -487,7 +487,7 @@ def execute_scraper(start_date_str, end_date_str):
             import os
             from google import genai
             if os.environ.get("GEMINI_API_KEY"):
-                client = genai.Client()
+                client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
                 etl_data = gemini_etl_node(client, [raw_text_for_etl])
                 if etl_data:
                     print("✅ ETL Extractor procesó la fecha satisfactoriamente.")

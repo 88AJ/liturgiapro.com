@@ -1,7 +1,17 @@
 {
-  "Tomo I": [],
-  "Tomo II": [],
-  "Tomo III": [],
-  "Tomo IV": [],
-  "OGLH": []
+  "Tomo I": [
+    "https://generativelanguage.googleapis.com/v1beta/files/srrhbetxzf7w"
+  ],
+  "Tomo II": [
+    "https://generativelanguage.googleapis.com/v1beta/files/n5typrvjmip2"
+  ],
+  "Tomo III": [
+    "https://generativelanguage.googleapis.com/v1beta/files/3s64kr42stc9"
+  ],
+  "Tomo IV": [
+    "https://generativelanguage.googleapis.com/v1beta/files/9hlxkg8qlsbi"
+  ],
+  "OGLH": [
+    "https://generativelanguage.googleapis.com/v1beta/files/53sxe4zk5g1x"
+  ]
 }
