@@ -3188,6 +3188,19 @@ document.addEventListener('DOMContentLoaded', () => {
     <script>
 // ANTIGRAVITY - CEREBRO LITÚRGICO UNIFICADO (NODOS)
 
+// Helper para extraer texto de campos que puedan ser strings o arrays de objetos (para Letanías y Oraciones)
+function safeText(field, defaultText) {
+    if (!field) return defaultText;
+    if (typeof field === "string") return field;
+    if (Array.isArray(field)) {
+        let text = field.filter(function(x) { return x.tipo !== 'rubrica'; }).map(function(x) { return x.texto || ""; }).join("\n").trim();
+        if (!text) text = field.map(function(x) { return x.texto || ""; }).join("\n").trim();
+        return text || defaultText;
+    }
+    if (field.texto) return field.texto;
+    return defaultText;
+}
+
 function generarDocumentoNodosLegacy(data, hora, options = {}) {
     if (!data) return '';
     let isEn = options.isEn === true;
@@ -3335,7 +3348,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     }
     
     bGloriaColecta.addTitulo(isEn ? "Collect" : "Oración Colecta");
-    bGloriaColecta.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || "Dios todopoderoso y eterno..."));
+    bGloriaColecta.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + safeText(data.oracion_colecta, "Dios todopoderoso y eterno..."));
     bGloriaColecta.addAsamblea("Amén.");
     SECUENCIA_LITURGICA.push(bGloriaColecta);
 
@@ -3464,7 +3477,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     bEuca.addTitulo(isEn ? "Offertory Chant" : "Canto de Ofertorio");
     bEuca.addRubrica(cantos.ofertorio);
 
-    let ofrendas = data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : (isEn ? "Receive, O Lord, the offerings..." : "Recibe, Señor, las ofrendas de tu pueblo...");
+    let ofrendas = safeText(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : null, (isEn ? "Receive, O Lord, the offerings..." : "Recibe, Señor, las ofrendas de tu pueblo..."));
     bEuca.addTitulo(isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas");
     bEuca.addSacerdote(ofrendas);
     bEuca.addAsamblea("Amén.");
@@ -3502,7 +3515,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
 
 
 
-    let despues = (data.liturgia_eucaristica && data.liturgia_eucaristica.oracion_despues_comunion) ? data.liturgia_eucaristica.oracion_despues_comunion : (isEn ? "Grant, we pray, almighty God..." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento...");
+    let despues = safeText((data.liturgia_eucaristica && data.liturgia_eucaristica.oracion_despues_comunion) ? data.liturgia_eucaristica.oracion_despues_comunion : null, (isEn ? "Grant, we pray, almighty God..." : "Concédenos, Dios todopoderoso, que la eficacia de este sacramento..."));
     bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
     bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + despues);
     bComunion.addAsamblea("Amén.");
@@ -3518,7 +3531,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     if (Flag_Oracion_Pueblo && data.oracion_sobre_el_pueblo) {
         bConclusion.addTitulo("Oración sobre el Pueblo");
         bConclusion.addRubrica("Sacerdote: Iniclinen la cabeza para recibir la bendición.");
-        bConclusion.addSacerdote(data.oracion_sobre_el_pueblo);
+        bConclusion.addSacerdote(safeText(data.oracion_sobre_el_pueblo, ""));
         bConclusion.addAsamblea("Amén.");
     }
 
@@ -3671,7 +3684,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
 
     bInicial.addTitulo(isEn ? "Collect" : "Oración Colecta");
-    bInicial.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.oracion_colecta || ""));
+    bInicial.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + safeText(data.oracion_colecta, ""));
     bInicial.addAsamblea("Amén.");
     SECUENCIA_LITURGICA.push(bInicial);
 
@@ -3799,7 +3812,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
 
     bEuca.addTitulo(isEn ? "Prayer over the Offerings" : "Oración sobre las Ofrendas");
-    bEuca.addCapitular(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : "");
+    bEuca.addCapitular(safeText(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_ofrendas : null, ""));
     bEuca.addAsamblea("Amén.");
     
     if (checkAccion("plegaria_eucaristica_II")) {
@@ -3858,7 +3871,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
 
 
     bComunion.addTitulo(isEn ? "Prayer after Communion" : "Oración después de la Comunión");
-    bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + (data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : ""));
+    bComunion.addCapitular((isEn ? "Let us pray. " : "Oremos. ") + safeText(data.liturgia_eucaristica ? data.liturgia_eucaristica.oracion_despues_comunion : null, ""));
     bComunion.addAsamblea("Amén.");
     SECUENCIA_LITURGICA.push(bComunion);
 
