@@ -348,7 +348,6 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     bConclusion.addRubrica(cantos.salida);
     SECUENCIA_LITURGICA.push(bConclusion);
 
-    } // END ELSE FOR MISA/LAUDES
     
     // Lectio Divina (Auto-generador si estamos en jornada diaria y es la ultima llamada)
     if (hora === "lectio") {
