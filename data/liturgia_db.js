@@ -76,10 +76,124 @@ window.liturgiaData = {
       "oracion_ofrendas": "Recibe, Señor, con bondad las ofrendas de tu familia santa, para que, con la ayuda de tu protección, no pierda los dones recibidos y alcance los bienes eternos. Por Jesucristo, nuestro Señor.",
       "antifona_comunion": "Jesús resucitó y dio a sus discípulos el Espíritu Santo. Aleluya.",
       "oracion_despues_comunion": "Escucha, Señor, nuestras oraciones para que la participación en los misterios de nuestra redención nos ayude en la vida presente y nos alcance las alegrías eternas. Por Jesucristo, nuestro Señor."
-    }
+    },
+    "titulo_celebracion": "Miércoles de la Octava de Pascua",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-03-29": {
-    "color": "Múltiple",
+    "color": "Rojo",
     "tiempo_liturgico": "DOMINGO DE RAMOS",
     "antifona_entrada": "",
     "rito_penitencial": "",
@@ -102,7 +216,9 @@ window.liturgiaData = {
     "liturgia_eucaristica": {
       "oracion_ofrendas": "",
       "oracion_despues_comunion": ""
-    }
+    },
+    "titulo_celebracion": "Domingo de Ramos y de la Pasión del Señor",
+    "grado": "Solemnidad"
   },
   "2026-04-02": {
     "color": "Blanco",
@@ -128,10 +244,12 @@ window.liturgiaData = {
     "liturgia_eucaristica": {
       "oracion_ofrendas": "",
       "oracion_despues_comunion": ""
-    }
+    },
+    "titulo_celebracion": "Jueves Santo — Misa de la Cena del Señor",
+    "grado": "Solemnidad"
   },
   "2026-04-03": {
-    "color": "Múltiple",
+    "color": "Rojo",
     "tiempo_liturgico": "TRIDUO PASCUAL",
     "antifona_entrada": "",
     "rito_penitencial": "",
@@ -154,10 +272,12 @@ window.liturgiaData = {
     "liturgia_eucaristica": {
       "oracion_ofrendas": "",
       "oracion_despues_comunion": ""
-    }
+    },
+    "titulo_celebracion": "Viernes Santo — Celebración de la Pasión",
+    "grado": "Solemnidad"
   },
   "2026-04-04": {
-    "color": "Múltiple",
+    "color": "Blanco",
     "tiempo_liturgico": "VIGILIA PASCUAL",
     "antifona_entrada": "",
     "rito_penitencial": "",
@@ -180,7 +300,9 @@ window.liturgiaData = {
     "liturgia_eucaristica": {
       "oracion_ofrendas": "",
       "oracion_despues_comunion": ""
-    }
+    },
+    "titulo_celebracion": "Sábado Santo — Vigilia Pascual",
+    "grado": "Solemnidad"
   },
   "2026-04-12": {
     "oficio": {
@@ -582,7 +704,121 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Tercer Domingo de Pascua",
+    "grado": "Domingo",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-26": {
     "color": "Blanco",
@@ -676,7 +912,121 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Cuarto Domingo de Pascua (Buen Pastor)",
+    "grado": "Domingo",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-03": {
     "color": "Blanco",
@@ -770,7 +1120,121 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Quinto Domingo de Pascua",
+    "grado": "Domingo",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-10": {
     "color": "Blanco",
@@ -864,7 +1328,121 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sexto Domingo de Pascua",
+    "grado": "Domingo",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-17": {
     "color": "Blanco",
@@ -949,7 +1527,121 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Séptimo Domingo de Pascua",
+    "grado": "Domingo",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-09": {
     "fecha": "2026-04-09",
@@ -997,6 +1689,121 @@ window.liturgiaData = {
       "**1. El Testimonio de la Resurrección: Un Poder que Transforma.** Pedro, ante la curación milagrosa del paralítico, no se atribuye gloria personal, sino que proclama la fuerza del nombre de Jesús y la fe en Él. La Resurrección no es un evento pasado, sino una realidad viva que opera en la Iglesia y en cada uno de nosotros. Su poder nos transforma, nos sana y nos da la valentía para dar testimonio, tal como lo hicieron los apóstoles, venciendo la duda y el temor.",
       "**2. La Apertura a las Escrituras: El Corazón Ardiente de la Fe.** Los discípulos de Emaús reconocen a Jesús al partir el pan, pero es el Señor quien luego les abre el entendimiento para comprender las Escrituras. La fe cristiana se nutre de la Palabra de Dios. En la Sagrada Escritura encontramos la revelación del plan de salvación, el cumplimiento de las promesas en Cristo y la guía para nuestra vida. Debemos acercarnos a ella con un corazón dispuesto a ser iluminado.",
       "**3. La Misión de los Testigos: Paz y Perdón para el Mundo.** Jesús resucitado confiere la paz a sus discípulos y los envía como testigos de su resurrección, anunciando la necesidad de convertirse y el perdón de los pecados. Nuestra misión, como herederos de los apóstoles, es llevar este mensaje de esperanza y reconciliación al mundo, fundamentados en la fe en el Mesías que ha padecido y resucitado por nuestra salvación."
+    ],
+    "titulo_celebracion": "Jueves de la Octava de Pascua",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
     ]
   },
   "2026-04-10": {
@@ -1084,7 +1891,122 @@ window.liturgiaData = {
         "antifona": "El discípulo predilecto de Jesús dijo: «¡Es el Señor!» Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl discípulo predilecto de Jesús dijo: «¡Es el Señor!» Aleluya.\nInvoquemos a   Cristo, camino, verdad y vida, y digámosle:\nR.\nHijo de   Dios vivo, bendice a tu pueblo.\nTe rogamos, Señor,   por los ministros de tu Iglesia que, al distribuir entre   sus hermanos el pan de vida,\nR.\nencuentren también ellos   en el pan que distribuyen su alimento y fortaleza.\nTe pedimos por todo el pueblo cristiano: que viva, Señor, como pide la vocación a que ha sido convocado\nR.\ny se esfuerce por mantener la unidad del Espíritu con   el vínculo de la paz.\nTe pedimos por los   que rigen los destinos de las naciones: que cumplan su misión con espíritu de justicia y con amor,\nR.\npara que   haya paz y concordia entre los pueblos.\nSe pueden añadir algunas intenciones libres\nSeñor, que podamos celebrar tu santa resurrección con tus ángeles y tus santos,\nR.\ny que nuestros hermanos difuntos, a quienes encomendamos a tu bondad, se alegren   también en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la Octava de Pascua",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-11": {
     "fecha": "2026-04-11",
@@ -1175,7 +2097,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la Octava de Pascua",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-13": {
     "fecha": "2026-04-13",
@@ -1269,7 +2306,120 @@ window.liturgiaData = {
     "gloria": false,
     "antifona_entrada": "Cristo, habiendo resucitado de entre los muertos, ya no muere. La muerte no tiene ya dominio sobre él. Aleluya.",
     "oracion_colecta": "Dios nuestro, que has prometido permanecer fiel a los que han renacido por el bautismo, escucha nuestras oraciones, para que, justificados por la fe, merezcamos llegar a la vida eterna. Por nuestro Señor Jesucristo...",
-    "monicion_entrada": "Hermanos, en este segundo lunes de la cincuentena pascual, la Iglesia nos sigue invitando a vivir la alegría del resucitado."
+    "monicion_entrada": "Hermanos, en este segundo lunes de la cincuentena pascual, la Iglesia nos sigue invitando a vivir la alegría del resucitado.",
+    "titulo_celebracion": "Lunes de la II Semana de Pascua",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-14": {
     "fecha": "2026-04-14",
@@ -1442,7 +2592,119 @@ window.liturgiaData = {
         "antifona": "¿Verdad que nuestros corazones ardían dentro de nosotros, mientras nos hablaba Jesús en el camino? Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\n¿Verdad que nuestros corazones ardían dentro de nosotros, mientras nos hablaba Jesús en el camino? Aleluya.\nInvoquemos  a  Cristo,  que  con  su  resurrección  ha  reanimado  la esperanza de su pueblo, y digámosle:\nR.\nSeñor  Jesús,  tú  que  siempre  vives  para  interceder  por nosotros, escúchanos.\nSeñor Jesús, de cuyo costado abierto salió sangre y agua,\nR.\nhaz de la Iglesia tu Esposa inmaculada.\nPastor  supremo  de  la  Iglesia,  que  después  de  tu  resurrección encomendaste a Pedro, al confesarte su amor, el cuidado de tus ovejas,\nR.\nconcede  al papa\nN.\nun  amor  ardiente  y  un  celo apostólico.\nTú  que  concediste  una pesca abundante a  los  discípulos que  pescaban  en  el  mar,\nR.\nenvía operarios que continúen su trabajo apostólico.\nTú  que  preparaste  a  la  orilla  del  mar el pan  y  los peces para  los discípulos,\nR.\nno permitas que nuestros hermanos mueran de hambre por culpa nuestra.\nSe pueden añadir algunas intenciones libres\nSeñor Jesús, nuevo Adán, que nos das la vida, transforma a nuestros difuntos a imagen tuya,\nR.\npara que compartan contigo la alegría de tu reino.\nSintiéndonos verdaderos hijos de Dios, digamos a nuestro Padre:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-17": {
     "fecha": "2026-04-17",
@@ -1526,7 +2788,122 @@ window.liturgiaData = {
         "antifona": "Subió al árbol santo de la cruz, destruyó el poderío de la muerte, se revistió de poder, resucitó al tercer día. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSubió al árbol santo de la cruz, destruyó el poderío de la muerte, se revistió de poder, resucitó al tercer día. Aleluya.\nOremos a Cristo, fuente de toda vida y principio de todo bien, y digámosle confiadamente:\nR.\nInstaura, Señor, tu reino en el mundo.\nJesús salvador, tú que, muerto en la carne, fuiste devuelto a la vida por el Espíritu,\nR.\nhaz  que  nosotros,  muertos  al  pecado,  vivamos  también  de tu Espíritu.\nTú  que  enviaste a  tus  discípulos  al  mundo  entero  para  que proclamaran tu Evangelio a todos los pueblo,\nR.\nhaz que cuantos anuncian el Evangelio a los hombres vivan de tu Espíritu.\nTú  que  recibiste  todo  poder  en  el cielo  y  en  la  tierra  para  dar testimonio de la verdad,\nR.\nguarda en tu verdad a quienes nos gobiernan.\nTú que todo lo renuevas y nos mandas esperar anhelantes la llegada de tu reino,\nR.\nhaz que, cuanto más esperamos el cielo nuevo y la tierra nuevaque  nos  prometes,  con  tanto  mayor  empeño  trabajemos  por  la edificación del mundo presente.\nSe pueden añadir algunas intenciones libres\nTú que descendiste a la mansión de la muerte para anunciar el gozo del Evangelio a los difuntos,\nR.\nsé tú mismo la eterna alegría de todos los que mueren.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la II Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-18": {
     "fecha": "2026-04-18",
@@ -1610,7 +2987,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la II Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-20": {
     "fecha": "2026-04-20",
@@ -1694,7 +3186,122 @@ window.liturgiaData = {
         "antifona": "Ésta es la obra de Dios: que creáis plenamente en aquel que él ha enviado. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nÉsta es la obra de Dios: que creáis plenamente en aquel que él ha enviado. Aleluya.\nCon  espíritu  gozoso,  invoquemos  a  Cristo,  a  cuya  humanidad  dio vida el Espíritu Santo, haciéndolo fuente de vida para los hombres, y digámosle:\nR.\nRenueva y da vida a todas las cosas, Señor.\nCristo, salvador del mundo y rey de la nueva creación, haz que, ya desde ahora, con el espíritu vivamos en tu reino,\nR.\ndonde estás sentado a la derecha del Padre.\nSeñor, tú que vives en tu Iglesia hasta el fin de los tiempos,\nR.\ncondúcela  por  el  Espíritu  Santo  al  conocimiento  de  toda verdad.\nQue  los  enfermos,  los  moribundos  y  todos  los  que  sufren encuentren luz en tu victoria,\nR.\ny que tu gloriosa resurrección los consuele y los conforte.\nSe pueden añadir algunas intenciones libres\nAl  terminar este día, te ofrecemos nuestro homenaje, oh Cristo, luz  imperecedera,\nR.\ny te pedimos que con la gloria de tu resurrección ilumines a nuestros  hermanos difuntos.\nPorque  Jesucristo nos ha hecho participar de su propia vida, somos hijos de  Dios y por ello nos atrevemos a decir:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Lunes de la III Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-21": {
     "fecha": "2026-04-21",
@@ -1851,7 +3458,119 @@ window.liturgiaData = {
         "antifona": "El pan de Dios es el que ha bajado del cielo y da vida al mundo. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl pan de Dios es el que ha bajado del cielo y da vida al mundo. Aleluya.\nAclamemos alegres a Cristo, que después de ser sepultado en el seno de la tierra resucitó gloriosamente a vida nueva, y digámosle confiados:\nR.\nRey de la gloria , escúchanos.\nTe rogamos, Señor, por los obispos, los presbíteros y los diáconos: que sirvan con celo a tu pueblo\nR.\ny lo conduzcan por los caminos del bien.\nTe rogamos, Señor, por los que sirven a tu Iglesia con el estudio de tu palabra:\nR.\nque escudriñen tu doctrina con pureza de corazón y deseo de adoctrinar a tu pueblo.\nTe rogamos, Señor, por todos los fieles de la Iglesia: que combatan bien el combate de la fe\nR.\ny, habiendo corrido hasta la meta, alcancen la corona merecida.\nTú que en la cruz cancelaste la nota de cargo de nuestra deuda,\nR.\ndestruye también en nosotros toda clase de esclavitud y líbranos de toda tiniebla.\nSe pueden añadir algunas intenciones libres\nTú que al bajar al lugar de los muertos abriste las puertas del abismo,\nR.\nrecibe a nuestros hermanos difuntos en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-22": {
     "fecha": "2026-04-22",
@@ -1935,7 +3654,122 @@ window.liturgiaData = {
         "antifona": "Todos los que el Padre me ha dado vendrán a mí, y a los que vengan a mí yo no los echaré fuera. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nTodos los que el Padre me ha dado vendrán a mí, y a los que vengan a mí yo no los echaré fuera. Aleluya.\nOremos a Cristo, que resucitó de entre los muertos y está sentado a la derecha del Padre, y digámosle:\nR.\nCristo, que vives por siempre para interceder por los hombres, escucha nuestra oración.\nAcuérdate, Señor, de los que se han consagrado a tu servicio,\nR.\nque sean para tu pueblo ejemplo de santidad.\nConcede, Señor, el espíritu de justicia a los que gobiernan las naciones\nR.\ny haz que trabajen en bien de la paz, para que todos podamos vivir según tu ley.\nConcede la paz a nuestros días\nR.\ny multiplica los bienes de la tierra, para que los pobres puedan gozar de las riquezas de tu bondad.\nSe pueden añadir algunas intenciones libres\nCristo salvador, que con tu triunfo has iluminado el mundo entero y con  tu resurrección has dado a los hombres una prenda de su inmortalidad,\nR.\nconcede la luz eterna a nuestros hermanos difuntos.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Miércoles de la III Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-23": {
     "fecha": "2026-04-23",
@@ -2092,7 +3926,119 @@ window.liturgiaData = {
         "antifona": "Yo soy el pan vivo bajado del cielo; todo el que coma de este pan vivirá eternamente; y el pan que yo voy a dar es mi carne ofrecida por la vida del mundo. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nYo soy el pan vivo bajado del cielo; todo el que coma de este pan vivirá eternamente; y el pan que yo voy a dar es mi carne ofrecida por la vida del mundo. Aleluya.\nGlorifiquemos a Cristo, resucitado de entre los muertos como primicia de los que se han dormido, y supliquémosle, diciendo:\nR.\nTú que has resucitado de entre los muertos, escucha, Señor, nuestra oración.\nAcuérdate, Señor, de tu Iglesia santa, edificada sobre el cimiento de los apóstoles y extendida hasta los confines del mundo:\nR.\nque tus bendiciones abundantes se derramen sobre cuantos creen en ti.\nTú, Señor, que eres el médico de nuestros cuerpos y de nuestras almas,\nR.\nvisítanos con tu amor y sálvanos.\nTú que experimentaste los dolores de la cruz y ahora estás lleno de gloria,\nR.\nlevanta y consuela a los enfermos y líbralos de sus sufrimientos.\nTú que anunciaste la resurrección a los que yacían en las tinieblas del abismo,\nR.\nlibra a los prisioneros y oprimidos y da pan a los hambrientos.\nSe pueden añadir algunas intenciones libres\nTú, Señor, que en la cruz destruiste nuestra muerte y mereciste para todos el don de la inmortalidad,\nR.\nconcede a nuestros hermanos difuntos la vida nueva de tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-24": {
     "fecha": "2026-04-24",
@@ -2176,7 +4122,122 @@ window.liturgiaData = {
         "antifona": "El que fue crucificado resucitó de entre los muertos y nos redimió. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl que fue crucificado resucitó de entre los muertos y nos redimió. Aleluya.\nInvoquemos a   Cristo, camino, verdad y vida, y digámosle:\nR.\nHijo de   Dios vivo, bendice a tu pueblo.\nTe rogamos, Señor,   por los ministros de tu Iglesia: que, al distribuir entre   sus hermanos el pan de vida,\nR.\nencuentren también ellos en el pan que distribuyen su alimento y fortaleza.\nTe pedimos por todo el pueblo cristiano: que viva, Señor, como pide la vocación a que ha sido convocado\nR.\ny se esfuerce por mantener la unidad del Espíritu con   el vínculo de la paz.\nTe pedimos por los que rigen los destinos de las naciones: que cumplan   su misión con espíritu de justicia y con amor,\nR.\npara que haya paz y concordia entre los pueblos.\nSe pueden añadir algunas intenciones libres\nSeñor, que podamos celebrar tu santa resurrección con tus ángeles y tus santos\nR.\ny que nuestros hermanos difuntos, a quienes encomendamos a tu bondad, se alegren también en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la III Semana de Pascua · San Fidel",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-25": {
     "fecha": "2026-04-25",
@@ -2265,7 +4326,119 @@ window.liturgiaData = {
     "color": "Rojo",
     "grado": "Fiesta",
     "gloria": true,
-    "titulo_celebracion": "Fiesta de San Marcos, evangelista"
+    "titulo_celebracion": "Fiesta de San Marcos, evangelista",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-27": {
     "fecha": "2026-04-27",
@@ -2349,7 +4522,122 @@ window.liturgiaData = {
         "antifona": "Tengo otras ovejas que no son de este redil; es necesario que las recoja, y oirán mi voz, para que se forme un solo rebaño y un solo pastor. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nTengo otras ovejas que no son de este redil; es necesario que las recoja, y oirán mi voz, para que se forme un solo rebaño y un solo pastor. Aleluya.\nLlenos de gozo, oremos a Cristo, el Señor, que con su resurrección ha iluminado al mundo entero, y digámosle:\nR.\nCristo, vida nuestra, escúchanos.\nSeñor Jesús, que te hiciste compañero de camino de los discípulos que dudaban de ti,\nR.\nacompaña también a tu Iglesia peregrina entre las dificultades e incertidumbres de esta vida.\nNo permitas que tus fieles sean tardos y necios para creer,\nR.\ny aumenta su fe, para que te proclamen vencedor de  la muerte.\nMira, Señor, con bondad a cuantos no te reconocieron en su camino,\nR.\ny manifiéstate en ellos, para que te confiesen como salvador suyo.\nTú que por la cruz reconciliaste a todos los hombres, uniéndolos en tu cuerpo,\nR.\nconcede la paz y la unidad a las naciones.\nSe pueden añadir algunas intenciones libres\nTú que eres el juez de vivos y muertos,\nR.\notorga a los difuntos que creyeron en ti la remisión de todas sus culpas.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Lunes de la IV Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-28": {
     "fecha": "2026-04-28",
@@ -2433,7 +4721,122 @@ window.liturgiaData = {
         "antifona": "Yo conozco a mis ovejas y ellas me siguen, y yo les doy vida eterna. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nYo conozco a mis ovejas y ellas me siguen, y yo les doy vida eterna. Aleluya.\nInvoquemos  a  Cristo,  que  con  su  resurrección  ha  reanimado  laesperanza de su pueblo y digámosle:\nR.\nSeñor  Jesús,  tú  que  siempre  vives  para  interceder  pornosotros, escúchanos.\nSeñor Jesús, de cuyo costado abierto salió sangre y agua,\nR.\nhaz de la Iglesia tu Esposa inmaculada.\nPastor  supremo  de  la  Iglesia,  que  después  de  tu  resurrecciónencomendaste a Pedro, al confesarte su amor, el cuidado de tusovejas,\nR.\nconcede  a  nuestro  papa\nN:\nun  amor  ardiente  y  un  celoapostólico.\nTú  que  concediste una pesca abundante  a  los  discípulos que  pescaban  en  el  mar,\nR.\nenvía operarios que continúen su trabajo apostólico.\nTú  que  preparaste  a  la  orilla  del  mar  el pan  y  y los peces  para  losdiscípulos,\nR.\nno permitas que nuestros hermanos mueran de hambre por culpanuestra.\nSe pueden añadir algunas intenciones libres\nSeñor Jesús, nuevo Adán que nos das la vida, transforma a nuestros difuntos a imagen tuya,\nR.\npara que compartan contigo la alegría de tu reino.\nSintiéndonos verdaderos hijos de Dios, digamos a nuestro Padre:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Martes de la IV Semana de Pascua · San Pedro Chanel",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-29": {
     "fecha": "2026-04-29",
@@ -2517,7 +4920,122 @@ window.liturgiaData = {
         "antifona": "Dios no ha enviado a su Hijo al mundo para condenar al mundo, sino para salvarlo por medio de él. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nDios no ha enviado a su Hijo al mundo para condenar al mundo, sino para salvarlo por medio de él. Aleluya.\nImploremos a Dios Padre, que por la resurrección de su Hijo de entre\nlos muertos nos ha abierto el camino de la vida eterna, y digámosle:\n- Por la victoria de Cristo, salva, Señor, a tus redimidos.\nDios de nuestros padres, que has glorificado a tu Hijo Jesús,\nresucitándolo de entre los muertos,\n- convierte nuestros corazones, para que vivamos la nueva vida de tu Hijo resucitado.\nTú que nos has devuelto al Pastor y guardián de nuestras vidas, cuando éramos ovejas descarriados,\n- consérvanos en fidelidad a tu Evangelio, bajo la guía de los obispos de tu Iglesia.\nTú que elegiste a los primeros discípulos de tu Hijo de entre el pueblo de Israel,\n- revela a los hijos de este pueblo el cumplimiento de las promesas que hiciste a sus padres.\nAcuérdate, Señor, de los huérfanos, de las viudas, de los esposos que viven separados y de todos nuestros hermanos abandonados,\n- y no permitas que vivan en la soledad, los que fueron reconciliados por la muerte de tu Hijo.\nSe pueden añadir algunas intenciones libres\nTú que llamaste a ti a Esteban, el cual confesó que Jesús estaba a tu derecha,\n- recibe a nuestros hermanos difuntos que esperaron tu venida en la fe y en el amor.\nDigamos ahora todos juntos la oración que nos enseñó el mismo Jesús:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Miércoles de la IV Semana de Pascua · Santa Catalina de Siena",
+    "color": "Blanco",
+    "grado": "Fiesta",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-30": {
     "fecha": "2026-04-30",
@@ -2654,7 +5172,119 @@ window.liturgiaData = {
         "antifona": "Yo soy el Pastor de las ovejas; yo he venido para que tengan vida, y que la tengan en abundancia. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nYo soy el Pastor de las ovejas; yo he venido para que tengan vida, y que la tengan en abundancia. Aleluya.\nAlabemos   y glorifiquemos a Cristo, a quien Dios Padre constituyó fundamento   de nuestra esperanza y primicia de la humanidad resucitada, y   aclamémoslo suplicantes:\n- Rey de la gloria, escúchanos.\nSeñor   Jesús, tú que, por tu propia sangre y por tu   resurrección, penetraste en el santuario de Dios,\n- llévanos contigo   al reino del Padre.\nTú que, por tu resurrección,   robusteciste la fe de tus discípulos y los enviaste a   anunciar el Evangelio al mundo,\n- haz que los obispos   y presbíteros sean fieles heraldos de tu Evangelio.\nTú   que, por tu resurrección, eres nuestra reconciliación y nuestra paz,\n- haz que todos los bautizados vivan en la unidad   de una sola fe y de un solo amor.\nTú que, por tu resurrección, diste la salud al tullido   del templo,\n- mira con bondad a los enfermos y   manifiesta en ellos tu gloria.\nSe pueden añadir algunas intenciones libres\nTú que, por tu resurrección, fuiste constituido primogénito   de los muertos que resucitan,\n- haz que los difuntos que   en ti creyeron y esperaron participen de tu gloria.\nTerminemos   nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-24": {
     "fecha": "2026-05-24",
@@ -2731,7 +5361,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Domingo de Pentecostés",
+    "color": "Rojo",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-25": {
     "fecha": "2026-05-25",
@@ -2815,7 +5560,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor, porque Dios ha mirado mi humillación.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nProclama mi alma la grandeza del Señor, porque Dios ha mirado mi humillación.\nCristo quiere que todos los hombres alcancen la   salvación. Digámosle pues confiadamente:\n-Atrae Señor a todos hacia ti.\nTe bendecimos Señor porque nos has redimido   con tu preciosa sangre de la esclavitud del pecado;\n-haz que participemos   en la gloriosa libertad de los hijos de Dios.\nAyuda con tu gracia a nuestro obispo\nN.\ny a todos los obispos de la   Iglesia\n-para que con gozo y fervor sirvan a tu pueblo.\nQue todos los que consagran su vida a la investigación de la verdad   logren encontrarla\n-y que habiéndola encontrado se esfuercen por   difundirla entre sus hermanos.\nAtiende Señor a los huérfanos a las viudas y a los que viven   abandonados;\n-ayúdalos en sus necesidades para que experimenten tu   solicitud hacia ellos.\nSe pueden añadir algunas intenciones libres\nAcoge a nuestros hermanos difuntos en la ciudad santa de la   Jerusalén celestial\n-allí donde tú con el Padre y el Espíritu Santo   serás todo en todos.\nAdoctrinados por el mismo Señor nos atrevemos a decir:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Lunes de la IX Semana del Tiempo Ordinario · San Beda el Venerable",
+    "color": "Verde",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-04-15": {
     "fecha": "2026-04-15",
@@ -3135,7 +5995,122 @@ window.liturgiaData = {
         "antifona": "El que tiene fe en el Hijo tiene la vida eterna. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl que tiene fe en el Hijo tiene la vida eterna. Aleluya.\nAlabemos   y glorifiquemos a Cristo, a quien Dios Padre constituyó fundamento   de nuestra esperanza y primicia de la humanidad resucitada, y   aclamémoslo suplicantes:\nR.\nRey de la gloria, escúchanos.\nSeñor   Jesús, tú que, por tu propia sangre y por tu   resurrección, penetraste en el santuario de Dios,\nR.\nllévanos contigo   al reino del Padre.\nTú que, por tu resurrección,   robusteciste la fe de tus discípulos y los enviaste a   anunciar el Evangelio al mundo,\nR.\nhaz que los obispos   y presbíteros sean fieles heraldos de tu Evangelio.\nTú que, por tu resurrección, eres nuestra reconciliación y nuestra paz,\nR.\nhaz que todos los bautizados vivan en la unidad   de una sola fe y de un solo amor.\nTú que, por tu resurrección, diste la salud al tullido   del templo,\nR.\nmira con bondad a los enfermos y   manifiesta en ellos tu gloria.\nSe pueden añadir algunas intenciones libres\nTú que, por tu resurrección, fuiste constituido primogénito   de los muertos que resucitan,\nR.\nhaz que los difuntos que   en ti creyeron y esperaron participen de tu gloria.\nTerminemos   nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Jueves de la II Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-01": {
     "fecha": "2026-05-01",
@@ -3219,7 +6194,122 @@ window.liturgiaData = {
         "antifona": "El buen Pastor dio la vida por sus ovejas. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl buen Pastor dio la vida por sus ovejas. Aleluya.\nOremos a Cristo, fuente de toda vida y principio de todo bien, y digámosle confiadamente:\nR.\nInstaura, Señor, tu reino en el mundo.\nJesús salvador, tú que, muerto en la carne, fuiste devuelto a la vida por el Espíritu,\nR.\nhaz  que  nosotros,  muertos  al  pecado,  vivamos  también  de tu Espíritu.\nTú  que  enviaste a  tus  discípulos  al  mundo  entero  para  que proclamaran el Evangelio a todos los pueblos,\nR.\nhaz que cuantos anuncian el Evangelio a los hombres vivan de tu Espíritu.\nTú  que  recibiste  todo  poder  en  el cielo  y  en  la  tierra  para  dar testimonio de la verdad,\nR.\nguarda en tu verdad a quienes nos gobiernan.\nTú que todo lo renuevas y nos mandas esperar anhelantes la llegada de tu reino,\nR.\nhaz que, cuanto más esperemos el cielo nuevo y la tierra nuevaque  nos  prometes,  con  tanto  mayor  empeño  trabajemos  por  la edificación del mundo presente.\nSe pueden añadir algunas intenciones libres\nTú que descendiste a la mansión de la muerte para anunciar el gozo del Evangelio a los difuntos,\nR.\nsé tú mismo la eterna alegría de todos los que mueren.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la IV Semana de Pascua · San José Obrero",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-02": {
     "fecha": "2026-05-02",
@@ -3303,7 +6393,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la IV Semana de Pascua · San Atanasio",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-04": {
     "fecha": "2026-05-04",
@@ -3387,7 +6592,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor, porque Dios ha mirado mi humillación.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nProclama mi alma la grandeza del Señor, porque Dios ha mirado mi humillación.\nDemos gracias a Dios, nuestro Padre, que recordando siempre su santa  alianza, no cesa de bendecirnos, y digámosle con ánimo confiado:\nR.\nFavorece a tu pueblo Señor.\nSalva a tu pueblo, Señor,\nR.\ny bendice a tu heredad.\nCongrega en la unidad a todos los cristianos:\nR.\npara que el mundo crea  en Cristo, tu enviado.\nDerrama tu gracia sobre nuestros familiares y  amigos\nR.\nque encuentren en ti, Señor, su verdadera felicidad.\nMuestra tu amor a los agonizantes:\nR.\nque puedan contemplar tu salvación.\nSe pueden añadir algunas intenciones libres\nTen piedad de los que han muerto\nR.\ny acógelos en el descanso de Cristo.\nTerminemos nuestra oración con las palabras que nos enseñó Cristo:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Lunes de la V Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-05": {
     "fecha": "2026-05-05",
@@ -3471,7 +6791,122 @@ window.liturgiaData = {
         "antifona": "Si me amaseis de veras, os alegraríais de que fuera yo el Padre. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSi me amaseis de veras, os alegraríais de que fuera yo el Padre. Aleluya.\nAclamemos alegres a Cristo, que después de ser sepultado en el seno de la tierra resucitó gloriosamente a vida nueva, y digámosle confiados:\nR.\nRey de la gloria , escúchanos.\nTe rogamos, Señor, por los obispos, los presbíteros y los diáconos: que sirvan con celo a tu pueblo\nR.\ny lo conduzcan por los caminos del bien.\nTe rogamos, Señor, por los que sirven a tu Iglesia con el estudio de tu palabra:\nR.\nque escudriñen tu doctrina con pureza de corazón y deseo de adoctrinar a tu pueblo.\nTe rogamos, Señor, por todos los fieles de la Iglesia: que combatan bien el combate de la fe\nR.\ny, habiendo corrido hasta la meta, alcancen la corona merecida.\nTú que en la cruz cancelaste la nota de cargo de nuestra deuda,\nR.\ndestruye también en nosotros toda clase de esclavitud y líbranos de toda tiniebla.\nSe pueden añadir algunas intenciones libres\nTú que al bajar al lugar de los muertos abriste las puertas del abismo,\nR.\nrecibe a nuestros hermanos difuntos en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Martes de la V Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-06": {
     "fecha": "2026-05-06",
@@ -3555,7 +6990,122 @@ window.liturgiaData = {
         "antifona": "Si permanecéis en mí y si mis palabras permanecen en vosotros, pedid todo lo que queráis, y se os dará. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSi permanecéis en mí y si mis palabras permanecen en vosotros, pedid todo lo que queráis, y se os dará. Aleluya.\nOremos a Cristo, que resucitó de entre los muertos y está sentado a la derecha del Padre, y digámosle:\nR.\nCristo, que vives por siempre para interceder por los hombres, escucha nuestra oración.\nAcuérdate, Señor, de los que se han consagrado a tu servicio,\nR.\nque sean para tu pueblo ejemplo de santidad.\nConcede, Señor, el espíritu de justicia a los que gobiernan las naciones\nR.\ny haz que trabajen en bien de la paz, para que todos podamos vivir según tu ley.\nConcede la paz a nuestros días\nR.\ny multiplica los bienes de la tierra, para que los pobres puedan gozar de las riquezas de tu bondad.\nSe pueden añadir algunas intenciones libres\nCristo salvador, que con tu triunfo has iluminado el mundo entero y con  tu resurrección has dado a los hombres una prenda de su inmortalidad,\nR.\nconcede la luz eterna a nuestros hermanos difuntos.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Miércoles de la V Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-07": {
     "fecha": "2026-05-07",
@@ -3639,7 +7189,122 @@ window.liturgiaData = {
         "antifona": "Esto os lo he dicho para que mi gozo esté en vosotros, y vuestro gozo quede colmado. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEsto os lo he dicho para que mi gozo esté en vosotros, y vuestro gozo quede colmado. Aleluya.\nGlorifiquemos a Cristo, resucitado de entre los muertos como primicia de los que han dormido, y supliquémosle, diciendo:\nR.\nTú que has resucitado de entre los muertos, escucha, Señor, nuestra oración.\nAcuérdate, Señor, de tu Iglesia santa, edificada sobre el cimiento de los apóstoles y extendida hasta los confines del mundo:\nR.\nque tus bendiciones abundantes se derramen sobre cuantos creen en ti.\nTú, Señor, que eres el médico de nuestros cuerpos y de nuestras almas,\nR.\nvisítanos con tu amor y sálvanos.\nTú que experimentaste los dolores de la cruz y ahora estás lleno de gloria,\nR.\nlevanta y consuela a los enfermos y líbralos de sus sufrimientos.\nTú que anunciaste la resurrección a los que yacían en las tinieblas del abismo,\nR.\nlibra a los prisioneros y oprimidos y da pan a los hambrientos.\nSe pueden añadir algunas intenciones libres\nTú, Señor, que en la cruz destruiste nuestra muerte y mereciste para todos el don de la inmortalidad,\nR.\nconcede a nuestros hermanos difuntos la vida nueva de tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Jueves de la V Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-08": {
     "fecha": "2026-05-08",
@@ -3723,7 +7388,122 @@ window.liturgiaData = {
         "antifona": "Nadie tiene más amor que el que da la vida por sus amigos. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nNadie tiene más amor que el que da la vida por sus amigos. Aleluya.\nInvoquemos a   Cristo, camino, verdad y vida, y digámosle:\nR.\nHijo de   Dios vivo, bendice a tu pueblo.\nTe rogamos, Señor,   por los ministros de tu Iglesia: que, al distribuir entre   sus hermanos el pan de vida,\nR.\nencuentren también ellos   en el pan que distribuyen su alimento y fortaleza.\nTe pedimos por todo el pueblo cristiano: que viva,   Señor, como pide la vocación a que ha sido convocado\nR.\ny se esfuerce por mantener la unidad del Espíritu con   el vínculo de la paz.\nTe pedimos por los   que rigen los destinos de las naciones: que cumplan   su misión con espíritu de justicia y con amor,\nR.\npara que   haya paz y concordia entre los pueblos.\nSe pueden añadir algunas intenciones libres\nSeñor, que podamos celebrar tu santa   resurrección con tus ángeles y tus santos\nR.\ny que nuestros   hermanos difuntos, a quienes encomendamos a tu bondad, se alegren   también en tu reino.\nTerminemos nuestra oración con las palabras   del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la V Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-09": {
     "fecha": "2026-05-09",
@@ -3800,7 +7580,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la V Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-11": {
     "fecha": "2026-05-11",
@@ -3884,7 +7779,122 @@ window.liturgiaData = {
         "antifona": "El Espíritu de verdad, que procede del Padre, él mismo declarará en mi favor; y también vosotros seréis testigos. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl Espíritu de verdad, que procede del Padre, él mismo declarará en mi favor; y también vosotros seréis testigos. Aleluya.\nLlenos de gozo, oremos a Cristo, el Señor, que con su resurrección ha iluminado el mundo entero, y digámosle:\nR.\nCristo, vida nuestra, escúchanos.\nSeñor Jesús, que te hiciste compañero de camino de los discípulos que dudaban de ti,\nR.\nacompaña también a tu Iglesia peregrina entre las dificultades e incertidumbres de esta vida.\nNo permitas que tus fieles sean tardos y necios para creer,\nR.\ny aumenta su fe para que te proclamen vencedor de  la muerte.\nMira, Señor, con bondad a cuantos no te reconocieron en su camino,\nR.\ny manifiéstate a ellos para que te confiesen como salvador suyo.\nTú que por la cruz reconciliaste a todos los hombres, uniéndolos en tu cuerpo,\nR.\nconcede la paz y la unidad a las naciones.\nSe pueden añadir algunas intenciones libres\nTú que eres el juez de vivos y muertos,\n-otorga a los difuntos que creyeron en ti la remisión de todas sus culpas.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Lunes de la VI Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-12": {
     "fecha": "2026-05-12",
@@ -3968,7 +7978,122 @@ window.liturgiaData = {
         "antifona": "Os digo la verdad: Os conviene que yo me vaya; porque, si no me voy, el Abogado no vendrá a vosotros. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nOs digo la verdad: Os conviene que yo me vaya; porque, si no me voy, el Abogado no vendrá a vosotros. Aleluya.\nInvoquemos  a  Cristo,  que  con  su  resurrección  ha  reanimado  la\nesperanza de su pueblo y digámosle:\n-Señor  Jesús,  tú  que  siempre  vives  para  interceder  por\nnosotros, escúchanos.\nSeñor Jesús, de cuyo costado abierto salió sangre y agua,\n-haz de la Iglesia tu Esposa inmaculada.\nPastor  supremo  de  la  Iglesia,  que  después  de  tu  resurrección\nencomendaste a Pedro, al confesarte su amor, el cuidado de tus\novejas,\n-concede  al  papa\nN.\nun  amor  ardiente  y  un  celo\napostólico.\nTú  que  concediste una pesca abundante  a  los  discípulos que  pescaban  en  el  mar,\n-envía operarios que continúen su trabajo apostólico.\nTú  que  preparaste  a  la  orilla  del  mar  el pan  y  los peces  para  los\ndiscípulos,\n-no permitas que nuestros hermanos mueran de hambre por culpa\nnuestra.\nSe pueden añadir algunas intenciones libres\nSeñor Jesús, nuevo Adán, que nos das la vida, transforma a nuestros difuntos a imagen tuya,\n-para que compartan contigo la alegría de tu reino.\nSintiéndonos verdaderos hijos de Dios, digamos a nuestro Padre:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Martes de la VI Semana de Pascua · Sts. Nereo y Aquileo / San Pancracio",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-13": {
     "fecha": "2026-05-13",
@@ -4052,7 +8177,122 @@ window.liturgiaData = {
         "antifona": "El Espíritu me glorificará, porque tomará de lo que es mío para dároslo a conocer. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl Espíritu me glorificará, porque tomará de lo que es mío para dároslo a conocer. Aleluya.\nImploremos a Dios Padre, que por la resurrección de su Hijo de entre los muertos nos ha abierto el camino de la vida eterna, y digámosle:\n-Por la victoria de Cristo, salva, Señor, a tus redimidos.\nDios de nuestros padres, que has glorificado a tu Hijo Jesús resucitándolo de entre los muertos,\n-convierte nuestros corazones, para que andemos en una vida nueva.\nTú que nos has devuelto al Pastor y guardián de nuestras vidas, cuando éramos ovejas descarriadas,\n-consérvanos en fidelidad a tu Evangelio, bajo la guía de los obispos de tu Iglesia.\nTú que elegiste a los primeros discípulos de tu Hijo de entre el pueblo de Israel,\n-revela a los hijos de este pueblo el cumplimiento de las promesas que hiciste a sus padres.\nAcuérdate, Señor, de los huérfanos, de las viudas, de los esposos que viven separados y de todos nuestros hermanos abandonados,\n-y no permitas que vivan en la soledad, ya que fueron reconciliados por la muerte de tu Hijo.\nSe pueden añadir algunas intenciones libres\nTú que llamaste a ti a Esteban, que confesó que Jesús estaba de pie atu derecha,\n-recibe a nuestros hermanos difuntos que esperaron tu venida en la fe y en el amor.\nDigamos ahora todos juntos la oración que nos enseñó el mismo Jesús:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Miércoles de la VI Semana de Pascua · Nuestra Señora de Fátima",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-14": {
     "fecha": "2026-05-14",
@@ -4129,7 +8369,122 @@ window.liturgiaData = {
         "antifona": "Vuestra tristeza se convertirá en gozo, y nadie os quitará vuestra alegría. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nVuestra tristeza se convertirá en gozo, y nadie os quitará vuestra alegría. Aleluya.\nAlabemos   y glorifiquemos a Cristo, a quien Dios Padre constituyó fundamento   de nuestra esperanza y primicia de la humanidad resucitada, y   aclamémoslo suplicantes:\n-Rey de la gloria, escúchanos.\nSeñor   Jesús, tú que, por tu propia sangre y por tu   resurrección, penetraste en el santuario de Dios,\n-llévanos contigo   al reino del Padre.\nTú que, por tu resurrección,   robusteciste la fe de tus discípulos y los enviaste a   anunciar el Evangelio al mundo,\n-haz que los obispos   y presbíteros sean fieles heraldos de tu Evangelio.\nTú   que, por tu resurrección, eres nuestra reconciliación y nuestra paz,\n-haz que todos los bautizados vivan en la unidad   de una sola fe y de un solo amor.\nTú que, por tu resurrección, diste la salud al tullido   del templo,\n-mira con bondad a los enfermos y   manifiesta en ellos tu gloria.\nSe pueden añadir algunas intenciones libres\nTú que, por tu resurrección, fuiste constituido primogénito   de los muertos que resucitan,\n-haz que los difuntos que   en ti creyeron y esperaron participen de tu gloria.\nTerminemos   nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Jueves de la Ascensión del Señor",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-15": {
     "fecha": "2026-05-15",
@@ -4213,7 +8568,122 @@ window.liturgiaData = {
         "antifona": "Vuestro Padre dará desde el cielo el Espíritu Santo a quienes se lo pidan. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nVuestro Padre dará desde el cielo el Espíritu Santo a quienes se lo pidan. Aleluya.\nOremos a Cristo, fuente de toda vida y principio de todo bien, y digámosle confiadamente:\n- Instaura, Señor, tu reino en el mundo.\nJesús salvador, tú que, muerto en la carne, fuiste devuelto a la vida por el Espíritu,\n- haz  que  nosotros,  muertos  al  pecado,  vivamos  también  de tu Espíritu.\nTú  que  enviaste a  tus  discípulos  al  mundo  entero  para  que proclamaran el Evangelio a todos los pueblos,\n- haz que cuantos anuncian el Evangelio a los hombres vivan de tu Espíritu.\nTú  que  recibiste  todo  poder  en  el cielo  y  en  la  tierra  para  dar testimonio de la verdad,\n- guarda en tu verdad a quienes nos gobiernan.\nTú que todo lo renuevas y nos mandas esperar anhelantes la llegada de tu reino,\n- haz que, cuanto más esperemos el cielo nuevo y la tierra nueva\nque  nos  prometes,  con  tanto  mayor  empeño  trabajemos  por  la edificación del mundo presente.\nSe pueden añadir algunas intenciones libres\nTú que descendiste a la mansión de la muerte para anunciar el gozo del Evangelio a los difuntos,\n- sé tú mismo la eterna alegría de todos los que mueren.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la VI Semana de Pascua · San Isidro",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-16": {
     "fecha": "2026-05-16",
@@ -4297,7 +8767,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la VI Semana de Pascua · San Juan Nepomuceno",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-18": {
     "fecha": "2026-05-18",
@@ -4381,7 +8966,122 @@ window.liturgiaData = {
         "antifona": "El Abogado, el Espíritu, permanece con vosotros y estará en vosotros. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl Abogado, el Espíritu, permanece con vosotros y estará en vosotros. Aleluya.\nDemos gracias a Cristo, que por medio del Espíritu Santo levantó la esperanza de los apóstoles y llena de dones a la Iglesia, y, unidos a todos los fieles, supliquémosle, diciendo:\nR.\nLevanta, Señor, la esperanza de tu Iglesia.\nSeñor Jesús, mediador entre Dios y los hombres, tú que has elegido a los sacerdotes como colaboradores tuyos,\nR.\nhaz que por la acción de tus ministros todos los hombres lleguen al Padre.\nHaz que los pobres y los ricos se ayuden mutuamente, reconociéndote a ti como único Señor,\nR.\ny que los ricos no pongan su gloria en sus bienes.\nRevela tu Evangelio a todos los pueblos,\n-para que todos alcancen el don de la fe.\nEnvía tu Espiritu consolador a los que viven desconsolados,\nR.\npara que enjugue las lágrimas de los que lloran.\nSe pueden añadir algunas intenciones libres\nPurifica a los difuntos de todas sus culpas\n-y recíbelos en tu reino, junto con tus santos y elegidos.\nConcluyamos nuestras súplicas con la oración que el mismo Cristo nos enseñó:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Lunes de la VII Semana de Pascua · San Juan I",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-19": {
     "fecha": "2026-05-19",
@@ -4465,7 +9165,122 @@ window.liturgiaData = {
         "antifona": "Recibiréis la fortaleza del Espíritu Santo, que descenderá sobre vosotros; y seréis mis testigos hasta los últimos confines de la tierra. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nRecibiréis la fortaleza del Espíritu Santo, que descenderá sobre vosotros; y seréis mis testigos hasta los últimos confines de la tierra. Aleluya.\nGlorifiquemos a Cristo, que nos ha hecho partícipes del Espíritu, y supliquémosle, diciendo:\n-Escúchanos, Señor Jesús.\nDerrama, Señor, sobre la Iglesia el Espíritu Santo que procede del Padre,\n-para que la purifique, la fortalzca y la acreciente a través del mundo.\nLlena de tu Espíritu a los que dirigen los destinos de los pueblos,\n-para que sean servidores del bien común.\nEnvía tu Espíritu, que es el padre de los pobres,\n-para que su fuerza ayude a los necesitados.\nTe rogamos, Señor, por todos los ministros de tu Iglesia:\n-que vivan con fidelidad la vocación a que fueron llamados.\nSe pueden añadir algunas intenciones libres\nConcede la plenitud de la redención a las almas y a los cuerpos de nuestros difuntos,\n-tú que por tu pasión, resurrección y ascensión has realizado la salvación de la carne y del espíritu.\nSintiéndonos verdaderos hijos de Dios, digamos a nuestro Padre:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Martes de la VII Semana de Pascua",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-20": {
     "fecha": "2026-05-20",
@@ -4549,7 +9364,122 @@ window.liturgiaData = {
         "antifona": "Cristo os bautizará con Espíritu Santo y con fuego. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nCristo os bautizará con Espíritu Santo y con fuego. Aleluya.\nUnidos a los apóstoles y a todos los que poseen las primicias del Espíritu Santo, glorifiquemos a Dios y supliquémosle, diciendo:\n-Escúchanos, Señor.\nPadre todopoderoso, que has glorificado a Cristo en el cielo,\n-haz que todos reconozcan que está presente en tu Iglesia.\nPadre santo, que dijiste de Cristo: «Éste es mi Hijo amado, escuchadlo»,\n-haz que todos atendamos su voz y nos salvemos.\nEnvía tu Espíritu al corazón de tus fieles,\n-para que purifique lo manchado y fecunde lo que es árido.\nQue venga, Señor, tu Espíritu, para regir el curso de la historia\n-y renovar la faz de la tierra.\nSe pueden añadir algunas intenciones libres\nTe pedimos, Señor, por los difuntos: admítelos en tu reino\n-y acrecienta nuestra esperanza en la resurrección futura.\nDigamos ahora todos juntos la oración que el mismo Cristo nos enseñó:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Miércoles de la VII Semana de Pascua · San Bernardino de Siena",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-21": {
     "fecha": "2026-05-21",
@@ -4633,7 +9563,122 @@ window.liturgiaData = {
         "antifona": "Cuando venga el Espíritu de verdad, os conducirá a la verdad completa y os anunciará las cosas futuras. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nCuando venga el Espíritu de verdad, os conducirá a la verdad completa y os anunciará las cosas futuras. Aleluya.\nGlorifiquemos a Cristo, bendito por los siglos, y, pidiéndole que envíe el Espíritu Santo a los que ha redimido con su muerte y resurrección; digamos:\n-Salva, Señor, a los que has redimido.\nEnvía a la Iglesia el Espíritu de la unidad,\n-para que desaparezcan todas las disensiones, odios y divisiones.\nTú que libraste a los hombres del dominio de Satanás,\n-libra también al mundo de los males que lo afligen.\nTú que, dócil al Espíritu, diste cumplimiento a tu misión,\n-haz que los sacerdotes encuentren en la oración la fuerza y la luz del\nEspíritu, para ser fieles a su ministerio.\nQue tu Espíritu guíe a los gobernantes,\n-para que busquen y realicen el bien común.\nSe pueden añadir algunas intenciones libres\nTú que vives en la gloria del Padre,\n-acoge a los difuntos en tu reino.\nLlenos de fe, invoquemos juntos al Padre, repitiendo la oración que Cristo nos enseñó:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Jueves de la VII Semana de Pascua · San Cristóbal Magallanes",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-22": {
     "fecha": "2026-05-22",
@@ -4717,7 +9762,122 @@ window.liturgiaData = {
         "antifona": "Todos perseveraban en la oración, con un mismo espíritu, en compañía de María, la madre de Jesús. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nTodos perseveraban en la oración, con un mismo espíritu, en compañía de María, la madre de Jesús. Aleluya.\nBendigamos a Dios Padre, que con  tanta generosidad ha derramado los dones del Espíritu sobre todos los  pueblos, y pidámosle que no cese nunca de derramar su gracia sobre el  mundo; digamos:\n-Que la gracia del Espíritu Santo abunde, Señor, en el mundo.\nSeñor, tú que nos has dado a tu Elegido como luz de los pueblos,\n-abre los ojos a los ciegos y libra de toda esclavitud a los que viven en tinieblas.\nTú que ungiste a Cristo con la fuerza del Espíritu Santo, para que realizara la salvación de los hombres,\n-haz que sintamos cómo pasa de nuevo por el mundo, haciendo el bien y curando a todos.\nEnvía tu Espíritu, que es la luz de los corazones,\n-para que confirme en la fe a los que viven en medio de incertidumbres y dudas.\nEnvía tu Espíritu, que es descanso en el trabajo,\n-para que reconforte a los que se sienten fatigados y desanimados.\nSe pueden añadir algunas intenciones libres\nRealiza la esperanza de los que ya han muerto,\n-y haz que cuando venga el Señor  obtengan una resurrección gloriosa.\nDirijamos ahora al Padre nuestra oración con las mismas palabras que Cristo nos enseñó:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la VII Semana de Pascua · Santa Rita de Casia",
+    "color": "Blanco",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-23": {
     "fecha": "2026-05-23",
@@ -4801,7 +9961,122 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la VII Semana de Pascua · Vigilia de Pentecostés",
+    "color": "Rojo",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-26": {
     "fecha": "2026-05-26",
@@ -4885,7 +10160,122 @@ window.liturgiaData = {
         "antifona": "Haz, Señor, obras grandes por nosotros, porque tú eres poderoso y tu nombre es santo.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nHaz, Señor, obras grandes por nosotros, porque tú eres poderoso y tu nombre es santo.\nInvoquemos a Cristo, que da fuerza y poder a su pueblo, diciendo:\n-Señor, escúchanos.\nCristo, fortaleza nuestra, concede a todos tus fieles, a quienes has llamado a la luz de tu verdad,\n-que tengan siempre fidelidad y constancia.\nHaz, Señor, que los que gobiernan el mundo lo hagan conforme a tu querer,\n-y que sus decisiones vayan encaminadas a la consecución de la paz.\nTú que, con cinco panes, saciaste a la multitud,\n-enséñanos a socorrer, con nuestros bienes a los hambrientos.\nQue los que tienen en su mano los destinos de los pueblos no cuiden sólo del bienestar de su nación,\n-sino que piensen también en los otros pueblos.\nSe pueden añadir algunas intenciones libres\nCuando vengas en tu día a ser glorificado en tus santos,\n-da a nuestros hermanos difuntos la resurrección y la vida feliz.\nTodos juntos, en familia, repitamos las palabras que nos enseñó Jesús y  oremos al Padre, diciendo:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Martes de la IX Semana del Tiempo Ordinario · San Felipe Neri",
+    "color": "Verde",
+    "grado": "Memoria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-27": {
     "fecha": "2026-05-27",
@@ -4969,7 +10359,122 @@ window.liturgiaData = {
         "antifona": "Haz, Señor, proezas con tu brazo, dispersa a los soberbios y enaltece a los humildes.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nHaz, Señor, proezas con tu brazo, dispersa a los soberbios y enaltece a los humildes.\nInvoquemos a  Dios, cuya bondad para con su pueblo es más grande que los cielos, y   digámosle:\n- Que se alegren los que se acogen a ti, Señor.\nAcuérdate, Señor, que enviaste a tu Hijo al mundo, no para condenarlo,   sino para salvarlo;\n- haz que su muerte gloriosa nos traiga la salvación.\nTú que constituiste a tus sacerdotes servidores de Cristo y administradores de tus misterios,\n- concédeles un corazón fiel, ciencia abundante y caridad intensa.\nTú que desde el principio creaste hombre y mujer,\n- guarda a todas las familias unidas en el verdadero amor.\nHaz que los que has llamado a la castidad perfecta por el reino de los   cielos,\n- sigan con fidelidad a tu Hijo.\nSe pueden añadir algunas intenciones libres\nTú que   enviaste a Jesucristo al mundo para salvar a los pecadores,\n- concede a todos los difuntos el perdón de sus faltas.\nMovidos por el Espíritu Santo y llenos de su amor, dirijamos al Padre nuestra oración:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Miércoles de la IX Semana del Tiempo Ordinario · San Agustín de Canterbury",
+    "color": "Verde",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-28": {
     "fecha": "2026-05-28",
@@ -5053,7 +10558,122 @@ window.liturgiaData = {
         "antifona": "A los que tienen hambre de ser justos el Señor les colma de bienes.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nA los que tienen hambre de ser justos el Señor les colma de bienes.\nInvoquemos a Cristo, luz del mundo y alegría   de todo   ser viviente, y digámosle confiados:\n- Señor, danos tu luz, la   salvación   y la paz.\nLuz indeficiente y palabra eterna del Padre, tú que has venido a salvar a los hombres,\n-  ilumina a los catecúmenos de la Iglesia con la luz de   tu verdad.\nNo lleves cuenta de nuestros delitos,   Señor,\n- pues de ti procede el perdón.\nSeñor, tú que has querido que la inteligencia del hombre investigara los secretos de la   naturaleza,\n- haz que la ciencia y las artes contribuyan a   tu gloria y al bienestar de todos los hombres.\nProtege,   Señor, a los que se han consagrado en el mundo   al servicio de sus hermanos;\n- que con libertad de espíritu   y sin desánimo puedan realizar su ideal.\nSe pueden añadir algunas intenciones libres\nSeñor, tú que abres y nadie puede cerrar,   ilumina   a nuestros difuntos que yacen en tiniebla y en sombra   de muerte,\n- ábreles las puertas de tu reino.\nPorque todos   nos sabemos hermanos, hijos de un mismo Dios, confiadamente no   atrevemos a decir:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Jueves de la IX Semana del Tiempo Ordinario",
+    "color": "Verde",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-29": {
     "fecha": "2026-05-29",
@@ -5137,7 +10757,122 @@ window.liturgiaData = {
         "antifona": "Acuérdate, Señor de tu misericordia como lo habías prometido a nuestros padres.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nAcuérdate, Señor de tu misericordia como lo habías prometido a nuestros padres.\nInvoquemos a Cristo, en quien confían los   que   conocen su nombre diciendo:\n-Confirma, Señor, lo que has   realizado en   nosotros\nSeñor Jesucristo, consuelo de los   humildes,\n-dignate sostener con   tu gracia nuestra fragilidad, siempre inclinada la pecado.\nQue los   que por nuestra debilidad estamos inclinados al mal,\n-por tu   misericordia obtengamos el perdón.\nSeñor, a quien   ofende el pecado   y aplaca la penitencia,\n-aparta de nosotros el castigo merecido   por nuestros pecados.\nTú que perdonaste a la mujer   arrepentida   y cargaste sobre los hombros la oveja descarriada,\n-no apartes   de nosotros tu misericordia.\nSe pueden añadir algunas intenciones libres\nTú que   por nosotros aceptaste el suplicio de la cruz,\n- abre las   puertas del cielo a todos los difuntos que en ti   confiaron.\nSiguiendo las enseñanzas de Jesucristo, digamos al Padre   celestial:\nPadre nuestro...",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Viernes de la IX Semana del Tiempo Ordinario",
+    "color": "Verde",
+    "grado": "Feria",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "omitir",
+        "motivo": "Feria sin gloria"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   },
   "2026-05-30": {
     "fecha": "2026-05-30",
@@ -5221,7 +10956,10 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Sábado de la IX Semana del Tiempo Ordinario",
+    "color": "Verde",
+    "grado": "Feria"
   },
   "2026-05-31": {
     "fecha": "2026-05-31",
@@ -5307,6 +11045,481 @@ window.liturgiaData = {
         "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
         "texto": ""
       }
-    }
+    },
+    "titulo_celebracion": "Visitación de la Santísima Virgen María",
+    "color": "Blanco",
+    "grado": "Fiesta",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "omitir",
+        "motivo": "No aplica en ferias"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
+  },
+  "2026-04-05": {
+    "fecha": "2026-04-05",
+    "liturgia_palabra": {},
+    "liturgia_eucaristica": {},
+    "titulo_celebracion": "Domingo de Pascua de la Resurrección del Señor",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "incluir",
+        "motivo": "Incluida en domingos"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
+  },
+  "2026-04-06": {
+    "fecha": "2026-04-06",
+    "liturgia_palabra": {},
+    "liturgia_eucaristica": {},
+    "titulo_celebracion": "Lunes de la Octava de Pascua",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
+  },
+  "2026-04-07": {
+    "fecha": "2026-04-07",
+    "liturgia_palabra": {},
+    "liturgia_eucaristica": {},
+    "titulo_celebracion": "Martes de la Octava de Pascua",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "esqueleto_ordinario": [
+      {
+        "id_bloque": "saludo_inicial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "acto_penitencial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "gloria",
+        "accion": "incluir",
+        "motivo": "Gloria en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "colecta",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "primera_lectura",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "salmo_responsorial",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "segunda_lectura",
+        "accion": "omitir",
+        "motivo": "Solo ferias y memorias sin 2a lectura"
+      },
+      {
+        "id_bloque": "aclamacion_evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "evangelio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "homilia",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "credo",
+        "accion": "incluir",
+        "motivo": "Credo en domingos/solemnidades"
+      },
+      {
+        "id_bloque": "oracion_fieles",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "preparacion_ofrendas",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "prefacio",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "santo",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_eucaristica",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "padrenuestro",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "rito_paz",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "fraccion_pan",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "comunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "oracion_postcomunion",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      },
+      {
+        "id_bloque": "bendicion_final",
+        "accion": "incluir",
+        "motivo": "Obligatorio"
+      }
+    ]
   }
 };
