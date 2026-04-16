@@ -1,18 +1,34 @@
-<<<<<<< HEAD
-# Secrets — NEVER commit
+# Secrets
 .env
 .env.*
-!.env.example
 
-
-=======
+# Python
 .pdfenv/
->>>>>>> 1579939e17c8faff876285e798790804ddfb12d8
-pdf_extract.txt
-pdf_extract_format.txt
-crash_etl.txt
+venv/
+__pycache__/
+*.pyc
+*.py
+*.log
 
-# Bloated non-code directories and files
+# Dev tools
+.DS_Store
+Thumbs.db
+.claude/
+.cursor/
+.vibecheck/
+workflows/
+CLAUDE.md
+
+# Archivos de trabajo / scratch
+*.txt
+*.doc
+*.docx
+*.pdf
+*.zip
+*.ppl
+*.ppt
+
+# Carpetas de archivos ministeriales (no son el sitio web)
 01_Ministerio_Parroquial/
 Sapient Fide/
 Liturgy & Sacraments/
@@ -24,6 +40,16 @@ pruebasdeimpresion/
 ritualesespa/
 Quinceañeras/
 Misales Mensuales/
-*.pdf
-*.zip
-*.ppl
+liturgyofthetime/
+liturgiapro.com/
+Semana Santa 2026 (ciclo A)/
+
+# Scripts de build/test locales (no necesarios en Pages)
+app.js
+generate_motor.js
+render_test.js
+runme.js
+sanity_check.js
+scratch_engine.js
+temp.js
+test_*.js
