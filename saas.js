@@ -347,7 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        });
     });
 
     const globalRitualSelect = document.getElementById("ritual-select");
