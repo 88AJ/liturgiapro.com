@@ -415,7 +415,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     // ==========================================
     const fechaElegida = document.getElementById('date-select') ? document.getElementById('date-select').value : null;
     let bHeader = new BloqueLiturgico('header');
-    let diaLabel = document.getElementById('date-select') ? document.getElementById('date-select').options[document.getElementById('date-select').selectedIndex].text : data.tiempo_liturgico;
+    let diaLabel = data.grado || data.tiempo_liturgico || "Liturgia del Día";
     bHeader.addSuperTitulo(diaLabel || "Liturgia del Día");
     
     if (data.titulo_celebracion) {
