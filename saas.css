@@ -140,12 +140,14 @@ body {
     flex-direction: column;
     padding: 1.5rem;
     z-index: 10;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .logo-small {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     color: #ffffff;
     font-family: 'Cinzel', serif;
     letter-spacing: 1px;
@@ -384,7 +386,7 @@ body {
     column-gap: 8mm;
     column-fill: balance;
     column-rule: 1px solid rgba(153, 0, 0, 0.1); 
-    hyphens: auto;
+    hyphens: none;
 }
 
 /* Configuración de Página para Impresión Doble Cara */

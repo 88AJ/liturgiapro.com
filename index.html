@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liturgia PRO - La Plataforma de Asistencia Litúrgica</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☩</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="saas.css?v=8">
     <script src="data/liturgia_db.js?v=8"></script>
@@ -28,10 +29,12 @@
                 
                 <div class="login-box">
                     <h3>Acceso a Sacerdotes y Catequistas</h3>
-                    <input type="email" placeholder="correo@parroquia.org" id="email-input">
-                    <input type="password" placeholder="Contraseña" id="pass-input">
-                    <button class="btn-primary" id="login-btn">Ingresar al Dashboard</button>
-                    <p class="signup-link">¿No tienes cuenta? <a href="#">Prueba 7 días gratis</a></p>
+                    <form id="login-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="email" placeholder="correo@parroquia.org" id="email-input" required>
+                        <input type="password" placeholder="Contraseña" id="pass-input" required>
+                        <button type="submit" class="btn-primary" id="login-btn">Ingresar al Dashboard</button>
+                    </form>
+                    <p class="signup-link">¿No tienes cuenta? <a href="https://liturgiapro.com/registro">Prueba 7 días gratis</a></p>
                 </div>
             </div>
             <div class="landing-bg"></div>
@@ -98,7 +101,7 @@
                                 </div>
                                 <div class="input-group" id="ritual-group" style="display: none;">
                                     <label>Integrar Ritual Sacramental</label>
-                                    <select id="ritual-select" onchange="document.getElementById('bautismo-fields').style.display = this.value === 'bautismo' ? 'block' : 'none'">
+                                    <select id="ritual-select">
                                         <option value="ninguno" selected>Ninguno (Misa Ordinaria)</option>
                                         <option value="bautismo">Bautismo de Niños (En Misa)</option>
                                     </select>
@@ -219,7 +222,7 @@
                     <!-- PDF Preview Panel -->
                     <div class="preview-panel">
                         <div class="pdf-container dominic-style" id="pdf-view">
-                            <div class="empty-state">
+                            <div class="empty-state" style="white-space: nowrap;">
                                 📄<br>El documento generado aparecerá aquí
                             </div>
                         </div>
@@ -291,16 +294,14 @@
                     <div class="preview-panel" style="flex: 2; display:flex; flex-direction: column; background: #000; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center;">
                         <iframe id="youtube-frame" src="" width="100%" height="100%" style="border:none; flex: 1; display: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <div id="youtube-empty" class="empty-state" style="color: #666;">
-                            ▶️<br>Reproductor Multimedia<br><span style="font-size: 0.8rem;">Busca un canto para comenzar</span>
+                            ▶️<br>Buscador Global<br><span style="font-size: 0.8rem;">Los resultados se abrirán en una nueva pestaña</span>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
 
-        <!-- The Premium modal has been removed -->
-
-        <!-- Padre PRO Chatbot Widget -->
+        <!-- Chatbot Widget -->
         <div id="padre-pro-widget" class="padre-pro-widget">
             <button id="padre-pro-toggle" class="padre-pro-toggle">
                 <span class="icon">💬</span> Padre PRO
