@@ -195,7 +195,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, estas ofrendas de la humanidad redimida, y realiza a favor nuestro, la plena salvación del cuerpo y el alma. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Lc 24, 35\nLos discípulos reconocieron al Señor Jesús, al partir el pan. Aleluya.",
     "oracion_comunion": "Te rogamos, Señor, que, purificados de nuestra antigua condición pecadora, la santa recepción del sacramento de tu Hijo nos transforme en nuevas creaturas. Por Jesucristo, nuestro Señor.\n9 jueves\nBlanco\nOCTAVA DE PASCUA",
-    "reflexion_homiletica": "El evangelio nos presenta el relato de la aparición del Resucitado a dos de sus discípulos que –rumiando con gran tristeza sus dudas y desilusiones– se encaminaban de Jerusalén a Emaús, a fin de reemprender su vida ordinaria. Con gran maestría nos muestra aquí san Lucas lo que ha de ser el itinerario espiritual de todo cristiano. Todos estamos llamados a pasar, progresivamente, del desencanto a una fe entusiasta y madura en Jesús. A ese Divino Maestro a quien podremos descubrir cada vez que lo deseemos, en su Palabra, en su Eucaristía y en la Comunidad de los creyentes."
+    "reflexion_homiletica": "El evangelio nos presenta el relato de la aparición del Resucitado a dos de sus discípulos que –rumiando con gran tristeza sus dudas y desilusiones– se encaminaban de Jerusalén a Emaús, a fin de reemprender su vida ordinaria. Con gran maestría nos muestra aquí san Lucas lo que ha de ser el itinerario espiritual de todo cristiano. Todos estamos llamados a pasar, progresivamente, del desencanto a una fe entusiasta y madura en Jesús. A ese Divino Maestro a quien podremos descubrir cada vez que lo deseemos, en su Palabra, en su Eucaristía y en la Comunidad de los creyentes.",
+    "monicion_entrada": "Bienvenidos, hermanos, a esta celebración pascual donde el Resucitado se nos manifiesta con poder. Hoy, la Palabra nos muestra cómo su Nombre sana y cómo Él mismo se nos revela al partir el pan, disipando toda ceguera y tristeza. Con la alegría de esta nueva vida que nos ofrece, reconozcamos humildemente nuestras faltas y pidamos que su luz disipe las sombras de nuestro corazón, para celebrar dignamente estos sagrados misterios."
   },
   "2026-03-29": {
     "color": "Rojo",
@@ -223,7 +224,8 @@ window.liturgiaData = {
       "oracion_despues_comunion": ""
     },
     "titulo_celebracion": "Domingo de Ramos y de la Pasión del Señor",
-    "grado": "Solemnidad"
+    "grado": "Solemnidad",
+    "monicion_entrada": "Queridos hermanos y hermanas, bienvenidos a esta celebración eucarística en el corazón de la Pascua. La Palabra de hoy nos revela a Cristo, el Siervo fiel que no apartó su rostro del sufrimiento, y al Rey humilde que, entrando en Jerusalén, anticipa ya su gloriosa victoria sobre el pecado y la muerte. Confiados en la fuerza de su Resurrección, reconozcamos con gozo nuestras faltas, para celebrar dignamente estos sagrados misterios."
   },
   "2026-04-02": {
     "color": "Blanco",
@@ -263,7 +265,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, las súplicas de tu pueblo, junto con los dones que te presentamos para que los misterios de la Pascua que hemos comenzado a celebrar, nos obtengan, con tu ayuda, el remedio para conseguir la vida eterna. Por Jesucristo, nuestro Señor.\nPREFACIO: El misterio pascual, (en esta noche), p. 499 [500].",
     "antifona_comunion": "1 Cor 5, 7-8 Cristo, nuestro Cordero Pascual, ha sido inmolado. Aleluya. Celebremos, pues, la Pascua, con el pan sin levadura, que es de sinceridad y verdad. Aleluya.",
     "oracion_comunion": "Infúndenos, Señor, el espíritu de tu caridad, para que, saciados con los sacramentos pascuales, vivamos siempre unidos en tu amor. Por Jesucristo, nuestro Señor. R. Amén.\nBENDICIÓN SOLEMNE p. 338 [343]\nPara despedir al pueblo, el diácono o, en su ausencia, el mismo sacerdote canta o dice: Anuncien a todos la alegría del Señor resucitado. Vayan en paz, aleluya, aleluya. O bien: Pueden ir en paz, aleluya, aleluya. Todos responden: Demos gracias a Dios, aleluya, aleluya. Esta fórmula de despedida se utiliza durante toda la octava de Pascua.",
-    "reflexion_homiletica": "• La fiesta por excelencia de los cristianos es, como bien lo sabemos, la Pascua de Resurrección y la «Vigilia Pascual» su más bella expresión. Como la semilla confiada a la tierra, Cristo «reposa» en el sepulcro. La Iglesia –llevando en sus manos la lámpara de la esperanza (Cfr. Lc 12, 3540)– vigila junto a la tumba de su Señor. También ella aguarda el gran «día del Señor», cuando Él vendrá para invitarla a sentarse en su mesa. En Cristo, verdadero hombre y «nuevo Adán», la muerte no es el final de la vida, sino la victoria sobre las limitaciones de la condición terrena y la participación en la vida eterna de Dios… • La noche de Pascua es el gran sacramento de la vida del cristiano. El Bautismo y la Eucaristía –que junto con la abundancia de la Palabra de Dios están al centro de esta solemne liturgia– nos hacen presentes y contemporáneos los principales acontecimientos de la Historia de nuestra Salvación. A partir de esta noche “santísima”, Cristo está presente en medio de los suyos de una forma nueva. Con la luz y la fuerza de su Espíritu, vengamos a gozarnos de la dignidad de hijos muy amados del Padre. ¡Despojémonos, pues, de la «antigua levadura» (Cfr. 1 Cor 6, 12) y decidámonos a llevar una vida de resucitados!\nTERCERA PARTE:\nLITURGIA BAUTISMAL\nEl sacerdote con los ministros se dirige a la fuente bautismal, si es que ésta se encuentra a la vista de los fieles. De lo contrario, se pone un recipiente con agua en el presbiterio. Si hay bautizos se realizan en este momento. Si los bautizados son adultos, el obispo o, en su ausencia, el presbítero que confirió el bautismo, adminístreles inmediatamente el sacramento de la Confirmación en el presbiterio, como se indica en el Pontifical o en el Ritual Romano. Si no hay bautismos ni tampoco se bendice la fuente bautismal [p. 333] [338] el sacerdote prepara a los fieles para la bendición del agua, diciendo:\nPidamos, queridos hermanos, a Dios nuestro Señor, que se digne bendecir esta agua, con la cual seremos rociados en memoria de nuestro bautismo, y que nos renueve interiormente, para que permanezcamos fieles al Espíritu que hemos recibido.\nY después de una breve pausa en silencio, prosigue:\nSeñor, Dios nuestro, mira con bondad a este pueblo tuyo, que vela en oración en esta noche santísima, recordando la obra admirable de nuestra creación y la obra más admirable todavía, de nuestra redención. Dígnate bendecir + esta agua, que tú creaste para dar fertilidad a la tierra, frescura y limpieza a nuestros cuerpos.\nTú, además, convertiste el agua en un instrumento de tu misericordia: por ella liberaste a tu pueblo de la esclavitud y en el desierto saciaste su sed; con la imagen del agua viva los profetas anunciaron la nueva alianza que deseabas establecer con los hombres; por ella, finalmente, santificada por Cristo en el Jordán, renovaste, mediante el bautismo que nos da la vida nueva, nuestra naturaleza, corrompida por el pecado.\nQue esta agua nos recuerde ahora nuestro bautismo y nos haga participar en la alegría de nuestros hermanos, que han sido bautizados en esta Pascua. Por Jesucristo, nuestro Señor. R. Amén.\nRenovación de las promesas bautismales\nTerminada la ceremonia del bautismo o, si no hubo bautizos, después de la bendición del agua, todos, de pie y teniendo en sus manos las velas encendidas hacen la renovación de las promesas del bautismo. El sacerdote se dirige a la comunidad con estas palabras u otras parecidas:\nTerminado el rito del Bautismo (y de la Confirmación) o, si no hubo bautismos, después de la bendición del agua, todos, de pie y teniendo en sus manos las velas encendidas, hacen la renovación de las promesas del bautismo. El sacerdote se dirige a los fieles, con estas palabras u otras semejantes:\nHermanos, por medio del bautismo, hemos sido hechos partícipes del misterio pascual de Cristo; es decir, por medio del bautismo, hemos sido sepultados con él en su muerte para resucitar con él a una vida nueva.\nPor eso, culminado nuestro camino cuaresmal, es muy conveniente que renovemos las promesas de nuestro bautismo, con las cuales un día renunciamos a Satanás y a sus obras y nos comprometimos a servir a Dios, en la santa Iglesia católica. Por consiguiente:\n¿Renuncian ustedes al pecado para vivir en la libertad de los hijos de Dios?\nTodos: Sí, renuncio.\n¿Renuncian a todas las seducciones del mal para que el pecado no los esclavice?\nTodos: Sí, renuncio.\n¿Renuncian a Satanás, padre y autor de todo pecado? Todos: Sí, renuncio.\n¿Creen ustedes en Dios, Padre todopoderoso, creador del cielo y de la tierra?\nTodos: Sí, creo\n¿Creen en Jesucristo, su Hijo único y Señor nuestro, que nació de la Virgen María, padeció y murió por nosotros, resucitó y está sentado a la derecha del Padre? Todos: Sí, creo\n¿Creen en el Espíritu Santo, en la santa Iglesia católica, en la comunión de los santos, en el perdón de los pecados, en la resurrección de los muertos y en la vida eterna? Todos: Sí, creo.\nQue Dios todopoderoso, Padre de nuestro Señor Jesucristo, que nos liberó del pecado y nos ha hecho renacer por el agua y el Espíritu Santo, nos conserve con su gracia unidos a Jesucristo nuestro Señor, hasta la vida eterna. Amén.\nEl sacerdote rocía al pueblo con el agua bendita, mientras todos cantan la siguiente antífona o algún otro canto bautismal: Vi brotar agua del lado derecho del templo, aleluya. Vi que en todos aquellos que recibían el agua, surgía una vida nueva y cantaban con gozo: Aleluya, aleluya.\nHecha la aspersión, el sacerdote vuelve a la sede, en donde dirige la Oración Universal.\nNo se dice Credo.\nORACIÓN DE LOS FIELES:\nLlenos de gozo por la santa Resurrección del Señor – purificados nuestros sentimientos y renovado nuestro espíritu– supliquemos con insistencia al Señor, diciendo: Rey vencedor, escúchanos.\nR/. Rey vencedor, escúchanos.\n•\tA Cristo que ha vencido la muerte y ha destruido el pecado, pidámosle que todos los cristianos sean siempre fieles a las promesas del bautismo que han renovado en esta noche santa. Roguemos al Señor.\n•\tA Cristo que ha hecho renacer a los nuevos hijos de la Iglesia, engendrándolos por el agua y el Espíritu Santo, pidámosle que afirme en ellos los dones que les ha concedido. Roguemos al Señor.\n•\tA Cristo que ha dado al mundo la vida verdadera y ha renovado toda la creación, pidámosle por los que –por no creer en su triunfo– viven sin esperanza. Roguemos al Señor.\n•\tA Cristo que ha abierto las puertas de su Reino a los que gemían en el abismo y ha otorgado la vida al hombre mortal, pidámosle por todos los que sufren. Roguemos al Señor.\n•\tA Cristo que anunció la alegría a las mujeres y a los apóstoles y –por medio de ellos al mundo entero– pidámosle por los que nos hemos reunido para celebrar su triunfo. Roguemos al Señor.\nSeñor Jesucristo, en esta fiesta gloriosa te pedimos que escuches nuestras plegarias y extiendas tu diestra misericordiosa sobre este pueblo que tiene puesta toda su esperanza en tu Resurrección. Tú que vives y reinas por los siglos de los siglos.\nCUARTA PARTE:\nLITURGIA EUCARÍSTICA\nEl sacerdote va al altar y comienza la Liturgia Eucarística, en la forma acostumbrada. Es conveniente que el pan y el vino sean presentados por los neófitos, si los hay. Hay que estar atentos a las variantes dentro de las Plegarias eucarísticas."
+    "reflexion_homiletica": "• La fiesta por excelencia de los cristianos es, como bien lo sabemos, la Pascua de Resurrección y la «Vigilia Pascual» su más bella expresión. Como la semilla confiada a la tierra, Cristo «reposa» en el sepulcro. La Iglesia –llevando en sus manos la lámpara de la esperanza (Cfr. Lc 12, 3540)– vigila junto a la tumba de su Señor. También ella aguarda el gran «día del Señor», cuando Él vendrá para invitarla a sentarse en su mesa. En Cristo, verdadero hombre y «nuevo Adán», la muerte no es el final de la vida, sino la victoria sobre las limitaciones de la condición terrena y la participación en la vida eterna de Dios… • La noche de Pascua es el gran sacramento de la vida del cristiano. El Bautismo y la Eucaristía –que junto con la abundancia de la Palabra de Dios están al centro de esta solemne liturgia– nos hacen presentes y contemporáneos los principales acontecimientos de la Historia de nuestra Salvación. A partir de esta noche “santísima”, Cristo está presente en medio de los suyos de una forma nueva. Con la luz y la fuerza de su Espíritu, vengamos a gozarnos de la dignidad de hijos muy amados del Padre. ¡Despojémonos, pues, de la «antigua levadura» (Cfr. 1 Cor 6, 12) y decidámonos a llevar una vida de resucitados!\nTERCERA PARTE:\nLITURGIA BAUTISMAL\nEl sacerdote con los ministros se dirige a la fuente bautismal, si es que ésta se encuentra a la vista de los fieles. De lo contrario, se pone un recipiente con agua en el presbiterio. Si hay bautizos se realizan en este momento. Si los bautizados son adultos, el obispo o, en su ausencia, el presbítero que confirió el bautismo, adminístreles inmediatamente el sacramento de la Confirmación en el presbiterio, como se indica en el Pontifical o en el Ritual Romano. Si no hay bautismos ni tampoco se bendice la fuente bautismal [p. 333] [338] el sacerdote prepara a los fieles para la bendición del agua, diciendo:\nPidamos, queridos hermanos, a Dios nuestro Señor, que se digne bendecir esta agua, con la cual seremos rociados en memoria de nuestro bautismo, y que nos renueve interiormente, para que permanezcamos fieles al Espíritu que hemos recibido.\nY después de una breve pausa en silencio, prosigue:\nSeñor, Dios nuestro, mira con bondad a este pueblo tuyo, que vela en oración en esta noche santísima, recordando la obra admirable de nuestra creación y la obra más admirable todavía, de nuestra redención. Dígnate bendecir + esta agua, que tú creaste para dar fertilidad a la tierra, frescura y limpieza a nuestros cuerpos.\nTú, además, convertiste el agua en un instrumento de tu misericordia: por ella liberaste a tu pueblo de la esclavitud y en el desierto saciaste su sed; con la imagen del agua viva los profetas anunciaron la nueva alianza que deseabas establecer con los hombres; por ella, finalmente, santificada por Cristo en el Jordán, renovaste, mediante el bautismo que nos da la vida nueva, nuestra naturaleza, corrompida por el pecado.\nQue esta agua nos recuerde ahora nuestro bautismo y nos haga participar en la alegría de nuestros hermanos, que han sido bautizados en esta Pascua. Por Jesucristo, nuestro Señor. R. Amén.\nRenovación de las promesas bautismales\nTerminada la ceremonia del bautismo o, si no hubo bautizos, después de la bendición del agua, todos, de pie y teniendo en sus manos las velas encendidas hacen la renovación de las promesas del bautismo. El sacerdote se dirige a la comunidad con estas palabras u otras parecidas:\nTerminado el rito del Bautismo (y de la Confirmación) o, si no hubo bautismos, después de la bendición del agua, todos, de pie y teniendo en sus manos las velas encendidas, hacen la renovación de las promesas del bautismo. El sacerdote se dirige a los fieles, con estas palabras u otras semejantes:\nHermanos, por medio del bautismo, hemos sido hechos partícipes del misterio pascual de Cristo; es decir, por medio del bautismo, hemos sido sepultados con él en su muerte para resucitar con él a una vida nueva.\nPor eso, culminado nuestro camino cuaresmal, es muy conveniente que renovemos las promesas de nuestro bautismo, con las cuales un día renunciamos a Satanás y a sus obras y nos comprometimos a servir a Dios, en la santa Iglesia católica. Por consiguiente:\n¿Renuncian ustedes al pecado para vivir en la libertad de los hijos de Dios?\nTodos: Sí, renuncio.\n¿Renuncian a todas las seducciones del mal para que el pecado no los esclavice?\nTodos: Sí, renuncio.\n¿Renuncian a Satanás, padre y autor de todo pecado? Todos: Sí, renuncio.\n¿Creen ustedes en Dios, Padre todopoderoso, creador del cielo y de la tierra?\nTodos: Sí, creo\n¿Creen en Jesucristo, su Hijo único y Señor nuestro, que nació de la Virgen María, padeció y murió por nosotros, resucitó y está sentado a la derecha del Padre? Todos: Sí, creo\n¿Creen en el Espíritu Santo, en la santa Iglesia católica, en la comunión de los santos, en el perdón de los pecados, en la resurrección de los muertos y en la vida eterna? Todos: Sí, creo.\nQue Dios todopoderoso, Padre de nuestro Señor Jesucristo, que nos liberó del pecado y nos ha hecho renacer por el agua y el Espíritu Santo, nos conserve con su gracia unidos a Jesucristo nuestro Señor, hasta la vida eterna. Amén.\nEl sacerdote rocía al pueblo con el agua bendita, mientras todos cantan la siguiente antífona o algún otro canto bautismal: Vi brotar agua del lado derecho del templo, aleluya. Vi que en todos aquellos que recibían el agua, surgía una vida nueva y cantaban con gozo: Aleluya, aleluya.\nHecha la aspersión, el sacerdote vuelve a la sede, en donde dirige la Oración Universal.\nNo se dice Credo.\nORACIÓN DE LOS FIELES:\nLlenos de gozo por la santa Resurrección del Señor – purificados nuestros sentimientos y renovado nuestro espíritu– supliquemos con insistencia al Señor, diciendo: Rey vencedor, escúchanos.\nR/. Rey vencedor, escúchanos.\n•\tA Cristo que ha vencido la muerte y ha destruido el pecado, pidámosle que todos los cristianos sean siempre fieles a las promesas del bautismo que han renovado en esta noche santa. Roguemos al Señor.\n•\tA Cristo que ha hecho renacer a los nuevos hijos de la Iglesia, engendrándolos por el agua y el Espíritu Santo, pidámosle que afirme en ellos los dones que les ha concedido. Roguemos al Señor.\n•\tA Cristo que ha dado al mundo la vida verdadera y ha renovado toda la creación, pidámosle por los que –por no creer en su triunfo– viven sin esperanza. Roguemos al Señor.\n•\tA Cristo que ha abierto las puertas de su Reino a los que gemían en el abismo y ha otorgado la vida al hombre mortal, pidámosle por todos los que sufren. Roguemos al Señor.\n•\tA Cristo que anunció la alegría a las mujeres y a los apóstoles y –por medio de ellos al mundo entero– pidámosle por los que nos hemos reunido para celebrar su triunfo. Roguemos al Señor.\nSeñor Jesucristo, en esta fiesta gloriosa te pedimos que escuches nuestras plegarias y extiendas tu diestra misericordiosa sobre este pueblo que tiene puesta toda su esperanza en tu Resurrección. Tú que vives y reinas por los siglos de los siglos.\nCUARTA PARTE:\nLITURGIA EUCARÍSTICA\nEl sacerdote va al altar y comienza la Liturgia Eucarística, en la forma acostumbrada. Es conveniente que el pan y el vino sean presentados por los neófitos, si los hay. Hay que estar atentos a las variantes dentro de las Plegarias eucarísticas.",
+    "monicion_entrada": "Bienvenidos, hermanos, a esta celebración pascual. La Palabra de Dios nos invita hoy a contemplar la bondad original de la creación y la gloriosa nueva creación que Cristo nos ofrece en su Resurrección. En este tiempo de gozo, reconozcamos con alegría nuestras faltas, confiando en que el Señor, que todo lo hace nuevo, nos purifica para vivir plenamente su victoria."
   },
   "2026-04-03": {
     "color": "Rojo",
@@ -291,7 +294,8 @@ window.liturgiaData = {
       "oracion_despues_comunion": ""
     },
     "titulo_celebracion": "Viernes Santo — Celebración de la Pasión",
-    "grado": "Solemnidad"
+    "grado": "Solemnidad",
+    "monicion_entrada": "Queridos hermanos, al iniciar esta Eucaristía en plena Semana Santa, la Palabra nos sumerge en el misterio de la Pasión de Cristo, el Siervo sufriente que por amor cargó con nuestros crímenes. Contemplando su entrega, que nos abre a la alegría de la Pascua, acerquémonos con humilde gozo a la fuente de su misericordia, reconociendo nuestras faltas para ser sanados y renovados por Él."
   },
   "2026-04-04": {
     "color": "Blanco",
@@ -319,7 +323,8 @@ window.liturgiaData = {
       "oracion_despues_comunion": ""
     },
     "titulo_celebracion": "Sábado Santo — Vigilia Pascual",
-    "grado": "Solemnidad"
+    "grado": "Solemnidad",
+    "monicion_entrada": "Hermanos y hermanas, en este tiempo pascual, la Palabra nos invita a contemplar la bondad original de la creación de Dios, que Él vio como \"muy buena\", y cómo esta bondad es ahora plenamente renovada en la gloriosa Resurrección de Cristo. Él, el Viviente, nos llama a dejar atrás lo viejo y a vivir la novedad de su gracia. Con alegría y esperanza, reconozcamos nuestras faltas para unirnos dignamente a estos sagrados misterios."
   },
   "2026-04-12": {
     "oficio": {
@@ -713,7 +718,8 @@ window.liturgiaData = {
         "motivo": "Obligatorio"
       }
     ],
-    "oracion_ofrendas": "Recibe, Señor, los dones que, jubilosa, tu Iglesia te presenta, y puesto que es a ti a quien debe su alegría,"
+    "oracion_ofrendas": "Recibe, Señor, los dones que, jubilosa, tu Iglesia te presenta, y puesto que es a ti a quien debe su alegría,",
+    "monicion_entrada": "Queridos hermanos, en este gozoso tiempo pascual, la Palabra nos invita a reconocer al Señor resucitado, que la muerte no pudo retener, y que hoy camina con nosotros como con los discípulos de Emaús. Él desea abrir nuestros ojos y encender nuestro corazón para que lo veamos en la Escritura y en el Pan. Confiados en su presencia viva, pidamos perdón por nuestra lentitud en creer y por todo aquello que nos impide acoger plenamente su victoria, para celebrar con alegría este misterio."
   },
   "2026-04-26": {
     "color": "Blanco",
@@ -1118,7 +1124,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Hermanos y hermanas, en este tiempo pascual, el Señor Resucitado nos invita a no perder la paz, pues Él mismo es el Camino, la Verdad y la Vida que nos conduce al Padre. Él nos confía la misión de extender su Reino, sirviendo con caridad y sabiduría, como los primeros discípulos, para que su Palabra siga cundiendo en el mundo. Reconozcamos ahora nuestras faltas y debilidades, que nos impiden ser instrumentos plenos de su amor, y con alegría pidamos su perdón para celebrar dignamente estos sagrados misterios."
   },
   "2026-05-10": {
     "color": "Blanco",
@@ -1326,7 +1333,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "En esta Pascua, la Palabra nos inunda con la promesa y la realidad del Espíritu Santo, que Jesús nos envía para habitar en nosotros y llenar de gozo a quienes acogen su amor y sus mandamientos. Conscientes de esta presencia divina que nos transforma, pero también de nuestras fragilidades, abramos el corazón a la conversión gozosa. Así, purificados, podremos amar más plenamente a Cristo y experimentar la plenitud de su vida en nosotros."
   },
   "2026-05-17": {
     "color": "Blanco",
@@ -1525,7 +1533,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos y hermanas, en este tiempo pascual que nos conduce a Pentecostés, la Iglesia nos invita a contemplar la gloriosa Ascensión del Señor y su mandato misionero. Cristo, ascendido al Padre, no nos abandona, sino que nos asegura su presencia constante y nos envía, fortalecidos por el Espíritu, a ser sus testigos hasta los confines de la tierra. Conscientes de la inmensidad de esta vocación y de la gracia que se nos otorga, acerquémonos con alegría y humildad a la misericordia divina, reconociendo nuestras faltas para ser dignos instrumentos de su Reino."
   },
   "2026-04-09": {
     "fecha": "2026-04-09",
@@ -2123,8 +2132,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Os digo con toda verdad: el que no nace de arriba no podrá entrar en el reino de Dios. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nOs digo con toda verdad: el que no nace de arriba no podrá entrar en el reino de Dios. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos a Dios Padre todopoderoso, glorificado por la muerte y resurrección de Cristo, y digámosle confiados:\nR.\nIlumina, Señor, nuestras mentes.\nPadre, fuente de toda luz, que has querido iluminar el mundo con la gloria de Cristo resucitado,\nR.\nilumina, desde el principio de este día, nuestras almas con la luz de la fe.\nTú que por medio de tu Hijo, resucitado de entre los muertos, has abierto a los hombres las puertas de la salvación,\nR.\nhaz  que,  a  través  de  los  trabajos  de  este  día,  se  acreciente nuestra esperanza.\nTú  que  por  medio  de  tu  Hijo  resucitado  has  derramado  sobre  el mundo tu Espíritu Santo,\nR.\nenciende nuestros corazones con el fuego de este mismo Espíritu.\nTú que para librarnos entregaste a tu Hijo  la muerte,\nR.\nhaz que él sea hoy para nosotros salvación y redención.\nSe pueden añadir algunas intenciones libres\nTerminemos  nuestra oración con la plegaria que Cristo nos enseñó:\nPadre nuestro..."
     },
@@ -2147,8 +2156,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Lo que de la carne nace carne es, y lo que nace del Espíritu espíritu es. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nLo que de la carne nace carne es, y lo que nace del Espíritu espíritu es. Aleluya.\nLlenos de gozo, oremos a Cristo, el Señor, que con su resurrección ha iluminado el mundo entero, y digámosle:\nR.\nCristo, vida nuestra, escúchanos.\nSeñor Jesús, que te hiciste compañero de camino de los discípulos que dudaban de ti,\nR.\nacompaña también a tu Iglesia peregrina entre las dificultades e incertidumbres de esta vida.\nNo permitas que tus fieles sean tardos y necios para creer,\nR.\ny aumenta su fe para que te proclamen vencedor de  la muerte.\nMira, Señor, con bondad a cuantos no te reconocieron en su camino,\nR.\ny manifiéstate a ellos para que te confiesen como salvador suyo.\nTú que por la cruz reconciliaste a todos los hombres, uniéndolos en tu cuerpo,\nR.\nconcede la paz y la unidad a las naciones.\nSe pueden añadir algunas intenciones libres\nTú que eres el juez de vivos y muertos,\nR.\notorga a los difuntos que creyeron en ti la remisión de todas sus culpas.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "tiempo_liturgico": "Pascua",
@@ -2362,8 +2371,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Yo soy el alfa y la omega, el primero y el último; yo soy el vástago y la descendencia de David, el lucero radiante de la mañana. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nYo soy el alfa y la omega, el primero y el último; yo soy el vástago y la descendencia de David, el lucero radiante de la mañana. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos  agradecidos a Dios, Padre de nuestro Señor Jesucristo, el Cordero  inmaculado que quitó el pecado del mundo y nos comunica su vida nueva,  y digámosle:\nR.\nAutor de la vida, vivifícanos.\nDios,  autor de la vida, acuérdate de la muerte y resurrección del Cordero  inmolado en la cruz\nR.\ny atiende su continua intercesión por nosotros.\nHaz,  Señor, que, tirada fuera la vieja levadura de la malicia y de la  perversidad,\nR.\nvivamos la Pascua de Cristo con panes ázimos de pureza y de verdad.\nQue sepamos rechazar hoy el pecado de discordia y de envidia,\nR.\ny seamos más sensibles a las necesidades de nuestros hermanos.\nConcédenos vivir auténticamente el espíritu evangélico,\nR.\npara que hoy y siempre sigamos el camino de tus mandatos.\nSe pueden añadir algunas intenciones libres\nPorque  deseamos que la luz de Cristo alumbre a todos los hombres, pidamos al  Padre que su reino llegue a nosotros:\nPadre nuestro..."
     },
@@ -2386,8 +2395,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "¿Verdad que nuestros corazones ardían dentro de nosotros, mientras nos hablaba Jesús en el camino? Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\n¿Verdad que nuestros corazones ardían dentro de nosotros, mientras nos hablaba Jesús en el camino? Aleluya.\nInvoquemos  a  Cristo,  que  con  su  resurrección  ha  reanimado  la esperanza de su pueblo, y digámosle:\nR.\nSeñor  Jesús,  tú  que  siempre  vives  para  interceder  por nosotros, escúchanos.\nSeñor Jesús, de cuyo costado abierto salió sangre y agua,\nR.\nhaz de la Iglesia tu Esposa inmaculada.\nPastor  supremo  de  la  Iglesia,  que  después  de  tu  resurrección encomendaste a Pedro, al confesarte su amor, el cuidado de tus ovejas,\nR.\nconcede  al papa\nN.\nun  amor  ardiente  y  un  celo apostólico.\nTú  que  concediste  una pesca abundante a  los  discípulos que  pescaban  en  el  mar,\nR.\nenvía operarios que continúen su trabajo apostólico.\nTú  que  preparaste  a  la  orilla  del  mar el pan  y  los peces para  los discípulos,\nR.\nno permitas que nuestros hermanos mueran de hambre por culpa nuestra.\nSe pueden añadir algunas intenciones libres\nSeñor Jesús, nuevo Adán, que nos das la vida, transforma a nuestros difuntos a imagen tuya,\nR.\npara que compartan contigo la alegría de tu reino.\nSintiéndonos verdaderos hijos de Dios, digamos a nuestro Padre:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "esqueleto_ordinario": [
@@ -2503,7 +2512,8 @@ window.liturgiaData = {
       }
     ],
     "guia_reflexion": "Continuamos la entrevista de Jesús con Nicodemo, que ahora se centra en lo que constituye una especie de “columna vertebral” del Evangelio de san Juan. Esto se podría resumir así: el don de la «vida eterna» está reservado para aquellos que creen que Jesús es el Hijo de Dios y que lo aceptan como Enviado del Padre. La fe en Cristo nos ha de llevar al ideal de una comunión en el amor fraterno. Tal amor –que se afianza en la oración y en las enseñanzas de los apóstoles– ha de traducirse luego en ayuda mutua e incluso en una real participación de bienes, tanto espirituales como materiales.",
-    "reflexion_homiletica": "Continuamos la entrevista de Jesús con Nicodemo, que ahora se centra en lo que constituye una especie de “columna vertebral” del Evangelio de san Juan. Esto se podría resumir así: el don de la «vida eterna» está reservado para aquellos que creen que Jesús es el Hijo de Dios y que lo aceptan como Enviado del Padre. La fe en Cristo nos ha de llevar al ideal de una comunión en el amor fraterno. Tal amor –que se afianza en la oración y en las enseñanzas de los apóstoles– ha de traducirse luego en ayuda mutua e incluso en una real participación de bienes, tanto espirituales como materiales."
+    "reflexion_homiletica": "Continuamos la entrevista de Jesús con Nicodemo, que ahora se centra en lo que constituye una especie de “columna vertebral” del Evangelio de san Juan. Esto se podría resumir así: el don de la «vida eterna» está reservado para aquellos que creen que Jesús es el Hijo de Dios y que lo aceptan como Enviado del Padre. La fe en Cristo nos ha de llevar al ideal de una comunión en el amor fraterno. Tal amor –que se afianza en la oración y en las enseñanzas de los apóstoles– ha de traducirse luego en ayuda mutua e incluso en una real participación de bienes, tanto espirituales como materiales.",
+    "monicion_entrada": "Queridos hermanos y hermanas, en este tiempo pascual, la Iglesia nos convoca para celebrar la vida nueva que brota del Resucitado. Las lecturas de hoy nos invitan a vivir con un solo corazón y una sola alma, renacidos del Espíritu, para dar testimonio de Cristo levantado. Con la alegría de sabernos hijos de la luz, reconozcamos nuestras faltas y dispongámonos a acoger la gracia que nos transforma."
   },
   "2026-04-17": {
     "fecha": "2026-04-17",
@@ -2552,8 +2562,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Tomó Jesús los panes, y, después de haber dado gracias, los repartió entre los que estaban recostados en el suelo. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nTomó Jesús los panes, y, después de haber dado gracias, los repartió entre los que estaban recostados en el suelo. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Dirijamos nuestra oración a Dios Padre, que por el Espíritu resucitó a Jesús de entre los muertos y vivificará también nuestros cuerpos mortales; digámosle:\nR.\nVivifícanos, Señor, con tu Espíritu Santo.\nPadre  santo,  tú  que  al  resucitar  a  tu  Hijo  de  entre  los  muertos manifestaste que habías aceptado su sacrificio,\nR.\nacepta  también  la  ofrenda  de  nuestro  día  y  condúcenos  a  la  plenitud de la vida.\nBendice, Señor, las acciones de nuestro día\nR.\ny ayúdanos a buscar en ellas tu gloria y el bien de nuestros hermanos.\nQue el trabajo de hoy sirva para la edificación de un mundo nuevo\nR.\ny nos conduzca también a tu reino eterno.\nTe pedimos, Señor, que nos hagas ser siempre solícitos del bien de los hombres,\nR.\ny que nos ayudes a amarnos mutuamente.\nSe pueden añadir algunas intenciones libres\nDirijamos ahora al Padre nuestra oración con las mismas palabras que Cristo nos enseñó:\nPadre nuestro..."
     },
@@ -2576,8 +2586,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Subió al árbol santo de la cruz, destruyó el poderío de la muerte, se revistió de poder, resucitó al tercer día. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSubió al árbol santo de la cruz, destruyó el poderío de la muerte, se revistió de poder, resucitó al tercer día. Aleluya.\nOremos a Cristo, fuente de toda vida y principio de todo bien, y digámosle confiadamente:\nR.\nInstaura, Señor, tu reino en el mundo.\nJesús salvador, tú que, muerto en la carne, fuiste devuelto a la vida por el Espíritu,\nR.\nhaz  que  nosotros,  muertos  al  pecado,  vivamos  también  de tu Espíritu.\nTú  que  enviaste a  tus  discípulos  al  mundo  entero  para  que proclamaran tu Evangelio a todos los pueblo,\nR.\nhaz que cuantos anuncian el Evangelio a los hombres vivan de tu Espíritu.\nTú  que  recibiste  todo  poder  en  el cielo  y  en  la  tierra  para  dar testimonio de la verdad,\nR.\nguarda en tu verdad a quienes nos gobiernan.\nTú que todo lo renuevas y nos mandas esperar anhelantes la llegada de tu reino,\nR.\nhaz que, cuanto más esperamos el cielo nuevo y la tierra nuevaque  nos  prometes,  con  tanto  mayor  empeño  trabajemos  por  la edificación del mundo presente.\nSe pueden añadir algunas intenciones libres\nTú que descendiste a la mansión de la muerte para anunciar el gozo del Evangelio a los difuntos,\nR.\nsé tú mismo la eterna alegría de todos los que mueren.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Viernes de la II Semana de Pascua",
@@ -2701,7 +2711,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, con bondad, estas ofrendas de tu familia santa, para que, con la ayuda de tu protección, conserve los dones recibidos y llegue a poseer los eternos. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Rom 4, 25\nCristo fue condenado a muerte por nuestros pecados, y resucitó para nuestra justificación. Aleluya.",
     "oracion_comunion": "Protege, Señor, con amor constante a quienes has salvado, para que, una vez redimidos por la pasión de tu Hijo, se llenen ahora de alegría por su resurrección. Él, que vive y reina por los siglos de los siglos.",
-    "reflexion_homiletica": "La multiplicación de los panes es el único milagro narrado por los cuatro evangelistas. Ello muestra la gran importancia que la Iglesia apostólica le atribuyó desde siempre. Este prodigio es «signo» de la autorrevelación de Jesús, que habría de ser sacrificado como nuevo Cordero pascual. De este modo su carne sacrificada será el «nuevo maná» de la Pascua cristiana, tal y como nos lo irá aclarando el subsiguiente «discurso del pan de vida». Los gestos del Señor –ante este sorpresivo portento– son prácticamente idénticos a los de la Última Cena."
+    "reflexion_homiletica": "La multiplicación de los panes es el único milagro narrado por los cuatro evangelistas. Ello muestra la gran importancia que la Iglesia apostólica le atribuyó desde siempre. Este prodigio es «signo» de la autorrevelación de Jesús, que habría de ser sacrificado como nuevo Cordero pascual. De este modo su carne sacrificada será el «nuevo maná» de la Pascua cristiana, tal y como nos lo irá aclarando el subsiguiente «discurso del pan de vida». Los gestos del Señor –ante este sorpresivo portento– son prácticamente idénticos a los de la Última Cena.",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Iglesia nos invita a vivir la alegría de Cristo resucitado. Hoy, la Palabra nos revela la fuerza del Espíritu que llenó a los apóstoles de gozo al padecer por el Nombre de Jesús, y la generosidad del Señor que nos alimenta con su propia vida. Conscientes de esta gracia que nos sostiene, acerquémonos a Él con corazones arrepentidos y alegres."
   },
   "2026-04-18": {
     "fecha": "2026-04-18",
@@ -2750,8 +2761,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "",
       "cantico_evangelico": {
-        "antifona": "",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Se pueden añadir algunas intenciones libres"
     },
@@ -2774,8 +2785,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "",
       "cantico_evangelico": {
-        "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Sábado de la II Semana de Pascua",
@@ -2899,7 +2910,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Santifica, Señor, por tu piedad, estos dones y al recibir en oblación este sacrificio espiritual, conviértenos para ti en una perenne ofrenda. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Jn 17, 24\nPadre, quiero que donde yo esté, estén también conmigo los que tú me has dado, para que contemplen la gloria que me diste, dice el Señor. Aleluya.",
     "oracion_comunion": "Al recibir, Señor, el don de estos sagrados misterios, te suplicamos humildemente que lo que tu Hijo nos mandó celebrar en memoria suya, nos aproveche para crecer en nuestra caridad fraterna. Por Jesucristo, nuestro Señor.",
-    "reflexion_homiletica": "Al caminar sobre las aguas turbulentas del lago y al auxiliar a los discípulos en dificultad por la violencia del viento contrario, Jesús les revela su “identidad profunda”, es decir, su naturaleza divina. En este caso san Juan exhibe una más alta perspectiva, distinta a la de los otros tres evangelistas. Este milagro no pretende hablar tanto de una indispensable ayuda a los atribulados discípulos, cuanto de convertirse en signo anticipado de credibilidad frente al posterior y supuestamente «insoportable» discurso eucarístico, con el que luego pondrá a prueba la fe de sus desconcertados interlocutores."
+    "reflexion_homiletica": "Al caminar sobre las aguas turbulentas del lago y al auxiliar a los discípulos en dificultad por la violencia del viento contrario, Jesús les revela su “identidad profunda”, es decir, su naturaleza divina. En este caso san Juan exhibe una más alta perspectiva, distinta a la de los otros tres evangelistas. Este milagro no pretende hablar tanto de una indispensable ayuda a los atribulados discípulos, cuanto de convertirse en signo anticipado de credibilidad frente al posterior y supuestamente «insoportable» discurso eucarístico, con el que luego pondrá a prueba la fe de sus desconcertados interlocutores.",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, las lecturas nos muestran cómo el Señor Resucitado guía a su Iglesia: desde la sabia organización de los apóstoles hasta su presencia que calma las tormentas de la vida. Él sigue manifestando su poder y amor en medio de nuestras dificultades, invitándonos a la fe y al servicio. Confiados en su misericordia que nos renueva, reconozcamos con alegría nuestras faltas para celebrar dignamente estos sagrados misterios."
   },
   "2026-04-20": {
     "fecha": "2026-04-20",
@@ -2948,8 +2960,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Trabajad por conseguir no el alimento perecedero, sino el alimento que permanece y da vida eterna. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nTrabajad por conseguir no el alimento perecedero, sino el alimento que permanece y da vida eterna. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Glorifiquemos a Cristo, a quien el Padre ha enaltecido dándole en herencia todas las naciones, y digámosle suplicantes:\nR.\nPor tu victoria, sálvanos, Señor\nSeñor Jesucristo, que en tu victoria destruiste el poder del abismo, venciendo la muerte y el pecado,\nR.\nhaz que también nosotros venzamos hoy el pecado.\nTú que alejaste de nosotros la muerte y nos has dado nueva vida,\nR.\nconcédenos andar hoy por la senda de esta vida nueva.\nTú que diste vida a los muertos, haciendo pasar a la humanidad entera de la muerte a la vida,\nR.\nconcede  el don de la vida eterna a cuantos se relacionarán hoy con nosotros.\nTú que llenaste de confusión a los que hacían guardia ante tu sepulcro y alegraste a los discípulos con tus apariciones,\nR.\nllena de gozo a cuantos te sirven.\nSe pueden añadir algunas intenciones libres\nPorque deseamos que la luz de Cristo alumbre a todos los hombres, pidamos al Padre que su reino llegue a nosotros:\nPadre nuestro..."
     },
@@ -2972,8 +2984,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Ésta es la obra de Dios: que creáis plenamente en aquel que él ha enviado. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nÉsta es la obra de Dios: que creáis plenamente en aquel que él ha enviado. Aleluya.\nCon  espíritu  gozoso,  invoquemos  a  Cristo,  a  cuya  humanidad  dio vida el Espíritu Santo, haciéndolo fuente de vida para los hombres, y digámosle:\nR.\nRenueva y da vida a todas las cosas, Señor.\nCristo, salvador del mundo y rey de la nueva creación, haz que, ya desde ahora, con el espíritu vivamos en tu reino,\nR.\ndonde estás sentado a la derecha del Padre.\nSeñor, tú que vives en tu Iglesia hasta el fin de los tiempos,\nR.\ncondúcela  por  el  Espíritu  Santo  al  conocimiento  de  toda verdad.\nQue  los  enfermos,  los  moribundos  y  todos  los  que  sufren encuentren luz en tu victoria,\nR.\ny que tu gloriosa resurrección los consuele y los conforte.\nSe pueden añadir algunas intenciones libres\nAl  terminar este día, te ofrecemos nuestro homenaje, oh Cristo, luz  imperecedera,\nR.\ny te pedimos que con la gloria de tu resurrección ilumines a nuestros  hermanos difuntos.\nPorque  Jesucristo nos ha hecho participar de su propia vida, somos hijos de  Dios y por ello nos atrevemos a decir:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Lunes de la III Semana de Pascua",
@@ -3097,7 +3109,8 @@ window.liturgiaData = {
     "oracion_colecta": "Dios nuestro, que concediste al obispo san Anselmo investigar y enseñar los secretos de tu sabiduria, ilumina nuestra inteligencia con la luz de la fe, de manera que nuestro corazón se deleite en lo que debemos creer. Por nuestro Señor Jesucristo...",
     "guia_reflexion": "Concluida la multiplicación de los panes, Jesús despidió a la gente y se retiró al monte a orar. Luego, durante la noche –y caminando sobre el agua– se reunió con sus azorados discípulos, que se dirigían en una barca hacia Cafarnaún. Al reencontrarlos, Cristo sufre la incomprensión de la gente. No obstante, Él ve en esa incipiente “búsqueda” una oportunidad para orientarlos a una perspectiva superior: «trabajen por el alimento que dura para la vida eterna». Un alimento que sólo les podrá dar el «Enviado», es decir, el sellado por el Padre con la marca de la divinidad.",
     "oracion_ofrendas": "Suba hasta ti, Señor, nuestra oración, acompañada por estas ofrendas, para que, purificados por tu bondad, nos dispongas para celebrar el sacramento de tu inmenso amor. Por Jesucristo, nuestro Señor.",
-    "reflexion_homiletica": "Concluida la multiplicación de los panes, Jesús despidió a la gente y se retiró al monte a orar. Luego, durante la noche –y caminando sobre el agua– se reunió con sus azorados discípulos, que se dirigían en una barca hacia Cafarnaún. Al reencontrarlos, Cristo sufre la incomprensión de la gente. No obstante, Él ve en esa incipiente “búsqueda” una oportunidad para orientarlos a una perspectiva superior: «trabajen por el alimento que dura para la vida eterna». Un alimento que sólo les podrá dar el «Enviado», es decir, el sellado por el Padre con la marca de la divinidad."
+    "reflexion_homiletica": "Concluida la multiplicación de los panes, Jesús despidió a la gente y se retiró al monte a orar. Luego, durante la noche –y caminando sobre el agua– se reunió con sus azorados discípulos, que se dirigían en una barca hacia Cafarnaún. Al reencontrarlos, Cristo sufre la incomprensión de la gente. No obstante, Él ve en esa incipiente “búsqueda” una oportunidad para orientarlos a una perspectiva superior: «trabajen por el alimento que dura para la vida eterna». Un alimento que sólo les podrá dar el «Enviado», es decir, el sellado por el Padre con la marca de la divinidad.",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que nos inunda con la luz del Resucitado, la Palabra nos invita a contemplar la audacia de Esteban, lleno del Espíritu, y la llamada de Jesús a buscar el alimento que dura para la vida eterna. Como Esteban vio los cielos abiertos y a Cristo glorioso, y como el Señor nos urge a creer en Él, el enviado del Padre, se nos revela el camino hacia la verdadera vida. Conscientes de nuestras propias resistencias y de la superficialidad con la que a veces buscamos a Dios, abramos el corazón a su gracia y pidamos perdón para acoger plenamente el don de su presencia."
   },
   "2026-04-21": {
     "fecha": "2026-04-21",
@@ -3181,8 +3194,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Os lo digo con toda verdad: Moisés no os dio el pan del cielo; es mi Padre el que os da el verdadero pan del cielo. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nOs lo digo con toda verdad: Moisés no os dio el pan del cielo; es mi Padre el que os da el verdadero pan del cielo. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Alabemos a Cristo, que con su poder reconstruyó el templo destruido de su cuerpo, y supliquémosle:\nR.\nConcédenos, Señor, los frutos de tu resurrección.\nCristo Salvador, que en tu resurrección anunciaste la alegría a  las mujeres y a los apóstoles y salvaste al universo entero,\nR.\nconviértenos en testigos de tu resurrección.\nTú que has prometido la resurrección universal y has anunciado una vida nueva,\nR.\nhaz de nosotros mensajeros del Evangelio de la vida.\nTú que te apareciste repetidas veces a los apóstoles y les comunicaste el Espíritu Santo,\nR.\nrenuévanos por el Espíritu consolador.\nTú que prometiste estar con tus discípulos hasta el fin del mundo,\nR.\nquédate hoy con nosotros y sé siempre nuestro compañero.\nSe pueden añadir algunas intenciones libres\nConcluyamos  nuestra oración, diciendo juntos las palabras de Jesús, nuestro  maestro:\nPadre nuestro..."
     },
@@ -3205,8 +3218,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "El pan de Dios es el que ha bajado del cielo y da vida al mundo. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl pan de Dios es el que ha bajado del cielo y da vida al mundo. Aleluya.\nAclamemos alegres a Cristo, que después de ser sepultado en el seno de la tierra resucitó gloriosamente a vida nueva, y digámosle confiados:\nR.\nRey de la gloria , escúchanos.\nTe rogamos, Señor, por los obispos, los presbíteros y los diáconos: que sirvan con celo a tu pueblo\nR.\ny lo conduzcan por los caminos del bien.\nTe rogamos, Señor, por los que sirven a tu Iglesia con el estudio de tu palabra:\nR.\nque escudriñen tu doctrina con pureza de corazón y deseo de adoctrinar a tu pueblo.\nTe rogamos, Señor, por todos los fieles de la Iglesia: que combatan bien el combate de la fe\nR.\ny, habiendo corrido hasta la meta, alcancen la corona merecida.\nTú que en la cruz cancelaste la nota de cargo de nuestra deuda,\nR.\ndestruye también en nosotros toda clase de esclavitud y líbranos de toda tiniebla.\nSe pueden añadir algunas intenciones libres\nTú que al bajar al lugar de los muertos abriste las puertas del abismo,\nR.\nrecibe a nuestros hermanos difuntos en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "esqueleto_ordinario": [
@@ -3326,7 +3339,8 @@ window.liturgiaData = {
     "antifona_comunion": "Jn 12, 24\nSi el grano de trigo no cae en la tierra y muere, queda infecundo; pero, si muere, da fruto abundante. Aleluya.",
     "antifona_entrada": "Sal 70, 8. 23\nMi boca, Señor, se llene de alabanzas, para que pueda cantarte; y así mis labios se llenarán de júbilo. Aleluya.",
     "oracion_comunion": "Al celebrar con alegría esta festividad y habiendo recibido tus dones celestiales, te pedimos, Señor, que concedas, a quienes en este divino banquete proclamamos la muerte de tu Hijo, que podamos participar, con los santos mártires, de su resurrección y de su gloria. Por Jesucristo, nuestro Señor.\nNació en Teocaltiche, Jal. (Diócesis de Aguascalientes), el 27 de febrero de 1859. Párroco de Nochistlán, Zac. (Arquidiócesis de Guadalajara). Sacerdote de profunda humildad. Jamás se le oyó quejarse; ante cualquier sufrimiento decía con serenidad: «Sea todo por Dios». Catequesis, misiones populares, construcción de capillas para que los fieles tuvieran cerca al Santísimo, atención a los enfermos y educación a los niños fueron las principales acciones de su ministerio parroquial. Durante la persecución, siguió oculto administrando los sacramentos. Alguien delató su escondite y de noche fue hecho prisionero. Llegado el momento de la ejecución, el día 21 de abril de 1927, con un gesto de bondad trató de salvar al soldado, que por no querer dispararle, iba a ser también fusilado. Luego, decidido y firme, pero con humildad, entregó su vida.\nhttp://www.vatican.va/news_services/liturgy/ saints/ns_lit_doc_20000521_adame-rosales_sp.html\n22 miércoles Blanco\nFERIA DE PASCUA,",
-    "reflexion_homiletica": "Jesús ha apenas aclarado a sus oyentes: «La obra de Dios consiste en que crean en aquel a quien Él ha enviado». De ahí surge, espontanea, la pregunta: «¿Qué señal vas a realizar tú, para que la veamos y podamos creerte?». Es entonces cuando se introduce muy oportunamente un tema básico: el del «maná» que –en momentos críticos, durante la travesía del desierto– avaló a Moisés como profeta enviado por Dios. Jesús instruye a la gente acerca de la verdadera naturaleza del «pan del cielo», el único capaz de satisfacer, en definitiva, el hambre y la sed de quien aspira a llega a la fe."
+    "reflexion_homiletica": "Jesús ha apenas aclarado a sus oyentes: «La obra de Dios consiste en que crean en aquel a quien Él ha enviado». De ahí surge, espontanea, la pregunta: «¿Qué señal vas a realizar tú, para que la veamos y podamos creerte?». Es entonces cuando se introduce muy oportunamente un tema básico: el del «maná» que –en momentos críticos, durante la travesía del desierto– avaló a Moisés como profeta enviado por Dios. Jesús instruye a la gente acerca de la verdadera naturaleza del «pan del cielo», el único capaz de satisfacer, en definitiva, el hambre y la sed de quien aspira a llega a la fe.",
+    "monicion_entrada": "Hermanos y hermanas, en este tiempo pascual, la Iglesia nos invita a contemplar la audacia de la fe que brota del Resucitado. Hoy, san Esteban nos muestra la resistencia del corazón humano al Espíritu Santo, mientras Jesús se nos ofrece como el verdadero Pan de Vida que desciende del cielo. Reconozcamos nuestras propias durezas y, con alegría pascual, pidamos perdón por aquello que nos impide acoger plenamente la vida nueva que Él nos da."
   },
   "2026-04-22": {
     "fecha": "2026-04-22",
@@ -3375,8 +3389,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Todo el que ve al Hijo y cree en él tiene vida eterna, y yo lo resucitaré en el último día. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nTodo el que ve al Hijo y cree en él tiene vida eterna, y yo lo resucitaré en el último día. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos a Cristo, que fue entregado por nuestros pecados y resucitado para nuestra justificación, y aclamémoslo, diciendo:\nR.\nPor tu victoria, sálvanos, Señor.\nSalvador nuestro, Señor Jesús, que con tu victoria sobre la muerte nos has alegrado y con tu resurrección nos has exaltado y nos has enriquecido,\nR.\nilumina hoy nuestras mentes y santifica nuestra jornada con la gracia de tu Espíritu Santo.\nTú que en el cielo eres glorificado por los ángeles y en la tierra eres adorado por los hombres,\nR.\nrecibe la adoración que en espíritu y verdad te tributamos en estas fiestas de tu resurrección.\nSálvanos, Señor Jesús, muestra tu amor y tu misericordia al pueblo que confía en tu resurrección\nR.\ny, compadecido de nosotros, defiéndenos hoy de todo mal.\nRey de la gloria y vida nuestra, haz que, cuando te manifiestes al mundo,\nR.\npodamos aparecer también nosotros juntamente contigo en la gloria.\nSe pueden añadir algunas intenciones libres\nConcluyamos  nuestra oración, diciendo juntos las palabras de Jesús, nuestro  maestro:\nPadre nuestro..."
     },
@@ -3399,8 +3413,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Todos los que el Padre me ha dado vendrán a mí, y a los que vengan a mí yo no los echaré fuera. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nTodos los que el Padre me ha dado vendrán a mí, y a los que vengan a mí yo no los echaré fuera. Aleluya.\nOremos a Cristo, que resucitó de entre los muertos y está sentado a la derecha del Padre, y digámosle:\nR.\nCristo, que vives por siempre para interceder por los hombres, escucha nuestra oración.\nAcuérdate, Señor, de los que se han consagrado a tu servicio,\nR.\nque sean para tu pueblo ejemplo de santidad.\nConcede, Señor, el espíritu de justicia a los que gobiernan las naciones\nR.\ny haz que trabajen en bien de la paz, para que todos podamos vivir según tu ley.\nConcede la paz a nuestros días\nR.\ny multiplica los bienes de la tierra, para que los pobres puedan gozar de las riquezas de tu bondad.\nSe pueden añadir algunas intenciones libres\nCristo salvador, que con tu triunfo has iluminado el mundo entero y con  tu resurrección has dado a los hombres una prenda de su inmortalidad,\nR.\nconcede la luz eterna a nuestros hermanos difuntos.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Miércoles de la III Semana de Pascua",
@@ -3522,7 +3536,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Concédenos, Señor, vivir siempre llenos de gratitud por estos misterios pascuales que celebramos, para que, continuamente renovados por su acción, se conviertan para nosotros en causa de eterna felicidad. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Resucitó el Señor y nos iluminó a nosotros, los redimidos con su Sangre. Aleluya.",
     "oracion_comunion": "Señor y Dios nuestro, escucha nuestras oraciones, para que la participación en los sacramentos de nuestra redención nos ayude en la vida presente y nos alcance las alegrías eternas.\nPor Jesucristo, nuestro Señor.",
-    "reflexion_homiletica": "Con este pasaje del «discurso del Pan de vida» –que hay que entender en sentido literal y no meramente “figurado”– se subraya la voluntad redentora de nuestro Padre del cielo. Y ésta se realiza a través de la «persona» y de la «misión» de Jesús. Por eso el Señor, que no quiere la muerte del pecador sino que se convierta y viva (Cfr. Ez 33, 11), envió a su Hijo al mundo no para condenar al hombre, sino para salvarlo (Cfr. Jn 3, 17; 1 Tim 2, 4). De aquí se desprende que, en lo que toca a esta salvación realizada por Cristo, no pueda haber monopolios ni clases privilegiadas."
+    "reflexion_homiletica": "Con este pasaje del «discurso del Pan de vida» –que hay que entender en sentido literal y no meramente “figurado”– se subraya la voluntad redentora de nuestro Padre del cielo. Y ésta se realiza a través de la «persona» y de la «misión» de Jesús. Por eso el Señor, que no quiere la muerte del pecador sino que se convierta y viva (Cfr. Ez 33, 11), envió a su Hijo al mundo no para condenar al hombre, sino para salvarlo (Cfr. Jn 3, 17; 1 Tim 2, 4). De aquí se desprende que, en lo que toca a esta salvación realizada por Cristo, no pueda haber monopolios ni clases privilegiadas.",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual de gozo y esperanza, nos reunimos para celebrar la presencia viva del Resucitado. Las lecturas de hoy nos muestran cómo la Iglesia, dispersada por la persecución, difundía el Evangelio, ofreciendo a Cristo, el Pan de Vida, cuya voluntad es que todo el que cree en Él tenga vida eterna. Conscientes de este don inmenso y de nuestra misión, abramos nuestro corazón a la gracia, reconociendo con alegría nuestras faltas para acoger plenamente su misericordia."
   },
   "2026-04-23": {
     "fecha": "2026-04-23",
@@ -3594,8 +3609,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Os lo aseguro con toda verdad: el que cree en mí tiene vida eterna. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nOs lo aseguro con toda verdad: el que cree en mí tiene vida eterna. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Glorifiquemos a Cristo resucitado y siempre presente en su Iglesia, y supliquémosle, diciendo:\nR.\nQuédate con nosotros, Señor.\nSeñor Jesús, vencedor del pecado y de la muerte,\nR.\npermanece en medio de nosotros, tú que vives por los siglos de los siglos.\nSeñor, ven a nosotros con tu poder invencible\nR.\ny muéstranos la bondad de Dios Padre.\nSeñor, ayuda al mundo abrumado por las discordias,\nR.\nya que tú solo tienes el poder de salvar y reconciliar.\nConfírmanos en la fe de la victoria final\nR.\ny arraiga en nosotros la esperanza de tu manifestación gloriosa.\nSe pueden añadir algunas intenciones libres\nPorque Jesucristo nos ha hecho participar de su propia vida, somos hijos de Dios, y por ello nos atrevemos a decir:\nPadre nuestro..."
     },
@@ -3618,8 +3633,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Yo soy el pan vivo bajado del cielo; todo el que coma de este pan vivirá eternamente; y el pan que yo voy a dar es mi carne ofrecida por la vida del mundo. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nYo soy el pan vivo bajado del cielo; todo el que coma de este pan vivirá eternamente; y el pan que yo voy a dar es mi carne ofrecida por la vida del mundo. Aleluya.\nGlorifiquemos a Cristo, resucitado de entre los muertos como primicia de los que se han dormido, y supliquémosle, diciendo:\nR.\nTú que has resucitado de entre los muertos, escucha, Señor, nuestra oración.\nAcuérdate, Señor, de tu Iglesia santa, edificada sobre el cimiento de los apóstoles y extendida hasta los confines del mundo:\nR.\nque tus bendiciones abundantes se derramen sobre cuantos creen en ti.\nTú, Señor, que eres el médico de nuestros cuerpos y de nuestras almas,\nR.\nvisítanos con tu amor y sálvanos.\nTú que experimentaste los dolores de la cruz y ahora estás lleno de gloria,\nR.\nlevanta y consuela a los enfermos y líbralos de sus sufrimientos.\nTú que anunciaste la resurrección a los que yacían en las tinieblas del abismo,\nR.\nlibra a los prisioneros y oprimidos y da pan a los hambrientos.\nSe pueden añadir algunas intenciones libres\nTú, Señor, que en la cruz destruiste nuestra muerte y mereciste para todos el don de la inmortalidad,\nR.\nconcede a nuestros hermanos difuntos la vida nueva de tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "esqueleto_ordinario": [
@@ -3739,7 +3754,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, el sacrificio de reconciliación y alabanza que ofrecemos a tu majestad en la conmemoración del santo mártir Adalberto, para que nos lleve a obtener el perdón y nos haga permanecer en continua acción de gracias. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Sal 115, 15",
     "oracion_comunion": "Al celebrar con alegría esta festividad y habiendo recibido tus dones celestiales, te pedimos, Señor, que concedas, a quienes en este divino banquete proclamamos la muerte de tu Hijo, que podamos participar, con los santos mártires, de su resurrección y de su gloria. Por Jesucristo, nuestro Señor.",
-    "reflexion_homiletica": "Este pasaje evangélico nos habla, en primer lugar, del origen de la fe en Cristo y, en seguida, de la «persona» misma de Jesús. Él se autorevela una vez más como ese misterioso pero real «Pan vivo bajado del cielo». Un privilegiado manjar que comunica su misma vida divina a quien lo recibe dignamente. Al misterio de su persona no se puede acceder sino desde la «fe», que es don de Dios. Quien responde oportuna y adecuadamente a la «atracción» del Padre ya tiene desde ahora la vida eterna, anticipada precisamente en el «Nuevo Maná», muy superior al maná del desierto (Cfr. Ex 16, 22)."
+    "reflexion_homiletica": "Este pasaje evangélico nos habla, en primer lugar, del origen de la fe en Cristo y, en seguida, de la «persona» misma de Jesús. Él se autorevela una vez más como ese misterioso pero real «Pan vivo bajado del cielo». Un privilegiado manjar que comunica su misma vida divina a quien lo recibe dignamente. Al misterio de su persona no se puede acceder sino desde la «fe», que es don de Dios. Quien responde oportuna y adecuadamente a la «atracción» del Padre ya tiene desde ahora la vida eterna, anticipada precisamente en el «Nuevo Maná», muy superior al maná del desierto (Cfr. Ex 16, 22).",
+    "monicion_entrada": "Queridos hermanos, en esta Pascua que nos renueva, la Palabra de Dios nos ilumina para reconocer a Cristo resucitado como el Pan de Vida que ha bajado del cielo, atrayéndonos a Él por el Padre. Como el eunuco etíope, somos invitados a abrir nuestro corazón a la explicación de las Escrituras y a la acción del Espíritu que nos conduce a la plenitud de la fe y la vida nueva. Dispongámonos a celebrar estos misterios, pidiendo con gozo al Señor que purifique nuestras vidas para recibir dignamente sus dones."
   },
   "2026-04-24": {
     "fecha": "2026-04-24",
@@ -3788,8 +3804,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "El que come mi carne y bebe mi sangre permanece en mí, y yo en él. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nEl que come mi carne y bebe mi sangre permanece en mí, y yo en él. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Dirijamos nuestra oración a Dios  Padre, que por la resurrección de Jesucristo nos ha dado   vida nueva, y digámosle:\nR.\nIlumínanos, Señor, con la claridad de Jesucristo.\nSeñor, Padre clementísimo, tú que nos has revelado   tu plan de salvación, proyectado desde antes de la creación   del mundo, y eres fiel en todas tus promesas,\nR.\nescucha con amor nuestras plegarias.\nPurifícanos con tu verdad   y encamina nuestros pasos por las sendas de la santidad,\nR.\npara que hagamos siempre el bien según tu agrado.\nHaz resplandecer tu rostro sobre nosotros,\nR.\npara que, libres de todo mal, nos saciemos con los bienes de   tu casa.\nTú que por Cristo nos reconciliaste contigo,\nR.\ndanos la paz a nosotros y a todos los hombres del mundo.\nSe pueden añadir algunas intenciones libres\nPorque deseamos que la luz de Cristo ilumine a todos los hombres, pidamos al Padre que su reino llegue a nosotros:\nPadre nuestro..."
     },
@@ -3812,8 +3828,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "El que fue crucificado resucitó de entre los muertos y nos redimió. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl que fue crucificado resucitó de entre los muertos y nos redimió. Aleluya.\nInvoquemos a   Cristo, camino, verdad y vida, y digámosle:\nR.\nHijo de   Dios vivo, bendice a tu pueblo.\nTe rogamos, Señor,   por los ministros de tu Iglesia: que, al distribuir entre   sus hermanos el pan de vida,\nR.\nencuentren también ellos en el pan que distribuyen su alimento y fortaleza.\nTe pedimos por todo el pueblo cristiano: que viva, Señor, como pide la vocación a que ha sido convocado\nR.\ny se esfuerce por mantener la unidad del Espíritu con   el vínculo de la paz.\nTe pedimos por los que rigen los destinos de las naciones: que cumplan   su misión con espíritu de justicia y con amor,\nR.\npara que haya paz y concordia entre los pueblos.\nSe pueden añadir algunas intenciones libres\nSeñor, que podamos celebrar tu santa resurrección con tus ángeles y tus santos\nR.\ny que nuestros hermanos difuntos, a quienes encomendamos a tu bondad, se alegren también en tu reino.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Viernes de la III Semana de Pascua · San Fidel",
@@ -3994,8 +4010,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "",
       "cantico_evangelico": {
-        "antifona": "",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:"
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Se pueden añadir algunas intenciones libres"
     },
@@ -4018,8 +4034,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "",
       "cantico_evangelico": {
-        "antifona": "Proclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nSe pueden añadir algunas intenciones libres",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "tiempo_liturgico": "Pascua",
@@ -4138,7 +4154,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, el Señor Resucitado nos convoca para enviarnos a proclamar su Evangelio por el mundo entero, con la autoridad que nos confiere su gloriosa Ascensión. Esta misión, sin embargo, requiere de nuestra parte la humildad y la firmeza en la fe que nos exhorta el apóstol Pedro, para resistir al mal y dejarnos afianzar por la gracia de Dios. Con la alegría de sabernos amados y fortalecidos por Él, reconozcamos ahora nuestras faltas, para que, purificados, podamos ser testigos fieles de su victoria pascual."
   },
   "2026-04-27": {
     "fecha": "2026-04-27",
@@ -4187,8 +4204,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Yo soy el buen Pastor, que apaciento a mis ovejas y doy mi vida por ellas. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nYo soy el buen Pastor, que apaciento a mis ovejas y doy mi vida por ellas. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos a Dios Padre todopoderoso, glorificado por la muerte y resurrección de Cristo, y digámosle confiados:\nR.\nIlumina, Señor, nuestras mentes.\nPadre, fuente de toda luz, que has querido iluminar el mundo con la gloria de Cristo resucitado,\nR.\nilumina, desde el principio de este día, nuestras almas con la luz de la fe.\nTú que por medio de tu Hijo, resucitado de entre los muertos, has abierto a los hombres las puertas de la salvación,\nR.\nhaz  que,  a  través  de  los  trabajos  de  este  día,  se  acreciente nuestra esperanza.\nTú  que  por  medio  de  tu  Hijo  resucitado  has  derramado  sobre  el    mundo el Espíritu Santo,\nR.\nenciende nuestros corazones con el fuego de este mismo Espíritu.\nTú que para librarnos entregaste a tu Hijo  la muerte,\nR.\nhaz que él sea hoy para nosotros salvación y redención.\nSe pueden añadir algunas intenciones libres\nTerminemos  nuestra oración con la plegaria que Cristo nos enseñó: Padre  nuestro."
     },
@@ -4211,8 +4228,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Tengo otras ovejas que no son de este redil; es necesario que las recoja, y oirán mi voz, para que se forme un solo rebaño y un solo pastor. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nTengo otras ovejas que no son de este redil; es necesario que las recoja, y oirán mi voz, para que se forme un solo rebaño y un solo pastor. Aleluya.\nLlenos de gozo, oremos a Cristo, el Señor, que con su resurrección ha iluminado al mundo entero, y digámosle:\nR.\nCristo, vida nuestra, escúchanos.\nSeñor Jesús, que te hiciste compañero de camino de los discípulos que dudaban de ti,\nR.\nacompaña también a tu Iglesia peregrina entre las dificultades e incertidumbres de esta vida.\nNo permitas que tus fieles sean tardos y necios para creer,\nR.\ny aumenta su fe, para que te proclamen vencedor de  la muerte.\nMira, Señor, con bondad a cuantos no te reconocieron en su camino,\nR.\ny manifiéstate en ellos, para que te confiesen como salvador suyo.\nTú que por la cruz reconciliaste a todos los hombres, uniéndolos en tu cuerpo,\nR.\nconcede la paz y la unidad a las naciones.\nSe pueden añadir algunas intenciones libres\nTú que eres el juez de vivos y muertos,\nR.\notorga a los difuntos que creyeron en ti la remisión de todas sus culpas.\nTerminemos nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Lunes de la IV Semana de Pascua",
@@ -4336,7 +4353,8 @@ window.liturgiaData = {
     "guia_reflexion": "La parábola del Buen Pastor, dirigida en principio a los fariseos, engloba de forma sugestiva varias imágenes parciales: «puerta», «pastor» y «ovejas». Mismas que luego se irán desarrollando en sucesivas etapas. Todo apunta a una misma idea: Jesús es el «Buen Pastor», y esto equivale a decir que su autoridad y su misión son auténticas. Ellas se realizan en el servicio, en la entrega total y en el hecho de que Él da la «vida eterna» a quienes le pertenecen. Esta célebre estampa –que ha calado hondo en la tradición cristiana– tiene un largo sustrato bíblico en el Antiguo Testamento (Cfr. Ez cap. 34, entre otros).",
     "oracion_ofrendas": "Acoge, Señor, las ofrendas de tu pueblo, para que, al celebrar la obra de la caridad inmensa de tu Hijo, seamos confirmados en el amor a ti y al prójimo, a ejemplo de santa María Guadalupe García Zavala. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Cfr. Jn 13, 35\nEn esto reconocerán todos que ustedes son mis discípulos: en que se aman los unos a los otros, dice el Señor. Aleluya.",
-    "reflexion_homiletica": "La parábola del Buen Pastor, dirigida en principio a los fariseos, engloba de forma sugestiva varias imágenes parciales: «puerta», «pastor» y «ovejas». Mismas que luego se irán desarrollando en sucesivas etapas. Todo apunta a una misma idea: Jesús es el «Buen Pastor», y esto equivale a decir que su autoridad y su misión son auténticas. Ellas se realizan en el servicio, en la entrega total y en el hecho de que Él da la «vida eterna» a quienes le pertenecen. Esta célebre estampa –que ha calado hondo en la tradición cristiana– tiene un largo sustrato bíblico en el Antiguo Testamento (Cfr. Ez cap. 34, entre otros)."
+    "reflexion_homiletica": "La parábola del Buen Pastor, dirigida en principio a los fariseos, engloba de forma sugestiva varias imágenes parciales: «puerta», «pastor» y «ovejas». Mismas que luego se irán desarrollando en sucesivas etapas. Todo apunta a una misma idea: Jesús es el «Buen Pastor», y esto equivale a decir que su autoridad y su misión son auténticas. Ellas se realizan en el servicio, en la entrega total y en el hecho de que Él da la «vida eterna» a quienes le pertenecen. Esta célebre estampa –que ha calado hondo en la tradición cristiana– tiene un largo sustrato bíblico en el Antiguo Testamento (Cfr. Ez cap. 34, entre otros).",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, el Señor Resucitado, nuestro Buen Pastor, nos revela cómo su amor sin límites derriba toda barrera, acogiendo a todos en el redil de su Iglesia, como escucharemos en las lecturas. Él nos llama a la unidad y a la vida abundante que brota de su sacrificio, extendiendo su gracia salvadora a cada corazón. Con la alegría de sabernos amados y perdonados por Él, dispongámonos a celebrar estos sagrados misterios."
   },
   "2026-04-28": {
     "fecha": "2026-04-28",
@@ -4385,8 +4403,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Las obras que el Padre me concede realizar, las mismas que hago, testifican que el Padre me ha enviado. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nLas obras que el Padre me concede realizar, las mismas que hago, testifican que el Padre me ha enviado. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos  agradecidos a Dios, Padre de nuestro Señor Jesucristo, el Cordero  inmaculado que quitó el pecado del mundo y nos comunica su vida nueva,  y digámosle:\nR.\nAutor de la vida, vivifícanos.\nDios,  autor de la vida, acuérdate de la muerte y resurrección del Cordero  inmolado en la cruz\nR.\ny atiende su continua intercesión por nosotros.\nHaz,  Señor, que, tirada fuera la vieja levadura de la malicia y de la  perversidad,\nR.\nvivamos la Pascua de Cristo con panes ázimos de pureza y  verdad.\nQue sepamos rechazar hoy el pecado de discordia y de envidia,\nR.\ny seamos más sensibles a las necesidades de nuestros hermanos.\nConcédenos vivir auténticamente el espíritu evangélico,\nR.\npara que hoy y siempre sigamos el camino de tus mandatos.\nSe pueden añadir algunas intenciones libres\nPorque  deseamos que la luz de Cristo alumbre a todos los hombres, pidamos al  Padre que su reino llegue a nosotros:\nPadre nuestro..."
     },
@@ -4409,8 +4427,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Yo conozco a mis ovejas y ellas me siguen, y yo les doy vida eterna. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nYo conozco a mis ovejas y ellas me siguen, y yo les doy vida eterna. Aleluya.\nInvoquemos  a  Cristo,  que  con  su  resurrección  ha  reanimado  laesperanza de su pueblo y digámosle:\nR.\nSeñor  Jesús,  tú  que  siempre  vives  para  interceder  pornosotros, escúchanos.\nSeñor Jesús, de cuyo costado abierto salió sangre y agua,\nR.\nhaz de la Iglesia tu Esposa inmaculada.\nPastor  supremo  de  la  Iglesia,  que  después  de  tu  resurrecciónencomendaste a Pedro, al confesarte su amor, el cuidado de tusovejas,\nR.\nconcede  a  nuestro  papa\nN:\nun  amor  ardiente  y  un  celoapostólico.\nTú  que  concediste una pesca abundante  a  los  discípulos que  pescaban  en  el  mar,\nR.\nenvía operarios que continúen su trabajo apostólico.\nTú  que  preparaste  a  la  orilla  del  mar  el pan  y  y los peces  para  losdiscípulos,\nR.\nno permitas que nuestros hermanos mueran de hambre por culpanuestra.\nSe pueden añadir algunas intenciones libres\nSeñor Jesús, nuevo Adán que nos das la vida, transforma a nuestros difuntos a imagen tuya,\nR.\npara que compartan contigo la alegría de tu reino.\nSintiéndonos verdaderos hijos de Dios, digamos a nuestro Padre:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Martes de la IV Semana de Pascua · San Pedro Chanel",
@@ -4534,7 +4552,8 @@ window.liturgiaData = {
     "guia_reflexion": "Jesús resalta, en primer lugar, la comunión de vida que Él quiere crear con los que le son fieles y lo reconocen, espontánea y lealmente, como su «Pastor». Las disposiciones fundamentales para esta comunión de vida son: el conocimiento del pastor y la confiada escucha de su voz. Por algo Él se identifica con Dios, hasta el punto de afirmar: «el Padre y yo somos uno». Puesto que Él conoce a sus ovejas y es conocido por ellas, no duda en entregar de buen grado su vida por su bienestar. Es este el mejor aval de su legítimo y desinteresado pastoreo.",
     "oracion_ofrendas": "Contempla, Señor, los dones que presentamos en tu altar en la conmemoración de san Luis María Grignion de Montfort, y del mismo modo que, por estos santos misterios, le diste a él la gloria, concédenos también a nosotros tu perdón. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Cfr. Lc 12, 42\nÉste es el siervo fiel y prudente, a quien el Señor puso al frente de su familia, para darles a su tiempo la ración de trigo. Aleluya.",
-    "reflexion_homiletica": "Jesús resalta, en primer lugar, la comunión de vida que Él quiere crear con los que le son fieles y lo reconocen, espontánea y lealmente, como su «Pastor». Las disposiciones fundamentales para esta comunión de vida son: el conocimiento del pastor y la confiada escucha de su voz. Por algo Él se identifica con Dios, hasta el punto de afirmar: «el Padre y yo somos uno». Puesto que Él conoce a sus ovejas y es conocido por ellas, no duda en entregar de buen grado su vida por su bienestar. Es este el mejor aval de su legítimo y desinteresado pastoreo."
+    "reflexion_homiletica": "Jesús resalta, en primer lugar, la comunión de vida que Él quiere crear con los que le son fieles y lo reconocen, espontánea y lealmente, como su «Pastor». Las disposiciones fundamentales para esta comunión de vida son: el conocimiento del pastor y la confiada escucha de su voz. Por algo Él se identifica con Dios, hasta el punto de afirmar: «el Padre y yo somos uno». Puesto que Él conoce a sus ovejas y es conocido por ellas, no duda en entregar de buen grado su vida por su bienestar. Es este el mejor aval de su legítimo y desinteresado pastoreo.",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que nos llena de la alegría del Resucitado, la Palabra nos invita a la misión. Hoy, vemos cómo la Iglesia naciente lleva el Evangelio a todos, mientras Jesús nos revela su unidad con el Padre y nos llama a escuchar su voz de Buen Pastor. Confiados en esta promesa de vida eterna, dispongámonos a celebrar estos sagrados misterios, reconociendo con alegría nuestras faltas."
   },
   "2026-04-29": {
     "fecha": "2026-04-29",
@@ -4583,8 +4602,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "«Yo he venido al mundo como luz, para que nadie que crea en mí quede en tinieblas», dice el Señor. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\n«Yo he venido al mundo como luz, para que nadie que crea en mí quede en tinieblas», dice el Señor. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Dirijámonos a Dios,   que quiso manifestar a Jesús resucitado a los apóstoles y   digámosle suplicantes:\n- Ilumínanos, Señor, con la claridad de tu Cristo.\nSeñor, fuente de toda luz, te aclamamos con acción   de gracias en esta mañana, porque nos has llamado a participar de tu luz admirable\n- y nos has querido   dar la salvación.\nHaz, Señor, que la fuerza del   Espíritu Santo nos purifique y nos fortalezca,\n- para que   con nuestro trabajo hagamos más humana la vida de los   hombres.\nHaz que nos entreguemos de tal modo al   servicio de nuestros hermanos,\n- que logremos hacer de la   familia humana una ofrenda agradable a tus ojos.\nLlénanos,   desde el principio de este nuevo día, de tu misericordia,\n- para que en toda nuestra jornada nos gocemos en   tu alabanza.\nSe pueden añadir algunas intenciones libres\nConcluyamos  nuestra oración, diciendo juntos las palabras de Jesús, nuestro  maestro:\nPadre nuestro..."
     },
@@ -4607,8 +4626,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Dios no ha enviado a su Hijo al mundo para condenar al mundo, sino para salvarlo por medio de él. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nDios no ha enviado a su Hijo al mundo para condenar al mundo, sino para salvarlo por medio de él. Aleluya.\nImploremos a Dios Padre, que por la resurrección de su Hijo de entre\nlos muertos nos ha abierto el camino de la vida eterna, y digámosle:\n- Por la victoria de Cristo, salva, Señor, a tus redimidos.\nDios de nuestros padres, que has glorificado a tu Hijo Jesús,\nresucitándolo de entre los muertos,\n- convierte nuestros corazones, para que vivamos la nueva vida de tu Hijo resucitado.\nTú que nos has devuelto al Pastor y guardián de nuestras vidas, cuando éramos ovejas descarriados,\n- consérvanos en fidelidad a tu Evangelio, bajo la guía de los obispos de tu Iglesia.\nTú que elegiste a los primeros discípulos de tu Hijo de entre el pueblo de Israel,\n- revela a los hijos de este pueblo el cumplimiento de las promesas que hiciste a sus padres.\nAcuérdate, Señor, de los huérfanos, de las viudas, de los esposos que viven separados y de todos nuestros hermanos abandonados,\n- y no permitas que vivan en la soledad, los que fueron reconciliados por la muerte de tu Hijo.\nSe pueden añadir algunas intenciones libres\nTú que llamaste a ti a Esteban, el cual confesó que Jesús estaba a tu derecha,\n- recibe a nuestros hermanos difuntos que esperaron tu venida en la fe y en el amor.\nDigamos ahora todos juntos la oración que nos enseñó el mismo Jesús:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Miércoles de la IV Semana de Pascua · Santa Catalina de Siena",
@@ -4732,7 +4751,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, este sacrificio de salvación que te ofrecemos en la conmemoración de santa Catalina, para que, instruidos por sus enseñanzas, podamos darte gracias con mayor fervor a ti, único Dios verdadero. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Cfr. Jn 1, 7\nSi caminamos en la luz, como Dios es luz, estamos unidos unos con otros, y la sangre de Jesucristo, su Hijo, nos purifica de todo pecado. Aleluya.",
     "oracion_comunion": "Concede, Señor, la vida eterna a quienes has alimentado en esta mesa celestial, la cual sostuvo la vida temporal de santa Catalina. Por Jesucristo, nuestro Señor.\n30 jueves\nBlanco\nFERIA DE PASCUA o SAN PÍO V, Papa,\nMR pp. 704 y 894 [723 y 933] / Lecc. I p. 908",
-    "reflexion_homiletica": "El pasaje pertenece al final de la primera mitad del Evangelio de san Juan o “libro de los signos”, que concluye constatando la absoluta incredulidad de los judíos. Este porfiado repudio ya nos había sido descrito en su muy elaborado prólogo (Cfr. Jn 1, 11-12), del que se retoman aquí dos temas que están en mutua relación: la «luz» y la «palabra». Creer en Cristo es más que una declaración externa e incluso más que una simple disposición interna. Es una adhesión incondicional a su persona y una entrega total a su causa, fruto de un encuentro personal con Él."
+    "reflexion_homiletica": "El pasaje pertenece al final de la primera mitad del Evangelio de san Juan o “libro de los signos”, que concluye constatando la absoluta incredulidad de los judíos. Este porfiado repudio ya nos había sido descrito en su muy elaborado prólogo (Cfr. Jn 1, 11-12), del que se retoman aquí dos temas que están en mutua relación: la «luz» y la «palabra». Creer en Cristo es más que una declaración externa e incluso más que una simple disposición interna. Es una adhesión incondicional a su persona y una entrega total a su causa, fruto de un encuentro personal con Él.",
+    "monicion_entrada": "Bienvenidos, hermanos y hermanas, a esta celebración donde, en la luz de la Pascua, contemplamos a Cristo como la Luz del mundo y a su Iglesia, enviada por el Espíritu, para proclamar su salvación. Como Saulo y Bernabé fueron enviados, así el Padre nos revela en Jesús su voluntad de vida eterna, disipando toda oscuridad. Reconociendo humildemente nuestras propias sombras ante esta luz pascual, acerquémonos con gozo a la misericordia del Señor que nos salva."
   },
   "2026-04-30": {
     "fecha": "2026-04-30",
@@ -4804,8 +4824,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "No es el discípulo más que el maestro; le basta al discípulo estar al mismo nivel de su maestro. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nNo es el discípulo más que el maestro; le basta al discípulo estar al mismo nivel de su maestro. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos  confiados  a  Dios  Padre,  que  quiso  que  Cristo  fuera  laprimicia  de  la  resurrección  de los  hombres,  y  aclamémoslo,diciendo:\nR.\nQue el Señor Jesús sea nuestra vida.\nTú  que  por  la  columna  de  fuego  iluminaste  a  tu  pueblo  en  eldesierto,\nR.\nilumina hoy con la resurrección de Cristo el día que empezamos.\nTú que por la voz de Moisés adoctrinaste a tu pueblo en el Sinaí,\nR.\nhaz que Cristo, por su resurrección, sea hoy palabra de vida para nosotros.\nTú  que  con  el  maná  alimentaste  a  tu  pueblo  peregrino  en  eldesierto,\nR.\nhaz que Cristo, por su resurrección, sea durante este día pan de vida.\nTú que por el agua de la roca diste de beber a tu puebloen el desierto,\nR.\npor la resurrección de tu Hijo danos hoy parte en tu Espíritu devida.\nSe pueden añadir algunas intenciones libres\nPor Jesús hemos sido hechos hijos de Dios; por eso nos atrevemos a decir:\nPadre nuestro..."
     },
@@ -4828,8 +4848,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Yo soy el Pastor de las ovejas; yo he venido para que tengan vida, y que la tengan en abundancia. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nYo soy el Pastor de las ovejas; yo he venido para que tengan vida, y que la tengan en abundancia. Aleluya.\nAlabemos   y glorifiquemos a Cristo, a quien Dios Padre constituyó fundamento   de nuestra esperanza y primicia de la humanidad resucitada, y   aclamémoslo suplicantes:\n- Rey de la gloria, escúchanos.\nSeñor   Jesús, tú que, por tu propia sangre y por tu   resurrección, penetraste en el santuario de Dios,\n- llévanos contigo   al reino del Padre.\nTú que, por tu resurrección,   robusteciste la fe de tus discípulos y los enviaste a   anunciar el Evangelio al mundo,\n- haz que los obispos   y presbíteros sean fieles heraldos de tu Evangelio.\nTú   que, por tu resurrección, eres nuestra reconciliación y nuestra paz,\n- haz que todos los bautizados vivan en la unidad   de una sola fe y de un solo amor.\nTú que, por tu resurrección, diste la salud al tullido   del templo,\n- mira con bondad a los enfermos y   manifiesta en ellos tu gloria.\nSe pueden añadir algunas intenciones libres\nTú que, por tu resurrección, fuiste constituido primogénito   de los muertos que resucitan,\n- haz que los difuntos que   en ti creyeron y esperaron participen de tu gloria.\nTerminemos   nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "esqueleto_ordinario": [
@@ -4949,7 +4969,8 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, este sacrificio que, para tu gloria, tu pueblo ofrece en honor de san Pío V, y concédenos alcanzar la eterna salvación. Por Jesucristo, nuestro Señor.",
     "antifona_comunion": "Cfr. Jn 10, 11\nEl buen Pastor da la vida por sus ovejas. Aleluya.",
     "oracion_comunion": "Señor, Dios nuestro, los sacramentos que hemos recibido fortalezcan en nosotros el fuego de la caridad que encendió con ímpetu a Pío V y lo llevó a entregarse siempre por tu Iglesia. Por Jesucristo, nuestro Señor.",
-    "reflexion_homiletica": "El Dios que Jesús nos revela en su persona no es un Dios prepotente y dominador, sino más bien un Dios «compasivo», que vive, que sufre y que muere en un gesto de amor a los suyos. Jesús, el “hombre para los demás”, ha llevado al extremo los"
+    "reflexion_homiletica": "El Dios que Jesús nos revela en su persona no es un Dios prepotente y dominador, sino más bien un Dios «compasivo», que vive, que sufre y que muere en un gesto de amor a los suyos. Jesús, el “hombre para los demás”, ha llevado al extremo los",
+    "monicion_entrada": "Hermanos, en este tiempo pascual de gozo, la Palabra nos revela el cumplimiento del plan salvífico de Dios en Cristo, el Enviado, y nos invita a acoger a quienes Él nos manda. Con la certeza de su Resurrección, dispongámonos a celebrar estos misterios, abriendo el corazón a la gracia del perdón que nos renueva."
   },
   "2026-05-24": {
     "fecha": "2026-05-24",
@@ -5141,7 +5162,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, bienvenidos a esta Eucaristía. En este tiempo pascual, que aún resplandece con la victoria de Cristo, el Espíritu Santo se nos revela como el don que nos capacita para la misión. Las lecturas de hoy nos muestran cómo el Resucitado nos envía a anunciar sus maravillas y a perdonar los pecados, superando toda barrera. Con la alegría que brota de su presencia, dispongamos nuestros corazones a la conversión, confiados en el Espíritu que nos purifica y nos une."
   },
   "2026-05-25": {
     "fecha": "2026-05-25",
@@ -5340,7 +5362,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Hermanos y hermanas, bienvenidos a esta Eucaristía en el tiempo pascual. La Palabra de hoy nos invita a contemplar el misterio de la Iglesia, nacida del costado abierto de Cristo en la Cruz y congregada con María en oración perseverante. En la alegría de la Resurrección, que transforma todo dolor en esperanza, reconozcamos nuestras faltas con confianza en la misericordia divina. Abramos nuestros corazones al perdón para celebrar dignamente estos sagrados misterios."
   },
   "2026-04-15": {
     "fecha": "2026-04-15",
@@ -5420,8 +5443,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "Tanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nTanto amó Dios al mundo que le entregó su Hijo único, para que todo el que crea en él no perezca, sino que tenga vida eterna. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Dirijámonos a Dios,   que quiso manifestar a Jesús resucitado a los apóstoles, y   digámosle suplicantes:\nR.\nIlumínanos, Señor, con la claridad de tu Cristo.\nSeñor, fuente de toda luz, te aclamamos con acción   de gracias en esta mañana, porque nos has llamado   a participar de tu luz admirable\nR.\ny nos has querido   dar la salvación.\nHaz, Señor, que la fuerza del   Espíritu Santo nos purifique y nos fortalezca,\nR.\npara que   con nuestro trabajo hagamos más humana la vida de los   hombres.\nHaz que nos entreguemos de tal modo al servicio de nuestros hermanos,\nR.\nque logremos hacer de la   familia humana una ofrenda agradable a tus ojos.\nLlénanos, desde el principio de este nuevo día, de tu misericordia,\nR.\npara que en toda nuestra jornada nos gocemos en   tu alabanza.\nSe pueden añadir algunas intenciones libres\nConcluyamos  nuestra oración, diciendo juntos las palabras de Jesús, nuestro  maestro:\nPadre nuestro..."
     },
@@ -5444,8 +5467,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "El que obra la verdad viene a la luz y manifiesta que sus obras han sido hechas según Dios. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl que obra la verdad viene a la luz y manifiesta que sus obras han sido hechas según Dios. Aleluya.\nImploremos a Dios Padre, que por la resurrección de su Hijo de entre los muertos nos ha abierto el camino de la vida eterna, y digámosle:\nR.\nPor la victoria de Cristo, salva, Señor, a tus redimidos.\nDios de nuestros padres, que has glorificado a tu Hijo Jesús, resucitándolo de entre los muertos,\nR.\nconvierte nuestros corazones, para que vivamos la nueva vida de tu Hijo resucitado.\nTú que nos has devuelto al Pastor y guardián de nuestras vidas, cuando éramos ovejas descarriados,\nR.\nconsérvanos en fidelidad a tu Evangelio, bajo la guía de los obisposde tu Iglesia.\nTú que elegiste a los primeros discípulos de tu Hijo de entre el pueblo de Israel,\nR.\nrevela a los hijos de este pueblo el cumplimiento de las promesas que hiciste a sus padres.\nAcuérdate, Señor, de los huérfanos, de las viudas, de los esposos que viven separados y de todos nuestros hermanos abandonados,\nR.\ny no permitas que vivan en la soledad, los que fueron reconciliados por la muerte de tu Hijo.\nSe pueden añadir algunas intenciones libres\nTú que llamaste a ti a Esteban, el cual confesó que Jesús estaba a tu derecha,\nR.\nrecibe a nuestros hermanos difuntos que esperaron tu venida en la fe y en el amor.\nDigamos ahora todos juntos la oración que nos enseñó el mismo Jesús:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Miércoles de la II semana de Pascua",
@@ -5523,7 +5546,8 @@ window.liturgiaData = {
     "oracion_comunion": "Señor y Dios nuestro, escucha nuestras oraciones, para que la participación en los sacramentos de nuestra redención nos ayude en la vida presente y nos alcance las alegrías eternas. Por Jesucristo, nuestro Señor.\n15 miércoles\nBlanco\nFERIA DE PASCUA",
     "antifona_entrada": "Cfr. Sal 17, 50; 21, 23\nTe alabaré, Señor, ante las naciones y anunciaré tu nombre a mis hermanos. Aleluya.",
     "guia_reflexion": "La oferta universal de salvación por parte de Dios tiene un motivo y una finalidad: amar al hombre sin reservas ni medidas. Cristo es el gran signo o sacramento de ese amor del Padre",
-    "reflexion_homiletica": "La oferta universal de salvación por parte de Dios tiene un motivo y una finalidad: amar al hombre sin reservas ni medidas. Cristo es el gran signo o sacramento de ese amor del Padre"
+    "reflexion_homiletica": "La oferta universal de salvación por parte de Dios tiene un motivo y una finalidad: amar al hombre sin reservas ni medidas. Cristo es el gran signo o sacramento de ese amor del Padre",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Palabra de Dios nos ilumina con la certeza de su amor liberador. Como los apóstoles, que audazmente proclaman la vida nueva tras ser liberados, somos invitados a acoger la luz de Cristo que nos salva. Reconozcamos con gozo nuestras sombras, para que, purificados por su misericordia, nuestras vidas reflejen la verdad de Dios."
   },
   "2026-04-16": {
     "fecha": "2026-04-16",
@@ -5572,8 +5596,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.\nV. El que por nosotros colgó del madero.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. El Señor ha resucitado del sepulcro. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "El Padre ama al Hijo y ha puesto en sus manos todas las cosas. Aleluya.",
-        "texto": "Bendito sea el Señor, Dios de Israel,\n\nporque ha visitado y redimido a su pueblo,\n\nsuscitándonos una fuerza de salvación\n\nen la casa de David, su siervo,\n\nsegún lo había predicho desde antiguo\n\npor boca de sus santos profetas.\n\nEs la salvación que nos libra de nuestros enemigos\n\ny de la mano de todos los que nos odian;\n\nha realizado así la misericordia que tuvo con\n\nnuestros padres,\n\nrecordando su santa alianza\n\ny el juramento que juró a nuestro padre Abraham.\n\nPara concedernos que, libres de temor,\n\narrancados de la mano de los enemigos,\n\nle sirvamos con santidad y justicia,\n\nen su presencia, todos nuestros días.\n\nY a ti, niño, te llamarán profeta del Altísimo,\n\nporque irás delante del Señor\n\na preparar sus caminos,\n\nanunciando a su pueblo la salvación,\n\nel perdón de sus pecados.\n\nPor la entrañable misericordia de nuestro Dios,\n\nnos visitará el sol que nace de lo alto,\n\npara iluminar a los que viven en tiniebla\n\ny en sombra de muerte,\n\npara guiar nuestros pasos\n\npor el camino de la paz.\n\nSe dice:\n\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\n\nSe puede repetir la antífona:\n\nEl Padre ama al Hijo y ha puesto en sus manos todas las cosas. Aleluya."
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Bendito sea el Señor, Dios de Israel...\n(Cántico de Zacarías)"
       },
       "preces": "Oremos  confiados  a  Dios  Padre,  que  quiso  que  Cristo  fuera  laprimicia  de  la  resurrección  de los  hombres,  y  aclamémoslo, diciendo:\nR.\nQue el Señor Jesús sea nuestra vida.\nTú  que  por  la  columna  de  fuego  iluminaste  a  tu  pueblo  en  eldesierto,\nR.\nilumina hoy con la resurrección de Cristo el día que empezamos.\nTú que por la voz de Moisés adoctrinaste a tu pueblo en el Sinaí,\nR.\nhaz que Cristo, por su resurrección, sea hoy palabra de vida para nosotros.\nTú  que  con  el  maná  alimentaste  a  tu  pueblo  peregrino  en  eldesierto,\nR.\nhaz que Cristo, por su resurrección, sea durante este día nuestro pan de vida.\nTú que por el agua de la roca diste de beber a tu pueblo en el desierto,\nR.\npor la resurrección de tu Hijo danos hoy parte en tu Espíritu de vida.\nSe pueden añadir algunas intenciones libres\nPor Jesús hemos sido hechos hijos de Dios; por eso nos atrevemos a decir:\nPadre nuestro..."
     },
@@ -5596,8 +5620,8 @@ window.liturgiaData = {
       },
       "responsorio_breve": "V. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.\nV. Al ver al Señor.\nR. Aleluya, aleluya.\nV. Gloria al Padre, y al Hijo, y al Espíritu Santo.\nR. Los discípulos se llenaron de alegría. Aleluya, aleluya.",
       "cantico_evangelico": {
-        "antifona": "El que tiene fe en el Hijo tiene la vida eterna. Aleluya.\nProclama mi alma la grandeza del Señor,\nse alegra mi espíritu en Dios mi salvador;\nporque ha mirado la humillación de su esclava.\nDesde ahora me felicitarán todas las generaciones,\nporque el Poderoso ha hecho obras grandes por mí:\nsu nombre es santo\ny su misericordia llega a sus fieles\nde generación en generación.\nÉl hace proezas con su brazo:\ndispersa a los soberbios de corazón,\nderriba del trono a los poderosos\ny enaltece a los humildes,\na los hambrientos los colma de bienes\ny a los ricos los despide vacíos.\nAuxilia a Israel, su siervo,\nacordándose de su misericordia\n—como lo había prometido a nuestros padres—\nen favor de Abraham y su descendencia por siempre.\nSe dice:\nGloria al Padre al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.\nSe puede repetir la antífona:\nEl que tiene fe en el Hijo tiene la vida eterna. Aleluya.\nAlabemos   y glorifiquemos a Cristo, a quien Dios Padre constituyó fundamento   de nuestra esperanza y primicia de la humanidad resucitada, y   aclamémoslo suplicantes:\nR.\nRey de la gloria, escúchanos.\nSeñor   Jesús, tú que, por tu propia sangre y por tu   resurrección, penetraste en el santuario de Dios,\nR.\nllévanos contigo   al reino del Padre.\nTú que, por tu resurrección,   robusteciste la fe de tus discípulos y los enviaste a   anunciar el Evangelio al mundo,\nR.\nhaz que los obispos   y presbíteros sean fieles heraldos de tu Evangelio.\nTú que, por tu resurrección, eres nuestra reconciliación y nuestra paz,\nR.\nhaz que todos los bautizados vivan en la unidad   de una sola fe y de un solo amor.\nTú que, por tu resurrección, diste la salud al tullido   del templo,\nR.\nmira con bondad a los enfermos y   manifiesta en ellos tu gloria.\nSe pueden añadir algunas intenciones libres\nTú que, por tu resurrección, fuiste constituido primogénito   de los muertos que resucitan,\nR.\nhaz que los difuntos que   en ti creyeron y esperaron participen de tu gloria.\nTerminemos   nuestra oración con las palabras del Señor:\nPadre nuestro...",
-        "texto": ""
+        "antifona": "Antífona propia u ordinaria.",
+        "texto": "Proclama mi alma la grandeza del Señor...\n(Cántico de María)"
       }
     },
     "titulo_celebracion": "Jueves de la II Semana de Pascua",
@@ -5720,7 +5744,8 @@ window.liturgiaData = {
     "oracion_comunion": "Dios todopoderoso y eterno, que, por la resurrección de Cristo, nos has hecho renacer a la vida eterna, multiplica en nosotros el efecto de este sacramento pascual, e infunde en nuestros corazones el vigor que comunica este alimento de salvación. Por Jesucristo, nuestro Señor.",
     "oracion_colecta": "Dios nuestro, que llevaste a cabo el sacrificio pascual para que el mundo obtuviera la salvación, escucha las súplicas de tu pueblo, y haz que, intercediendo por nosotros Cristo, nuestro Pontífice, por su humanidad, que comparte con nosotros, nos reconcilie, y por su divinidad, que lo hace igual a ti, nos perdone. Por nuestro Señor Jesucristo...",
     "guia_reflexion": "En este comentario de san Juan al coloquio de Jesús con Nicodemo, todo parece girar en torno a dos expresiones: «de lo alto» y «dar testimonio». En estas palabras –no fáciles, por cierto, de entender– se presenta un preciado resumen en torno a la persona de Cristo y a la salvación que de Él han de esperar sus seguidores. Creer o no creer, este es el dilema. Vivir o no vivir, este será el resultado.\nAunque el mundo los siente en el banquillo de los acusados, ellos saben que la victoria está asegurada. La opción por la increencia tendrá, por supuesto, sus muy diversas consecuencias.",
-    "reflexion_homiletica": "En este comentario de san Juan al coloquio de Jesús con Nicodemo, todo parece girar en torno a dos expresiones: «de lo alto» y «dar testimonio». En estas palabras –no fáciles, por cierto, de entender– se presenta un preciado resumen en torno a la persona de Cristo y a la salvación que de Él han de esperar sus seguidores. Creer o no creer, este es el dilema. Vivir o no vivir, este será el resultado.\nAunque el mundo los siente en el banquillo de los acusados, ellos saben que la victoria está asegurada. La opción por la increencia tendrá, por supuesto, sus muy diversas consecuencias."
+    "reflexion_homiletica": "En este comentario de san Juan al coloquio de Jesús con Nicodemo, todo parece girar en torno a dos expresiones: «de lo alto» y «dar testimonio». En estas palabras –no fáciles, por cierto, de entender– se presenta un preciado resumen en torno a la persona de Cristo y a la salvación que de Él han de esperar sus seguidores. Creer o no creer, este es el dilema. Vivir o no vivir, este será el resultado.\nAunque el mundo los siente en el banquillo de los acusados, ellos saben que la victoria está asegurada. La opción por la increencia tendrá, por supuesto, sus muy diversas consecuencias.",
+    "monicion_entrada": "Queridos hermanos, en esta Pascua, la Palabra nos revela a Jesús, el enviado del Padre que viene de lo alto para ofrecernos la vida eterna, y nos llama a ser sus testigos por el Espíritu Santo. Reconozcamos con alegría la verdad de su testimonio y la inmensidad de su amor. Dispongamos ahora nuestros corazones a la conversión, para acoger dignamente la vida nueva que Él nos regala."
   },
   "2026-05-01": {
     "fecha": "2026-05-01",
@@ -5919,7 +5944,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Iglesia nos invita a celebrar con gozo la promesa cumplida de Dios: la resurrección de Jesús, nuestro Camino, Verdad y Vida. Él nos asegura hoy que va a prepararnos un lugar junto al Padre, disipando toda inquietud y llamándonos a una fe inquebrantable. Con esta certeza pascual, abramos el corazón a su gracia, reconociendo nuestras fragilidades para que, purificados, podamos seguirle hacia la plenitud de la vida."
   },
   "2026-05-02": {
     "fecha": "2026-05-02",
@@ -6118,7 +6144,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que celebra la victoria de Cristo, la Palabra nos revela hoy a Jesús como el rostro visible del Padre y el gozo del Espíritu que impulsa la misión de la Iglesia. Acogiendo esta luz que se extiende hasta los confines de la tierra, somos invitados a reconocer con alegría y esperanza nuestras faltas. Que el Señor resucitado nos purifique y renueve para ser sus testigos."
   },
   "2026-05-04": {
     "fecha": "2026-05-04",
@@ -6317,7 +6344,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que nos revela la vida nueva en Cristo, la Palabra nos recuerda hoy el Evangelio de la resurrección que nos salva. Jesús, el Camino, la Verdad y la Vida, nos muestra al Padre y nos invita a permanecer en Él para hacer obras aún mayores. Con la alegría de sabernos amados y redimidos, abramos nuestro corazón a su misericordia, pidiéndole perdón por aquello que nos aparta de su luz."
   },
   "2026-05-05": {
     "fecha": "2026-05-05",
@@ -6516,7 +6544,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Bienvenidos, hermanos y hermanas, a esta Eucaristía pascual. En este tiempo de gozo, el Señor Resucitado nos regala su paz, una paz que no es del mundo y que nos capacita para perseverar en la fe y en la misión, como vemos en la vida de los apóstoles. Con el corazón alegre, reconozcamos nuestras faltas para que esta paz divina nos transforme y nos impulse a vivir plenamente su Evangelio."
   },
   "2026-05-06": {
     "fecha": "2026-05-06",
@@ -6715,7 +6744,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Hermanos y hermanas, bienvenidos a esta Eucaristía en el corazón de la Pascua. Hoy, la Iglesia naciente en Hechos discierne cómo vivir y extender la gracia del Resucitado, mientras Jesús nos urge en el Evangelio a permanecer en Él, la verdadera vid, para dar fruto abundante. Con gozo y esperanza, reconozcamos que el Padre nos poda para que, purificados, demos más fruto, y pidamos perdón por aquello que nos aparta de su amor."
   },
   "2026-05-07": {
     "fecha": "2026-05-07",
@@ -6914,7 +6944,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos y hermanas, bienvenidos. En este tiempo pascual, la Palabra nos invita a gozar de la libertad de la gracia de Cristo Resucitado, que derriba todo muro y nos llama a permanecer en su amor para una alegría plena. Con esta gozosa certeza de ser amados y liberados, abramos nuestros corazones y reconozcamos humildemente nuestras faltas ante el Señor."
   },
   "2026-05-08": {
     "fecha": "2026-05-08",
@@ -7113,7 +7144,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Hermanos y hermanas, bienvenidos a esta Eucaristía. En este tiempo pascual, la Iglesia nos invita a vivir la libertad y la alegría del Espíritu, que nos guía a la esencia de la vida cristiana: el amor. Como los primeros cristianos se regocijaron en la libertad de las cargas, así Cristo nos llama amigos, no siervos, para que nos amemos unos a otros como Él nos amó, dando fruto abundante. Reconozcamos con gozo nuestras faltas ante este amor inmenso, para que, purificados, podamos celebrar dignamente los misterios de nuestra fe."
   },
   "2026-05-09": {
     "fecha": "2026-05-09",
@@ -7305,7 +7337,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Hermanos y hermanas, en este tiempo de Pascua, la luz del Resucitado nos congrega para escuchar su Palabra. Hoy, las lecturas nos revelan el camino del discípulo, llamado a ser dócil al Espíritu Santo y a vivir, por elección divina, en el mundo pero no del mundo, afrontando con gozo los desafíos de la fe. Con esta misma alegría pascual, purifiquemos nuestros corazones y pidamos al Señor la gracia de su perdón."
   },
   "2026-05-11": {
     "fecha": "2026-05-11",
@@ -7504,7 +7537,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en esta Pascua que nos inunda con la luz del Resucitado, la Palabra nos revela cómo el Espíritu Santo prepara los corazones para acoger la verdad y dar testimonio. Hoy, el Espíritu Consolador prometido por Jesús abre los corazones, como el de Lidia, para que seamos testigos valientes de su amor. Con esta certeza de la acción divina en nosotros, abramos nuestros corazones a la gracia, reconociendo con alegría nuestras faltas para que el Señor nos renueve y nos impulse en su misión."
   },
   "2026-05-12": {
     "fecha": "2026-05-12",
@@ -7703,7 +7737,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Palabra nos revela cómo el Espíritu Santo, prometido por Jesús, nos convence de pecado para guiarnos a la fe y la libertad. Como el carcelero de Filipos, somos invitados a una conversión gozosa que brota de creer en el Resucitado. Confiados en esta promesa, reconozcamos ahora con alegría aquello que nos aparta de su amor."
   },
   "2026-05-13": {
     "fecha": "2026-05-13",
@@ -7902,7 +7937,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Palabra nos invita a contemplar al Dios revelado en Cristo Resucitado, a quien Pablo anuncia a los atenienses y cuyo misterio el Espíritu de Verdad nos guía a comprender plenamente. Con la alegría de esta revelación divina, que disipa toda ignorancia, dispongámonos a purificar nuestros corazones. Así, podremos acoger la gracia de una conversión gozosa, celebrando la vida nueva que el Señor nos ofrece."
   },
   "2026-05-14": {
     "fecha": "2026-05-14",
@@ -8094,7 +8130,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Hermanos y hermanas, bienvenidos a esta Eucaristía en el gozo de la Pascua. Hoy, la Palabra nos recuerda que somos elegidos por Cristo para permanecer en su amor, ser sus amigos y testigos de su Resurrección, llamados a dar fruto abundante. Con esta profunda alegría pascual en el corazón, acerquémonos a Él, reconociendo humildemente nuestras faltas para que su misericordia nos purifique y nuestra alegría sea plena en Él."
   },
   "2026-05-15": {
     "fecha": "2026-05-15",
@@ -8293,7 +8330,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que nos inunda de la alegría del Resucitado, la Palabra nos recuerda que toda tristeza se transformará en gozo inquebrantable. Como San Pablo, sostenidos por la presencia del Señor, y como los discípulos, a quienes se les promete una alegría que nadie podrá quitar, estamos llamados a vivir esta esperanza. Confiados en esta victoria pascual, abramos nuestros corazones y, con alegre arrepentimiento, preparemos el alma para acoger al Señor."
   },
   "2026-05-16": {
     "fecha": "2026-05-16",
@@ -8492,7 +8530,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Palabra nos invita a la alegría plena que brota de la oración confiada en el nombre de Jesús, quien nos revela el amor del Padre. Como a Apolo, el Espíritu Santo ilumina nuestra fe para comprender y anunciar con mayor profundidad el misterio de Cristo resucitado. Con esta certeza del amor divino, reconozcamos nuestras faltas, sabiendo que Él nos perdona para que nuestra alegría sea completa."
   },
   "2026-05-18": {
     "fecha": "2026-05-18",
@@ -8691,7 +8730,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos y hermanas, en este tiempo pascual, la Palabra nos ilumina sobre la plenitud del Espíritu que nos capacita para comprender la victoria de Cristo y vivir en su paz, a pesar de las tribulaciones. Con la certeza de que el Padre está siempre con nosotros, como Jesús nos reveló, abramos nuestro corazón al arrepentimiento gozoso. Pidamos al Señor que, por su Espíritu, purifique nuestras vidas y nos dé la fuerza para vencer el mundo."
   },
   "2026-05-19": {
     "fecha": "2026-05-19",
@@ -8890,7 +8930,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que nos llena de esperanza, la Palabra nos invita a contemplar la gloriosa misión de Cristo y la entrega apostólica de San Pablo. Jesús nos revela que la vida eterna es conocer al Padre y a Él, mientras el Apóstol nos exhorta a recibir plenamente el plan de Dios para nuestra salvación. Confiados en esta gracia y en el amor que nos ha sido manifestado, pidamos con gozo al Señor que purifique nuestros corazones para acoger su Palabra y vivir su voluntad."
   },
   "2026-05-20": {
     "fecha": "2026-05-20",
@@ -9089,7 +9130,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos y hermanas, con la alegría de la Pascua que nos renueva, nos reunimos hoy para escuchar la Palabra que nos edifica. Las lecturas nos recuerdan la misión de custodiar la fe en la verdad y la unidad de la Iglesia, tarea que el Señor nos encomienda y por la cual Él mismo oró. Conscientes de nuestras fragilidades al vivir este llamado, abramos nuestros corazones a la gracia de Dios. Con gozo pascual, pidamos perdón por nuestras faltas, para participar plenamente en este misterio de amor."
   },
   "2026-05-21": {
     "fecha": "2026-05-21",
@@ -9288,7 +9330,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos y hermanas, bienvenidos a esta celebración. En el gozo de la Pascua, la Palabra nos invita a la unidad en Cristo Resucitado, escuchando el testimonio de Pablo sobre la resurrección y la profunda oración de Jesús por sus discípulos. Que la gloria del Resucitado nos una en el amor del Padre, y con esta esperanza, reconozcamos con alegría nuestras faltas para celebrar dignamente estos sagrados misterios."
   },
   "2026-05-22": {
     "fecha": "2026-05-22",
@@ -9487,7 +9530,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este gozoso tiempo pascual, la Iglesia nos llama a vivir la nueva vida en Cristo. Hoy, las lecturas nos presentan el amor restaurador del Resucitado que confía su rebaño a Pedro, y el testimonio valiente de Pablo sobre Jesús, que está vivo. Confiados en esta misericordia que nos renueva, reconozcamos con alegría nuestras faltas, para seguirle con un corazón purificado."
   },
   "2026-05-23": {
     "fecha": "2026-05-23",
@@ -9686,7 +9730,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual de gozosa esperanza, el Señor nos llama hoy a un seguimiento libre y personal. Como San Pablo, que aun encadenado proclama con libertad el Reino, y como Pedro, a quien Jesús le dice: \"Tú, sígueme\", somos invitados a centrar nuestra vida en Cristo. Con esta libertad y gozo pascual, dispongamos nuestros corazones a reconocer nuestras faltas, para seguir al Señor con una entrega más plena."
   },
   "2026-05-26": {
     "fecha": "2026-05-26",
@@ -9885,7 +9930,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Bienvenidos, hermanos, a esta Eucaristía, donde la luz de la Pascua nos ilumina la promesa de vida eterna y la llamada a la santidad que hoy nos revelan las Escrituras. Los profetas anhelaron ver la gracia que hoy recibimos, y el Señor nos invita a dejarlo todo para abrazar esa santidad que nos transforma y nos prepara para su gloria. Con la alegría de sabernos herederos de tan grande don, reconozcamos nuestras faltas para que, purificados, celebremos dignamente estos misterios."
   },
   "2026-05-27": {
     "fecha": "2026-05-27",
@@ -10084,7 +10130,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Palabra de Dios nos recuerda que hemos sido rescatados por la sangre preciosa de Cristo, quien, resucitado, nos invita a una vida nueva de amor y servicio. Él, el Hijo del Hombre, no vino a ser servido sino a servir, y nos llama a transformar nuestra búsqueda de gloria en entrega generosa. Reconociendo nuestras faltas y la dificultad de seguir este camino, abramos el corazón con alegría a su gracia que nos purifica y renueva."
   },
   "2026-05-28": {
     "fecha": "2026-05-28",
@@ -10283,7 +10330,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la liturgia nos invita a contemplar el inmenso amor de Cristo que, con un solo sacrificio, nos abrió un camino nuevo y viviente hacia el Padre. Él deseó ardientemente entregarse por nosotros, haciendo perfectos a quienes ha santificado y perdonando para siempre nuestras culpas. Acerquémonos, pues, con sincero corazón a esta mesa, reconociendo nuestras faltas con la alegría de sabernos perdonados y renovados por su misericordia."
   },
   "2026-05-29": {
     "fecha": "2026-05-29",
@@ -10482,7 +10530,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos y hermanas, bienvenidos a esta celebración. En este tiempo pascual, la Palabra nos urge a vivir con la sensatez y el amor que brotan de la Resurrección, purificando nuestros corazones para que den fruto. La Primera Lectura nos recuerda que el amor sepulta una multitud de pecados, mientras el Evangelio nos llama a hacer de nuestro interior una casa de oración. Confiados en la victoria de Cristo sobre el pecado, presentemos con gozo nuestras faltas ante Él."
   },
   "2026-05-30": {
     "fecha": "2026-05-30",
@@ -10569,7 +10618,8 @@ window.liturgiaData = {
     },
     "titulo_celebracion": "Sábado de la IX Semana del Tiempo Ordinario",
     "color": "Verde",
-    "grado": "Feria"
+    "grado": "Feria",
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual que nos inunda de la alegría del Resucitado, nos congregamos para renovar nuestra fe en Aquel que nos da vida y autoridad. La Palabra de hoy nos invita a consolidarnos en la fe recibida y a vivir la misericordia que nos hace testigos gozosos de su amor. Reconozcamos con humildad nuestras faltas, para que, purificados por su gracia, podamos acoger plenamente el don de la vida eterna."
   },
   "2026-05-31": {
     "fecha": "2026-05-31",
@@ -10770,7 +10820,8 @@ window.liturgiaData = {
         "accion": "incluir",
         "motivo": "Obligatorio"
       }
-    ]
+    ],
+    "monicion_entrada": "Queridos hermanos, en este tiempo pascual, la Palabra nos inunda con la revelación del amor insondable de Dios. Él se proclama compasivo y clemente a Moisés, y nos entrega a su Hijo para que tengamos vida eterna. Conscientes de nuestra \"cabeza dura\", pero confiados en su infinita misericordia, dispongamos nuestros corazones a la conversión con gozo."
   },
   "2026-04-05": {
     "fecha": "2026-04-05",
@@ -10915,7 +10966,8 @@ window.liturgiaData = {
     "oracion_colecta": "Dios nuestro, que haces crecer siempre a tu Iglesia dándole nuevos hijos, concédenos la gracia de vivir de acuerdo con la fe que recibimos en el sacramento del bautismo. Por nuestro Señor Jesucristo...",
     "oracion_ofrendas": "Llenos de júbilo por el gozo pascual te ofrecemos, Señor, este sacrificio, mediante el cual admirablemente renace y se nutre tu Iglesia. Por Jesucristo, nuestro Señor.\nPREFACIO I de Pascua: El Misterio Pascual (en este día), p. 499 [500]. En las Plegarias eucarísticas se utilizan los textos propios.",
     "antifona_comunion": "1Cor 5, 7-8\nCristo, nuestro Cordero Pascual, ha sido inmolado. Aleluya. Celebremos, pues, la Pascua, con el pan sin levadura, que es de sinceridad y verdad. Aleluya.",
-    "oracion_comunion": "Dios de bondad, protege paternalmente con amor incansable a tu Iglesia, para que, renovada por los misterios pascuales, pueda llegar a la gloria de la resurrección. Por Jesucristo, nuestro Señor.\nBENDICIÓN SOLEMNE p. 338 [343].\nPara despedir al pueblo, el diácono o, en su ausencia, el mismo sacerdote canta o dice: Anuncien a todos la alegría del Señor resucitado. Vayan en paz, aleluya, aleluya. O bien: Pueden ir en paz, aleluya, aleluya. Todos responden: Demos gracias a Dios, aleluya, aleluya. Esta fórmula de despedida se utiliza durante toda la octava de Pascua.\nDURANTE LA OCTAVA DE PASCUA:\n• Se dice Gloria. • Después del Salmo Responsorial: Secuencia [opcional], Lecc. I p. 208. • Prefacio I de Pascua (en este día), p. 499 [500]. • Si se usa el Canon Romano, se dice Reunidos en comunión, p. 557 [559], y Acepta, Señor, p. 559 [561]. • En las otras Plegarias eucarísticas también se dicen las partes propias para esta Misa. • La despedida puede hacerse como en el día de Pascua, p.\n340 [346].\n6 lunes\nBlanco\nOCTAVA DE PASCUA"
+    "oracion_comunion": "Dios de bondad, protege paternalmente con amor incansable a tu Iglesia, para que, renovada por los misterios pascuales, pueda llegar a la gloria de la resurrección. Por Jesucristo, nuestro Señor.\nBENDICIÓN SOLEMNE p. 338 [343].\nPara despedir al pueblo, el diácono o, en su ausencia, el mismo sacerdote canta o dice: Anuncien a todos la alegría del Señor resucitado. Vayan en paz, aleluya, aleluya. O bien: Pueden ir en paz, aleluya, aleluya. Todos responden: Demos gracias a Dios, aleluya, aleluya. Esta fórmula de despedida se utiliza durante toda la octava de Pascua.\nDURANTE LA OCTAVA DE PASCUA:\n• Se dice Gloria. • Después del Salmo Responsorial: Secuencia [opcional], Lecc. I p. 208. • Prefacio I de Pascua (en este día), p. 499 [500]. • Si se usa el Canon Romano, se dice Reunidos en comunión, p. 557 [559], y Acepta, Señor, p. 559 [561]. • En las otras Plegarias eucarísticas también se dicen las partes propias para esta Misa. • La despedida puede hacerse como en el día de Pascua, p.\n340 [346].\n6 lunes\nBlanco\nOCTAVA DE PASCUA",
+    "monicion_entrada": "Hermanos y hermanas, bienvenidos a esta celebración, donde la alegría pascual nos envuelve al recordar que somos testigos del Resucitado. Como los apóstoles que comieron y bebieron con Él, se nos ofrece hoy el perdón de los pecados y la gracia de una vida nueva. Con el corazón ardiente por su presencia, abramos nuestra alma a su misericordia, para celebrar dignamente estos sagrados misterios."
   },
   "2026-04-06": {
     "fecha": "2026-04-06",
@@ -11058,7 +11110,8 @@ window.liturgiaData = {
     "antifona_comunion": "Rom 6, 9\nCristo, una vez resucitado de entre los muertos, ya no morirá nunca. La muerte ya no tiene dominio sobre él.\nAleluya.",
     "oracion_comunion": "Que la gracia de este sacramento pascual fructifique, Señor, en nuestros corazones para que podamos corresponder a los dones de tu amor, que nos abrió el camino de la salvación eterna. Por Jesucristo, nuestro Señor.",
     "antifona_entrada": "Cfr. Sir 15, 3-4\nEl Señor les dará a beber el agua de la sabiduría; se apoyarán en él y no vacilarán. Él los llenará de gloria eternamente. Aleluya.",
-    "reflexion_homiletica": "El pasaje evangélico contiene dos episodios relacionados con la Resurrección del Señor. El primero es la sorpresiva y reconfortante aparición de Jesús a María Magdalena y a María la de Santiago, las primeras en visitar su sepulcro. El segundo es el que deja constancia del pretendido “invento” acerca del «sepulcro vacío», al comprar la complicidad de los guardias. En esta reseña –exclusiva de san Mateo– se trasluce el clima conflictivo entre la vieja Sinagoga y la joven Iglesia. Los discípulos, por su parte, no cesarán de proclamar con valentía esta tan sorprendente y trascendental Noticia."
+    "reflexion_homiletica": "El pasaje evangélico contiene dos episodios relacionados con la Resurrección del Señor. El primero es la sorpresiva y reconfortante aparición de Jesús a María Magdalena y a María la de Santiago, las primeras en visitar su sepulcro. El segundo es el que deja constancia del pretendido “invento” acerca del «sepulcro vacío», al comprar la complicidad de los guardias. En esta reseña –exclusiva de san Mateo– se trasluce el clima conflictivo entre la vieja Sinagoga y la joven Iglesia. Los discípulos, por su parte, no cesarán de proclamar con valentía esta tan sorprendente y trascendental Noticia.",
+    "monicion_entrada": "Bienvenidos, hermanos y hermanas, en este tiempo pascual donde la alegría de la Resurrección de Cristo inunda nuestros corazones. Hoy, las Escrituras nos invitan a ser testigos de su victoria sobre la muerte y a encontrarnos con el Resucitado que nos envía a anunciar su vida nueva. Con la misma alegría y reverencia de las mujeres ante el sepulcro vacío, dispongamos nuestros corazones a la conversión, pidiendo perdón por aquello que nos impide ser plenos portadores de su luz."
   },
   "2026-04-07": {
     "fecha": "2026-04-07",
@@ -11201,7 +11254,8 @@ window.liturgiaData = {
     "antifona_comunion": "Col 3, 1-2\nPuesto que ustedes han resucitado con Cristo, busquen los bienes del cielo, donde Cristo está sentado a la derecha de Dios; pongan todo el corazón en los bienes del cielo, no en los de la tierra. Aleluya.",
     "oracion_comunion": "Escúchanos, Dios todopoderoso, y, ya que colmaste los corazones de tus hijos con la gracia incomparable del bautismo, prepáranos para alcanzar la felicidad eterna. Por Jesucristo, nuestro Señor.\n8 miércoles\nBlanco\nOCTAVA DE PASCUA",
     "antifona_entrada": "Mt 25, 34\nVengan, benditos de mi Padre, tomen posesión del Reino preparado para ustedes desde la creación del mundo. Aleluya.",
-    "reflexion_homiletica": "El evangelio narra la aparición del Señor resucitado a María Magdalena, según la versión de san Juan. Efectivamente, María buscaba entre los muertos al que estaba vivo. Por eso su desconsuelo se cambiará en gozo (Cfr. Jer 31, 13; Jn 16, 20). Oír su propio nombre de los labios de Aquel a quien ella tomaba por el «jardinero», le despertó el sentido de una nueva «misión». A través de sus lágrimas consiguió ver al Señor, a quien tanto quería. El Espíritu de Cristo resucitado le iluminó los ojos y le cambió la vida, porque el lugar donde Dios habita es siempre el «corazón que ama» (San Agustín)."
+    "reflexion_homiletica": "El evangelio narra la aparición del Señor resucitado a María Magdalena, según la versión de san Juan. Efectivamente, María buscaba entre los muertos al que estaba vivo. Por eso su desconsuelo se cambiará en gozo (Cfr. Jer 31, 13; Jn 16, 20). Oír su propio nombre de los labios de Aquel a quien ella tomaba por el «jardinero», le despertó el sentido de una nueva «misión». A través de sus lágrimas consiguió ver al Señor, a quien tanto quería. El Espíritu de Cristo resucitado le iluminó los ojos y le cambió la vida, porque el lugar donde Dios habita es siempre el «corazón que ama» (San Agustín).",
+    "monicion_entrada": "Hermanos y hermanas, sean bienvenidos a la mesa del Señor. En este gozoso tiempo pascual, la Palabra nos revela el encuentro transformador con el Resucitado, que nos impulsa, como a María Magdalena y a los primeros creyentes, a una conversión que abre el corazón al don del Espíritu. Con la certeza de su misericordia y la alegría de su victoria, preparemos nuestros corazones para confesar nuestras faltas y ser plenamente renovados en Él."
   },
   "2026-04-01": {
     "liturgia_palabra": {
@@ -11214,6 +11268,7 @@ window.liturgiaData = {
     "oracion_ofrendas": "Recibe, Señor, los dones que te presentamos y concédenos que la pasión de tu Hijo, que celebramos en este sacramento, fructifique plenamente en nuestra vida. Por Jesucristo, nuestro Señor.\nPrefacio II de la Pasión del Señor, p. 498 [499].",
     "antifona_comunion": "Mt 20, 28\nEl Hijo del hombre no ha venido a ser servido, sino a servir, y a dar la vida por la redención de todos.",
     "antifona_entrada": "Cfr. Gal 6, 14\nDebemos gloriarnos en la cruz de nuestro Señor Jesucristo, porque en él está nuestra salvación, nuestra vida y nuestra resurrección, y por él fuimos salvados y redimidos.",
-    "reflexion_homiletica": "Durante la cena Jesús desenmascara las secretas intenciones del traidor, ya que Él, como Señor de la vida y de la muerte, es quien dispondrá de su propia «hora». Pero el Señor no se da por vencido, no pierde la esperanza. Por eso –y aun en estas tristes circunstancias– todavía ensaya una última oferta de amistad en espera de su conversión. Judas, sin embargo, no dio marcha atrás. Ejemplo escalofriante que nos revela la profundidad del corazón humano, capaz de lo más noble, como es el amor y la amistad, lo mismo que de lo más vil, como son el odio y la traición."
+    "reflexion_homiletica": "Durante la cena Jesús desenmascara las secretas intenciones del traidor, ya que Él, como Señor de la vida y de la muerte, es quien dispondrá de su propia «hora». Pero el Señor no se da por vencido, no pierde la esperanza. Por eso –y aun en estas tristes circunstancias– todavía ensaya una última oferta de amistad en espera de su conversión. Judas, sin embargo, no dio marcha atrás. Ejemplo escalofriante que nos revela la profundidad del corazón humano, capaz de lo más noble, como es el amor y la amistad, lo mismo que de lo más vil, como son el odio y la traición.",
+    "monicion_entrada": "Queridos hermanos, bienvenidos a esta Eucaristía. En estos días santos que nos preparan para la Pascua, el Evangelio nos sumerge en la hora de la entrega de Jesús, confrontándonos con la fragilidad humana ante su amor. Reconociendo nuestras propias sombras y la inmensidad de su misericordia, acerquémonos con gozo a su perdón, que nos renueva y nos invita a la vida plena."
   }
 };

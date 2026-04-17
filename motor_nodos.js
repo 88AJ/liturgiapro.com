@@ -101,7 +101,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
 
     
     if (OFICIO === "Laudes" || OFICIO === "Visperas") {
-        let officeData = data[hora];
+        let officeData = data[OFICIO.toLowerCase()];
         // OGLH 94: La salmodia incluye salmos y el cantico del testamento respectivo
         let salmosNombres = OFICIO === "Laudes" ? ["salmo1", "cantico_at", "salmo2"] : ["salmo1", "salmo2", "cantico_nt"];
         let titulosArray = OFICIO === "Laudes" ? ["Salmo 1", "Cántico del Antiguo Testamento", "Salmo 2"] : ["Salmo 1", "Salmo 2", "Cántico del Nuevo Testamento"];
@@ -444,6 +444,9 @@ function generarDocumentoNodos(data, hora, options = {}) {
     
     bInicial.addTitulo(isEn ? "Entrance Chant" : "Canto de Entrada");
     bInicial.addRubrica(cantos.entrada);
+    if (window.cantosDB && window.cantosDB[cantos.entrada]) {
+        bInicial.addCanto(window.cantosDB[cantos.entrada].letra);
+    }
 
     bInicial.addTitulo(isEn ? "Entrance Antiphon" : "Antífona de Entrada");
     bInicial.addSacerdote(data.antifona_entrada || "Antífona según calendario...");
@@ -457,7 +460,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
 
     if (OFICIO === "Laudes" || OFICIO === "Visperas") {
-        let officeData = data[hora];
+        let officeData = data[OFICIO.toLowerCase()];
         let salmosNombres = OFICIO === "Laudes" ? ["salmo1", "cantico_at", "salmo2"] : ["salmo1", "salmo2", "cantico_nt"];
         let titulosArray = OFICIO === "Laudes" ? ["Salmo 1", "Cántico del Antiguo Testamento", "Salmo 2"] : ["Salmo 1", "Salmo 2", "Cántico del Nuevo Testamento"];
 
@@ -579,7 +582,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     let bPreces = new BloqueLiturgico("preces");
     
     if (OFICIO === "Laudes" || OFICIO === "Visperas") {
-        let officeData = data[hora];
+        let officeData = data[OFICIO.toLowerCase()];
         if (officeData && officeData.cantico_evangelico) {
             let canticoName = OFICIO === "Laudes" ? "Cántico de Zacarías (Benedictus)" : "Cántico de María (Magnificat)";
             bPreces.addSuperTitulo(isEn ? "GOSPEL CANTICLE" : "CÁNTICO EVANGÉLICO (" + OFICIO.toUpperCase() + ")");
@@ -603,10 +606,10 @@ function generarDocumentoNodos(data, hora, options = {}) {
             bPreces.addRubrica((isEn ? "Antiphon: " : "Antífona: ") + officeData.cantico_evangelico.antifona);
         }
     }
-    if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[hora] && data[hora].preces) {
+    if ((OFICIO === "Laudes" || OFICIO === "Visperas") && data[OFICIO.toLowerCase()] && data[OFICIO.toLowerCase()].preces) {
         bPreces.addTitulo(isEn ? "Prayers / Intercessions (" + OFICIO + ")" : "Preces (" + OFICIO + ")");
         bPreces.addRubrica(isEn ? "The Universal Prayer is substituted by the Intercessions of the Liturgy of the Hours." : "Se sustituye la Oración de los Fieles por las preces del Oficio divino.");
-        let ptxt = data[hora].preces;
+        let ptxt = data[OFICIO.toLowerCase()].preces;
         ptxt.split('\n').filter(x=>x.trim()).forEach(l => {
             if(l.startsWith("-") || l.startsWith("—")) bPreces.addMonicion(l);
             else if(l.includes("Te rogamos") || l.includes("Escúchanos")) bPreces.addAsamblea("R. " + l);
@@ -626,6 +629,9 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bEuca.addSuperTitulo(isEn ? "LITURGY OF THE EUCHARIST" : "LITURGIA EUCARÍSTICA");
     bEuca.addTitulo(isEn ? "Offertory Chant" : "Canto de Ofertorio");
     bEuca.addRubrica(cantos.ofertorio);
+    if (window.cantosDB && window.cantosDB[cantos.ofertorio]) {
+        bEuca.addCanto(window.cantosDB[cantos.ofertorio].letra);
+    }
 
     if (checkAccion("preparacion_dones")) {
         let nd = ord.liturgia_eucaristica.preparacion_dones;
@@ -694,6 +700,9 @@ function generarDocumentoNodos(data, hora, options = {}) {
     bComunion.addSacerdote(data.liturgia_eucaristica ? data.liturgia_eucaristica.antifona_comunion : "");
     bComunion.addTitulo(isEn ? "Communion Chant" : "Canto de Comunión");
     bComunion.addRubrica(cantos.comunion);
+    if (window.cantosDB && window.cantosDB[cantos.comunion]) {
+        bComunion.addCanto(window.cantosDB[cantos.comunion].letra);
+    }
 
 
 
@@ -722,6 +731,9 @@ function generarDocumentoNodos(data, hora, options = {}) {
 
     bConclusion.addTitulo(isEn ? "Recessional Chant" : "Canto de Salida");
     bConclusion.addRubrica(cantos.salida);
+    if (window.cantosDB && window.cantosDB[cantos.salida]) {
+        bConclusion.addCanto(window.cantosDB[cantos.salida].letra);
+    }
     SECUENCIA_LITURGICA.push(bConclusion);
 
     // ==========================================

@@ -59,6 +59,11 @@ class BloqueLiturgico {
         return this;
     }
     
+    addCanto(texto) {
+        this.nodos.push(new NodoLiturgico(this.id + '_canto', texto, 'Canto', 'Asamblea', 'Canto'));
+        return this;
+    }
+    
     addGuia(texto) {
         this.nodos.push(new NodoLiturgico(this.id + '_guia', texto, 'Guia', 'Ninguno', 'Fuerte'));
         return this;
@@ -122,6 +127,12 @@ function RENDERIZAR_NODO(nodo) {
         return `<div class="oracion-presidencial" style="text-align:justify; margin-bottom: 15px; margin-top: 10px; line-height: 1.8;">${nodo.texto}</div>\n`;
     } else if (nodo.tipo_texto === 'Proclamacion') {
         return window.formatLectura ? window.formatLectura(nodo.texto) : `<div class="oracion-capitular" style="text-align:justify; line-height: 1.5; margin-bottom: 20px;">${nodo.texto}</div>\n`;
+    } else if (nodo.tipo_texto === 'Canto') {
+        let lineas = nodo.texto.split('\n').map(l => {
+            if (l.trim().startsWith('*')) return `<strong>${l.replace(/\*/g, '')}</strong><br>`;
+            return `${l}<br>`;
+        }).join('');
+        return `<div class="canto-hymn" style="font-family: Georgia, serif; font-style: italic; color: #444; margin: 15px 0; padding-left: 20px; border-left: 2px solid var(--brand-color);">${lineas}</div>\n`;
     } else {
         let t = nodo.texto.trim();
         let prefix = "";
