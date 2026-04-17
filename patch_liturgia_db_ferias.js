@@ -15,6 +15,19 @@ for (let date in feriasData) {
         liturgiaData[date] = {};
     }
     let fData = feriasData[date];
+    
+    // Fix the keys in liturgia_palabra before merging
+    if (fData.liturgia_palabra) {
+        if (fData.liturgia_palabra.primera_lectura) {
+            fData.liturgia_palabra.primera = fData.liturgia_palabra.primera_lectura;
+            delete fData.liturgia_palabra.primera_lectura;
+        }
+        if (fData.liturgia_palabra.salmo_responsorial) {
+            fData.liturgia_palabra.salmo = fData.liturgia_palabra.salmo_responsorial;
+            delete fData.liturgia_palabra.salmo_responsorial;
+        }
+    }
+
     Object.keys(fData).forEach(k => {
         if (k === 'liturgia_palabra' && liturgiaData[date][k]) {
             liturgiaData[date][k] = { ...liturgiaData[date][k], ...fData[k] };
