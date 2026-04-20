@@ -37,7 +37,7 @@ jobs:
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: |
-        python3 automatizador_supremo.py --start $start_date --end $end_date
+        python3 automatizador_supremo.py --start ${{ env.start }} --end ${{ env.end }}
 
     - name: Comitear y Subir nueva DB
       run: |
