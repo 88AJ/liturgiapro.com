@@ -1,0 +1,48 @@
+@media print {
+    html, body {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: none !important;
+    }
+
+    /* Hide UI Elements */
+    .saas-sidebar, .config-panel, .nav-category, .landing-content, .login-box, .padre-pro-toggle, .padre-pro-window {
+        display: none !important;
+    }
+
+    /* Reset structural elements to allow continuous multi-page pagination */
+    .saas-main, .workspace, .preview-panel, .view {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* The actual document container */
+    #pdf-view {
+        position: static !important;
+        display: block !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        visibility: visible !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    .missal-heading, .missal-rubric, .rubric, .cross-mark, .rubrica-sacerdote, .titulo-rito {
+        color: #B20000 !important;
+    }
+}

@@ -856,27 +856,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPdf = document.getElementById('generar-pdf');
     btnPdf.addEventListener('click', () => {
         const element = document.getElementById('pdf-view');
-        
-        const dateStr = currentMode === 'boletin' ? (document.getElementById('bulletin-date') ? document.getElementById('bulletin-date').value : "Desconocida") : (document.getElementById('date-select') ? document.getElementById('date-select').value : "Desconocida");
-        const formatStr = currentMode.toUpperCase();
-        
-        // Configuration for html2pdf
-        const opt = {
-            margin:       0, // Zero margin; we rely on the internal padding of .pdf-container (1in)
-            filename:     `Liturgia_PRO_${formatStr}_${dateStr}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
-            pagebreak:    { mode: ['css', 'legacy'] }
-        };
 
-    // If it's an empty state, don't print
+        // If it's an empty state, don't print
         if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...')) {
             alert("Primero genera un documento usando el Asistente.");
             return;
         }
 
-        html2pdf().set(opt).from(element).save();
+        // We use native print. Native print handles extremely long documents correctly
+        // by preserving vector text and avoiding the 16,384px height limit that crashes 
+        // html2canvas and produces purely blank PDFs.
+        alert("En la siguiente ventana de impresión, asegúrate de seleccionar 'Guardar como PDF' como tu Destino de impresión y marcar la opción 'Imprimir gráficos de fondo' si deseas que se mantengan los colores.");
+        window.print();
     });
 
     // YouTube Controller
