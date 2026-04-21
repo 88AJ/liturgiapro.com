@@ -18,6 +18,52 @@ function cleanReadingText(str) {
     return str.replace(/\s*Palabra\s+de\s+Dios\.?$/i, "").replace(/\s*Palabra\s+del\s+Se[ñn]or\.?$/i, "").trim();
 }
 
+// LÓGICA DE CANTOS FALTANTE
+window.linkCanto = function(nombre) {
+    return "<a href='https://www.youtube.com/results?search_query=" + encodeURIComponent(nombre + " canto catolico") + "' target='_blank' style='color:#b22222; text-decoration:none;'>🎵 " + nombre + "</a>";
+};
+
+window.obtenerCantosPorTiempo = function(tiempoStr, isEn) {
+    if (isEn) {
+        return {
+            entrada: window.linkCanto('Here I Am Lord'),
+            ofertorio: window.linkCanto('Saber que vendrás'),
+            comunion: window.linkCanto('On Eagles Wings'),
+            salida: window.linkCanto('Demos Gracias al Señor') 
+        };
+    }
+    const t = tiempoStr ? tiempoStr.toLowerCase() : "";
+    if (t.includes('cuaresma')) {
+        return {
+            entrada: window.linkCanto('Hacia ti morada santa'),
+            ofertorio: window.linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: window.linkCanto('Pequeñas aclaraciones'),
+            salida: window.linkCanto('Silencio')
+        };
+    } else if (t.includes('pascua')) {
+        return {
+            entrada: window.linkCanto('El Señor Resucitó, Aleluya'),
+            ofertorio: window.linkCanto('Te ofrecemos Señor nuestra juventud'),
+            comunion: window.linkCanto('Pescador de Hombres'),
+            salida: window.linkCanto('Reina del Cielo Alégrate')
+        };
+    } else if (t.includes('adviento')) {
+        return {
+            entrada: window.linkCanto('Ven, Ven, Señor no tardes'),
+            ofertorio: window.linkCanto('Saber que vendrás'),
+            comunion: window.linkCanto('Un pueblo que camina'),
+            salida: window.linkCanto('Demos Gracias al Señor')
+        };
+    }
+    // Ordinario y por defecto
+    return {
+        entrada: window.linkCanto('Juntos como hermanos'),
+        ofertorio: window.linkCanto('Saber que vendrás'),
+        comunion: window.linkCanto('Pescador de Hombres'),
+        salida: window.linkCanto('Demos Gracias al Señor')
+    };
+};
+
 function generarDocumentoNodosLegacy(data, hora, options = {}) {
     if (!data) return '';
     let isEn = options.isEn === true;
