@@ -377,16 +377,12 @@ body {
     line-height: 1.4;
     color: #111;
     background: #fff;
-    padding: 30px;
-    max-width: 800px;
+    padding: 40px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: justify;
-    /* NLM Master Printer Rules */
-    column-count: 2;
-    column-gap: 8mm;
-    column-fill: balance;
-    column-rule: 1px solid rgba(153, 0, 0, 0.1); 
-    hyphens: none;
+    /* NLM Master Printer Rules - Single Column Layout */
+    hyphens: auto;
 }
 
 /* Configuración de Página para Impresión Doble Cara */
@@ -436,10 +432,9 @@ body {
     color: var(--brand-color);
     font-family: 'Cinzel', serif;
     text-align: center;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    margin-top: 1.8rem;
+    margin-bottom: 1.2rem;
     text-transform: uppercase;
-    column-span: all; /* Detiene las columnas para anclar la sección */
     break-after: avoid; /* Previene títulos huerfanos al final de página */
     page-break-after: avoid;
 }
@@ -718,7 +713,7 @@ body {
 
 
 .pdf-container h2, .pdf-container h3, .pdf-container hr {
-    column-span: all;
+    /* column-span rule removed */
 }
 
 /* Evitar que se partan los bloques feo pero si permitir partir parrafos para no dejar hojas vacias */

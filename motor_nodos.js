@@ -13,6 +13,11 @@ function safeText(field, defaultText) {
     return defaultText;
 }
 
+function cleanReadingText(str) {
+    if (!str) return "";
+    return str.replace(/\s*Palabra\s+de\s+Dios\.?$/i, "").replace(/\s*Palabra\s+del\s+Se[ñn]or\.?$/i, "").trim();
+}
+
 function generarDocumentoNodosLegacy(data, hora, options = {}) {
     if (!data) return '';
     let isEn = options.isEn === true;
@@ -73,6 +78,70 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     let Flag_Oracion_Pueblo = isCuaresma;
 
     const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(TIEMPO_LIT, isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
+
+    if (!IS_MISA && OFICIO) {
+        let bOficio = new BloqueLiturgico(hora);
+        bOficio.addSuperTitulo(OFICIO.toUpperCase());
+        
+        let ofData = data[OFICIO.toLowerCase()];
+        if (ofData) {
+            const renderField = (title, field) => {
+                if (!field) return;
+                bOficio.addTitulo(title);
+                if (typeof field === "object") {
+                    if (field.antifona) bOficio.addRubrica("Antífona: " + field.antifona);
+                    if (field.cita) bOficio.addRubrica(field.cita);
+                    if (field.texto) bOficio.addLectura(field.texto);
+                } else if (typeof field === "string") {
+                    bOficio.addLectura(field);
+                }
+            };
+            
+            renderField("Introducción", ofData.introduccion);
+            renderField("Examen de Conciencia", ofData.examen_conciencia);
+            renderField("Himno", ofData.himno);
+            
+            ["salmo1", "cantico_at", "salmo2", "salmo3", "cantico_nt"].forEach(k => {
+                let s = ofData[k];
+                if (s) {
+                    let title = k.toUpperCase().replace("_", " ");
+                    bOficio.addTitulo(title);
+                    if (s.antifona) bOficio.addRubrica("Antífona: " + s.antifona);
+                    if (s.cita) bOficio.addRubrica(s.cita);
+                    if (s.texto) {
+                        bOficio.addLectura(s.texto);
+                        bOficio.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+                        bOficio.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+                        if (s.antifona) bOficio.addRubrica("Antífona: " + s.antifona);
+                    }
+                }
+            });
+
+            renderField("Lectura Breve", ofData.lectura_breve);
+            renderField("Responsorio Breve", ofData.responsorio_breve || ofData.responsorio);
+            renderField("Cántico Evangélico", ofData.cantico_evangelico);
+            renderField("Preces", ofData.preces);
+            
+            if (OFICIO !== "Completas" && OFICIO !== "Intermedia" && OFICIO !== "Oficio") {
+                bOficio.addTitulo("Padrenuestro");
+                bOficio.addAsamblea("Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal.");
+            }
+            
+            bOficio.addTitulo("Oración Final");
+            let orFinal = ofData.oracion || data.oracion_colecta || "";
+            if (typeof orFinal === "object") orFinal = orFinal.texto || "";
+            bOficio.addCapitular("Oremos. " + orFinal);
+            bOficio.addAsamblea("Amén.");
+            
+            bOficio.addTitulo("Conclusión");
+            bOficio.addDialogo("El Señor nos bendiga, nos guarde de todo mal y nos lleve a la vida eterna.", "Amén.");
+        } else {
+             bOficio.addRubrica(`(No se encontró información para ${OFICIO} en la base de datos)`);
+        }
+        
+        SECUENCIA_LITURGICA.push(bOficio);
+        return SECUENCIA_LITURGICA.map(b => RENDERIZAR_BLOQUE(b)).join("");
+    }
 
     // BLOQUE A: RITOS INICIALES
     let bInicial = new BloqueLiturgico("ritos_iniciales");
@@ -182,7 +251,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     let r1 = lp.primera_lectura || { cita: "Primera Lectura", texto: "[No disponible]" };
     bPalabra.addTitulo(isEn ? "First Reading" : "Primera Lectura");
     bPalabra.addRubrica(r1.cita);
-    bPalabra.addSacerdote(r1.texto);
+    bPalabra.addSacerdote(cleanReadingText(r1.texto));
     bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
 
     let sr = lp.salmo_responsorial || { cita: "Salmo", respuesta: "R.", texto: "..." };
@@ -195,7 +264,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
         let r2 = lp.segunda_lectura;
         bPalabra.addTitulo(isEn ? "Second Reading" : "Segunda Lectura");
         bPalabra.addRubrica(r2.cita);
-        bPalabra.addSacerdote(r2.texto);
+        bPalabra.addSacerdote(cleanReadingText(r2.texto));
         bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
     }
 
@@ -215,7 +284,7 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
     let ev = lp.evangelio || { cita: "Evangelio", texto: "[Evangelio no disponible]" };
     bPalabra.addTitulo(isEn ? "Gospel" : "Evangelio");
     bPalabra.addRubrica("<span class=\"cross-mark\">☩</span> " + ev.cita);
-    bPalabra.addSacerdote(ev.texto);
+    bPalabra.addSacerdote(cleanReadingText(ev.texto));
     bPalabra.addDialogo(isEn ? "The Gospel of the Lord." : "Palabra del Señor.", isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús.");
     
     bPalabra.addTitulo(isEn ? "Homily" : "Homilía");
@@ -423,6 +492,70 @@ function generarDocumentoNodos(data, hora, options = {}) {
     }
     SECUENCIA_LITURGICA.push(bHeader);
 
+    if (!IS_MISA && OFICIO) {
+        let bOficio = new BloqueLiturgico(hora);
+        bOficio.addSuperTitulo(OFICIO.toUpperCase());
+        
+        let ofData = data[OFICIO.toLowerCase()];
+        if (ofData) {
+            const renderField = (title, field) => {
+                if (!field) return;
+                bOficio.addTitulo(title);
+                if (typeof field === "object") {
+                    if (field.antifona) bOficio.addRubrica("Antífona: " + field.antifona);
+                    if (field.cita) bOficio.addRubrica(field.cita);
+                    if (field.texto) bOficio.addLectura(field.texto);
+                } else if (typeof field === "string") {
+                    bOficio.addLectura(field);
+                }
+            };
+            
+            renderField("Introducción", ofData.introduccion);
+            renderField("Examen de Conciencia", ofData.examen_conciencia);
+            renderField("Himno", ofData.himno);
+            
+            ["salmo1", "cantico_at", "salmo2", "salmo3", "cantico_nt"].forEach(k => {
+                let s = ofData[k];
+                if (s) {
+                    let title = k.toUpperCase().replace("_", " ");
+                    bOficio.addTitulo(title);
+                    if (s.antifona) bOficio.addRubrica("Antífona: " + s.antifona);
+                    if (s.cita) bOficio.addRubrica(s.cita);
+                    if (s.texto) {
+                        bOficio.addLectura(s.texto);
+                        bOficio.addSacerdote(isEn ? "Glory to the Father, and to the Son, and to the Holy Spirit." : "Gloria al Padre, y al Hijo, y al Espíritu Santo.", 'Normal');
+                        bOficio.addAsamblea(isEn ? "As it was in the beginning, is now, and will be forever. Amen." : "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.");
+                        if (s.antifona) bOficio.addRubrica("Antífona: " + s.antifona);
+                    }
+                }
+            });
+
+            renderField("Lectura Breve", ofData.lectura_breve);
+            renderField("Responsorio Breve", ofData.responsorio_breve || ofData.responsorio);
+            renderField("Cántico Evangélico", ofData.cantico_evangelico);
+            renderField("Preces", ofData.preces);
+            
+            if (OFICIO !== "Completas" && OFICIO !== "Intermedia" && OFICIO !== "Oficio") {
+                bOficio.addTitulo("Padrenuestro");
+                bOficio.addAsamblea("Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal.");
+            }
+            
+            bOficio.addTitulo("Oración Final");
+            let orFinal = ofData.oracion || data.oracion_colecta || "";
+            if (typeof orFinal === "object") orFinal = orFinal.texto || "";
+            bOficio.addCapitular("Oremos. " + orFinal);
+            bOficio.addAsamblea("Amén.");
+            
+            bOficio.addTitulo("Conclusión");
+            bOficio.addDialogo("El Señor nos bendiga, nos guarde de todo mal y nos lleve a la vida eterna.", "Amén.");
+        } else {
+             bOficio.addRubrica(`(No se encontró información para ${OFICIO} en la base de datos)`);
+        }
+        
+        SECUENCIA_LITURGICA.push(bOficio);
+        return SECUENCIA_LITURGICA.map(b => RENDERIZAR_BLOQUE(b)).join("");
+    }
+
     const cantos = window.obtenerCantosPorTiempo ? window.obtenerCantosPorTiempo(data.tiempo_liturgico || "Ordinario", isEn) : { entrada: "", ofertorio: "", comunion: "", salida: "" };
     const ord = window.DbOrdinario.ordinario;
 
@@ -530,7 +663,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     if (lp.primera_lectura) {
         bPalabra.addTitulo(isEn ? "First Reading" : "Primera Lectura");
         bPalabra.addRubrica(lp.primera_lectura.cita || "");
-        bPalabra.addLectura(lp.primera_lectura.texto || "");
+        bPalabra.addLectura(cleanReadingText(lp.primera_lectura.texto || ""));
         bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
     }
 
@@ -544,7 +677,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     if (lp.segunda_lectura) {
         bPalabra.addTitulo(isEn ? "Second Reading" : "Segunda Lectura");
         bPalabra.addRubrica(lp.segunda_lectura.cita || "");
-        bPalabra.addLectura(lp.segunda_lectura.texto || "");
+        bPalabra.addLectura(cleanReadingText(lp.segunda_lectura.texto || ""));
         bPalabra.addDialogo(isEn ? "The word of the Lord." : "Palabra de Dios.", isEn ? "Thanks be to God." : "Te alabamos, Señor.");
     }
 
@@ -563,7 +696,7 @@ function generarDocumentoNodos(data, hora, options = {}) {
     if (lp.evangelio) {
         bPalabra.addTitulo(isEn ? "Gospel" : "Evangelio");
         bPalabra.addRubrica("<span class='cross-mark'>✠</span> " + (lp.evangelio.cita || ""));
-        bPalabra.addLectura(lp.evangelio.texto || "");
+        bPalabra.addLectura(cleanReadingText(lp.evangelio.texto || ""));
         bPalabra.addDialogo(isEn ? "The Gospel of the Lord." : "Palabra del Señor.", isEn ? "Praise to you, Lord Jesus Christ." : "Gloria a ti, Señor Jesús.");
     }
 
