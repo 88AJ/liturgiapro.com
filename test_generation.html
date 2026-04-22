@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"></head><body>
+<script src="data/liturgia_db.js"></script>
+<script src="data/cantos_db.js"></script>
+<script src="data/db_ordinario.js"></script>
+<script src="motor_nodos.js"></script>
+<script>
+    // Simulate generation of diario
+    const fecha = "2026-04-14";
+    const localData = liturgiaData[fecha];
+    
+    let options = {
+        isEn: false,
+        showMoniciones: true,
+        showHomilia: true,
+        customBlocks: []
+    };
+    
+    let doc = "";
+    const horasDelDia = ['oficio', 'laudes', 'misa_laudes', 'intermedia', 'visperas', 'completas', 'lectio'];
+    let isFirst = true;
+    horasDelDia.forEach(h => {
+        try {
+            options.hideHeader = !isFirst;
+            let subset = generarDocumentoNodos(localData, h, options);
+            if (subset && subset.trim() !== '') {
+                doc += (doc !== "" ? `<div style="page-break-before: always;"></div>` : "") + subset;
+                isFirst = false;
+            }
+        } catch(e) {
+            console.error("Error generating", h, e);
+        }
+    });
+
+    console.log("LENGTH OF DOC:", doc.length);
+    const fs = require('fs');
+    fs.writeFileSync('generated_output.html', doc);
+</script>
+</body></html>

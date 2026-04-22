@@ -502,26 +502,32 @@ document.addEventListener('DOMContentLoaded', () => {
                             showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
                             customBlocks: customBlocks
                         };
-                        let doc = "";
                         if (hora === 'diario') {
                             const horasDelDia = ['oficio', 'laudes', 'misa_laudes', 'intermedia', 'visperas', 'completas', 'lectio'];
                             let isFirst = true;
+                            let fragment = document.createDocumentFragment();
                             horasDelDia.forEach(h => {
                                 try {
                                     options.hideHeader = !isFirst;
-                                    let subset = generarDocumentoNodos(localData, h, options);
-                                    if (subset && subset.trim() !== '') {
-                                        doc += (doc !== "" ? `<div style="page-break-before: always;"></div>` : "") + subset;
+                                    let subsetHtml = generarDocumentoNodos(localData, h, options);
+                                    if (subsetHtml && subsetHtml.trim() !== '') {
+                                        let pageDiv = document.createElement('div');
+                                        if (!isFirst) {
+                                            pageDiv.style.pageBreakBefore = 'always';
+                                        }
+                                        pageDiv.innerHTML = subsetHtml;
+                                        fragment.appendChild(pageDiv);
                                         isFirst = false;
                                     }
                                 } catch(e) { console.warn("Error generando " + h, e); }
                             });
+                            pdfView.innerHTML = '';
+                            pdfView.appendChild(fragment);
                         } else {
                             options.hideHeader = false;
-                            doc = generarDocumentoNodos(localData, hora, options);
+                            let subsetHtml = generarDocumentoNodos(localData, hora, options);
+                            pdfView.innerHTML = subsetHtml;
                         }
-                        
-                        pdfView.innerHTML = doc;
                         generateBtn.innerHTML = "Generar Documento";
                     } catch (e) {
                         console.error("ERROR DE RENDER", e);
@@ -628,26 +634,32 @@ document.addEventListener('DOMContentLoaded', () => {
                             showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
                             customBlocks: customBlocks
                         };
-                        let doc = "";
                         if (hora === 'diario') {
                             const horasDelDia = ['oficio', 'laudes', 'misa_laudes', 'intermedia', 'visperas', 'completas', 'lectio'];
                             let isFirst = true;
+                            let fragment = document.createDocumentFragment();
                             horasDelDia.forEach(h => {
                                 try {
                                     options.hideHeader = !isFirst;
-                                    let subset = generarDocumentoNodos(data, h, options);
-                                    if (subset && subset.trim() !== '') {
-                                        doc += (doc !== "" ? `<div style="page-break-before: always;"></div>` : "") + subset;
+                                    let subsetHtml = generarDocumentoNodos(data, h, options);
+                                    if (subsetHtml && subsetHtml.trim() !== '') {
+                                        let pageDiv = document.createElement('div');
+                                        if (!isFirst) {
+                                            pageDiv.style.pageBreakBefore = 'always';
+                                        }
+                                        pageDiv.innerHTML = subsetHtml;
+                                        fragment.appendChild(pageDiv);
                                         isFirst = false;
                                     }
                                 } catch(e) { console.warn("Error generando " + h, e); }
                             });
+                            pdfView.innerHTML = '';
+                            pdfView.appendChild(fragment);
                         } else {
                             options.hideHeader = false;
-                            let subset = generarDocumentoNodos(data, hora, options);
-                            doc = subset;
+                            let subsetHtml = generarDocumentoNodos(data, hora, options);
+                            pdfView.innerHTML = subsetHtml;
                         }
-                        pdfView.innerHTML = doc;
                     })
                     .catch(err => {
                         console.error('Error fetching Title API', err);
@@ -686,25 +698,32 @@ document.addEventListener('DOMContentLoaded', () => {
                             showHomilia: document.getElementById('toggle-homilia') ? document.getElementById('toggle-homilia').checked : true,
                             customBlocks: customBlocks
                         };
-                        let doc = "";
                         if (hora === 'diario') {
                             const horasDelDia = ['oficio', 'laudes', 'misa_laudes', 'intermedia', 'visperas', 'completas', 'lectio'];
                             let isFirst = true;
+                            let fragment = document.createDocumentFragment();
                             horasDelDia.forEach(h => {
                                 try {
                                     options.hideHeader = !isFirst;
-                                    let subset = generarDocumentoNodos(data, h, options);
-                                    if (subset && subset.trim() !== '') {
-                                        doc += (doc !== "" ? `<div style="page-break-before: always;"></div>` : "") + subset;
+                                    let subsetHtml = generarDocumentoNodos(data, h, options);
+                                    if (subsetHtml && subsetHtml.trim() !== '') {
+                                        let pageDiv = document.createElement('div');
+                                        if (!isFirst) {
+                                            pageDiv.style.pageBreakBefore = 'always';
+                                        }
+                                        pageDiv.innerHTML = subsetHtml;
+                                        fragment.appendChild(pageDiv);
                                         isFirst = false;
                                     }
                                 } catch(e) { console.warn("Error generando " + h, e); }
                             });
+                            pdfView.innerHTML = '';
+                            pdfView.appendChild(fragment);
                         } else {
                             options.hideHeader = false;
-                            doc = generarDocumentoNodos(data, hora, options);
+                            let subsetHtml = generarDocumentoNodos(data, hora, options);
+                            pdfView.innerHTML = subsetHtml;
                         }
-                        pdfView.innerHTML = doc;
                     });
             }
         }); // Simulate network load ended, we use real network!
