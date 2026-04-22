@@ -858,7 +858,7 @@ body {
     }
 
     /* Reset structural elements to allow continuous multi-page pagination */
-    .saas-main, .workspace, .preview-panel, .view {
+    .saas-main, .workspace, .preview-panel, .view, #pdf-scroll-container, #pdf-view {
         display: block !important;
         position: static !important;
         width: 100% !important;
