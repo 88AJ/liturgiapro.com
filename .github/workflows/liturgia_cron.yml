@@ -37,12 +37,12 @@ jobs:
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: |
-        python3 automatizador_supremo.py --start ${{ env.start }} --end ${{ env.end }}
+        python3 automatizador_supremo.py --start "$start" --end "$end"
 
     - name: Comitear y Subir nueva DB
       run: |
         git config --global user.name "Sacerdote Orquestador GitHub Actions"
         git config --global user.email "bot@liturgiapro.com"
         git add data/liturgia_db.js
-        git commit -m "Automatización: Liturgia pre-compilada del ${start_date} al ${end_date}" || echo "No changes to commit"
+        git commit -m "Automatización: Liturgia pre-compilada del $start al $end" || echo "No changes to commit"
         git push

@@ -59,6 +59,7 @@ body {
 
 .landing-content {
     background: rgba(30, 41, 59, 0.8);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     padding: 3rem;
     border-radius: 20px;
@@ -133,8 +134,8 @@ body {
 .saas-sidebar {
     width: 260px;
     background: var(--sidebar-bg);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -265,6 +266,7 @@ body {
     justify-content: space-between;
     padding: 0 2rem;
     background: rgba(9, 9, 11, 0.4);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 5;
 }
@@ -297,8 +299,8 @@ body {
     padding: 2rem;
     overflow-y: auto;
     background: var(--card-bg);
-    backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
 }
 
 .config-panel h3 { margin: 0 0 0.5rem 0; font-weight: 600; font-size: 1.25rem; font-family: 'Outfit', sans-serif; color: #fff; }
@@ -477,6 +479,7 @@ body {
 .pdf-container .asamblea-rojo {
     color: var(--brand-color);
     font-weight: bold;
+}
 
 .pdf-container blockquote {
     font-style: italic; color: #444; border-left: 3px solid #c90000; padding-left: 15px; margin-left: 20px;
@@ -485,7 +488,7 @@ body {
 /* Modals */
 .modal {
     display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.8); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
     z-index: 100; align-items: center; justify-content: center;
 }
 .modal.visible { display: flex; }
@@ -640,6 +643,7 @@ body {
     background: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     align-items: center; justify-content: center;
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 .modal.visible {
@@ -712,9 +716,7 @@ body {
 /* --- EDITORIAL MISSAL STYLES --- */
 
 
-.pdf-container h2, .pdf-container h3, .pdf-container hr {
-    /* column-span rule removed */
-}
+/* column-span rule removed */
 
 /* Evitar que se partan los bloques feo pero si permitir partir parrafos para no dejar hojas vacias */
 .missal-block {
@@ -758,8 +760,6 @@ body {
     line-height: 1.2;
     font-size: 10.5pt;
     position: relative;
-    orphans: 3;
-    widows: 3;
 }
 
 .missal-paragraph:not(.first-par) {
@@ -882,7 +882,6 @@ body {
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        color-adjust: exact !important;
     }
 
     .missal-heading, .missal-rubric, .rubric, .cross-mark, .rubrica-sacerdote, .titulo-rito {
@@ -1273,3 +1272,52 @@ body {
     border-radius: 4px;
     margin-left: 10px;
 }
+
+
+/* Extracted Inline Styles */
+.lit-f48bc2 { display: flex; flex-direction: column; gap: 1rem; }
+.lit-8ecca8 { margin-top: 15px; }
+.lit-ac5f09 { margin-top: 15px; color: var(--gold-accent); }
+.lit-b662f2 { padding: 0; }
+.lit-95e2b1 { color: inherit; text-decoration: none; display: flex; align-items: center; padding: 10px 15px; width: 100%; }
+.lit-5dea14 { display:none; font-size: 0.85rem; margin-top:10px; padding: 10px; background: rgba(25, 25, 30, 0.5); border-left: 3px solid var(--gold-accent); border-radius: 4px; }
+.lit-224b51 { display: none; }
+.lit-45aedf { display: none; grid-column: 1 / -1; background: rgba(142, 107, 43, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid var(--brand-color); }
+.lit-4e3b54 { grid-template-columns: 1fr 1fr; gap: 10px; }
+.lit-c42e0e { margin-bottom: 0; }
+.lit-fb2a71 { font-size: 0.8rem; }
+.lit-e8f0b0 { display: none; grid-column: 1 / -1; background: rgba(100, 100, 100, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #666; }
+.lit-23f72e { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.lit-e86cdd { grid-column: 1 / -1; }
+.lit-7fd207 { grid-column: 1 / -1; margin-top: 10px; }
+.lit-ab9b64 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem; color: #ccc; }
+.lit-39a99e { display:flex; align-items:center; cursor:pointer; }
+.lit-cbe750 { margin-right:8px; accent-color: var(--brand-color); }
+.lit-ff1cfa { margin-top: 15px; grid-column: 1 / -1; }
+.lit-68b0c3 { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.lit-59f9de { padding: 5px 10px; font-size: 0.8rem; }
+.lit-880d01 { display: flex; gap: 10px; margin-top: 10px; }
+.lit-db0833 { flex: 1; font-family: 'Cinzel', serif; color: var(--gold-accent); border-color: var(--brand-color); padding: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: bold; background: transparent; transition: all 0.2s; }
+.lit-0ca503 { white-space: nowrap; }
+.lit-93b8ea { display:none; }
+.lit-ef0e3d { flex: 1; overflow-y: auto; overflow-x: hidden; }
+.lit-5c5209 { font-size:0.8rem; color:var(--text-secondary); margin-bottom: 20px; }
+.lit-0cfbe9 { margin-top: 15px; background: transparent; padding-left:0; }
+.lit-3166b0 { flex: 2; display:flex; flex-direction: column; }
+.lit-747b8b { border:none; border-radius: 8px; flex: 1; background: white; display: none; }
+.lit-155146 { margin: auto; }
+.lit-5c1efe { display:none; padding: 20px; gap: 20px; }
+.lit-4f5f33 { flex: 1; max-width: 350px; }
+.lit-9dd5f1 { width: 100%; margin-top: 10px; }
+.lit-bad75b { margin-top: 40px; }
+.lit-9324e6 { color: var(--gold-accent); margin-bottom: 10px; }
+.lit-92fdf7 { color: var(--gold-accent); }
+.lit-4d9d99 { flex: 2; display:flex; flex-direction: column; background: #000; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; }
+.lit-3b9e3e { border:none; flex: 1; display: none; }
+.lit-169f06 { color: #666; }
+.lit-75a391 { display: none; position: fixed; inset: 0; background: #000000; z-index: 10000; flex-direction: column; align-items: center; justify-content: flex-start; overflow-y: auto; scroll-behavior: smooth; }
+.lit-1b6dcc { position: fixed; top: 30px; right: 30px; background: rgba(50,50,50,0.5); color: #fff; border: 2px solid rgba(255,255,255,0.2); font-size: 24px; width: 60px; height: 60px; cursor: pointer; border-radius: 50%; display:flex; align-items:center; justify-content:center; transition: background 0.3s; z-index: 10001; }
+.lit-2e4630 { width: 85%; text-align: center; color: #fff; padding: 100px 0; }
+.lit-a37bc3 { position: fixed; bottom: 40px; right: 40px; display: flex; gap: 15px; align-items: center; opacity: 0.2; transition: opacity 0.3s; padding: 15px 25px; border-radius: 15px; background: rgba(20,20,20,0.8); z-index: 10001; }
+.lit-e93589 { color: white; border-color: white; padding: 10px 20px; font-size: 1rem; cursor: pointer; }
+.lit-e81bab { color: white; border-color: white; padding: 10px 20px; font-size: 1rem; cursor: pointer; display: none; }

@@ -29,7 +29,7 @@
                 
                 <div class="login-box">
                     <h3>Acceso a Sacerdotes y Catequistas</h3>
-                    <form id="login-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <form id="login-form" class="lit-f48bc2">
                         <input type="email" placeholder="correo@parroquia.org" id="email-input" required>
                         <input type="password" placeholder="Contraseña" id="pass-input" required>
                         <button type="submit" class="btn-primary" id="login-btn">Ingresar al Dashboard</button>
@@ -57,22 +57,22 @@
                     <li data-view="orden"><span class="icon">☩</span> Orden Sacerdotal</li>
                 </ul>
 
-                <div class="nav-category" style="margin-top: 15px;">RITUALES</div>
+                <div class="nav-category lit-8ecca8">RITUALES</div>
                 <ul class="nav-links" id="rituales-nav">
                     <li data-view="xvanos"><span class="icon">☩</span> XV Años</li>
                     <li data-view="exequias"><span class="icon">☩</span> Exequias</li>
                 </ul>
 
-                <div class="nav-category" style="margin-top: 15px;">PASTORAL</div>
+                <div class="nav-category lit-8ecca8">PASTORAL</div>
                 <ul class="nav-links" id="pastoral-nav">
                     <li data-view="boletin"><span class="icon">☩</span> Boletín PRO</li>
                     <li data-view="cancionero"><span class="icon">♫</span> Cancionero PRO</li>
                     <li data-view="youtube"><span class="icon">▶</span> Música YouTube</li>
                 </ul>
 
-                <div class="nav-category" style="margin-top: 15px; color: var(--gold-accent);">IMPRENTA DIRECTA</div>
+                <div class="nav-category lit-ac5f09">IMPRENTA DIRECTA</div>
                 <ul class="nav-links">
-                    <li style="padding: 0;"><a href="panel_impresor.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; padding: 10px 15px; width: 100%;"><span class="icon">🖨️</span> Maestro Impresor</a></li>
+                    <li class="lit-b662f2"><a href="panel_impresor.html" class="lit-95e2b1"><span class="icon">🖨️</span> Maestro Impresor</a></li>
                 </ul>
             </nav>
 
@@ -87,7 +87,7 @@
                             <div class="form-grid">
                                 <div class="input-group">
                                     <label>Región / Idioma</label>
-                                    <select id="region-select">
+                                    <select id="region-select" title="Región e Idioma">
                                         <option value="mx">🇲🇽 México (CEM)</option>
                                         <option value="us_es">🇺🇸 USA (Español - USCCB)</option>
                                         <option value="us_en">🇺🇸 USA (English - USCCB)</option>
@@ -96,56 +96,56 @@
                                 <!-- Sacramento Select removed as per user request -->
                                 <div class="input-group">
                                     <label>Fecha de Celebración</label>
-                                    <input type="date" value="2026-04-08" id="date-select">
-                                    <div id="liturgical-info" style="display:none; font-size: 0.85rem; margin-top:10px; padding: 10px; background: rgba(25, 25, 30, 0.5); border-left: 3px solid var(--gold-accent); border-radius: 4px;"></div>
+                                    <input type="date" value="2026-04-08" id="date-select" title="Fecha de Celebración" placeholder="yyyy-mm-dd">
+                                    <div id="liturgical-info" class="lit-5dea14"></div>
                                 </div>
-                                <div class="input-group" id="ritual-group" style="display: none;">
+                                <div class="input-group lit-224b51" id="ritual-group">
                                     <label>Integrar Ritual Sacramental</label>
-                                    <select id="ritual-select">
+                                    <select id="ritual-select" title="Ritual">
                                         <option value="ninguno" selected>Ninguno (Misa Ordinaria)</option>
                                         <option value="bautismo">Bautismo de Niños (En Misa)</option>
                                     </select>
                                 </div>
-                                <div id="bautismo-fields" style="display: none; grid-column: 1 / -1; background: rgba(142, 107, 43, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid var(--brand-color);">
-                                    <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Nombre del Bebé</label>
+                                <div id="bautismo-fields" class="lit-45aedf">
+                                    <div class="form-grid lit-4e3b54">
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Nombre del Bebé</label>
                                             <input type="text" id="bautismo-bebe" placeholder="Ej. Juan Pablo" value="Juan Pablo">
                                         </div>
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Nombre de Padrinos</label>
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Nombre de Padrinos</label>
                                             <input type="text" id="bautismo-padrinos" placeholder="Ej. Carlos y Ana" value="Carlos y Ana">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="matrimonio-fields" style="display: none; grid-column: 1 / -1; background: rgba(142, 107, 43, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid var(--brand-color);">
-                                    <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Nombre del Novio</label>
+                                <div id="matrimonio-fields" class="lit-45aedf">
+                                    <div class="form-grid lit-4e3b54">
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Nombre del Novio</label>
                                             <input type="text" id="matrimonio-esposo" placeholder="Ej. Alejandro">
                                         </div>
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Nombre de Novia</label>
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Nombre de Novia</label>
                                             <input type="text" id="matrimonio-esposa" placeholder="Ej. María">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="exequias-fields" style="display: none; grid-column: 1 / -1; background: rgba(100, 100, 100, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #666;">
-                                    <div class="form-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Difunto(a)</label>
+                                <div id="exequias-fields" class="lit-e8f0b0">
+                                    <div class="form-grid lit-23f72e">
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Difunto(a)</label>
                                             <input type="text" id="exequias-difunto" placeholder="Ej. Roberto">
                                         </div>
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Rúbricas</label>
-                                            <select id="exequias-genero">
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Rúbricas</label>
+                                            <select id="exequias-genero" title="Género">
                                                 <option value="m">Masculino</option>
                                                 <option value="f">Femenino</option>
                                             </select>
                                         </div>
-                                        <div class="input-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem;">Circunstancia</label>
-                                            <select id="exequias-tipo">
+                                        <div class="input-group lit-c42e0e">
+                                            <label class="lit-fb2a71">Circunstancia</label>
+                                            <select id="exequias-tipo" title="Tipo Exequias">
                                                 <option value="adulto">Adulto</option>
                                                 <option value="nino_bautizado">Niño Bautizado</option>
                                                 <option value="nino_no_bautizado">Niño No Bautizado</option>
@@ -153,9 +153,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="input-group" id="office-group" style="grid-column: 1 / -1;">
+                                <div class="input-group lit-e86cdd" id="office-group">
                                     <label>Integrar Oficio Divino</label>
-                                    <select id="office-select">
+                                    <select id="office-select" title="Oficio Divino">
                                         <option value="diario" selected>Jornada Diaria Completa</option>
                                         <option value="oficio">Oficio de Lectura</option>
                                         <option value="laudes">Laudes</option>
@@ -166,11 +166,11 @@
                                         <option value="ninguno">Ninguno</option>
                                     </select>
                                 </div>
-                                <div class="input-group" style="grid-column: 1 / -1; margin-top: 10px;">
+                                <div class="input-group lit-7fd207">
                                     <label>Componentes Opcionales</label>
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem; color: #ccc;">
-                                        <label style="display:flex; align-items:center; cursor:pointer;"><input type="checkbox" id="toggle-moniciones" checked style="margin-right:8px; accent-color: var(--brand-color);"> Moniciones</label>
-                                        <label style="display:flex; align-items:center; cursor:pointer;"><input type="checkbox" id="toggle-homilia" checked style="margin-right:8px; accent-color: var(--brand-color);"> Guía Reflexión</label>
+                                    <div class="lit-ab9b64">
+                                        <label class="lit-39a99e"><input type="checkbox" id="toggle-moniciones" checked class="lit-cbe750"> Moniciones</label>
+                                        <label class="lit-39a99e"><input type="checkbox" id="toggle-homilia" checked class="lit-cbe750"> Guía Reflexión</label>
                                     </div>
                                 </div>
 
@@ -179,7 +179,7 @@
 
                         </div>
 
-                        <div id="boletin-form" style="display: none;">
+                        <div id="boletin-form" class="lit-224b51">
                             <div class="form-grid">
                                 <div class="input-group">
                                     <label>Fecha del Boletín</label>
@@ -189,21 +189,21 @@
                                     <label>Subtítulo / Mención del Párroco</label>
                                     <input type="text" value="REV. ALAN SANCHEZ" id="bulletin-clergy">
                                 </div>
-                                <div class="input-group" style="grid-column: 1 / -1;">
+                                <div class="input-group lit-e86cdd">
                                     <label>Logo de la Parroquia</label>
-                                    <input type="file" id="bulletin-logo" accept="image/*" style="font-size: 0.8rem;">
+                                    <input type="file" id="bulletin-logo" accept="image/*" class="lit-fb2a71">
                                 </div>
-                                <div class="input-group" style="grid-column: 1 / -1;">
+                                <div class="input-group lit-e86cdd">
                                     <label>Lema Principal</label>
                                     <input type="text" id="bulletin-motto" value="BUILD A STRONGER PERSONAL RELATIONSHIP WITH JESUS CHRIST.">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="cantos-section" style="margin-top: 15px; grid-column: 1 / -1;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <div class="cantos-section lit-ff1cfa">
+                            <div class="lit-68b0c3">
                                 <h4>Tus Bloques Parroquiales</h4>
-                                <button class="btn-outline" id="btn-add-section" style="padding: 5px 10px; font-size: 0.8rem;">+ Añadir Bloque</button>
+                                <button class="btn-outline lit-59f9de" id="btn-add-section">+ Añadir Bloque</button>
                             </div>
                             <div id="dynamic-sections">
                                 <!-- Bloques dinámicos aquí -->
@@ -211,8 +211,8 @@
                         </div>
 
                         <button class="btn-generate" id="generate-doc-btn">Generar Documento</button>
-                        <div style="display: flex; gap: 10px; margin-top: 10px;">
-                            <button class="btn-outline" id="generar-pdf" style="flex: 1; font-family: 'Cinzel', serif; color: var(--gold-accent); border-color: var(--brand-color); padding: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: bold; background: transparent; transition: all 0.2s;">
+                        <div class="lit-880d01">
+                            <button class="btn-outline lit-db0833" id="generar-pdf">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                                     PDF
                             </button>
@@ -222,7 +222,7 @@
                     <!-- PDF Preview Panel -->
                     <div class="preview-panel">
                         <div class="pdf-container dominic-style" id="pdf-view">
-                            <div class="empty-state" style="white-space: nowrap;">
+                            <div class="empty-state lit-0ca503">
                                 📄<br>El documento generado aparecerá aquí
                             </div>
                         </div>
@@ -230,12 +230,12 @@
                 </div><!-- /builder-workspace -->
                 
                 <!-- Cancionero Workspace -->
-                <div class="workspace" id="cancionero-workspace" style="display:none;">
-                    <div class="config-panel" style="flex: 1; overflow-y: auto; overflow-x: hidden;">
+                <div class="workspace lit-93b8ea" id="cancionero-workspace">
+                    <div class="config-panel lit-ef0e3d">
                         <h3>Directorios Musicales</h3>
-                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom: 20px;">Partituras y cantos categorizados locales.</p>
+                        <p class="lit-5c5209">Partituras y cantos categorizados locales.</p>
                         
-                        <div class="nav-category" style="margin-top: 15px; background: transparent; padding-left:0;">ORDEN DE LA MISA</div>
+                        <div class="nav-category lit-0cfbe9">ORDEN DE LA MISA</div>
                         <ul class="nav-links" id="cancionero-misa-nav">
                             <li onclick="loadCancionero('01-Entradas.pdf')"><span class="icon">🎵</span> Entradas</li>
                             <li onclick="loadCancionero('02-Kyrie-Gloria.pdf')"><span class="icon">🎵</span> Kyrie y Gloria</li>
@@ -248,53 +248,53 @@
                             <li onclick="loadCancionero('07-2-Gracias-Final-Misa.pdf')"><span class="icon">🎵</span> Salida</li>
                         </ul>
                         
-                        <div class="nav-category" style="margin-top: 15px; background: transparent; padding-left:0;">TIEMPOS LITÚRGICOS</div>
+                        <div class="nav-category lit-0cfbe9">TIEMPOS LITÚRGICOS</div>
                         <ul class="nav-links" id="cancionero-tiempos-nav">
                             <li onclick="loadCancionero('09-Cantos-de-Adviento.pdf')"><span class="icon">🎵</span> Adviento</li>
                             <li onclick="loadCancionero('10-Cantos-de-Navidad.pdf')"><span class="icon">🎵</span> Navidad</li>
                             <li onclick="loadCancionero('Cantoral-Liturgico-Tomo-II-Cuaresma-Pascua.pdf')"><span class="icon">🎵</span> Cuaresma y Pascua</li>
                         </ul>
                         
-                        <div class="nav-category" style="margin-top: 15px; background: transparent; padding-left:0;">CANTORALES MAGISTRALES</div>
+                        <div class="nav-category lit-0cfbe9">CANTORALES MAGISTRALES</div>
                         <ul class="nav-links">
                             <li onclick="loadCancionero('2020.-Cancionero-litúrgico.-P.-Javier-Olivera-Ravasi-SE.pdf')"><span class="icon">📚</span> Cancionero P. Olivera Ravasi</li>
                             <li onclick="loadCancionero('Cantoral-Liturgico-Tomo-III-Tiempo-Ordinario.pdf')"><span class="icon">📚</span> Cantoral Tomo III Ordinario</li>
                         </ul>
                     </div>
-                    <div class="preview-panel" style="flex: 2; display:flex; flex-direction: column;">
-                        <iframe id="cancionero-frame" src="" width="100%" height="100%" style="border:none; border-radius: 8px; flex: 1; background: white; display: none;"></iframe>
-                        <div id="cancionero-empty" class="empty-state" style="margin: auto;">
+                    <div class="preview-panel lit-3166b0">
+                        <iframe id="cancionero-frame" src="" width="100%" height="100%" class="lit-747b8b"></iframe>
+                        <div id="cancionero-empty" class="empty-state lit-155146">
                             🎼<br>Selecciona una categoría litúrgica<br>para abrir sus partituras
                         </div>
                     </div>
                 </div>
                 
                 <!-- YouTube Workspace -->
-                <div class="workspace" id="youtube-workspace" style="display:none; padding: 20px; gap: 20px;">
-                    <div class="config-panel" style="flex: 1; max-width: 350px;">
+                <div class="workspace lit-5c1efe" id="youtube-workspace">
+                    <div class="config-panel lit-4f5f33">
                         <h3>Buscador Litúrgico</h3>
-                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom: 20px;">Encuentra cantos en la biblioteca global de YouTube.</p>
+                        <p class="lit-5c5209">Encuentra cantos en la biblioteca global de YouTube.</p>
                         
                         <div class="input-group">
                             <label>Buscar Canto (Ej. Canto de Entrada Pascua)</label>
                             <input type="text" id="youtube-search-input" placeholder="Escribe y presiona Buscar...">
                         </div>
-                        <button class="btn-primary" id="youtube-search-btn" style="width: 100%; margin-top: 10px;">Buscar en YouTube</button>
+                        <button class="btn-primary lit-9dd5f1" id="youtube-search-btn">Buscar en YouTube</button>
                         
-                        <div style="margin-top: 40px;">
-                            <h4 style="color: var(--gold-accent); margin-bottom: 10px;">Sugerencias Rápidas</h4>
+                        <div class="lit-bad75b">
+                            <h4 class="lit-9324e6">Sugerencias Rápidas</h4>
                             <ul class="nav-links" id="youtube-suggest-nav">
-                                <li onclick="loadYoutubePath('Misa cantada gregoriano')"><span class="icon" style="color: var(--gold-accent);">▶</span> Misa Gregoriana</li>
-                                <li onclick="loadYoutubePath('Salmo responsorial cantado domingo')"><span class="icon" style="color: var(--gold-accent);">▶</span> Salmo Dominical</li>
-                                <li onclick="loadYoutubePath('Cantos de comunion eucaristia')"><span class="icon" style="color: var(--gold-accent);">▶</span> Cantos de Comunión</li>
-                                <li onclick="loadYoutubePath('Cantos marianos')"><span class="icon" style="color: var(--gold-accent);">▶</span> Cantos Marianos</li>
+                                <li onclick="loadYoutubePath('Misa cantada gregoriano')"><span class="icon lit-92fdf7">▶</span> Misa Gregoriana</li>
+                                <li onclick="loadYoutubePath('Salmo responsorial cantado domingo')"><span class="icon lit-92fdf7">▶</span> Salmo Dominical</li>
+                                <li onclick="loadYoutubePath('Cantos de comunion eucaristia')"><span class="icon lit-92fdf7">▶</span> Cantos de Comunión</li>
+                                <li onclick="loadYoutubePath('Cantos marianos')"><span class="icon lit-92fdf7">▶</span> Cantos Marianos</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="preview-panel" style="flex: 2; display:flex; flex-direction: column; background: #000; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center;">
-                        <iframe id="youtube-frame" src="" width="100%" height="100%" style="border:none; flex: 1; display: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <div id="youtube-empty" class="empty-state" style="color: #666;">
-                            ▶️<br>Buscador Global<br><span style="font-size: 0.8rem;">Los resultados se abrirán en una nueva pestaña</span>
+                    <div class="preview-panel lit-4d9d99">
+                        <iframe id="youtube-frame" src="" width="100%" height="100%" class="lit-3b9e3e" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div id="youtube-empty" class="empty-state lit-169f06">
+                            ▶️<br>Buscador Global<br><span class="lit-fb2a71">Los resultados se abrirán en una nueva pestaña</span>
                         </div>
                     </div>
                 </div>
@@ -306,7 +306,7 @@
             <button id="padre-pro-toggle" class="padre-pro-toggle">
                 <span class="icon">💬</span> Padre PRO
             </button>
-            <div id="padre-pro-window" class="padre-pro-window" style="display: none;">
+            <div id="padre-pro-window" class="padre-pro-window lit-224b51">
                 <div class="padre-pro-header">
                     <div class="header-info">
                         <strong>Padre PRO</strong><br>
@@ -329,16 +329,16 @@
         </div>
 
         <!-- Prompter Cinematic Screen -->
-        <div id="prompter-screen" class="view" style="display: none; position: fixed; inset: 0; background: #000000; z-index: 10000; flex-direction: column; align-items: center; justify-content: flex-start; overflow-y: auto; scroll-behavior: smooth;">
-            <button id="close-prompter-btn" style="position: fixed; top: 30px; right: 30px; background: rgba(50,50,50,0.5); color: #fff; border: 2px solid rgba(255,255,255,0.2); font-size: 24px; width: 60px; height: 60px; cursor: pointer; border-radius: 50%; display:flex; align-items:center; justify-content:center; transition: background 0.3s; z-index: 10001;">&times;</button>
-            <div id="prompter-slide-container" style="width: 85%; text-align: center; color: #fff; padding: 100px 0;">
+        <div id="prompter-screen" class="view lit-75a391">
+            <button id="close-prompter-btn" class="lit-1b6dcc">&times;</button>
+            <div id="prompter-slide-container" class="lit-2e4630">
                 <!-- Contenido inyectado aquí desde saas.js -->
             </div>
             
             <!-- Floating Auto-Scroll Controls -->
-            <div class="prompter-controls" id="prompter-controls-bar" style="position: fixed; bottom: 40px; right: 40px; display: flex; gap: 15px; align-items: center; opacity: 0.2; transition: opacity 0.3s; padding: 15px 25px; border-radius: 15px; background: rgba(20,20,20,0.8); z-index: 10001;">
-                <button id="prompter-auto-scroll" class="btn-outline" style="color: white; border-color: white; padding: 10px 20px; font-size: 1rem; cursor: pointer;">↓ Auto-Scroll (Velocidad: <span id="scroll-speed">1</span>x)</button>
-                <button id="prompter-stop-scroll" class="btn-outline" style="color: white; border-color: white; padding: 10px 20px; font-size: 1rem; cursor: pointer; display: none;">⏸ Detener</button>
+            <div class="prompter-controls lit-a37bc3" id="prompter-controls-bar">
+                <button id="prompter-auto-scroll" class="btn-outline lit-e93589">↓ Auto-Scroll (Velocidad: <span id="scroll-speed">1</span>x)</button>
+                <button id="prompter-stop-scroll" class="btn-outline lit-e81bab">⏸ Detener</button>
             </div>
         </div>
     </div>
