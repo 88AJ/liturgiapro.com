@@ -528,15 +528,17 @@ function generarDocumentoNodos(data, hora, options = {}) {
     // ==========================================
     // BLOQUE HEADER (FECHA Y TITULO)
     // ==========================================
-    const fechaElegida = document.getElementById('date-select') ? document.getElementById('date-select').value : null;
-    let bHeader = new BloqueLiturgico('header');
-    let diaLabel = data.grado || data.tiempo_liturgico || "Liturgia del Día";
-    bHeader.addSuperTitulo(diaLabel || "Liturgia del Día");
-    
-    if (data.titulo_celebracion) {
-        bHeader.addTitulo(data.titulo_celebracion);
+    if (!options.hideHeader) {
+        const fechaElegida = document.getElementById('date-select') ? document.getElementById('date-select').value : null;
+        let bHeader = new BloqueLiturgico('header');
+        let diaLabel = data.grado || data.tiempo_liturgico || "Liturgia del Día";
+        bHeader.addSuperTitulo(diaLabel || "Liturgia del Día");
+        
+        if (data.titulo_celebracion) {
+            bHeader.addTitulo(data.titulo_celebracion);
+        }
+        SECUENCIA_LITURGICA.push(bHeader);
     }
-    SECUENCIA_LITURGICA.push(bHeader);
 
     if (!IS_MISA && OFICIO) {
         let bOficio = new BloqueLiturgico(hora);
@@ -560,10 +562,18 @@ function generarDocumentoNodos(data, hora, options = {}) {
             renderField("Examen de Conciencia", ofData.examen_conciencia);
             renderField("Himno", ofData.himno);
             
+            const titleMap = {
+                "salmo1": "Salmo 1",
+                "salmo2": "Salmo 2",
+                "salmo3": "Salmo 3",
+                "cantico_at": "Cántico del Antiguo Testamento",
+                "cantico_nt": "Cántico del Nuevo Testamento"
+            };
+
             ["salmo1", "cantico_at", "salmo2", "salmo3", "cantico_nt"].forEach(k => {
                 let s = ofData[k];
                 if (s) {
-                    let title = k.toUpperCase().replace("_", " ");
+                    let title = titleMap[k] || k.toUpperCase().replace("_", " ");
                     bOficio.addTitulo(title);
                     if (s.antifona) bOficio.addRubrica("Antífona: " + s.antifona);
                     if (s.cita) bOficio.addRubrica(s.cita);
