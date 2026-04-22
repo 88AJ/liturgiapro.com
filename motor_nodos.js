@@ -147,10 +147,18 @@ function generarDocumentoNodosLegacy(data, hora, options = {}) {
             renderField("Examen de Conciencia", ofData.examen_conciencia);
             renderField("Himno", ofData.himno);
             
+            const titleMap = {
+                "salmo1": "Salmo 1",
+                "salmo2": "Salmo 2",
+                "salmo3": "Salmo 3",
+                "cantico_at": "Cántico del Antiguo Testamento",
+                "cantico_nt": "Cántico del Nuevo Testamento"
+            };
+
             ["salmo1", "cantico_at", "salmo2", "salmo3", "cantico_nt"].forEach(k => {
                 let s = ofData[k];
                 if (s) {
-                    let title = k.toUpperCase().replace("_", " ");
+                    let title = titleMap[k] || k.toUpperCase().replace("_", " ");
                     bOficio.addTitulo(title);
                     if (s.antifona) bOficio.addRubrica("Antífona: " + s.antifona);
                     if (s.cita) bOficio.addRubrica(s.cita);
