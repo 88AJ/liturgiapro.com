@@ -1,0 +1,155 @@
+% --- BLOQUE DE PREÁMBULO UNIVERSAL ---
+\documentclass[11pt, letterpaper, twoside]{article}
+
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fontspec}
+
+\usepackage[spanish, provide=*]{babel}
+\babelprovide[import, onchar=ids fonts]{spanish}
+\babelprovide[import, onchar=ids fonts]{english}
+
+% Tipografía serif para imitar el Misal Romano
+\babelfont{rm}{Times New Roman}
+
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+
+% --- PAQUETES EDITORIALES LITÚRGICOS ---
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{lettrine}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+
+\definecolor{rubricred}{HTML}{C8102E}
+
+\newcommand{\rubrica}[1]{\textcolor{rubricred}{\small\textit{#1}}}
+\newcommand{\vers}{\textcolor{rubricred}{\textbf{V.\ }}}
+\newcommand{\resp}{\textcolor{rubricred}{\textbf{R.\ }}}
+\newcommand{\cruz}{\textcolor{rubricred}{✠}}
+
+\titleformat{\section}{\Large\bfseries\centering\color{rubricred}}{}{0pt}{\uppercase}
+\titleformat{\subsection}{\large\bfseries\centering\color{rubricred}}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{rubricred}}{}{0pt}{}
+
+\renewcommand{\LettrineFontHook}{\color{rubricred}}
+\setcounter{DefaultLines}{2}
+\setlength{\DefaultFindent}{0.2em}
+\setlength{\DefaultNindent}{0em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% --- Configuración de Seguridad para Compilación en Bruto ---
+\catcode 95=12
+\DeclareRobustCommand{\VAR}[1]{[Dato Dinámico]}
+\DeclareRobustCommand{\BLOCK}[1]{}
+
+\begin{document}
+
+\begin{center}
+    {\Huge\textbf{Subsidio Litúrgico Diario}\par}
+    \vspace{0.3cm}
+    {\large\textsc{Domingo de Pascua de la Resurrección del Señor}\par}
+    {\small Tiempo Pascual\par}
+\end{center}
+
+\vspace{0.8cm}
+
+\begin{multicols}{2}
+\RaggedRight
+
+% ==========================================
+% LAUDES
+% ==========================================
+
+% ==========================================
+% SANTA MISA 
+% ==========================================
+\section*{SANTA MISA}
+
+\subsection*{CANTO DE ENTRADA}
+\noindent\rubrica{El Señor Resucitó, Aleluya} \par\vspace{0.1cm}
+\textbf{Coro:} \\ 
+El Señor resucitó, aleluya...
+
+1. Sobre la muerte la vida venció...
+\par\vspace{0.3cm}
+
+\noindent\rubrica{Antífona de entrada} \par
+\lettrine{H}{e} resucitado y aún estoy contigo, aleluya; has puesto tu mano sobre mí, aleluya. Tu sabiduría ha sido maravillosa, aleluya, aleluya.
+
+\subsection*{GLORIA}
+\noindent\rubrica{Se dice el Gloria.} \par\vspace{0.3cm}
+
+\subsection*{ORACIÓN COLECTA}
+\lettrine{D}{ios} nuestro, que por medio de tu Unigénito, vencedor de la muerte, nos has abierto hoy las puertas de la vida eterna, concédenos a quienes celebramos la solemnidad de la resurrección del Señor, que, renovados por tu Espíritu, resucitemos en el reino de la luz. Por nuestro Señor Jesucristo...
+
+\subsection*{LITURGIA DE LA PALABRA}
+\noindent\rubrica{Lectura del libro de los Hechos de los Apóstoles (10, 34a. 37-43).} \par\vspace{0.2cm}
+\lettrine{E}{n} aquellos días, Pedro tomó la palabra y dijo: “Ya saben ustedes lo sucedido en toda Judea, que tuvo principio en Galilea, después del bautismo predicado por Juan: cómo Dios ungió con el poder del Espíritu Santo a Jesús de Nazaret y cómo éste pasó haciendo el bien, sanando a todos los oprimidos por el diablo, porque Dios estaba con él.
+
+Nosotros somos testigos de cuanto él hizo en Judea y en Jerusalén. Lo mataron colgándolo de la cruz, pero Dios lo resucitó al tercer día y concedió verlo, no a todo el pueblo, sino únicamente a los testigos que él, de antemano, había escogido: a nosotros, que hemos comido y bebido con él después de que resucitó de entre los muertos.
+
+Él nos mandó predicar al pueblo y dar testimonio de que Dios lo ha constituido juez de vivos y muertos. El testimonio de los profetas es unánime: que cuantos creen en él reciben, por su medio, el perdón de los pecados”. \par\vspace{0.2cm}
+\vers Palabra de Dios. \par
+\resp Te alabamos, Señor.
+
+\subsection*{SALMO RESPONSORIAL}
+\noindent\rubrica{Salmo 117} \par\vspace{0.1cm}
+\resp Este es el día del triunfo del Señor. Aleluya. \par\vspace{0.2cm}
+\lettrine{T}{e} damos gracias, Señor, porque eres bueno, porque tu misericordia es eterna. Diga la casa de Israel: “Su misericordia es eterna”.
+
+La diestra del Señor es poderosa, la diestra del Señor es nuestro orgullo. No moriré, continuaré viviendo para contar lo que el Señor ha hecho.
+
+La piedra que desecharon los constructores, es ahora la piedra angular. Esto es obra de la mano del Señor, es un milagro patente.
+
+\subsection*{SEGUNDA LECTURA}
+\noindent\rubrica{Lectura de la carta del apóstol san Pablo a los colosenses (3, 1-4).} \par\vspace{0.2cm}
+\lettrine{H}{ermanos:} Puesto que ustedes han resucitado con Cristo, busquen los bienes de arriba, donde está Cristo, sentado a la derecha de Dios. Pongan todo el corazón en los bienes del cielo, no en los de la tierra, porque han muerto y su vida está escondida con Cristo en Dios. Cuando se manifieste Cristo, vida de ustedes, entonces también ustedes se manifestarán gloriosos, juntamente con él. \par\vspace{0.2cm}
+\vers Palabra de Dios. \par
+\resp Te alabamos, Señor.
+
+\subsection*{SECUENCIA}
+\lettrine{O}{frezcan} los cristianos ofrendas de alabanza a gloria de la Víctima propicia de la Pascua. \\ 
+Cordero sin pecado, que a las ovejas salva, a Dios y a los culpables unió con nueva alianza. \\ 
+Lucharon vida y muerte en singular batalla, y, muerto el que es la vida, triunfante se levanta. \\ 
+“¿Qué has visto de camino, \\ 
+María, en la mañana?” “A mi Señor glorioso, la tumba abandonada, \\ 
+los ángeles testigos, sudarios y mortaja. ¡Resucitó de veras mi amor y mi esperanza! \\ 
+Venid a Galilea, allí el Señor aguarda; allí veréis los suyos la gloria de la Pascua”. \\ 
+Primicia de los muertos, sabemos por tu gracia que estás resucitado; la muerte en ti no manda. \\ 
+Rey vencedor, apiádate de la miseria humana y da a tus fieles parte \\ 
+en tu victoria santa. \par\vspace{0.3cm}
+
+\subsection*{ACLAMACIÓN ANTES DEL EVANGELIO}
+\resp Aleluya, aleluya. \par
+Cristo, nuestro cordero pascual, ha sido inmolado; celebremos, pues, la Pascua. \par
+\resp Aleluya. \par\vspace{0.3cm}
+
+\subsection*{EVANGELIO}
+\noindent\rubrica{Lectura del santo Evangelio según san Juan (20, 1-9).} \par\vspace{0.2cm}
+\lettrine{E}{l} primer día después del sábado, estando todavía oscuro, fue María Magdalena al sepulcro y vio removida la piedra que lo cerraba. Echó a correr, llegó a la casa donde estaban Simón Pedro y el otro discípulo, a quien Jesús amaba, y les dijo: “Se han llevado del sepulcro al Señor y no sabemos dónde lo habrán puesto”.
+
+Salieron Pedro y el otro discípulo camino del sepulcro. Los dos iban corriendo juntos, pero el otro discípulo corrió más aprisa que Pedro y llegó primero al sepulcro, e inclinándose, miró los lienzos puestos en el suelo, pero no entró.
+
+En eso llegó también Simón Pedro, que lo venía siguiendo, y entró en el sepulcro. Contempló los lienzos puestos en el suelo y el sudario, que había estado sobre la cabeza de Jesús, puesto no con los lienzos en el suelo, sino doblado en sitio aparte. Entonces entró también el otro discípulo, el que había llegado primero al sepulcro, y vio y creyó, porque hasta entonces no habían entendido las Escrituras, según las cuales Jesús debía resucitar de entre los muertos. \par\vspace{0.2cm}
+\vers Palabra del Señor. \par
+\resp Gloria a ti, Señor Jesús.
+
+\subsection*{CREDO}
+\noindent\rubrica{Se dice el Credo.} \par\vspace{0.3cm}
+
+\subsection*{ORACIÓN DE LOS FIELES}
+Llenos de gozo por la santa y gloriosa Resurrección del Señor, supliquémosle con insistencia diciendo: Rey vencedor, escúchanos.
+
+• A Cristo, que ha sido constituido Cabeza de la Iglesia, pidámosle que conceda gozo y felicidad a todos los fieles que celebran su triunfo. Roguemos al Señor. \\ 
+• A Cristo, que ha otorgado el perdón y la paz a los pecadores, supliquémosle que quienes han regresado al camino del bien, perseveren en sus buenos propósitos. Roguemos al Señor. \par\vspace{0.3cm}
+
+
+% ==========================================
+% VÍSPERAS
+% ==========================================
+
+\end{multicols}
+\end{document}

@@ -932,7 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let lp = dataDia.liturgia_palabra || {};
             
             let title = "El Señor Resucitó, Aleluya"; 
-            if ((dataDia.tiempo || "").toLowerCase().includes("cuaresma")) title = "Perdona a tu pueblo Señor";
+            if ((dataDia.tiempo_liturgico || "").toLowerCase().includes("cuaresma")) title = "Perdona a tu pueblo Señor";
             
             let cantoEntrada = null;
             if (window.cantosDB && window.cantosDB[title]) {
@@ -944,7 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const payload = {
                 dia_liturgico: dataDia.titulo_celebracion || (dataDia.metadatos && dataDia.metadatos.titulo_primario) || "Feria",
-                fecha_texto: dataDia.fecha,
+                fecha_texto: fecha,
                 misa: {
                     canto_entrada: cantoEntrada,
                     antifona_entrada: lp.antifona_entrada || "",
@@ -961,9 +961,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
-            if (dataDia.liturgia_horas) {
-                if (dataDia.liturgia_horas.laudes) payload.laudes = dataDia.liturgia_horas.laudes;
-                if (dataDia.liturgia_horas.visperas) payload.visperas = dataDia.liturgia_horas.visperas;
+            const integrarOficio = document.getElementById('office-select')?.value || 'ninguno';
+            
+            if (integrarOficio === 'laudes' || integrarOficio === 'diario' || integrarOficio === 'misa_laudes') {
+                if (dataDia.laudes) payload.laudes = dataDia.laudes;
+            }
+            if (integrarOficio === 'visperas' || integrarOficio === 'diario') {
+                if (dataDia.visperas) payload.visperas = dataDia.visperas;
             }
 
             const originalHtml = btnPdf.innerHTML;
@@ -978,8 +982,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    alert("Error generando PDF: " + (errorData.error || response.statusText));
+                    let errorMessage = `HTTP ${response.status} - ${response.statusText}`;
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.error || errorMessage;
+                    } catch (err) {
+                        const errorText = await response.text();
+                        console.error("Respuesta del servidor no es JSON:", errorText);
+                        errorMessage = "Error interno del servidor (Revisar logs en la terminal de Python).";
+                    }
+                    alert("Error generando PDF: " + errorMessage);
                     return;
                 }
                 
@@ -988,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const a = document.createElement('a');
                 a.href = blobUrl;
-                a.download = "Subsidio_" + dataDia.fecha + ".pdf";
+                a.download = "Subsidio_" + fecha + ".pdf";
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
