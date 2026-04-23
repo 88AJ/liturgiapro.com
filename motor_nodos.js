@@ -640,6 +640,34 @@ function generarDocumentoNodos(data, hora, options = {}) {
     };
 
     // ==========================================
+    // ENCABEZADO (Grado, Color, Intención)
+    // ==========================================
+    let bEncabezado = new BloqueLiturgico("encabezado");
+    let tituloDia = isEn ? "MASS OF THE DAY" : "MISA DEL DÍA";
+    
+    let rawGrado = "";
+    if (document.getElementById('grado-liturgico')) {
+        rawGrado = document.getElementById('grado-liturgico').value;
+    }
+    if (!rawGrado) rawGrado = data.grado || data.dia_semana || "Feria";
+    
+    let colorLiturgico = data.color || "";
+    let colorBadge = colorLiturgico ? `<span class="badge" style="background-color: var(--${colorLiturgico.toLowerCase()}); color: ${['blanco', 'amarillo'].includes(colorLiturgico.toLowerCase()) ? '#000' : '#fff'}">${colorLiturgico}</span>` : '';
+
+    bEncabezado.addSuperTitulo(tituloDia);
+    bEncabezado.addMonicion("<b>" + rawGrado + "</b> " + colorBadge);
+    
+    if (OFICIO !== "Laudes" && OFICIO !== "Visperas") {
+        let intencionGeneral = "Por las necesidades de nuestra comunidad parroquial.";
+        if (document.getElementById('misa-intencion')) {
+            intencionGeneral = document.getElementById('misa-intencion').value || intencionGeneral;
+        }
+        bEncabezado.addRubrica((isEn ? "Intention: " : "Intención: ") + intencionGeneral);
+    }
+    
+    SECUENCIA_LITURGICA.push(bEncabezado);
+
+    // ==========================================
     // BLOQUE A: RITOS INICIALES
     // ==========================================
     let bInicial = new BloqueLiturgico("ritos_iniciales");
