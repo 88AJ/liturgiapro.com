@@ -27,7 +27,6 @@
 \newcommand{\vers}{\textcolor{rubricred}{\textbf{V.\ }}}
 \newcommand{\resp}{\textcolor{rubricred}{\textbf{R.\ }}}
 \newcommand{\cruz}{\textcolor{rubricred}{✠}}
-\newcommand{\antifona}[1]{\textcolor{rubricred}{\textbf{Antífona:\ }}#1}
 
 \titleformat{\section}{\Large\bfseries\centering\color{rubricred}}{}{0pt}{\uppercase}
 \titleformat{\subsection}{\large\bfseries\centering\color{rubricred}}{}{0pt}{}
@@ -44,8 +43,6 @@
 \begin{document}
 
 % --- Configuración de Seguridad para Compilación en Bruto ---
-% Desactivamos el modo matemático del guion bajo explícitamente dentro del body
-% y definimos las variables de Jinja para que LaTeX las ignore al probar el diseño.
 \catcode`\_=12
 \def\VAR#1{[Dato Dinámico]}
 \def\BLOCK#1{}
@@ -63,41 +60,142 @@
 \RaggedRight
 
 % ==========================================
-% SANTA MISA (Generación Dinámica)
+% LAUDES
 % ==========================================
-\section*{SANTA MISA}
+\BLOCK{ if laudes }
+\section*{LAUDES}
 
-\BLOCK{ if canto_entrada }
-\subsection*{CANTO DE ENTRADA}
-\noindent\rubrica{\VAR{canto_entrada.titulo | escape_tex}} \par\vspace{0.1cm}
-\VAR{canto_entrada.letra | format_canto}
+\BLOCK{ if laudes.salmo1 }
+\subsection*{SALMO 1}
+\noindent\rubrica{Antífona:} \VAR{laudes.salmo1.antifona | escape_tex} \par\vspace{0.1cm}
+\VAR{laudes.salmo1.texto | escape_tex | lettrine}
 \par\vspace{0.3cm}
 \BLOCK{ endif }
 
-\BLOCK{ if antifona_entrada }
-\noindent\rubrica{Antífona de entrada} \par
-\VAR{antifona_entrada | escape_tex | lettrine}
+\BLOCK{ if laudes.cantico }
+\subsection*{CÁNTICO DEL ANTIGUO TESTAMENTO}
+\noindent\rubrica{Antífona:} \VAR{laudes.cantico.antifona | escape_tex} \par\vspace{0.1cm}
+\VAR{laudes.cantico.texto | escape_tex | lettrine}
+\par\vspace{0.3cm}
 \BLOCK{ endif }
 
-\subsection*{ORACIÓN COLECTA}
-\VAR{oracion_colecta | escape_tex | lettrine}
+\BLOCK{ if laudes.salmo2 }
+\subsection*{SALMO 2}
+\noindent\rubrica{Antífona:} \VAR{laudes.salmo2.antifona | escape_tex} \par\vspace{0.1cm}
+\VAR{laudes.salmo2.texto | escape_tex | lettrine}
+\par\vspace{0.3cm}
+\BLOCK{ endif }
 
+\BLOCK{ if laudes.evangelio }
+\subsection*{LECTURA BREVE Y CÁNTICO}
+\VAR{laudes.evangelio.texto | escape_tex | lettrine}
+\par\vspace{0.3cm}
+\BLOCK{ endif }
+\BLOCK{ endif }
+
+% ==========================================
+% SANTA MISA 
+% ==========================================
+\BLOCK{ if misa }
+\section*{SANTA MISA}
+
+\BLOCK{ if misa.canto_entrada }
+\subsection*{CANTO DE ENTRADA}
+\noindent\rubrica{\VAR{misa.canto_entrada.titulo | escape_tex}} \par\vspace{0.1cm}
+\VAR{misa.canto_entrada.letra | format_canto}
+\par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.antifona_entrada }
+\noindent\rubrica{Antífona de entrada} \par
+\VAR{misa.antifona_entrada | escape_tex | lettrine}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.gloria }
+\subsection*{GLORIA}
+\noindent\rubrica{Se dice el Gloria.} \par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.oracion_colecta }
+\subsection*{ORACIÓN COLECTA}
+\VAR{misa.oracion_colecta | escape_tex | lettrine}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.primera_lectura }
 \subsection*{LITURGIA DE LA PALABRA}
-\noindent\rubrica{Lectura del \VAR{lectura_primera_cita | escape_tex}.} \par\vspace{0.2cm}
-\VAR{lectura_primera_texto | escape_tex | lettrine} \par\vspace{0.2cm}
+\noindent\rubrica{Lectura del \VAR{misa.primera_lectura.cita | escape_tex}.} \par\vspace{0.2cm}
+\VAR{misa.primera_lectura.texto | escape_tex | lettrine} \par\vspace{0.2cm}
 \vers Palabra de Dios. \par
 \resp Te alabamos, Señor.
+\BLOCK{ endif }
 
+\BLOCK{ if misa.salmo }
 \subsection*{SALMO RESPONSORIAL}
-\noindent\rubrica{\VAR{salmo_cita | escape_tex}} \par\vspace{0.1cm}
-\resp \VAR{salmo_respuesta | escape_tex} \par\vspace{0.2cm}
-\VAR{salmo_texto | escape_tex | lettrine}
+\noindent\rubrica{\VAR{misa.salmo.cita | escape_tex}} \par\vspace{0.1cm}
+\resp \VAR{misa.salmo.respuesta | escape_tex} \par\vspace{0.2cm}
+\VAR{misa.salmo.texto | escape_tex | lettrine}
+\BLOCK{ endif }
 
+\BLOCK{ if misa.segunda_lectura }
+\subsection*{SEGUNDA LECTURA}
+\noindent\rubrica{Lectura de la \VAR{misa.segunda_lectura.cita | escape_tex}.} \par\vspace{0.2cm}
+\VAR{misa.segunda_lectura.texto | escape_tex | lettrine} \par\vspace{0.2cm}
+\vers Palabra de Dios. \par
+\resp Te alabamos, Señor.
+\BLOCK{ endif }
+
+\BLOCK{ if misa.secuencia }
+\subsection*{SECUENCIA}
+\VAR{misa.secuencia | escape_tex | lettrine} \par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.aclamacion_evangelio }
+\subsection*{ACLAMACIÓN ANTES DEL EVANGELIO}
+\resp Aleluya, aleluya. \par
+\VAR{misa.aclamacion_evangelio | escape_tex} \par
+\resp Aleluya. \par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.evangelio }
 \subsection*{EVANGELIO}
-\noindent\rubrica{Lectura del santo Evangelio según \VAR{evangelio_cita | escape_tex}.} \par\vspace{0.2cm}
-\VAR{evangelio_texto | escape_tex | lettrine} \par\vspace{0.2cm}
+\noindent\rubrica{Lectura del \VAR{misa.evangelio.cita | escape_tex}.} \par\vspace{0.2cm}
+\VAR{misa.evangelio.texto | escape_tex | lettrine} \par\vspace{0.2cm}
 \vers Palabra del Señor. \par
 \resp Gloria a ti, Señor Jesús.
+\BLOCK{ endif }
+
+\BLOCK{ if misa.credo }
+\subsection*{CREDO}
+\noindent\rubrica{Se dice el Credo.} \par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.oracion_fieles }
+\subsection*{ORACIÓN DE LOS FIELES}
+\VAR{misa.oracion_fieles | escape_tex} \par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ endif }
+
+% ==========================================
+% VÍSPERAS
+% ==========================================
+\BLOCK{ if visperas }
+\section*{VÍSPERAS}
+
+\BLOCK{ if visperas.salmo1 }
+\subsection*{SALMO 1}
+\noindent\rubrica{Antífona:} \VAR{visperas.salmo1.antifona | escape_tex} \par\vspace{0.1cm}
+\VAR{visperas.salmo1.texto | escape_tex | lettrine}
+\par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if visperas.cantico }
+\subsection*{CÁNTICO DEL NUEVO TESTAMENTO}
+\noindent\rubrica{Antífona:} \VAR{visperas.cantico.antifona | escape_tex} \par\vspace{0.1cm}
+\VAR{visperas.cantico.texto | escape_tex | lettrine}
+\par\vspace{0.3cm}
+\BLOCK{ endif }
+\BLOCK{ endif }
 
 \end{multicols}
 \end{document}

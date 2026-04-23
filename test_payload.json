@@ -1,17 +1,34 @@
 {
-    "dia_liturgico": "Feria de Pascua (San Adalberto)",
-    "fecha_texto": "Tiempo Pascual",
+  "dia_liturgico": "Domingo de Pascua de la Resurrección del Señor",
+  "fecha_texto": "Tiempo Pascual",
+  "misa": {
     "canto_entrada": {
-        "titulo": "Juntos como hermanos",
-        "letra": "Coro:\nJuntos como hermanos, \nmiembros de una Iglesia, \nvamos caminando \nal encuentro del Señor.\n\n1. Un largo caminar, \npor el desierto bajo el sol, \nno podemos avanzar \nsin la ayuda del Señor."
+      "titulo": "El Señor Resucitó, Aleluya",
+      "letra": "Coro:\nEl Señor resucitó, aleluya...\n\n1. Sobre la muerte la vida venció..."
     },
-    "antifona_entrada": "Este es el varón que no fue abandonado por Dios en el día del combate; recibirá su corona, porque cumplió fielmente los mandatos del Señor. Aleluya.",
-    "oracion_colecta": "Dios nuestro, que coronaste con el martirio al santo obispo Adalberto, inflamado en celo por las almas, concédenos, por su intercesión, que no falte a los pastores la obediencia de su grey ni a las ovejas el cuidado de sus pastores. Por nuestro Señor Jesucristo...",
-    "lectura_primera_cita": "libro de los Hechos de los Apóstoles (8, 26-40)",
-    "lectura_primera_texto": "En aquellos días, un ángel del Señor le dijo a Felipe:\n«Levántate y toma el camino del sur, que va de Jerusalén a Gaza y que es poco transitado».\n\nFelipe se puso en camino. Y sucedió que un etíope, alto funcionario de Candaces, reina de Etiopía, y administrador de sus tesoros, que había venido a Jerusalén para adorar a Dios, regresaba en su carro, leyendo al profeta Isaías.\n\nEntonces el Espíritu le dijo a Felipe:\n«Acércate y camina junto a ese carro».",
-    "salmo_cita": "Salmo 65",
-    "salmo_respuesta": "Tu salvación, Señor, es para todos. Aleluya.",
-    "salmo_texto": "Naciones, bendigan a nuestro Dios,\nhagan resonar sus alabanzas,\nporque él nos ha devuelto la vida\ny no dejó que tropezaran nuestros pies.",
-    "evangelio_cita": "san Juan (6, 44-51)",
-    "evangelio_texto": "En aquel tiempo, Jesús dijo a los judíos:\n«Nadie puede venir a mí, si no lo atrae el Padre, que me ha enviado; y a ése yo lo resucitaré el último día.\n\nEstá escrito en los profetas:\nTodos serán discípulos de Dios.\nTodo aquel que escucha al Padre y aprende de él, se acerca a mí.\n\nYo les aseguro: el que cree en mí, tiene vida eterna. Yo soy el pan de la vida.\nSus padres comieron el maná en el desierto y sin embargo, murieron.\nEste es el pan que ha bajado del cielo para que, quien lo coma, no muera»."
+    "antifona_entrada": "He resucitado y aún estoy contigo, aleluya; has puesto tu mano sobre mí, aleluya. Tu sabiduría ha sido maravillosa, aleluya, aleluya.",
+    "gloria": true,
+    "oracion_colecta": "Dios nuestro, que por medio de tu Unigénito, vencedor de la muerte, nos has abierto hoy las puertas de la vida eterna, concédenos a quienes celebramos la solemnidad de la resurrección del Señor, que, renovados por tu Espíritu, resucitemos en el reino de la luz. Por nuestro Señor Jesucristo...",
+    "primera_lectura": {
+      "cita": "libro de los Hechos de los Apóstoles (10, 34a. 37-43)",
+      "texto": "En aquellos días, Pedro tomó la palabra y dijo: “Ya saben ustedes lo sucedido en toda Judea, que tuvo principio en Galilea, después del bautismo predicado por Juan: cómo Dios ungió con el poder del Espíritu Santo a Jesús de Nazaret y cómo éste pasó haciendo el bien, sanando a todos los oprimidos por el diablo, porque Dios estaba con él.\n\nNosotros somos testigos de cuanto él hizo en Judea y en Jerusalén. Lo mataron colgándolo de la cruz, pero Dios lo resucitó al tercer día y concedió verlo, no a todo el pueblo, sino únicamente a los testigos que él, de antemano, había escogido: a nosotros, que hemos comido y bebido con él después de que resucitó de entre los muertos.\n\nÉl nos mandó predicar al pueblo y dar testimonio de que Dios lo ha constituido juez de vivos y muertos. El testimonio de los profetas es unánime: que cuantos creen en él reciben, por su medio, el perdón de los pecados”."
+    },
+    "salmo": {
+      "cita": "Salmo 117",
+      "respuesta": "Este es el día del triunfo del Señor. Aleluya.",
+      "texto": "Te damos gracias, Señor, porque eres bueno, porque tu misericordia es eterna. Diga la casa de Israel: “Su misericordia es eterna”.\n\nLa diestra del Señor es poderosa, la diestra del Señor es nuestro orgullo. No moriré, continuaré viviendo para contar lo que el Señor ha hecho.\n\nLa piedra que desecharon los constructores, es ahora la piedra angular. Esto es obra de la mano del Señor, es un milagro patente."
+    },
+    "segunda_lectura": {
+      "cita": "carta del apóstol san Pablo a los colosenses (3, 1-4)",
+      "texto": "Hermanos: Puesto que ustedes han resucitado con Cristo, busquen los bienes de arriba, donde está Cristo, sentado a la derecha de Dios. Pongan todo el corazón en los bienes del cielo, no en los de la tierra, porque han muerto y su vida está escondida con Cristo en Dios. Cuando se manifieste Cristo, vida de ustedes, entonces también ustedes se manifestarán gloriosos, juntamente con él."
+    },
+    "secuencia": "Ofrezcan los cristianos ofrendas de alabanza a gloria de la Víctima propicia de la Pascua.\nCordero sin pecado, que a las ovejas salva, a Dios y a los culpables unió con nueva alianza.\nLucharon vida y muerte en singular batalla, y, muerto el que es la vida, triunfante se levanta.\n“¿Qué has visto de camino,\nMaría, en la mañana?” “A mi Señor glorioso, la tumba abandonada,\nlos ángeles testigos, sudarios y mortaja. ¡Resucitó de veras mi amor y mi esperanza!\nVenid a Galilea, allí el Señor aguarda; allí veréis los suyos la gloria de la Pascua”.\nPrimicia de los muertos, sabemos por tu gracia que estás resucitado; la muerte en ti no manda.\nRey vencedor, apiádate de la miseria humana y da a tus fieles parte\nen tu victoria santa.",
+    "aclamacion_evangelio": "Cristo, nuestro cordero pascual, ha sido inmolado; celebremos, pues, la Pascua.",
+    "evangelio": {
+      "cita": "santo Evangelio según san Juan (20, 1-9)",
+      "texto": "El primer día después del sábado, estando todavía oscuro, fue María Magdalena al sepulcro y vio removida la piedra que lo cerraba. Echó a correr, llegó a la casa donde estaban Simón Pedro y el otro discípulo, a quien Jesús amaba, y les dijo: “Se han llevado del sepulcro al Señor y no sabemos dónde lo habrán puesto”.\n\nSalieron Pedro y el otro discípulo camino del sepulcro. Los dos iban corriendo juntos, pero el otro discípulo corrió más aprisa que Pedro y llegó primero al sepulcro, e inclinándose, miró los lienzos puestos en el suelo, pero no entró.\n\nEn eso llegó también Simón Pedro, que lo venía siguiendo, y entró en el sepulcro. Contempló los lienzos puestos en el suelo y el sudario, que había estado sobre la cabeza de Jesús, puesto no con los lienzos en el suelo, sino doblado en sitio aparte. Entonces entró también el otro discípulo, el que había llegado primero al sepulcro, y vio y creyó, porque hasta entonces no habían entendido las Escrituras, según las cuales Jesús debía resucitar de entre los muertos."
+    },
+    "credo": true,
+    "oracion_fieles": "Llenos de gozo por la santa y gloriosa Resurrección del Señor, supliquémosle con insistencia diciendo: Rey vencedor, escúchanos.\n\n• A Cristo, que ha sido constituido Cabeza de la Iglesia, pidámosle que conceda gozo y felicidad a todos los fieles que celebran su triunfo. Roguemos al Señor.\n• A Cristo, que ha otorgado el perdón y la paz a los pecadores, supliquémosle que quienes han regresado al camino del bien, perseveren en sus buenos propósitos. Roguemos al Señor."
+  }
 }
