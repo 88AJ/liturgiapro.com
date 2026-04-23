@@ -40,12 +40,12 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 
-\begin{document}
-
 % --- Configuración de Seguridad para Compilación en Bruto ---
-\catcode`\_=12
-\def\VAR#1{[Dato Dinámico]}
-\def\BLOCK#1{}
+\catcode 95=12
+\DeclareRobustCommand{\VAR}[1]{[Dato Dinámico]}
+\DeclareRobustCommand{\BLOCK}[1]{}
+
+\begin{document}
 
 \begin{center}
     {\Huge\textbf{Subsidio Litúrgico Diario}\par}
