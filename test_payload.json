@@ -1,0 +1,17 @@
+{
+    "dia_liturgico": "Feria de Pascua (San Adalberto)",
+    "fecha_texto": "Tiempo Pascual",
+    "canto_entrada": {
+        "titulo": "Juntos como hermanos",
+        "letra": "Coro:\nJuntos como hermanos, \nmiembros de una Iglesia, \nvamos caminando \nal encuentro del Señor.\n\n1. Un largo caminar, \npor el desierto bajo el sol, \nno podemos avanzar \nsin la ayuda del Señor."
+    },
+    "antifona_entrada": "Este es el varón que no fue abandonado por Dios en el día del combate; recibirá su corona, porque cumplió fielmente los mandatos del Señor. Aleluya.",
+    "oracion_colecta": "Dios nuestro, que coronaste con el martirio al santo obispo Adalberto, inflamado en celo por las almas, concédenos, por su intercesión, que no falte a los pastores la obediencia de su grey ni a las ovejas el cuidado de sus pastores. Por nuestro Señor Jesucristo...",
+    "lectura_primera_cita": "libro de los Hechos de los Apóstoles (8, 26-40)",
+    "lectura_primera_texto": "En aquellos días, un ángel del Señor le dijo a Felipe:\n«Levántate y toma el camino del sur, que va de Jerusalén a Gaza y que es poco transitado».\n\nFelipe se puso en camino. Y sucedió que un etíope, alto funcionario de Candaces, reina de Etiopía, y administrador de sus tesoros, que había venido a Jerusalén para adorar a Dios, regresaba en su carro, leyendo al profeta Isaías.\n\nEntonces el Espíritu le dijo a Felipe:\n«Acércate y camina junto a ese carro».",
+    "salmo_cita": "Salmo 65",
+    "salmo_respuesta": "Tu salvación, Señor, es para todos. Aleluya.",
+    "salmo_texto": "Naciones, bendigan a nuestro Dios,\nhagan resonar sus alabanzas,\nporque él nos ha devuelto la vida\ny no dejó que tropezaran nuestros pies.",
+    "evangelio_cita": "san Juan (6, 44-51)",
+    "evangelio_texto": "En aquel tiempo, Jesús dijo a los judíos:\n«Nadie puede venir a mí, si no lo atrae el Padre, que me ha enviado; y a ése yo lo resucitaré el último día.\n\nEstá escrito en los profetas:\nTodos serán discípulos de Dios.\nTodo aquel que escucha al Padre y aprende de él, se acerca a mí.\n\nYo les aseguro: el que cree en mí, tiene vida eterna. Yo soy el pan de la vida.\nSus padres comieron el maná en el desierto y sin embargo, murieron.\nEste es el pan que ha bajado del cielo para que, quien lo coma, no muera»."
+}
