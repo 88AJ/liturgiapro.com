@@ -41,16 +41,14 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 
-% Forzar sobrescritura de etiquetas Jinja para que el archivo compile en bruto
-% Utilizamos \AtBeginDocument para que ningún paquete sobreescriba esta regla al iniciar.
-% Cambiamos el catcode del guion bajo a 12 (texto plano) para anular el modo matemático.
-\AtBeginDocument{
-    \catcode`\_=12
-    \def\VAR#1{[Dato Dinámico]}
-    \def\BLOCK#1{}
-}
-
 \begin{document}
+
+% --- Configuración de Seguridad para Compilación en Bruto ---
+% Desactivamos el modo matemático del guion bajo explícitamente dentro del body
+% y definimos las variables de Jinja para que LaTeX las ignore al probar el diseño.
+\catcode`\_=12
+\def\VAR#1{[Dato Dinámico]}
+\def\BLOCK#1{}
 
 \begin{center}
     {\Huge\textbf{Subsidio Litúrgico Diario}\par}
