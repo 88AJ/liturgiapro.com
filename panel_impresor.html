@@ -247,11 +247,9 @@
 
     <!-- Previsualizador de Mancha Tipográfica -->
     <main class="viewport">
-        <div class="pdf-container pdf-canvas" id="main-liturgia-container">
-            <!-- La magia de RenderizarSaaS ocurre aquí -->
-            <div class="empty-state">
-                Seleccione un rango litúrgico para construir la mancha de impresión.
-            </div>
+        <div class="pdf-container pdf-canvas" id="main-liturgia-container" style="display: flex; flex-direction: column; padding: 0;">
+            <div id="loading-overlay" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; color: white; z-index: 10; font-size: 1.2rem; font-weight: bold;">Generando PDF de Alta Resolución (XeLaTeX)...</div>
+            <iframe id="pdf-preview-iframe" style="width: 100%; height: 100%; border: none; min-height: 800px;" src="about:blank"></iframe>
         </div>
     </main>
 
@@ -329,38 +327,91 @@
             });
         }
 
-        // 3. Activar Previsualización del motor AST
-        function verDetalleFecha(cardElement, dataDia) {
+        // 3. Activar Previsualización del motor AST (Ahora vía Backend)
+        async function verDetalleFecha(cardElement, dataDia) {
             // UI state
             document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
             if (cardElement && cardElement.classList) cardElement.classList.add('active');
 
-            // Renderizar
-            if (dataDia.bloques) {
-                window.RenderizarSaaS(dataDia.bloques);
-            } else if (typeof generarDocumentoNodosLegacy === 'function') {
-                const htmlStr = generarDocumentoNodosLegacy(dataDia, "laudes", { showMoniciones: true, showHomilia: true });
-                document.getElementById('main-liturgia-container').innerHTML = htmlStr;
-            } else {
-                document.getElementById('main-liturgia-container').innerHTML = `
-                <div class="empty-state">
-                    Fallo del motor de Renderizado.
-                </div>`;
+            const loading = document.getElementById('loading-overlay');
+            const iframe = document.getElementById('pdf-preview-iframe');
+            
+            loading.style.display = 'flex';
+            iframe.style.opacity = '0.5';
+            
+            try {
+                const payload = adaptarPayloadLaTeX(dataDia);
+
+                const response = await fetch('http://localhost:8086/generate-pdf', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    alert("Error generando PDF: " + (errorData.error || response.statusText) + "\n" + (errorData.stdout || ""));
+                    return;
+                }
+                
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                
+                iframe.src = blobUrl;
+                iframe.style.opacity = '1';
+                
+                window.currentPdfBlobUrl = blobUrl;
+                window.currentPdfName = "Subsidio_" + dataDia.fecha + ".pdf";
+                
+            } catch (e) {
+                alert("Error de conexión al servidor Padre PRO: " + e);
+            } finally {
+                loading.style.display = 'none';
             }
+        }
+
+        function adaptarPayloadLaTeX(dataDia) {
+            let lp = dataDia.liturgia_palabra || {};
+            
+            let title = "El Señor Resucitó, Aleluya"; 
+            if ((dataDia.tiempo || "").toLowerCase().includes("cuaresma")) title = "Perdona a tu pueblo Señor";
+            
+            let cantoEntrada = null;
+            if (window.cantosDB && window.cantosDB[title]) {
+                cantoEntrada = {
+                    titulo: title,
+                    letra: window.cantosDB[title].letra
+                };
+            }
+
+            return {
+                dia_liturgico: dataDia.titulo_celebracion || (dataDia.metadatos && dataDia.metadatos.titulo_primario) || "Feria",
+                fecha_texto: dataDia.fecha,
+                canto_entrada: cantoEntrada,
+                antifona_entrada: lp.antifona_entrada || "",
+                oracion_colecta: lp.oracion_colecta || "",
+                lectura_primera_cita: lp.primera_lectura ? lp.primera_lectura.cita : "",
+                lectura_primera_texto: lp.primera_lectura ? lp.primera_lectura.texto : "",
+                salmo_cita: lp.salmo ? lp.salmo.cita : "",
+                salmo_respuesta: lp.salmo ? lp.salmo.respuesta : "",
+                salmo_texto: lp.salmo ? lp.salmo.texto : "",
+                evangelio_cita: lp.evangelio ? lp.evangelio.cita : "",
+                evangelio_texto: lp.evangelio ? lp.evangelio.texto : ""
+            };
         }
 
         // 4. Print Action
         function generarPDF() {
-            const activeCard = document.querySelector('.day-card.active');
-            if (activeCard) {
-                const redIndicator = activeCard.querySelector('.status-red');
-                if (redIndicator) {
-                    alert("ACCESO DENEGADO: El semáforo de integridad marca rechazo (Truncamiento, placeholders o falta Liturgia de las Horas). Corrige el dato en el compilador.");
-                    return;
-                }
+            if (window.currentPdfBlobUrl) {
+                const a = document.createElement('a');
+                a.href = window.currentPdfBlobUrl;
+                a.download = window.currentPdfName || "documento.pdf";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                alert("No hay ningún PDF generado para descargar.");
             }
-            alert("Sistema enlazado a la prensa virtual CMD+P. Aplicando geometría de Lomo de saas.css...");
-            window.print();
         }
     </script>
 </body>

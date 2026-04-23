@@ -1,0 +1,103 @@
+% --- BLOQUE DE PREÁMBULO UNIVERSAL ---
+\documentclass[11pt, letterpaper, twoside]{article}
+
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fontspec}
+
+\usepackage[spanish, bidi=basic, provide=*]{babel}
+\babelprovide[import, onchar=ids fonts]{spanish}
+\babelprovide[import, onchar=ids fonts]{english}
+
+% Tipografía serif para imitar el Misal Romano
+\babelfont{rm}{Noto Serif}
+
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+
+% --- PAQUETES EDITORIALES LITÚRGICOS ---
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{lettrine}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+
+\definecolor{rubricred}{HTML}{C8102E}
+
+\newcommand{\rubrica}[1]{\textcolor{rubricred}{\small\textit{#1}}}
+\newcommand{\vers}{\textcolor{rubricred}{\textbf{V.\ }}}
+\newcommand{\resp}{\textcolor{rubricred}{\textbf{R.\ }}}
+\newcommand{\cruz}{\textcolor{rubricred}{✠}}
+\newcommand{\antifona}[1]{\textcolor{rubricred}{\textbf{Antífona:\ }}#1}
+
+\titleformat{\section}{\Large\bfseries\centering\color{rubricred}}{}{0pt}{\uppercase}
+\titleformat{\subsection}{\large\bfseries\centering\color{rubricred}}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{rubricred}}{}{0pt}{}
+
+\renewcommand{\LettrineFontHook}{\color{rubricred}}
+\setcounter{DefaultLines}{2}
+\setlength{\DefaultFindent}{0.2em}
+\setlength{\DefaultNindent}{0em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% Forzar sobrescritura de etiquetas Jinja para que el archivo compile en bruto
+% Colocado después de todos los paquetes para evitar conflictos con l3kernel
+\makeatletter
+\def\VAR#1{[Dato Dinámico]}
+\def\BLOCK#1{}
+\makeatother
+
+\begin{document}
+
+\begin{center}
+    {\Huge\textbf{Subsidio Litúrgico Diario}\par}
+    \vspace{0.3cm}
+    {\large\textsc{\VAR{dia_liturgico}}\par}
+    {\small \VAR{fecha_texto}\par}
+\end{center}
+
+\vspace{0.8cm}
+
+\begin{multicols}{2}
+\RaggedRight
+
+% ==========================================
+% SANTA MISA (Generación Dinámica)
+% ==========================================
+\section*{SANTA MISA}
+
+\BLOCK{ if canto_entrada }
+\subsection*{CANTO DE ENTRADA}
+\noindent\rubrica{\VAR{canto_entrada.titulo}} \par\vspace{0.1cm}
+\VAR{canto_entrada.letra}
+\par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if antifona_entrada }
+\noindent\rubrica{Antífona de entrada} \par
+\VAR{antifona_entrada}
+\BLOCK{ endif }
+
+\subsection*{ORACIÓN COLECTA}
+\VAR{oracion_colecta}
+
+\subsection*{LITURGIA DE LA PALABRA}
+\noindent\rubrica{Lectura del \VAR{lectura_primera_cita}.} \par\vspace{0.2cm}
+\VAR{lectura_primera_texto} \par\vspace{0.2cm}
+\vers Palabra de Dios. \par
+\resp Te alabamos, Señor.
+
+\subsection*{SALMO RESPONSORIAL}
+\noindent\rubrica{\VAR{salmo_cita}} \par\vspace{0.1cm}
+\resp \VAR{salmo_respuesta} \par\vspace{0.2cm}
+\VAR{salmo_texto}
+
+\subsection*{EVANGELIO}
+\noindent\rubrica{Lectura del santo Evangelio según \VAR{evangelio_cita}.} \par\vspace{0.2cm}
+\VAR{evangelio_texto} \par\vspace{0.2cm}
+\vers Palabra del Señor. \par
+\resp Gloria a ti, Señor Jesús.
+
+\end{multicols}
+\end{document}
