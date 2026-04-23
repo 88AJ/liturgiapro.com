@@ -42,19 +42,21 @@
 \setlength{\parskip}{0.5em}
 
 % Forzar sobrescritura de etiquetas Jinja para que el archivo compile en bruto
-% Colocado después de todos los paquetes para evitar conflictos con l3kernel
-\makeatletter
-\def\VAR#1{[Dato Dinámico]}
-\def\BLOCK#1{}
-\makeatother
+% Utilizamos \AtBeginDocument para que ningún paquete sobreescriba esta regla al iniciar.
+% Cambiamos el catcode del guion bajo a 12 (texto plano) para anular el modo matemático.
+\AtBeginDocument{
+    \catcode`\_=12
+    \def\VAR#1{[Dato Dinámico]}
+    \def\BLOCK#1{}
+}
 
 \begin{document}
 
 \begin{center}
     {\Huge\textbf{Subsidio Litúrgico Diario}\par}
     \vspace{0.3cm}
-    {\large\textsc{\VAR{dia_liturgico}}\par}
-    {\small \VAR{fecha_texto}\par}
+    {\large\textsc{\VAR{dia_liturgico | escape_tex}}\par}
+    {\small \VAR{fecha_texto | escape_tex}\par}
 \end{center}
 
 \vspace{0.8cm}
@@ -69,33 +71,33 @@
 
 \BLOCK{ if canto_entrada }
 \subsection*{CANTO DE ENTRADA}
-\noindent\rubrica{\VAR{canto_entrada.titulo}} \par\vspace{0.1cm}
-\VAR{canto_entrada.letra}
+\noindent\rubrica{\VAR{canto_entrada.titulo | escape_tex}} \par\vspace{0.1cm}
+\VAR{canto_entrada.letra | escape_tex}
 \par\vspace{0.3cm}
 \BLOCK{ endif }
 
 \BLOCK{ if antifona_entrada }
 \noindent\rubrica{Antífona de entrada} \par
-\VAR{antifona_entrada}
+\VAR{antifona_entrada | escape_tex | lettrine}
 \BLOCK{ endif }
 
 \subsection*{ORACIÓN COLECTA}
-\VAR{oracion_colecta}
+\VAR{oracion_colecta | escape_tex | lettrine}
 
 \subsection*{LITURGIA DE LA PALABRA}
-\noindent\rubrica{Lectura del \VAR{lectura_primera_cita}.} \par\vspace{0.2cm}
-\VAR{lectura_primera_texto} \par\vspace{0.2cm}
+\noindent\rubrica{Lectura del \VAR{lectura_primera_cita | escape_tex}.} \par\vspace{0.2cm}
+\VAR{lectura_primera_texto | escape_tex | lettrine} \par\vspace{0.2cm}
 \vers Palabra de Dios. \par
 \resp Te alabamos, Señor.
 
 \subsection*{SALMO RESPONSORIAL}
-\noindent\rubrica{\VAR{salmo_cita}} \par\vspace{0.1cm}
-\resp \VAR{salmo_respuesta} \par\vspace{0.2cm}
-\VAR{salmo_texto}
+\noindent\rubrica{\VAR{salmo_cita | escape_tex}} \par\vspace{0.1cm}
+\resp \VAR{salmo_respuesta | escape_tex} \par\vspace{0.2cm}
+\VAR{salmo_texto | escape_tex | lettrine}
 
 \subsection*{EVANGELIO}
-\noindent\rubrica{Lectura del santo Evangelio según \VAR{evangelio_cita}.} \par\vspace{0.2cm}
-\VAR{evangelio_texto} \par\vspace{0.2cm}
+\noindent\rubrica{Lectura del santo Evangelio según \VAR{evangelio_cita | escape_tex}.} \par\vspace{0.2cm}
+\VAR{evangelio_texto | escape_tex | lettrine} \par\vspace{0.2cm}
 \vers Palabra del Señor. \par
 \resp Gloria a ti, Señor Jesús.
 

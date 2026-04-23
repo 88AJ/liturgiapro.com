@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiturgiaPro | Maestro Impresor</title>
     <!-- Fonts Litúrgicas y de UI moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,6 +22,7 @@
         .sidebar {
             width: 380px;
             background: rgba(24, 24, 27, 0.8);
+            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
@@ -213,6 +215,39 @@
             z-index: 1;
             /* Aquí importaremos el CSS exacto del saas.css via clases */
         }
+        
+        .section-title-print {
+            margin-bottom: 0;
+        }
+
+        #main-liturgia-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        #loading-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 10;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        #pdf-preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            min-height: 800px;
+        }
     </style>
 </head>
 <body>
@@ -225,7 +260,7 @@
 
         <div class="section-title">Encuadernación de Lotes</div>
         
-        <select class="batch-selector" id="batchSelect">
+        <select class="batch-selector" id="batchSelect" title="Selector de Lotes">
             <option value="quincena1_abril">Abril 2026 - Primera Quincena (1 al 15)</option>
             <option value="quincena2_abril">Abril 2026 - Segunda Quincena (16 al 30)</option>
             <option value="mes_abril">Abril 2026 - Mes Completo</option>
@@ -239,7 +274,7 @@
         </div>
 
         <div class="print-controls">
-            <div class="section-title" style="margin-bottom: 0;">Motor de Prensa</div>
+            <div class="section-title section-title-print">Motor de Prensa</div>
             <button class="btn btn-preview" onclick="renderPreview()">Recargar Mancha Visual</button>
             <button class="btn btn-print" onclick="generarPDF()">GENERAR SACRAMENTARIO</button>
         </div>
@@ -247,9 +282,9 @@
 
     <!-- Previsualizador de Mancha Tipográfica -->
     <main class="viewport">
-        <div class="pdf-container pdf-canvas" id="main-liturgia-container" style="display: flex; flex-direction: column; padding: 0;">
-            <div id="loading-overlay" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; color: white; z-index: 10; font-size: 1.2rem; font-weight: bold;">Generando PDF de Alta Resolución (XeLaTeX)...</div>
-            <iframe id="pdf-preview-iframe" style="width: 100%; height: 100%; border: none; min-height: 800px;" src="about:blank"></iframe>
+        <div class="pdf-container pdf-canvas" id="main-liturgia-container">
+            <div id="loading-overlay">Generando PDF de Alta Resolución (XeLaTeX)...</div>
+            <iframe id="pdf-preview-iframe" src="about:blank" title="Vista Previa de PDF"></iframe>
         </div>
     </main>
 

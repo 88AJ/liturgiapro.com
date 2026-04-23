@@ -1080,13 +1080,13 @@ window.RenderizarSaaS = function(jsonAST) {
     const contenedor = document.getElementById('pdf-view') || document.querySelector('.pdf-container');
     if (!contenedor || !Array.isArray(jsonAST)) return;
 
-    contenedor.innerHTML = ''; // Limpieza de nodos legacy
+    contenedor.textContent = ''; // Limpieza de nodos legacy
     const fragmento = document.createDocumentFragment();
 
     jsonAST.forEach((bloque) => {
         const div = document.createElement('div');
         div.className = `missal-block`; // Clase de contención básica NLM
-        div.innerHTML = RENDERIZAR_NODO_AST(bloque);
+        div.insertAdjacentHTML('beforeend', RENDERIZAR_NODO_AST(bloque));
         fragmento.appendChild(div);
     });
 
