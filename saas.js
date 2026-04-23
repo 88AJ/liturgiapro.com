@@ -912,21 +912,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PDF Export function
     const btnPdf = document.getElementById('generar-pdf');
-    btnPdf.addEventListener('click', () => {
-        const element = document.getElementById('pdf-view');
+    if (btnPdf) {
+        btnPdf.addEventListener('click', async () => {
+            const element = document.getElementById('pdf-view');
+            
+            if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...')) {
+                alert("Primero genera un documento usando el Asistente.");
+                return;
+            }
 
-        // If it's an empty state, don't print
-        if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...')) {
-            alert("Primero genera un documento usando el Asistente.");
-            return;
-        }
+            const dateSelect = document.getElementById('date-select');
+            const fecha = dateSelect ? dateSelect.value : null;
+            if (!fecha || !window.liturgiaData || !window.liturgiaData[fecha]) {
+                alert("No hay datos cargados para la fecha seleccionada.");
+                return;
+            }
 
-        // We use native print. Native print handles extremely long documents correctly
-        // by preserving vector text and avoiding the 16,384px height limit that crashes 
-        // html2canvas and produces purely blank PDFs.
-        alert("En la siguiente ventana de impresión, asegúrate de seleccionar 'Guardar como PDF' como tu Destino de impresión y marcar la opción 'Imprimir gráficos de fondo' si deseas que se mantengan los colores.");
-        window.print();
-    });
+            const dataDia = window.liturgiaData[fecha];
+            let lp = dataDia.liturgia_palabra || {};
+            
+            let title = "El Señor Resucitó, Aleluya"; 
+            if ((dataDia.tiempo || "").toLowerCase().includes("cuaresma")) title = "Perdona a tu pueblo Señor";
+            
+            let cantoEntrada = null;
+            if (window.cantosDB && window.cantosDB[title]) {
+                cantoEntrada = {
+                    titulo: title,
+                    letra: window.cantosDB[title].letra
+                };
+            }
+
+            const payload = {
+                dia_liturgico: dataDia.titulo_celebracion || (dataDia.metadatos && dataDia.metadatos.titulo_primario) || "Feria",
+                fecha_texto: dataDia.fecha,
+                misa: {
+                    canto_entrada: cantoEntrada,
+                    antifona_entrada: lp.antifona_entrada || "",
+                    oracion_colecta: lp.oracion_colecta || "",
+                    primera_lectura: lp.primera_lectura ? { cita: lp.primera_lectura.cita, texto: lp.primera_lectura.texto } : null,
+                    salmo: lp.salmo ? { cita: lp.salmo.cita, respuesta: lp.salmo.respuesta, texto: lp.salmo.texto } : null,
+                    segunda_lectura: lp.segunda_lectura ? { cita: lp.segunda_lectura.cita, texto: lp.segunda_lectura.texto } : null,
+                    evangelio: lp.evangelio ? { cita: lp.evangelio.cita, texto: lp.evangelio.texto } : null,
+                    aclamacion_evangelio: lp.aclamacion_evangelio || "",
+                    secuencia: lp.secuencia || "",
+                    gloria: !!lp.gloria,
+                    credo: !!lp.credo,
+                    oracion_fieles: lp.oracion_fieles || ""
+                }
+            };
+
+            if (dataDia.liturgia_horas) {
+                if (dataDia.liturgia_horas.laudes) payload.laudes = dataDia.liturgia_horas.laudes;
+                if (dataDia.liturgia_horas.visperas) payload.visperas = dataDia.liturgia_horas.visperas;
+            }
+
+            const originalHtml = btnPdf.innerHTML;
+            try {
+                btnPdf.innerHTML = "Generando PDF...";
+                btnPdf.disabled = true;
+
+                const response = await fetch('http://localhost:8086/generate-pdf', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    alert("Error generando PDF: " + (errorData.error || response.statusText));
+                    return;
+                }
+                
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = "Subsidio_" + dataDia.fecha + ".pdf";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+                
+            } catch (e) {
+                alert("Error de conexión al servidor Padre PRO: " + e);
+            } finally {
+                btnPdf.innerHTML = originalHtml;
+                btnPdf.disabled = false;
+            }
+        });
+    }
 
     // YouTube Controller
     window.loadYoutubePath = function(query) {
