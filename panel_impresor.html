@@ -376,7 +376,7 @@
             iframe.style.opacity = '0.5';
             
             try {
-                const payload = adaptarPayloadLaTeX(dataDia);
+                const payload = window.generarPayloadLaTeX(dataDia);
 
                 const response = await fetch('http://localhost:8086/generate-pdf', {
                     method: 'POST',
@@ -404,36 +404,6 @@
             } finally {
                 loading.style.display = 'none';
             }
-        }
-
-        function adaptarPayloadLaTeX(dataDia) {
-            let lp = dataDia.liturgia_palabra || {};
-            
-            let title = "El Señor Resucitó, Aleluya"; 
-            if ((dataDia.tiempo || "").toLowerCase().includes("cuaresma")) title = "Perdona a tu pueblo Señor";
-            
-            let cantoEntrada = null;
-            if (window.cantosDB && window.cantosDB[title]) {
-                cantoEntrada = {
-                    titulo: title,
-                    letra: window.cantosDB[title].letra
-                };
-            }
-
-            return {
-                dia_liturgico: dataDia.titulo_celebracion || (dataDia.metadatos && dataDia.metadatos.titulo_primario) || "Feria",
-                fecha_texto: dataDia.fecha,
-                canto_entrada: cantoEntrada,
-                antifona_entrada: lp.antifona_entrada || "",
-                oracion_colecta: lp.oracion_colecta || "",
-                lectura_primera_cita: lp.primera_lectura ? lp.primera_lectura.cita : "",
-                lectura_primera_texto: lp.primera_lectura ? lp.primera_lectura.texto : "",
-                salmo_cita: lp.salmo ? lp.salmo.cita : "",
-                salmo_respuesta: lp.salmo ? lp.salmo.respuesta : "",
-                salmo_texto: lp.salmo ? lp.salmo.texto : "",
-                evangelio_cita: lp.evangelio ? lp.evangelio.cita : "",
-                evangelio_texto: lp.evangelio ? lp.evangelio.texto : ""
-            };
         }
 
         // 4. Print Action

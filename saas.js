@@ -929,156 +929,183 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const dataDia = window.liturgiaData[fecha];
-            let lp = dataDia.liturgia_palabra || {};
+    window.generarPayloadLaTeX = function(dataDia) {
+        let lp = dataDia.liturgia_palabra || {};
+        
+        let t_liturgico = (dataDia.tiempo_liturgico || "").toLowerCase();
+        let c_entrada = "Vienen con alegría Señor";
+        let c_ofertorio = "Te Ofrecemos Padre Nuestro";
+        let c_comunion = "Pescador de Hombres";
+        let c_salida = "Demos Gracias al Señor";
+
+        if (t_liturgico.includes('cuaresma')) {
+            c_entrada = "Perdona a tu pueblo Señor";
+            c_ofertorio = "Te Presentamos el Vino y el Pan";
+            c_comunion = "Saber que vendrás";
+            c_salida = "Honor y Gloria a Ti (o Prepara tu Camino)";
+        } else if (t_liturgico.includes('pascua')) {
+            c_entrada = "El Señor Resucitó, Aleluya";
+            c_ofertorio = "Saber que vendrás";
+            c_comunion = "Yo soy el Pan de Vida";
+            c_salida = "Reina del Cielo Alégrate";
+        } else if (t_liturgico.includes('adviento')) {
+            c_entrada = "Ven, Ven, Señor no tardes";
+            c_ofertorio = "Saber que vendrás";
+            c_comunion = "Un pueblo que camina";
+            c_salida = "Santa María de la Esperanza";
+        }
+
+        function getRawCanto(titulo) {
+            if (window.cantosDB && window.cantosDB[titulo]) {
+                return { titulo: titulo, letra: window.cantosDB[titulo].letra };
+            }
+            return null;
+        }
+
+        let cantoEntrada = getRawCanto(c_entrada);
+        let cantoOfertorio = getRawCanto(c_ofertorio);
+        let cantoComunion = getRawCanto(c_comunion);
+        let cantoSalida = getRawCanto(c_salida);
+
+        // -- LIMPIADORES DE DATOS PARA LATEX --
+        function limpiarRito(texto) {
+            if (!texto) return "";
+            return texto.replace(/Se dice el Credo\.?/gi, "")
+                        .replace(/Se dice Credo\.?/gi, "")
+                        .trim();
+        }
+
+        function limpiarLectura(lectura) {
+            if (!lectura) return null;
+            let cita = (lectura.cita || "").trim();
+            let texto = limpiarRito(lectura.texto || "");
             
-            let t_liturgico = (dataDia.tiempo_liturgico || "").toLowerCase();
-            let c_entrada = "Vienen con alegría Señor";
-            let c_ofertorio = "Te Ofrecemos Padre Nuestro";
-            let c_comunion = "Pescador de Hombres";
-            let c_salida = "Demos Gracias al Señor";
+            // Si el texto empieza con corchetes, los removemos completamente (suele ser el tema)
+            texto = texto.replace(/^\[.*?\]\n*/g, '').trim();
 
-            if (t_liturgico.includes('cuaresma')) {
-                c_entrada = "Perdona a tu pueblo Señor";
-                c_ofertorio = "Te Presentamos el Vino y el Pan";
-                c_comunion = "Saber que vendrás";
-                c_salida = "Honor y Gloria a Ti (o Prepara tu Camino)";
-            } else if (t_liturgico.includes('pascua')) {
-                c_entrada = "El Señor Resucitó, Aleluya";
-                c_ofertorio = "Saber que vendrás";
-                c_comunion = "Yo soy el Pan de Vida";
-                c_salida = "Reina del Cielo Alégrate";
-            } else if (t_liturgico.includes('adviento')) {
-                c_entrada = "Ven, Ven, Señor no tardes";
-                c_ofertorio = "Saber que vendrás";
-                c_comunion = "Un pueblo que camina";
-                c_salida = "Santa María de la Esperanza";
+            if (!cita && texto) {
+                // La cita suele estar en la primera línea del texto cuando viene incrustada
+                let lines = texto.split('\n');
+                cita = lines[0].trim();
+                texto = lines.slice(1).join('\n').trim();
             }
-
-            function getRawCanto(titulo) {
-                if (window.cantosDB && window.cantosDB[titulo]) {
-                    return { titulo: titulo, letra: window.cantosDB[titulo].letra };
-                }
-                return null;
-            }
-
-            let cantoEntrada = getRawCanto(c_entrada);
-            let cantoOfertorio = getRawCanto(c_ofertorio);
-            let cantoComunion = getRawCanto(c_comunion);
-            let cantoSalida = getRawCanto(c_salida);
-
-            // -- LIMPIADORES DE DATOS PARA LATEX --
-            function limpiarRito(texto) {
-                if (!texto) return "";
-                return texto.replace(/Se dice el Credo\.?/gi, "")
-                            .replace(/Se dice Credo\.?/gi, "")
-                            .trim();
-            }
-
-            function limpiarLectura(lectura) {
-                if (!lectura) return null;
-                let cita = (lectura.cita || "").trim();
-                let texto = limpiarRito(lectura.texto || "");
-                
-                // Si el texto empieza con corchetes, los removemos completamente (suele ser el tema)
-                texto = texto.replace(/^\[.*?\]\n*/g, '').trim();
-
-                if (!cita && texto) {
-                    // La cita suele estar en la primera línea del texto cuando viene incrustada
-                    let lines = texto.split('\n');
-                    cita = lines[0].trim();
-                    texto = lines.slice(1).join('\n').trim();
-                }
-                
-                // Limpiar corchetes residuales si los hay
-                texto = texto.replace(/\[/g, "").replace(/\]/g, "");
-                
-                return { cita, texto };
-            }
-
-            function limpiarSalmo(salmoObj) {
-                if (!salmoObj) return null;
-                let cita = (salmoObj.cita || "").trim();
-                let respuesta = (salmoObj.respuesta || "").trim();
-                let texto = limpiarRito(salmoObj.texto || "");
-                
-                texto = texto.replace(/RI\s*([A-Z])/g, "R. $1").replace(/R\|\s*([A-Z])/g, "R. $1");
-                respuesta = respuesta.replace(/RI\s*([A-Z])/g, "R. $1").replace(/R\|\s*([A-Z])/g, "R. $1");
-                
-                return { cita, respuesta, texto };
-            }
-
-            function limpiarOficio(oficioObj) {
-                if (!oficioObj) return null;
-                const nuevoOficio = JSON.parse(JSON.stringify(oficioObj));
-                for (let key in nuevoOficio) {
-                    if (nuevoOficio[key] && typeof nuevoOficio[key].texto === 'string') {
-                        // Limpiar doxología de salmos y cánticos
-                        nuevoOficio[key].texto = nuevoOficio[key].texto
-                            .replace(/(\n*\s*Se dice:\n*Gloria al Padre[\s\S]*)/i, '')
-                            .replace(/(\n*\s*No se dice\n*Gloria al Padre[\s\S]*)/i, '')
-                            .trim();
-                    }
-                }
-                return nuevoOficio;
-            }
-
-            let primera = limpiarLectura(lp.primera_lectura);
-            let salmoResp = limpiarSalmo(lp.salmo_responsorial || lp.salmo);
-            let segunda = limpiarLectura(lp.segunda_lectura);
-            let evang = limpiarLectura(lp.evangelio);
-
-            const includeMoniciones = document.getElementById('check-moniciones') ? document.getElementById('check-moniciones').checked : true;
-            let monicionesMisa = {
-                entrada: dataDia.monicion_entrada || "",
-                primera_lectura: "",
-                segunda_lectura: "",
-                evangelio: ""
-            };
-            if (includeMoniciones && window.obtenerMonicionesPorTiempo) {
-                const monis = window.obtenerMonicionesPorTiempo(t_liturgico);
-                if (!monicionesMisa.entrada) monicionesMisa.entrada = monis.entrada;
-                monicionesMisa.primera_lectura = monis.primera_lectura;
-                monicionesMisa.segunda_lectura = monis.segunda_lectura;
-                monicionesMisa.evangelio = monis.evangelio;
-            }
-            if (!includeMoniciones) {
-                monicionesMisa = { entrada: "", primera_lectura: "", segunda_lectura: "", evangelio: "" };
-            }
-
-            const payload = {
-                dia_liturgico: dataDia.titulo_celebracion || (dataDia.metadatos && dataDia.metadatos.titulo_primario) || "Feria",
-                fecha_texto: fecha,
-                misa: {
-                    canto_entrada: cantoEntrada,
-                    canto_ofertorio: cantoOfertorio,
-                    canto_comunion: cantoComunion,
-                    canto_salida: cantoSalida,
-                    monicion_entrada: monicionesMisa.entrada,
-                    monicion_primera_lectura: monicionesMisa.primera_lectura,
-                    monicion_segunda_lectura: monicionesMisa.segunda_lectura,
-                    monicion_evangelio: monicionesMisa.evangelio,
-                    antifona_entrada: lp.antifona_entrada || "",
-                    oracion_colecta: lp.oracion_colecta || "",
-                    primera_lectura: primera,
-                    salmo: salmoResp,
-                    segunda_lectura: segunda,
-                    evangelio: evang,
-                    aclamacion_evangelio: lp.aclamacion_evangelio || "",
-                    secuencia: lp.secuencia || "",
-                    gloria: !!lp.gloria,
-                    credo: !!lp.credo,
-                    oracion_fieles: lp.oracion_fieles || ""
-                }
-            };
-
-            const integrarOficio = document.getElementById('office-select')?.value || 'ninguno';
             
-            if (integrarOficio === 'laudes' || integrarOficio === 'diario' || integrarOficio === 'misa_laudes') {
-                if (dataDia.laudes) payload.laudes = limpiarOficio(dataDia.laudes);
+            // Limpiar corchetes residuales si los hay
+            texto = texto.replace(/\[/g, "").replace(/\]/g, "");
+            
+            return { cita, texto };
+        }
+
+        function limpiarSalmo(salmoObj) {
+            if (!salmoObj) return null;
+            let cita = (salmoObj.cita || "").trim();
+            let respuesta = (salmoObj.respuesta || "").trim();
+            let texto = limpiarRito(salmoObj.texto || "");
+            
+            texto = texto.replace(/RI\s*([A-Z])/g, "R. $1").replace(/R\|\s*([A-Z])/g, "R. $1");
+            respuesta = respuesta.replace(/RI\s*([A-Z])/g, "R. $1").replace(/R\|\s*([A-Z])/g, "R. $1");
+            
+            return { cita, respuesta, texto };
+        }
+
+        function limpiarOficio(oficioObj) {
+            if (!oficioObj) return null;
+            const nuevoOficio = JSON.parse(JSON.stringify(oficioObj));
+            for (let key in nuevoOficio) {
+                if (nuevoOficio[key] && typeof nuevoOficio[key].texto === 'string') {
+                    // Limpiar doxología de salmos y cánticos
+                    nuevoOficio[key].texto = nuevoOficio[key].texto
+                        .replace(/(\n*\s*Se dice:\n*Gloria al Padre[\s\S]*)/i, '')
+                        .replace(/(\n*\s*No se dice\n*Gloria al Padre[\s\S]*)/i, '')
+                        .trim();
+                }
             }
-            if (integrarOficio === 'visperas' || integrarOficio === 'diario') {
-                if (dataDia.visperas) payload.visperas = limpiarOficio(dataDia.visperas);
+            return nuevoOficio;
+        }
+
+        let primera = limpiarLectura(lp.primera_lectura);
+        let salmoResp = limpiarSalmo(lp.salmo_responsorial || lp.salmo);
+        let segunda = limpiarLectura(lp.segunda_lectura);
+        let evang = limpiarLectura(lp.evangelio);
+
+        const checkMoni = document.getElementById('check-moniciones');
+        const includeMoniciones = checkMoni ? checkMoni.checked : true;
+        let monicionesMisa = {
+            entrada: dataDia.monicion_entrada || "",
+            primera_lectura: "",
+            segunda_lectura: "",
+            evangelio: ""
+        };
+        if (includeMoniciones && window.obtenerMonicionesPorTiempo) {
+            const monis = window.obtenerMonicionesPorTiempo(t_liturgico);
+            if (!monicionesMisa.entrada) monicionesMisa.entrada = monis.entrada;
+            monicionesMisa.primera_lectura = monis.primera_lectura;
+            monicionesMisa.segunda_lectura = monis.segunda_lectura;
+            monicionesMisa.evangelio = monis.evangelio;
+        }
+        if (!includeMoniciones) {
+            monicionesMisa = { entrada: "", primera_lectura: "", segunda_lectura: "", evangelio: "" };
+        }
+
+        const payload = {
+            dia_liturgico: dataDia.titulo_celebracion || (dataDia.metadatos && dataDia.metadatos.titulo_primario) || "Feria",
+            fecha_texto: dataDia.fecha,
+            misa: {
+                canto_entrada: cantoEntrada,
+                canto_ofertorio: cantoOfertorio,
+                canto_comunion: cantoComunion,
+                canto_salida: cantoSalida,
+                monicion_entrada: monicionesMisa.entrada,
+                monicion_primera_lectura: monicionesMisa.primera_lectura,
+                monicion_segunda_lectura: monicionesMisa.segunda_lectura,
+                monicion_evangelio: monicionesMisa.evangelio,
+                antifona_entrada: lp.antifona_entrada || "",
+                oracion_colecta: lp.oracion_colecta || "",
+                primera_lectura: primera,
+                salmo: salmoResp,
+                segunda_lectura: segunda,
+                evangelio: evang,
+                aclamacion_evangelio: lp.aclamacion_evangelio || "",
+                secuencia: lp.secuencia || "",
+                gloria: !!lp.gloria,
+                credo: !!lp.credo,
+                oracion_fieles: lp.oracion_fieles || ""
             }
+        };
+
+        const officeSelect = document.getElementById('office-select');
+        const integrarOficio = officeSelect ? officeSelect.value : 'ninguno';
+        
+        if (integrarOficio === 'laudes' || integrarOficio === 'diario' || integrarOficio === 'misa_laudes') {
+            if (dataDia.laudes) payload.laudes = limpiarOficio(dataDia.laudes);
+        }
+        if (integrarOficio === 'visperas' || integrarOficio === 'diario') {
+            if (dataDia.visperas) payload.visperas = limpiarOficio(dataDia.visperas);
+        }
+
+        return payload;
+    };
+
+    // PDF Export function
+    const btnPdf = document.getElementById('generar-pdf');
+    if (btnPdf) {
+        btnPdf.addEventListener('click', async () => {
+            const element = document.getElementById('pdf-view');
+            
+            if (element && (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...'))) {
+                alert("Primero genera un documento usando el Asistente.");
+                return;
+            }
+
+            const dateSelect = document.getElementById('date-select');
+            const fecha = dateSelect ? dateSelect.value : null;
+            if (!fecha || !window.liturgiaData || !window.liturgiaData[fecha]) {
+                alert("No hay datos cargados para la fecha seleccionada.");
+                return;
+            }
+
+            const dataDia = window.liturgiaData[fecha];
+            const payload = window.generarPayloadLaTeX(dataDia);
 
             const originalHtml = btnPdf.innerHTML;
             try {
