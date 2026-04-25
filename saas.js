@@ -377,13 +377,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const item = document.createElement('div');
             item.className = 'canto-item';
             item.style = 'position: relative; flex-direction: column; align-items: stretch; background: var(--bg-dark); padding: 10px; border-radius: 6px; margin-top: 10px; border: 1px solid var(--border-color);';
-            item.innerHTML = `
+            item.insertAdjacentHTML('beforeend', `
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                     <input type="text" placeholder="Ej: Intenciones de la Misa" value="Intenciones de la Misa" class="sec-title" style="flex:1; margin-right: 10px; font-weight: bold; background: transparent; border: none; border-bottom: 1px solid var(--gold-accent); color: white; padding: 4px;">
                     <button class="btn-delete-section" style="background: transparent; color: #ef4444; border: none; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;" title="Eliminar este bloque">🗑️</button>
                 </div>
                 <textarea rows="3" class="sec-content" placeholder="1. Por nuestro Papa Francisco...\n2. Por nuestra comunidad..." style="width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: #ccc; border-radius: 4px; padding: 8px; font-family: sans-serif; resize: vertical;"></textarea>
-            `;
+            `);
             item.querySelector('.btn-delete-section').addEventListener('click', () => {
                 item.remove();
             });
@@ -406,10 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
                  const calDay = window.calendarioDB[dateSelect.value];
                  if (calDay) {
                      liturgicalInfo.style.display = 'block';
-                     liturgicalInfo.innerHTML = `<strong>Día Litúrgico:</strong> ${calDay.titulo}<br><strong>Grado:</strong> ${calDay.grado} | <strong>Color:</strong> <span style="text-transform:capitalize;">${calDay.color}</span><br><em style="color:#aaa; font-size:0.8rem;">(Regla Canónica: ${calDay.regla_cem})</em>`;
+                     liturgicalInfo.textContent = '';
+                     liturgicalInfo.insertAdjacentHTML('beforeend', `<strong>Día Litúrgico:</strong> ${calDay.titulo}<br><strong>Grado:</strong> ${calDay.grado} | <strong>Color:</strong> <span style="text-transform:capitalize;">${calDay.color}</span><br><em style="color:#aaa; font-size:0.8rem;">(Regla Canónica: ${calDay.regla_cem})</em>`);
                  } else {
                      liturgicalInfo.style.display = 'block';
-                     liturgicalInfo.innerHTML = `<em style="color:#d86060;">Fecha sin datos en Cerebro Offline. Funciones limitadas.</em>`;
+                     liturgicalInfo.textContent = '';
+                     liturgicalInfo.insertAdjacentHTML('beforeend', `<em style="color:#d86060;">Fecha sin datos en Cerebro Offline. Funciones limitadas.</em>`);
                  }
              }
         });
@@ -422,7 +424,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Generar Documento pulsado. Fecha activa:", document.getElementById('date-select').value);
         if (currentMode === 'cancionero') return; // Do nothing if on Cancionero
 
-        pdfView.innerHTML = '<div class="empty-state">Compilando Rúbricas...</div>';
+        pdfView.textContent = '';
+        pdfView.insertAdjacentHTML('beforeend', '<div class="empty-state">Compilando Rúbricas...</div>');
         
         setTimeout(() => {
             if (currentMode === 'boletin') {
@@ -445,14 +448,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                 }
                 pdfView.className = 'bulletin-wrapper';
-                pdfView.innerHTML = generarBoletin(data, date, clergy, motto, logoUrl);
+                pdfView.textContent = '';
+                pdfView.insertAdjacentHTML('beforeend', generarBoletin(data, date, clergy, motto, logoUrl));
             } else {
                 const fecha = document.getElementById('date-select').value;
                 const hora = document.getElementById('office-select').value;
                 const region = document.getElementById('region-select') ? document.getElementById('region-select').value : 'mx';
                 
                 pdfView.className = 'pdf-container';
-                generateBtn.innerHTML = "Descargando Eucaristía...";
+                generateBtn.textContent = "Descargando Eucaristía...";
 
                 // CEREBRO OFFLINE: Si ya procesamos el documento localmente, ejecutamos instantáneamente
                 let localData = liturgiaData[fecha];
@@ -470,13 +474,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (semaforoError) {
-                    pdfView.innerHTML = `<div style="color:#B20000; padding:40px; text-align:center; border:2px solid #B20000; margin: 40px auto; max-width: 600px; background: #fffcfc;">
+                    pdfView.textContent = '';
+                    pdfView.insertAdjacentHTML('beforeend', `<div style="color:#B20000; padding:40px; text-align:center; border:2px solid #B20000; margin: 40px auto; max-width: 600px; background: #fffcfc;">
                         <h2 style="font-family:'Cinzel', serif;">FALLO DE INTEGRIDAD ESTRUCTURAL</h2>
                         <p style="font-size:16px;"><b>SEMÁFORO DE OFICIO: BLOQUEADO</b></p>
                         <p>${semaforoError}</p>
                         <p><i style="color:#666;">Generación abortada para prevenir desperdicio de material (Arquitectura Litúrgica). Revise la fuente de datos.</i></p>
-                    </div>`;
-                    generateBtn.innerHTML = "Error de Integridad";
+                    </div>`);
+                    generateBtn.textContent = "Error de Integridad";
                     return;
                 }
                 // --- Fin Semáforo ---
@@ -515,24 +520,26 @@ document.addEventListener('DOMContentLoaded', () => {
                                         if (!isFirst) {
                                             pageDiv.style.pageBreakBefore = 'always';
                                         }
-                                        pageDiv.innerHTML = subsetHtml;
+                                        pageDiv.insertAdjacentHTML('beforeend', subsetHtml);
                                         fragment.appendChild(pageDiv);
                                         isFirst = false;
                                     }
                                 } catch(e) { console.warn("Error generando " + h, e); }
                             });
-                            pdfView.innerHTML = '';
+                            pdfView.textContent = '';
                             pdfView.appendChild(fragment);
                         } else {
                             options.hideHeader = false;
                             let subsetHtml = generarDocumentoNodos(localData, hora, options);
-                            pdfView.innerHTML = subsetHtml;
+                            pdfView.textContent = '';
+                            pdfView.insertAdjacentHTML('beforeend', subsetHtml);
                         }
-                        generateBtn.innerHTML = "Generar Documento";
+                        generateBtn.textContent = "Generar Documento";
                     } catch (e) {
                         console.error("ERROR DE RENDER", e);
-                        pdfView.innerHTML = `<div style="color:red; padding:20px;"><h3>Error Crítico de Renderizado</h3><pre>${e.message}\n${e.stack}</pre></div>`;
-                        generateBtn.innerHTML = "Error";
+                        pdfView.textContent = '';
+                        pdfView.insertAdjacentHTML('beforeend', `<div style="color:red; padding:20px;"><h3>Error Crítico de Renderizado</h3><pre>${e.message}\n${e.stack}</pre></div>`);
+                        generateBtn.textContent = "Error";
                     }
                     return;
                 }
@@ -546,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(proxyUrl)
                     .then(r => r.json())
                     .then(proxyData => {
-                        generateBtn.innerHTML = "Generar Documento";
+                        generateBtn.textContent = "Generar Documento";
                         const parser = new DOMParser();
                         const htmlDoc = parser.parseFromString(proxyData.contents, 'text/html');
                         
@@ -647,23 +654,24 @@ document.addEventListener('DOMContentLoaded', () => {
                                         if (!isFirst) {
                                             pageDiv.style.pageBreakBefore = 'always';
                                         }
-                                        pageDiv.innerHTML = subsetHtml;
+                                        pageDiv.insertAdjacentHTML('beforeend', subsetHtml);
                                         fragment.appendChild(pageDiv);
                                         isFirst = false;
                                     }
                                 } catch(e) { console.warn("Error generando " + h, e); }
                             });
-                            pdfView.innerHTML = '';
+                            pdfView.textContent = '';
                             pdfView.appendChild(fragment);
                         } else {
                             options.hideHeader = false;
                             let subsetHtml = generarDocumentoNodos(data, hora, options);
-                            pdfView.innerHTML = subsetHtml;
+                            pdfView.textContent = '';
+                            pdfView.insertAdjacentHTML('beforeend', subsetHtml);
                         }
                     })
                     .catch(err => {
                         console.error('Error fetching Title API', err);
-                        generateBtn.innerHTML = "Generar Documento";
+                        generateBtn.textContent = "Generar Documento";
                         let data = liturgiaData[fecha] || liturgiaData["2026-04-08"];
                         if (!data) {
                             const d = new Date(fecha + "T00:00:00");
@@ -711,18 +719,19 @@ document.addEventListener('DOMContentLoaded', () => {
                                         if (!isFirst) {
                                             pageDiv.style.pageBreakBefore = 'always';
                                         }
-                                        pageDiv.innerHTML = subsetHtml;
+                                        pageDiv.insertAdjacentHTML('beforeend', subsetHtml);
                                         fragment.appendChild(pageDiv);
                                         isFirst = false;
                                     }
                                 } catch(e) { console.warn("Error generando " + h, e); }
                             });
-                            pdfView.innerHTML = '';
+                            pdfView.textContent = '';
                             pdfView.appendChild(fragment);
                         } else {
                             options.hideHeader = false;
                             let subsetHtml = generarDocumentoNodos(data, hora, options);
-                            pdfView.innerHTML = subsetHtml;
+                            pdfView.textContent = '';
+                            pdfView.insertAdjacentHTML('beforeend', subsetHtml);
                         }
                     });
             }
@@ -910,25 +919,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return out;
     }
 
-    // PDF Export function
-    const btnPdf = document.getElementById('generar-pdf');
-    if (btnPdf) {
-        btnPdf.addEventListener('click', async () => {
-            const element = document.getElementById('pdf-view');
-            
-            if (element.innerText.includes('El documento generado aparecerá aquí') || element.innerText.includes('Compilando Rúbricas...')) {
-                alert("Primero genera un documento usando el Asistente.");
-                return;
-            }
 
-            const dateSelect = document.getElementById('date-select');
-            const fecha = dateSelect ? dateSelect.value : null;
-            if (!fecha || !window.liturgiaData || !window.liturgiaData[fecha]) {
-                alert("No hay datos cargados para la fecha seleccionada.");
-                return;
-            }
-
-            const dataDia = window.liturgiaData[fecha];
     window.generarPayloadLaTeX = function(dataDia) {
         let lp = dataDia.liturgia_palabra || {};
         
@@ -1109,7 +1100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const originalHtml = btnPdf.innerHTML;
             try {
-                btnPdf.innerHTML = "Generando PDF...";
+                btnPdf.textContent = "Generando PDF...";
                 btnPdf.disabled = true;
 
                 const response = await fetch('http://localhost:8086/generate-pdf', {
@@ -1146,7 +1137,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (e) {
                 alert("Error de conexión al servidor Padre PRO: " + e);
             } finally {
-                btnPdf.innerHTML = originalHtml;
+                btnPdf.textContent = '';
+                btnPdf.insertAdjacentHTML('beforeend', originalHtml);
                 btnPdf.disabled = false;
             }
         });
@@ -1191,7 +1183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Burbuja Usuario
             const userMsg = document.createElement("div");
             userMsg.className = "chat-message user";
-            userMsg.innerHTML = `<p>${texto}</p>`;
+            userMsg.insertAdjacentHTML('beforeend', `<p>${texto}</p>`);
             chatPadrePro.appendChild(userMsg);
             
             inpPadreProText.value = "";
@@ -1200,7 +1192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Burbuja Loading
             const botMsg = document.createElement("div");
             botMsg.className = "chat-message bot";
-            botMsg.innerHTML = `<p><span class="status-indicator">Consultando el Magisterio...</span></p>`;
+            botMsg.insertAdjacentHTML('beforeend', `<p><span class="status-indicator">Consultando el Magisterio...</span></p>`);
             chatPadrePro.appendChild(botMsg);
             chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
 
@@ -1214,15 +1206,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     const data = await response.json();
                     if(window.marked) {
-                        botMsg.innerHTML = window.marked.parse(data.response);
+                        botMsg.textContent = '';
+                        botMsg.insertAdjacentHTML('beforeend', window.marked.parse(data.response));
                     } else {
-                        botMsg.innerHTML = `<p>${data.response}</p>`;
+                        botMsg.textContent = '';
+                        botMsg.insertAdjacentHTML('beforeend', `<p>${data.response}</p>`);
                     }
                 } else {
-                    botMsg.innerHTML = `<p style="color:red">Error: El servidor del Padre PRO no está respondiendo (Asegúrate de tener python3 padre_pro_server.py corriendo).</p>`;
+                    botMsg.textContent = '';
+                    botMsg.insertAdjacentHTML('beforeend', `<p style="color:red">Error: El servidor del Padre PRO no está respondiendo (Asegúrate de tener python3 padre_pro_server.py corriendo).</p>`);
                 }
             } catch (err) {
-                botMsg.innerHTML = `<p style="color:red">Error de conexión: Verifica que tu servidor local Padre PRO esté vivo en el puerto 8085.</p>`;
+                botMsg.textContent = '';
+                botMsg.insertAdjacentHTML('beforeend', `<p style="color:red">Error de conexión: Verifica que tu servidor local Padre PRO esté vivo en el puerto 8085.</p>`);
             }
             chatPadrePro.scrollTop = chatPadrePro.scrollHeight;
         };
