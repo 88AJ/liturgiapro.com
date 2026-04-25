@@ -924,27 +924,51 @@ document.addEventListener('DOMContentLoaded', () => {
         let lp = dataDia.liturgia_palabra || {};
         
         let t_liturgico = (dataDia.tiempo_liturgico || "").toLowerCase();
-        let c_entrada = "Vienen con alegría Señor";
-        let c_ofertorio = "Te Ofrecemos Padre Nuestro";
-        let c_comunion = "Pescador de Hombres";
-        let c_salida = "Demos Gracias al Señor";
-
-        if (t_liturgico.includes('cuaresma')) {
-            c_entrada = "Perdona a tu pueblo Señor";
-            c_ofertorio = "Te Presentamos el Vino y el Pan";
-            c_comunion = "Saber que vendrás";
-            c_salida = "Honor y Gloria a Ti (o Prepara tu Camino)";
-        } else if (t_liturgico.includes('pascua')) {
-            c_entrada = "El Señor Resucitó, Aleluya";
-            c_ofertorio = "Saber que vendrás";
-            c_comunion = "Yo soy el Pan de Vida";
-            c_salida = "Reina del Cielo Alégrate";
-        } else if (t_liturgico.includes('adviento')) {
-            c_entrada = "Ven, Ven, Señor no tardes";
-            c_ofertorio = "Saber que vendrás";
-            c_comunion = "Un pueblo que camina";
-            c_salida = "Santa María de la Esperanza";
+        
+        // Determinar un índice de ciclo basado en la fecha para rotar cantos cada semana
+        function obtenerSemanaDelAño(fechaStr) {
+            if (!fechaStr) return 0;
+            const date = new Date(fechaStr + "T12:00:00Z");
+            const start = new Date(date.getFullYear(), 0, 1);
+            const diff = date - start;
+            const oneWeek = 1000 * 60 * 60 * 24 * 7;
+            return Math.floor(diff / oneWeek);
         }
+        
+        let weekIndex = obtenerSemanaDelAño(dataDia.fecha) || 0;
+        
+        // Listas de cantos por temporada para rotar dinámicamente
+        const cantosPascua = [
+            { e: "El Señor Resucitó, Aleluya", o: "Saber que vendrás", c: "Yo soy el Pan de Vida", s: "Reina del Cielo Alégrate" },
+            { e: "Un pueblo que camina", o: "Te Ofrecemos Padre Nuestro", c: "Pescador de Hombres", s: "Demos Gracias al Señor" },
+            { e: "El Señor Resucitó, Aleluya", o: "Te Presentamos el Vino y el Pan", c: "Yo soy el Pan de Vida", s: "Demos Gracias al Señor" }
+        ];
+        
+        const cantosCuaresma = [
+            { e: "Perdona a tu pueblo Señor", o: "Te Presentamos el Vino y el Pan", c: "Saber que vendrás", s: "Honor y Gloria a Ti (o Prepara tu Camino)" },
+            { e: "Vienen con alegría Señor", o: "Te Ofrecemos Padre Nuestro", c: "Pescador de Hombres", s: "Demos Gracias al Señor" }
+        ];
+
+        const cantosAdviento = [
+            { e: "Ven, Ven, Señor no tardes", o: "Saber que vendrás", c: "Un pueblo que camina", s: "Santa María de la Esperanza" }
+        ];
+
+        const cantosOrdinario = [
+            { e: "Vienen con alegría Señor", o: "Te Ofrecemos Padre Nuestro", c: "Pescador de Hombres", s: "Demos Gracias al Señor" },
+            { e: "Un pueblo que camina", o: "Saber que vendrás", c: "Yo soy el Pan de Vida", s: "Demos Gracias al Señor" },
+            { e: "Vienen con alegría Señor", o: "Te Presentamos el Vino y el Pan", c: "Pescador de Hombres", s: "Reina del Cielo Alégrate" }
+        ];
+
+        let listaCantos = cantosOrdinario;
+        if (t_liturgico.includes('cuaresma')) listaCantos = cantosCuaresma;
+        else if (t_liturgico.includes('pascua')) listaCantos = cantosPascua;
+        else if (t_liturgico.includes('adviento')) listaCantos = cantosAdviento;
+
+        let indexCanto = weekIndex % listaCantos.length;
+        let c_entrada = listaCantos[indexCanto].e;
+        let c_ofertorio = listaCantos[indexCanto].o;
+        let c_comunion = listaCantos[indexCanto].c;
+        let c_salida = listaCantos[indexCanto].s;
 
         function getRawCanto(titulo) {
             if (window.cantosDB && window.cantosDB[titulo]) {
@@ -1021,19 +1045,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const checkMoni = document.getElementById('check-moniciones');
         const includeMoniciones = checkMoni ? checkMoni.checked : true;
+        const esDomingo = t_liturgico.includes('domingo') || (dataDia.fecha && new Date(dataDia.fecha + "T12:00:00Z").getDay() === 0);
+
         let monicionesMisa = {
             entrada: dataDia.monicion_entrada || "",
-            primera_lectura: "",
-            segunda_lectura: "",
-            evangelio: ""
+            primera_lectura: (lp.primera_lectura && lp.primera_lectura.monicion) ? lp.primera_lectura.monicion : "",
+            segunda_lectura: (lp.segunda_lectura && lp.segunda_lectura.monicion) ? lp.segunda_lectura.monicion : "",
+            evangelio: (lp.evangelio && lp.evangelio.monicion) ? lp.evangelio.monicion : ""
         };
+
         if (includeMoniciones && window.obtenerMonicionesPorTiempo) {
             const monis = window.obtenerMonicionesPorTiempo(t_liturgico);
             if (!monicionesMisa.entrada) monicionesMisa.entrada = monis.entrada;
-            monicionesMisa.primera_lectura = monis.primera_lectura;
-            monicionesMisa.segunda_lectura = monis.segunda_lectura;
-            monicionesMisa.evangelio = monis.evangelio;
+            
+            // Si es un Domingo, NO rellenamos con moniciones genéricas, dejamos que estén vacías o usen las específicas.
+            if (!esDomingo) {
+                if (!monicionesMisa.primera_lectura) monicionesMisa.primera_lectura = monis.primera_lectura;
+                if (!monicionesMisa.segunda_lectura) monicionesMisa.segunda_lectura = monis.segunda_lectura;
+                if (!monicionesMisa.evangelio) monicionesMisa.evangelio = monis.evangelio;
+            }
         }
+        
         if (!includeMoniciones) {
             monicionesMisa = { entrada: "", primera_lectura: "", segunda_lectura: "", evangelio: "" };
         }
@@ -1050,16 +1082,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 monicion_primera_lectura: monicionesMisa.primera_lectura,
                 monicion_segunda_lectura: monicionesMisa.segunda_lectura,
                 monicion_evangelio: monicionesMisa.evangelio,
-                antifona_entrada: lp.antifona_entrada || "",
-                oracion_colecta: lp.oracion_colecta || "",
+                antifona_entrada: dataDia.antifona_entrada || lp.antifona_entrada || "",
+                oracion_colecta: dataDia.oracion_colecta || lp.oracion_colecta || "",
                 primera_lectura: primera,
                 salmo: salmoResp,
                 segunda_lectura: segunda,
                 evangelio: evang,
                 aclamacion_evangelio: lp.aclamacion_evangelio || "",
                 secuencia: lp.secuencia || "",
-                gloria: !!lp.gloria,
-                credo: !!lp.credo,
+                gloria: !!dataDia.gloria || !!lp.gloria,
+                credo: !!dataDia.credo || !!lp.credo,
                 oracion_fieles: lp.oracion_fieles || ""
             }
         };
