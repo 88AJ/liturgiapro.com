@@ -179,6 +179,16 @@
 \BLOCK{ endif }
 
 
+\BLOCK{ if misa.credo }
+\subsection*{CREDO}
+\noindent\rubrica{Se dice el Credo.} \par\vspace{0.3cm}
+\BLOCK{ endif }
+
+\BLOCK{ if misa.oracion_fieles }
+\subsection*{ORACIÓN DE LOS FIELES}
+\VAR{misa.oracion_fieles | escape_tex} \par\vspace{0.3cm}
+\BLOCK{ endif }
+
 \BLOCK{ if misa.canto_ofertorio }
 \subsection*{CANTO DE OFERTORIO}
 \noindent\rubrica{\VAR{misa.canto_ofertorio.titulo | escape_tex}} \par\vspace{0.1cm}
@@ -186,22 +196,11 @@
 \par\vspace{0.3cm}
 \BLOCK{ endif }
 
-\BLOCK{ if misa.credo }
-\subsection*{CREDO}
-\noindent\rubrica{Se dice el Credo.} \par\vspace{0.3cm}
-\BLOCK{ endif }
-
-
 \BLOCK{ if misa.canto_comunion }
 \subsection*{CANTO DE COMUNIÓN}
 \noindent\rubrica{\VAR{misa.canto_comunion.titulo | escape_tex}} \par\vspace{0.1cm}
 \VAR{misa.canto_comunion.letra | format_canto}
 \par\vspace{0.3cm}
-\BLOCK{ endif }
-
-\BLOCK{ if misa.oracion_fieles }
-\subsection*{ORACIÓN DE LOS FIELES}
-\VAR{misa.oracion_fieles | escape_tex} \par\vspace{0.3cm}
 \BLOCK{ endif }
 
 

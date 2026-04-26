@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Aislada: Misa Diaria</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f4f4f5;
+            color: #18181b;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 1.5rem; border-bottom: 2px solid #e4e4e7; padding-bottom: 0.5rem; }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background: #1d4ed8; }
+        button:disabled { background: #93c5fd; cursor: not-allowed; }
+        pre {
+            background: #18181b;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+        }
+        .status {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        .error { color: #dc2626; }
+        .success { color: #059669; }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Prueba de Aislamiento: Motor XeLaTeX</h1>
+    
+    <div class="card">
+        <p>Este archivo generará un PDF de "Misa Diaria" enviando un JSON hardcodeado y perfectamente estructurado directamente a <code>http://localhost:8086/generate-pdf</code>.</p>
+        <button id="btnGenerar">Generar PDF de Prueba</button>
+        <div id="status" class="status"></div>
+    </div>
+
+    <iframe id="pdfViewer" title="PDF Resultante"></iframe>
+
+    <div class="card">
+        <h3>Payload JSON (Enviado al Servidor)</h3>
+        <pre id="jsonViewer"></pre>
+    </div>
+
+    <script>
+        const payloadMisaPrueba = {
+            "dia_liturgico": "Feria de Prueba - Lunes de Pascua",
+            "fecha_texto": "2026-04-27",
+            "misa": {
+                "canto_entrada": {
+                    "titulo": "1. CANTO DE ENTRADA (PRUEBA)",
+                    "letra": "Este es el día en que actuó el Señor,\nsea nuestra alegría y nuestro gozo.\nDad gracias al Señor porque es bueno,\nporque es eterna su misericordia.\nAleluya, aleluya."
+                },
+                "gloria": false,
+                "oracion_colecta": "Dios nuestro, que por la admirable resurrección de tu Hijo nos has dado la alegría de la pascua, concédenos vivir siempre en tu gracia. Por nuestro Señor Jesucristo...",
+                "primera_lectura": {
+                    "cita": "Hechos 11, 1-18",
+                    "texto": "En aquellos días, los apóstoles y los hermanos de Judea se enteraron de que también los paganos habían acogido la palabra de Dios...\n\nPor tanto, si Dios les ha dado el mismo don que a nosotros, por haber creído en el Señor Jesucristo, ¿quién era yo para oponerme a Dios? Al oír esto, se tranquilizaron y glorificaron a Dios diciendo: '¡De modo que también a los paganos les ha concedido Dios la conversión que lleva a la vida!'"
+                },
+                "salmo_responsorial": {
+                    "cita": "del salmo 41 y 42",
+                    "respuesta": "R. Mi alma tiene sed de Dios. Aleluya.",
+                    "texto": "Como el venado busca el agua de los ríos, así, Dios mío, mi alma te busca a ti. Mi alma tiene sed de Dios, del Dios vivo; ¿cuándo podré ir a ver el rostro de Dios? R.\n\nEnvíame tu luz y tu verdad; que ellas me guíen y me conduzcan hasta tu monte santo, hasta tu morada. R."
+                },
+                "aclamacion_evangelio": "Yo soy el buen pastor, dice el Señor, que conozco a mis ovejas y ellas me conocen a mí.",
+                "evangelio": {
+                    "cita": "Juan 10, 1-10",
+                    "texto": "En aquel tiempo, Jesús dijo a los fariseos: 'Yo les aseguro que el que no entra por la puerta del redil de las ovejas, sino que salta por otro lado, es un ladrón, un bandido; pero el que entra por la puerta, ése es el pastor de las ovejas.\n\nYo soy la puerta; quien entre por mí se salvará, podrá entrar y salir y encontrará pastos. El ladrón sólo viene a robar, a matar y a destruir. Yo he venido para que tengan vida y la tengan en abundancia.'"
+                },
+                "canto_ofertorio": {
+                    "titulo": "2. CANTO DE OFERTORIO (PRUEBA)",
+                    "letra": "Te presentamos el vino y el pan,\nbendito seas por siempre, Señor.\n\nBendito seas, Señor,\npor este pan que nos diste,\nfruto de la tierra y del trabajo de los hombres."
+                },
+                "credo": false,
+                "oracion_fieles": "Sabiendo que el Buen Pastor escucha la voz de su rebaño, presentémosle con confianza nuestras necesidades. Oremos diciendo: Te rogamos, óyenos.\n\n1. Por la Santa Iglesia Católica.\n2. Por la paz en el mundo entero.\n3. Por los que sufren.\n4. Por nuestra comunidad parroquial.",
+                "canto_comunion": {
+                    "titulo": "3. CANTO DE COMUNIÓN (PRUEBA)",
+                    "letra": "Yo soy el pan de vida,\nel que viene a mí no tendrá hambre,\nel que cree en mí no tendrá sed.\n\nNadie viene a mí,\nsi el Padre no lo atrae."
+                },
+                "canto_salida": {
+                    "titulo": "4. CANTO DE SALIDA (PRUEBA)",
+                    "letra": "Reina del cielo, alégrate, aleluya,\nporque el Señor a quien has merecido llevar, aleluya,\nha resucitado, según su palabra, aleluya."
+                }
+            }
+        };
+
+        document.getElementById('jsonViewer').textContent = JSON.stringify(payloadMisaPrueba, null, 2);
+
+        document.getElementById('btnGenerar').addEventListener('click', async () => {
+            const btn = document.getElementById('btnGenerar');
+            const status = document.getElementById('status');
+            const iframe = document.getElementById('pdfViewer');
+
+            btn.disabled = true;
+            status.textContent = "⚙️ Enviando datos a Python (XeLaTeX) en localhost:8086...";
+            status.className = "status";
+            iframe.style.display = 'none';
+
+            try {
+                const response = await fetch('http://localhost:8086/generate-pdf', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payloadMisaPrueba)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error("Error del Servidor: " + (errorData.error || response.statusText) + "\n" + (errorData.stdout || ""));
+                }
+
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                
+                iframe.src = blobUrl;
+                iframe.style.display = 'block';
+
+                status.textContent = "✅ PDF Generado con éxito. (Renderizado abajo)";
+                status.className = "status success";
+
+            } catch (error) {
+                console.error("Error:", error);
+                status.textContent = "❌ Fallo: " + error.message;
+                status.className = "status error";
+            } finally {
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

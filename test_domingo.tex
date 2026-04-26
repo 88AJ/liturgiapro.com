@@ -1,0 +1,133 @@
+% --- BLOQUE DE PREÁMBULO UNIVERSAL ---
+\documentclass[11pt, letterpaper, twoside]{article}
+
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fontspec}
+
+\usepackage[spanish, provide=*]{babel}
+\babelprovide[import, onchar=ids fonts]{spanish}
+\babelprovide[import, onchar=ids fonts]{english}
+
+% Tipografía serif para imitar el Misal Romano
+\babelfont{rm}{Times New Roman}
+
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+
+% --- PAQUETES EDITORIALES LITÚRGICOS ---
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{lettrine}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+
+\definecolor{rubricred}{HTML}{C8102E}
+
+\newcommand{\rubrica}[1]{\textcolor{rubricred}{\small\textit{#1}}}
+\newcommand{\vers}{\textcolor{rubricred}{\textbf{V.\ }}}
+\newcommand{\resp}{\textcolor{rubricred}{\textbf{R.\ }}}
+\newcommand{\cruz}{\textcolor{rubricred}{✠}}
+
+\titleformat{\section}{\Large\bfseries\centering\color{rubricred}}{}{0pt}{\uppercase}
+\titleformat{\subsection}{\large\bfseries\centering\color{rubricred}}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{rubricred}}{}{0pt}{}
+
+\renewcommand{\LettrineFontHook}{\color{rubricred}}
+\setcounter{DefaultLines}{2}
+\setlength{\DefaultFindent}{0.2em}
+\setlength{\DefaultNindent}{0em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% --- Configuración de Seguridad para Compilación en Bruto ---
+\catcode 95=12
+\DeclareRobustCommand{\VAR}[1]{[Dato Dinámico]}
+\DeclareRobustCommand{\BLOCK}[1]{}
+
+\begin{document}
+
+\begin{center}
+    {\Huge\textbf{Subsidio Litúrgico Diario}\par}
+    \vspace{0.3cm}
+    {\large\textsc{IV Domingo de Pascua}\par}
+    {\small 2026-04-26\par}
+\end{center}
+
+\vspace{0.8cm}
+
+\begin{multicols}{2}
+\RaggedRight
+
+% ==========================================
+% LAUDES
+% ==========================================
+
+% ==========================================
+% SANTA MISA 
+% ==========================================
+\section*{SANTA MISA}
+
+
+
+
+
+\subsection*{GLORIA}
+\noindent\rubrica{Se dice el Gloria.} \par\vspace{0.3cm}
+
+\subsection*{ORACIÓN COLECTA}
+\lettrine{D}{ios} todopoderoso y eterno, que nos has dado como pastor a tu Hijo Jesucristo...
+
+\subsection*{LITURGIA DE LA PALABRA}
+\noindent\rubrica{Hechos 4, 8-12} \par\vspace{0.2cm}
+\lettrine{E}{n} aquellos días, Pedro, lleno del Espíritu Santo, dijo: «Jefes del pueblo y ancianos... \par\vspace{0.2cm}
+\vers Palabra de Dios. \par
+\resp Te alabamos, Señor.
+
+\subsection*{SALMO RESPONSORIAL}
+\noindent\rubrica{Salmo 117} \par\vspace{0.1cm}
+\resp R. La piedra que desecharon los constructores es ahora la piedra angular. Aleluya. \par\vspace{0.2cm}
+\lettrine{R}{.} La piedra que desecharon los constructores es ahora la piedra angular. Aleluya. \\ 
+Den gracias al Señor porque es bueno...
+
+\subsection*{SEGUNDA LECTURA}
+\noindent\rubrica{1 Juan 3, 1-2} \par\vspace{0.2cm}
+\lettrine{Q}{ueridos} hijos: Miren qué amor nos ha tenido el Padre para llamarnos hijos de Dios... \par\vspace{0.2cm}
+\vers Palabra de Dios. \par
+\resp Te alabamos, Señor.
+
+
+\subsection*{ACLAMACIÓN ANTES DEL EVANGELIO}
+\resp Aleluya, aleluya. \par
+Aleluya, aleluya. Yo soy el buen pastor, dice el Señor. \par
+\resp Aleluya. \par\vspace{0.3cm}
+
+\subsection*{EVANGELIO}
+\noindent\rubrica{Juan 10, 11-18} \par\vspace{0.2cm}
+\lettrine{E}{n} aquel tiempo, Jesús dijo a los fariseos: «Yo soy el buen pastor. El buen pastor da la vida por sus ovejas...» \par\vspace{0.2cm}
+\vers Palabra del Señor. \par
+\resp Gloria a ti, Señor Jesús.
+
+
+\subsection*{CREDO}
+\noindent\rubrica{Se dice el Credo.} \par\vspace{0.3cm}
+
+\subsection*{ORACIÓN DE LOS FIELES}
+Sabiendo que el Buen Pastor escucha la voz de su rebaño...
+
+1. Por la Iglesia. \\ 
+2. Por la paz. \\ 
+3. Por los enfermos. \\ 
+4. Por nosotros. \par\vspace{0.3cm}
+
+
+
+
+
+
+% ==========================================
+% VÍSPERAS
+% ==========================================
+
+\end{multicols}
+\end{document}

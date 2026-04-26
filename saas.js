@@ -972,7 +972,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function getRawCanto(titulo) {
             if (window.cantosDB && window.cantosDB[titulo]) {
-                return { titulo: titulo, letra: window.cantosDB[titulo].letra };
+                let letra = window.cantosDB[titulo].letra || "";
+                let lines = letra.split('\n');
+                
+                // Deduplicar: Si la primera línea de la letra coincide con el título
+                if (lines.length > 0) {
+                    let firstLine = lines[0].replace(/^\d+\.\s*/, '').trim().toLowerCase();
+                    let cleanTitle = titulo.replace(/^\d+\.\s*/, '').trim().toLowerCase();
+                    if (firstLine === cleanTitle || firstLine.includes(cleanTitle) || cleanTitle.includes(firstLine)) {
+                        lines.shift();
+                        letra = lines.join('\n').trim();
+                    }
+                }
+                
+                return { titulo: titulo, letra: letra };
             }
             return null;
         }
@@ -987,6 +1000,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!texto) return "";
             return texto.replace(/Se dice el Credo\.?/gi, "")
                         .replace(/Se dice Credo\.?/gi, "")
+                        .replace(/Se dice el Gloria\.?/gi, "")
+                        .replace(/Se dice Gloria\.?/gi, "")
                         .trim();
         }
 
@@ -994,7 +1009,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!lectura) return null;
             let cita = (lectura.cita || "").trim();
             let texto = limpiarRito(lectura.texto || "");
+            let oracionFielesExtraida = "";
             
+            // Extraer y aislar toda la Oración de los fieles incrustada al final (sucede en evangelios)
+            let oracionFielesMatch = texto.match(/ORACIÓN DE LOS FIELES:|Oración de los fieles:/i);
+            if (!oracionFielesMatch) {
+                 oracionFielesMatch = texto.match(/ORACIÓN DE LOS FIELES|Oración de los fieles/i);
+            }
+            if (oracionFielesMatch) {
+                let preces = texto.substring(oracionFielesMatch.index + oracionFielesMatch[0].length).trim();
+                // Limpiar guiones o viñetas iniciales que se hayan colado en las preces
+                preces = preces.replace(/^[:\-\.]\s*/, "");
+                oracionFielesExtraida = preces;
+                texto = texto.substring(0, oracionFielesMatch.index).trim();
+            }
+
+            // Eliminar "Palabra de Dios" o "Palabra del Señor" del final ya que template.tex lo imprime
+            texto = texto.replace(/Palabra de Dios\.?$/i, "").trim();
+            texto = texto.replace(/Palabra del Señor\.?$/i, "").trim();
+
             // Si el texto empieza con corchetes, los removemos completamente (suele ser el tema)
             texto = texto.replace(/^\[.*?\]\n*/g, '').trim();
 
@@ -1008,7 +1041,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Limpiar corchetes residuales si los hay
             texto = texto.replace(/\[/g, "").replace(/\]/g, "");
             
-            return { cita, texto };
+            // Garantizar que el texto de la lectura comience con una letra (necesario para el macro \lettrine en LaTeX)
+            texto = texto.replace(/^[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+/g, "");
+            
+            return { cita, texto, oracion_fieles_extraida: oracionFielesExtraida };
         }
 
         function limpiarSalmo(salmoObj) {
@@ -1092,7 +1128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 secuencia: lp.secuencia || "",
                 gloria: !!dataDia.gloria || !!lp.gloria,
                 credo: !!dataDia.credo || !!lp.credo,
-                oracion_fieles: lp.oracion_fieles || ""
+                oracion_fieles: lp.oracion_fieles || (evang && evang.oracion_fieles_extraida ? evang.oracion_fieles_extraida : "")
             }
         };
 

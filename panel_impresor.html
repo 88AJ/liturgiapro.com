@@ -293,6 +293,7 @@
     <script src="data/cantos_db.js"></script>
     <script src="data/moniciones_db.js"></script>
     <script src="motor_nodos.js"></script>
+    <script src="saas.js"></script>
     <script src="data/liturgia_db.js"></script>
     
     <script>
@@ -341,6 +342,7 @@
 
             fechas.forEach((fecha, index) => {
                 const dia = db[fecha];
+                if (dia) dia.fecha = fecha; // INYECCIÓN CRÍTICA PARA ROTACIÓN DE CANTOS Y NOMBRE DE PDF
                 const statusColor = verificarIntegridad(dia);
                 
                 const rankName = dia.titulo_celebracion || dia.metadatos?.titulo_primario || "Feria";
