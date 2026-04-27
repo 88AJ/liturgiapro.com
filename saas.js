@@ -1082,6 +1082,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkMoni = document.getElementById('check-moniciones');
         const includeMoniciones = checkMoni ? checkMoni.checked : true;
         const esDomingo = t_liturgico.includes('domingo') || (dataDia.fecha && new Date(dataDia.fecha + "T12:00:00Z").getDay() === 0);
+        const esSolemnidad = (dataDia.titulo_celebracion && dataDia.titulo_celebracion.toLowerCase().includes('solemnidad')) || 
+                             (dataDia.metadatos && dataDia.metadatos.rango && dataDia.metadatos.rango.toLowerCase().includes('solemnidad'));
+
+        // Filtro de Seguridad: El scraper a veces duplica el Evangelio en la Segunda Lectura, o la incluye en ferias.
+        if (segunda && segunda.texto) {
+            let tSegunda = segunda.texto.substring(0, 50);
+            let idénticaAEV = evang && evang.texto && evang.texto.substring(0, 50) === tSegunda;
+            let idénticaAPrimera = primera && primera.texto && primera.texto.substring(0, 50) === tSegunda;
+            
+            // Regla Litúrgica: Las ferias y memorias no tienen segunda lectura.
+            if (!esDomingo && !esSolemnidad) {
+                segunda = null;
+            } else if (idénticaAEV || idénticaAPrimera) {
+                segunda = null;
+            }
+        }
 
         let monicionesMisa = {
             entrada: dataDia.monicion_entrada || "",
