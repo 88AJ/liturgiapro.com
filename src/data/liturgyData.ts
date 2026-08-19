@@ -402,7 +402,13 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       oracion_comunion: raw.oracion_comunion,
       reflexion_homiletica: raw.reflexion_homiletica,
       santos_dia: raw.santos_dia,
-      cantos_sugeridos: raw.cantos_sugeridos || getSuggestedChantsForDay(raw.tiempo_liturgico || seasonInfo.tiempo, (raw.color as LiturgicalColor) || seasonInfo.color, raw.titulo_celebracion || seasonInfo.tituloCelebracion)
+      cantos_sugeridos: raw.cantos_sugeridos || getSuggestedChantsForDay(
+        raw.tiempo_liturgico || seasonInfo.tiempo,
+        (raw.color as LiturgicalColor) || seasonInfo.color,
+        raw.titulo_celebracion || seasonInfo.tituloCelebracion,
+        raw.liturgia_palabra,
+        isoDate
+      )
     };
   }
 
@@ -410,6 +416,28 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
   const monthDay = isoDate.substring(5); // "08-19"
   if (SANTORAL_FIJO[monthDay]) {
     const s = SANTORAL_FIJO[monthDay];
+    const liturgiaPalabra = {
+      primera_lectura: s.primera_lectura || {
+        titulo: 'Primera Lectura',
+        cita: 'Lectura bíblica',
+        texto: 'Proclamación de la Palabra de Dios.'
+      },
+      salmo_responsorial: s.salmo_responsorial || {
+        cita: 'Salmo Responsorial',
+        respuesta: 'El Señor es mi pastor, nada me falta.',
+        texto: 'El Señor es mi luz y mi salvación.'
+      },
+      segunda_lectura: s.segunda_lectura,
+      aclamacion_evangelio: s.aclamacion_evangelio || {
+        texto: 'R. Aleluya, aleluya.\nLa palabra de Dios es viva y eficaz.\nR. Aleluya.'
+      },
+      evangelio: s.evangelio || {
+        titulo: 'Santo Evangelio',
+        cita: 'Lectura del santo Evangelio',
+        texto: 'En aquel tiempo...'
+      }
+    };
+
     return {
       fecha: isoDate,
       dia_semana: seasonInfo.diaSemana,
@@ -424,27 +452,7 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       antifona_entrada: s.antifona_entrada || `Cantemos al Señor, porque ha hecho maravillas.`,
       gloria: s.color === 'Blanco' || s.grado === 'Solemnidad' || s.grado === 'Fiesta',
       oracion_colecta: s.oracion_colecta || `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo.`,
-      liturgia_palabra: {
-        primera_lectura: s.primera_lectura || {
-          titulo: 'Primera Lectura',
-          cita: 'Lectura bíblica',
-          texto: 'Proclamación de la Palabra de Dios.'
-        },
-        salmo_responsorial: s.salmo_responsorial || {
-          cita: 'Salmo Responsorial',
-          respuesta: 'El Señor es mi pastor, nada me falta.',
-          texto: 'El Señor es mi luz y mi salvación.'
-        },
-        segunda_lectura: s.segunda_lectura,
-        aclamacion_evangelio: s.aclamacion_evangelio || {
-          texto: 'R. Aleluya, aleluya.\nLa palabra de Dios es viva y eficaz.\nR. Aleluya.'
-        },
-        evangelio: s.evangelio || {
-          titulo: 'Santo Evangelio',
-          cita: 'Lectura del santo Evangelio',
-          texto: 'En aquel tiempo...'
-        }
-      },
+      liturgia_palabra: liturgiaPalabra,
       credo: s.grado === 'Solemnidad' || seasonInfo.grado === 'Domingo',
       oracion_fieles: [
         'Por la Santa Iglesia universal, para que anuncie con fidelidad el Evangelio de Cristo a todos los pueblos. Roguemos al Señor.',
@@ -456,9 +464,44 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       antifona_comunion: s.antifona_comunion || `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
       oracion_comunion: s.oracion_comunion || `Que este santo sacramento que hemos recibido, Señor, nos comunique la vida eterna. Por Jesucristo, nuestro Señor.`,
       reflexion_homiletica: s.reflexion_homiletica,
-      cantos_sugeridos: getSuggestedChantsForDay(s.tiempo_liturgico || seasonInfo.tiempo, s.color || seasonInfo.color, s.titulo_celebracion || seasonInfo.tituloCelebracion)
+      cantos_sugeridos: getSuggestedChantsForDay(
+        s.tiempo_liturgico || seasonInfo.tiempo,
+        s.color || seasonInfo.color,
+        s.titulo_celebracion || seasonInfo.tituloCelebracion,
+        liturgiaPalabra,
+        isoDate
+      )
     };
   }
+
+  const defaultLiturgiaPalabra = {
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Lectura bíblica del Leccionario',
+      texto: `Hermanos: La gracia de Dios se ha manifestado para la salvación de todos los hombres, enseñándonos a renunciar a la impiedad y a los deseos mundanos, para vivir en este mundo con sobriedad, justicia y piedad, aguardando la bienaventurada esperanza y la manifestación gloriosa de nuestro gran Dios y Salvador Jesucristo.\n\nPalabra de Dios.`,
+      monicion: `En esta lectura, la Sagrada Escritura nos exhorta a poner toda nuestra confianza en las promesas del Señor y caminar en fidelidad.`
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 23',
+      respuesta: 'El Señor es mi pastor, nada me falta.',
+      texto: `El Señor es mi pastor, nada me falta:\nen verdes praderas me hace recostar;\nme conduce hacia fuentes tranquilas\ny repara mis fuerzas.\n\nR. El Señor es mi pastor, nada me falta.\n\nMe guía por el sendero justo,\npor el honor de su nombre.\nAunque camine por cañadas oscuras,\nnada temo, porque tú vas conmigo:\ntu vara y tu cayado me sosiegan.\n\nR. El Señor es mi pastor, nada me falta.`
+    },
+    segunda_lectura: seasonInfo.grado === 'Domingo' || seasonInfo.grado === 'Solemnidad' ? {
+      titulo: 'Segunda Lectura',
+      cita: 'Lectura de la carta del apóstol san Pablo',
+      texto: `Hermanos: Les ruego, por la misericordia de Dios, que se ofrezcan a sí mismos como hostia viva, santa y agradable a Dios: éste es su culto espiritual. No se amolden al mundo actual, sino transfórmense mediante la renovación de su mente, para que puedan discernir cuál es la voluntad de Dios: lo bueno, lo agradable y lo perfecto.\n\nPalabra de Dios.`,
+      monicion: `El apóstol nos llama a ofrecer nuestras vidas como un culto agradable a Dios en el amor mutuo.`
+    } : undefined,
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya.\nMis ovejas escuchan mi voz, dice el Señor; yo las conozco y ellas me siguen.\nR. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Lectura del santo Evangelio según san Juan',
+      texto: `En aquel tiempo, Jesús dijo a sus discípulos: «La paz les dejo, mi paz les doy; no se la doy como la da el mundo. No se turbe su corazón ni se acobarde. Si me amaran, se alegrarían de que vaya al Padre, porque el Padre es más grande que yo. Les he dicho esto ahora, antes de que suceda, para que cuando suceda, crean».\n\nPalabra del Señor.`,
+      monicion: `Jesús nos promete su Espíritu Consolador y nos llena de la verdadera paz pascual. Escuchemos su Evangelio.`
+    }
+  };
 
   // Generate a faithful liturgical template for dates outside the seed slice
   return {
@@ -475,34 +518,7 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
     antifona_entrada: `Cantemos al Señor, porque ha hecho maravillas; aclamemos al Dios de nuestra salvación.`,
     gloria: seasonInfo.color === 'Blanco' || seasonInfo.grado === 'Solemnidad' || seasonInfo.grado === 'Fiesta' || (seasonInfo.tiempo === 'Tiempo Ordinario' && seasonInfo.grado === 'Domingo'),
     oracion_colecta: `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre caminar siempre según tus mandamientos y gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
-    liturgia_palabra: {
-      primera_lectura: {
-        titulo: 'Primera Lectura',
-        cita: 'Lectura bíblica del Leccionario',
-        texto: `Hermanos: La gracia de Dios se ha manifestado para la salvación de todos los hombres, enseñándonos a renunciar a la impiedad y a los deseos mundanos, para vivir en este mundo con sobriedad, justicia y piedad, aguardando la bienaventurada esperanza y la manifestación gloriosa de nuestro gran Dios y Salvador Jesucristo.\n\nPalabra de Dios.`,
-        monicion: `En esta lectura, la Sagrada Escritura nos exhorta a poner toda nuestra confianza en las promesas del Señor y caminar en fidelidad.`
-      },
-      salmo_responsorial: {
-        cita: 'Salmo 23',
-        respuesta: 'El Señor es mi pastor, nada me falta.',
-        texto: `El Señor es mi pastor, nada me falta:\nen verdes praderas me hace recostar;\nme conduce hacia fuentes tranquilas\ny repara mis fuerzas.\n\nR. El Señor es mi pastor, nada me falta.\n\nMe guía por el sendero justo,\npor el honor de su nombre.\nAunque camine por cañadas oscuras,\nnada temo, porque tú vas conmigo:\ntu vara y tu cayado me sosiegan.\n\nR. El Señor es mi pastor, nada me falta.`
-      },
-      segunda_lectura: seasonInfo.grado === 'Domingo' || seasonInfo.grado === 'Solemnidad' ? {
-        titulo: 'Segunda Lectura',
-        cita: 'Lectura de la carta del apóstol san Pablo',
-        texto: `Hermanos: Les ruego, por la misericordia de Dios, que se ofrezcan a sí mismos como hostia viva, santa y agradable a Dios: éste es su culto espiritual. No se amolden al mundo actual, sino transfórmense mediante la renovación de su mente, para que puedan discernir cuál es la voluntad de Dios: lo bueno, lo agradable y lo perfecto.\n\nPalabra de Dios.`,
-        monicion: `El apóstol nos llama a ofrecer nuestras vidas como un culto agradable a Dios en el amor mutuo.`
-      } : undefined,
-      aclamacion_evangelio: {
-        texto: 'R. Aleluya, aleluya.\nMis ovejas escuchan mi voz, dice el Señor; yo las conozco y ellas me siguen.\nR. Aleluya.'
-      },
-      evangelio: {
-        titulo: 'Santo Evangelio',
-        cita: 'Lectura del santo Evangelio según san Juan',
-        texto: `En aquel tiempo, Jesús dijo a sus discípulos: «La paz les dejo, mi paz les doy; no se la doy como la da el mundo. No se turbe su corazón ni se acobarde. Si me amaran, se alegrarían de que vaya al Padre, porque el Padre es más grande que yo. Les he dicho esto ahora, antes de que suceda, para que cuando suceda, crean».\n\nPalabra del Señor.`,
-        monicion: `Jesús nos promete su Espíritu Consolador y nos llena de la verdadera paz pascual. Escuchemos su Evangelio.`
-      }
-    },
+    liturgia_palabra: defaultLiturgiaPalabra,
     credo: seasonInfo.grado === 'Domingo' || seasonInfo.grado === 'Solemnidad',
     oracion_fieles: [
       'Por la Santa Iglesia universal, por el Papa, los Obispos, presbíteros y diáconos, para que apacienten al pueblo de Dios con amor y sabiduría. Roguemos al Señor.',
@@ -517,6 +533,12 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       `El misterio que hoy celebramos nos convoca al centro mismo de la vida cristiana: el encuentro vivo con la Palabra encarnada y el banquete eucarístico. Los Santos Padres nos recuerdan que la Eucaristía es el memorial perenne del amor que vence toda muerte y desolación.`,
       `Al acercarnos a la mesa del Señor, renovamos nuestro compromiso de ser discípulos misioneros, llevando la luz del Evangelio a nuestras familias, centros de trabajo y ambientes cotidianos, viviendo la caridad fraterna como el signo distintivo de los hijos de Dios.`
     ],
-    cantos_sugeridos: getSuggestedChantsForDay(seasonInfo.tiempo, seasonInfo.color, seasonInfo.tituloCelebracion)
+    cantos_sugeridos: getSuggestedChantsForDay(
+      seasonInfo.tiempo,
+      seasonInfo.color,
+      seasonInfo.tituloCelebracion,
+      defaultLiturgiaPalabra,
+      isoDate
+    )
   };
 }
