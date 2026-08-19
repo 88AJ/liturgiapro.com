@@ -1,15 +1,18 @@
 import { LiturgicalDay, Cantico, LiturgicalColor } from '../types/liturgia';
 import { getLiturgicalSeasonInfo, parseDateISO, formatDateISO } from '../utils/calendar';
 import { SANTORAL_FIJO } from './liturgicalLectionary';
+import { getSuggestedChantsForDay } from '../utils/musicSelector';
 import liturgiaRawData from './liturgiaRaw.json';
 import cantosRawData from './cantosRaw.json';
 import ordinarioRawData from './ordinarioRaw.json';
 import ritualesRawData from './ritualesRaw.json';
+import calendarioMexicanoData from './calendarioMexicano2025_2026.json';
 
 export const LITURGIA_DB: Record<string, any> = liturgiaRawData;
 export const CANTOS_DB: Record<string, any> = cantosRawData;
 export const ORDINARIO_DB: any = ordinarioRawData;
 export const RITUALES_DB: any = ritualesRawData;
+export const CALENDARIO_MEXICANO_DB: Record<string, any> = calendarioMexicanoData;
 
 /**
  * Enhanced list of Liturgical Hymns with categories, keys, guitar chords and lyrics
@@ -212,6 +215,155 @@ ESTROFA 1
 
 CORO
 (D) Madre, (A) Madre, (Bm) Madre, (G) Madre. (Bis)`
+  },
+  {
+    id: 'santa-maria-del-camino',
+    titulo: 'Santa María del Camino',
+    momento: 'Mariano',
+    tiempo: 'Tiempo Ordinario / Mariano',
+    tonalidad: 'Do Mayor (C)',
+    acordes: 'C - F - C - G7 - C',
+    autor: 'Juan Antonio Espinosa',
+    youtubeQuery: 'Santa Maria del Camino Juan Antonio Espinosa',
+    letra: `ESTROFA 1
+(C) Mientras recorres la (F) vida,
+tú nunca (C) solo estás;
+(F) contigo por el ca(C)mino,
+(G7) Santa María (C) va.
+
+CORO
+(F) Ven con nosotros a ca(C)minar,
+(G7) Santa María, (C) ven. (Bis)`
+  },
+  {
+    id: 'la-guadalupana',
+    titulo: 'La Guadalupana (Desde el cielo una hermosa mañana)',
+    momento: 'Mariano',
+    tiempo: 'Solemnidad de Ntra. Sra. de Guadalupe / Fiestas Patronales',
+    tonalidad: 'Sol Mayor (G)',
+    acordes: 'G - D7 - C - G',
+    autor: 'Tradicional Mexicano',
+    youtubeQuery: 'Desde el cielo una hermosa mañana la Guadalupana',
+    letra: `CORO
+(G) Desde el cielo una hermosa ma(D7)ñana, (Bis)
+la Guadalupana, (G) la Guadalupana,
+la Guadalu(D7)pana bajó al Tepe(G)yac. (Bis)
+
+ESTROFA 1
+(G) Suplicante juntaba sus (D7) manos, (Bis)
+y eran mexicanos, (G) y eran mexicanos,
+y eran mexi(D7)canos su porte y su (G) faz. (Bis)`
+  },
+  {
+    id: 'entre-tus-manos',
+    titulo: 'Entre tus Manos',
+    momento: 'Ofertorio',
+    tiempo: 'Tiempo Ordinario / Cuaresma / Exequias',
+    tonalidad: 'Re Mayor (D)',
+    acordes: 'D - Em - A7 - D - D7 - G',
+    autor: 'Ray Repp',
+    youtubeQuery: 'Entre tus manos pongo mi existir',
+    letra: `CORO
+(D) Entre tus (Em) manos (A7) está mi vi(D)da, Señor.
+(D) Entre tus (Em) manos (A7) pongo mi exis(D)tir.
+(D7) Hay que mo(G)rir, (A7) para vi(D)vir.
+(D) Entre tus (Em) manos (A7) confío mi ser.`
+  },
+  {
+    id: 'saber-que-vendras',
+    titulo: 'Saber que Vendrás',
+    momento: 'Ofertorio',
+    tiempo: 'Tiempo Ordinario / Adviento / Pascua',
+    tonalidad: 'Do Mayor (C)',
+    acordes: 'C - G - Am - Em - F - G',
+    autor: 'Bob Dufford / Adaptación Litúrgica',
+    youtubeQuery: 'En este mundo que Cristo nos da saber que vendras',
+    letra: `ESTROFA 1
+(C) En este mundo que (G) Cristo nos da,
+(Am) hacemos la ofrenda del (Em) pan,
+(F) el pan de nuestro tra(C)bajo sin fin,
+(F) y el vino de nuestro can(G)tar.
+
+CORO
+(F) Saber que ven(G)drás, (Em) saber que esta(Am)rás,
+(F) partiendo a los (G) pobres tu (C) pan. (Bis)`
+  },
+  {
+    id: 'una-espiga',
+    titulo: 'Una Espiga Dorada por el Sol',
+    momento: 'Comunión',
+    tiempo: 'Tiempo Ordinario / Eucaristía',
+    tonalidad: 'Re Mayor (D)',
+    acordes: 'D - A7 - G - D',
+    autor: 'Cesáreo Gabaráin',
+    youtubeQuery: 'Una espiga dorada por el sol Cesáreo Gabarain',
+    letra: `ESTROFA 1
+(D) Una espiga do(A7)rada por el (D) sol,
+el racimo que corta el viña(A7)dor,
+(G) se convierten a(D)hora en Pan y (A7) Vino de a(D)mor,
+(G) en el Cuerpo y la (D) Sangre del Se(A7)ñor. (Bis)`
+  },
+  {
+    id: 'altisimo-senor',
+    titulo: 'Altísimo Señor (Alabanza Eucarística)',
+    momento: 'Comunión',
+    tiempo: 'Solemnidad del Corpus Christi / Hora Santa',
+    tonalidad: 'Fa Mayor (F)',
+    acordes: 'F - C7 - Bb - F',
+    autor: 'Tradicional Mexicano S. XVIII',
+    youtubeQuery: 'Altisimo Señor que supiste juntar',
+    letra: `CORO
+(F) ¡Altísimo Señor, que su(C7)piste jun(F)tar,
+a un tiempo en el altar, ser cor(C7)dero y pas(F)tor!
+(Bb) Quisiera con fer(F)vor a(C7)mar y recibir
+(F) a quien por mí quiso mo(C7)rir. (Bis)`
+  },
+  {
+    id: 'demos-gracias',
+    titulo: 'Demos Gracias al Señor, Demos Gracias',
+    momento: 'Salida',
+    tiempo: 'Tiempo Ordinario / Acción de Gracias',
+    tonalidad: 'Sol Mayor (G)',
+    acordes: 'G - C - D7 - G',
+    autor: 'Cesáreo Gabaráin',
+    youtubeQuery: 'Demos gracias al Señor demos gracias Cesáreo Gabarain',
+    letra: `CORO
+(G) Demos gracias al Se(C)ñor, demos (G) gracias,
+(D7) demos gracias al Se(G)ñor. (Bis)
+
+ESTROFA 1
+(G) Por las mañanas las aves cantan,
+las ala(C)banzas a Cristo Salva(D7)dor;
+y por las (G) tardes las flores cantan,
+las ala(D7)banzas a Cristo Salva(G)dor.`
+  },
+  {
+    id: 'alrededor-de-tu-mesa',
+    titulo: 'Alrededor de tu Mesa',
+    momento: 'Entrada',
+    tiempo: 'Tiempo Ordinario',
+    tonalidad: 'Do Mayor (C)',
+    acordes: 'C - F - G - C - Am - Dm',
+    autor: 'Francisco Palazón',
+    youtubeQuery: 'Alrededor de tu mesa venimos a recordar Francisco Palazón',
+    letra: `CORO
+(C) Alrededor de tu (F) mesa,
+(G) venimos a recor(C)dar,
+(Am) que tu palabra es ca(Dm)mino,
+(G) tu cuerpo fraterno (C) pan. (Bis)`
+  },
+  {
+    id: 'senor-ten-piedad-mejia',
+    titulo: 'Señor, Ten Piedad (Mejía)',
+    momento: 'Kyrie',
+    tiempo: 'Todos los tiempos',
+    tonalidad: 'Re menor (Dm)',
+    acordes: 'Dm - Gm - A7 - Dm',
+    autor: 'Alejandro Mejía',
+    youtubeQuery: 'Señor ten piedad Alejandro Mejia Misa Melodica',
+    letra: `(Dm) Señor, ten pie(Gm)dad de no(A7)sotros. (Bis)
+(Gm) Cristo, ten pie(C)dad de no(F)sotros. (Bis)
+(Dm) Señor, ten pie(Gm)dad de no(A7)sotros. (Bis)`
   }
 ];
 
@@ -250,6 +402,7 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       oracion_comunion: raw.oracion_comunion,
       reflexion_homiletica: raw.reflexion_homiletica,
       santos_dia: raw.santos_dia,
+      cantos_sugeridos: raw.cantos_sugeridos || getSuggestedChantsForDay(raw.tiempo_liturgico || seasonInfo.tiempo, (raw.color as LiturgicalColor) || seasonInfo.color, raw.titulo_celebracion || seasonInfo.tituloCelebracion)
     };
   }
 
@@ -302,7 +455,8 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       oracion_ofrendas: s.oracion_ofrendas || `Acepta, Señor, estos dones que te presentamos en la fiesta de ${s.titulo_celebracion}.`,
       antifona_comunion: s.antifona_comunion || `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
       oracion_comunion: s.oracion_comunion || `Que este santo sacramento que hemos recibido, Señor, nos comunique la vida eterna. Por Jesucristo, nuestro Señor.`,
-      reflexion_homiletica: s.reflexion_homiletica
+      reflexion_homiletica: s.reflexion_homiletica,
+      cantos_sugeridos: getSuggestedChantsForDay(s.tiempo_liturgico || seasonInfo.tiempo, s.color || seasonInfo.color, s.titulo_celebracion || seasonInfo.tituloCelebracion)
     };
   }
 
@@ -362,6 +516,7 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
     reflexion_homiletica: [
       `El misterio que hoy celebramos nos convoca al centro mismo de la vida cristiana: el encuentro vivo con la Palabra encarnada y el banquete eucarístico. Los Santos Padres nos recuerdan que la Eucaristía es el memorial perenne del amor que vence toda muerte y desolación.`,
       `Al acercarnos a la mesa del Señor, renovamos nuestro compromiso de ser discípulos misioneros, llevando la luz del Evangelio a nuestras familias, centros de trabajo y ambientes cotidianos, viviendo la caridad fraterna como el signo distintivo de los hijos de Dios.`
-    ]
+    ],
+    cantos_sugeridos: getSuggestedChantsForDay(seasonInfo.tiempo, seasonInfo.color, seasonInfo.tituloCelebracion)
   };
 }

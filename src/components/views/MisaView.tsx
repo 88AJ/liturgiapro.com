@@ -6,12 +6,22 @@ import {
   Check, 
   Sliders, 
   Maximize2, 
-  ChevronDown,
-  ChevronUp
+  ChevronDown, 
+  ChevronUp,
+  Music,
+  ExternalLink,
+  Volume2,
+  Play,
+  X,
+  RefreshCw,
+  BookOpen,
+  Search
 } from 'lucide-react';
-import { LiturgicalDay } from '../../types/liturgia';
+import { LiturgicalDay, Cantico, SchemaCantosMisa } from '../../types/liturgia';
 import { getColorHex } from '../../utils/calendar';
 import { requestMoniciones, requestHomilia } from '../../utils/liturgicalAiClient';
+import { CANTICOS_LIST } from '../../data/liturgyData';
+import { getSuggestedChantsForDay } from '../../utils/musicSelector';
 
 interface MisaViewProps {
   day: LiturgicalDay;
@@ -31,6 +41,7 @@ export const MisaView: React.FC<MisaViewProps> = ({
   const [loadingAi, setLoadingAi] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
+  const [showMusicProgram, setShowMusicProgram] = useState(true);
   
   // Display switches
   const [includeMoniciones, setIncludeMoniciones] = useState(true);
@@ -39,13 +50,57 @@ export const MisaView: React.FC<MisaViewProps> = ({
   const [includeHomilia, setIncludeHomilia] = useState(true);
   const [includeOracionFieles, setIncludeOracionFieles] = useState(true);
 
-  const colorStyle = getColorHex(day.color);
+  // Music state & modals
+  const [selectedCantoModal, setSelectedCantoModal] = useState<Cantico | null>(null);
+  const [changingMomento, setChangingMomento] = useState<keyof SchemaCantosMisa | null>(null);
+  const [musicSearchTerm, setMusicSearchTerm] = useState('');
+  const [transposeSemi, setTransposeSemi] = useState<number>(0);
 
+  const currentCantos: SchemaCantosMisa = day.cantos_sugeridos || getSuggestedChantsForDay(
+    day.tiempo_liturgico,
+    day.color,
+    day.titulo_celebracion || day.celebracion || ''
+  );
+
+  const colorStyle = getColorHex(day.color);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 3500);
+  };
+
+  const handleOpenCantoByName = (name: string) => {
+    if (!name) return;
+    setTransposeSemi(0);
+    const cleanName = name.toLowerCase().split('(')[0].trim();
+    const found = CANTICOS_LIST.find(c => 
+      c.titulo.toLowerCase().includes(cleanName) || 
+      cleanName.includes(c.titulo.toLowerCase())
+    );
+    if (found) {
+      setSelectedCantoModal(found);
+    } else {
+      setSelectedCantoModal({
+        id: 'canto-custom',
+        titulo: name,
+        momento: 'Momento Litúrgico',
+        tiempo: day.tiempo_liturgico,
+        tonalidad: 'Tono tradicional',
+        letra: `Canto litúrgico oficial sugerido para la celebración.\n\nConsulte el Cantoral Litúrgico o presione "Escuchar en YouTube" para escuchar la melodía y acordes.`
+      });
+    }
+  };
+
+  const handleUpdateCantoForMomento = (momento: keyof SchemaCantosMisa, nuevoTitulo: string) => {
+    const updatedCantos = { ...currentCantos, [momento]: nuevoTitulo };
+    const updatedDay: LiturgicalDay = {
+      ...day,
+      cantos_sugeridos: updatedCantos
+    };
+    onUpdateDay(updatedDay);
+    setChangingMomento(null);
+    showToast(`✓ Canto de ${momento} actualizado a: ${nuevoTitulo}`);
   };
 
   // Call Gemini for Moniciones & Peticiones
@@ -112,6 +167,16 @@ export const MisaView: React.FC<MisaViewProps> = ({
 ${day.titulo_celebracion || day.celebracion} (${day.fecha})
 Color: ${day.color} | ${day.tiempo_liturgico}
 
+GUIÓN DE CANTOS SUGERIDOS:
+- Entrada: ${currentCantos.entrada || 'N/A'}
+- Kyrie: ${currentCantos.kyrie || 'N/A'}
+${currentCantos.gloria ? `- Gloria: ${currentCantos.gloria}\n` : ''}- Salmo: ${currentCantos.salmo || 'N/A'}
+- Aleluya: ${currentCantos.aleluya || 'N/A'}
+- Ofertorio: ${currentCantos.ofertorio || 'N/A'}
+- Santo: ${currentCantos.santo || 'N/A'}
+- Comunión: ${currentCantos.comunion || 'N/A'}
+- Salida/Mariano: ${currentCantos.salida || currentCantos.mariano || 'N/A'}
+
 ANTÍFONA DE ENTRADA:
 ${day.antifona_entrada || ''}
 
@@ -147,6 +212,19 @@ ${day.oracion_comunion || ''}`;
   const dayNum = dateParts[2] || '01';
   const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   const monthName = monthNames[parseInt(dateParts[1] || '1', 10) - 1] || 'Enero';
+
+  const musicMomentsList: { key: keyof SchemaCantosMisa; label: string; badge: string }[] = [
+    { key: 'entrada', label: 'Canto de Entrada', badge: 'Ritos Iniciales' },
+    { key: 'kyrie', label: 'Kyrie / Piedad', badge: 'Acto Penitencial' },
+    ...(day.gloria ? [{ key: 'gloria' as keyof SchemaCantosMisa, label: 'Himno de Gloria', badge: 'Alabanza' }] : []),
+    { key: 'salmo', label: 'Salmo Responsorial', badge: 'Palabra' },
+    { key: 'aleluya', label: 'Aclamación (Aleluya)', badge: 'Evangelio' },
+    { key: 'ofertorio', label: 'Presentación de Dones', badge: 'Ofertorio' },
+    { key: 'santo', label: 'Aclamación del Santo', badge: 'Eucaristía' },
+    { key: 'cordero', label: 'Cordero de Dios', badge: 'Fracción del Pan' },
+    { key: 'comunion', label: 'Canto de Comunión', badge: 'Banquete Sagrado' },
+    { key: 'salida', label: 'Canto Final / Mariano', badge: 'Despedida' }
+  ];
 
   return (
     <div className="space-y-8 font-serif relative">
@@ -201,6 +279,19 @@ ${day.oracion_comunion || ''}`;
 
             <div className="flex flex-wrap items-center gap-2 pt-1 font-sans">
               <button
+                onClick={() => setShowMusicProgram(!showMusicProgram)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-bold transition border ${
+                  showMusicProgram 
+                    ? 'bg-[#800020] text-[#F9F7F2] border-[#800020]' 
+                    : 'bg-[#F9F7F2] text-[#800020] border-[#D9D1C3] hover:bg-[#EAE5DC]'
+                }`}
+                title="Mostrar u ocultar guión musical para el coro"
+              >
+                <Music size={13} />
+                <span>Música ({Object.values(currentCantos).filter(Boolean).length})</span>
+              </button>
+
+              <button
                 onClick={() => setShowConfig(!showConfig)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-medium bg-[#F9F7F2] hover:bg-[#EAE5DC] text-[#2D2926] border border-[#D9D1C3] transition"
               >
@@ -212,7 +303,7 @@ ${day.oracion_comunion || ''}`;
               <button
                 onClick={handleCopyText}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-medium bg-[#F9F7F2] hover:bg-[#EAE5DC] text-[#2D2926] border border-[#D9D1C3] transition"
-                title="Copiar texto litúrgico"
+                title="Copiar texto litúrgico y cantos"
               >
                 {copied ? <Check size={13} className="text-emerald-700" /> : <Copy size={13} />}
                 <span>{copied ? 'Copiado' : 'Copiar'}</span>
@@ -321,6 +412,90 @@ ${day.oracion_comunion || ''}`;
         )}
       </div>
 
+      {/* GUIÓN MUSICAL & CANTOS DEL DÍA (Collapsible Hero Section) */}
+      {showMusicProgram && (
+        <div className="bg-[#F5F2EB] rounded-md p-6 border border-[#D9D1C3] shadow-xs space-y-4 max-w-4xl mx-auto font-sans animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#D9D1C3] pb-3">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-[#800020] text-[#F9F7F2] flex items-center justify-center shadow-xs">
+                <Music size={16} />
+              </div>
+              <div>
+                <h3 className="font-serif font-bold text-[#2D2926] text-lg">
+                  Guión de Música y Cantos Litúrgicos
+                </h3>
+                <p className="text-xs text-[#666]">
+                  Selección canónica propia para este día ({day.tiempo_liturgico} — {day.color})
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={onOpenImpresor}
+                className="flex items-center gap-1.5 px-3 py-1 bg-[#F9F7F2] hover:bg-[#EAE5DC] text-[#2D2926] text-xs font-semibold rounded-sm border border-[#D9D1C3] transition"
+              >
+                <Printer size={12} />
+                <span>Imprimir Coro</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Song Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+            {musicMomentsList.map((m) => {
+              const cantoTitulo = currentCantos[m.key];
+              if (!cantoTitulo && m.key === 'gloria') return null;
+
+              return (
+                <div 
+                  key={m.key}
+                  className="bg-[#FDFBF7] p-3.5 rounded-sm border border-[#D9D1C3] hover:border-[#800020]/40 transition space-y-2 flex flex-col justify-between"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-[#800020] uppercase tracking-wider">
+                        {m.label}
+                      </span>
+                      <span className="text-[9px] text-[#777] bg-[#EAE5DC] px-1.5 py-0.2 rounded-xs">
+                        {m.badge}
+                      </span>
+                    </div>
+
+                    <p className="font-serif font-bold text-sm text-[#2D2926] line-clamp-1">
+                      {cantoTitulo || 'No asignado'}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-1 border-t border-[#EAE5DC] text-xs">
+                    {cantoTitulo ? (
+                      <button
+                        onClick={() => handleOpenCantoByName(cantoTitulo)}
+                        className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1"
+                      >
+                        <BookOpen size={12} />
+                        <span>Acordes & Letra</span>
+                      </button>
+                    ) : (
+                      <span className="text-[11px] text-[#999] italic">Omitido en la rúbrica</span>
+                    )}
+
+                    <button
+                      onClick={() => setChangingMomento(m.key)}
+                      className="text-[#666] hover:text-[#2D2926] text-[11px] flex items-center gap-1 hover:underline"
+                      title="Cambiar este canto por otro del cantoral"
+                    >
+                      <RefreshCw size={11} />
+                      <span>Cambiar</span>
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Liturgical Missal Sheet - Authentic Editorial Parchment */}
       <div className="bg-[#FDFBF7] rounded-md p-6 sm:p-12 border border-[#D9D1C3] shadow-xs space-y-12 max-w-4xl mx-auto text-[#2D2926] text-lg leading-relaxed">
         
@@ -335,6 +510,26 @@ ${day.oracion_comunion || ''}`;
             </div>
             <span className="rubric text-xs font-sans uppercase tracking-widest font-semibold">De pie</span>
           </div>
+
+          {/* Canto de Entrada Sugerido */}
+          {currentCantos.entrada && (
+            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans">
+              <div className="flex items-center gap-2.5">
+                <Music size={15} className="text-[#800020] shrink-0" />
+                <div>
+                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Entrada:</span>
+                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.entrada}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleOpenCantoByName(currentCantos.entrada)}
+                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
+              >
+                <span>Ver Letra & Acordes</span>
+                <span>→</span>
+              </button>
+            </div>
+          )}
 
           {/* Antífona de Entrada */}
           {day.antifona_entrada && (
@@ -400,6 +595,23 @@ ${day.oracion_comunion || ''}`;
               <span className="rubric font-sans">R.</span> Amén.
             </p>
 
+            {/* Canto de Kyrie / Piedad */}
+            {currentCantos.kyrie && (
+              <div className="bg-[#EAE5DC]/80 p-3 rounded-sm border border-[#D9D1C3] flex items-center justify-between text-xs font-sans my-2">
+                <div className="flex items-center gap-2">
+                  <Music size={14} className="text-[#800020]" />
+                  <span className="font-bold text-[#800020] uppercase tracking-wider text-[10px]">Canto Penitencial / Kyrie:</span>
+                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.kyrie}</span>
+                </div>
+                <button 
+                  onClick={() => handleOpenCantoByName(currentCantos.kyrie!)}
+                  className="text-[#800020] hover:underline font-bold text-[11px]"
+                >
+                  Ver Acordes →
+                </button>
+              </div>
+            )}
+
             <div className="pt-2 text-base space-y-1">
               <p className="priest-voice">Señor, ten piedad. <span className="assembly-response font-bold">R. Señor, ten piedad.</span></p>
               <p className="priest-voice">Cristo, ten piedad. <span className="assembly-response font-bold">R. Cristo, ten piedad.</span></p>
@@ -416,6 +628,23 @@ ${day.oracion_comunion || ''}`;
                 </span>
                 <span className="rubric text-xs font-sans">Se canta o se recita</span>
               </div>
+
+              {currentCantos.gloria && (
+                <div className="bg-[#EAE5DC]/80 p-3 rounded-sm border border-[#D9D1C3] flex items-center justify-between text-xs font-sans my-2">
+                  <div className="flex items-center gap-2">
+                    <Music size={14} className="text-[#800020]" />
+                    <span className="font-bold text-[#800020] uppercase tracking-wider text-[10px]">Versión Musical:</span>
+                    <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.gloria}</span>
+                  </div>
+                  <button 
+                    onClick={() => handleOpenCantoByName(currentCantos.gloria!)}
+                    className="text-[#800020] hover:underline font-bold text-[11px]"
+                  >
+                    Ver Acordes →
+                  </button>
+                </div>
+              )}
+
               <p className="text-[#2D2926] text-base leading-relaxed whitespace-pre-line font-serif">
                 {`Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo; Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.`}
               </p>
@@ -490,11 +719,22 @@ ${day.oracion_comunion || ''}`;
           {/* Salmo Responsorial */}
           {p.salmo_responsorial && (
             <div className="bg-[#F0EDE6] p-6 rounded-sm border border-[#D9D1C3] space-y-3">
-              <div>
-                <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em] block">
-                  Salmo Responsorial
-                </span>
-                <p className="text-[12px] text-[#555] italic font-serif">{p.salmo_responsorial.cita}</p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em] block">
+                    Salmo Responsorial
+                  </span>
+                  <p className="text-[12px] text-[#555] italic font-serif">{p.salmo_responsorial.cita}</p>
+                </div>
+                {currentCantos.salmo && (
+                  <button
+                    onClick={() => handleOpenCantoByName(currentCantos.salmo!)}
+                    className="text-xs text-[#800020] font-sans font-bold hover:underline flex items-center gap-1"
+                  >
+                    <Music size={12} />
+                    <span>Salmodia Musical</span>
+                  </button>
+                )}
               </div>
 
               <div className="p-3 bg-[#FDFBF7] border border-[#D9D1C3] rounded-sm text-[#800020] font-serif font-bold text-[17px]">
@@ -544,19 +784,36 @@ ${day.oracion_comunion || ''}`;
           )}
 
           {/* Aclamación antes del Evangelio */}
-          <div className="space-y-1">
+          <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em]">
                 Aclamación antes del Evangelio
               </span>
               <span className="rubric text-xs font-sans">De pie</span>
             </div>
+
+            {currentCantos.aleluya && (
+              <div className="bg-[#EAE5DC]/80 p-2.5 rounded-sm border border-[#D9D1C3] flex items-center justify-between text-xs font-sans">
+                <div className="flex items-center gap-2">
+                  <Music size={13} className="text-[#800020]" />
+                  <span className="font-bold text-[#800020] uppercase text-[10px]">Canto de Aclamación:</span>
+                  <span className="font-serif font-bold text-xs text-[#2D2926]">{currentCantos.aleluya}</span>
+                </div>
+                <button 
+                  onClick={() => handleOpenCantoByName(currentCantos.aleluya!)}
+                  className="text-[#800020] hover:underline font-bold text-[11px]"
+                >
+                  Acordes →
+                </button>
+              </div>
+            )}
+
             <p className="text-[#800020] font-serif font-bold text-[17px] italic">
               {p.aclamacion_evangelio?.texto || 'R. Aleluya, aleluya.'}
             </p>
           </div>
 
-          {/* Santo Evangelio - Editorial Highlight Card */}
+          {/* Santo Evangelio */}
           {p.evangelio && (
             <div className="space-y-4 bg-[#F5F2EB] p-6 sm:p-8 rounded-sm border-l-3 border-[#800020]">
               {includeMoniciones && p.evangelio.monicion && (
@@ -682,21 +939,45 @@ ${day.oracion_comunion || ''}`;
             <span className="rubric text-xs font-sans uppercase tracking-widest font-semibold">Sentados</span>
           </div>
 
-          {/* Preparación de los Dones */}
+          {/* Canto de Ofertorio Sugerido */}
+          {currentCantos.ofertorio && (
+            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans">
+              <div className="flex items-center gap-2.5">
+                <Music size={15} className="text-[#800020] shrink-0" />
+                <div>
+                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Ofertorio:</span>
+                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.ofertorio}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleOpenCantoByName(currentCantos.ofertorio)}
+                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
+              >
+                <span>Ver Acordes & Letra</span>
+                <span>→</span>
+              </button>
+            </div>
+          )}
+
+          {/* Presentación de Dones */}
           <div className="space-y-3">
-            <span className="font-sans text-[11px] font-bold text-[#2D2926] uppercase tracking-[0.2em] block">
-              Preparación de los Dones
-            </span>
-            <div className="rubric">El sacerdote toma la patena con el pan y el cáliz con el vino diciendo:</div>
-            <p className="priest-voice text-base">
-              Bendito seas, Señor, Dios del universo, por este pan, fruto de la tierra y del trabajo del hombre...
+            <p className="priest-voice">
+              Bendito seas, Señor, Dios del universo, por este pan, fruto de la tierra y del trabajo del hombre, que recibimos de tu generosidad y ahora te presentamos; él será para nosotros pan de vida.
             </p>
-            <p className="priest-voice text-base">
-              Bendito seas, Señor, Dios del universo, por este vino, fruto de la vid y del trabajo del hombre...
+            <p className="assembly-response pl-4">
+              <span className="rubric font-sans">R.</span> Bendito seas por siempre, Señor.
             </p>
-            
             <p className="priest-voice pt-2">
-              Oren, hermanos, para que este sacrificio mío y de ustedes sea agradable a Dios, Padre todopoderoso.
+              Bendito seas, Señor, Dios del universo, por este vino, fruto de la vid y del trabajo del hombre, que recibimos de tu generosidad y ahora te presentamos; él será para nosotros bebida de salvación.
+            </p>
+            <p className="assembly-response pl-4">
+              <span className="rubric font-sans">R.</span> Bendito seas por siempre, Señor.
+            </p>
+          </div>
+
+          <div className="space-y-2 pt-2">
+            <p className="priest-voice font-semibold">
+              Oren, hermanos, para que este sacrificio, mío y de ustedes, sea agradable a Dios, Padre todopoderoso.
             </p>
             <p className="assembly-response pl-4">
               El Señor reciba de tus manos este sacrificio, para alabanza y gloria de su nombre, para nuestro bien y el de toda su santa Iglesia.
@@ -730,9 +1011,22 @@ ${day.oracion_comunion || ''}`;
             </div>
 
             {/* Santo */}
-            <div className="bg-[#F0EDE6] p-4 rounded-sm border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed">
-              <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em] block mb-1">Santo</span>
-              Santo, Santo, Santo es el Señor, Dios del Universo. Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo. Bendito el que viene en el nombre del Señor. Hosanna en el cielo.
+            <div className="bg-[#F0EDE6] p-4 rounded-sm border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em] block">Santo</span>
+                {currentCantos.santo && (
+                  <button
+                    onClick={() => handleOpenCantoByName(currentCantos.santo)}
+                    className="text-xs text-[#800020] font-sans font-bold hover:underline flex items-center gap-1"
+                  >
+                    <Music size={12} />
+                    <span>Versión: {currentCantos.santo}</span>
+                  </button>
+                )}
+              </div>
+              <p>
+                Santo, Santo, Santo es el Señor, Dios del Universo. Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo. Bendito el que viene en el nombre del Señor. Hosanna en el cielo.
+              </p>
             </div>
 
             {/* Palabras de la Consagración */}
@@ -801,7 +1095,19 @@ ${day.oracion_comunion || ''}`;
           </div>
 
           {/* Cordero de Dios */}
-          <div className="bg-[#F0EDE6] p-4 rounded-sm border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed">
+          <div className="bg-[#F0EDE6] p-4 rounded-sm border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed space-y-1">
+            <div className="flex items-center justify-between mb-1">
+              <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em]">Cordero de Dios</span>
+              {currentCantos.cordero && (
+                <button
+                  onClick={() => handleOpenCantoByName(currentCantos.cordero!)}
+                  className="text-xs text-[#800020] font-sans font-bold hover:underline flex items-center gap-1"
+                >
+                  <Music size={12} />
+                  <span>{currentCantos.cordero}</span>
+                </button>
+              )}
+            </div>
             <p>Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.</p>
             <p>Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.</p>
             <p>Cordero de Dios, que quitas el pecado del mundo, danos la paz.</p>
@@ -816,6 +1122,26 @@ ${day.oracion_comunion || ''}`;
               Señor, no soy digno de que entres en mi casa, pero una palabra tuya bastará para sanarme.
             </p>
           </div>
+
+          {/* Canto de Comunión Sugerido */}
+          {currentCantos.comunion && (
+            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans">
+              <div className="flex items-center gap-2.5">
+                <Music size={15} className="text-[#800020] shrink-0" />
+                <div>
+                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Comunión:</span>
+                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.comunion}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleOpenCantoByName(currentCantos.comunion)}
+                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
+              >
+                <span>Ver Acordes & Letra</span>
+                <span>→</span>
+              </button>
+            </div>
+          )}
 
           {/* Antífona de Comunión */}
           {day.antifona_comunion && (
@@ -862,9 +1188,207 @@ ${day.oracion_comunion || ''}`;
             <p className="priest-voice pt-2">Pueden ir en paz.</p>
             <p className="assembly-response pl-4"><span className="rubric font-sans">R.</span> Demos gracias a Dios.</p>
           </div>
+
+          {/* Canto de Salida / Mariano */}
+          {(currentCantos.salida || currentCantos.mariano) && (
+            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans mt-4">
+              <div className="flex items-center gap-2.5">
+                <Music size={15} className="text-[#800020] shrink-0" />
+                <div>
+                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Salida / Mariano:</span>
+                  <span className="font-serif font-bold text-sm text-[#2D2926]">
+                    {currentCantos.salida || currentCantos.mariano}
+                  </span>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleOpenCantoByName(currentCantos.salida || currentCantos.mariano!)}
+                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
+              >
+                <span>Ver Acordes & Letra</span>
+                <span>→</span>
+              </button>
+            </div>
+          )}
         </section>
 
       </div>
+
+      {/* MODAL: VER ACORDES Y LETRA DEL CANTO */}
+      {selectedCantoModal && (
+        <div className="fixed inset-0 z-50 bg-[#2D2926]/70 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-[#FDFBF7] max-w-2xl w-full rounded-md border border-[#D9D1C3] shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto font-sans animate-in zoom-in-95 duration-150">
+            <div className="flex items-start justify-between border-b border-[#D9D1C3] pb-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-xs bg-[#800020]/10 text-[#800020] font-bold text-[10px] uppercase tracking-wider">
+                    {selectedCantoModal.momento || 'Canto Litúrgico'}
+                  </span>
+                  <span className="text-xs text-[#666]">
+                    {selectedCantoModal.tiempo}
+                  </span>
+                </div>
+                <h2 className="font-serif text-2xl font-bold text-[#2D2926]">
+                  {selectedCantoModal.titulo}
+                </h2>
+                {selectedCantoModal.autor && (
+                  <p className="text-xs text-[#555] italic">
+                    Autor: {selectedCantoModal.autor}
+                  </p>
+                )}
+              </div>
+
+              <button
+                onClick={() => setSelectedCantoModal(null)}
+                className="p-1 rounded-sm text-[#777] hover:text-[#2D2926] hover:bg-[#EAE5DC] transition"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Chords & Transposition Bar */}
+            <div className="bg-[#F0EDE6] p-3.5 rounded-sm border border-[#D9D1C3] flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-[#800020]">Tonalidad:</span>
+                <span className="font-mono font-semibold text-[#2D2926]">
+                  {selectedCantoModal.tonalidad || 'Re Mayor (D)'}
+                </span>
+                {transposeSemi !== 0 && (
+                  <span className="text-[#800020] font-bold">
+                    ({transposeSemi > 0 ? `+${transposeSemi}` : transposeSemi} semitonos)
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-[#666]">Transportar:</span>
+                <button
+                  onClick={() => setTransposeSemi(prev => prev - 1)}
+                  className="w-6 h-6 rounded-xs bg-[#FDFBF7] border border-[#D9D1C3] hover:bg-[#EAE5DC] font-bold text-center"
+                >
+                  -
+                </button>
+                <button
+                  onClick={() => setTransposeSemi(prev => prev + 1)}
+                  className="w-6 h-6 rounded-xs bg-[#FDFBF7] border border-[#D9D1C3] hover:bg-[#EAE5DC] font-bold text-center"
+                >
+                  +
+                </button>
+                {transposeSemi !== 0 && (
+                  <button
+                    onClick={() => setTransposeSemi(0)}
+                    className="text-[10px] text-[#800020] underline ml-1"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Lyrics with Chords */}
+            <div className="bg-[#FAF8F5] p-6 rounded-sm border border-[#D9D1C3] font-mono text-sm leading-relaxed whitespace-pre-line text-[#2D2926]">
+              {selectedCantoModal.letra}
+            </div>
+
+            {/* Footer Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-[#D9D1C3]">
+              <a
+                href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
+                  selectedCantoModal.youtubeQuery || `${selectedCantoModal.titulo} canto catolico`
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-sm text-xs font-bold bg-[#CC0000] text-white hover:bg-[#990000] transition w-full sm:w-auto justify-center"
+              >
+                <Play size={13} fill="currentColor" />
+                <span>Escuchar en YouTube</span>
+                <ExternalLink size={12} />
+              </a>
+
+              <button
+                onClick={() => setSelectedCantoModal(null)}
+                className="px-5 py-2 rounded-sm text-xs font-bold bg-[#2D2926] text-[#F9F7F2] hover:bg-[#1A1715] transition w-full sm:w-auto text-center"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: CAMBIAR CANTO */}
+      {changingMomento && (
+        <div className="fixed inset-0 z-50 bg-[#2D2926]/70 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-[#FDFBF7] max-w-xl w-full rounded-md border border-[#D9D1C3] shadow-2xl p-6 space-y-4 max-h-[85vh] flex flex-col font-sans animate-in zoom-in-95 duration-150">
+            <div className="flex items-center justify-between border-b border-[#D9D1C3] pb-3">
+              <div>
+                <h3 className="font-serif text-xl font-bold text-[#2D2926]">
+                  Seleccionar Canto para: <span className="text-[#800020] capitalize">{changingMomento}</span>
+                </h3>
+                <p className="text-xs text-[#666]">
+                  Elija un himno del cantoral litúrgico o busque por título
+                </p>
+              </div>
+              <button
+                onClick={() => setChangingMomento(null)}
+                className="p-1 text-[#777] hover:text-[#2D2926]"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Search Input */}
+            <div className="relative">
+              <Search size={14} className="absolute left-3 top-3 text-[#777]" />
+              <input
+                type="text"
+                placeholder="Buscar canto por título, letra o autor..."
+                value={musicSearchTerm}
+                onChange={(e) => setMusicSearchTerm(e.target.value)}
+                className="w-full pl-9 pr-3 py-2 text-xs bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm focus:outline-none focus:border-[#800020]"
+              />
+            </div>
+
+            {/* Songs List */}
+            <div className="flex-1 overflow-y-auto space-y-2 pr-1">
+              {CANTICOS_LIST
+                .filter(c => 
+                  c.titulo.toLowerCase().includes(musicSearchTerm.toLowerCase()) ||
+                  c.letra.toLowerCase().includes(musicSearchTerm.toLowerCase()) ||
+                  (c.autor && c.autor.toLowerCase().includes(musicSearchTerm.toLowerCase()))
+                )
+                .map((c) => (
+                  <div
+                    key={c.id}
+                    className="p-3 bg-[#F5F2EB] hover:bg-[#EAE5DC] border border-[#D9D1C3] rounded-sm transition flex items-center justify-between gap-3 cursor-pointer"
+                    onClick={() => handleUpdateCantoForMomento(changingMomento, c.titulo)}
+                  >
+                    <div>
+                      <p className="font-serif font-bold text-sm text-[#2D2926]">{c.titulo}</p>
+                      <p className="text-[11px] text-[#666]">
+                        {c.momento} • {c.tonalidad} {c.autor ? `• ${c.autor}` : ''}
+                      </p>
+                    </div>
+
+                    <button className="px-2.5 py-1 bg-[#800020] text-[#F9F7F2] text-xs font-bold rounded-xs shrink-0">
+                      Elegir
+                    </button>
+                  </div>
+                ))}
+            </div>
+
+            <div className="pt-2 border-t border-[#D9D1C3] flex justify-end">
+              <button
+                onClick={() => setChangingMomento(null)}
+                className="px-4 py-1.5 text-xs text-[#555] hover:text-[#2D2926]"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
