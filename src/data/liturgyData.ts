@@ -1,5 +1,6 @@
 import { LiturgicalDay, Cantico, LiturgicalColor } from '../types/liturgia';
 import { getLiturgicalSeasonInfo, parseDateISO, formatDateISO } from '../utils/calendar';
+import { SANTORAL_FIJO } from './liturgicalLectionary';
 import liturgiaRawData from './liturgiaRaw.json';
 import cantosRawData from './cantosRaw.json';
 import ordinarioRawData from './ordinarioRaw.json';
@@ -239,30 +240,9 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       rito_penitencial: raw.rito_penitencial,
       gloria: raw.gloria ?? (seasonInfo.color === 'Blanco' || seasonInfo.grado === 'Solemnidad' || seasonInfo.grado === 'Fiesta'),
       oracion_colecta: raw.oracion_colecta,
-      liturgia_palabra: raw.liturgia_palabra || {
-        primera_lectura: {
-          titulo: 'Primera Lectura',
-          cita: 'Lectura de la Sagrada Escritura',
-          texto: 'Proclamación de la Palabra de Dios para este día.',
-        },
-        salmo_responsorial: {
-          cita: 'Salmo Responsorial',
-          respuesta: 'El Señor es mi pastor, nada me falta.',
-          texto: 'El Señor es mi luz y mi salvación, ¿a quién temeré?',
-        },
-        evangelio: {
-          titulo: 'Santo Evangelio',
-          cita: 'Lectura del santo Evangelio según san Juan',
-          texto: 'En aquel tiempo, dijo Jesús a sus discípulos: Yo soy el camino, la verdad y la vida.',
-        }
-      },
+      liturgia_palabra: raw.liturgia_palabra,
       credo: raw.credo ?? (seasonInfo.grado === 'Solemnidad' || seasonInfo.grado === 'Domingo'),
-      oracion_fieles: raw.oracion_fieles || [
-        'Por la Santa Iglesia de Dios, para que anuncie con fidelidad el Evangelio a todos los pueblos. Roguemos al Señor.',
-        'Por los gobernantes de todas las naciones, para que promuevan la justicia, la paz y la dignidad de toda persona humana. Roguemos al Señor.',
-        'Por los enfermos, los afligidos y los que sufren en el cuerpo o en el espíritu, para que encuentren consuelo en Cristo. Roguemos al Señor.',
-        'Por nuestra comunidad reunida en torno al altar, para que crezcamos en la fe, la esperanza y la caridad fraterna. Roguemos al Señor.'
-      ],
+      oracion_fieles: raw.oracion_fieles,
       oracion_ofrendas: raw.oracion_ofrendas,
       prefacio: raw.prefacio,
       plegaria_eucaristica: raw.plegaria_eucaristica,
@@ -270,6 +250,59 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       oracion_comunion: raw.oracion_comunion,
       reflexion_homiletica: raw.reflexion_homiletica,
       santos_dia: raw.santos_dia,
+    };
+  }
+
+  // Check Roman Santoral for fixed solemnities, feasts and memorials
+  const monthDay = isoDate.substring(5); // "08-19"
+  if (SANTORAL_FIJO[monthDay]) {
+    const s = SANTORAL_FIJO[monthDay];
+    return {
+      fecha: isoDate,
+      dia_semana: seasonInfo.diaSemana,
+      tiempo_liturgico: s.tiempo_liturgico || seasonInfo.tiempo,
+      color: s.color || seasonInfo.color,
+      grado: s.grado || seasonInfo.grado,
+      titulo_celebracion: s.titulo_celebracion || seasonInfo.tituloCelebracion,
+      celebracion: s.titulo_celebracion || seasonInfo.tituloCelebracion,
+      ciclo: seasonInfo.ciclo,
+      ano_ferial: seasonInfo.anoFerial,
+      monicion_entrada: s.primera_lectura?.monicion ? `Hermanos: Sean bienvenidos a la celebración de ${s.titulo_celebracion}. Que la Palabra y el Sacramento renueven nuestra fe y amor fraterno.` : `Hermanos: Con gozo nos reunimos para celebrar la memoria de ${s.titulo_celebracion}.`,
+      antifona_entrada: s.antifona_entrada || `Cantemos al Señor, porque ha hecho maravillas.`,
+      gloria: s.color === 'Blanco' || s.grado === 'Solemnidad' || s.grado === 'Fiesta',
+      oracion_colecta: s.oracion_colecta || `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo.`,
+      liturgia_palabra: {
+        primera_lectura: s.primera_lectura || {
+          titulo: 'Primera Lectura',
+          cita: 'Lectura bíblica',
+          texto: 'Proclamación de la Palabra de Dios.'
+        },
+        salmo_responsorial: s.salmo_responsorial || {
+          cita: 'Salmo Responsorial',
+          respuesta: 'El Señor es mi pastor, nada me falta.',
+          texto: 'El Señor es mi luz y mi salvación.'
+        },
+        segunda_lectura: s.segunda_lectura,
+        aclamacion_evangelio: s.aclamacion_evangelio || {
+          texto: 'R. Aleluya, aleluya.\nLa palabra de Dios es viva y eficaz.\nR. Aleluya.'
+        },
+        evangelio: s.evangelio || {
+          titulo: 'Santo Evangelio',
+          cita: 'Lectura del santo Evangelio',
+          texto: 'En aquel tiempo...'
+        }
+      },
+      credo: s.grado === 'Solemnidad' || seasonInfo.grado === 'Domingo',
+      oracion_fieles: [
+        'Por la Santa Iglesia universal, para que anuncie con fidelidad el Evangelio de Cristo a todos los pueblos. Roguemos al Señor.',
+        'Por los gobernantes de las naciones, para que promuevan la paz auténtica, la justicia y el bien común. Roguemos al Señor.',
+        'Por los enfermos, los pobres y los que sufren tribulación, para que sientan la consolación de Dios. Roguemos al Señor.',
+        'Por nuestra comunidad reunida en torno al altar, para que el testimonio de los santos inspire nuestra entrega diaria. Roguemos al Señor.'
+      ],
+      oracion_ofrendas: s.oracion_ofrendas || `Acepta, Señor, estos dones que te presentamos en la fiesta de ${s.titulo_celebracion}.`,
+      antifona_comunion: s.antifona_comunion || `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
+      oracion_comunion: s.oracion_comunion || `Que este santo sacramento que hemos recibido, Señor, nos comunique la vida eterna. Por Jesucristo, nuestro Señor.`,
+      reflexion_homiletica: s.reflexion_homiletica
     };
   }
 
