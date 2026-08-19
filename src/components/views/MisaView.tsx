@@ -22,6 +22,7 @@ import { getColorHex } from '../../utils/calendar';
 import { requestMoniciones, requestHomilia } from '../../utils/liturgicalAiClient';
 import { CANTICOS_LIST } from '../../data/liturgyData';
 import { getSuggestedChantsForDay } from '../../utils/musicSelector';
+import { getLectionaryIntroduction, getGospelEvangelistName, cleanReadingText } from '../../utils/lectionaryFormatter';
 
 interface MisaViewProps {
   day: LiturgicalDay;
@@ -698,13 +699,17 @@ ${day.oracion_comunion || ''}`;
                     Primera Lectura
                   </h3>
                 </div>
-                <p className="text-[13px] leading-relaxed mb-3 text-[#555] italic font-serif">
+                <p className="text-[13px] leading-relaxed mb-2 text-[#555] italic font-serif">
                   {p.primera_lectura.cita}
+                </p>
+                {/* Canonical Lectionary Proclamation Title */}
+                <p className="font-serif font-bold text-[#800020] text-[16px] mb-2 tracking-tight">
+                  {getLectionaryIntroduction(p.primera_lectura.cita, 'primera')}
                 </p>
               </div>
 
               <div className="capitular-letter text-[#2D2926] whitespace-pre-line text-[17px] leading-[1.8]">
-                {p.primera_lectura.texto}
+                {cleanReadingText(p.primera_lectura.texto)}
               </div>
 
               <div className="pt-2">
@@ -765,13 +770,17 @@ ${day.oracion_comunion || ''}`;
                     Segunda Lectura
                   </h3>
                 </div>
-                <p className="text-[13px] leading-relaxed mb-3 text-[#555] italic font-serif">
+                <p className="text-[13px] leading-relaxed mb-2 text-[#555] italic font-serif">
                   {p.segunda_lectura.cita}
+                </p>
+                {/* Canonical Lectionary Proclamation Title */}
+                <p className="font-serif font-bold text-[#800020] text-[16px] mb-2 tracking-tight">
+                  {getLectionaryIntroduction(p.segunda_lectura.cita, 'segunda')}
                 </p>
               </div>
 
               <div className="capitular-letter text-[#2D2926] whitespace-pre-line text-[17px] leading-[1.8]">
-                {p.segunda_lectura.texto}
+                {cleanReadingText(p.segunda_lectura.texto)}
               </div>
 
               <div className="pt-2">
@@ -830,22 +839,29 @@ ${day.oracion_comunion || ''}`;
                     Santo Evangelio
                   </h3>
                 </div>
-                <p className="text-[13px] leading-relaxed text-[#555] italic font-serif">
+                <p className="text-[13px] leading-relaxed text-[#555] italic font-serif mb-1">
                   {p.evangelio.cita}
+                </p>
+                {/* Canonical Title */}
+                <p className="font-serif font-bold text-[#800020] text-[17px] mb-2 tracking-tight">
+                  {getLectionaryIntroduction(p.evangelio.cita, 'evangelio')}
                 </p>
               </div>
 
-              <div className="space-y-1 text-base">
+              <div className="space-y-1.5 text-base bg-[#ECE7DC]/70 p-4 rounded-sm border border-[#D9D1C3]">
                 <p className="priest-voice">El Señor esté con ustedes.</p>
                 <p className="assembly-response pl-4"><span className="rubric font-sans">R.</span> Y con tu espíritu.</p>
-                <p className="priest-voice">
-                  <strong className="text-[#800020]">✠</strong> Proclamación del santo Evangelio según...
+                <p className="priest-voice pt-1">
+                  <strong className="text-[#800020]">✠</strong> Proclamación del santo Evangelio según {getGospelEvangelistName(p.evangelio.cita)}.
                 </p>
+                <div className="rubric pl-4 text-xs">
+                  El sacerdote o diácono hace la señal de la cruz sobre el libro, y luego sobre su frente, boca y pecho; los fieles hacen lo mismo.
+                </div>
                 <p className="assembly-response pl-4"><span className="rubric font-sans">R.</span> Gloria a ti, Señor.</p>
               </div>
 
-              <div className="capitular-letter text-[#2D2926] whitespace-pre-line text-[18px] font-medium leading-[1.8]">
-                {p.evangelio.texto}
+              <div className="capitular-letter text-[#2D2926] whitespace-pre-line text-[18px] font-medium leading-[1.8] pt-2">
+                {cleanReadingText(p.evangelio.texto)}
               </div>
 
               <div className="pt-2">

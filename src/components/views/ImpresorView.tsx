@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { LiturgicalDay } from '../../types/liturgia';
 import { getColorHex } from '../../utils/calendar';
+import { getLectionaryIntroduction, getGospelEvangelistName, cleanReadingText } from '../../utils/lectionaryFormatter';
 
 interface ImpresorViewProps {
   day: LiturgicalDay;
@@ -257,8 +258,11 @@ export const ImpresorView: React.FC<ImpresorViewProps> = ({ day, region }) => {
                   <span className="font-sans text-[10px] font-bold text-[#2D2926] uppercase tracking-[0.2em] block">
                     Primera Lectura ({p.primera_lectura.cita})
                   </span>
+                  <p className="font-serif font-bold text-[#800020] text-xs mb-1">
+                    {getLectionaryIntroduction(p.primera_lectura.cita, 'primera')}
+                  </p>
                   <p className="capitular-letter text-[#2D2926] whitespace-pre-line">
-                    {p.primera_lectura.texto}
+                    {cleanReadingText(p.primera_lectura.texto)}
                   </p>
                   <p className="text-xs font-bold pt-1">
                     Palabra de Dios. <span className="font-normal italic">R. Te alabamos, Señor.</span>
@@ -287,8 +291,11 @@ export const ImpresorView: React.FC<ImpresorViewProps> = ({ day, region }) => {
                   <span className="font-sans text-[10px] font-bold text-[#2D2926] uppercase tracking-[0.2em] block">
                     Segunda Lectura ({p.segunda_lectura.cita})
                   </span>
+                  <p className="font-serif font-bold text-[#800020] text-xs mb-1">
+                    {getLectionaryIntroduction(p.segunda_lectura.cita, 'segunda')}
+                  </p>
                   <p className="capitular-letter text-[#2D2926] whitespace-pre-line">
-                    {p.segunda_lectura.texto}
+                    {cleanReadingText(p.segunda_lectura.texto)}
                   </p>
                   <p className="text-xs font-bold pt-1">
                     Palabra de Dios. <span className="font-normal italic">R. Te alabamos, Señor.</span>
@@ -302,8 +309,14 @@ export const ImpresorView: React.FC<ImpresorViewProps> = ({ day, region }) => {
                   <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em] block">
                     Santo Evangelio ({p.evangelio.cita})
                   </span>
+                  <p className="font-serif font-bold text-[#800020] text-xs mb-1">
+                    {getLectionaryIntroduction(p.evangelio.cita, 'evangelio')}
+                  </p>
+                  <div className="text-xs italic text-[#666] mb-1">
+                    ✠ Proclamación del santo Evangelio según {getGospelEvangelistName(p.evangelio.cita)}.
+                  </div>
                   <p className="capitular-letter text-[#2D2926] font-medium whitespace-pre-line">
-                    {p.evangelio.texto}
+                    {cleanReadingText(p.evangelio.texto)}
                   </p>
                   <p className="text-xs font-bold pt-1">
                     Palabra del Señor. <span className="font-normal italic">R. Gloria a ti, Señor Jesús.</span>

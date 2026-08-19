@@ -12,6 +12,7 @@ import {
   Bookmark
 } from 'lucide-react';
 import { LiturgicalDay } from '../../types/liturgia';
+import { getLectionaryIntroduction, getGospelEvangelistName, cleanReadingText } from '../../utils/lectionaryFormatter';
 
 interface AtrilModalProps {
   day: LiturgicalDay;
@@ -180,10 +181,13 @@ export const AtrilModal: React.FC<AtrilModalProps> = ({ day, isOpen, onClose }) 
                 <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] block">
                   Primera Lectura
                 </span>
-                <span className={`${rubricClasses} text-sm font-sans italic`}>{p.primera_lectura.cita}</span>
+                <span className={`${rubricClasses} text-sm font-sans italic block mb-1`}>{p.primera_lectura.cita}</span>
+                <p className="font-serif font-bold text-[#800020] text-lg">
+                  {getLectionaryIntroduction(p.primera_lectura.cita, 'primera')}
+                </p>
               </div>
               <p className="capitular-letter whitespace-pre-line font-medium leading-relaxed">
-                {p.primera_lectura.texto}
+                {cleanReadingText(p.primera_lectura.texto)}
               </p>
               <div className="pt-2 text-base">
                 <p className="font-bold">Palabra de Dios.</p>
@@ -218,10 +222,13 @@ export const AtrilModal: React.FC<AtrilModalProps> = ({ day, isOpen, onClose }) 
                 <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] block">
                   Segunda Lectura
                 </span>
-                <span className={`${rubricClasses} text-sm font-sans italic`}>{p.segunda_lectura.cita}</span>
+                <span className={`${rubricClasses} text-sm font-sans italic block mb-1`}>{p.segunda_lectura.cita}</span>
+                <p className="font-serif font-bold text-[#800020] text-lg">
+                  {getLectionaryIntroduction(p.segunda_lectura.cita, 'segunda')}
+                </p>
               </div>
               <p className="capitular-letter whitespace-pre-line font-medium leading-relaxed">
-                {p.segunda_lectura.texto}
+                {cleanReadingText(p.segunda_lectura.texto)}
               </p>
               <div className="pt-2 text-base">
                 <p className="font-bold">Palabra de Dios.</p>
@@ -237,16 +244,19 @@ export const AtrilModal: React.FC<AtrilModalProps> = ({ day, isOpen, onClose }) 
                 <span className="font-sans text-xs font-bold uppercase tracking-[0.25em] text-[#800020] block">
                   Santo Evangelio
                 </span>
-                <span className={`${rubricClasses} text-sm font-sans italic`}>{p.evangelio.cita}</span>
+                <span className={`${rubricClasses} text-sm font-sans italic block mb-1`}>{p.evangelio.cita}</span>
+                <p className="font-serif font-bold text-[#800020] text-xl">
+                  {getLectionaryIntroduction(p.evangelio.cita, 'evangelio')}
+                </p>
               </div>
               
-              <div className="space-y-1 text-base font-sans">
+              <div className="space-y-1.5 text-base font-sans p-4 rounded-sm bg-black/5 border border-current/10">
                 <p>El Señor esté con ustedes. <span className={rubricClasses}>R. Y con tu espíritu.</span></p>
-                <p>✠ Proclamación del santo Evangelio... <span className={rubricClasses}>R. Gloria a ti, Señor.</span></p>
+                <p>✠ Proclamación del santo Evangelio según {getGospelEvangelistName(p.evangelio.cita)}. <span className={rubricClasses}>R. Gloria a ti, Señor.</span></p>
               </div>
 
-              <p className="capitular-letter whitespace-pre-line font-semibold leading-relaxed">
-                {p.evangelio.texto}
+              <p className="capitular-letter whitespace-pre-line font-semibold leading-relaxed pt-2">
+                {cleanReadingText(p.evangelio.texto)}
               </p>
 
               <div className="pt-2 text-base font-sans">
