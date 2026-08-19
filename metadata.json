@@ -1,6 +1,0 @@
-{
-  "name": "Liturgia PRO",
-  "description": "Plataforma integral de asistencia litúrgica: Misal diario, Ordo, Rituales sacramentales, Cancionero con acordes, Boletines parroquiales y Asistente Teológico Litúrgico.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
