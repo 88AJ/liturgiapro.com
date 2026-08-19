@@ -1,0 +1,87 @@
+{
+  "bautismo": {
+    "acogida": {
+      "dialogo_inicial": "**Sacerdote:** ¿Qué nombre piden a la Iglesia para su hijo(a)?\n**Padres:** {bebe}.\n**Sacerdote:** ¿Qué piden a la Iglesia de Dios para {bebe}?\n**Padres:** El Bautismo.",
+      "exhortacion_padres": "**Sacerdote:** Al pedir el bautismo para su hijo(a), ¿saben que contraen la obligación de educarlo(a) en la fe, para que, guardando los mandamientos de Dios, ame al Señor y a su prójimo, como Cristo nos enseña?\n**Padres:** Sí, lo sabemos.",
+      "exhortacion_padrinos": "**Sacerdote:** Y ustedes, {padrinos}, que aceptan ser padrinos de este(a) niño(a), ¿están dispuestos a ayudar a sus padres en esa tarea?\n**Padrinos:** Sí, estamos dispuestos.",
+      "signacion": "**Sacerdote:** {bebe}, la Iglesia cristiana te recibe con gran alegría. Yo, en su nombre, te signo con la señal de la cruz. Y ustedes, padres y padrinos, hagan también sobre él (ella) la señal de la cruz."
+    },
+    "liturgia_sacramento": {
+      "letanias": "**Sacerdote:** Oremos, hermanos, por este(a) niño(a) que va a ser bautizado(a), por sus padres y padrinos, y por todos los bautizados...\n\nSanta María, Madre de Dios... *Ruega por nosotros.*\nSan Juan Bautista... *Ruega por nosotros.*\nSan José... *Ruega por nosotros.*\nSan Pedro y San Pablo... *Rueguen por nosotros.*\nTodos los santos y santas de Dios... *Rueguen por nosotros.*",
+      "exorcismo_y_uncion": "**Sacerdote:** Dios todopoderoso y eterno... te pedimos que liberes a este(a) niño(a) del pecado original y lo(a) consagradas como templo de tu gloria... Te ungimos con el óleo de la salvación en el nombre de Cristo Salvador, para que te fortalezca con su poder, que vive y reina por los siglos de los siglos.\n**Todos:** Amén.",
+      "bendicion_agua": "**Sacerdote:** ¡Oh Dios! Que por tu poder invisible realizas obras admirables por medio de los signos de los sacramentos... Te pedimos, Señor, que por la gracia de tu Hijo descienda el poder del Espíritu Santo sobre el agua de esta fuente... Por Jesucristo nuestro Señor. \n**Todos:** Amén.",
+      "renuncias": "**Sacerdote:** ¿Renuncian al pecado para vivir en la libertad de los hijos de Dios?\n**Padres y Padrinos:** Sí, renuncio.\n**Sacerdote:** ¿Renuncian a las seducciones del mal, para que el pecado no los esclavice?\n**Padres y Padrinos:** Sí, renuncio.\n**Sacerdote:** ¿Renuncian a Satanás, padre y príncipe del pecado?\n**Padres y Padrinos:** Sí, renuncio.",
+      "profesion_fe": "**Sacerdote:** ¿Creen en Dios, Padre todopoderoso, Creador del cielo y de la tierra?\n**Padres y Padrinos:** Sí, creo.\n**Sacerdote:** ¿Creen en Jesucristo, su único Hijo, nuestro Señor, que nació de santa María Virgen, murió, fue sepultado, resucitó de entre los muertos y está sentado a la derecha del Padre?\n**Padres y Padrinos:** Sí, creo.\n**Sacerdote:** ¿Creen en el Espíritu Santo, en la santa Iglesia católica, en la comunión de los santos, en el perdón de los pecados, en la resurrección de los muertos y en la vida eterna?\n**Padres y Padrinos:** Sí, creo.",
+      "bautismo": "**Sacerdote:** ¿Quieren, por tanto, que su hijo(a) {bebe} sea bautizado(a) en la fe de la Iglesia que todos juntos acabamos de profesar?\n**Padres y Padrinos:** Sí, queremos.\n\n*(El sacerdote derrama agua tres veces sobre la cabeza del niño(a))*:\n\n**Sacerdote:** **{bebe}, YO TE BAUTIZO EN EL NOMBRE DEL PADRE, Y DEL HIJO, Y DEL ESPÍRITU SANTO.**\n**Todos:** Amén."
+    },
+    "ritos_explicativos": {
+      "uncion_crisma": "**Sacerdote:** Dios todopoderoso, Padre de nuestro Señor Jesucristo... te consagra con el crisma de la salvación para que entres a formar parte de su pueblo y seas para siempre miembro de Cristo, sacerdote, profeta y rey.\n**Todos:** Amén.",
+      "vestidura_blanca": "**Sacerdote:** {bebe}, has sido transformado(a) en una nueva creatura... Que esta vestidura blanca sea signo de tu nueva dignidad cristiana... consérvala sin mancha hasta la vida eterna.\n**Todos:** Amén.",
+      "cirio": "**Sacerdote:** *(A los padres y padrinos)* Reciban la luz de Cristo. A ustedes, padres y padrinos, se les confía el cuidado de esta luz... para que este(a) niño(a), iluminado(a) por Cristo, camine siempre como hijo(a) de la luz...\n**Todos:** Amén."
+    },
+    "conclusion": {
+      "bendicion_especial": "**Sacerdote:** Al Señor, Dios todopoderoso, que llenó el mundo de alegría con el nacimiento de su Hijo, bendiga a esta madre... bendiga a este padre... y nos bendiga a todos nosotros.\n**Todos:** Amén."
+    }
+  },
+  "matrimonio": {
+    "acogida": {
+      "dialogo": "A la puerta de la iglesia, o en el presbiterio, el sacerdote acoge a los novios, expresando su participación en el gozo de la familia:\n\nSacerdote: Queridos {esposo} y {esposa}: Con alegría los recibimos hoy en la casa del Señor, en el día de su matrimonio. Compartimos su felicidad, junto con sus familiares y amigos. Que el Señor los escuche en este día de alegría y les conceda su gracia."
+    },
+    "liturgia_sacramento": {
+      "monicion": "Hermanos, hemos escuchado la Palabra de Dios. Ahora, pidamos al Espíritu Santo que descienda sobre {esposo} y {esposa}, para que, al contraer matrimonio, su amor se fortalezca.",
+      "escrutinio": "Sacerdote: Queridos {esposo} y {esposa}, ¿han venido aquí a contraer matrimonio por su libre y entera voluntad, sin que nada ni nadie los presione?\nEsposos: Sí, vengo libremente.\n\nSacerdote: ¿Están dispuestos a amarse y honrarse mutuamente en su matrimonio durante toda la vida?\nEsposos: Sí, estoy dispuesto.\n\nSacerdote: ¿Están dispuestos a recibir de Dios responsable y amorosamente los hijos, y a educarlos según la ley de Cristo y de su Iglesia?\nEsposos: Sí, estoy dispuesto.",
+      "consentimiento": "Sacerdote: Así, pues, ya que quieren contraer el santo matrimonio, unan sus manos y manifiesten su consentimiento ante Dios y su Iglesia.\n\n{esposo}: Yo, {esposo}, te recibo a ti, {esposa}, como esposa y me entrego a ti, y prometo serte fiel en la prosperidad y en la adversidad, en la salud y en la enfermedad, y así amarte y respetarte todos los días de mi vida.\n\n{esposa}: Yo, {esposa}, te recibo a ti, {esposo}, como esposo y me entrego a ti, y prometo serte fiel en la prosperidad y en la adversidad, en la salud y en la enfermedad, y así amarte y respetarte todos los días de mi vida.",
+      "confirmacion_consentimiento": "Sacerdote: Que el Señor confirme este consentimiento que han manifestado ante la Iglesia y cumpla en ustedes su bendición. Lo que Dios ha unido, que no lo separe el hombre.\nTodos: Amén.",
+      "bendicion_anillos": "Sacerdote: El Señor bendiga + estos anillos que ustedes se entregan como signo de amor y de fidelidad. Por Jesucristo nuestro Señor.\n\n{esposo}: {esposa}, recibe este anillo como signo de mi amor y de mi fidelidad. En el nombre del Padre, y del Hijo, y del Espíritu Santo.\n\n{esposa}: {esposo}, recibe este anillo como signo de mi amor y de mi fidelidad. En el nombre del Padre, y del Hijo, y del Espíritu Santo.",
+      "entrega_arras": "Sacerdote: Bendice + Señor, estas arras, que {esposo} y {esposa} se entregan, y derrama sobre ellos la abundancia de tus bienes.\n\n{esposo}: {esposa}, recibe estas arras como prenda de la bendición de Dios y signo de los bienes que vamos a compartir.\n{esposa}: {esposo}, recibe estas arras como prenda de la bendición de Dios y signo de los bienes que vamos a compartir.",
+      "velacion": "Sacerdote: Recibe, Señor, nuestra súplica para que a esta nueva familia la asistas continuamente con tu gracia, y al unir este velo y este lazo, signo de su unión con Cristo, nunca nada ni nadie los separe y vivan en tu amor todos los días de su vida. Por Jesucristo nuestro Señor.\nTodos: Amén."
+    },
+    "liturgia_eucaristica": {
+      "bendicion_nupcial": "Sacerdote: (Con las manos extendidas sobre los esposos) Padre santo, que has hecho al hombre a tu imagen: varón y mujer los creaste, para que, unidos en cuerpo y corazón, cumplieran su misión en el mundo. Mira con bondad a estos hijos tuyos {esposo} y {esposa}, que, unidos en matrimonio, piden tu bendición. Que el Espíritu Santo inflame sus corazones, para que, enriquecidos con su amor, sean testigos de Cristo ante el mundo. Por Jesucristo nuestro Señor.\nTodos: Amén."
+    },
+    "conclusion": {
+      "bendicion_final": "Sacerdote: Dios eterno Padre, los conserve unidos en su amor; para que la paz de Cristo habite en ustedes y permanezca en su hogar.\nTodos: Amén.\nSacerdote: Y la bendición de Dios todopoderoso, Padre, Hijo + y Espíritu Santo, descienda sobre ustedes.\nTodos: Amén."
+    }
+  },
+  "exequias": {
+    "adulto": {
+      "recepcion": {
+        "saludo": "Sacerdote: La gracia y la paz de Dios, nuestro Padre, que resucitó a Jesucristo de entre los muertos, estén con todos ustedes.\nTodos: Y con tu espíritu.",
+        "aspersion": "Sacerdote: (Al rociar el cuerpo con agua bendita) Que esta agua nos recuerde el bautismo de {difunto}, para que quien fue injertado en la muerte de Cristo, participe también de su resurrección.",
+        "cubrir_pano": "Sacerdote: (Si se acostumbra) El día de su bautismo, {difunto} fue revestido con la vestidura blanca, signo de su dignidad cristiana. Que Cristo lo acoja ahora en la asamblea de los santos.\nTodos: Amén."
+      },
+      "ultimo_adios": {
+        "monicion": "Sacerdote: Con la esperanza puesta en la vida eterna, encomendemos a nuestro(a) hermano(a) {difunto} a la misericordia de Dios. Nuestro Señor Jesucristo, que lloró la muerte de su amigo Lázaro, enjugue también nuestras lágrimas.",
+        "aspersion_e_incienso": "El sacerdote rocía el féretro con agua bendita como recuerdo del bautismo que hace al cristiano hijo de Dios, y luego lo inciensa como signo de respeto al cuerpo que fue templo del Espíritu Santo.",
+        "oracion_despedida": "Sacerdote: Te encomendamos, Señor, a tu siervo(a) {difunto}, a quien en esta vida mortal rodeaste siempre con tu amor invencible. Ahora que ha sido liberado(a) de todos los males, concédele entrar en el descanso eterno. Por Jesucristo nuestro Señor.\nTodos: Amén.",
+        "concesion_paz": "Sacerdote: Dale, Señor, el descanso eterno.\nTodos: Y brille para él (ella) la luz perpetua.\nSacerdote: Descanse en paz.\nTodos: Amén.\nSacerdote: Que su alma y las almas de todos los fieles difuntos, por la misericordia de Dios, descansen en paz.\nTodos: Amén."
+      }
+    },
+    "nino_bautizado": {
+      "recepcion": {
+        "saludo": "Sacerdote: La gracia y la consolación de Dios Padre, que tiene especial amor por los más pequeños, la paz de Jesucristo, el Señor, y la comunión del Espíritu Santo estén con todos ustedes.\nTodos: Y con tu espíritu.",
+        "aspersion": "Sacerdote: (Al rociar el féretro) Esta agua nos recuerde el bautismo en que el(la) niño(a) {difunto} fue engendrado a la vida de Dios. Él, que en esta vida fue hijo de adopción, reciba la herencia del reino en la vida eterna.",
+        "cubrir_pano": "Sacerdote: En su bautismo, {difunto} recibió la vestidura blanca, símbolo de su dignidad cristiana, y la conservó sin mancha. Que alcance ahora la vida de los santos del cielo.\nTodos: Amén."
+      },
+      "ultimo_adios": {
+        "monicion": "Sacerdote: Al despedirnos ahora de este(a) pequeño(a) {difunto}, tengamos la verdadera esperanza de que Dios, creador del universo, quien ha querido llevárselo(a) de este mundo mientras aún era niño(a), lo(a) ha acogido ya en su reino.",
+        "aspersion_e_incienso": "El sacerdote rocía e inciensa el pequeño féretro en señal de profundo respeto por el cuerpo del niño, templo puro del Espíritu Santo.",
+        "oracion_despedida": "Sacerdote: En tus manos, Padre de misericordia, encomendamos a este(a) niño(a) {difunto}. A quienes hoy entristece la separación terrena, confórtalos con la esperanza de que nos reuniremos en el cielo. Por Jesucristo nuestro Señor.\nTodos: Amén.",
+        "concesion_paz": "Sacerdote: Dale, Señor, el descanso eterno.\nTodos: Y brille para él (ella) la luz perpetua.\nSacerdote: Descanse en paz.\nTodos: Amén.\nSacerdote: Que todos los ángeles y santos del cielo salgan a tu encuentro.\nTodos: Amén."
+      }
+    },
+    "nino_no_bautizado": {
+      "recepcion": {
+        "saludo": "Sacerdote: Que Dios, Padre de las misericordias y Dios de todo consuelo, que nos reconforta en todas nuestras tribulaciones, esté con todos ustedes.\nTodos: Y con tu espíritu.",
+        "aspersion": "Sacerdote: (Se omite la aspersión y el recuerdo del bautismo, ya que no fue bautizado. El sacerdote reza una oración consoladora:) Oremos. Señor Dios nuestro, cuyo amor no tiene medida, escucha las súplicas de estos servidores tuyos que lloran la muerte del(de la) niño(a) {difunto}, e infunde en sus corazones la esperanza de tu misericordia. Por Jesucristo nuestro Señor.\nTodos: Amén.",
+        "cubrir_pano": "Sacerdote: (El paño blanco puede colocarse discretamente sin fórmula bautismal, o se omite)."
+      },
+      "ultimo_adios": {
+        "monicion": "Sacerdote: Hermanos, en medio del gran dolor humano por la pérdida de este(a) pequeño(a) {difunto}, confiamos plenamente en la bondad infinita de Dios. El Señor envuelve a este niño(a) con su amor que sobrepasa todo entendimiento.",
+        "aspersion_e_incienso": "El sacerdote inciensa el féretro en señal de respeto a la dignidad humana, creada a imagen de Dios.",
+        "oracion_despedida": "Sacerdote: Señor, tú conoces profundamente la aflicción de estos padres; a ti acuden con dolor ante la muerte de su hijo(a) {difunto}, que no llegó a recibir la gracia del bautismo. Te rogamos que confortes su llanto y los sostengas con tu consuelo paternal. Por Jesucristo nuestro Señor.\nTodos: Amén.",
+        "concesion_paz": "Sacerdote: El Señor los bendiga y los guarde; ilumine su rostro sobre ustedes y les conceda la paz.\nTodos: Amén."
+      }
+    }
+  }
+}
