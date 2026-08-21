@@ -4,6 +4,8 @@
  * and server environments.
  */
 
+import { saveLiturgicalDayToCache } from './liturgicalCache';
+
 export interface MonicionesResult {
   monicion_entrada: string;
   monicion_primera_lectura?: string;
@@ -177,3 +179,76 @@ export async function requestBoletin(params: {
     fraseDestacada: "«La medida del amor es amar sin medida.» — San Agustín"
   };
 }
+
+/**
+ * 5. El Bibliotecario Litúrgico: Consulta el Leccionario Oficial (CEM / Misal Romano)
+ * y persiste automáticamente el resultado en el almacenamiento local.
+ */
+export async function fetchOfficialLiturgicalDay(params: {
+  fecha: string;
+  celebracion?: string;
+  tiempo?: string;
+  ciclo?: string;
+  ano_ferial?: string;
+  region?: string;
+  tipo?: string;
+  query?: string;
+}): Promise<{ success: boolean; data?: any; message?: string; source: string }> {
+  try {
+    const res = await fetch('/api/liturgia/librarian', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+    });
+
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data) {
+        // Automatically save to local persistence
+        await saveLiturgicalDayToCache(json.data);
+        return { success: true, data: json.data, source: json.source || 'gemini_librarian' };
+      }
+    }
+    const errData = await res.json().catch(() => ({}));
+    return {
+      success: false,
+      message: errData.message || errData.error || 'No se pudo conectar con el Bibliotecario Litúrgico.',
+      source: 'error'
+    };
+  } catch (err: any) {
+    return {
+      success: false,
+      message: err.message || 'Error de red al consultar al Bibliotecario.',
+      source: 'network_error'
+    };
+  }
+}
+
+/**
+ * 6. Búsqueda Universal del Bibliotecario (Santos, Fiestas, Misas Rituales, Votivas)
+ */
+export async function searchLibrarianCelebration(query: string, region: string = 'mx'): Promise<{
+  success: boolean;
+  data: any[];
+  source: string;
+}> {
+  try {
+    const res = await fetch('/api/liturgia/librarian-search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, region }),
+    });
+
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && Array.isArray(json.data)) {
+        return { success: true, data: json.data, source: json.source };
+      }
+    }
+  } catch (err) {
+    console.error('Search Librarian error:', err);
+  }
+
+  return { success: false, data: [], source: 'error' };
+}
+

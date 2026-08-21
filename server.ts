@@ -317,6 +317,206 @@ Devuelve ÚNICAMENTE un objeto JSON:
     }
   });
 
+  // 5. El Bibliotecario Litúrgico: Recuperador y Archivero de Textos Oficiales (CEM / Misal Romano / Liturgia Papal)
+  app.post("/api/liturgia/librarian", async (req, res) => {
+    const { fecha, celebracion, tiempo, ciclo, ano_ferial, region, tipo, query } = req.body;
+    const ai = getAi();
+
+    const targetRegion = region === 'mx' ? 'México (Conferencia del Episcopado Mexicano - CEM / Leccionario Mexicano)' : 'Hispanoamérica y Rito Romano';
+
+    if (!ai) {
+      console.log("No AI client available for Librarian, returning structured day");
+      return res.status(503).json({
+        success: false,
+        message: "El Bibliotecario IA requiere GEMINI_API_KEY activa para consultar la red y el Leccionario en tiempo real.",
+        source: "offline"
+      });
+    }
+
+    try {
+      const prompt = `Actúa como "El Bibliotecario Litúrgico Mayor", archivero oficial y perito del Misal Romano y el Leccionario para ${targetRegion} y Liturgia Papal.
+Tu misión es extraer y estructurar el formulario litúrgico 100% auténtico, exacto e íntegro para la celebración:
+- Fecha: ${fecha || 'Fecha actual'}
+- Celebración / Festividad solicitada: "${celebracion || query || 'Misa del día'}"
+- Tiempo Litúrgico: ${tiempo || 'Tiempo Ordinario'}
+- Ciclo Dominical: ${ciclo || 'Ciclo A/B/C según calendario'}
+- Año Ferial: ${ano_ferial || 'Año I o II según año'}
+- Tipo: ${tipo || 'ordinaria'}
+
+REGLAS LITÚRGICAS ESTRICTAS DE FIDELIDAD:
+1. Extrae los textos oficiales palabra por palabra del Leccionario Católico y Misal Romano.
+2. Primera Lectura: Cita bíblica exacta, monición introductoria pastoral y texto bíblico completo.
+3. Salmo Responsorial: Cita bíblica, antífona o respuesta con "R/.", y todas las estrofas poéticas completas separadas por saltos de línea.
+4. Segunda Lectura: Solo inclúyela si es Domingo o Solemnidad (en ferias y memorias debe ser null o no incluirse).
+5. Aclamación antes del Evangelio: Si es Cuaresma usa "Honor y gloria a ti, Señor Jesús", en otro tiempo usa "Aleluya, aleluya" con el versículo bíblico propio.
+6. Santo Evangelio: Cita del evangelista, monición y texto evangélico completo.
+7. Oraciones Presidenciales del Misal Romano: Colecta, Oración sobre las Ofrendas, Antífonas de entrada y comunión, Oración después de la comunión y título/texto sugerido de Prefacio.
+8. Reglas de Rúbricas (IGMR):
+   - Gloria: true en domingos (fuera de Adviento/Cuaresma), solemnidades y fiestas; false en ferias o cuaresma/adviento.
+   - Credo: true en domingos y solemnidades; false en ferias y memorias.
+   - Color: Verde (Ordinario), Blanco (Pascua/Navidad/Santos/Vírgenes), Morado (Adviento/Cuaresma/Difuntos), Rojo (Mártires/Pentecostés/Pasión), Rosa (Gaudete/Laetare).
+9. Sugerencia de Cantos Litúrgicos: Cuatro cantos tradicionales (Entrada, Ofertorio, Comunión, Salida) idóneos para este Evangelio y fiesta.
+
+Devuelve ÚNICAMENTE un objeto JSON válido con la siguiente estructura exacta:
+{
+  "fecha": "${fecha || ''}",
+  "dia_semana": "...",
+  "tiempo_liturgico": "...",
+  "color": "Verde" | "Blanco" | "Morado" | "Rojo" | "Rosa",
+  "grado": "Solemnidad" | "Fiesta" | "Memoria Obligatoria" | "Memoria Libre" | "Feria" | "Domingo",
+  "titulo_celebracion": "...",
+  "celebracion": "...",
+  "ciclo": "A" | "B" | "C",
+  "ano_ferial": "I" | "II",
+  "monicion_entrada": "...",
+  "antifona_entrada": "...",
+  "gloria": true | false,
+  "oracion_colecta": "...",
+  "liturgia_palabra": {
+    "primera_lectura": {
+      "titulo": "Primera Lectura",
+      "cita": "...",
+      "texto": "...",
+      "monicion": "..."
+    },
+    "salmo_responsorial": {
+      "cita": "...",
+      "respuesta": "...",
+      "texto": "..."
+    },
+    "segunda_lectura": {
+      "titulo": "Segunda Lectura",
+      "cita": "...",
+      "texto": "...",
+      "monicion": "..."
+    },
+    "aclamacion_evangelio": {
+      "cita": "...",
+      "texto": "..."
+    },
+    "evangelio": {
+      "titulo": "Santo Evangelio",
+      "cita": "...",
+      "texto": "...",
+      "monicion": "..."
+    }
+  },
+  "credo": true | false,
+  "oracion_fieles": [
+    "...",
+    "...",
+    "...",
+    "..."
+  ],
+  "oracion_ofrendas": "...",
+  "prefacio": {
+    "titulo": "...",
+    "texto": "..."
+  },
+  "antifona_comunion": "...",
+  "oracion_comunion": "...",
+  "reflexion_homiletica": [
+    "...",
+    "..."
+  ],
+  "cantos_sugeridos": {
+    "entrada": "...",
+    "ofertorio": "...",
+    "comunion": "...",
+    "salida": "..."
+  },
+  "fuente_oficial": "Leccionario de la Conferencia del Episcopado Mexicano (CEM) & Misal Romano"
+}`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.7-flash",
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.2,
+        }
+      });
+
+      const parsed = JSON.parse(response.text || "{}");
+      if (!parsed.fecha && fecha) parsed.fecha = fecha;
+      if (!parsed.fuente_oficial) parsed.fuente_oficial = "Leccionario Oficial CEM / Misal Romano";
+
+      return res.json({ success: true, data: parsed, source: "gemini_librarian_agent" });
+    } catch (error: any) {
+      console.error("Liturgical Librarian call error:", error.message || error);
+      return res.status(500).json({
+        success: false,
+        error: error.message || "Error al consultar al Bibliotecario Litúrgico",
+        source: "error"
+      });
+    }
+  });
+
+  // 6. Búsqueda Universal del Bibliotecario (Santos, Ritos, Votivas, Comunes)
+  app.post("/api/liturgia/librarian-search", async (req, res) => {
+    const { query, region } = req.body;
+    const ai = getAi();
+
+    if (!ai) {
+      return res.status(503).json({
+        success: false,
+        message: "Gemini API no configurada en el servidor.",
+        source: "offline"
+      });
+    }
+
+    try {
+      const prompt = `Actúa como "El Bibliotecario Litúrgico". El usuario busca un formulario litúrgico o perícopa bíblica con el término: "${query}".
+Determina la Misa o formulario canónico correspondiente (por ejemplo: Común de la Virgen María, Misa por los Difuntos / Exequias, Misa de Bautismo, Misa de Matrimonio, Misa de San Judas Tadeo, Sagrado Corazón, San Juan Diego, etc.).
+Región: ${region === 'mx' ? 'México (CEM)' : 'Rito Romano Universal'}.
+
+Devuelve ÚNICAMENTE un array JSON con 1 a 3 formularios litúrgicos completos ordenados por relevancia, cada uno con la estructura canónica completa de LiturgicalDay (título, color, grado, lecturas completas, salmo, evangelio, colecta, ofrendas, comunión, prefacio, cantos sugeridos).
+Formato:
+[
+  {
+    "titulo_celebracion": "...",
+    "tiempo_liturgico": "...",
+    "color": "Blanco" | "Rojo" | "Verde" | "Morado" | "Rosa",
+    "grado": "Solemnidad" | "Fiesta" | "Memoria Obligatoria" | "Misa Ritual" | "Misa Votiva",
+    "monicion_entrada": "...",
+    "antifona_entrada": "...",
+    "gloria": true | false,
+    "oracion_colecta": "...",
+    "liturgia_palabra": {
+      "primera_lectura": { "titulo": "Primera Lectura", "cita": "...", "texto": "...", "monicion": "..." },
+      "salmo_responsorial": { "cita": "...", "respuesta": "...", "texto": "..." },
+      "segunda_lectura": { "titulo": "Segunda Lectura", "cita": "...", "texto": "...", "monicion": "..." },
+      "aclamacion_evangelio": { "cita": "...", "texto": "..." },
+      "evangelio": { "titulo": "Santo Evangelio", "cita": "...", "texto": "...", "monicion": "..." }
+    },
+    "credo": true | false,
+    "oracion_fieles": ["...", "...", "...", "..."],
+    "oracion_ofrendas": "...",
+    "prefacio": { "titulo": "...", "texto": "..." },
+    "antifona_comunion": "...",
+    "oracion_comunion": "...",
+    "cantos_sugeridos": { "entrada": "...", "ofertorio": "...", "comunion": "...", "salida": "..." },
+    "fuente_oficial": "Misal Romano & Leccionario Oficial CEM"
+  }
+]`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.7-flash",
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.3,
+        }
+      });
+
+      const results = JSON.parse(response.text || "[]");
+      return res.json({ success: true, data: results, source: "gemini_librarian_agent" });
+    } catch (error: any) {
+      console.error("Librarian search error:", error.message || error);
+      return res.status(500).json({ success: false, error: error.message, source: "error" });
+    }
+  });
+
   // Vite middleware setup
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

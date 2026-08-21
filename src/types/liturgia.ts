@@ -74,6 +74,7 @@ export interface LiturgicalDay {
   reflexion_homiletica?: string | string[];
   santos_dia?: string[];
   cantos_sugeridos?: SchemaCantosMisa;
+  fuente_oficial?: string;
 }
 
 export type MomentoMisa = 

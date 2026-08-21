@@ -15,11 +15,14 @@ import {
   X,
   RefreshCw,
   BookOpen,
-  Search
+  Search,
+  ShieldCheck,
+  AlertCircle
 } from 'lucide-react';
 import { LiturgicalDay, Cantico, SchemaCantosMisa } from '../../types/liturgia';
 import { getColorHex } from '../../utils/calendar';
-import { requestMoniciones, requestHomilia } from '../../utils/liturgicalAiClient';
+import { requestMoniciones, requestHomilia, fetchOfficialLiturgicalDay } from '../../utils/liturgicalAiClient';
+import { isDayGeneric } from '../../utils/liturgicalCache';
 import { CANTICOS_LIST } from '../../data/liturgyData';
 import { getSuggestedChantsForDay } from '../../utils/musicSelector';
 import { getLectionaryIntroduction, getGospelEvangelistName, cleanReadingText } from '../../utils/lectionaryFormatter';
@@ -227,6 +230,36 @@ ${day.oracion_comunion || ''}`;
     { key: 'salida', label: 'Canto Final / Mariano', badge: 'Despedida' }
   ];
 
+  // Call Gemini / Librarian for official CEM lectionary texts
+  const handleSyncWithLibrarian = async () => {
+    setLoadingAi('librarian');
+    try {
+      const res = await fetchOfficialLiturgicalDay({
+        fecha: day.fecha,
+        celebracion: day.titulo_celebracion || day.celebracion,
+        tiempo: day.tiempo_liturgico,
+        ciclo: day.ciclo,
+        ano_ferial: day.ano_ferial,
+        region,
+        tipo: 'ordinaria'
+      });
+
+      if (res.success && res.data) {
+        onUpdateDay(res.data);
+        showToast('✓ Textos oficiales del Leccionario de la CEM descargados y guardados.');
+      } else {
+        showToast(res.message || 'No se pudo sincronizar con la fuente oficial en este momento.');
+      }
+    } catch (err) {
+      console.error('Error syncing with Librarian:', err);
+      showToast('⚠ Error al conectar con el Bibliotecario Litúrgico');
+    } finally {
+      setLoadingAi(null);
+    }
+  };
+
+  const isGeneric = isDayGeneric(day);
+
   return (
     <div className="space-y-8 font-serif relative">
       {/* Floating Toast Notification */}
@@ -234,6 +267,46 @@ ${day.oracion_comunion || ''}`;
         <div className="fixed bottom-6 right-6 z-50 bg-[#2D2926] text-[#F9F7F2] px-4 py-3 rounded-md shadow-xl border border-[#800020] text-xs font-sans font-medium flex items-center gap-2 animate-in fade-in slide-in-from-bottom-3 duration-200">
           <Sparkles size={14} className="text-[#E07A8B]" />
           <span>{toastMessage}</span>
+        </div>
+      )}
+
+      {/* Liturgical Librarian Status & Sync Banner */}
+      {isGeneric ? (
+        <div className="bg-[#FFFDF7] border-2 border-[#800020]/20 rounded-lg p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-in fade-in">
+          <div className="flex items-start gap-3">
+            <div className="p-2.5 rounded-lg bg-[#800020]/10 text-[#800020] shrink-0 mt-0.5 border border-[#800020]/20">
+              <BookOpen size={20} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-serif font-bold text-sm sm:text-base text-[#800020]">
+                  Lecturas del Archivo General
+                </h4>
+                <span className="text-[10px] font-sans font-bold uppercase tracking-wider bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-300">
+                  Sugerido Sincronizar
+                </span>
+              </div>
+              <p className="text-xs text-[#5A5550] mt-1 leading-relaxed">
+                Este día cuenta con textos genéricos. El <strong>Bibliotecario Litúrgico</strong> puede consultar la red y descargar el texto oficial e íntegro del Leccionario de la Conferencia del Episcopado Mexicano (CEM) y del Misal Romano.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={handleSyncWithLibrarian}
+            disabled={loadingAi === 'librarian'}
+            className="px-4 py-2.5 bg-[#800020] hover:bg-[#600018] text-white rounded-md text-xs font-sans font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-xs shrink-0 disabled:opacity-50 w-full sm:w-auto"
+          >
+            <RefreshCw size={14} className={loadingAi === 'librarian' ? 'animate-spin' : ''} />
+            <span>{loadingAi === 'librarian' ? 'Descargando Leccionario...' : 'Sincronizar Oficial (CEM)'}</span>
+          </button>
+        </div>
+      ) : (
+        <div className="bg-emerald-50/80 border border-emerald-200 rounded-md px-4 py-2 text-xs flex items-center justify-between text-emerald-950 font-sans shadow-2xs">
+          <span className="flex items-center gap-2 font-medium">
+            <ShieldCheck size={15} className="text-emerald-700" />
+            <span>Formulario Litúrgico Oficial: <strong>{day.fuente_oficial || 'Leccionario de la CEM & Misal Romano'}</strong></span>
+          </span>
+          <span className="text-[11px] text-emerald-700 font-serif italic hidden sm:inline">Guardado en caché offline</span>
         </div>
       )}
       

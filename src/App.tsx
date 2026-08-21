@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Menu, Sparkles } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Sidebar, ActiveView } from './components/Sidebar';
@@ -10,8 +10,10 @@ import { BoletinView } from './components/views/BoletinView';
 import { ImpresorView } from './components/views/ImpresorView';
 import { AtrilModal } from './components/views/AtrilModal';
 import { PadreProDrawer } from './components/views/PadreProDrawer';
+import { BibliotecarioModal } from './components/views/BibliotecarioModal';
 import { getLiturgicalDay } from './data/liturgyData';
 import { LiturgicalDay, SacramentoType } from './types/liturgia';
+import { getCachedLiturgicalDay, saveLiturgicalDayToCache } from './utils/liturgicalCache';
 
 export function App() {
   // Current active date in ISO YYYY-MM-DD
@@ -22,6 +24,20 @@ export function App() {
   // Current liturgical day data with user modifications cache
   const [customDays, setCustomDays] = useState<Record<string, LiturgicalDay>>({});
   
+  // Look up in persistent storage whenever selectedDate changes
+  useEffect(() => {
+    let isMounted = true;
+    getCachedLiturgicalDay(selectedDate).then(cached => {
+      if (isMounted && cached) {
+        setCustomDays(prev => ({
+          ...prev,
+          [selectedDate]: cached
+        }));
+      }
+    });
+    return () => { isMounted = false; };
+  }, [selectedDate]);
+
   const currentDay = useMemo(() => {
     if (customDays[selectedDate]) {
       return customDays[selectedDate];
@@ -34,6 +50,7 @@ export function App() {
       ...prev,
       [updated.fecha]: updated
     }));
+    saveLiturgicalDayToCache(updated);
   };
 
   // View state
@@ -43,6 +60,7 @@ export function App() {
   // Modals & Drawers
   const [isAtrilOpen, setIsAtrilOpen] = useState(false);
   const [isPadreProOpen, setIsPadreProOpen] = useState(false);
+  const [isBibliotecarioOpen, setIsBibliotecarioOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -55,6 +73,7 @@ export function App() {
         onDateChange={setSelectedDate}
         onOpenAtril={() => setIsAtrilOpen(true)}
         onOpenImpresor={() => setActiveView('impresor')}
+        onOpenBibliotecario={() => setIsBibliotecarioOpen(true)}
         onTogglePadrePro={() => setIsPadreProOpen(!isPadreProOpen)}
         isPadreProOpen={isPadreProOpen}
         region={region}
@@ -146,8 +165,18 @@ export function App() {
         currentDay={currentDay}
       />
 
+      {/* Liturgical Librarian Agent Modal */}
+      <BibliotecarioModal
+        isOpen={isBibliotecarioOpen}
+        onClose={() => setIsBibliotecarioOpen(false)}
+        currentDay={currentDay}
+        onApplyDay={handleUpdateDay}
+        region={region}
+      />
+
     </div>
   );
 }
 
 export default App;
+

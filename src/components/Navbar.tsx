@@ -20,6 +20,7 @@ interface NavbarProps {
   onOpenImpresor: () => void;
   onTogglePadrePro: () => void;
   isPadreProOpen: boolean;
+  onOpenBibliotecario: () => void;
   region: string;
   onRegionChange: (reg: string) => void;
 }
@@ -32,6 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenImpresor,
   onTogglePadrePro,
   isPadreProOpen,
+  onOpenBibliotecario,
   region,
   onRegionChange
 }) => {
@@ -134,6 +136,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               <option value="latam">🌎 Latinoamérica</option>
             </select>
           </div>
+
+          {/* Bibliotecario Litúrgico Button */}
+          <button
+            onClick={onOpenBibliotecario}
+            title="El Bibliotecario Litúrgico: Sincronizador de Textos Oficiales CEM y Misal"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#F9F7F2] hover:bg-[#EAE5DC] text-[#800020] border border-[#800020]/30 text-xs font-sans font-bold transition shadow-xs"
+          >
+            <BookOpen size={13} className="text-[#800020]" />
+            <span className="hidden md:inline">Bibliotecario</span>
+          </button>
 
           {/* Atril Button */}
           <button
