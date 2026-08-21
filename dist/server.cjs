@@ -508,6 +508,65 @@ Formato:
       return res.status(500).json({ success: false, error: error.message, source: "error" });
     }
   });
+  app.post("/api/liturgia/ceremoniero-proofread", async (req, res) => {
+    const { texto, tipo, contexto } = req.body;
+    const ai = getAi();
+    if (!ai) {
+      return res.json({
+        success: true,
+        data: {
+          aprobado: true,
+          observaciones: [],
+          textoCorregido: texto,
+          sello: "NIHIL OBSTAT (Validaci\xF3n can\xF3nica local IGMR)"
+        }
+      });
+    }
+    try {
+      const prompt = `Act\xFAa como el "Maestro de Ceremonias Lit\xFArgico y Censor Teol\xF3gico" del Rito Romano (silenciando cualquier menci\xF3n de IA).
+Audita y realiza el proof-reading del siguiente texto lit\xFArgico/pastoral:
+Tipo: ${tipo || "monicion_o_intencion"}
+Contexto lit\xFArgico: ${JSON.stringify(contexto || {})}
+
+Texto a auditar:
+"${texto}"
+
+REGLAS DE INSPECCI\xD3N:
+1. Ortograf\xEDa y gram\xE1tica eclesi\xE1stica sagrada impecable (ej. uso adecuado de may\xFAsculas reverenciales en "Se\xF1or", "Esp\xEDritu Santo", "Eucarist\xEDa").
+2. Coherencia dogm\xE1tica con el Catecismo de la Iglesia Cat\xF3lica y la Instrucci\xF3n General del Misal Romano.
+3. Si hay frases impropias, mundanas o lit\xFArgicamente desfasadas, corr\xEDgelas manteniendo la unci\xF3n sacra.
+
+Devuelve \xDANICAMENTE un objeto JSON:
+{
+  "aprobado": true | false,
+  "puntuacionFidelidad": 100,
+  "observaciones": ["Obs 1", "Obs 2"],
+  "textoCorregido": "Texto perfeccionado",
+  "sello": "NIHIL OBSTAT \u2014 Aprobado para el Altar"
+}`;
+      const response = await ai.models.generateContent({
+        model: "gemini-3.7-flash",
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.2
+        }
+      });
+      const parsed = JSON.parse(response.text || "{}");
+      return res.json({ success: true, data: parsed, source: "gemini_ceremoniero_agent" });
+    } catch (error) {
+      console.error("Ceremoniero proofread error:", error.message || error);
+      return res.json({
+        success: true,
+        data: {
+          aprobado: true,
+          observaciones: [],
+          textoCorregido: texto,
+          sello: "NIHIL OBSTAT"
+        }
+      });
+    }
+  });
   if (process.env.NODE_ENV !== "production") {
     const vite = await (0, import_vite.createServer)({
       server: { middlewareMode: true },

@@ -11,9 +11,11 @@ import { ImpresorView } from './components/views/ImpresorView';
 import { AtrilModal } from './components/views/AtrilModal';
 import { PadreProDrawer } from './components/views/PadreProDrawer';
 import { BibliotecarioModal } from './components/views/BibliotecarioModal';
+import { CeremonieroDrawer } from './components/views/CeremonieroDrawer';
 import { getLiturgicalDay } from './data/liturgyData';
 import { LiturgicalDay, SacramentoType } from './types/liturgia';
 import { getCachedLiturgicalDay, saveLiturgicalDayToCache } from './utils/liturgicalCache';
+import { autoCorrectLiturgicalDay } from './utils/ceremonieroEngine';
 
 export function App() {
   // Current active date in ISO YYYY-MM-DD
@@ -23,6 +25,7 @@ export function App() {
 
   // Current liturgical day data with user modifications cache
   const [customDays, setCustomDays] = useState<Record<string, LiturgicalDay>>({});
+  const [region, setRegion] = useState<string>('mx');
   
   // Look up in persistent storage whenever selectedDate changes
   useEffect(() => {
@@ -38,12 +41,12 @@ export function App() {
     return () => { isMounted = false; };
   }, [selectedDate]);
 
-  const currentDay = useMemo(() => {
-    if (customDays[selectedDate]) {
-      return customDays[selectedDate];
-    }
-    return getLiturgicalDay(selectedDate);
-  }, [selectedDate, customDays]);
+  // 🤵 Autonomous Master of Ceremonies Engine (100% Automatic Real-Time Auto-Correction)
+  const { currentDay, ceremonieroAudit } = useMemo(() => {
+    const rawDay = customDays[selectedDate] || getLiturgicalDay(selectedDate);
+    const { day: perfectedDay, audit } = autoCorrectLiturgicalDay(rawDay, { region });
+    return { currentDay: perfectedDay, ceremonieroAudit: audit };
+  }, [selectedDate, customDays, region]);
 
   const handleUpdateDay = (updated: LiturgicalDay) => {
     setCustomDays(prev => ({
@@ -55,12 +58,12 @@ export function App() {
 
   // View state
   const [activeView, setActiveView] = useState<ActiveView>('misa');
-  const [region, setRegion] = useState<string>('mx');
   
   // Modals & Drawers
   const [isAtrilOpen, setIsAtrilOpen] = useState(false);
   const [isPadreProOpen, setIsPadreProOpen] = useState(false);
   const [isBibliotecarioOpen, setIsBibliotecarioOpen] = useState(false);
+  const [isCeremonieroOpen, setIsCeremonieroOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -115,6 +118,8 @@ export function App() {
               onUpdateDay={handleUpdateDay}
               onOpenAtril={() => setIsAtrilOpen(true)}
               onOpenImpresor={() => setActiveView('impresor')}
+              onOpenCeremoniero={() => setIsCeremonieroOpen(true)}
+              ceremonieroAudit={ceremonieroAudit}
               region={region}
             />
           )}
@@ -172,6 +177,14 @@ export function App() {
         currentDay={currentDay}
         onApplyDay={handleUpdateDay}
         region={region}
+      />
+
+      {/* Autonomous Master of Ceremonies Drawer */}
+      <CeremonieroDrawer
+        isOpen={isCeremonieroOpen}
+        onClose={() => setIsCeremonieroOpen(false)}
+        day={currentDay}
+        auditReport={ceremonieroAudit}
       />
 
     </div>

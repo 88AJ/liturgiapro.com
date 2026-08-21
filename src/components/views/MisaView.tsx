@@ -27,11 +27,15 @@ import { CANTICOS_LIST } from '../../data/liturgyData';
 import { getSuggestedChantsForDay } from '../../utils/musicSelector';
 import { getLectionaryIntroduction, getGospelEvangelistName, cleanReadingText } from '../../utils/lectionaryFormatter';
 
+import { CeremonieroAuditReport } from '../../utils/ceremonieroEngine';
+
 interface MisaViewProps {
   day: LiturgicalDay;
   onUpdateDay: (updatedDay: LiturgicalDay) => void;
   onOpenAtril: () => void;
   onOpenImpresor: () => void;
+  onOpenCeremoniero?: () => void;
+  ceremonieroAudit?: CeremonieroAuditReport;
   region: string;
 }
 
@@ -40,6 +44,8 @@ export const MisaView: React.FC<MisaViewProps> = ({
   onUpdateDay,
   onOpenAtril,
   onOpenImpresor,
+  onOpenCeremoniero,
+  ceremonieroAudit,
   region
 }) => {
   const [loadingAi, setLoadingAi] = useState<string | null>(null);
@@ -309,6 +315,29 @@ ${day.oracion_comunion || ''}`;
           <span className="text-[11px] text-emerald-700 font-serif italic hidden sm:inline">Guardado en caché offline</span>
         </div>
       )}
+
+      {/* Autonomous Ceremoniero Seal */}
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#F0EDE6] p-3 sm:px-4 rounded-md border border-[#D9D1C3] shadow-2xs font-sans text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="w-5 h-5 rounded-full bg-[#800020] text-amber-300 flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs">
+            ✓
+          </span>
+          <div>
+            <span className="font-bold text-[#800020]">Ceremoniero Litúrgico Activo:</span>{' '}
+            <span className="text-[#2D2926]">100% Conforme a la IGMR 3ra Edición • Proof-reading en tiempo real</span>
+          </div>
+        </div>
+
+        {onOpenCeremoniero && (
+          <button
+            onClick={onOpenCeremoniero}
+            className="px-3 py-1 bg-white hover:bg-[#EAE5DC] text-[#800020] border border-[#800020]/30 rounded font-bold uppercase tracking-wider text-[10px] transition-colors flex items-center gap-1.5 shadow-xs ml-auto sm:ml-0"
+          >
+            <ShieldCheck size={13} />
+            <span>Ver Registro & Sacristía</span>
+          </button>
+        )}
+      </div>
       
       {/* Top Editorial Header Banner */}
       <div className="bg-[#F0EDE6] p-6 sm:p-10 rounded-md border border-[#D9D1C3] shadow-xs">

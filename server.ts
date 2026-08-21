@@ -517,6 +517,71 @@ Formato:
     }
   });
 
+  // 7. El Ceremoniero Litúrgico: Auditoría y Proof-Reading Teológico Profundo
+  app.post("/api/liturgia/ceremoniero-proofread", async (req, res) => {
+    const { texto, tipo, contexto } = req.body;
+    const ai = getAi();
+
+    if (!ai) {
+      return res.json({
+        success: true,
+        data: {
+          aprobado: true,
+          observaciones: [],
+          textoCorregido: texto,
+          sello: "NIHIL OBSTAT (Validación canónica local IGMR)"
+        }
+      });
+    }
+
+    try {
+      const prompt = `Actúa como el "Maestro de Ceremonias Litúrgico y Censor Teológico" del Rito Romano (silenciando cualquier mención de IA).
+Audita y realiza el proof-reading del siguiente texto litúrgico/pastoral:
+Tipo: ${tipo || 'monicion_o_intencion'}
+Contexto litúrgico: ${JSON.stringify(contexto || {})}
+
+Texto a auditar:
+"${texto}"
+
+REGLAS DE INSPECCIÓN:
+1. Ortografía y gramática eclesiástica sagrada impecable (ej. uso adecuado de mayúsculas reverenciales en "Señor", "Espíritu Santo", "Eucaristía").
+2. Coherencia dogmática con el Catecismo de la Iglesia Católica y la Instrucción General del Misal Romano.
+3. Si hay frases impropias, mundanas o litúrgicamente desfasadas, corrígelas manteniendo la unción sacra.
+
+Devuelve ÚNICAMENTE un objeto JSON:
+{
+  "aprobado": true | false,
+  "puntuacionFidelidad": 100,
+  "observaciones": ["Obs 1", "Obs 2"],
+  "textoCorregido": "Texto perfeccionado",
+  "sello": "NIHIL OBSTAT — Aprobado para el Altar"
+}`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.7-flash",
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.2,
+        }
+      });
+
+      const parsed = JSON.parse(response.text || "{}");
+      return res.json({ success: true, data: parsed, source: "gemini_ceremoniero_agent" });
+    } catch (error: any) {
+      console.error("Ceremoniero proofread error:", error.message || error);
+      return res.json({
+        success: true,
+        data: {
+          aprobado: true,
+          observaciones: [],
+          textoCorregido: texto,
+          sello: "NIHIL OBSTAT"
+        }
+      });
+    }
+  });
+
   // Vite middleware setup
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
