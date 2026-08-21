@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, 
   Printer, 
@@ -17,7 +17,9 @@ import {
   BookOpen,
   Search,
   ShieldCheck,
-  AlertCircle
+  AlertCircle,
+  Eye,
+  FileText
 } from 'lucide-react';
 import { LiturgicalDay, Cantico, SchemaCantosMisa } from '../../types/liturgia';
 import { getColorHex } from '../../utils/calendar';
@@ -26,8 +28,22 @@ import { isDayGeneric } from '../../utils/liturgicalCache';
 import { CANTICOS_LIST } from '../../data/liturgyData';
 import { getSuggestedChantsForDay } from '../../utils/musicSelector';
 import { getLectionaryIntroduction, getGospelEvangelistName, cleanReadingText } from '../../utils/lectionaryFormatter';
-
 import { CeremonieroAuditReport } from '../../utils/ceremonieroEngine';
+import { InlineCantoCard } from './InlineCantoCard';
+
+const CREDO_NICENO = `Creo en un solo Dios, Padre todopoderoso, Creador del cielo y de la tierra, de todo lo visible y lo invisible.
+
+Creo en un solo Señor, Jesucristo, Hijo único de Dios, nacido del Padre antes de todos los siglos: Dios de Dios, Luz de Luz, Dios verdadero de Dios verdadero, engendrado, no creado, de la misma naturaleza del Padre, por quien todo fue hecho; que por nosotros, los hombres, y por nuestra salvación bajó del cielo, y por obra del Espíritu Santo se encarnó de María, la Virgen, y se hizo hombre; y por nuestra causa fue crucificado en tiempos de Poncio Pilato; padeció y fue sepultado, y resucitó al tercer día, según las Escrituras, y subió al cielo, y está sentado a la derecha del Padre; y de nuevo vendrá con gloria para juzgar a vivos y muertos, y su reino no tendrá fin.
+
+Creo en el Espíritu Santo, Señor y dador de vida, que procede del Padre y del Hijo, que con el Padre y el Hijo recibe una misma adoración y gloria, y que habló por los profetas.
+
+Creo en la Iglesia, que es una, santa, católica y apostólica. Confieso que hay un solo bautismo para el perdón de los pecados. Espero la resurrección de los muertos y la vida del mundo futuro. Amén.`;
+
+const CREDO_APOSTOLES = `Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra.
+
+Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos.
+
+Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.`;
 
 interface MisaViewProps {
   day: LiturgicalDay;
@@ -52,13 +68,30 @@ export const MisaView: React.FC<MisaViewProps> = ({
   const [copied, setCopied] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
   const [showMusicProgram, setShowMusicProgram] = useState(true);
-  
+  const [showAllLyrics, setShowAllLyrics] = useState(true); // Default to true so people can follow hymns!
+  const [credoFormula, setCredoFormula] = useState<'niceno' | 'apostoles'>('niceno');
+
+  // Canonical rubrics determination
+  const isGloriaCanonical = Boolean(
+    day.gloria ?? (day.color === 'Blanco' || day.grado === 'Solemnidad' || day.grado === 'Fiesta' || (day.tiempo_liturgico === 'Tiempo Ordinario' && day.grado === 'Domingo'))
+  );
+
+  const isCredoCanonical = Boolean(
+    day.credo ?? (day.grado === 'Solemnidad' || day.grado === 'Domingo')
+  );
+
   // Display switches
   const [includeMoniciones, setIncludeMoniciones] = useState(true);
-  const [includeGloria, setIncludeGloria] = useState(Boolean(day.gloria));
-  const [includeCredo, setIncludeCredo] = useState(Boolean(day.credo));
+  const [includeGloria, setIncludeGloria] = useState(isGloriaCanonical);
+  const [includeCredo, setIncludeCredo] = useState(isCredoCanonical);
   const [includeHomilia, setIncludeHomilia] = useState(true);
   const [includeOracionFieles, setIncludeOracionFieles] = useState(true);
+
+  // Sync switches whenever the selected date or liturgical day changes
+  useEffect(() => {
+    setIncludeGloria(isGloriaCanonical);
+    setIncludeCredo(isCredoCanonical);
+  }, [day.fecha, isGloriaCanonical, isCredoCanonical]);
 
   // Music state & modals
   const [selectedCantoModal, setSelectedCantoModal] = useState<Cantico | null>(null);
@@ -388,10 +421,23 @@ ${day.oracion_comunion || ''}`;
                     ? 'bg-[#800020] text-[#F9F7F2] border-[#800020]' 
                     : 'bg-[#F9F7F2] text-[#800020] border-[#D9D1C3] hover:bg-[#EAE5DC]'
                 }`}
-                title="Mostrar u ocultar guión musical para el coro"
+                title="Mostrar u ocultar programa musical completo"
               >
                 <Music size={13} />
                 <span>Música ({Object.values(currentCantos).filter(Boolean).length})</span>
+              </button>
+
+              <button
+                onClick={() => setShowAllLyrics(!showAllLyrics)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-bold transition border ${
+                  showAllLyrics 
+                    ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-2xs' 
+                    : 'bg-[#F9F7F2] text-[#555] border-[#D9D1C3] hover:bg-[#EAE5DC]'
+                }`}
+                title="Desplegar u ocultar la letra completa y acordes de los cantos en el texto de la Misa"
+              >
+                <FileText size={13} />
+                <span>{showAllLyrics ? 'Letras en Guion: ON' : 'Letras en Guion: OFF'}</span>
               </button>
 
               <button
@@ -614,24 +660,16 @@ ${day.oracion_comunion || ''}`;
             <span className="rubric text-xs font-sans uppercase tracking-widest font-semibold">De pie</span>
           </div>
 
-          {/* Canto de Entrada Sugerido */}
+          {/* Canto de Entrada Integrado con Letra y Acordes */}
           {currentCantos.entrada && (
-            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans">
-              <div className="flex items-center gap-2.5">
-                <Music size={15} className="text-[#800020] shrink-0" />
-                <div>
-                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Entrada:</span>
-                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.entrada}</span>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleOpenCantoByName(currentCantos.entrada)}
-                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
-              >
-                <span>Ver Letra & Acordes</span>
-                <span>→</span>
-              </button>
-            </div>
+            <InlineCantoCard
+              momentoLabel="Canto de Entrada"
+              cantoTitle={currentCantos.entrada}
+              momentoKey="entrada"
+              onOpenModal={setSelectedCantoModal}
+              onChangeCanto={setChangingMomento}
+              defaultExpanded={showAllLyrics}
+            />
           )}
 
           {/* Antífona de Entrada */}
@@ -700,19 +738,14 @@ ${day.oracion_comunion || ''}`;
 
             {/* Canto de Kyrie / Piedad */}
             {currentCantos.kyrie && (
-              <div className="bg-[#EAE5DC]/80 p-3 rounded-sm border border-[#D9D1C3] flex items-center justify-between text-xs font-sans my-2">
-                <div className="flex items-center gap-2">
-                  <Music size={14} className="text-[#800020]" />
-                  <span className="font-bold text-[#800020] uppercase tracking-wider text-[10px]">Canto Penitencial / Kyrie:</span>
-                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.kyrie}</span>
-                </div>
-                <button 
-                  onClick={() => handleOpenCantoByName(currentCantos.kyrie!)}
-                  className="text-[#800020] hover:underline font-bold text-[11px]"
-                >
-                  Ver Acordes →
-                </button>
-              </div>
+              <InlineCantoCard
+                momentoLabel="Canto Penitencial / Kyrie"
+                cantoTitle={currentCantos.kyrie}
+                momentoKey="kyrie"
+                onOpenModal={setSelectedCantoModal}
+                onChangeCanto={setChangingMomento}
+                defaultExpanded={showAllLyrics}
+              />
             )}
 
             <div className="pt-2 text-base space-y-1">
@@ -722,37 +755,87 @@ ${day.oracion_comunion || ''}`;
             </div>
           </div>
 
-          {/* Gloria */}
-          {includeGloria && (
-            <div className="bg-[#F5F2EB] p-6 rounded-sm border border-[#D9D1C3] space-y-2">
-              <div className="flex items-center justify-between border-b border-[#D9D1C3] pb-2">
-                <span className="font-sans text-[11px] font-bold text-[#800020] uppercase tracking-[0.2em]">
-                  Himno de Gloria
-                </span>
-                <span className="rubric text-xs font-sans">Se canta o se recita</span>
+          {/* Rúbrica Pedagógica y Conmutador del Himno de Gloria (IGMR 53) */}
+          <div className="bg-[#FAF8F5] p-5 sm:p-6 rounded-md border-2 border-[#D9D1C3] space-y-4 shadow-2xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#D9D1C3] pb-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-sans text-[11px] font-bold text-[#800020] uppercase tracking-[0.2em]">
+                    Himno de Gloria
+                  </span>
+                  {isGloriaCanonical ? (
+                    <span className="text-[10px] font-sans font-bold bg-amber-100 text-amber-900 border border-amber-300 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-2xs">
+                      <span>✨ Rúbrica Oficial (IGMR 53):</span> <strong>Hoy SÍ se canta</strong> (Domingo / Solemnidad / Fiesta)
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-sans font-medium bg-stone-200 text-stone-700 border border-stone-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <span>ℹ️ Rúbrica Oficial (IGMR 53):</span> <strong>Hoy se omite</strong> (Feria / Tiempo penitencial)
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-[#666] font-sans">
+                  {isGloriaCanonical 
+                    ? 'El Gloria es un antiquísimo himno con el que la Iglesia glorifica a Dios Padre y al Cordero.' 
+                    : 'Se omite en las ferias del Tiempo Ordinario y en los tiempos penitenciales de Adviento y Cuaresma.'}
+                </p>
               </div>
 
-              {currentCantos.gloria && (
-                <div className="bg-[#EAE5DC]/80 p-3 rounded-sm border border-[#D9D1C3] flex items-center justify-between text-xs font-sans my-2">
-                  <div className="flex items-center gap-2">
-                    <Music size={14} className="text-[#800020]" />
-                    <span className="font-bold text-[#800020] uppercase tracking-wider text-[10px]">Versión Musical:</span>
-                    <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.gloria}</span>
-                  </div>
-                  <button 
-                    onClick={() => handleOpenCantoByName(currentCantos.gloria!)}
-                    className="text-[#800020] hover:underline font-bold text-[11px]"
-                  >
-                    Ver Acordes →
-                  </button>
-                </div>
-              )}
-
-              <p className="text-[#2D2926] text-base leading-relaxed whitespace-pre-line font-serif">
-                {`Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo; Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.`}
-              </p>
+              {/* Botón interactivo de Inclusión / Exclusión */}
+              <button
+                onClick={() => setIncludeGloria(!includeGloria)}
+                className={`px-3 py-1.5 rounded-md text-xs font-sans font-bold transition-all flex items-center gap-1.5 self-start sm:self-auto shrink-0 shadow-2xs ${
+                  includeGloria 
+                    ? 'bg-[#800020] text-white hover:bg-[#660019]' 
+                    : 'bg-white text-[#800020] border border-[#800020]/40 hover:bg-[#EAE5DC]'
+                }`}
+              >
+                {includeGloria ? '✓ Gloria Incluido (Clic para omitir)' : '+ Añadir Gloria a esta Misa'}
+              </button>
             </div>
-          )}
+
+            {includeGloria ? (
+              <div className="space-y-4 animate-in fade-in duration-200">
+                {/* Versión Musical con Acordes */}
+                {currentCantos.gloria && (
+                  <InlineCantoCard
+                    momentoLabel="Gloria Musical"
+                    cantoTitle={currentCantos.gloria}
+                    momentoKey="gloria"
+                    onOpenModal={setSelectedCantoModal}
+                    onChangeCanto={setChangingMomento}
+                    defaultExpanded={showAllLyrics}
+                  />
+                )}
+
+                {/* Texto Litúrgico Oficial */}
+                <div className="bg-white p-5 rounded-md border border-[#D9D1C3] shadow-xs space-y-2">
+                  <div className="flex items-center justify-between text-xs font-sans border-b border-[#EAE5DC] pb-2">
+                    <span className="font-bold text-[#800020] uppercase tracking-wider text-[10px]">
+                      Texto Oficial del Misal Romano
+                    </span>
+                    <span className="rubric font-medium">De pie • Se canta o se recita</span>
+                  </div>
+                  <p className="text-[#2D2926] text-base sm:text-[17px] leading-relaxed whitespace-pre-line font-serif">
+                    {`Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias, Señor Dios, Rey celestial, Dios Padre todopoderoso. Señor, Hijo único, Jesucristo; Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, sólo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre. Amén.`}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="p-3 bg-[#EAE5DC]/60 rounded text-xs font-sans text-[#555] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>
+                  {isGloriaCanonical 
+                    ? '⚠ El Gloria ha sido omitido manualmente por decisión pastoral para esta celebración.' 
+                    : 'El Gloria no forma parte del formulario de hoy. Si celebra una misa festiva o votiva especial, puede agregarlo.'}
+                </span>
+                <button 
+                  onClick={() => setIncludeGloria(true)}
+                  className="text-[#800020] font-bold hover:underline self-start sm:self-auto shrink-0"
+                >
+                  Activar Gloria →
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Oración Colecta */}
           {day.oracion_colecta && (
@@ -904,23 +987,18 @@ ${day.oracion_comunion || ''}`;
             </div>
 
             {currentCantos.aleluya && (
-              <div className="bg-[#EAE5DC]/80 p-2.5 rounded-sm border border-[#D9D1C3] flex items-center justify-between text-xs font-sans">
-                <div className="flex items-center gap-2">
-                  <Music size={13} className="text-[#800020]" />
-                  <span className="font-bold text-[#800020] uppercase text-[10px]">Canto de Aclamación:</span>
-                  <span className="font-serif font-bold text-xs text-[#2D2926]">{currentCantos.aleluya}</span>
-                </div>
-                <button 
-                  onClick={() => handleOpenCantoByName(currentCantos.aleluya!)}
-                  className="text-[#800020] hover:underline font-bold text-[11px]"
-                >
-                  Acordes →
-                </button>
-              </div>
+              <InlineCantoCard
+                momentoLabel={day.tiempo_liturgico === 'Cuaresma' ? 'Aclamación Cuaresmal' : 'Aclamación / Aleluya'}
+                cantoTitle={currentCantos.aleluya}
+                momentoKey="aleluya"
+                onOpenModal={setSelectedCantoModal}
+                onChangeCanto={setChangingMomento}
+                defaultExpanded={showAllLyrics}
+              />
             )}
 
             <p className="text-[#800020] font-serif font-bold text-[17px] italic">
-              {p.aclamacion_evangelio?.texto || 'R. Aleluya, aleluya.'}
+              {p.aclamacion_evangelio?.texto || (day.tiempo_liturgico === 'Cuaresma' ? 'R. Honor y gloria a ti, Señor Jesús.' : 'R. Aleluya, aleluya.')}
             </p>
           </div>
 
@@ -995,20 +1073,100 @@ ${day.oracion_comunion || ''}`;
             </div>
           )}
 
-          {/* Credo */}
-          {includeCredo && (
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="font-sans text-[11px] font-bold text-[#800020] uppercase tracking-[0.2em]">
-                  Profesión de Fe (Credo)
-                </span>
-                <span className="rubric text-xs font-sans">De pie</span>
+          {/* Rúbrica Pedagógica y Conmutador de la Profesión de Fe / Credo (IGMR 68) */}
+          <div className="bg-[#FAF8F5] p-5 sm:p-6 rounded-md border-2 border-[#D9D1C3] space-y-4 shadow-2xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#D9D1C3] pb-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-sans text-[11px] font-bold text-[#800020] uppercase tracking-[0.2em]">
+                    Profesión de Fe (Credo)
+                  </span>
+                  {isCredoCanonical ? (
+                    <span className="text-[10px] font-sans font-bold bg-amber-100 text-amber-900 border border-amber-300 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-2xs">
+                      <span>✨ Rúbrica Oficial (IGMR 68):</span> <strong>Hoy SÍ se proclama</strong> (Precepto dominical / Solemnidad)
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-sans font-medium bg-stone-200 text-stone-700 border border-stone-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <span>ℹ️ Rúbrica Oficial (IGMR 68):</span> <strong>Hoy se omite</strong> (Feria / Memoria ordinaria)
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-[#666] font-sans">
+                  {isCredoCanonical
+                    ? 'El Símbolo de la fe responde a la Palabra de Dios proclamada y es obligatorio en domingos y solemnidades.'
+                    : 'En las ferias, memorias y fiestas de entre semana, la liturgia omite la recitación del Credo.'}
+                </p>
               </div>
-              <p className="text-[#2D2926] text-base leading-relaxed bg-[#F5F2EB] p-5 rounded-sm border border-[#D9D1C3]">
-                {`Creo en un solo Dios, Padre todopoderoso, Creador del cielo y de la tierra, de todo lo visible y lo invisible. Creo en un solo Señor, Jesucristo, Hijo único de Dios, nacido del Padre antes de todos los siglos: Dios de Dios, Luz de Luz, Dios verdadero de Dios verdadero, engendrado, no creado, de la misma naturaleza del Padre, por quien todo fue hecho; que por nosotros, los hombres, y por nuestra salvación bajó del cielo, y por obra del Espíritu Santo se encarnó de María, la Virgen, y se hizo hombre; y por nuestra causa fue crucificado en tiempos de Poncio Pilato; padeció y fue sepultado, y resucitó al tercer día, según las Escrituras, y subió al cielo, y está sentado a la derecha del Padre; y de nuevo vendrá con gloria para juzgar a vivos y muertos, y su reino no tendrá fin. Creo en el Espíritu Santo, Señor y dador de vida, que procede del Padre y del Hijo, que con el Padre y el Hijo recibe una misma adoración y gloria, y que habló por los profetas. Creo en la Iglesia, que es una, santa, católica y apostólica. Confieso que hay un solo bautismo para el perdón de los pecados. Espero la resurrección de los muertos y la vida del mundo futuro. Amén.`}
-              </p>
+
+              {/* Botón interactivo de Inclusión / Exclusión */}
+              <button
+                onClick={() => setIncludeCredo(!includeCredo)}
+                className={`px-3 py-1.5 rounded-md text-xs font-sans font-bold transition-all flex items-center gap-1.5 self-start sm:self-auto shrink-0 shadow-2xs ${
+                  includeCredo 
+                    ? 'bg-[#800020] text-white hover:bg-[#660019]' 
+                    : 'bg-white text-[#800020] border border-[#800020]/40 hover:bg-[#EAE5DC]'
+                }`}
+              >
+                {includeCredo ? '✓ Credo Incluido (Clic para omitir)' : '+ Añadir Credo a esta Misa'}
+              </button>
             </div>
-          )}
+
+            {includeCredo ? (
+              <div className="space-y-4 animate-in fade-in duration-200">
+                {/* Selector de Fórmula de Credo */}
+                <div className="flex flex-wrap items-center gap-2 text-xs font-sans bg-[#F0EDE6] p-2.5 rounded-md border border-[#D9D1C3]">
+                  <span className="font-bold text-[#800020] text-[11px] uppercase tracking-wider">Fórmula Oficial:</span>
+                  <button
+                    onClick={() => setCredoFormula('niceno')}
+                    className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+                      credoFormula === 'niceno'
+                        ? 'bg-[#800020] text-white font-bold shadow-2xs'
+                        : 'bg-white text-[#444] hover:text-[#800020] border border-[#D9D1C3]'
+                    }`}
+                  >
+                    Símbolo Niceno-Constantinopolitano (Largo)
+                  </button>
+                  <button
+                    onClick={() => setCredoFormula('apostoles')}
+                    className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+                      credoFormula === 'apostoles'
+                        ? 'bg-[#800020] text-white font-bold shadow-2xs'
+                        : 'bg-white text-[#444] hover:text-[#800020] border border-[#D9D1C3]'
+                    }`}
+                  >
+                    Símbolo de los Apóstoles (Breve)
+                  </button>
+                </div>
+
+                {/* Texto del Credo */}
+                <div className="bg-white p-5 sm:p-6 rounded-md border border-[#D9D1C3] shadow-xs space-y-2">
+                  <div className="flex items-center justify-between text-xs font-sans border-b border-[#EAE5DC] pb-2">
+                    <span className="font-bold text-[#800020] uppercase tracking-wider text-[10px]">
+                      {credoFormula === 'niceno' ? 'Símbolo Niceno-Constantinopolitano' : 'Símbolo de los Apóstoles'}
+                    </span>
+                    <span className="rubric font-medium">De pie</span>
+                  </div>
+                  <p className="text-[#2D2926] text-base sm:text-[17px] leading-relaxed whitespace-pre-line font-serif">
+                    {credoFormula === 'niceno' ? CREDO_NICENO : CREDO_APOSTOLES}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="p-3 bg-[#EAE5DC]/60 rounded text-xs font-sans text-[#555] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>
+                  {isCredoCanonical 
+                    ? '⚠ El Credo ha sido omitido manualmente por decisión pastoral para esta celebración.' 
+                    : 'El Credo no forma parte del formulario de hoy. Puede agregarlo si la asamblea lo requiere.'}
+                </span>
+                <button 
+                  onClick={() => setIncludeCredo(true)}
+                  className="text-[#800020] font-bold hover:underline self-start sm:self-auto shrink-0"
+                >
+                  Activar Credo →
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Oración Universal de los Fieles */}
           {includeOracionFieles && day.oracion_fieles && day.oracion_fieles.length > 0 && (
@@ -1057,24 +1215,16 @@ ${day.oracion_comunion || ''}`;
             <span className="rubric text-xs font-sans uppercase tracking-widest font-semibold">Sentados</span>
           </div>
 
-          {/* Canto de Ofertorio Sugerido */}
+          {/* Canto de Ofertorio Integrado con Letra y Acordes */}
           {currentCantos.ofertorio && (
-            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans">
-              <div className="flex items-center gap-2.5">
-                <Music size={15} className="text-[#800020] shrink-0" />
-                <div>
-                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Ofertorio:</span>
-                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.ofertorio}</span>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleOpenCantoByName(currentCantos.ofertorio)}
-                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
-              >
-                <span>Ver Acordes & Letra</span>
-                <span>→</span>
-              </button>
-            </div>
+            <InlineCantoCard
+              momentoLabel="Canto de Ofertorio / Dones"
+              cantoTitle={currentCantos.ofertorio}
+              momentoKey="ofertorio"
+              onOpenModal={setSelectedCantoModal}
+              onChangeCanto={setChangingMomento}
+              defaultExpanded={showAllLyrics}
+            />
           )}
 
           {/* Presentación de Dones */}
@@ -1129,20 +1279,24 @@ ${day.oracion_comunion || ''}`;
             </div>
 
             {/* Santo */}
-            <div className="bg-[#F0EDE6] p-4 rounded-sm border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed space-y-2">
-              <div className="flex items-center justify-between">
+            <div className="bg-[#F0EDE6] p-4 sm:p-5 rounded-md border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed space-y-3">
+              <div className="flex items-center justify-between border-b border-[#D9D1C3] pb-2">
                 <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em] block">Santo</span>
-                {currentCantos.santo && (
-                  <button
-                    onClick={() => handleOpenCantoByName(currentCantos.santo)}
-                    className="text-xs text-[#800020] font-sans font-bold hover:underline flex items-center gap-1"
-                  >
-                    <Music size={12} />
-                    <span>Versión: {currentCantos.santo}</span>
-                  </button>
-                )}
+                <span className="rubric text-xs font-sans">De pie • Se canta o se recita</span>
               </div>
-              <p>
+
+              {currentCantos.santo && (
+                <InlineCantoCard
+                  momentoLabel="Santo Musical"
+                  cantoTitle={currentCantos.santo}
+                  momentoKey="santo"
+                  onOpenModal={setSelectedCantoModal}
+                  onChangeCanto={setChangingMomento}
+                  defaultExpanded={showAllLyrics}
+                />
+              )}
+
+              <p className="font-serif">
                 Santo, Santo, Santo es el Señor, Dios del Universo. Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo. Bendito el que viene en el nombre del Señor. Hosanna en el cielo.
               </p>
             </div>
@@ -1213,19 +1367,23 @@ ${day.oracion_comunion || ''}`;
           </div>
 
           {/* Cordero de Dios */}
-          <div className="bg-[#F0EDE6] p-4 rounded-sm border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed space-y-1">
-            <div className="flex items-center justify-between mb-1">
-              <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em]">Cordero de Dios</span>
-              {currentCantos.cordero && (
-                <button
-                  onClick={() => handleOpenCantoByName(currentCantos.cordero!)}
-                  className="text-xs text-[#800020] font-sans font-bold hover:underline flex items-center gap-1"
-                >
-                  <Music size={12} />
-                  <span>{currentCantos.cordero}</span>
-                </button>
-              )}
+          <div className="bg-[#F0EDE6] p-4 sm:p-5 rounded-md border border-[#D9D1C3] text-[#2D2926] text-base leading-relaxed space-y-2">
+            <div className="flex items-center justify-between border-b border-[#D9D1C3] pb-2">
+              <span className="font-sans text-[10px] font-bold text-[#800020] uppercase tracking-[0.2em]">Cordero de Dios (Agnus Dei)</span>
+              <span className="rubric text-xs font-sans">De pie</span>
             </div>
+
+            {currentCantos.cordero && (
+              <InlineCantoCard
+                momentoLabel="Cordero de Dios Musical"
+                cantoTitle={currentCantos.cordero}
+                momentoKey="cordero"
+                onOpenModal={setSelectedCantoModal}
+                onChangeCanto={setChangingMomento}
+                defaultExpanded={showAllLyrics}
+              />
+            )}
+
             <p>Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.</p>
             <p>Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.</p>
             <p>Cordero de Dios, que quitas el pecado del mundo, danos la paz.</p>
@@ -1241,24 +1399,16 @@ ${day.oracion_comunion || ''}`;
             </p>
           </div>
 
-          {/* Canto de Comunión Sugerido */}
+          {/* Canto de Comunión Sugerido con Letra y Acordes */}
           {currentCantos.comunion && (
-            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans">
-              <div className="flex items-center gap-2.5">
-                <Music size={15} className="text-[#800020] shrink-0" />
-                <div>
-                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Comunión:</span>
-                  <span className="font-serif font-bold text-sm text-[#2D2926]">{currentCantos.comunion}</span>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleOpenCantoByName(currentCantos.comunion)}
-                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
-              >
-                <span>Ver Acordes & Letra</span>
-                <span>→</span>
-              </button>
-            </div>
+            <InlineCantoCard
+              momentoLabel="Canto de Comunión"
+              cantoTitle={currentCantos.comunion}
+              momentoKey="comunion"
+              onOpenModal={setSelectedCantoModal}
+              onChangeCanto={setChangingMomento}
+              defaultExpanded={showAllLyrics}
+            />
           )}
 
           {/* Antífona de Comunión */}
@@ -1307,26 +1457,16 @@ ${day.oracion_comunion || ''}`;
             <p className="assembly-response pl-4"><span className="rubric font-sans">R.</span> Demos gracias a Dios.</p>
           </div>
 
-          {/* Canto de Salida / Mariano */}
+          {/* Canto de Salida / Mariano Integrado con Letra y Acordes */}
           {(currentCantos.salida || currentCantos.mariano) && (
-            <div className="bg-[#EAE5DC]/80 p-3.5 rounded-sm border border-[#D9D1C3] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans mt-4">
-              <div className="flex items-center gap-2.5">
-                <Music size={15} className="text-[#800020] shrink-0" />
-                <div>
-                  <span className="font-bold text-[#800020] uppercase tracking-wider mr-2 text-[10px]">Canto de Salida / Mariano:</span>
-                  <span className="font-serif font-bold text-sm text-[#2D2926]">
-                    {currentCantos.salida || currentCantos.mariano}
-                  </span>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleOpenCantoByName(currentCantos.salida || currentCantos.mariano!)}
-                className="text-[#800020] hover:underline font-bold text-[11px] flex items-center gap-1 self-end sm:self-auto"
-              >
-                <span>Ver Acordes & Letra</span>
-                <span>→</span>
-              </button>
-            </div>
+            <InlineCantoCard
+              momentoLabel="Canto de Salida / Mariano"
+              cantoTitle={currentCantos.salida || currentCantos.mariano}
+              momentoKey="salida"
+              onOpenModal={setSelectedCantoModal}
+              onChangeCanto={setChangingMomento}
+              defaultExpanded={showAllLyrics}
+            />
           )}
         </section>
 
