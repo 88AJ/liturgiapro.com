@@ -90,6 +90,7 @@ export function getLiturgicalSeasonInfo(date: Date): {
   diaSemana: string;
   ciclo: 'A' | 'B' | 'C';
   anoFerial: 'I' | 'II';
+  semanaNumero?: number;
 } {
   const year = date.getUTCFullYear();
   const easter = calculateEaster(year);
@@ -408,6 +409,7 @@ export function getLiturgicalSeasonInfo(date: Date): {
       diaSemana,
       ciclo,
       anoFerial,
+      semanaNumero: 34,
     };
   }
 
@@ -419,6 +421,7 @@ export function getLiturgicalSeasonInfo(date: Date): {
     diaSemana,
     ciclo,
     anoFerial,
+    semanaNumero: weekNum,
   };
 }
 

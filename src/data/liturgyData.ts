@@ -1,6 +1,7 @@
 import { LiturgicalDay, Cantico, LiturgicalColor } from '../types/liturgia';
 import { getLiturgicalSeasonInfo, parseDateISO, formatDateISO } from '../utils/calendar';
 import { SANTORAL_FIJO } from './liturgicalLectionary';
+import { getSundayLectionary } from './leccionarioDominical';
 import { getSuggestedChantsForDay } from '../utils/musicSelector';
 import liturgiaRawData from './liturgiaRaw.json';
 import cantosRawData from './cantosRaw.json';
@@ -14,6 +15,7 @@ export const ORDINARIO_DB: any = ordinarioRawData;
 export const RITUALES_DB: any = ritualesRawData;
 export const CALENDARIO_MEXICANO_DB: Record<string, any> = calendarioMexicanoData;
 export { SANTORAL_FIJO } from './liturgicalLectionary';
+export { getSundayLectionary } from './leccionarioDominical';
 
 /**
  * Enhanced list of Liturgical Hymns with categories, keys, guitar chords and lyrics
@@ -424,6 +426,10 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
     const titulo = mexEntry.titulo_celebracion || seasonInfo.tituloCelebracion;
     const tiempo = mexEntry.tiempo_liturgico || seasonInfo.tiempo;
 
+    // Check if there is a Sunday Lectionary entry
+    const isSundayCelebration = grado === 'Domingo' || seasonInfo.grado === 'Domingo';
+    const sundayEntry = isSundayCelebration ? getSundayLectionary(seasonInfo.semanaNumero || 21, seasonInfo.ciclo) : null;
+
     const liturgiaPalabra = santoralEntry ? {
       primera_lectura: santoralEntry.primera_lectura || {
         titulo: 'Primera Lectura',
@@ -444,6 +450,12 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
         cita: 'Lectura del santo Evangelio',
         texto: 'En aquel tiempo...'
       }
+    } : sundayEntry ? {
+      primera_lectura: sundayEntry.primera_lectura,
+      salmo_responsorial: sundayEntry.salmo_responsorial,
+      segunda_lectura: sundayEntry.segunda_lectura,
+      aclamacion_evangelio: sundayEntry.aclamacion_evangelio,
+      evangelio: sundayEntry.evangelio,
     } : {
       primera_lectura: {
         titulo: 'Primera Lectura',
@@ -484,10 +496,10 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       ciclo: seasonInfo.ciclo,
       ano_ferial: seasonInfo.anoFerial,
       fuente_oficial: 'Ordo Litúrgico de la Conferencia del Episcopado Mexicano (CEM)',
-      monicion_entrada: `Hermanos: Con gozo santo nos congregamos hoy para celebrar ${titulo}. Que la escucha atenta de la Palabra y la comunión eucarística renueven nuestra vida en Cristo.`,
-      antifona_entrada: santoralEntry?.antifona_entrada || `El Señor es mi luz y mi salvación, ¿a quién temeré? El Señor es la defensa de mi vida.`,
-      gloria: color === 'Blanco' || grado === 'Solemnidad' || grado === 'Fiesta' || (tiempo === 'Tiempo Ordinario' && grado === 'Domingo'),
-      oracion_colecta: santoralEntry?.oracion_colecta || `Dios todopoderoso y eterno, concede a tu Iglesia, fortalecida por la intercesión de tus santos, caminar en fidelidad y alcanzar la corona de la gloria eterna. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
+      monicion_entrada: santoralEntry?.primera_lectura?.monicion ? `Hermanos: Sean bienvenidos a la celebración de ${titulo}.` : (sundayEntry?.monicion_entrada || `Hermanos: Con gozo santo nos congregamos hoy para celebrar ${titulo}. Que la escucha atenta de la Palabra y la comunión eucarística renueven nuestra vida en Cristo.`),
+      antifona_entrada: santoralEntry?.antifona_entrada || sundayEntry?.antifona_entrada || `El Señor es mi luz y mi salvación, ¿a quién temeré? El Señor es la defensa de mi vida.`,
+      gloria: color === 'Blanco' || grado === 'Solemnidad' || grado === 'Fiesta' || ((tiempo.includes('Ordinario') || seasonInfo.tiempo.includes('Ordinario')) && (grado === 'Domingo' || seasonInfo.grado === 'Domingo')),
+      oracion_colecta: santoralEntry?.oracion_colecta || sundayEntry?.oracion_colecta || `Dios todopoderoso y eterno, concede a tu Iglesia, fortalecida por la intercesión de tus santos, caminar en fidelidad y alcanzar la corona de la gloria eterna. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
       liturgia_palabra: liturgiaPalabra,
       credo: grado === 'Solemnidad' || grado === 'Domingo' || seasonInfo.grado === 'Domingo',
       oracion_fieles: [
@@ -496,10 +508,10 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
         'Por los enfermos, los migrantes y todos los que sufren, para que encuentren fortaleza en la cruz redentora de Cristo. Roguemos al Señor.',
         'Por nuestra comunidad parroquial, para que fructifiquemos en santidad, obras de misericordia y vocaciones consagradas. Roguemos al Señor.'
       ],
-      oracion_ofrendas: `Acepta, Señor, los dones que con reverencia te presentamos, y por este santo sacrificio concédenos la gracia de una vida santa. Por Jesucristo, nuestro Señor. Amén.`,
-      antifona_comunion: `El Señor es mi pastor, nada me falta; en verdes praderas me hace reposar.`,
-      oracion_comunion: `Te pedimos, Señor, que los sagrados misterios que hemos recibido nos purifiquen de todo mal y nos unan en el vínculo de tu divino amor. Por Jesucristo, nuestro Señor. Amén.`,
-      reflexion_homiletica: [
+      oracion_ofrendas: santoralEntry?.oracion_ofrendas || sundayEntry?.oracion_ofrendas || `Acepta, Señor, los dones que con reverencia te presentamos, y por este santo sacrificio concédenos la gracia de una vida santa. Por Jesucristo, nuestro Señor. Amén.`,
+      antifona_comunion: santoralEntry?.antifona_comunion || sundayEntry?.antifona_comunion || `El Señor es mi pastor, nada me falta; en verdes praderas me hace reposar.`,
+      oracion_comunion: santoralEntry?.oracion_comunion || sundayEntry?.oracion_comunion || `Te pedimos, Señor, que los sagrados misterios que hemos recibido nos purifiquen de todo mal y nos unan en el vínculo de tu divino amor. Por Jesucristo, nuestro Señor. Amén.`,
+      reflexion_homiletica: (sundayEntry?.reflexion_homiletica) || [
         `La celebración de ${titulo} nos recuerda que la santidad es la vocación universal de todo bautizado. Los santos y las solemnidades litúrgicas nos muestran el camino del seguimiento fiel a Jesucristo en medio de los desafíos cotidianos.`,
         `Al alimentarnos del Pan bajado del cielo, imploramos la fortaleza del Espíritu Santo para dar testimonio valiente de nuestra fe y ser constructores de comunión y esperanza en nuestras familias y comunidades.`
       ],
@@ -574,7 +586,16 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
     };
   }
 
-  const defaultLiturgiaPalabra = {
+  // Check Sunday Lectionary for general Sundays
+  const generalSunday = seasonInfo.grado === 'Domingo' ? getSundayLectionary(seasonInfo.semanaNumero || 21, seasonInfo.ciclo) : null;
+
+  const defaultLiturgiaPalabra = generalSunday ? {
+    primera_lectura: generalSunday.primera_lectura,
+    salmo_responsorial: generalSunday.salmo_responsorial,
+    segunda_lectura: generalSunday.segunda_lectura,
+    aclamacion_evangelio: generalSunday.aclamacion_evangelio,
+    evangelio: generalSunday.evangelio
+  } : {
     primera_lectura: {
       titulo: 'Primera Lectura',
       cita: 'Lectura bíblica del Leccionario',
@@ -614,10 +635,10 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
     celebracion: seasonInfo.tituloCelebracion,
     ciclo: seasonInfo.ciclo,
     ano_ferial: seasonInfo.anoFerial,
-    monicion_entrada: `Hermanos: Con alegría nos congregamos hoy para celebrar los sagrados misterios en este ${seasonInfo.tituloCelebracion}. Que la Palabra y el Sacramento renueven nuestra fe y esperanza.`,
-    antifona_entrada: `Cantemos al Señor, porque ha hecho maravillas; aclamemos al Dios de nuestra salvación.`,
+    monicion_entrada: generalSunday?.monicion_entrada || `Hermanos: Con alegría nos congregamos hoy para celebrar los sagrados misterios en este ${seasonInfo.tituloCelebracion}. Que la Palabra y el Sacramento renueven nuestra fe y esperanza.`,
+    antifona_entrada: generalSunday?.antifona_entrada || `Cantemos al Señor, porque ha hecho maravillas; aclamemos al Dios de nuestra salvación.`,
     gloria: seasonInfo.color === 'Blanco' || seasonInfo.grado === 'Solemnidad' || seasonInfo.grado === 'Fiesta' || (seasonInfo.tiempo === 'Tiempo Ordinario' && seasonInfo.grado === 'Domingo'),
-    oracion_colecta: `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre caminar siempre según tus mandamientos y gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
+    oracion_colecta: generalSunday?.oracion_colecta || `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre caminar siempre según tus mandamientos y gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
     liturgia_palabra: defaultLiturgiaPalabra,
     credo: seasonInfo.grado === 'Domingo' || seasonInfo.grado === 'Solemnidad',
     oracion_fieles: [
@@ -626,10 +647,10 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
       'Por los enfermos, los ancianos, los migrantes y cuantos sufren soledad o tribulación, para que sientan la presencia reconfortante de Cristo. Roguemos al Señor.',
       'Por los fieles de nuestra comunidad, para que fortalecidos con la Eucaristía seamos testigos vivos del amor del Padre en nuestras familias. Roguemos al Señor.'
     ],
-    oracion_ofrendas: `Acepta, Señor, los dones que con gozo te presentamos en este altar, y por este santo sacrificio concédenos la salvación eterna. Por Jesucristo, nuestro Señor. Amén.`,
-    antifona_comunion: `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
-    oracion_comunion: `Te pedimos, Señor, que la comunión de este sacramento nos purifique de todo pecado y nos haga partícipes de tu vida inmortal. Por Jesucristo, nuestro Señor. Amén.`,
-    reflexion_homiletica: [
+    oracion_ofrendas: generalSunday?.oracion_ofrendas || `Acepta, Señor, los dones que con gozo te presentamos en este altar, y por este santo sacrificio concédenos la salvación eterna. Por Jesucristo, nuestro Señor. Amén.`,
+    antifona_comunion: generalSunday?.antifona_comunion || `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
+    oracion_comunion: generalSunday?.oracion_comunion || `Te pedimos, Señor, que la comunión de este sacramento nos purifique de todo pecado y nos haga partícipes de tu vida inmortal. Por Jesucristo, nuestro Señor. Amén.`,
+    reflexion_homiletica: (generalSunday?.reflexion_homiletica) || [
       `El misterio que hoy celebramos nos convoca al centro mismo de la vida cristiana: el encuentro vivo con la Palabra encarnada y el banquete eucarístico. Los Santos Padres nos recuerdan que la Eucaristía es el memorial perenne del amor que vence toda muerte y desolación.`,
       `Al acercarnos a la mesa del Señor, renovamos nuestro compromiso de ser discípulos misioneros, llevando la luz del Evangelio a nuestras familias, centros de trabajo y ambientes cotidianos, viviendo la caridad fraterna como el signo distintivo de los hijos de Dios.`
     ],
