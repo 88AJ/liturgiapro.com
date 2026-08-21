@@ -112,9 +112,26 @@ export function getLiturgicalSeasonInfo(date: Date): {
   
   // Previous year Christmas for Jan dates
   const prevChristmas = new Date(Date.UTC(year - 1, 11, 25));
-  const epiphany = new Date(Date.UTC(year, 0, 6));
-  // Baptism of the Lord: Sunday after Epiphany
-  const baptismLord = addDays(epiphany, epiphany.getUTCDay() === 0 ? 7 : (7 - epiphany.getUTCDay()));
+
+  // Epiphany calculation (Transferable to Sunday between Jan 2 and Jan 8 in CEM/CELAM/USA)
+  let epiphany = new Date(Date.UTC(year, 0, 6));
+  for (let d = 2; d <= 8; d++) {
+    const testDate = new Date(Date.UTC(year, 0, d));
+    if (testDate.getUTCDay() === 0) {
+      epiphany = testDate;
+      break;
+    }
+  }
+
+  // Baptism of the Lord:
+  // If Epiphany is on Jan 7 or Jan 8, Baptism is celebrated on the following Monday (Jan 8 or Jan 9).
+  // Otherwise, it is celebrated on the Sunday following Epiphany.
+  let baptismLord: Date;
+  if (epiphany.getUTCDate() >= 7) {
+    baptismLord = addDays(epiphany, 1);
+  } else {
+    baptismLord = addDays(epiphany, 7);
+  }
 
   const dayOfWeek = date.getUTCDay();
   const diaSemana = DIAS_SEMANA[dayOfWeek];
@@ -267,7 +284,7 @@ export function getLiturgicalSeasonInfo(date: Date): {
   if (dateMs >= christmas.getTime() || dateMs <= baptismLord.getTime()) {
     const isChristmasDay = date.getUTCMonth() === 11 && date.getUTCDate() === 25;
     const isMaryMotherOfGod = date.getUTCMonth() === 0 && date.getUTCDate() === 1;
-    const isEpiphany = date.getUTCMonth() === 0 && date.getUTCDate() === 6;
+    const isEpiphany = dateMs === epiphany.getTime();
     const isBaptism = dateMs === baptismLord.getTime();
 
     if (isChristmasDay) {
@@ -361,10 +378,26 @@ export function getLiturgicalSeasonInfo(date: Date): {
     };
   }
 
-  // 8. Ordinary Time (Default)
-  // Approximate week computation based on calendar progression
-  const weekApprox = Math.min(34, Math.max(1, Math.floor(((date.getUTCMonth() * 30 + date.getUTCDate()) / 365) * 34)));
-  const isChristKing = weekApprox === 34 && dayOfWeek === 0;
+  // 8. Ordinary Time (Canonical Calculation)
+  // Period 1: From day after Baptism of the Lord until Tuesday before Ash Wednesday
+  // Period 2: From Monday after Pentecost until Saturday before 1st Sunday of Advent
+  let weekNum = 1;
+
+  if (dateMs < ashWednesday.getTime()) {
+    // Ordinary Time 1 (January - February)
+    const daysSinceBaptism = Math.max(0, Math.floor((dateMs - baptismLord.getTime()) / (1000 * 60 * 60 * 24)));
+    const baptismDay = baptismLord.getUTCDay();
+    weekNum = Math.floor((daysSinceBaptism + baptismDay) / 7) + 1;
+    weekNum = Math.min(9, Math.max(1, weekNum));
+  } else {
+    // Ordinary Time 2 (Post-Pentecost to Advent)
+    // Canonical rule: count backwards from 1st Sunday of Advent so that Christ the King is always Week 34
+    const sundayOfCurrentWeek = addDays(date, -dayOfWeek);
+    const weeksDiff = Math.round((adventStart.getTime() - sundayOfCurrentWeek.getTime()) / (7 * 24 * 60 * 60 * 1000));
+    weekNum = Math.min(34, Math.max(1, 35 - weeksDiff));
+  }
+
+  const isChristKing = weekNum === 34 && dayOfWeek === 0;
 
   if (isChristKing) {
     return {
@@ -382,7 +415,7 @@ export function getLiturgicalSeasonInfo(date: Date): {
     tiempo: 'Tiempo Ordinario',
     color: 'Verde',
     grado: dayOfWeek === 0 ? 'Domingo' : 'Feria',
-    tituloCelebracion: dayOfWeek === 0 ? `${weekApprox}° Domingo del Tiempo Ordinario` : `${diaSemana} de la ${weekApprox}ª semana del Tiempo Ordinario`,
+    tituloCelebracion: dayOfWeek === 0 ? `${weekNum}° Domingo del Tiempo Ordinario` : `${diaSemana} de la ${weekNum}ª semana del Tiempo Ordinario`,
     diaSemana,
     ciclo,
     anoFerial,

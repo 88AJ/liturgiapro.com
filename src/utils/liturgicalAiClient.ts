@@ -5,6 +5,7 @@
  */
 
 import { saveLiturgicalDayToCache } from './liturgicalCache';
+import { getLiturgicalDay, SANTORAL_FIJO, CALENDARIO_MEXICANO_DB } from '../data/liturgyData';
 
 export interface MonicionesResult {
   monicion_entrada: string;
@@ -209,17 +210,24 @@ export async function fetchOfficialLiturgicalDay(params: {
         return { success: true, data: json.data, source: json.source || 'gemini_librarian' };
       }
     }
-    const errData = await res.json().catch(() => ({}));
-    return {
-      success: false,
-      message: errData.message || errData.error || 'No se pudo conectar con el Bibliotecario Litúrgico.',
-      source: 'error'
-    };
   } catch (err: any) {
+    console.warn('Network API unavailable on static host, resolving from local Magisterial Database:', err);
+  }
+
+  // Fallback to local Magisterial Knowledge Engine
+  try {
+    const localDay = getLiturgicalDay(params.fecha);
+    await saveLiturgicalDayToCache(localDay);
+    return {
+      success: true,
+      data: localDay,
+      source: 'magisterio_local'
+    };
+  } catch (fallbackErr: any) {
     return {
       success: false,
-      message: err.message || 'Error de red al consultar al Bibliotecario.',
-      source: 'network_error'
+      message: fallbackErr.message || 'Error al compilar el formulario litúrgico.',
+      source: 'error'
     };
   }
 }
@@ -241,14 +249,53 @@ export async function searchLibrarianCelebration(query: string, region: string =
 
     if (res.ok) {
       const json = await res.json();
-      if (json.success && Array.isArray(json.data)) {
+      if (json.success && Array.isArray(json.data) && json.data.length > 0) {
         return { success: true, data: json.data, source: json.source };
       }
     }
   } catch (err) {
-    console.error('Search Librarian error:', err);
+    console.warn('Search Librarian API offline/static, falling back to local dataset:', err);
   }
 
-  return { success: false, data: [], source: 'error' };
+  // Fallback to local search across Roman Santoral and Mexican Episcopal Calendar
+  const q = (query || '').toLowerCase().trim();
+  const localResults: any[] = [];
+
+  // Search in Roman Santoral
+  for (const [key, s] of Object.entries(SANTORAL_FIJO)) {
+    const tit = ((s as any).titulo_celebracion || (s as any).celebracion || '').toLowerCase();
+    if (tit.includes(q)) {
+      localResults.push({
+        titulo: (s as any).titulo_celebracion || (s as any).celebracion,
+        fecha_referencia: `Memoria / Fiesta (${key})`,
+        tiempo: (s as any).tiempo_liturgico || 'Tiempo Ordinario',
+        color: (s as any).color || 'Blanco',
+        grado: (s as any).grado || 'Memoria',
+        descripcion: `Celebración del Misal Romano y Santoral Oficial.`,
+        lecturas_resumen: `${(s as any).primera_lectura?.cita || 'Propia'} · ${(s as any).evangelio?.cita || 'Propio'}`,
+        raw: s
+      });
+    }
+  }
+
+  // Search in Mexican Episcopal Calendar
+  for (const [dateKey, mex] of Object.entries(CALENDARIO_MEXICANO_DB)) {
+    const tit = ((mex as any).titulo_celebracion || '').toLowerCase();
+    if (tit.includes(q)) {
+      localResults.push({
+        titulo: (mex as any).titulo_celebracion,
+        fecha_referencia: dateKey,
+        tiempo: (mex as any).tiempo_liturgico || 'Tiempo Ordinario',
+        color: (mex as any).color || 'Blanco',
+        grado: (mex as any).grado || 'Memoria',
+        descripcion: (mex as any).rubricas ? `${(mex as any).rubricas.substring(0, 120)}...` : 'Celebración del Calendario de la Conferencia del Episcopado Mexicano (CEM).',
+        lecturas_resumen: 'Leccionario CEM Oficial',
+        raw: mex
+      });
+    }
+    if (localResults.length >= 15) break;
+  }
+
+  return { success: true, data: localResults.slice(0, 15), source: 'magisterio_local' };
 }
 
