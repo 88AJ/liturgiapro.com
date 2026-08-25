@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Sidebar, ActiveView } from './components/Sidebar';
 import { MisaView } from './components/views/MisaView';
 import { OrdinarioView } from './components/views/OrdinarioView';
+import { SemanaSantaView } from './components/views/SemanaSantaView';
 import { SacramentosView } from './components/views/SacramentosView';
 import { CancioneroView } from './components/views/CancioneroView';
 import { BoletinView } from './components/views/BoletinView';
@@ -126,6 +127,10 @@ export function App() {
 
           {activeView === 'ordinario' && (
             <OrdinarioView onOpenImpresor={() => setActiveView('impresor')} />
+          )}
+
+          {activeView === 'semana-santa' && (
+            <SemanaSantaView />
           )}
 
           {(['bautismo', 'confirmacion', 'matrimonio', 'reconciliacion', 'uncion', 'orden', 'xvanos', 'exequias'] as SacramentoType[]).includes(activeView as SacramentoType) && (

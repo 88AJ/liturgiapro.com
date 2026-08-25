@@ -19,6 +19,7 @@ import {
 export type ActiveView = 
   | 'misa'
   | 'ordinario'
+  | 'semana-santa'
   | 'bautismo'
   | 'confirmacion'
   | 'matrimonio'
@@ -55,6 +56,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       items: [
         { id: 'misa' as ActiveView, label: 'Misa Diaria', icon: BookOpen, badge: 'Hoy' },
         { id: 'ordinario' as ActiveView, label: 'Ordinario de la Misa', icon: Scroll },
+      ]
+    },
+    {
+      category: 'SEMANA SANTA Y PASCUA',
+      items: [
+        { id: 'semana-santa' as ActiveView, label: 'Semana Santa & Pascua', icon: Flame, badge: 'TRIDUO' },
       ]
     },
     {
