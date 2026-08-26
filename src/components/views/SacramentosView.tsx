@@ -23,6 +23,7 @@ import {
   ConfirmacionParams 
 } from '../../types/liturgia';
 import { MatrimonioRitualView } from './MatrimonioRitualView';
+import { XVAñosRitualView } from './XVAñosRitualView';
 
 interface SacramentosViewProps {
   initialType?: SacramentoType;
@@ -78,10 +79,13 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
   const [xvAnosData, setXvAnosData] = useState<XVAñosParams>({
     nombreQuinceanera: 'Mariana Guadalupe Ramírez',
     nombrePadres: 'Héctor Ramírez y Guadalupe Hernández',
-    nombrePadrinos: 'Ernesto Torres y Mónica Del Valle',
-    nombreCelebrante: 'Pbro. Francisco Javier Morales',
-    nombreParroquia: 'Parroquia La Asunción de María',
-    fecha: new Date().toISOString().split('T')[0]
+    nombrePadrinosBibliaRosario: 'Ernesto Torres y Mónica Del Valle',
+    nombrePadrinosFlores: 'Padrinos de Flores para la Virgen',
+    nombreCelebrante: 'Fr. Alan Sanchez',
+    nombreParroquia: 'Our Lady of Guadalupe',
+    ciudadLugar: 'Laredo, Tx.',
+    nombreMusicos: 'Coro Parroquial',
+    fecha: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
   });
 
   const sacramentosList = [
@@ -391,7 +395,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
           )}
 
           {activeSacramento === 'xvanos' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               <div>
                 <label className="font-semibold text-[#444] block mb-1">Nombre de la Quinceañera:</label>
                 <input
@@ -411,11 +415,67 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 />
               </div>
               <div>
-                <label className="font-semibold text-[#444] block mb-1">Padrinos:</label>
+                <label className="font-semibold text-[#444] block mb-1">Padrinos de Biblia y Rosario:</label>
                 <input
                   type="text"
-                  value={xvAnosData.nombrePadrinos}
-                  onChange={(e) => setXvAnosData({ ...xvAnosData, nombrePadrinos: e.target.value })}
+                  value={xvAnosData.nombrePadrinosBibliaRosario || ''}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, nombrePadrinosBibliaRosario: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Padrinos de Flores (Virgen):</label>
+                <input
+                  type="text"
+                  value={xvAnosData.nombrePadrinosFlores || ''}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, nombrePadrinosFlores: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Sacerdote Celebrante:</label>
+                <input
+                  type="text"
+                  value={xvAnosData.nombreCelebrante}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, nombreCelebrante: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Parroquia / Iglesia:</label>
+                <input
+                  type="text"
+                  value={xvAnosData.nombreParroquia}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, nombreParroquia: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Ciudad / Lugar:</label>
+                <input
+                  type="text"
+                  value={xvAnosData.ciudadLugar || ''}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, ciudadLugar: e.target.value })}
+                  placeholder="Laredo, Tx."
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Músicos / Coro:</label>
+                <input
+                  type="text"
+                  value={xvAnosData.nombreMusicos || ''}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, nombreMusicos: e.target.value })}
+                  placeholder="Coro Parroquial"
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Fecha:</label>
+                <input
+                  type="text"
+                  value={xvAnosData.fecha}
+                  onChange={(e) => setXvAnosData({ ...xvAnosData, fecha: e.target.value })}
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -584,69 +644,9 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
           </div>
         )}
 
-        {/* RITUAL DE XV AÑOS (ACCIÓN DE GRACIAS) */}
+        {/* RITUAL DE XV AÑOS (ESQUEMA CANÓNICO COMPLETO DE 11 PÁGINAS) */}
         {activeSacramento === 'xvanos' && (
-          <div className="space-y-8">
-            <div className="border-b border-[#D9D1C3] pb-4 text-center">
-              <div className="text-xs font-sans text-[#800020] uppercase tracking-[0.25em] font-bold mb-1">
-                Bendición Solemne en el Decimoquinto Cumpleaños
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light font-serif italic text-[#2D2926]">
-                Misa de Acción de Gracias de {xvAnosData.nombreQuinceanera}
-              </h2>
-              <p className="text-xs font-sans text-[#666] mt-1">
-                {xvAnosData.nombreParroquia} • Celebrante: {xvAnosData.nombreCelebrante}
-              </p>
-            </div>
-
-            {/* I. Oración de los Padres */}
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  I. Oración y Bendición de los Padres
-                </h3>
-              </div>
-              <div className="rubric">Los padres se acercan a su hija y dicen con devoción:</div>
-              <div className="bg-[#F5F2EB] p-6 rounded-sm border-l-3 border-[#800020] space-y-2">
-                <p className="font-serif text-[17px] leading-relaxed text-[#2D2926]">
-                  «Señor Dios, Creador y Padre nuestro: Te damos gracias por el don de la vida de nuestra hija <strong>{xvAnosData.nombreQuinceanera}</strong>, a quien hoy presentamos ante tu altar al cumplir quince años. Guía sus pasos con tu luz divina, conserva su corazón puro y líbrala de todo peligro. Que tu gracia la acompañe siempre.»
-                </p>
-              </div>
-            </section>
-
-            {/* II. Oración de Acción de Gracias de la Quinceañera */}
-            <section className="space-y-4 pt-4 border-t border-[#D9D1C3]">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  II. Oración de la Quinceañera ante el Altar
-                </h3>
-              </div>
-              <div className="rubric">La joven se arrodilla o permanece de pie ante el presbiterio y proclama:</div>
-              <div className="bg-[#F5F2EB] p-6 rounded-sm border-l-3 border-[#800020] space-y-2">
-                <p className="font-serif text-[17px] leading-relaxed text-[#2D2926]">
-                  «Señor Jesús: Te doy gracias de todo corazón por haberme llamado a la vida, por el bautismo y por la fe que recibí en el seno de mi familia. En este día en que cumplo quince años, pongo en tus manos mi juventud, mis ilusiones y mi futuro. Concédeme la gracia de amar a mis padres, respetar a mi prójimo y ser testigo de tu amor en el mundo. Santa María, Madre de Dios, sé siempre mi guía y protectora. Amén.»
-                </p>
-              </div>
-            </section>
-
-            {/* III. Bendición de los Objetos Religiosos */}
-            <section className="space-y-4 pt-4 border-t border-[#D9D1C3]">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  III. Bendición de la Biblia, Rosario y Medalla
-                </h3>
-              </div>
-              <p className="priest-voice">
-                El sacerdote extiende las manos y bendice los objetos sagrados:
-              </p>
-              <p className="italic text-[#2D2926] pl-4 leading-relaxed">
-                «El Señor bendiga esta Santa Biblia, para que sea lámpara para tus pasos; este Rosario, para que medites los misterios de Cristo junto a María; y esta Medalla, como signo visible de tu fe cristiana. En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.»
-              </p>
-            </section>
-          </div>
+          <XVAñosRitualView data={xvAnosData} />
         )}
 
         {/* RITUAL DE CONFIRMACIÓN */}

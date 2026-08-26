@@ -168,9 +168,13 @@ export interface ExequiasParams {
 export interface XVAñosParams {
   nombreQuinceanera: string;
   nombrePadres: string;
-  nombrePadrinos: string;
+  nombrePadrinosBibliaRosario?: string;
+  nombrePadrinosFlores?: string;
+  nombrePadrinos?: string;
   nombreCelebrante: string;
   nombreParroquia: string;
+  ciudadLugar?: string;
+  nombreMusicos?: string;
   fecha: string;
 }
 
