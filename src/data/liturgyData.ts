@@ -2,6 +2,7 @@ import { LiturgicalDay, Cantico, LiturgicalColor } from '../types/liturgia';
 import { getLiturgicalSeasonInfo, parseDateISO, formatDateISO } from '../utils/calendar';
 import { SANTORAL_FIJO } from './liturgicalLectionary';
 import { getSundayLectionary } from './leccionarioDominical';
+import { getFerialLectionary } from './leccionarioFerial';
 import { getSuggestedChantsForDay } from '../utils/musicSelector';
 import liturgiaRawData from './liturgiaRaw.json';
 import cantosRawData from './cantosRaw.json';
@@ -16,6 +17,7 @@ export const RITUALES_DB: any = ritualesRawData;
 export const CALENDARIO_MEXICANO_DB: Record<string, any> = calendarioMexicanoData;
 export { SANTORAL_FIJO } from './liturgicalLectionary';
 export { getSundayLectionary } from './leccionarioDominical';
+export { getFerialLectionary } from './leccionarioFerial';
 
 /**
  * Enhanced list of Liturgical Hymns with categories, keys, guitar chords and lyrics
@@ -376,6 +378,7 @@ las ala(D7)banzas a Cristo Salva(G)dor.`
 export function getLiturgicalDay(isoDate: string): LiturgicalDay {
   const dateObj = parseDateISO(isoDate);
   const seasonInfo = getLiturgicalSeasonInfo(dateObj);
+  const dayOfWeek = dateObj.getUTCDay(); // 0=Dom, 1=Lun, 2=Mar, 3=Mie, 4=Jue, 5=Vie, 6=Sab
 
   // Check if we have pre-compiled missal data in database
   if (LITURGIA_DB[isoDate]) {
@@ -415,250 +418,119 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
     };
   }
 
-  // Check Official Mexican Episcopal Calendar (CEM 2025-2026)
-  const monthDay = isoDate.substring(5); // "08-19"
+  // Check Official Mexican Episcopal Calendar (CEM 2025-2026) and Santoral Romano
+  const monthDay = isoDate.substring(5); // "08-26"
   const mexEntry = CALENDARIO_MEXICANO_DB[isoDate];
   const santoralEntry = SANTORAL_FIJO[monthDay];
 
-  if (mexEntry) {
-    const color = (mexEntry.color as LiturgicalColor) || seasonInfo.color;
-    const grado = (mexEntry.grado as any) || seasonInfo.grado;
-    const titulo = mexEntry.titulo_celebracion || seasonInfo.tituloCelebracion;
-    const tiempo = mexEntry.tiempo_liturgico || seasonInfo.tiempo;
+  const color = (mexEntry?.color as LiturgicalColor) || (santoralEntry?.color as LiturgicalColor) || seasonInfo.color;
+  const grado = (mexEntry?.grado as any) || (santoralEntry?.grado as any) || seasonInfo.grado;
+  const titulo = mexEntry?.titulo_celebracion || santoralEntry?.titulo_celebracion || seasonInfo.tituloCelebracion;
+  const tiempo = mexEntry?.tiempo_liturgico || santoralEntry?.tiempo_liturgico || seasonInfo.tiempo;
 
-    // Check if there is a Sunday Lectionary entry
-    const isSundayCelebration = grado === 'Domingo' || seasonInfo.grado === 'Domingo';
-    const sundayEntry = isSundayCelebration ? getSundayLectionary(seasonInfo.semanaNumero || 21, seasonInfo.ciclo) : null;
+  // Resolve Sunday, Sanctoral or Ferial Lectionary
+  const isSundayCelebration = grado === 'Domingo' || seasonInfo.grado === 'Domingo' || dayOfWeek === 0;
+  const sundayEntry = isSundayCelebration ? getSundayLectionary(seasonInfo.semanaNumero || 21, seasonInfo.ciclo) : null;
+  const ferialEntry = (!isSundayCelebration && dayOfWeek >= 1 && dayOfWeek <= 6)
+    ? getFerialLectionary(seasonInfo.semanaNumero || 21, dayOfWeek, seasonInfo.anoFerial)
+    : null;
 
-    const liturgiaPalabra = santoralEntry ? {
-      primera_lectura: santoralEntry.primera_lectura || {
-        titulo: 'Primera Lectura',
-        cita: 'Lectura bíblica del Leccionario',
-        texto: 'Proclamación de la Palabra de Dios.'
-      },
-      salmo_responsorial: santoralEntry.salmo_responsorial || {
-        cita: 'Salmo Responsorial',
-        respuesta: 'El Señor es mi pastor, nada me falta.',
-        texto: 'El Señor es mi luz y mi salvación.'
-      },
-      segunda_lectura: santoralEntry.segunda_lectura,
-      aclamacion_evangelio: santoralEntry.aclamacion_evangelio || {
-        texto: 'R. Aleluya, aleluya.\nLa palabra de Dios es viva y eficaz.\nR. Aleluya.'
-      },
-      evangelio: santoralEntry.evangelio || {
-        titulo: 'Santo Evangelio',
-        cita: 'Lectura del santo Evangelio',
-        texto: 'En aquel tiempo...'
-      }
-    } : sundayEntry ? {
-      primera_lectura: sundayEntry.primera_lectura,
-      salmo_responsorial: sundayEntry.salmo_responsorial,
-      segunda_lectura: sundayEntry.segunda_lectura,
-      aclamacion_evangelio: sundayEntry.aclamacion_evangelio,
-      evangelio: sundayEntry.evangelio,
-    } : {
-      primera_lectura: {
-        titulo: 'Primera Lectura',
-        cita: 'Lectura bíblica de la feria / Leccionario CEM',
-        texto: 'Proclamación de la Palabra de Dios según el Leccionario Oficial.',
-        monicion: 'Escuchemos con fe la Palabra salvadora del Señor.'
-      },
-      salmo_responsorial: {
-        cita: 'Salmo Responsorial',
-        respuesta: 'Dichoso el que confía en el Señor.',
-        texto: 'Dichoso el hombre que no sigue el consejo de los impíos, sino que en la ley del Señor se deleita.'
-      },
-      segunda_lectura: grado === 'Domingo' || grado === 'Solemnidad' ? {
-        titulo: 'Segunda Lectura',
-        cita: 'Lectura apostólica',
-        texto: 'Proclamación apostólica de la salvación en Cristo Jesús.',
-        monicion: 'El apóstol nos exhorta a vivir con santidad y caridad fraterna.'
-      } : undefined,
-      aclamacion_evangelio: {
-        texto: 'R. Aleluya, aleluya.\nTus palabras, Señor, son espíritu y vida; tú tienes palabras de vida eterna.\nR. Aleluya.'
-      },
-      evangelio: {
-        titulo: 'Santo Evangelio',
-        cita: 'Lectura del santo Evangelio',
-        texto: 'En aquel tiempo, Jesús se manifestó a sus discípulos...',
-        monicion: 'De pie, con devoción y alegría pascual, aclamemos el santo Evangelio.'
-      }
-    };
+  const hasProperSanctoralReadings = santoralEntry && santoralEntry.primera_lectura && santoralEntry.primera_lectura.texto && santoralEntry.primera_lectura.texto.length > 40;
 
-    return {
-      fecha: isoDate,
-      dia_semana: seasonInfo.diaSemana,
-      tiempo_liturgico: tiempo,
-      color: color,
-      grado: grado,
-      titulo_celebracion: titulo,
-      celebracion: titulo,
-      ciclo: seasonInfo.ciclo,
-      ano_ferial: seasonInfo.anoFerial,
-      fuente_oficial: 'Ordo Litúrgico de la Conferencia del Episcopado Mexicano (CEM)',
-      monicion_entrada: santoralEntry?.primera_lectura?.monicion ? `Hermanos: Sean bienvenidos a la celebración de ${titulo}.` : (sundayEntry?.monicion_entrada || `Hermanos: Con gozo santo nos congregamos hoy para celebrar ${titulo}. Que la escucha atenta de la Palabra y la comunión eucarística renueven nuestra vida en Cristo.`),
-      antifona_entrada: santoralEntry?.antifona_entrada || sundayEntry?.antifona_entrada || `El Señor es mi luz y mi salvación, ¿a quién temeré? El Señor es la defensa de mi vida.`,
-      gloria: color === 'Blanco' || grado === 'Solemnidad' || grado === 'Fiesta' || ((tiempo.includes('Ordinario') || seasonInfo.tiempo.includes('Ordinario')) && (grado === 'Domingo' || seasonInfo.grado === 'Domingo')),
-      oracion_colecta: santoralEntry?.oracion_colecta || sundayEntry?.oracion_colecta || `Dios todopoderoso y eterno, concede a tu Iglesia, fortalecida por la intercesión de tus santos, caminar en fidelidad y alcanzar la corona de la gloria eterna. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
-      liturgia_palabra: liturgiaPalabra,
-      credo: grado === 'Solemnidad' || grado === 'Domingo' || seasonInfo.grado === 'Domingo',
-      oracion_fieles: [
-        'Por la Santa Iglesia de Dios y por el Santo Padre, para que continúe guiando al Pueblo de Dios con fidelidad evangélica. Roguemos al Señor.',
-        'Por la paz en México y en el mundo entero, para que cesen las discordias y florezca la justicia y la fraternidad. Roguemos al Señor.',
-        'Por los enfermos, los migrantes y todos los que sufren, para que encuentren fortaleza en la cruz redentora de Cristo. Roguemos al Señor.',
-        'Por nuestra comunidad parroquial, para que fructifiquemos en santidad, obras de misericordia y vocaciones consagradas. Roguemos al Señor.'
-      ],
-      oracion_ofrendas: santoralEntry?.oracion_ofrendas || sundayEntry?.oracion_ofrendas || `Acepta, Señor, los dones que con reverencia te presentamos, y por este santo sacrificio concédenos la gracia de una vida santa. Por Jesucristo, nuestro Señor. Amén.`,
-      antifona_comunion: santoralEntry?.antifona_comunion || sundayEntry?.antifona_comunion || `El Señor es mi pastor, nada me falta; en verdes praderas me hace reposar.`,
-      oracion_comunion: santoralEntry?.oracion_comunion || sundayEntry?.oracion_comunion || `Te pedimos, Señor, que los sagrados misterios que hemos recibido nos purifiquen de todo mal y nos unan en el vínculo de tu divino amor. Por Jesucristo, nuestro Señor. Amén.`,
-      reflexion_homiletica: (sundayEntry?.reflexion_homiletica) || [
-        `La celebración de ${titulo} nos recuerda que la santidad es la vocación universal de todo bautizado. Los santos y las solemnidades litúrgicas nos muestran el camino del seguimiento fiel a Jesucristo en medio de los desafíos cotidianos.`,
-        `Al alimentarnos del Pan bajado del cielo, imploramos la fortaleza del Espíritu Santo para dar testimonio valiente de nuestra fe y ser constructores de comunión y esperanza en nuestras familias y comunidades.`
-      ],
-      cantos_sugeridos: getSuggestedChantsForDay(
-        tiempo,
-        color,
-        titulo,
-        liturgiaPalabra,
-        isoDate
-      )
-    };
-  }
-
-  // Check Roman Santoral for fixed solemnities, feasts and memorials
-  if (santoralEntry) {
-    const s = santoralEntry;
-    const liturgiaPalabra = {
-      primera_lectura: s.primera_lectura || {
-        titulo: 'Primera Lectura',
-        cita: 'Lectura bíblica',
-        texto: 'Proclamación de la Palabra de Dios.'
-      },
-      salmo_responsorial: s.salmo_responsorial || {
-        cita: 'Salmo Responsorial',
-        respuesta: 'El Señor es mi pastor, nada me falta.',
-        texto: 'El Señor es mi luz y mi salvación.'
-      },
-      segunda_lectura: s.segunda_lectura,
-      aclamacion_evangelio: s.aclamacion_evangelio || {
-        texto: 'R. Aleluya, aleluya.\nLa palabra de Dios es viva y eficaz.\nR. Aleluya.'
-      },
-      evangelio: s.evangelio || {
-        titulo: 'Santo Evangelio',
-        cita: 'Lectura del santo Evangelio',
-        texto: 'En aquel tiempo...'
-      }
-    };
-
-    return {
-      fecha: isoDate,
-      dia_semana: seasonInfo.diaSemana,
-      tiempo_liturgico: s.tiempo_liturgico || seasonInfo.tiempo,
-      color: s.color || seasonInfo.color,
-      grado: s.grado || seasonInfo.grado,
-      titulo_celebracion: s.titulo_celebracion || seasonInfo.tituloCelebracion,
-      celebracion: s.titulo_celebracion || seasonInfo.tituloCelebracion,
-      ciclo: seasonInfo.ciclo,
-      ano_ferial: seasonInfo.anoFerial,
-      monicion_entrada: s.primera_lectura?.monicion ? `Hermanos: Sean bienvenidos a la celebración de ${s.titulo_celebracion}. Que la Palabra y el Sacramento renueven nuestra fe y amor fraterno.` : `Hermanos: Con gozo nos reunimos para celebrar la memoria de ${s.titulo_celebracion}.`,
-      antifona_entrada: s.antifona_entrada || `Cantemos al Señor, porque ha hecho maravillas.`,
-      gloria: s.color === 'Blanco' || s.grado === 'Solemnidad' || s.grado === 'Fiesta',
-      oracion_colecta: s.oracion_colecta || `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo.`,
-      liturgia_palabra: liturgiaPalabra,
-      credo: s.grado === 'Solemnidad' || seasonInfo.grado === 'Domingo',
-      oracion_fieles: [
-        'Por la Santa Iglesia universal, para que anuncie con fidelidad el Evangelio de Cristo a todos los pueblos. Roguemos al Señor.',
-        'Por los gobernantes de las naciones, para que promuevan la paz auténtica, la justicia y el bien común. Roguemos al Señor.',
-        'Por los enfermos, los pobres y los que sufren tribulación, para que sientan la consolación de Dios. Roguemos al Señor.',
-        'Por nuestra comunidad reunida en torno al altar, para que el testimonio de los santos inspire nuestra entrega diaria. Roguemos al Señor.'
-      ],
-      oracion_ofrendas: s.oracion_ofrendas || `Acepta, Señor, estos dones que te presentamos en la fiesta de ${s.titulo_celebracion}.`,
-      antifona_comunion: s.antifona_comunion || `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
-      oracion_comunion: s.oracion_comunion || `Que este santo sacramento que hemos recibido, Señor, nos comunique la vida eterna. Por Jesucristo, nuestro Señor.`,
-      reflexion_homiletica: s.reflexion_homiletica,
-      cantos_sugeridos: getSuggestedChantsForDay(
-        s.tiempo_liturgico || seasonInfo.tiempo,
-        s.color || seasonInfo.color,
-        s.titulo_celebracion || seasonInfo.tituloCelebracion,
-        liturgiaPalabra,
-        isoDate
-      )
-    };
-  }
-
-  // Check Sunday Lectionary for general Sundays
-  const generalSunday = seasonInfo.grado === 'Domingo' ? getSundayLectionary(seasonInfo.semanaNumero || 21, seasonInfo.ciclo) : null;
-
-  const defaultLiturgiaPalabra = generalSunday ? {
-    primera_lectura: generalSunday.primera_lectura,
-    salmo_responsorial: generalSunday.salmo_responsorial,
-    segunda_lectura: generalSunday.segunda_lectura,
-    aclamacion_evangelio: generalSunday.aclamacion_evangelio,
-    evangelio: generalSunday.evangelio
+  const liturgiaPalabra = hasProperSanctoralReadings ? {
+    primera_lectura: santoralEntry.primera_lectura!,
+    salmo_responsorial: santoralEntry.salmo_responsorial || {
+      cita: 'Salmo Responsorial',
+      respuesta: 'El Señor es mi luz y mi salvación.',
+      texto: 'El Señor es la defensa de mi vida.'
+    },
+    segunda_lectura: santoralEntry.segunda_lectura,
+    aclamacion_evangelio: santoralEntry.aclamacion_evangelio || {
+      texto: 'R. Aleluya, aleluya.\nLa palabra de Dios es viva y eficaz.\nR. Aleluya.'
+    },
+    evangelio: santoralEntry.evangelio || {
+      titulo: 'Santo Evangelio',
+      cita: 'Lectura del santo Evangelio',
+      texto: 'En aquel tiempo...'
+    }
+  } : sundayEntry ? {
+    primera_lectura: sundayEntry.primera_lectura,
+    salmo_responsorial: sundayEntry.salmo_responsorial,
+    segunda_lectura: sundayEntry.segunda_lectura,
+    aclamacion_evangelio: sundayEntry.aclamacion_evangelio,
+    evangelio: sundayEntry.evangelio,
+  } : ferialEntry ? {
+    primera_lectura: ferialEntry.primera_lectura,
+    salmo_responsorial: ferialEntry.salmo_responsorial,
+    aclamacion_evangelio: ferialEntry.aclamacion_evangelio,
+    evangelio: ferialEntry.evangelio
   } : {
     primera_lectura: {
       titulo: 'Primera Lectura',
-      cita: 'Lectura bíblica del Leccionario',
-      texto: `Hermanos: La gracia de Dios se ha manifestado para la salvación de todos los hombres, enseñándonos a renunciar a la impiedad y a los deseos mundanos, para vivir en este mundo con sobriedad, justicia y piedad, aguardando la bienaventurada esperanza y la manifestación gloriosa de nuestro gran Dios y Salvador Jesucristo.\n\nPalabra de Dios.`,
-      monicion: `En esta lectura, la Sagrada Escritura nos exhorta a poner toda nuestra confianza en las promesas del Señor y caminar en fidelidad.`
+      cita: 'Lectura bíblica de la feria',
+      texto: 'Proclamación de la Palabra de Dios según el Leccionario Romano.',
+      monicion: 'Escuchemos con fe la Palabra salvadora del Señor.'
     },
     salmo_responsorial: {
-      cita: 'Salmo 23',
-      respuesta: 'El Señor es mi pastor, nada me falta.',
-      texto: `El Señor es mi pastor, nada me falta:\nen verdes praderas me hace recostar;\nme conduce hacia fuentes tranquilas\ny repara mis fuerzas.\n\nR. El Señor es mi pastor, nada me falta.\n\nMe guía por el sendero justo,\npor el honor de su nombre.\nAunque camine por cañadas oscuras,\nnada temo, porque tú vas conmigo:\ntu vara y tu cayado me sosiegan.\n\nR. El Señor es mi pastor, nada me falta.`
+      cita: 'Salmo Responsorial',
+      respuesta: 'Dichoso el que confía en el Señor.',
+      texto: 'Dichoso el hombre que no sigue el consejo de los impíos, sino que en la ley del Señor se deleita.'
     },
-    segunda_lectura: seasonInfo.grado === 'Domingo' || seasonInfo.grado === 'Solemnidad' ? {
-      titulo: 'Segunda Lectura',
-      cita: 'Lectura de la carta del apóstol san Pablo',
-      texto: `Hermanos: Les ruego, por la misericordia de Dios, que se ofrezcan a sí mismos como hostia viva, santa y agradable a Dios: éste es su culto espiritual. No se amolden al mundo actual, sino transfórmense mediante la renovación de su mente, para que puedan discernir cuál es la voluntad de Dios: lo bueno, lo agradable y lo perfecto.\n\nPalabra de Dios.`,
-      monicion: `El apóstol nos llama a ofrecer nuestras vidas como un culto agradable a Dios en el amor mutuo.`
-    } : undefined,
     aclamacion_evangelio: {
-      texto: 'R. Aleluya, aleluya.\nMis ovejas escuchan mi voz, dice el Señor; yo las conozco y ellas me siguen.\nR. Aleluya.'
+      texto: 'R. Aleluya, aleluya.\nTus palabras, Señor, son espíritu y vida.\nR. Aleluya.'
     },
     evangelio: {
       titulo: 'Santo Evangelio',
-      cita: 'Lectura del santo Evangelio según san Juan',
-      texto: `En aquel tiempo, Jesús dijo a sus discípulos: «La paz les dejo, mi paz les doy; no se la doy como la da el mundo. No se turbe su corazón ni se acobarde. Si me amaran, se alegrarían de que vaya al Padre, porque el Padre es más grande que yo. Les he dicho esto ahora, antes de que suceda, para que cuando suceda, crean».\n\nPalabra del Señor.`,
-      monicion: `Jesús nos promete su Espíritu Consolador y nos llena de la verdadera paz pascual. Escuchemos su Evangelio.`
+      cita: 'Lectura del santo Evangelio',
+      texto: 'En aquel tiempo, Jesús enseñaba a sus discípulos...',
+      monicion: 'De pie, con devoción y alegría, aclamemos el santo Evangelio.'
     }
   };
 
-  // Generate a faithful liturgical template for dates outside the seed slice
+  const antifonaEntrada = santoralEntry?.antifona_entrada || sundayEntry?.antifona_entrada || ferialEntry?.antifona_entrada || 'El Señor es la fuerza de su pueblo, el baluarte de salvación para su Ungido.';
+  const oracionColecta = santoralEntry?.oracion_colecta || sundayEntry?.oracion_colecta || ferialEntry?.oracion_colecta || 'Dios todopoderoso y eterno, que unes en un solo querer los corazones de tus fieles, concédenos amar lo que mandas y desear lo que prometes, para que, en medio de las vicisitudes del mundo, nuestros corazones estén firmes donde se encuentran los verdaderos gozos. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.';
+  const oracionOfrendas = santoralEntry?.oracion_ofrendas || sundayEntry?.oracion_ofrendas || ferialEntry?.oracion_ofrendas || 'Acepta con bondad, Señor, los dones que con reverencia te presentamos, y transforma este sacrificio en prenda de salvación eterna. Por Jesucristo, nuestro Señor. Amén.';
+  const antifonaComunion = santoralEntry?.antifona_comunion || sundayEntry?.antifona_comunion || ferialEntry?.antifona_comunion || 'El que come mi carne y bebe mi sangre tiene vida eterna, y yo lo resucitaré en el último día, dice el Señor.';
+  const oracionComunion = santoralEntry?.oracion_comunion || sundayEntry?.oracion_comunion || ferialEntry?.oracion_comunion || 'Te pedimos, Señor, que los sagrados misterios que hemos recibido nos purifiquen de todo mal y nos unan en el vínculo de tu divino amor. Por Jesucristo, nuestro Señor. Amén.';
+
+  const isGloria = color === 'Blanco' || grado === 'Solemnidad' || grado === 'Fiesta' || (tiempo.includes('Ordinario') && isSundayCelebration);
+  const isCredo = grado === 'Solemnidad' || isSundayCelebration;
+
   return {
     fecha: isoDate,
     dia_semana: seasonInfo.diaSemana,
-    tiempo_liturgico: seasonInfo.tiempo,
-    color: seasonInfo.color,
-    grado: seasonInfo.grado,
-    titulo_celebracion: seasonInfo.tituloCelebracion,
-    celebracion: seasonInfo.tituloCelebracion,
+    tiempo_liturgico: tiempo,
+    color: color,
+    grado: grado,
+    titulo_celebracion: titulo,
+    celebracion: titulo,
     ciclo: seasonInfo.ciclo,
     ano_ferial: seasonInfo.anoFerial,
-    monicion_entrada: generalSunday?.monicion_entrada || `Hermanos: Con alegría nos congregamos hoy para celebrar los sagrados misterios en este ${seasonInfo.tituloCelebracion}. Que la Palabra y el Sacramento renueven nuestra fe y esperanza.`,
-    antifona_entrada: generalSunday?.antifona_entrada || `Cantemos al Señor, porque ha hecho maravillas; aclamemos al Dios de nuestra salvación.`,
-    gloria: seasonInfo.color === 'Blanco' || seasonInfo.grado === 'Solemnidad' || seasonInfo.grado === 'Fiesta' || (seasonInfo.tiempo === 'Tiempo Ordinario' && seasonInfo.grado === 'Domingo'),
-    oracion_colecta: generalSunday?.oracion_colecta || `Dios todopoderoso y eterno, concede a tu pueblo congregado en tu nombre caminar siempre según tus mandamientos y gustar de la plenitud de tu gracia. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.`,
-    liturgia_palabra: defaultLiturgiaPalabra,
-    credo: seasonInfo.grado === 'Domingo' || seasonInfo.grado === 'Solemnidad',
+    fuente_oficial: 'Ordo Litúrgico de la Conferencia del Episcopado Mexicano (CEM) y Misal Romano',
+    monicion_entrada: santoralEntry?.primera_lectura?.monicion ? `Hermanos: Sean bienvenidos a la celebración de ${titulo}. Que la escucha atenta de la Palabra y la comunión eucarística renueven nuestra vida en Cristo.` : (sundayEntry?.monicion_entrada || `Hermanos: Con gozo santo nos congregamos hoy para celebrar ${titulo}. Que el Señor ilumine nuestras vidas con la gracia de su Santo Espíritu.`),
+    antifona_entrada: antifonaEntrada,
+    gloria: isGloria,
+    oracion_colecta: oracionColecta,
+    liturgia_palabra: liturgiaPalabra,
+    credo: isCredo,
     oracion_fieles: [
-      'Por la Santa Iglesia universal, por el Papa, los Obispos, presbíteros y diáconos, para que apacienten al pueblo de Dios con amor y sabiduría. Roguemos al Señor.',
-      'Por los gobernantes y líderes sociales, para que trabajen por la paz duradera, la justicia y el bienestar de los más desfavorecidos. Roguemos al Señor.',
-      'Por los enfermos, los ancianos, los migrantes y cuantos sufren soledad o tribulación, para que sientan la presencia reconfortante de Cristo. Roguemos al Señor.',
-      'Por los fieles de nuestra comunidad, para que fortalecidos con la Eucaristía seamos testigos vivos del amor del Padre en nuestras familias. Roguemos al Señor.'
+      'Por la Santa Iglesia de Dios y por el Santo Padre, para que continúe guiando al Pueblo de Dios con fidelidad evangélica. Roguemos al Señor.',
+      'Por la paz en México y en el mundo entero, para que cesen las discordias y florezca la justicia y la fraternidad. Roguemos al Señor.',
+      'Por los enfermos, los migrantes y todos los que sufren, para que encuentren fortaleza en la cruz redentora de Cristo. Roguemos al Señor.',
+      'Por nuestra comunidad parroquial, para que fructifiquemos en santidad, obras de misericordia y vocaciones consagradas. Roguemos al Señor.'
     ],
-    oracion_ofrendas: generalSunday?.oracion_ofrendas || `Acepta, Señor, los dones que con gozo te presentamos en este altar, y por este santo sacrificio concédenos la salvación eterna. Por Jesucristo, nuestro Señor. Amén.`,
-    antifona_comunion: generalSunday?.antifona_comunion || `El que come mi carne y bebe mi sangre permanece en mí y yo en él, dice el Señor.`,
-    oracion_comunion: generalSunday?.oracion_comunion || `Te pedimos, Señor, que la comunión de este sacramento nos purifique de todo pecado y nos haga partícipes de tu vida inmortal. Por Jesucristo, nuestro Señor. Amén.`,
-    reflexion_homiletica: (generalSunday?.reflexion_homiletica) || [
-      `El misterio que hoy celebramos nos convoca al centro mismo de la vida cristiana: el encuentro vivo con la Palabra encarnada y el banquete eucarístico. Los Santos Padres nos recuerdan que la Eucaristía es el memorial perenne del amor que vence toda muerte y desolación.`,
-      `Al acercarnos a la mesa del Señor, renovamos nuestro compromiso de ser discípulos misioneros, llevando la luz del Evangelio a nuestras familias, centros de trabajo y ambientes cotidianos, viviendo la caridad fraterna como el signo distintivo de los hijos de Dios.`
+    oracion_ofrendas: oracionOfrendas,
+    antifona_comunion: antifonaComunion,
+    oracion_comunion: oracionComunion,
+    reflexion_homiletica: (sundayEntry?.reflexion_homiletica) || (santoralEntry?.reflexion_homiletica) || [
+      `La celebración de ${titulo} nos recuerda que la santidad es la vocación universal de todo bautizado. La Palabra de Dios proclamada hoy nos urge a vivir con coherencia evangélica en medio de las realidades cotidianas.`,
+      `Al alimentarnos del Pan bajado del cielo, imploramos la fortaleza del Espíritu Santo para dar testimonio valiente de nuestra fe y ser constructores de comunión, verdad y esperanza en nuestras familias.`
     ],
     cantos_sugeridos: getSuggestedChantsForDay(
-      seasonInfo.tiempo,
-      seasonInfo.color,
-      seasonInfo.tituloCelebracion,
-      defaultLiturgiaPalabra,
+      tiempo,
+      color,
+      titulo,
+      liturgiaPalabra,
       isoDate
     )
   };
