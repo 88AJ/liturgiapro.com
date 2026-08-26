@@ -118,6 +118,7 @@ export interface SchemaCantosMisa {
 
 export type SacramentoType = 
   | 'bautismo' 
+  | 'primeracomunion'
   | 'confirmacion' 
   | 'matrimonio' 
   | 'reconciliacion' 
@@ -125,6 +126,25 @@ export type SacramentoType =
   | 'orden' 
   | 'xvanos' 
   | 'exequias';
+
+export interface PrimeraComunionParams {
+  nombreParroquia: string;
+  parroquiaDireccion?: string;
+  ciudadLugar?: string;
+  parroquiaTelefono?: string;
+  nombreCelebrante: string;
+  nombreDiaconos?: string;
+  nombreCRE?: string;
+  nombreCatequistas?: string;
+  nombreCoro?: string;
+  nombreLectores?: string;
+  nombreMonaguillos?: string;
+  nombreHospitalidad?: string;
+  cantidadNinos?: string;
+  generacion?: string;
+  fecha: string;
+  idiomaModo?: 'bilingue' | 'espanol' | 'ingles';
+}
 
 export interface BautismoParams {
   nombreBebe: string;

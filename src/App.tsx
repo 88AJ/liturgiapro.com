@@ -143,7 +143,7 @@ export function App() {
             <SemanaSantaView />
           )}
 
-          {(['bautismo', 'confirmacion', 'matrimonio', 'reconciliacion', 'uncion', 'orden', 'xvanos', 'exequias'] as SacramentoType[]).includes(activeView as SacramentoType) && (
+          {(['bautismo', 'primeracomunion', 'confirmacion', 'matrimonio', 'reconciliacion', 'uncion', 'orden', 'xvanos', 'exequias'] as SacramentoType[]).includes(activeView as SacramentoType) && (
             <SacramentosView
               initialType={activeView as SacramentoType}
               onOpenImpresor={() => setActiveView('impresor')}

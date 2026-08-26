@@ -12,11 +12,13 @@ import {
   Sliders, 
   Check, 
   Download,
-  BookOpen
+  BookOpen,
+  Wine
 } from 'lucide-react';
 import { 
   SacramentoType, 
   BautismoParams, 
+  PrimeraComunionParams,
   MatrimonioParams, 
   ExequiasParams, 
   XVAñosParams, 
@@ -25,6 +27,7 @@ import {
 import { MatrimonioRitualView } from './MatrimonioRitualView';
 import { XVAñosRitualView } from './XVAñosRitualView';
 import { ConfirmacionRitualView } from './ConfirmacionRitualView';
+import { PrimeraComunionRitualView } from './PrimeraComunionRitualView';
 
 interface SacramentosViewProps {
   initialType?: SacramentoType;
@@ -108,8 +111,28 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
     idiomaModo: 'bilingue'
   });
 
+  const [primeraComunionData, setPrimeraComunionData] = useState<PrimeraComunionParams>({
+    nombreParroquia: 'St. Joseph Catholic Church',
+    parroquiaDireccion: '620 W. Benson St.',
+    ciudadLugar: 'La Pryor, TX',
+    parroquiaTelefono: '(830) 365-4107',
+    nombreCelebrante: 'Rev. Alan Sanchez',
+    nombreDiaconos: 'Rev. Mr. Gene Corrigan, Rev. Mr. Juan Gallegos',
+    nombreCRE: 'Yolanda Garcia (CRE)',
+    nombreCatequistas: 'Carmen Lopez, Richard Arredondo, Martha De La Rosa, Jenifer Vera, Jacinto Quijano, Maria Louisa Del Toro',
+    nombreCoro: 'CCD Students / Estudiantes del Catecismo',
+    nombreLectores: 'CCD Students / Estudiantes del Catecismo',
+    nombreMonaguillos: 'CCD Students / Estudiantes del Catecismo',
+    nombreHospitalidad: 'Knights of Columbus / Caballeros de Colón',
+    cantidadNinos: '35 Niños y Niñas',
+    generacion: '2023-2025',
+    fecha: '2025',
+    idiomaModo: 'bilingue'
+  });
+
   const sacramentosList = [
     { id: 'bautismo' as SacramentoType, label: 'Bautismo', icon: Baby },
+    { id: 'primeracomunion' as SacramentoType, label: '1ª Comunión', icon: Wine },
     { id: 'confirmacion' as SacramentoType, label: 'Confirmación', icon: Flame },
     { id: 'matrimonio' as SacramentoType, label: 'Matrimonio', icon: Heart },
     { id: 'reconciliacion' as SacramentoType, label: 'Reconciliación', icon: ShieldCheck },
@@ -234,6 +257,105 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   onChange={(e) => setBautismoData({ ...bautismoData, nombreParroquia: e.target.value })}
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
+              </div>
+            </div>
+          )}
+
+          {activeSacramento === 'primeracomunion' && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Sacerdote Celebrante:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.nombreCelebrante}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreCelebrante: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Diáconos:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.nombreDiaconos || ''}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreDiaconos: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">CRE (Coordinador Catequesis):</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.nombreCRE || ''}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreCRE: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Parroquia / Iglesia:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.nombreParroquia}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreParroquia: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Dirección:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.parroquiaDireccion || ''}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, parroquiaDireccion: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Ciudad / Lugar:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.ciudadLugar || ''}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, ciudadLugar: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Teléfono:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.parroquiaTelefono || ''}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, parroquiaTelefono: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Generación (Class):</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.generacion || ''}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, generacion: e.target.value })}
+                  placeholder="2023-2025"
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Fecha / Año:</label>
+                <input
+                  type="text"
+                  value={primeraComunionData.fecha}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, fecha: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Modo de Idioma:</label>
+                <select
+                  value={primeraComunionData.idiomaModo || 'bilingue'}
+                  onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, idiomaModo: e.target.value as any })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                >
+                  <option value="bilingue">Bilingüe (Parallel 2 Col)</option>
+                  <option value="espanol">Solo Español</option>
+                  <option value="ingles">English Only</option>
+                </select>
               </div>
             </div>
           )}
@@ -721,6 +843,11 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
               </p>
             </section>
           </div>
+        )}
+
+        {/* RITUAL DE PRIMERA COMUNIÓN (ESQUEMA CANÓNICO BILINGÜE DE 52 PÁGINAS) */}
+        {activeSacramento === 'primeracomunion' && (
+          <PrimeraComunionRitualView data={primeraComunionData} />
         )}
 
         {/* RITUAL DE MATRIMONIO (ESQUEMA CANÓNICO COMPLETO DE 23 PÁGINAS) */}

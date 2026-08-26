@@ -13,7 +13,8 @@ import {
   Printer, 
   CalendarDays,
   Award,
-  Users
+  Users,
+  Wine
 } from 'lucide-react';
 
 export type ActiveView = 
@@ -21,6 +22,7 @@ export type ActiveView =
   | 'ordinario'
   | 'semana-santa'
   | 'bautismo'
+  | 'primeracomunion'
   | 'confirmacion'
   | 'matrimonio'
   | 'reconciliacion'
@@ -68,6 +70,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       category: 'SACRAMENTOS Y RITOS',
       items: [
         { id: 'bautismo' as ActiveView, label: 'Bautismo de Niños', icon: Baby },
+        { id: 'primeracomunion' as ActiveView, label: 'Primera Comunión (Bilingüe)', icon: Wine },
         { id: 'confirmacion' as ActiveView, label: 'Confirmación', icon: Flame },
         { id: 'matrimonio' as ActiveView, label: 'Matrimonio Católico', icon: Heart },
         { id: 'reconciliacion' as ActiveView, label: 'Reconciliación (Confesión)', icon: ShieldCheck },
