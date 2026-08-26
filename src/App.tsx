@@ -15,7 +15,7 @@ import { BibliotecarioModal } from './components/views/BibliotecarioModal';
 import { CeremonieroDrawer } from './components/views/CeremonieroDrawer';
 import { getLiturgicalDay } from './data/liturgyData';
 import { LiturgicalDay, SacramentoType } from './types/liturgia';
-import { getCachedLiturgicalDay, saveLiturgicalDayToCache } from './utils/liturgicalCache';
+import { getCachedLiturgicalDay, saveLiturgicalDayToCache, isDayGeneric } from './utils/liturgicalCache';
 import { autoCorrectLiturgicalDay } from './utils/ceremonieroEngine';
 
 export function App() {
@@ -28,11 +28,21 @@ export function App() {
   const [customDays, setCustomDays] = useState<Record<string, LiturgicalDay>>({});
   const [region, setRegion] = useState<string>('mx');
   
+  // Clean legacy cache on mount
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.removeItem('liturgia_pro_cached_days_v1');
+        window.localStorage.removeItem('liturgia_pro_cached_days_v2');
+      }
+    } catch (_) {}
+  }, []);
+
   // Look up in persistent storage whenever selectedDate changes
   useEffect(() => {
     let isMounted = true;
     getCachedLiturgicalDay(selectedDate).then(cached => {
-      if (isMounted && cached) {
+      if (isMounted && cached && !isDayGeneric(cached)) {
         setCustomDays(prev => ({
           ...prev,
           [selectedDate]: cached

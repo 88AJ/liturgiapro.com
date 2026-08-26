@@ -1,9 +1,9 @@
 import { LiturgicalDay } from '../types/liturgia';
 
-const DB_NAME = 'LiturgiaPRO_LibrarianDB';
-const DB_VERSION = 1;
+const DB_NAME = 'LiturgiaPRO_LibrarianDB_v3';
+const DB_VERSION = 3;
 const STORE_NAME = 'liturgical_days';
-const LOCAL_STORAGE_KEY = 'liturgia_pro_cached_days_v1';
+const LOCAL_STORAGE_KEY = 'liturgia_pro_cached_days_v3';
 
 /**
  * Opens or initializes the IndexedDB database.
@@ -33,20 +33,23 @@ function openDB(): Promise<IDBDatabase> {
  */
 export function isDayGeneric(day?: LiturgicalDay | null): boolean {
   if (!day || !day.liturgia_palabra) return true;
-  
-  // If explicitly verified by the Librarian agent or official lectionary
-  if (day.fuente_oficial && (day.fuente_oficial.includes('CEM') || day.fuente_oficial.includes('Misal') || day.fuente_oficial.includes('Bibliotecario'))) {
-    return false;
-  }
 
   const p1 = day.liturgia_palabra.primera_lectura?.texto || '';
   const ev = day.liturgia_palabra.evangelio?.texto || '';
   const p1Cita = day.liturgia_palabra.primera_lectura?.cita || '';
+  const evCita = day.liturgia_palabra.evangelio?.cita || '';
 
-  // Detect default fallback markers
-  if (p1Cita.includes('Lectura bíblica del Leccionario') || p1Cita.includes('Lectura bíblica')) return true;
-  if (p1.includes('La gracia de Dios se ha manifestado para la salvación de todos los hombres') && 
-      ev.includes('La paz les dejo, mi paz les doy')) {
+  // Detect any placeholder markers
+  if (
+    p1Cita.includes('Lectura bíblica del Leccionario') ||
+    p1Cita.includes('Lectura bíblica de la feria') ||
+    p1Cita.includes('Lectura bíblica') ||
+    p1.includes('Proclamación de la Palabra de Dios según el Leccionario Oficial.') ||
+    p1.includes('Proclamación de la Palabra de Dios.') ||
+    p1.includes('La gracia de Dios se ha manifestado para la salvación de todos los hombres') ||
+    ev.includes('Jesús se manifestó a sus discípulos...') ||
+    evCita === 'Lectura del santo Evangelio'
+  ) {
     return true;
   }
 
@@ -57,7 +60,7 @@ export function isDayGeneric(day?: LiturgicalDay | null): boolean {
  * Saves a liturgical day into persistent storage (IndexedDB + LocalStorage backup).
  */
 export async function saveLiturgicalDayToCache(day: LiturgicalDay): Promise<void> {
-  if (!day || !day.fecha) return;
+  if (!day || !day.fecha || isDayGeneric(day)) return;
 
   // 1. Try IndexedDB
   try {
@@ -103,7 +106,10 @@ export async function getCachedLiturgicalDay(date: string): Promise<LiturgicalDa
       req.onerror = () => reject(req.error);
     });
 
-    if (result) return result;
+    if (result) {
+      if (isDayGeneric(result)) return null;
+      return result;
+    }
   } catch (err) {
     // IndexedDB not ready or error, continue to LocalStorage
   }
@@ -114,7 +120,10 @@ export async function getCachedLiturgicalDay(date: string): Promise<LiturgicalDa
       const raw = window.localStorage.getItem(LOCAL_STORAGE_KEY);
       if (raw) {
         const map: Record<string, LiturgicalDay> = JSON.parse(raw);
-        if (map[date]) return map[date];
+        if (map[date]) {
+          if (isDayGeneric(map[date])) return null;
+          return map[date];
+        }
       }
     }
   } catch (err) {
