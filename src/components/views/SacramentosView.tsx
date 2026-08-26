@@ -24,6 +24,7 @@ import {
 } from '../../types/liturgia';
 import { MatrimonioRitualView } from './MatrimonioRitualView';
 import { XVAñosRitualView } from './XVAñosRitualView';
+import { ConfirmacionRitualView } from './ConfirmacionRitualView';
 
 interface SacramentosViewProps {
   initialType?: SacramentoType;
@@ -86,6 +87,25 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
     ciudadLugar: 'Laredo, Tx.',
     nombreMusicos: 'Coro Parroquial',
     fecha: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
+  });
+
+  const [confirmacionData, setConfirmacionData] = useState<ConfirmacionParams>({
+    nombreObispo: 'Most. Rev. James A. Tamayo, D. D.',
+    nombrePastor: 'Rev. Leszek Waclawik',
+    nombreVicario: 'Rev. Alan Sanchez',
+    nombreDiaconos: 'Rev. Mr. Juan Zamarripa, Rev. Mr. Ignacio Valdez',
+    nombreCRE: 'Amanda Cantú (CRE)',
+    nombreCatequistas: 'Jaime & Monica Andrade, Jose Luis & Mandy Ramos, Gracie Solis, Patricia Garza, Patsy Sosa, Lupita Oliveros | RICA: Lizette Torres, Raul & Yolanda Gil',
+    nombreCoro: 'Daniel Castillo',
+    nombreLectores: 'Patsy Sosa, Amanda Cantú',
+    nombreMonaguillos: 'Uriel Ancona, Augusto Aguilar, Robert Martínez, Caleb Bernal, Isabella Mendoza, Regina Saldívar, Karime Saldívar',
+    cantidadConfirmandos: '45 Jóvenes y Adultos',
+    nombreParroquia: 'Our Lady of Guadalupe Catholic Church',
+    parroquiaDireccion: '1718 San Jorge Ave.',
+    ciudadLugar: 'Laredo, Texas',
+    parroquiaTelefono: '(956) 723-6954',
+    fecha: '2024',
+    idiomaModo: 'bilingue'
   });
 
   const sacramentosList = [
@@ -481,6 +501,122 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
               </div>
             </div>
           )}
+
+          {activeSacramento === 'confirmacion' && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Obispo Celebrante:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombreObispo}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreObispo: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Párroco (Pastor):</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombrePastor}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombrePastor: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Vicario Parroquial:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombreVicario}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreVicario: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Diáconos:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombreDiaconos || ''}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreDiaconos: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">CRE (Director Catequesis):</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombreCRE || ''}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreCRE: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Coro / Director Musical:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombreCoro || ''}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreCoro: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Parroquia / Iglesia:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.nombreParroquia}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreParroquia: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Dirección:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.parroquiaDireccion || ''}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, parroquiaDireccion: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Ciudad / Lugar:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.ciudadLugar || ''}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, ciudadLugar: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Teléfono:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.parroquiaTelefono || ''}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, parroquiaTelefono: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Fecha / Año:</label>
+                <input
+                  type="text"
+                  value={confirmacionData.fecha}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, fecha: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Modo de Idioma:</label>
+                <select
+                  value={confirmacionData.idiomaModo || 'bilingue'}
+                  onChange={(e) => setConfirmacionData({ ...confirmacionData, idiomaModo: e.target.value as any })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                >
+                  <option value="bilingue">Bilingüe (Parallel 2 Col)</option>
+                  <option value="espanol">Solo Español</option>
+                  <option value="ingles">English Only</option>
+                </select>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -649,59 +785,9 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
           <XVAñosRitualView data={xvAnosData} />
         )}
 
-        {/* RITUAL DE CONFIRMACIÓN */}
+        {/* RITUAL DE CONFIRMACIÓN (ESQUEMA PONTIFICAL BILINGÜE COMPLETO DE 56 PÁGINAS) */}
         {activeSacramento === 'confirmacion' && (
-          <div className="space-y-8">
-            <div className="border-b border-[#D9D1C3] pb-4 text-center">
-              <div className="text-xs font-sans text-[#800020] uppercase tracking-[0.25em] font-bold mb-1">
-                Pontificale Romanum • Sacramento de la Confirmación
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light font-serif italic text-[#2D2926]">
-                Rito de la Confirmación y Unción Crismal
-              </h2>
-              <p className="text-xs font-sans text-[#666] mt-1">
-                Renovación Bautismal, Imposición de Manos y Don del Espíritu Santo
-              </p>
-            </div>
-
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  I. Imposición de las Manos
-                </h3>
-              </div>
-              <div className="rubric">El Obispo o Celebrante, de pie con las manos juntas, dice a la asamblea:</div>
-              <p className="priest-voice">
-                «Oremos, hermanos, a Dios Padre todopoderoso, y pidámosle que derrame el Espíritu Santo sobre estos hijos suyos, que ya renacieron a la vida eterna en el Bautismo, para que los confirme con la plenitud de sus dones y los haga semejantes a Cristo.»
-              </p>
-              <div className="rubric">Y todos oran en silencio unos instantes. Luego el celebrante extiende las manos sobre todos los confirmandos:</div>
-              <div className="bg-[#F5F2EB] p-6 rounded-sm border-l-3 border-[#800020] space-y-2">
-                <p className="font-serif text-[17px] leading-relaxed text-[#2D2926]">
-                  «Dios todopoderoso, Padre de nuestro Señor Jesucristo, que hiciste renacer a estos hijos tuyos por el agua y el Espíritu Santo: envía sobre ellos el Espíritu Santo Paráclito; concédeles el <strong>espíritu de sabiduría y de inteligencia</strong>, el <strong>espíritu de consejo y de fortaleza</strong>, el <strong>espíritu de ciencia y de piedad</strong>; y cólmalos del <strong>espíritu de tu santo temor</strong>. Por Jesucristo, nuestro Señor.»
-                </p>
-                <p className="assembly-response pl-4"><span className="rubric font-sans">R.</span> Amén.</p>
-              </div>
-            </section>
-
-            <section className="space-y-4 pt-4 border-t border-[#D9D1C3]">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  II. Unción con el Santo Crisma
-                </h3>
-              </div>
-              <div className="rubric">El padrino coloca su mano derecha sobre el hombro del confirmando. El celebrante moja el pulgar en el Santo Crisma y traza la señal de la cruz en la frente:</div>
-              <div className="bg-[#F5F2EB] p-6 rounded-sm border border-[#D9D1C3] space-y-3">
-                <p className="priest-voice font-bold text-[#800020]">
-                  «[Nombre], RECIBE POR ESTA SEÑAL EL DON DEL ESPÍRITU SANTO.»
-                </p>
-                <p className="assembly-response pl-4"><span className="rubric font-sans">El Confirmado responde:</span> <strong>Amén.</strong></p>
-                <p className="priest-voice pt-2">«La paz sea contigo.»</p>
-                <p className="assembly-response pl-4"><span className="rubric font-sans">El Confirmado:</span> <strong>Y con tu espíritu.</strong></p>
-              </div>
-            </section>
-          </div>
+          <ConfirmacionRitualView data={confirmacionData} />
         )}
 
         {/* RITUAL DE UNCIÓN DE LOS ENFERMOS */}

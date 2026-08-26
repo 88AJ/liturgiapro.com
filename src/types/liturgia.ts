@@ -180,9 +180,21 @@ export interface XVAñosParams {
 
 export interface ConfirmacionParams {
   nombreObispo: string;
-  cantidadConfirmandos: string;
+  nombrePastor: string;
+  nombreVicario: string;
+  nombreDiaconos?: string;
+  nombreCRE?: string;
+  nombreCatequistas?: string;
+  nombreCoro?: string;
+  nombreLectores?: string;
+  nombreMonaguillos?: string;
+  cantidadConfirmandos?: string;
   nombreParroquia: string;
+  parroquiaDireccion?: string;
+  ciudadLugar?: string;
+  parroquiaTelefono?: string;
   fecha: string;
+  idiomaModo?: 'bilingue' | 'espanol' | 'ingles';
 }
 
 export interface ParishBulletinData {
