@@ -3,14 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-time" content="2026-08-26T04:52:29Z" />
     <title>Liturgia PRO - Asistencia y Gestión Litúrgica</title>
     <meta name="description" content="Plataforma litúrgica integral para sacerdotes, coros y laicos: misal diario, rituales sacramentales, cancionero y ordo." />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☩</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-BY9PKvrk.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BtTNR9Dp.css">
+    <script>
+      try {
+        if (typeof localStorage !== 'undefined') {
+          Object.keys(localStorage).forEach(function(k) {
+            if (k.indexOf('liturgia_pro_cached') !== -1 || k.indexOf('cached_days') !== -1) {
+              localStorage.removeItem(k);
+            }
+          });
+        }
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/assets/index-ZVbAjeIm.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DV5FCTcO.css">
   </head>
   <body class="bg-stone-100 text-stone-900 font-sans antialiased selection:bg-amber-100 selection:text-amber-900">
     <div id="root"></div>

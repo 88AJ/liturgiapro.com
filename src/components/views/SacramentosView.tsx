@@ -22,6 +22,7 @@ import {
   XVAñosParams, 
   ConfirmacionParams 
 } from '../../types/liturgia';
+import { MatrimonioRitualView } from './MatrimonioRitualView';
 
 interface SacramentosViewProps {
   initialType?: SacramentoType;
@@ -47,15 +48,21 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
   });
 
   const [matrimonioData, setMatrimonioData] = useState<MatrimonioParams>({
-    nombreEsposo: 'Alejandro Morales',
-    nombreEsposa: 'Valeria Castillo',
-    nombrePadrinosVelacion: 'Manuel Sánchez y Sofía Navarro',
-    nombrePadrinosAnillos: 'Eduardo Castillo y Laura Peña',
-    nombrePadrinosArras: 'Jorge Morales y Carmen Ruiz',
-    nombrePadrinosLazo: 'Luis Fernando Ruiz y Ana María Gómez',
-    nombreCelebrante: 'Pbro. Francisco Javier Morales',
-    nombreParroquia: 'Parroquia Sagrado Corazón de Jesús',
-    fecha: new Date().toISOString().split('T')[0]
+    nombreEsposo: 'Eduardo De La Miyar Jr.',
+    nombreEsposa: 'Samantha Sinaí Sanchez',
+    nombrePadresNovio: 'Eduardo De La Miyar y Sra.',
+    nombrePadresNovia: 'Padres de Samantha Sinaí',
+    nombrePadrinosAnillos: 'Padrinos de Anillos',
+    nombrePadrinosArras: 'Padrinos de Arras',
+    nombrePadrinosLazo: 'Padrinos de Lazo',
+    nombrePadrinosFlores: 'Padrinos de Flores para la Virgen',
+    nombreAmigosNovio: 'Amigos del Novio (Groomsmen)',
+    nombreAmigasNovia: 'Amigas de la Novia (Bridesmaids)',
+    nombreCelebrante: 'Fr. Alan Sanchez',
+    nombreParroquia: 'Our Lady of Guadalupe',
+    ciudadLugar: 'Laredo, Tx.',
+    nombreMusicos: 'Coro Parroquial / Musicians',
+    fecha: 'Octubre 5, 2024'
   });
 
   const [exequiasData, setExequiasData] = useState<ExequiasParams>({
@@ -208,7 +215,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
           )}
 
           {activeSacramento === 'matrimonio' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               <div>
                 <label className="font-semibold text-[#444] block mb-1">Novio / Esposo:</label>
                 <input
@@ -228,11 +235,22 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 />
               </div>
               <div>
-                <label className="font-semibold text-[#444] block mb-1">Padrinos de Velación:</label>
+                <label className="font-semibold text-[#444] block mb-1">Padres del Novio:</label>
                 <input
                   type="text"
-                  value={matrimonioData.nombrePadrinosVelacion}
-                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosVelacion: e.target.value })}
+                  value={matrimonioData.nombrePadresNovio || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadresNovio: e.target.value })}
+                  placeholder="Padres del Novio"
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Padres de la Novia:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombrePadresNovia || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadresNovia: e.target.value })}
+                  placeholder="Padres de la Novia"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -240,7 +258,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 <label className="font-semibold text-[#444] block mb-1">Padrinos de Anillos:</label>
                 <input
                   type="text"
-                  value={matrimonioData.nombrePadrinosAnillos}
+                  value={matrimonioData.nombrePadrinosAnillos || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosAnillos: e.target.value })}
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
@@ -249,7 +267,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 <label className="font-semibold text-[#444] block mb-1">Padrinos de Arras:</label>
                 <input
                   type="text"
-                  value={matrimonioData.nombrePadrinosArras}
+                  value={matrimonioData.nombrePadrinosArras || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosArras: e.target.value })}
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
@@ -258,8 +276,82 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 <label className="font-semibold text-[#444] block mb-1">Padrinos de Lazo:</label>
                 <input
                   type="text"
-                  value={matrimonioData.nombrePadrinosLazo}
+                  value={matrimonioData.nombrePadrinosLazo || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosLazo: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Flores para la Virgen:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombrePadrinosFlores || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosFlores: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Amigos del Novio (Groomsmen):</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombreAmigosNovio || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreAmigosNovio: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Amigas de la Novia (Bridesmaids):</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombreAmigasNovia || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreAmigasNovia: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Sacerdote Celebrante:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombreCelebrante}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreCelebrante: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Parroquia / Iglesia:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombreParroquia}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreParroquia: e.target.value })}
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Ciudad / Lugar:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.ciudadLugar || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, ciudadLugar: e.target.value })}
+                  placeholder="Laredo, Tx."
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Músicos / Coro:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.nombreMusicos || ''}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreMusicos: e.target.value })}
+                  placeholder="Coro Parroquial"
+                  className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
+                />
+              </div>
+              <div>
+                <label className="font-semibold text-[#444] block mb-1">Fecha de Celebración:</label>
+                <input
+                  type="text"
+                  value={matrimonioData.fecha}
+                  onChange={(e) => setMatrimonioData({ ...matrimonioData, fecha: e.target.value })}
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -435,90 +527,9 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
           </div>
         )}
 
-        {/* RITUAL DE MATRIMONIO */}
+        {/* RITUAL DE MATRIMONIO (ESQUEMA CANÓNICO COMPLETO DE 23 PÁGINAS) */}
         {activeSacramento === 'matrimonio' && (
-          <div className="space-y-8">
-            <div className="border-b border-[#D9D1C3] pb-4 text-center">
-              <div className="text-xs font-sans text-[#800020] uppercase tracking-[0.25em] font-bold mb-1">
-                Ordo Celebrandi Matrimonium
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light font-serif italic text-[#2D2926]">
-                Matrimonio de {matrimonioData.nombreEsposo} y {matrimonioData.nombreEsposa}
-              </h2>
-              <p className="text-xs font-sans text-[#666] mt-1">
-                {matrimonioData.nombreParroquia} • Celebrante: {matrimonioData.nombreCelebrante}
-              </p>
-            </div>
-
-            {/* Escrutinio */}
-            <section className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  I. Escrutinio y Preguntas de Libertad
-                </h3>
-              </div>
-              <p className="priest-voice">
-                {matrimonioData.nombreEsposo} y {matrimonioData.nombreEsposa}, ¿vienen a contraer Matrimonio libre y voluntariamente, sin que nada ni nadie los presione?
-              </p>
-              <p className="assembly-response pl-4">Esposos: Sí, venimos libremente.</p>
-              <p className="priest-voice pt-2">
-                ¿Están dispuestos a amarse y honrarse mutuamente en el matrimonio durante toda la vida?
-              </p>
-              <p className="assembly-response pl-4">Esposos: Sí, estamos dispuestos.</p>
-            </section>
-
-            {/* Consentimiento */}
-            <section className="space-y-4 pt-4 border-t border-[#D9D1C3]">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  II. Consentimiento Matrimonial
-                </h3>
-              </div>
-              <div className="rubric">El novio toma la mano derecha de la novia y dice:</div>
-              <div className="bg-[#F5F2EB] p-6 rounded-sm border-l-3 border-[#800020] space-y-2">
-                <p className="font-serif text-[18px] leading-relaxed text-[#2D2926]">
-                  «Yo, <strong>{matrimonioData.nombreEsposo}</strong>, te acepto a ti, <strong>{matrimonioData.nombreEsposa}</strong>, como mi esposa, y prometo serte fiel en la prosperidad y en la adversidad, en la salud y en la enfermedad, y amarte y respetarte todos los días de mi vida.»
-                </p>
-              </div>
-
-              <div className="rubric pt-2">La novia toma la mano derecha del novio y dice:</div>
-              <div className="bg-[#F5F2EB] p-6 rounded-sm border-l-3 border-[#800020] space-y-2">
-                <p className="font-serif text-[18px] leading-relaxed text-[#2D2926]">
-                  «Yo, <strong>{matrimonioData.nombreEsposa}</strong>, te acepto a ti, <strong>{matrimonioData.nombreEsposo}</strong>, como mi esposo, y prometo serte fiel en la prosperidad y en la adversidad, en la salud y en la enfermedad, y amarte y respetarte todos los días de mi vida.»
-                </p>
-              </div>
-
-              <div className="rubric pt-3">Confirmación del consentimiento por el sacerdote:</div>
-              <p className="priest-voice font-bold text-[#800020]">
-                El Dios de Abraham, el Dios de Isaac, el Dios de Jacob, el Dios que unió a Adán y Eva en el paraíso, confirme este consentimiento mutuo que acaban de manifestar ante la Iglesia. LO QUE DIOS HA UNIDO, QUE NO LO SEPARE EL HOMBRE.
-              </p>
-              <p className="assembly-response pl-4"><span className="rubric font-sans">R.</span> Amén.</p>
-            </section>
-
-            {/* Anillos y Arras */}
-            <section className="space-y-4 pt-4 border-t border-[#D9D1C3]">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-6 bg-[#800020]"></span>
-                <h3 className="uppercase font-sans text-[11px] tracking-[0.2em] font-bold text-[#800020]">
-                  III. Bendición y Entrega de Anillos y Arras
-                </h3>
-              </div>
-              <p className="priest-voice">
-                El esposo coloca el anillo en el anular de la esposa:
-              </p>
-              <p className="italic text-[#2D2926] pl-4">
-                «{matrimonioData.nombreEsposa}, recibe este anillo en señal de mi amor y fidelidad a ti. En el nombre del Padre, y del Hijo, y del Espíritu Santo.»
-              </p>
-              <p className="priest-voice pt-2">
-                La esposa coloca el anillo en el anular del esposo:
-              </p>
-              <p className="italic text-[#2D2926] pl-4">
-                «{matrimonioData.nombreEsposo}, recibe este anillo en señal de mi amor y fidelidad a ti. En el nombre del Padre, y del Hijo, y del Espíritu Santo.»
-              </p>
-            </section>
-          </div>
+          <MatrimonioRitualView data={matrimonioData} />
         )}
 
         {/* RITUAL DE EXEQUIAS */}

@@ -139,12 +139,19 @@ export interface BautismoParams {
 export interface MatrimonioParams {
   nombreEsposo: string;
   nombreEsposa: string;
-  nombrePadrinosVelacion: string;
-  nombrePadrinosAnillos: string;
-  nombrePadrinosArras: string;
-  nombrePadrinosLazo: string;
+  nombrePadrinosVelacion?: string;
+  nombrePadrinosAnillos?: string;
+  nombrePadrinosArras?: string;
+  nombrePadrinosLazo?: string;
+  nombrePadrinosFlores?: string;
+  nombrePadresNovio?: string;
+  nombrePadresNovia?: string;
+  nombreAmigosNovio?: string;
+  nombreAmigasNovia?: string;
   nombreCelebrante: string;
   nombreParroquia: string;
+  ciudadLugar?: string;
+  nombreMusicos?: string;
   fecha: string;
 }
 
