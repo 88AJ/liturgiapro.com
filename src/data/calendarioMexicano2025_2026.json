@@ -2440,273 +2440,246 @@
   },
   "2026-09-04": {
     "fecha": "2026-09-04",
-    "titulo_celebracion": "Viernes de la XXII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Viernes de la XXII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-05": {
     "fecha": "2026-09-05",
-    "titulo_celebracion": "Sábado de la XXII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
+    "titulo_celebracion": "Sábado de la XXII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II o Santa María en Sábado."
   },
   "2026-09-06": {
     "fecha": "2026-09-06",
-    "titulo_celebracion": "XXIII domingo del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "XXIII Domingo del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Domingo",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario propio de este domingo, y las lecturas pro- pias de este domingo, ciclo A. Se usa uno de los prefacios para domingos del tiempo ordinario. Gloria y Credo. · Se permiten misas rituales y exequiales."
+    "rubricas": "Verde. Gloria, Credo. Prefacio dominical."
   },
   "2026-09-07": {
     "fecha": "2026-09-07",
-    "titulo_celebracion": "Lunes de la XXIII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Lunes de la XXIII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-08": {
     "fecha": "2026-09-08",
-    "titulo_celebracion": "La Natividad de la bienaventurada Virgen María (fiesta)",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "La Natividad de la Santísima Virgen María",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
     "grado": "Fiesta",
     "propio_mexico": null,
-    "rubricas": "· Blanco. Misa propia. Prefacio I de la bienaventurada Virgen María (en la Natividad). Lecturas propias. Gloria · Se permiten misas rituales y exequiales. Las misas votivas y por diversas circunstancias solo se permiten con autorización del obispo."
+    "rubricas": "Blanco. Gloria. Lecturas propias. Prefacio de Santa María Virgen."
   },
   "2026-09-09": {
     "fecha": "2026-09-09",
-    "titulo_celebracion": "Miércoles de la XXIII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
+    "titulo_celebracion": "San Pedro Claver, presbítero",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde o Blanco. Lecturas de la feria, año II."
   },
   "2026-09-10": {
     "fecha": "2026-09-10",
-    "titulo_celebracion": "Jueves de la XXIII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Jueves de la XXIII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-11": {
     "fecha": "2026-09-11",
-    "titulo_celebracion": "Viernes de la XXIII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Viernes de la XXIII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-12": {
     "fecha": "2026-09-12",
-    "titulo_celebracion": "Sábado de la XXIII semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "El Dulce Nombre de la Bienaventurada Virgen María",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
-    "grado": "Feria",
+    "grado": "Memoria Libre",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Blanco. Lecturas de la feria, año II o propias."
   },
   "2026-09-13": {
     "fecha": "2026-09-13",
-    "titulo_celebracion": "XXIV domingo del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "XXIV Domingo del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Domingo",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario propio de este domingo, y las lecturas pro- pias de este domingo, ciclo A. Se usa uno de los prefacios para domingos del tiempo ordinario. Gloria y Credo. · Se permiten misas rituales y exequiales."
+    "rubricas": "Verde. Gloria, Credo. Prefacio dominical."
   },
   "2026-09-14": {
     "fecha": "2026-09-14",
-    "titulo_celebracion": "La Exaltación de la Santa Cruz (fiesta)",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "La Exaltación de la Santa Cruz",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Rojo",
     "grado": "Fiesta",
     "propio_mexico": null,
-    "rubricas": "· Rojo. Misa propia. Prefacio propio. Lecturas de la feria. · Se permiten misas rituales y exequiales. Las misas votivas y por diversas circunstancias solo se permiten con autorización del obispo. En México, Colombia y Chile, que ya se celebró el 3 de mayo: Lunes de la XXIV semana del tiempo ordinar"
+    "rubricas": "Rojo. Gloria. Lecturas propias. Prefacio de la Santa Cruz."
   },
   "2026-09-15": {
     "fecha": "2026-09-15",
-    "titulo_celebracion": "Bienaventurada Virgen María de los Dolores",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Nuestra Señora de los Dolores",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
     "grado": "Memoria Obligatoria",
     "propio_mexico": null,
-    "rubricas": "(memoria obligatoria) · Blanco. Misa propia. Prefacio I, II o IV de la bienaventurada Virgen María (en la conmemoración) Lecturas de la feria. Secuencia. · Se permiten misas rituales, exequiales, tras el anuncio de muerte, en la sepultura, y en el primer aniversario de muerte. Por una grave utilidad"
+    "rubricas": "Blanco. Misa propia. Secuencia opcional. Lecturas propias o de la feria."
   },
   "2026-09-16": {
     "fecha": "2026-09-16",
     "titulo_celebracion": "Santos Cornelio, papa, y Cipriano, obispo, mártires",
-    "tiempo_liturgico": "Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Rojo",
     "grado": "Memoria Obligatoria",
     "propio_mexico": null,
-    "rubricas": "(memoria obligatoria) · Rojo. Misa Las oraciones son propias y las antífonas se toman del común de mártires (para varios mártires). Lecturas de la feria. Se recomienda usar el Canon Romano. · Se permiten misas rituales, exequiales, tras el anuncio de muerte, en la sepultura, y en el primer aniversar"
+    "rubricas": "Rojo. Misa de los santos mártires."
   },
   "2026-09-17": {
     "fecha": "2026-09-17",
-    "titulo_celebracion": "Jueves de la XXIV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
+    "titulo_celebracion": "Jueves de la XXIV semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-18": {
     "fecha": "2026-09-18",
-    "titulo_celebracion": "Viernes de la XXIV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Viernes de la XXIV semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-19": {
     "fecha": "2026-09-19",
-    "titulo_celebracion": "Sábado de la XXIV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
+    "titulo_celebracion": "Sábado de la XXIV semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
-    "propio_mexico": "San José María de Yermo y Parrés, presbítero (memoria libre)",
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "propio_mexico": null,
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-20": {
     "fecha": "2026-09-20",
-    "titulo_celebracion": "XXV domingo del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "XXV Domingo del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Domingo",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario propio de este domingo, y las lecturas pro- pias de este domingo, ciclo A. Se usa uno de los prefacios para domingos del tiempo ordinario. Gloria y Credo. · Se permiten misas rituales y exequiales."
+    "rubricas": "Verde. Gloria, Credo. Prefacio dominical."
   },
   "2026-09-21": {
     "fecha": "2026-09-21",
-    "titulo_celebracion": "San Mateo, apóstol y evangelista (fiesta)",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "San Mateo, apóstol y evangelista",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Rojo",
     "grado": "Fiesta",
     "propio_mexico": null,
-    "rubricas": "· Rojo. Misa propia. Prefacio I de Apóstoles. Lecturas propias. Gloria. Se re- comienda usar el Canon Romano. Bendición solemne de los Apóstoles, op- tativa. · Se permiten misas rituales y exequiales. Las misas votivas y por diversas circunstancias solo se permiten con autorización del obispo."
+    "rubricas": "Rojo. Gloria. Lecturas propias. Prefacio de los Apóstoles."
   },
   "2026-09-22": {
     "fecha": "2026-09-22",
-    "titulo_celebracion": "Martes de la XXV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Rojo",
+    "titulo_celebracion": "Martes de la XXV semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
-    "propio_mexico": "Santos Cristóbal, Antonio y Juan, mártires (memoria obligato- ria)",
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "propio_mexico": null,
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-23": {
     "fecha": "2026-09-23",
-    "titulo_celebracion": "San Pío de Pietrelcina, presbítero (memoria obligatoria)",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "San Pío de Pietrelcina, presbítero",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
     "grado": "Memoria Obligatoria",
     "propio_mexico": null,
-    "rubricas": "· Blanco. Se usa el formulario del común de pastores (para un pastor) o del común de santos y santas (para los religiosos) y la colecta propia del santo. Lecturas de la feria. · Se permiten misas rituales, exequiales, tras el anuncio de muerte, en la sepultura, y en el primer aniversario de muerte. "
+    "rubricas": "Blanco. Misa del santo presbítero."
   },
   "2026-09-24": {
     "fecha": "2026-09-24",
-    "titulo_celebracion": "Jueves de la XXV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
+    "titulo_celebracion": "Jueves de la XXV semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-25": {
     "fecha": "2026-09-25",
-    "titulo_celebracion": "Viernes de la XXV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Viernes de la XXV semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-26": {
     "fecha": "2026-09-26",
-    "titulo_celebracion": "Sábado de la XXV semana del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
+    "titulo_celebracion": "Santos Cosme y Damián, mártires",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde o Rojo. Lecturas de la feria, año II."
   },
   "2026-09-27": {
     "fecha": "2026-09-27",
-    "titulo_celebracion": "XXVI domingo del tiempo ordinario",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "XXVI Domingo del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Verde",
     "grado": "Domingo",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario propio de este domingo, y las lecturas pro- pias de este domingo, ciclo A. Se usa uno de los prefacios para domingos del tiempo ordinario. Gloria y Credo. · Se permiten misas rituales y exequiales."
+    "rubricas": "Verde. Gloria, Credo. Prefacio dominical."
   },
   "2026-09-28": {
     "fecha": "2026-09-28",
-    "titulo_celebracion": "San Wenceslao, mártir (memoria libre)",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Rojo",
-    "grado": "Memoria Libre",
+    "titulo_celebracion": "Lunes de la XXVI semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
+    "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Rojo. Se usa el formulario del común de mártires (para un mártir) y la co- lecta propia del santo. Lecturas de la feria. · Se permiten las mismas misas que en la feria. O bien: Santos Lorenzo Ruíz y compañeros, mártires (memoria libre) · Rojo. Colecta propia y el resto se toma del común de mártire"
+    "rubricas": "Verde. Lecturas de la feria, año II."
   },
   "2026-09-29": {
     "fecha": "2026-09-29",
-    "titulo_celebracion": "Los Santos Arcángeles Miguel, Gabriel y Rafael (fiesta)",
-    "tiempo_liturgico": "Ordinario",
+    "titulo_celebracion": "Los Santos Arcángeles Miguel, Gabriel y Rafael",
+    "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
     "grado": "Fiesta",
     "propio_mexico": null,
-    "rubricas": "· Blanco. Misa propia. Prefacio propio. Lecturas propias. Gloria · Se permiten misas rituales y exequiales. Las misas votivas y por diversas circunstancias solo se permiten con autorización del obispo."
+    "rubricas": "Blanco. Gloria. Lecturas propias. Prefacio de los Santos Ángeles."
   },
   "2026-09-30": {
     "fecha": "2026-09-30",
     "titulo_celebracion": "San Jerónimo, presbítero y doctor de la Iglesia",
-    "tiempo_liturgico": "Ordinario",
-    "color": "Blanco",
-    "grado": "Memoria Obligatoria",
-    "propio_mexico": null,
-    "rubricas": "(memoria obligatoria) · Blanco. Misa propia. Lecturas de la feria. · Se permiten misas rituales, exequiales, tras el anuncio de muerte, en la sepultura, y en el primer aniversario de muerte. Por una grave utilidad pas- toral se permiten las misas votivas y por diversas circunstancias."
-  },
-  "2026-09-01": {
-    "fecha": "2026-09-01",
-    "titulo_celebracion": "Santa Teresa del Niño Jesús, virgen (memoria obligatoria)",
     "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
     "grado": "Memoria Obligatoria",
     "propio_mexico": null,
-    "rubricas": "· Blanco. Misa propia. Lecturas de la feria. · Se permiten misas rituales, exequiales, tras el anuncio de muerte, en la sepultura, y en el primer aniversario de muerte. Por una grave utilidad pas- toral se permiten las misas votivas y por diversas circunstancias."
-  },
-  "2026-09-02": {
-    "fecha": "2026-09-02",
-    "titulo_celebracion": "Los Santos Ángeles Custodios (memoria obligatoria)",
-    "tiempo_liturgico": "Tiempo Ordinario",
-    "color": "Blanco",
-    "grado": "Memoria Obligatoria",
-    "propio_mexico": null,
-    "rubricas": "· Blanco. Misa propia. Prefacio propio. Lecturas de la feria. · Se permiten misas rituales, exequiales, tras el anuncio de muerte, en la sepultura, y en el primer aniversario de muerte. Por una grave utilidad pas- toral se permiten las misas votivas y por diversas circunstancias."
-  },
-  "2026-09-03": {
-    "fecha": "2026-09-03",
-    "titulo_celebracion": "Sábado de la XXVI semana del tiempo ordinario",
-    "tiempo_liturgico": "Tiempo Ordinario",
-    "color": "Blanco",
-    "grado": "Feria",
-    "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Blanco. Misa del santo doctor. Lecturas de la feria o propias."
   },
   "2026-10-04": {
     "fecha": "2026-10-04",
@@ -2962,30 +2935,30 @@
   },
   "2026-10-01": {
     "fecha": "2026-10-01",
-    "titulo_celebracion": "Todos los Santos (solemnidad)",
+    "titulo_celebracion": "Santa Teresa del Niño Jesús, virgen y doctora de la Iglesia",
     "tiempo_liturgico": "Tiempo Ordinario",
     "color": "Blanco",
-    "grado": "Solemnidad",
+    "grado": "Memoria Obligatoria",
     "propio_mexico": null,
-    "rubricas": "· Blanco. Misa propia. Prefacio propio. Lecturas propias. Gloria y Credo · No se permite ninguna otra misa; en donde no es de precepto, se permi- ten misas exequiales."
+    "rubricas": "Blanco. Misa propia. Lecturas de la feria."
   },
   "2026-10-02": {
     "fecha": "2026-10-02",
-    "titulo_celebracion": "Conmemoración de todos los fieles difuntos",
+    "titulo_celebracion": "Los Santos Ángeles Custodios",
     "tiempo_liturgico": "Tiempo Ordinario",
-    "color": "Morado",
-    "grado": "Feria",
+    "color": "Blanco",
+    "grado": "Memoria Obligatoria",
     "propio_mexico": null,
-    "rubricas": "· Morado o negro. En este día todo sacerdote puede celebrar tres misas. Por ello existen tres formularios distintos, que puede elegir libremente el celebrante. Lecturas propias. · Se permiten misas exequiales."
+    "rubricas": "Blanco. Misa propia. Prefacio propio. Lecturas de la feria."
   },
   "2026-10-03": {
     "fecha": "2026-10-03",
-    "titulo_celebracion": "Martes de la XXXI semana del tiempo ordinario",
+    "titulo_celebracion": "Sábado de la XXVI semana del Tiempo Ordinario",
     "tiempo_liturgico": "Tiempo Ordinario",
-    "color": "Blanco",
+    "color": "Verde",
     "grado": "Feria",
     "propio_mexico": null,
-    "rubricas": "· Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año II. · Además de las indicadas, se permiten las misas rituales, exequiales, de aniversario de muerte, en la noticia de la"
+    "rubricas": "Verde. Se toman las lecturas de la feria, año II."
   },
   "2026-11-05": {
     "fecha": "2026-11-05",
@@ -3202,5 +3175,32 @@
     "grado": "Feria",
     "propio_mexico": null,
     "rubricas": "Sábado de la XXXIV semana del tiempo ordinario · Verde. Se utiliza el formulario de cualquier domingo del tiempo ordinario, de las misas votivas o de las misas por diversas necesidades, y las lecturas se toman de la feria, año I. O bien: Santa María en sábado (memoria libre) · Blanco. Misa del común"
+  },
+  "2026-09-01": {
+    "fecha": "2026-09-01",
+    "titulo_celebracion": "Martes de la XXII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
+    "grado": "Feria",
+    "propio_mexico": null,
+    "rubricas": "Verde. Lecturas de la feria, año II."
+  },
+  "2026-09-02": {
+    "fecha": "2026-09-02",
+    "titulo_celebracion": "Miércoles de la XXII semana del Tiempo Ordinario",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Verde",
+    "grado": "Feria",
+    "propio_mexico": null,
+    "rubricas": "Verde. Lecturas de la feria, año II."
+  },
+  "2026-09-03": {
+    "fecha": "2026-09-03",
+    "titulo_celebracion": "San Gregorio Magno, papa y doctor de la Iglesia",
+    "tiempo_liturgico": "Tiempo Ordinario",
+    "color": "Blanco",
+    "grado": "Memoria Obligatoria",
+    "propio_mexico": null,
+    "rubricas": "Blanco. Misa de la memoria. Lecturas de la feria, año II."
   }
 }

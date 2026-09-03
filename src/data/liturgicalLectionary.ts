@@ -746,4 +746,528 @@ Palabra del Señor.`
     oracion_comunion: 'Al celebrar el martirio de san Juan Bautista, te pedimos, Señor, que el sacramento celestial que hemos recibido confirme en nosotros el amor a tu santa Ley. Por Jesucristo, nuestro Señor.'
   },
 
+
+  // ==========================================
+  // SANTORAL DE SEPTIEMBRE
+  // ==========================================
+  '09-03': {
+    titulo_celebracion: 'San Gregorio Magno, papa y doctor de la Iglesia',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Memoria',
+    antifona_entrada: 'El Señor lo eligió sumo sacerdote, abrió sus tesoros y lo colmó de toda bendición.',
+    oracion_colecta: 'Dios nuestro, que cuidas a tu pueblo con ternura y lo gobiernas con amor, concede el espíritu de sabiduría a aquellos a quienes has confiado el gobierno de tu Iglesia, para que el progreso de las ovejas sea el gozo eterno de sus pastores. Por nuestro Señor Jesucristo.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: '2 Corintios 4, 1-2. 5-7',
+      monicion: 'San Pablo predica a Jesucristo Señor y lleva este tesoro en vasijas de barro.',
+      texto: 'Hermanos: Teniendo este ministerio por la misericordia de Dios, no nos desanimamos... Pues no nos predicamos a nosotros mismos, sino a Jesucristo como Señor, y a nosotros como siervos de ustedes por Jesús. Palabra de Dios.'
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 95',
+      respuesta: 'R. Cuenten las maravillas del Señor a todas las naciones.',
+      texto: 'Canten al Señor un cántico nuevo, canten al Señor toda la tierra.\nR. Cuenten las maravillas del Señor.'
+    },
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya. Yo soy el buen pastor: conozco a mis ovejas y las mías me conocen. R. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Lucas 22, 24-30',
+      monicion: 'Jesús enseña a sus apóstoles que el mayor entre ellos debe ser como el que sirve.',
+      texto: 'En aquel tiempo, surgió entre los discípulos una discusión sobre cuál de ellos parecía ser el mayor. Jesús les dijo: «Los reyes de las naciones las dominan... pero entre ustedes no ha de ser así; al contrario, el más grande entre ustedes sea como el más joven, y el que manda como el que sirve». Palabra del Señor.'
+    },
+    oracion_ofrendas: 'Acepta, Señor, estos dones que te presentamos en la fiesta de san Gregorio Magno...',
+    antifona_comunion: 'Este es el siervo fiel y prudente a quien el Señor puso al frente de su familia.',
+    oracion_comunion: 'Alimentados con Cristo, pan de vida, te pedimos, Señor, que san Gregorio nos enseñe la verdad evangélica...'
+  },
+
+  '09-08': {
+    titulo_celebracion: 'La Natividad de la Santísima Virgen María',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Fiesta',
+    antifona_entrada: 'Celebremos con júbilo la Natividad de la Virgen María; de ella nació el Sol de justicia, Cristo nuestro Dios.',
+    oracion_colecta: 'Concede, Señor, a tus siervos el don de tu gracia celestial, para que, así como la maternidad de la Santísima Virgen fue el comienzo de nuestra salvación, la fiesta de su Natividad nos traiga un aumento de paz. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Miqueas 5, 1-4a',
+      monicion: 'El profeta Miqueas anuncia el nacimiento del Pastor y Salvador en Belén de Judá.',
+      texto: `Así dice el Señor: «Y tú, Belén Efratá, pequeña entre las aldeas de Judá, de ti me saldrá el que ha de ser jefe de Israel; su origen es desde lo antiguo, desde tiempos remotos. Por eso Dios los abandonará hasta el tiempo en que dé a luz la que ha de dar a luz; entonces el resto de sus hermanos volverá a los israelitas. Se mantendrá firme y apacentará con la fuerza del Señor, con la majestad del nombre del Señor, su Dios. Y habitarán tranquilos, porque entonces él será grande hasta los confines de la tierra, y él mismo será la paz». Palabra de Dios.`
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 12',
+      respuesta: 'R. Desbordo de gozo con el Señor.',
+      texto: `Yo confío en tu misericordia,
+mi corazón se alegra con tu salvación.
+Cantaré al Señor por el bien que me ha hecho.
+
+R. Desbordo de gozo con el Señor.`
+    },
+    aclamacion_evangelio: {
+      texto: `R. Aleluya, aleluya.
+Dichosa eres tú, Santa Virgen María, y digna de toda alabanza: porque de ti nació el Sol de justicia, Cristo nuestro Dios.
+R. Aleluya.`
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Mateo 1, 1-16. 18-23',
+      monicion: 'Genealogía de Jesucristo, nacido de la Virgen María por obra del Espíritu Santo.',
+      texto: `Libro de la genealogía de Jesucristo, hijo de David, hijo de Abrahán... Jacob engendró a José, el esposo de María, de la cual nació Jesús, llamado Cristo.
+
+La generación de Jesucristo fue de esta manera: María, su madre, estaba desposada con José y, antes de vivir juntos, resultó que ella esperaba un hijo por obra del Espíritu Santo. José, su esposo, que era justo y no quería denunciarla, decidió repudiarla en secreto.
+
+Pero, apenas había tomado esta resolución, se le apareció en sueños un ángel del Señor que le dijo: «José, hijo de David, no temas acoger a María, tu mujer, porque la criatura que hay en ella viene del Espíritu Santo. Dará a luz un hijo y tú le pondrás por nombre Jesús, porque él salvará a su pueblo de sus pecados».
+
+Todo esto sucedió para que se cumpliese lo que había dicho el Señor por medio del profeta: «Miren: la virgen concebirá y dará a luz un hijo y le pondrán por nombre Emmanuel, que significa: "Dios con nosotros"».
+
+Palabra del Señor.`
+    },
+    oracion_ofrendas: 'Que el amor entrañable de tu Unigénito venga en nuestra ayuda, Señor, y el que al nacer de la Virgen no menoscabó la integridad de su Madre sino que la consagró, borre nuestros pecados y haga agradable a ti nuestra oblación. Por Jesucristo, nuestro Señor. Amén.',
+    antifona_comunion: 'Miren: la Virgen dará a luz un hijo, que salvará a su pueblo de sus pecados (Mt 1, 21. 23).',
+    oracion_comunion: 'Que tu Iglesia se llene de júbilo, Señor, fortalecida con estos santos misterios, y se alegre en la Natividad de la Virgen María, que fue para todo el mundo aurora de esperanza y principio de salvación. Por Jesucristo, nuestro Señor. Amén.'
+  },
+
+  '09-12': {
+    titulo_celebracion: 'El Dulce Nombre de la Bienaventurada Virgen María',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Memoria',
+    antifona_entrada: 'Dichosa eres, Santa Virgen María, y digna de toda alabanza; de ti nació el Sol de justicia, Cristo nuestro Dios.',
+    oracion_colecta: 'Concede, Dios todopoderoso, a cuantos celebramos el Nombre glorioso de la Santísima Virgen María, experimentar los beneficios de su maternal protección. Por nuestro Señor Jesucristo.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Gálatas 4, 4-7',
+      texto: 'Cuando llegó la plenitud del tiempo, envió Dios a su Hijo, nacido de mujer... para que recibiéramos la adopción filial. Palabra de Dios.'
+    },
+    salmo_responsorial: {
+      cita: 'Lucas 1 (Magníficat)',
+      respuesta: 'R. El Poderoso ha hecho obras grandes por mí: su nombre es santo.',
+      texto: 'Proclama mi alma la grandeza del Señor, se alegra mi espíritu en Dios mi salvador.\nR. El Poderoso ha hecho obras grandes por mí.'
+    },
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya. Dichosa tú, Virgen María, que creíste que se cumpliría lo que te fue dicho de parte del Señor. R. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Lucas 1, 39-56',
+      texto: 'María fue a la montaña a casa de Zacarías y saludó a Isabel... Isabel dijo a voz en grito: «¡Bendita tú entre las mujeres y bendito el fruto de tu vientre!». Y María dijo: «Proclama mi alma la grandeza del Señor». Palabra del Señor.'
+    },
+    oracion_ofrendas: 'Acepta, Señor, las ofrendas que te presentamos...',
+    antifona_comunion: 'Todas las generaciones me llamarán bienaventurada, porque el Señor ha hecho grandes cosas en mí.',
+    oracion_comunion: 'Alimentados con el Cuerpo y la Sangre de tu Hijo, concédenos Señor invocar siempre con devoción el nombre de María...'
+  },
+
+  '09-14': {
+    titulo_celebracion: 'La Exaltación de la Santa Cruz',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Rojo',
+    grado: 'Fiesta',
+    antifona_entrada: 'Nosotros debemos gloriarnos en la cruz de nuestro Señor Jesucristo: en él está nuestra salvación, vida y resurrección; por él hemos sido salvados y redimidos (Gal 6, 14).',
+    oracion_colecta: 'Señor Dios, que quisiste que tu Unigénito sufriera la cruz para salvar al género humano, concédenos que, habiendo conocido su misterio en la tierra, alcancemos los premios de su redención en el cielo. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Números 21, 4b-9',
+      monicion: 'Moisés alza la serpiente de bronce en el desierto para sanar a los que la miren con fe.',
+      texto: `En aquellos días, el pueblo se impacientó por el camino y habló contra Dios y contra Moisés: «¿Por qué nos han sacado de Egipto para morir en este desierto? No tenemos pan ni agua, y estamos hastiados de este manjar sin sustancia».
+
+Entonces el Señor envió contra el pueblo serpientes abrasadoras, que mordían al pueblo; y murieron muchos israelitas.
+
+El pueblo acudió a Moisés y le dijo: «Hemos pecado al hablar contra el Señor y contra ti. Ruega al Señor que aparte de nosotros estas serpientes». Y Moisés rezó por el pueblo.
+
+El Señor dijo a Moisés: «Haz una serpiente de bronce y colócala sobre un mástil. El que haya sido mordido y la mire, vivirá». Moisés hizo una serpiente de bronce y la colocó sobre un mástil; y cuando una serpiente mordía a uno, éste miraba a la serpiente de bronce y quedaba con vida.
+
+Palabra de Dios.`
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 77, 1-2. 34-35. 36-37. 38',
+      respuesta: 'R. No olviden las acciones del Señor.',
+      texto: `Escucha, pueblo mío, mi enseñanza;
+inclina tu oído a las palabras de mi boca.
+Abriré mi boca a las parábolas,
+evocaré los misterios del pasado.
+
+R. No olviden las acciones del Señor.
+
+Cuando los hacía morir, lo buscaban,
+se convertían y madrugaban hacia Dios;
+se acordaban de que Dios era su Roca,
+el Dios Altísimo su Redentor.
+
+R. No olviden las acciones del Señor.
+
+Lo engañaban con sus bocas,
+le mentían con su lengua;
+su corazón no era fiel para con él,
+ni eran constantes en su alianza.
+
+R. No olviden las acciones del Señor.
+
+Pero él, compasivo, perdonaba la culpa
+y no los destruía;
+muchas veces contuvo su cólera
+y no despertó toda su ira.
+
+R. No olviden las acciones del Señor.`
+    },
+    segunda_lectura: {
+      titulo: 'Segunda Lectura',
+      cita: 'Filipenses 2, 6-11',
+      monicion: 'Cristo se humilló hasta la muerte de cruz; por eso Dios lo exaltó con el Nombre sobre todo nombre.',
+      texto: `Cristo Jesús, siendo de condición divina, no retuvo ávidamente el ser igual a Dios, sino que se despojó de sí mismo tomando la condición de esclavo, hecho semejante a los hombres. Y así, reconocido como hombre por su presencia, se humilló a sí mismo, haciéndose obediente hasta la muerte, y una muerte de cruz.
+
+Por eso Dios lo exaltó sobre todo y le concedió el Nombre que está sobre todo nombre; de modo que al nombre de Jesús toda rodilla se doble en el cielo, en la tierra y en el abismo, y toda lengua proclame: «¡Jesucristo es Señor!», para gloria de Dios Padre.
+
+Palabra de Dios.`
+    },
+    aclamacion_evangelio: {
+      texto: `R. Aleluya, aleluya.
+Te adoramos, oh Cristo, y te bendecimos, porque con tu santa cruz redimiste al mundo.
+R. Aleluya.`
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Juan 3, 13-17',
+      monicion: 'El Hijo del hombre tiene que ser elevado en la cruz para que todo el que crea en él tenga vida eterna.',
+      texto: `En aquel tiempo, dijo Jesús a Nicodemo:
+«Nadie ha subido al cielo sino el que bajó del cielo, el Hijo del hombre.
+
+Y como Moisés elevó la serpiente en el desierto, así tiene que ser elevado el Hijo del hombre, para que todo el que cree en él tenga vida eterna.
+
+Porque tanto amó Dios al mundo que entregó a su Unigénito, para que todo el que cree en él no perezca, sino que tenga vida eterna. Porque Dios no envió a su Hijo al mundo para juzgar al mundo, sino para que el mundo se salve por él».
+
+Palabra del Señor.`
+    },
+    oracion_ofrendas: 'Que este sacrificio, Señor, que en el altar de la cruz borró los pecados del mundo entero, nos purifique de todas nuestras culpas. Por Jesucristo, nuestro Señor. Amén.',
+    antifona_comunion: 'Cuando yo sea elevado sobre la tierra, atraeré a todos hacia mí, dice el Señor (Jn 12, 32).',
+    oracion_comunion: 'Fortalecidos con este celestial banquete, te pedimos, Señor Jesucristo, que conduzcas a la gloria de la resurrección a quienes has redimido por el madero santísimo de la cruz vivificante. Tú que vives y reinas por los siglos de los siglos. Amén.'
+  },
+
+  '09-15': {
+    titulo_celebracion: 'Nuestra Señora de los Dolores',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Memoria',
+    antifona_entrada: 'Simeón dijo a María: «Una espada traspasará tu propia alma, para que queden al descubierto los pensamientos de muchos corazones» (Lc 2, 34-35).',
+    oracion_colecta: 'Señor Dios, que quisiste que la Madre de tu Hijo, de pie junto a la cruz, compartiera sus sufrimientos, concede a tu Iglesia que, unida con María en la pasión de Cristo, merezca participar también de su resurrección. Por nuestro Señor Jesucristo.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Hebreos 5, 7-9',
+      monicion: 'Cristo aprendió sufriendo a obedecer y se convirtió en autor de salvación eterna.',
+      texto: 'Cristo, en los días de su vida mortal, a gritos y con lágrimas presentó oraciones y súplicas a quien podía salvarlo de la muerte... Y aun siendo Hijo, aprendió sufriendo a obedecer; y llevado a la consumación, se convirtió en causa de salvación eterna para todos los que le obedecen. Palabra de Dios.'
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 30',
+      respuesta: 'R. Sálvame, Señor, por tu misericordia.',
+      texto: 'A ti, Señor, me acojo, no quede yo nunca defraudado; tú que eres justo, ponme a salvo.\nR. Sálvame, Señor, por tu misericordia.'
+    },
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya. Dichosa eres tú, Santa Virgen María: sin sufrir la muerte mereciste la palma del martirio junto a la cruz del Señor. R. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Juan 19, 25-27',
+      monicion: 'Junto a la cruz de Jesús estaba su Madre. Jesús nos la entrega como Madre de todos los creyentes.',
+      texto: `En aquel tiempo, junto a la cruz de Jesús estaban su madre, la hermana de su madre, María la de Cleofás, y María Magdalena.
+
+Jesús, al ver a su madre y junto a ella al discípulo a quien amaba, dijo a su madre:
+«Mujer, ahí tienes a tu hijo».
+
+Luego dijo al discípulo:
+«Ahí tienes a tu madre».
+
+Y desde aquella hora, el discípulo la acogió en su casa.
+
+Palabra del Señor.`
+    },
+    oracion_ofrendas: 'Acepta, Señor compasivo, las oraciones y ofrendas que te presentamos en honor de la Virgen Dolorosa...',
+    antifona_comunion: 'Alégrense en la medida en que comparten los sufrimientos de Cristo, para que en la revelación de su gloria se llenen de júbilo.',
+    oracion_comunion: 'Habiendo recibido los sacramentos de la redención eterna, te suplicamos, Señor, que al recordar los dolores de la Santísima Virgen María completemos en nosotros lo que falta a los padecimientos de Cristo...'
+  },
+
+  '09-16': {
+    titulo_celebracion: 'Santos Cornelio, papa, y Cipriano, obispo, mártires',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Rojo',
+    grado: 'Memoria',
+    antifona_entrada: 'Los santos de Dios proclaman las grandezas de aquel que los llamó de las tinieblas a su luz admirable.',
+    oracion_colecta: 'Señor Dios, que diste a tu pueblo en los santos Cornelio y Cipriano pastores solícitos y mártires invencibles, concédenos, por su intercesión, ser fuertes en la fe y perseverantes en la unidad de la Iglesia. Por nuestro Señor Jesucristo.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: '2 Corintios 4, 7-15',
+      texto: 'Llevamos este tesoro en vasijas de barro, para que se vea que una fuerza tan extraordinaria es de Dios y no procede de nosotros. Atribulados en todo, mas no aplastados. Palabra de Dios.'
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 125',
+      respuesta: 'R. Los que sembraban con lágrimas cosechan entre cantares.',
+      texto: 'Al ir iban llorando llevando la semilla; al volver vuelven cantando trayendo sus gavillas.\nR. Los que sembraban con lágrimas.'
+    },
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya. Dichosos los perseguidos por causa de la justicia, porque de ellos es el reino de los cielos. R. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Juan 17, 11b-19',
+      texto: '«Padre santo, guárdalos en tu nombre... para que sean uno como nosotros... Conságralos en la verdad: tu palabra es la verdad». Palabra del Señor.'
+    },
+    oracion_ofrendas: 'Mira propicio, Señor, las ofrendas que ponemos sobre tu altar...',
+    antifona_comunion: 'Nadie tiene amor más grande que el que da la vida por sus amigos.',
+    oracion_comunion: 'Alimentados con el pan de los fuertes, concédenos Señor perseverar en la fe...'
+  },
+
+  '09-21': {
+    titulo_celebracion: 'San Mateo, apóstol y evangelista',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Rojo',
+    grado: 'Fiesta',
+    antifona_entrada: 'Vayan por todo el mundo y proclamen el Evangelio a toda criatura, dice el Señor (Mc 16, 15).',
+    oracion_colecta: 'Señor Dios, que con inefable misericordia te dignaste elegir a san Mateo para convertirlo de publicano en apóstol, concédenos que, sostenidos por su ejemplo e intercesión, te sigamos con fidelidad y permanezcamos firmemente unidos a ti. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Efesios 4, 1-7. 11-13',
+      monicion: 'Cristo dotó a su Iglesia de apóstoles y evangelistas para la edificación de su Cuerpo.',
+      texto: `Hermanos: Yo, el prisionero por el Señor, les ruego que anden como pide la vocación a la que han sido convocados: con toda humildad y mansedumbre, con paciencia, sobrellevándose mutuamente con amor, esforzándose por mantener la unidad del Espíritu con el vínculo de la paz.
+
+Un solo cuerpo y un solo Espíritu, como una sola es la esperanza de la vocación a la que han sido convocados. Un Señor, una fe, un bautismo. Un Dios, Padre de todos, que está sobre todos, por todos y en todos.
+
+A cada uno de nosotros se le ha dado la gracia según la medida del don de Cristo. Y él ha constituido a unos apóstoles, a otros profetas, a otros evangelistas, a otros pastores y doctores, para la edificación del cuerpo de Cristo.
+
+Palabra de Dios.`
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 18, 2-3. 4-5',
+      respuesta: 'R. A toda la tierra alcanza su pregón.',
+      texto: `El cielo proclama la gloria de Dios,
+el firmamento pregona la obra de sus manos:
+el día al día le pasa el mensaje,
+la noche a la noche se lo susurra.
+
+R. A toda la tierra alcanza su pregón.
+
+Sin que hablen, sin que pronuncien,
+sin que resuene su voz,
+a toda la tierra alcanza su pregón
+y hasta los límites del orbe su lenguaje.
+
+R. A toda la tierra alcanza su pregón.`
+    },
+    aclamacion_evangelio: {
+      texto: `R. Aleluya, aleluya.
+A ti, oh Dios, te alabamos, a ti, Señor, te confesamos; a ti te alaba el glorioso coro de los apóstoles.
+R. Aleluya.`
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Mateo 9, 9-13',
+      monicion: 'Jesús llama a Mateo en el telonio: «Misericordia quiero y no sacrificios; no he venido a llamar a justos sino a pecadores».',
+      texto: `En aquel tiempo, vio Jesús al pasar a un hombre llamado Mateo sentado al mostrador de los impuestos, y le dijo:
+«Sígueme».
+
+Él se levantó y lo siguió.
+
+Y estando en la mesa en casa de Mateo, muchos publicanos y pecadores que habían acudido se sentaron a la mesa con Jesús y sus discípulos.
+
+Los fariseos, al ver esto, decían a los discípulos:
+«¿Cómo es que su maestro come con publicanos y pecadores?».
+
+Jesús lo oyó y dijo:
+«No tienen necesidad de médico los sanos, sino los enfermos. Vayan y aprendan lo que significa: "Misericordia quiero y no sacrificios"; porque no he venido a llamar a justos, sino a pecadores».
+
+Palabra del Señor.`
+    },
+    oracion_ofrendas: 'Al celebrar la memoria de san Mateo, te presentamos, Señor, nuestras oraciones y ofrendas, y te suplicamos que mires con bondad a tu Iglesia, cuya fe alimentaste con la predicación apostólica. Por Jesucristo, nuestro Señor. Amén.',
+    antifona_comunion: 'No he venido a llamar a los justos, sino a los pecadores, dice el Señor (Mt 9, 13).',
+    oracion_comunion: 'Habiendo participado del gozo de la salvación que san Mateo experimentó al recibir al Salvador en su casa, te pedimos, Señor, que nos renueves continuamente con este alimento eucarístico. Por Jesucristo, nuestro Señor. Amén.'
+  },
+
+  '09-23': {
+    titulo_celebracion: 'San Pío de Pietrelcina, presbítero (Padre Pío)',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Memoria',
+    antifona_entrada: 'Dios no permita que yo me gloríe sino en la cruz de nuestro Señor Jesucristo, por quien el mundo está crucificado para mí y yo para el mundo (Gal 6, 14).',
+    oracion_colecta: 'Dios todopoderoso y eterno, que concediste a san Pío de Pietrelcina la gracia singular de participar en la cruz de tu Hijo y renovaste por su ministerio las maravillas de tu misericordia, concédenos, por su intercesión, unirnos generosamente a los sufrimientos de Cristo para llegar a la gloria de la resurrección. Por nuestro Señor Jesucristo.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Gálatas 6, 14-18',
+      texto: 'Dios no permita que yo me gloríe sino en la cruz de nuestro Señor Jesucristo... Llevo en mi cuerpo los estigmas de Jesús. La gracia de nuestro Señor Jesucristo esté con su espíritu. Palabra de Dios.'
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 15',
+      respuesta: 'R. Tú, Señor, eres el lote de mi heredad.',
+      texto: 'Protégeme, Dios mío, que me refugio en ti; el Señor es mi heredad y mi copa.\nR. Tú, Señor, eres el lote de mi heredad.'
+    },
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya. Vengan a mí todos los que están cansados y agobiados, y yo los aliviaré. R. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Mateo 11, 25-30',
+      texto: '«Te doy gracias, Padre, Señor del cielo y de la tierra, porque has escondido estas cosas a los sabios y entendidos y se las has revelado a los pequeños... Tomen mi yugo sobre ustedes y aprendan de mí, que soy manso y humilde de corazón». Palabra del Señor.'
+    },
+    oracion_ofrendas: 'Acepta, Señor, estos dones que te ofrecemos en la memoria de san Pío...',
+    antifona_comunion: 'El que quiera venir en pos de mí, que se niegue a sí mismo, cargue con su cruz y me siga.',
+    oracion_comunion: 'Alimentados con el Cuerpo y la Sangre de tu Hijo, concédenos Señor seguir el ejemplo de amor crucificado de san Pío...'
+  },
+
+  '09-27': {
+    titulo_celebracion: 'San Vicente de Paúl, presbítero',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Memoria',
+    antifona_entrada: 'El Espíritu del Señor está sobre mí; me ha ungido para dar la Buena Noticia a los pobres y sanar los corazones afligidos (Lc 4, 18).',
+    oracion_colecta: 'Señor Dios, que para el servicio de los pobres y la formación del clero dotaste a san Vicente de Paúl de virtudes apostólicas, concédenos que, inflamados por el mismo espíritu, amemos lo que él amó y practiquemos lo que enseñó. Por nuestro Señor Jesucristo.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: '1 Corintios 1, 26-31',
+      texto: 'Miren su asamblea, hermanos: Dios eligió lo necio del mundo para confundir a los sabios, y lo débil para confundir a los fuertes. Palabra de Dios.'
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 111',
+      respuesta: 'R. Dichoso el que se apiada y presta.',
+      texto: 'Dichoso el que teme al Señor y ama de corazón sus mandatos.\nR. Dichoso el que se apiada y presta.'
+    },
+    aclamacion_evangelio: {
+      texto: 'R. Aleluya, aleluya. Yo soy el buen pastor: conozco a mis ovejas y las mías me conocen. R. Aleluya.'
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Mateo 9, 35-38',
+      texto: 'Jesús recorría todas las ciudades y aldeas... Al ver a las multitudes, se compadeció de ellas, porque estaban extenuadas y abandonadas como ovejas que no tienen pastor. Dijo a sus discípulos: «La mies es abundante y los obreros pocos; rueguen al dueño de la mies que envíe obreros a su mies». Palabra del Señor.'
+    },
+    oracion_ofrendas: 'Señor Dios, que concediste a san Vicente de Paúl imitar los santos misterios que celebraba...',
+    antifona_comunion: 'Den gracias al Señor por su misericordia, por las maravillas que hace con los hombres: porque sacia el ansia del sediento y colma de bienes al hambriento.',
+    oracion_comunion: 'Renovados con este celestial sacramento, te pedimos, Señor, que, a ejemplo de san Vicente, nos entreguemos al servicio de los pobres...'
+  },
+
+  '09-29': {
+    titulo_celebracion: 'Los Santos Arcángeles Miguel, Gabriel y Rafael',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Fiesta',
+    antifona_entrada: 'Bendigan al Señor todos sus ángeles, poderosos ejecutores de sus órdenes, obedientes a la voz de su palabra (Sal 102, 20).',
+    oracion_colecta: 'Señor Dios, que con admirable providencia distribuyes los ministerios de los ángeles y de los hombres, concede que nuestra vida en la tierra esté siempre protegida por aquellos que te asisten continuamente en el cielo. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: 'Daniel 7, 9-10. 13-14',
+      monicion: 'El profeta Daniel contempla las miríadas de seres celestiales que asisten al trono del Anciano de días.',
+      texto: `Durante la noche tuve una visión: Vi que colocaban unos tronos y un Anciano se sentó. Su vestido era blanco como la nieve, su cabellera como lana purísima; su trono, llamas de fuego... Miles y miles le servían, miríadas de miríadas estaban de pie ante él.
+
+Seguí mirando y vi venir en las nubes del cielo a uno como un Hijo de hombre; llegó hasta el Anciano y lo presentaron ante él. Le dieron poder, honor y reino, y todos los pueblos, naciones y lenguas le servían. Su poder es eterno, no pasará; su reino no tendrá fin.
+
+Palabra de Dios.`
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 137, 1-2a. 2bc-3. 4-5',
+      respuesta: 'R. Delante de los ángeles tañeré para ti, Señor.',
+      texto: `Te doy gracias, Señor, de todo corazón;
+delante de los ángeles tañeré para ti.
+Me postraré hacia tu santuario,
+daré gracias a tu nombre por tu misericordia y tu lealtad.
+
+R. Delante de los ángeles tañeré para ti, Señor.
+
+Cuando te invoqué, me escuchaste,
+acreciste el valor en mi alma.
+Que te den gracias, Señor, los reyes de la tierra,
+al escuchar las palabras de tu boca.
+
+R. Delante de los ángeles tañeré para ti, Señor.
+
+Canten los caminos del Señor,
+porque la gloria del Señor es grande.
+
+R. Delante de los ángeles tañeré para ti, Señor.`
+    },
+    aclamacion_evangelio: {
+      texto: `R. Aleluya, aleluya.
+Bendigan al Señor todos sus ejércitos, ministros suyos que cumplen su voluntad.
+R. Aleluya.`
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Juan 1, 47-51',
+      monicion: 'Jesús promete a Natanael: «Verán el cielo abierto y a los ángeles de Dios subir y bajar sobre el Hijo del hombre».',
+      texto: `En aquel tiempo, vio Jesús que se acercaba Natanael y dijo de él:
+«Miren a un verdadero israelita en quien no hay engaño».
+
+Natanael le preguntó:
+«¿De qué me conoces?».
+
+Jesús le respondió:
+«Antes de que Felipe te llamara, cuando estabas debajo de la higuera, te vi».
+
+Natanael contestó:
+«Rabí, ¡tú eres el Hijo de Dios!, ¡tú eres el Rey de Israel!».
+
+Jesús le contestó:
+«¿Por haberte dicho que te vi debajo de la higuera crees? Has de ver cosas mayores».
+
+Y le añadió:
+«En verdad, en verdad les digo: verán el cielo abierto y a los ángeles de Dios subir y bajar sobre el Hijo del hombre».
+
+Palabra del Señor.`
+    },
+    oracion_ofrendas: 'Te ofrecemos, Señor, este sacrificio de alabanza, suplicándote que, llevado ante tu majestad por manos de los santos ángeles, sea agradable a ti y aproveche para nuestra salvación. Por Jesucristo, nuestro Señor. Amén.',
+    antifona_comunion: 'Te doy gracias, Señor, de todo corazón; delante de los ángeles tañeré para ti (Sal 137, 1).',
+    oracion_comunion: 'Fortalecidos con el pan celestial, te pedimos, Señor, que, avanzando bajo la custodia fiel de tus santos arcángeles, alcancemos la salvación eterna. Por Jesucristo, nuestro Señor. Amén.'
+  },
+
+  '09-30': {
+    titulo_celebracion: 'San Jerónimo, presbítero y doctor de la Iglesia',
+    tiempo_liturgico: 'Tiempo Ordinario',
+    color: 'Blanco',
+    grado: 'Memoria',
+    antifona_entrada: 'Dichoso el hombre que medita la ley del Señor día y noche: dará fruto a su tiempo.',
+    oracion_colecta: 'Señor Dios, que concediste a san Jerónimo un amor suave y vivo por la Sagrada Escritura, haz que tu pueblo se alimente de tu palabra con mayor abundancia y encuentre en ella la fuente de la vida. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.',
+    primera_lectura: {
+      titulo: 'Primera Lectura',
+      cita: '2 Timoteo 3, 14 – 4, 2',
+      monicion: 'Toda la Escritura es inspirada por Dios y útil para enseñar, reprender, corregir y educar en la justicia.',
+      texto: `Querido hermano: Tú permanece fiel a lo que aprendiste y se te confió, sabiendo de quiénes lo aprendiste y que desde niño conoces las Sagradas Escrituras, que pueden instruirte para la salvación por medio de la fe en Cristo Jesús.
+
+Toda la Escritura es inspirada por Dios y útil para enseñar, para reprender, para corregir, para educar en la justicia, a fin de que el hombre de Dios sea perfecto y esté preparado para toda obra buena.
+
+Te conjuro delante de Dios y de Cristo Jesús: proclama la palabra, insiste a tiempo y a destiempo, reprende, reprocha, exhorta con toda paciencia y doctrina.
+
+Palabra de Dios.`
+    },
+    salmo_responsorial: {
+      cita: 'Salmo 118',
+      respuesta: 'R. Enséñame, Señor, tus leyes.',
+      texto: `¡Cuánto amo tu ley, Señor! Todo el día la estoy meditando.
+Tus mandatos me hacen más sabio que mis enemigos, porque siempre están conmigo.
+
+R. Enséñame, Señor, tus leyes.
+
+Soy más sabio que todos mis maestros porque medito tus preceptos;
+soy más prudente que los ancianos porque observo tus leyes.
+
+R. Enséñame, Señor, tus leyes.`
+    },
+    aclamacion_evangelio: {
+      texto: `R. Aleluya, aleluya.
+Ábrenos el corazón, Señor, para que aceptemos las palabras de tu Hijo.
+R. Aleluya.`
+    },
+    evangelio: {
+      titulo: 'Santo Evangelio',
+      cita: 'Mateo 13, 47-52',
+      monicion: 'El letrado que se ha hecho discípulo del Reino saca de su tesoro cosas nuevas y cosas antiguas.',
+      texto: `En aquel tiempo, dijo Jesús a la multitud:
+«El reino de los cielos se parece también a la red que echan en el mar y recoge toda clase de peces: cuando está llena, la arrastran a la orilla, se sientan y reúnen los buenos en cestas y los malos los tiran. Lo mismo sucederá al final de los tiempos: saldrán los ángeles, separarán a los malos de los buenos y los echarán al horno de fuego...
+
+¿Han entendido todo esto?».
+
+Ellos le respondieron: «Sí».
+
+Él les dijo: «Pues bien, un escriba que se ha hecho discípulo del reino de los cielos se parece a un dueño de casa que va sacando de su tesoro cosas nuevas y cosas antiguas».
+
+Palabra del Señor.`
+    },
+    oracion_ofrendas: 'Señor, concédenos que, a ejemplo de san Jerónimo, al meditar en tu palabra nos dispongamos debidamente a ofrecerte este sacrificio de salvación. Por Jesucristo, nuestro Señor. Amén.',
+    antifona_comunion: 'Señor, cuando encontraba tus palabras, las devoraba; tu palabra era mi gozo y la alegría de mi corazón (Jer 15, 16).',
+    oracion_comunion: 'Gozosos por haber recibido el sacramento celestial en la fiesta de san Jerónimo, te pedimos, Señor, que, instruidos por la Sagrada Escritura, comprendamos cada día mejor el misterio que celebramos. Por Jesucristo, nuestro Señor. Amén.'
+  },
+
 };

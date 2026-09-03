@@ -423,19 +423,30 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
   const mexEntry = CALENDARIO_MEXICANO_DB[isoDate];
   const santoralEntry = SANTORAL_FIJO[monthDay];
 
-  const color = (mexEntry?.color as LiturgicalColor) || (santoralEntry?.color as LiturgicalColor) || seasonInfo.color;
-  const grado = (mexEntry?.grado as any) || (santoralEntry?.grado as any) || seasonInfo.grado;
-  const titulo = mexEntry?.titulo_celebracion || santoralEntry?.titulo_celebracion || seasonInfo.tituloCelebracion;
+  const isSundayCelebration = seasonInfo.grado === 'Domingo' || dayOfWeek === 0 || mexEntry?.grado === 'Domingo';
+  const isSanctoralOverridingSunday = santoralEntry && (santoralEntry.grado === 'Solemnidad' || (santoralEntry.grado === 'Fiesta' && (santoralEntry.titulo_celebracion?.includes('Señor') || santoralEntry.titulo_celebracion?.includes('Cruz'))));
+
+  const color = (isSundayCelebration && !isSanctoralOverridingSunday)
+    ? seasonInfo.color
+    : ((mexEntry?.color as LiturgicalColor) || (santoralEntry?.color as LiturgicalColor) || seasonInfo.color);
+
+  const grado = (isSundayCelebration && !isSanctoralOverridingSunday)
+    ? 'Domingo'
+    : ((mexEntry?.grado as any) || (santoralEntry?.grado as any) || seasonInfo.grado);
+
+  const titulo = (isSundayCelebration && !isSanctoralOverridingSunday)
+    ? (mexEntry?.grado === 'Domingo' ? mexEntry.titulo_celebracion : seasonInfo.tituloCelebracion)
+    : (mexEntry?.titulo_celebracion || santoralEntry?.titulo_celebracion || seasonInfo.tituloCelebracion);
+
   const tiempo = mexEntry?.tiempo_liturgico || santoralEntry?.tiempo_liturgico || seasonInfo.tiempo;
 
   // Resolve Sunday, Sanctoral or Ferial Lectionary
-  const isSundayCelebration = grado === 'Domingo' || seasonInfo.grado === 'Domingo' || dayOfWeek === 0;
   const sundayEntry = isSundayCelebration ? getSundayLectionary(seasonInfo.semanaNumero || 21, seasonInfo.ciclo) : null;
   const ferialEntry = (!isSundayCelebration && dayOfWeek >= 1 && dayOfWeek <= 6)
     ? getFerialLectionary(seasonInfo.semanaNumero || 21, dayOfWeek, seasonInfo.anoFerial)
     : null;
 
-  const hasProperSanctoralReadings = santoralEntry && santoralEntry.primera_lectura && santoralEntry.primera_lectura.texto && santoralEntry.primera_lectura.texto.length > 40;
+  const hasProperSanctoralReadings = santoralEntry && (!isSundayCelebration || isSanctoralOverridingSunday) && santoralEntry.primera_lectura && santoralEntry.primera_lectura.texto && santoralEntry.primera_lectura.texto.length > 40;
 
   const liturgiaPalabra = hasProperSanctoralReadings ? {
     primera_lectura: santoralEntry.primera_lectura!,
@@ -488,7 +499,15 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
   };
 
   const antifonaEntrada = santoralEntry?.antifona_entrada || sundayEntry?.antifona_entrada || ferialEntry?.antifona_entrada || 'El Señor es la fuerza de su pueblo, el baluarte de salvación para su Ungido.';
-  const oracionColecta = santoralEntry?.oracion_colecta || sundayEntry?.oracion_colecta || ferialEntry?.oracion_colecta || 'Dios todopoderoso y eterno, que unes en un solo querer los corazones de tus fieles, concédenos amar lo que mandas y desear lo que prometes, para que, en medio de las vicisitudes del mundo, nuestros corazones estén firmes donde se encuentran los verdaderos gozos. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.';
+  const oracionColecta = (hasProperSanctoralReadings && santoralEntry?.oracion_colecta && santoralEntry.oracion_colecta.length > 25)
+    ? santoralEntry.oracion_colecta
+    : (sundayEntry?.oracion_colecta && sundayEntry.oracion_colecta.length > 25)
+    ? sundayEntry.oracion_colecta
+    : (ferialEntry?.oracion_colecta && ferialEntry.oracion_colecta.length > 25)
+    ? ferialEntry.oracion_colecta
+    : (santoralEntry?.oracion_colecta && santoralEntry.oracion_colecta.length > 25)
+    ? santoralEntry.oracion_colecta
+    :  'Dios todopoderoso y eterno, que unes en un solo querer los corazones de tus fieles, concédenos amar lo que mandas y desear lo que prometes, para que, en medio de las vicisitudes del mundo, nuestros corazones estén firmes donde se encuentran los verdaderos gozos. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos. Amén.';
   const oracionOfrendas = santoralEntry?.oracion_ofrendas || sundayEntry?.oracion_ofrendas || ferialEntry?.oracion_ofrendas || 'Acepta con bondad, Señor, los dones que con reverencia te presentamos, y transforma este sacrificio en prenda de salvación eterna. Por Jesucristo, nuestro Señor. Amén.';
   const antifonaComunion = santoralEntry?.antifona_comunion || sundayEntry?.antifona_comunion || ferialEntry?.antifona_comunion || 'El que come mi carne y bebe mi sangre tiene vida eterna, y yo lo resucitaré en el último día, dice el Señor.';
   const oracionComunion = santoralEntry?.oracion_comunion || sundayEntry?.oracion_comunion || ferialEntry?.oracion_comunion || 'Te pedimos, Señor, que los sagrados misterios que hemos recibido nos purifiquen de todo mal y nos unan en el vínculo de tu divino amor. Por Jesucristo, nuestro Señor. Amén.';
