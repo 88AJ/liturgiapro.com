@@ -13,20 +13,20 @@ export const PrimeraComunionRitualView: React.FC<PrimeraComunionRitualViewProps>
     window.print();
   };
 
-  const parroquia = data.nombreParroquia || 'St. Joseph Catholic Church';
-  const direccion = data.parroquiaDireccion || '620 W. Benson St.';
-  const ciudad = data.ciudadLugar || 'La Pryor, TX';
-  const telefono = data.parroquiaTelefono || '(830) 365-4107';
-  const pastor = data.nombreCelebrante || 'Rev. Alan Sanchez';
-  const diaconos = data.nombreDiaconos || 'Rev. Mr. Gene Corrigan, Rev. Mr. Juan Gallegos';
-  const cre = data.nombreCRE || 'Yolanda Garcia (CRE)';
-  const catequistas = data.nombreCatequistas || 'Carmen Lopez (RE), Richard Arredondo (RE), Martha De La Rosa (RE), Jenifer Vera (RE), Jacinto Quijano (RE), Maria Louisa Del Toro (RE)';
-  const coro = data.nombreCoro || 'CCD Students / Estudiantes del Catecismo';
-  const lectores = data.nombreLectores || 'CCD Students / Estudiantes del Catecismo';
-  const monaguillos = data.nombreMonaguillos || 'CCD Students / Estudiantes del Catecismo';
-  const hospitalidad = data.nombreHospitalidad || 'Knights of Columbus / Caballeros de Colón';
-  const generacion = data.generacion || '2023-2025';
-  const fecha = data.fecha || '2025';
+  const parroquia = data.nombreParroquia || 'la Parroquia';
+  const direccion = data.parroquiaDireccion || '';
+  const ciudad = data.ciudadLugar || '';
+  const telefono = data.parroquiaTelefono || '';
+  const pastor = data.nombreCelebrante || 'El Sacerdote Celebrante';
+  const diaconos = data.nombreDiaconos || 'Los Diáconos';
+  const cre = data.nombreCRE || 'Coordinador(a) de Catequesis';
+  const catequistas = data.nombreCatequistas || 'Los Catequistas';
+  const coro = data.nombreCoro || 'Coro / Estudiantes';
+  const lectores = data.nombreLectores || 'Lectores / Estudiantes';
+  const monaguillos = data.nombreMonaguillos || 'Monaguillos';
+  const hospitalidad = data.nombreHospitalidad || 'Ministros de Hospitalidad';
+  const generacion = data.generacion || '';
+  const fecha = data.fecha || '';
 
   const showES = langMode === 'bilingue' || langMode === 'espanol';
   const showEN = langMode === 'bilingue' || langMode === 'ingles';

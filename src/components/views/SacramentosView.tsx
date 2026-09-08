@@ -41,92 +41,92 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
   const [activeSacramento, setActiveSacramento] = useState<SacramentoType>(initialType);
   const [showForm, setShowForm] = useState<boolean>(true);
 
-  // Form State
+  // Form State - Inicializados limpios para personalización
   const [bautismoData, setBautismoData] = useState<BautismoParams>({
-    nombreBebe: 'Mateo Alejandro',
-    nombrePadres: 'Carlos Daniel Sánchez y María Elena Rivera',
-    nombrePadrinos: 'Roberto Mendoza y Patricia Gómez',
-    nombreCelebrante: 'Pbro. Francisco Javier Morales',
-    nombreParroquia: 'Parroquia San Juan Bautista',
+    nombreBebe: '',
+    nombrePadres: '',
+    nombrePadrinos: '',
+    nombreCelebrante: '',
+    nombreParroquia: '',
     fecha: new Date().toISOString().split('T')[0],
     enMisa: false
   });
 
   const [matrimonioData, setMatrimonioData] = useState<MatrimonioParams>({
-    nombreEsposo: 'Eduardo De La Miyar Jr.',
-    nombreEsposa: 'Samantha Sinaí Sanchez',
-    nombrePadresNovio: 'Eduardo De La Miyar y Sra.',
-    nombrePadresNovia: 'Padres de Samantha Sinaí',
-    nombrePadrinosAnillos: 'Padrinos de Anillos',
-    nombrePadrinosArras: 'Padrinos de Arras',
-    nombrePadrinosLazo: 'Padrinos de Lazo',
-    nombrePadrinosFlores: 'Padrinos de Flores para la Virgen',
-    nombreAmigosNovio: 'Amigos del Novio (Groomsmen)',
-    nombreAmigasNovia: 'Amigas de la Novia (Bridesmaids)',
-    nombreCelebrante: 'Fr. Alan Sanchez',
-    nombreParroquia: 'Our Lady of Guadalupe',
-    ciudadLugar: 'Laredo, Tx.',
-    nombreMusicos: 'Coro Parroquial / Musicians',
-    fecha: 'Octubre 5, 2024'
+    nombreEsposo: '',
+    nombreEsposa: '',
+    nombrePadresNovio: '',
+    nombrePadresNovia: '',
+    nombrePadrinosAnillos: '',
+    nombrePadrinosArras: '',
+    nombrePadrinosLazo: '',
+    nombrePadrinosFlores: '',
+    nombreAmigosNovio: '',
+    nombreAmigasNovia: '',
+    nombreCelebrante: '',
+    nombreParroquia: '',
+    ciudadLugar: '',
+    nombreMusicos: '',
+    fecha: ''
   });
 
   const [exequiasData, setExequiasData] = useState<ExequiasParams>({
-    nombreDifunto: 'Don Fernando Alberto Martínez',
+    nombreDifunto: '',
     esAdulto: true,
-    nombreFamiliares: 'Familia Martínez López',
-    nombreCelebrante: 'Pbro. Francisco Javier Morales',
-    nombreParroquia: 'Parroquia Nuestra Señora de Guadalupe',
+    nombreFamiliares: '',
+    nombreCelebrante: '',
+    nombreParroquia: '',
     fecha: new Date().toISOString().split('T')[0],
     incluyeSepulcro: true
   });
 
   const [xvAnosData, setXvAnosData] = useState<XVAñosParams>({
-    nombreQuinceanera: 'Mariana Guadalupe Ramírez',
-    nombrePadres: 'Héctor Ramírez y Guadalupe Hernández',
-    nombrePadrinosBibliaRosario: 'Ernesto Torres y Mónica Del Valle',
-    nombrePadrinosFlores: 'Padrinos de Flores para la Virgen',
-    nombreCelebrante: 'Fr. Alan Sanchez',
-    nombreParroquia: 'Our Lady of Guadalupe',
-    ciudadLugar: 'Laredo, Tx.',
-    nombreMusicos: 'Coro Parroquial',
-    fecha: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
+    nombreQuinceanera: '',
+    nombrePadres: '',
+    nombrePadrinosBibliaRosario: '',
+    nombrePadrinosFlores: '',
+    nombreCelebrante: '',
+    nombreParroquia: '',
+    ciudadLugar: '',
+    nombreMusicos: '',
+    fecha: ''
   });
 
   const [confirmacionData, setConfirmacionData] = useState<ConfirmacionParams>({
-    nombreObispo: 'Most. Rev. James A. Tamayo, D. D.',
-    nombrePastor: 'Rev. Leszek Waclawik',
-    nombreVicario: 'Rev. Alan Sanchez',
-    nombreDiaconos: 'Rev. Mr. Juan Zamarripa, Rev. Mr. Ignacio Valdez',
-    nombreCRE: 'Amanda Cantú (CRE)',
-    nombreCatequistas: 'Jaime & Monica Andrade, Jose Luis & Mandy Ramos, Gracie Solis, Patricia Garza, Patsy Sosa, Lupita Oliveros | RICA: Lizette Torres, Raul & Yolanda Gil',
-    nombreCoro: 'Daniel Castillo',
-    nombreLectores: 'Patsy Sosa, Amanda Cantú',
-    nombreMonaguillos: 'Uriel Ancona, Augusto Aguilar, Robert Martínez, Caleb Bernal, Isabella Mendoza, Regina Saldívar, Karime Saldívar',
-    cantidadConfirmandos: '45 Jóvenes y Adultos',
-    nombreParroquia: 'Our Lady of Guadalupe Catholic Church',
-    parroquiaDireccion: '1718 San Jorge Ave.',
-    ciudadLugar: 'Laredo, Texas',
-    parroquiaTelefono: '(956) 723-6954',
-    fecha: '2024',
+    nombreObispo: '',
+    nombrePastor: '',
+    nombreVicario: '',
+    nombreDiaconos: '',
+    nombreCRE: '',
+    nombreCatequistas: '',
+    nombreCoro: '',
+    nombreLectores: '',
+    nombreMonaguillos: '',
+    cantidadConfirmandos: '',
+    nombreParroquia: '',
+    parroquiaDireccion: '',
+    ciudadLugar: '',
+    parroquiaTelefono: '',
+    fecha: '',
     idiomaModo: 'bilingue'
   });
 
   const [primeraComunionData, setPrimeraComunionData] = useState<PrimeraComunionParams>({
-    nombreParroquia: 'St. Joseph Catholic Church',
-    parroquiaDireccion: '620 W. Benson St.',
-    ciudadLugar: 'La Pryor, TX',
-    parroquiaTelefono: '(830) 365-4107',
-    nombreCelebrante: 'Rev. Alan Sanchez',
-    nombreDiaconos: 'Rev. Mr. Gene Corrigan, Rev. Mr. Juan Gallegos',
-    nombreCRE: 'Yolanda Garcia (CRE)',
-    nombreCatequistas: 'Carmen Lopez, Richard Arredondo, Martha De La Rosa, Jenifer Vera, Jacinto Quijano, Maria Louisa Del Toro',
-    nombreCoro: 'CCD Students / Estudiantes del Catecismo',
-    nombreLectores: 'CCD Students / Estudiantes del Catecismo',
-    nombreMonaguillos: 'CCD Students / Estudiantes del Catecismo',
-    nombreHospitalidad: 'Knights of Columbus / Caballeros de Colón',
-    cantidadNinos: '35 Niños y Niñas',
-    generacion: '2023-2025',
-    fecha: '2025',
+    nombreParroquia: '',
+    parroquiaDireccion: '',
+    ciudadLugar: '',
+    parroquiaTelefono: '',
+    nombreCelebrante: '',
+    nombreDiaconos: '',
+    nombreCRE: '',
+    nombreCatequistas: '',
+    nombreCoro: '',
+    nombreLectores: '',
+    nombreMonaguillos: '',
+    nombreHospitalidad: '',
+    cantidadNinos: '',
+    generacion: '',
+    fecha: '',
     idiomaModo: 'bilingue'
   });
 
@@ -219,6 +219,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={bautismoData.nombreBebe}
                   onChange={(e) => setBautismoData({ ...bautismoData, nombreBebe: e.target.value })}
+                  placeholder="Ej. Mateo Alejandro"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -228,6 +229,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={bautismoData.nombrePadres}
                   onChange={(e) => setBautismoData({ ...bautismoData, nombrePadres: e.target.value })}
+                  placeholder="Ej. Carlos Daniel Sánchez y María Elena Rivera"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -237,6 +239,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={bautismoData.nombrePadrinos}
                   onChange={(e) => setBautismoData({ ...bautismoData, nombrePadrinos: e.target.value })}
+                  placeholder="Ej. Roberto Mendoza y Patricia Gómez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -246,6 +249,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={bautismoData.nombreCelebrante}
                   onChange={(e) => setBautismoData({ ...bautismoData, nombreCelebrante: e.target.value })}
+                  placeholder="Ej. Pbro. Francisco Javier Morales"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -255,6 +259,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={bautismoData.nombreParroquia}
                   onChange={(e) => setBautismoData({ ...bautismoData, nombreParroquia: e.target.value })}
+                  placeholder="Ej. Parroquia San Juan Bautista"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -269,6 +274,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.nombreCelebrante}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreCelebrante: e.target.value })}
+                  placeholder="Ej. Rev. Alan Sánchez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -278,6 +284,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.nombreDiaconos || ''}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreDiaconos: e.target.value })}
+                  placeholder="Ej. Rev. Mr. Gene Corrigan, Rev. Mr. Juan Gallegos"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -287,6 +294,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.nombreCRE || ''}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreCRE: e.target.value })}
+                  placeholder="Ej. Yolanda García (CRE)"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -296,6 +304,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.nombreParroquia}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, nombreParroquia: e.target.value })}
+                  placeholder="Ej. St. Joseph Catholic Church"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -305,6 +314,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.parroquiaDireccion || ''}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, parroquiaDireccion: e.target.value })}
+                  placeholder="Ej. 620 W. Benson St."
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -314,6 +324,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.ciudadLugar || ''}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, ciudadLugar: e.target.value })}
+                  placeholder="Ej. La Pryor, TX"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -323,6 +334,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.parroquiaTelefono || ''}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, parroquiaTelefono: e.target.value })}
+                  placeholder="Ej. (830) 365-4107"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -332,7 +344,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.generacion || ''}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, generacion: e.target.value })}
-                  placeholder="2023-2025"
+                  placeholder="Ej. 2024-2025"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -342,6 +354,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={primeraComunionData.fecha}
                   onChange={(e) => setPrimeraComunionData({ ...primeraComunionData, fecha: e.target.value })}
+                  placeholder="Ej. 2025"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -368,6 +381,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreEsposo}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreEsposo: e.target.value })}
+                  placeholder="Ej. Eduardo De La Miyar Jr."
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -377,6 +391,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreEsposa}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreEsposa: e.target.value })}
+                  placeholder="Ej. Samantha Sinaí Sánchez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -386,7 +401,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombrePadresNovio || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadresNovio: e.target.value })}
-                  placeholder="Padres del Novio"
+                  placeholder="Ej. Eduardo De La Miyar y Sra."
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -396,7 +411,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombrePadresNovia || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadresNovia: e.target.value })}
-                  placeholder="Padres de la Novia"
+                  placeholder="Ej. Padres de la Novia"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -406,6 +421,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombrePadrinosAnillos || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosAnillos: e.target.value })}
+                  placeholder="Ej. Padrinos de Anillos"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -415,6 +431,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombrePadrinosArras || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosArras: e.target.value })}
+                  placeholder="Ej. Padrinos de Arras"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -424,6 +441,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombrePadrinosLazo || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosLazo: e.target.value })}
+                  placeholder="Ej. Padrinos de Lazo"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -433,6 +451,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombrePadrinosFlores || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombrePadrinosFlores: e.target.value })}
+                  placeholder="Ej. Padrinos de Flores para la Virgen"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -442,6 +461,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreAmigosNovio || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreAmigosNovio: e.target.value })}
+                  placeholder="Ej. Amigos del Novio (Groomsmen)"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -451,6 +471,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreAmigasNovia || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreAmigasNovia: e.target.value })}
+                  placeholder="Ej. Amigas de la Novia (Bridesmaids)"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -460,6 +481,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreCelebrante}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreCelebrante: e.target.value })}
+                  placeholder="Ej. Fr. Alan Sánchez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -469,6 +491,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreParroquia}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreParroquia: e.target.value })}
+                  placeholder="Ej. Our Lady of Guadalupe"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -478,7 +501,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.ciudadLugar || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, ciudadLugar: e.target.value })}
-                  placeholder="Laredo, Tx."
+                  placeholder="Ej. Laredo, TX"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -488,7 +511,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.nombreMusicos || ''}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, nombreMusicos: e.target.value })}
-                  placeholder="Coro Parroquial"
+                  placeholder="Ej. Coro Parroquial"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -498,6 +521,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={matrimonioData.fecha}
                   onChange={(e) => setMatrimonioData({ ...matrimonioData, fecha: e.target.value })}
+                  placeholder="Ej. 5 de Octubre de 2025"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -512,6 +536,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={exequiasData.nombreDifunto}
                   onChange={(e) => setExequiasData({ ...exequiasData, nombreDifunto: e.target.value })}
+                  placeholder="Ej. Don Fernando Alberto Martínez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -521,6 +546,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={exequiasData.nombreFamiliares}
                   onChange={(e) => setExequiasData({ ...exequiasData, nombreFamiliares: e.target.value })}
+                  placeholder="Ej. Familia Martínez López"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -530,6 +556,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={exequiasData.nombreParroquia}
                   onChange={(e) => setExequiasData({ ...exequiasData, nombreParroquia: e.target.value })}
+                  placeholder="Ej. Parroquia Nuestra Señora de Guadalupe"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -544,6 +571,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombreQuinceanera}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombreQuinceanera: e.target.value })}
+                  placeholder="Ej. Mariana Guadalupe Ramírez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -553,6 +581,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombrePadres}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombrePadres: e.target.value })}
+                  placeholder="Ej. Héctor Ramírez y Guadalupe Hernández"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -562,6 +591,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombrePadrinosBibliaRosario || ''}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombrePadrinosBibliaRosario: e.target.value })}
+                  placeholder="Ej. Ernesto Torres y Mónica Del Valle"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -571,6 +601,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombrePadrinosFlores || ''}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombrePadrinosFlores: e.target.value })}
+                  placeholder="Ej. Padrinos de Flores para la Virgen"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -580,6 +611,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombreCelebrante}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombreCelebrante: e.target.value })}
+                  placeholder="Ej. Fr. Alan Sánchez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -589,6 +621,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombreParroquia}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombreParroquia: e.target.value })}
+                  placeholder="Ej. Our Lady of Guadalupe"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -598,7 +631,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.ciudadLugar || ''}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, ciudadLugar: e.target.value })}
-                  placeholder="Laredo, Tx."
+                  placeholder="Ej. Laredo, TX"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -608,7 +641,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.nombreMusicos || ''}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, nombreMusicos: e.target.value })}
-                  placeholder="Coro Parroquial"
+                  placeholder="Ej. Coro Parroquial"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -618,6 +651,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={xvAnosData.fecha}
                   onChange={(e) => setXvAnosData({ ...xvAnosData, fecha: e.target.value })}
+                  placeholder="Ej. 15 de Octubre de 2025"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -632,6 +666,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombreObispo}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreObispo: e.target.value })}
+                  placeholder="Ej. Most. Rev. James A. Tamayo, D. D."
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -641,6 +676,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombrePastor}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombrePastor: e.target.value })}
+                  placeholder="Ej. Rev. Leszek Waclawik"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -650,6 +686,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombreVicario}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreVicario: e.target.value })}
+                  placeholder="Ej. Rev. Alan Sánchez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -659,6 +696,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombreDiaconos || ''}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreDiaconos: e.target.value })}
+                  placeholder="Ej. Rev. Mr. Juan Zamarripa, Rev. Mr. Ignacio Valdez"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -668,6 +706,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombreCRE || ''}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreCRE: e.target.value })}
+                  placeholder="Ej. Amanda Cantú (CRE)"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -677,6 +716,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombreCoro || ''}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreCoro: e.target.value })}
+                  placeholder="Ej. Daniel Castillo / Coro Parroquial"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -686,6 +726,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.nombreParroquia}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, nombreParroquia: e.target.value })}
+                  placeholder="Ej. Our Lady of Guadalupe Catholic Church"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -695,6 +736,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.parroquiaDireccion || ''}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, parroquiaDireccion: e.target.value })}
+                  placeholder="Ej. 1718 San Jorge Ave."
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -704,6 +746,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.ciudadLugar || ''}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, ciudadLugar: e.target.value })}
+                  placeholder="Ej. Laredo, Texas"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -713,6 +756,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.parroquiaTelefono || ''}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, parroquiaTelefono: e.target.value })}
+                  placeholder="Ej. (956) 723-6954"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -722,6 +766,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                   type="text"
                   value={confirmacionData.fecha}
                   onChange={(e) => setConfirmacionData({ ...confirmacionData, fecha: e.target.value })}
+                  placeholder="Ej. 2025"
                   className="w-full bg-[#F9F7F2] border border-[#D9D1C3] rounded-sm px-3 py-1.5 text-xs text-[#2D2926] focus:outline-none focus:border-[#800020]"
                 />
               </div>
@@ -753,10 +798,10 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 Ritual de Bautismo de Niños
               </div>
               <h2 className="text-3xl sm:text-4xl font-light font-serif italic text-[#2D2926]">
-                Recepción y Bautismo de {bautismoData.nombreBebe}
+                Recepción y Bautismo de {bautismoData.nombreBebe || 'N.'}
               </h2>
               <p className="text-xs font-sans text-[#666] mt-1">
-                {bautismoData.nombreParroquia} • Celebrante: {bautismoData.nombreCelebrante}
+                {bautismoData.nombreParroquia || 'la Parroquia'} • Celebrante: {bautismoData.nombreCelebrante || 'el Celebrante'}
               </p>
             </div>
 
@@ -773,10 +818,10 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 ¿Qué nombre han elegido para este niño(a)?
               </p>
               <p className="assembly-response pl-4">
-                Padres: <span className="font-bold text-[#800020]">{bautismoData.nombreBebe}</span>.
+                Padres: <span className="font-bold text-[#800020]">{bautismoData.nombreBebe || 'N.'}</span>.
               </p>
               <p className="priest-voice pt-2">
-                ¿Qué piden a la Iglesia de Dios para {bautismoData.nombreBebe}?
+                ¿Qué piden a la Iglesia de Dios para {bautismoData.nombreBebe || 'este niño(a)'}?
               </p>
               <p className="assembly-response pl-4">
                 Padres: El Bautismo / La fe / La gracia de Cristo.
@@ -784,7 +829,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
 
               <div className="rubric pt-2">El celebrante hace la señal de la cruz en la frente del niño:</div>
               <p className="priest-voice">
-                {bautismoData.nombreBebe}, la comunidad cristiana te recibe con gran alegría. En su nombre yo te signo con la señal de la cruz, y después de mí tus padres y padrinos harán lo mismo.
+                {bautismoData.nombreBebe || 'Querido niño(a)'}, la comunidad cristiana te recibe con gran alegría. En su nombre yo te signo con la señal de la cruz, y después de mí tus padres y padrinos harán lo mismo.
               </p>
             </section>
 
@@ -797,7 +842,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 </h3>
               </div>
               <p className="priest-voice">
-                Dios todopoderoso y eterno, que has enviado a tu Hijo al mundo para librarnos del poder del demonio... Te pedimos por {bautismoData.nombreBebe}: líbrale del pecado original, haz de él templo de tu gloria y envía sobre él tu Santo Espíritu.
+                Dios todopoderoso y eterno, que has enviado a tu Hijo al mundo para librarnos del poder del demonio... Te pedimos por {bautismoData.nombreBebe || 'este siervo tuyo'}: líbrale del pecado original, haz de él templo de tu gloria y envía sobre él tu Santo Espíritu.
               </p>
               <div className="rubric">El sacerdote unge en el pecho al niño con el óleo de los catecúmenos:</div>
               <p className="priest-voice">
@@ -817,7 +862,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
               <div className="bg-[#F5F2EB] p-6 rounded-sm border-2 border-[#800020] text-center space-y-3">
                 <div className="rubric text-xs font-sans">El sacerdote derrama el agua tres veces diciendo:</div>
                 <p className="text-2xl sm:text-3xl font-cinzel font-bold text-[#800020] tracking-wide">
-                  {bautismoData.nombreBebe.toUpperCase()}, YO TE BAUTIZO EN EL NOMBRE DEL PADRE, Y DEL HIJO, Y DEL ESPÍRITU SANTO.
+                  {(bautismoData.nombreBebe || 'N.').toUpperCase()}, YO TE BAUTIZO EN EL NOMBRE DEL PADRE, Y DEL HIJO, Y DEL ESPÍRITU SANTO.
                 </p>
                 <p className="assembly-response font-bold text-lg pt-1">
                   <span className="rubric font-sans text-sm">R.</span> ¡AMÉN!
@@ -839,7 +884,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
               </p>
               <div className="rubric pt-2">Entrega de la vestidura blanca e iluminación con el Cirio:</div>
               <p className="priest-voice">
-                Reciban la luz de Cristo. A ustedes, padres y padrinos ({bautismoData.nombrePadres} y {bautismoData.nombrePadrinos}), se les confía el cuidado de esta luz para que este niño(a), iluminado por Cristo, camine siempre como hijo de la luz.
+                Reciban la luz de Cristo. A ustedes, padres y padrinos ({bautismoData.nombrePadres || 'padres'} y {bautismoData.nombrePadrinos || 'padrinos'}), se les confía el cuidado de esta luz para que este niño(a), iluminado por Cristo, camine siempre como hijo de la luz.
               </p>
             </section>
           </div>
@@ -863,10 +908,10 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 Ordo Exsequiarum
               </div>
               <h2 className="text-3xl sm:text-4xl font-light font-serif italic text-[#2D2926]">
-                Misa Exequial por el eterno descanso de {exequiasData.nombreDifunto}
+                Misa Exequial por el eterno descanso de {exequiasData.nombreDifunto || 'N.'}
               </h2>
               <p className="text-xs font-sans text-[#666] mt-1">
-                {exequiasData.nombreParroquia} • Intención por: {exequiasData.nombreFamiliares}
+                {exequiasData.nombreParroquia || 'la Parroquia'} • Intención por: {exequiasData.nombreFamiliares || 'sus Familiares'}
               </p>
             </div>
 
@@ -878,7 +923,7 @@ export const SacramentosView: React.FC<SacramentosViewProps> = ({
                 </h3>
               </div>
               <p className="priest-voice">
-                Al despedir a nuestro hermano(a) {exequiasData.nombreDifunto}, cumplimos con el piadoso deber de orar por él(ella). Encomendémoslo(a) con fe a Dios nuestro Padre, para que lo(a) acoja en su paz.
+                Al despedir a nuestro hermano(a) {exequiasData.nombreDifunto || 'N.'}, cumplimos con el piadoso deber de orar por él(ella). Encomendémoslo(a) con fe a Dios nuestro Padre, para que lo(a) acoja en su paz.
               </p>
               
               <div className="bg-[#F5F2EB] p-6 rounded-sm border border-[#D9D1C3] space-y-3">

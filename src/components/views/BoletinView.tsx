@@ -1026,6 +1026,7 @@ Pax et Bonum,`,
                 type="text"
                 value={bulletin.nombreBoletin}
                 onChange={(e) => setBulletin({ ...bulletin, nombreBoletin: e.target.value })}
+                placeholder="Ej. The Guardian / Boletín Parroquial"
                 className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-2 text-xs"
               />
             </div>
@@ -1035,6 +1036,7 @@ Pax et Bonum,`,
                 type="text"
                 value={bulletin.lemaHeader}
                 onChange={(e) => setBulletin({ ...bulletin, lemaHeader: e.target.value })}
+                placeholder="Ej. BUILD A STRONGER PERSONAL RELATIONSHIP WITH JESUS CHRIST."
                 className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-2 text-xs"
               />
             </div>
@@ -1045,6 +1047,7 @@ Pax et Bonum,`,
                 type="text"
                 value={bulletin.parroquia}
                 onChange={(e) => setBulletin({ ...bulletin, parroquia: e.target.value })}
+                placeholder="Ej. ST. JOSEPH PARISH"
                 className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-2 text-xs"
               />
             </div>
@@ -1054,6 +1057,7 @@ Pax et Bonum,`,
                 type="text"
                 value={bulletin.mision}
                 onChange={(e) => setBulletin({ ...bulletin, mision: e.target.value })}
+                placeholder="Ej. ST. PATRICK MISSION"
                 className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-2 text-xs"
               />
             </div>
@@ -1064,6 +1068,7 @@ Pax et Bonum,`,
                 type="text"
                 value={bulletin.parroco}
                 onChange={(e) => setBulletin({ ...bulletin, parroco: e.target.value })}
+                placeholder="Ej. Pbro. Juan Manuel García"
                 className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-2 text-xs"
               />
             </div>
@@ -1073,6 +1078,7 @@ Pax et Bonum,`,
                 type="text"
                 value={bulletin.portadaArteUrl}
                 onChange={(e) => setBulletin({ ...bulletin, portadaArteUrl: e.target.value })}
+                placeholder="Ej. https://upload.wikimedia.org/.../arte.jpg"
                 className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-2 text-xs font-mono"
               />
             </div>
@@ -1095,6 +1101,7 @@ Pax et Bonum,`,
               rows={8}
               value={bulletin.mensajePastor}
               onChange={(e) => setBulletin({ ...bulletin, mensajePastor: e.target.value })}
+              placeholder="Escriba aquí la carta pastoral o mensaje semanal del párroco para la comunidad..."
               className="w-full bg-[#F0EDE6] border border-[#D9D1C3] rounded-sm p-3 font-serif text-sm leading-relaxed"
             />
           </div>

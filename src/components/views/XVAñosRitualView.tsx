@@ -11,13 +11,13 @@ export const XVAñosRitualView: React.FC<XVAñosRitualViewProps> = ({ data }) =>
     window.print();
   };
 
-  const quinceanera = data.nombreQuinceanera || 'Mariana Guadalupe Ramírez';
-  const padres = data.nombrePadres || 'Héctor Ramírez y Guadalupe Hernández';
+  const quinceanera = data.nombreQuinceanera || 'N. (La Quinceañera)';
+  const padres = data.nombrePadres || 'N. y N. (Padres)';
   const padrinosBibliaRosario = data.nombrePadrinosBibliaRosario || data.nombrePadrinos || 'Padrinos de Biblia y Rosario';
   const padrinosFlores = data.nombrePadrinosFlores || 'Padrinos de Flores para la Virgen';
-  const celebrante = data.nombreCelebrante || 'Fr. Alan Sanchez';
-  const parroquia = data.nombreParroquia || 'Our Lady of Guadalupe';
-  const ciudad = data.ciudadLugar || 'Laredo, Tx.';
+  const celebrante = data.nombreCelebrante || 'El Sacerdote Celebrante';
+  const parroquia = data.nombreParroquia || 'la Parroquia';
+  const ciudad = data.ciudadLugar || '';
   const musicos = data.nombreMusicos || 'Coro Parroquial';
   const fecha = data.fecha || new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
 

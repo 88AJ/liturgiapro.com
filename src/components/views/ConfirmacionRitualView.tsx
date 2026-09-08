@@ -13,20 +13,20 @@ export const ConfirmacionRitualView: React.FC<ConfirmacionRitualViewProps> = ({ 
     window.print();
   };
 
-  const obispo = data.nombreObispo || 'Most. Rev. James A. Tamayo, D. D.';
-  const pastor = data.nombrePastor || 'Rev. Leszek Waclawik';
-  const vicario = data.nombreVicario || 'Rev. Alan Sanchez';
-  const diaconos = data.nombreDiaconos || 'Rev. Mr. Juan Zamarripa, Rev. Mr. Ignacio Valdez';
-  const cre = data.nombreCRE || 'Amanda Cantú (CRE)';
-  const catequistas = data.nombreCatequistas || 'Jaime & Monica Andrade, Jose Luis & Mandy Ramos, Gracie Solis, Patricia Garza, Patsy Sosa, Lupita Oliveros | RICA: Lizette Torres, Raul & Yolanda Gil';
-  const coro = data.nombreCoro || 'Daniel Castillo';
-  const lectores = data.nombreLectores || 'Patsy Sosa, Amanda Cantú';
-  const monaguillos = data.nombreMonaguillos || 'Uriel Ancona, Augusto Aguilar, Robert Martínez, Caleb Bernal, Isabella Mendoza, Regina Saldívar, Karime Saldívar';
-  const parroquia = data.nombreParroquia || 'Our Lady of Guadalupe Catholic Church';
-  const direccion = data.parroquiaDireccion || '1718 San Jorge Ave.';
-  const ciudad = data.ciudadLugar || 'Laredo, Texas';
-  const telefono = data.parroquiaTelefono || '(956) 723-6954';
-  const fecha = data.fecha || '2024';
+  const obispo = data.nombreObispo || 'El Señor Obispo';
+  const pastor = data.nombrePastor || 'El Párroco';
+  const vicario = data.nombreVicario || 'El Vicario Parroquial';
+  const diaconos = data.nombreDiaconos || 'Los Diáconos';
+  const cre = data.nombreCRE || 'Coordinador(a) de Catequesis';
+  const catequistas = data.nombreCatequistas || 'Los Catequistas Parroquiales';
+  const coro = data.nombreCoro || 'Coro Parroquial';
+  const lectores = data.nombreLectores || 'Lectores Parroquiales';
+  const monaguillos = data.nombreMonaguillos || 'Monaguillos';
+  const parroquia = data.nombreParroquia || 'la Parroquia';
+  const direccion = data.parroquiaDireccion || '';
+  const ciudad = data.ciudadLugar || '';
+  const telefono = data.parroquiaTelefono || '';
+  const fecha = data.fecha || '';
 
   const showES = langMode === 'bilingue' || langMode === 'espanol';
   const showEN = langMode === 'bilingue' || langMode === 'ingles';

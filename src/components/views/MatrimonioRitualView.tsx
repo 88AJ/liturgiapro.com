@@ -11,12 +11,12 @@ export const MatrimonioRitualView: React.FC<MatrimonioRitualViewProps> = ({ data
     window.print();
   };
 
-  const esposo = data.nombreEsposo || 'Eduardo De La Miyar Jr.';
-  const esposa = data.nombreEsposa || 'Samantha Sinaí Sanchez';
-  const celebrante = data.nombreCelebrante || 'Fr. Alan Sanchez';
-  const parroquia = data.nombreParroquia || 'Our Lady of Guadalupe';
-  const ciudad = data.ciudadLugar || 'Laredo, Tx.';
-  const fecha = data.fecha || 'Octubre 5, 2024';
+  const esposo = data.nombreEsposo || 'N. (El Esposo)';
+  const esposa = data.nombreEsposa || 'N. (La Esposa)';
+  const celebrante = data.nombreCelebrante || 'El Sacerdote Celebrante';
+  const parroquia = data.nombreParroquia || 'la Parroquia';
+  const ciudad = data.ciudadLugar || '';
+  const fecha = data.fecha || 'Fecha de la Celebración';
   const musicos = data.nombreMusicos || 'Coro Parroquial';
 
   return (
