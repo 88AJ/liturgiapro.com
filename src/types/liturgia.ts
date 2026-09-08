@@ -15,6 +15,7 @@ export type LiturgicalSeason =
 export type CelebrationRank = 
   | 'Solemnidad' 
   | 'Fiesta' 
+  | 'Memoria'
   | 'Memoria Obligatoria' 
   | 'Memoria Libre' 
   | 'Feria' 
@@ -77,6 +78,8 @@ export interface LiturgicalDay {
   fuente_oficial?: string;
 }
 
+export type LiturgicalDayInfo = LiturgicalDay;
+
 export type MomentoMisa = 
   | 'Entrada' 
   | 'Kyrie' 
@@ -106,14 +109,18 @@ export interface Cantico {
 
 export interface SchemaCantosMisa {
   entrada?: string;
+  kyrie?: string;
   gloria?: string;
   salmo?: string;
   aleluya?: string;
   ofertorio?: string;
   santo?: string;
   paz?: string;
+  cordero?: string;
   comunion?: string;
+  meditacion?: string;
   salida?: string;
+  mariano?: string;
 }
 
 export type SacramentoType = 
