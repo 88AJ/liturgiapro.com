@@ -4,6 +4,7 @@ import { SANTORAL_FIJO } from './liturgicalLectionary';
 import { getSundayLectionary } from './leccionarioDominical';
 import { getFerialLectionary } from './leccionarioFerial';
 import { getSuggestedChantsForDay } from '../utils/musicSelector';
+import { SEPTIEMBRE_GDL_CALENDAR } from './liturgicalSeptemberGDL';
 import liturgiaRawData from './liturgiaRaw.json';
 import cantosRawData from './cantosRaw.json';
 import ordinarioRawData from './ordinarioRaw.json';
@@ -424,6 +425,38 @@ export function getLiturgicalDay(isoDate: string): LiturgicalDay {
   const santoralEntry = SANTORAL_FIJO[monthDay];
 
   const isSundayCelebration = seasonInfo.grado === 'Domingo' || dayOfWeek === 0 || mexEntry?.grado === 'Domingo';
+
+  // Check Official September Calendar from Arquidiócesis de Guadalajara / CEM
+  if (SEPTIEMBRE_GDL_CALENDAR[monthDay]) {
+    const gdl = SEPTIEMBRE_GDL_CALENDAR[monthDay];
+    const isGloria = gdl.color === 'Blanco' || gdl.grado === 'Solemnidad' || gdl.grado === 'Fiesta' || (gdl.tiempo_liturgico.includes('Ordinario') && isSundayCelebration);
+    const isCredo = gdl.grado === 'Solemnidad' || isSundayCelebration;
+
+    return {
+      ...gdl,
+      fecha: isoDate,
+      dia_semana: seasonInfo.diaSemana,
+      ciclo: seasonInfo.ciclo,
+      ano_ferial: seasonInfo.anoFerial,
+      fuente_oficial: 'Ordo Litúrgico y Leccionario de la Conferencia del Episcopado Mexicano (CEM) / Arquidiócesis de Guadalajara',
+      monicion_entrada: `Hermanos: Sean bienvenidos a la celebración de ${gdl.titulo_celebracion}. Que la escucha atenta de la Palabra y la comunión eucarística renueven nuestra vida en Cristo.`,
+      gloria: isGloria,
+      credo: isCredo,
+      oracion_fieles: [
+        'Por la Santa Iglesia de Dios y por el Santo Padre, para que continúe guiando al Pueblo de Dios con fidelidad evangélica. Roguemos al Señor.',
+        'Por la paz en México y en el mundo entero, para que cesen las discordias y florezca la justicia y la fraternidad. Roguemos al Señor.',
+        'Por los enfermos, los migrantes y todos los que sufren, para que encuentren fortaleza en la cruz redentora de Cristo. Roguemos al Señor.',
+        'Por nuestra comunidad parroquial, para que fructifiquemos en santidad, obras de misericordia y vocaciones consagradas. Roguemos al Señor.'
+      ],
+      cantos_sugeridos: getSuggestedChantsForDay(
+        gdl.tiempo_liturgico,
+        gdl.color as LiturgicalColor,
+        gdl.titulo_celebracion,
+        gdl.liturgia_palabra,
+        isoDate
+      )
+    };
+  }
   const isSanctoralOverridingSunday = santoralEntry && (santoralEntry.grado === 'Solemnidad' || (santoralEntry.grado === 'Fiesta' && (santoralEntry.titulo_celebracion?.includes('Señor') || santoralEntry.titulo_celebracion?.includes('Cruz'))));
 
   const color = (isSundayCelebration && !isSanctoralOverridingSunday)
